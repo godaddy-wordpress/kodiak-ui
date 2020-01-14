@@ -1,0 +1,53 @@
+Arguments: 
+  /usr/local/Cellar/node/13.6.0/bin/node /usr/local/Cellar/yarn/1.21.1/libexec/bin/yarn.js watch
+
+PATH: 
+  /usr/local/opt/mysql@5.7/bin:/Applications/Postgres.app/Contents/Versions/9.6/bin:/Users/wescole/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/wescole/.composer/vendor/bin:/Users/wescole/.antigen/bundles/robbyrussell/oh-my-zsh/lib:/Users/wescole/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/git:/Users/wescole/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/heroku:/Users/wescole/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/pip:/Users/wescole/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/lein:/Users/wescole/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/command-not-found:/Users/wescole/.antigen/bundles/zsh-users/zsh-syntax-highlighting
+
+Yarn version: 
+  1.21.1
+
+Node version: 
+  13.6.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  SyntaxError: /Users/wescole/Jilt/kodiak/packages/core/package.json: Unexpected token } in JSON at position 324
+      at JSON.parse (<anonymous>)
+      at /usr/local/Cellar/yarn/1.21.1/libexec/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/usr/local/Cellar/yarn/1.21.1/libexec/lib/cli.js:310:30)
+      at /usr/local/Cellar/yarn/1.21.1/libexec/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "@kodiak/core",
+    "version": "0.0.1",
+    "main": "dist/index.js",
+    "module": "dist/index.esm.js",
+    "files": [
+      "dist"
+    ],
+    "author": "Wesley Cole <wes@skyverge.com>",
+    "license": "MIT",
+    "publishConfig": {
+      "access": "public"
+    },
+    "scripts": {
+      "build": "rollup -c",
+      "watch": "rollup -cw",
+    },
+    "devDependencies": {
+      "@rollup/plugin-typescript": "^2.1.0",
+      "rollup": "^1.29.0",
+      "typescript": "^3.7.4"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
