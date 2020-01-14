@@ -15,5 +15,16 @@
     "lerna": "^3.18.4",
     "lint-staged": "^9.5.0",
     "prettier": "^1.19.1"
+  },
+  "husky": {
+    "hooks": {
+      "precommit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,md}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }
