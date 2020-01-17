@@ -6,9 +6,13 @@
   "scripts": {
     "docs:dev": "yarn workspace @kodiak/docs dev",
     "docs:build": "yarn workspace @kodiak/docs build",
-    "docs:serve": "yarn workspace @kodiak/docs serve"
+    "docs:serve": "yarn workspace @kodiak/docs serve",
+    "lint": "eslint './packages/**/*.{js,jsx,ts,tsx}'"
   },
   "devDependencies": {
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-plugin-no-only-tests": "^2.4.0",
+    "eslint-plugin-prettier": "^3.1.2",
     "husky": "^4.0.9",
     "jest": "^24.9.0",
     "lerna": "^3.18.4",
@@ -21,8 +25,9 @@
     }
   },
   "lint-staged": {
-    "*.{js,ts,tsx,md}": [
+    "*.{js,jsx,ts,tsx,md}": [
       "prettier --write",
+      "eslint --fix",
       "git add"
     ]
   },
