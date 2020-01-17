@@ -27,7 +27,7 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx,md}": [
       "prettier --write",
-      "eslint --fix",
+      "yarn lint",
       "git add"
     ]
   },
