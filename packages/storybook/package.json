@@ -1,0 +1,25 @@
+{
+  "name": "@kodiak/storybook",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "react-scripts": "3.3.0"
+  },
+  "scripts": {
+    "storybook": "start-storybook -p 9009",
+    "build-storybook": "build-storybook"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@storybook/addon-actions": "^5.3.6",
+    "@storybook/addon-links": "^5.3.6",
+    "@storybook/addons": "^5.3.6",
+    "@storybook/preset-typescript": "^1.2.0",
+    "@storybook/react": "^5.3.6",
+    "fork-ts-checker-webpack-plugin": "^4.0.1",
+    "react-docgen-typescript-loader": "^3.6.0",
+    "ts-loader": "^6.2.1"
+  }
+}
