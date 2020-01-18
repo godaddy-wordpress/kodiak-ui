@@ -7,7 +7,8 @@
     "docs:dev": "yarn workspace @kodiak/docs dev",
     "docs:build": "yarn workspace @kodiak/docs build",
     "docs:serve": "yarn workspace @kodiak/docs serve",
-    "lint": "eslint './packages/**/*.{js,jsx,ts,tsx}'"
+    "lint": "eslint './packages/**/*.{js,jsx,ts,tsx}'",
+    "storybook": "yarn workspace @kodiak/storybook storybook"
   },
   "devDependencies": {
     "eslint-config-prettier": "^6.9.0",
