@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-export default function useIsMounted(): () => boolean {
+export function useIsMounted(): () => boolean {
   const mountedRef = React.useRef(false)
   const getIsMounted = React.useCallback(() => mountedRef.current, [])
 
