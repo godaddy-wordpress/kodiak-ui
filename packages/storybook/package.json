@@ -13,12 +13,12 @@
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
-    "@storybook/addon-actions": "^5.3.6",
-    "@storybook/addon-links": "^5.3.6",
-    "@storybook/addons": "^5.3.6",
+    "@storybook/addon-actions": "^5.3.8",
+    "@storybook/addon-links": "^5.3.8",
+    "@storybook/addons": "^5.3.8",
     "@storybook/preset-typescript": "^1.2.0",
-    "@storybook/react": "^5.3.6",
-    "fork-ts-checker-webpack-plugin": "^4.0.1",
+    "@storybook/react": "^5.3.8",
+    "fork-ts-checker-webpack-plugin": "^4.0.2",
     "react-docgen-typescript-loader": "^3.6.0",
     "ts-loader": "^6.2.1"
   }
