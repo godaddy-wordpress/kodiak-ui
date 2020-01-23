@@ -19,5 +19,8 @@
     "@rollup/plugin-typescript": "^2.1.0",
     "rollup": "^1.29.1",
     "typescript": "^3.7.5"
+  },
+  "peerDependencies": {
+    "react": "^16.12.0"
   }
 }

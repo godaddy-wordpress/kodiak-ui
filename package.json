@@ -52,7 +52,7 @@
       "html"
     ],
     "transform": {
-      "\\.ts$": [
+      "\\.(ts|tsx)$": [
         "ts-jest"
       ]
     }
