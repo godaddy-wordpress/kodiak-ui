@@ -8,17 +8,26 @@
     "docs:build": "yarn workspace @kodiak/docs build",
     "docs:serve": "yarn workspace @kodiak/docs serve",
     "lint": "eslint './packages/**/*.{js,jsx,ts,tsx}'",
+    "test": "jest",
     "storybook": "yarn workspace @kodiak/storybook storybook"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.0.2",
+    "@testing-library/react": "^9.4.0",
+    "@testing-library/react-hooks": "^3.2.1",
+    "@types/jest": "^24.9.1",
+    "@types/react": "^16.9.19",
+    "@types/testing-library__jest-dom": "^5.0.0",
     "eslint-config-prettier": "^6.9.0",
     "eslint-plugin-no-only-tests": "^2.4.0",
     "eslint-plugin-prettier": "^3.1.2",
-    "husky": "^4.0.10",
-    "jest": "^24.9.0",
+    "husky": "^4.2.0",
+    "jest": "^25.1.0",
     "lerna": "^3.18.4",
-    "lint-staged": "^9.5.0",
-    "prettier": "^1.19.1"
+    "lint-staged": "^10.0.2",
+    "prettier": "^1.19.1",
+    "react-test-renderer": "^16.12.0",
+    "ts-jest": "^25.0.0"
   },
   "husky": {
     "hooks": {
@@ -33,16 +42,23 @@
     ]
   },
   "jest": {
-    "testMatch": [
-      "**/packages/**/test/*.js"
+    "testPathIgnorePatterns": [
+      "<rootDir>/packages/docs",
+      "<rootDir>/packages/storybook",
+      "<rootDir>/node_modules/"
     ],
     "collectCoverageFrom": [
-      "**/packages/**/src/*.js"
+      "**/packages/**/src/*.ts"
     ],
     "coverageReporters": [
       "lcov",
       "text",
       "html"
-    ]
+    ],
+    "transform": {
+      "\\.(ts|tsx)$": [
+        "ts-jest"
+      ]
+    }
   }
 }
