@@ -1,4 +1,5 @@
 export default {
+  title: 'Kodiak Documentation',
   typescript: true,
   docgenConfig: {
     searchPath: '../',
@@ -8,7 +9,7 @@ export default {
       filepath =>
         /\/[A-Z]\w*\.(js|jsx|ts|tsx)$/.test(filepath) ||
         filepath.includes('/alert/index.js') ||
-        filepath.includes('/alert-ts/src/index.tsx')
+        filepath.includes('/alert-ts/src/index.tsx'),
     )
   },
 }
