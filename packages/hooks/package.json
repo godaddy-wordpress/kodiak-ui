@@ -2,7 +2,8 @@
   "name": "@kodiak/hooks",
   "version": "0.0.1",
   "main": "dist/index.js",
-  "module": "dist/index.esm.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
@@ -16,8 +17,9 @@
     "watch": "rollup -cw"
   },
   "devDependencies": {
-    "@rollup/plugin-typescript": "^2.1.0",
     "rollup": "^1.29.1",
+    "rollup-plugin-typescript2": "^0.25.3",
+    "tslib": "^1.10.0",
     "typescript": "^3.7.5"
   },
   "peerDependencies": {
