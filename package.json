@@ -9,7 +9,9 @@
     "docs:serve": "yarn workspace @kodiak/docs serve",
     "lint": "eslint './packages/**/*.{js,jsx,ts,tsx}'",
     "test": "jest --coverage",
-    "storybook": "yarn workspace @kodiak/storybook storybook"
+    "storybook": "yarn workspace @kodiak/storybook storybook",
+    "lerna:prepare": "lerna run prepare",
+    "lerna:clean": "lerna run clean"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.0.2",
@@ -25,6 +27,7 @@
     "jest": "^25.1.0",
     "lerna": "^3.18.4",
     "lint-staged": "^10.0.3",
+    "microbundle": "^0.11.0",
     "prettier": "^1.19.1",
     "react-test-renderer": "^16.12.0",
     "ts-jest": "^25.0.0"
