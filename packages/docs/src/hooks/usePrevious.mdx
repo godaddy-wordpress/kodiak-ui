@@ -4,3 +4,22 @@ menu: Hooks
 ---
 
 # usePrevious
+
+React state hook for getting the value of the previous state. This follows the approach that
+the [React documentation](https://reactjs.org/docs/hooks-faq.html#how-to-get-the-previous-props-or-state) recommends.
+
+```ts
+import * as React from 'react'
+import { usePrevious } from '@skyverge/tackle-box'
+
+function App() {
+  const [count, setCount] = React.useState(0)
+  const prevCount = usePrevious<number>(count)
+
+  return (
+    <button type="button" onClick={setCount(count + 1)}>
+      Increase count
+    </button>
+  )
+}
+```
