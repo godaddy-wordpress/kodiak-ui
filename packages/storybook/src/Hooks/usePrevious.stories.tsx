@@ -13,7 +13,7 @@ function Example() {
     <>
       <p>Previous count: {prevCount}</p>
       <p>Current count: {count}</p>
-      <button type="button" onClick={setCount(count + 1)}>
+      <button type="button" onClick={() => setCount(count + 1)}>
         Increase count
       </button>
     </>
