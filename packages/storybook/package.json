@@ -2,24 +2,25 @@
   "name": "@kodiak/storybook",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
-    "react-scripts": "3.3.0"
-  },
   "scripts": {
     "storybook": "start-storybook -p 9009",
     "build-storybook": "build-storybook"
   },
-  "devDependencies": {
+  "dependencies": {
     "@babel/core": "^7.2.2",
-    "@storybook/addon-actions": "^5.3.8",
-    "@storybook/addon-links": "^5.3.8",
-    "@storybook/addons": "^5.3.8",
+    "@storybook/addon-docs": "^5.3.9",
+    "@storybook/addons": "^5.3.9",
     "@storybook/preset-typescript": "^1.2.0",
-    "@storybook/react": "^5.3.8",
-    "fork-ts-checker-webpack-plugin": "^4.0.2",
+    "@storybook/react": "^5.3.9",
+    "@types/theme-ui": "^0.2.7",
+    "babel-loader": "^8.0.6",
+    "fork-ts-checker-webpack-plugin": "^4.0.3",
+    "react": "^16.12.0",
     "react-docgen-typescript-loader": "^3.6.0",
+    "react-dom": "^16.7.0",
+    "react-is": "^16.12.0",
+    "react-scripts": "3.3.0",
+    "theme-ui": "^0.3.1",
     "ts-loader": "^6.2.1"
   }
 }
