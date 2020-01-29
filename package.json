@@ -48,12 +48,20 @@
   },
   "jest": {
     "testPathIgnorePatterns": [
-      "<rootDir>/packages/docs",
-      "<rootDir>/packages/storybook",
-      "<rootDir>/node_modules/"
+      "/docs",
+      "/storybook",
+      "/node_modules",
+      "/dist"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/docs",
+      "/storybook",
+      "/node_modules",
+      "/dist",
+      "/src/index.ts"
     ],
     "collectCoverageFrom": [
-      "**/packages/**/src/*.ts"
+      "**/packages/**/src/*.(ts|tsx)"
     ],
     "coverageReporters": [
       "lcov",

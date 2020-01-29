@@ -64,18 +64,18 @@ describe('Box', () => {
   it('should style the element with styled-system props', () => {
     expect(renderer.create(<Box mb={1}>Rendering div element</Box>).toJSON())
       .toMatchInlineSnapshot(`
-.emotion-0 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  margin-bottom: 4px;
-}
+      .emotion-0 {
+        box-sizing: border-box;
+        margin: 0;
+        min-width: 0;
+        margin-bottom: 4px;
+      }
 
-<div
-  className="emotion-0"
->
-  Rendering div element
-</div>
-`)
+      <div
+        className="emotion-0"
+      >
+        Rendering div element
+      </div>
+      `)
   })
 })
