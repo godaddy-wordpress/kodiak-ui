@@ -23,7 +23,6 @@ import {
   PositionProps,
   shadow,
   ShadowProps,
-  FlexBasisProps,
 } from 'styled-system'
 
 /**

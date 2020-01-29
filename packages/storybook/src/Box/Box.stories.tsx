@@ -12,7 +12,6 @@ export default {
 export function initial() {
   return (
     <Box
-      marginTop={7}
       sx={{
         fontFamily: 'body',
         fontWeight: 'bold',
@@ -24,7 +23,7 @@ export function initial() {
   )
 }
 
-export function withComponent() {
+export function asProp() {
   return (
     <Box
       as="main"
@@ -35,6 +34,14 @@ export function withComponent() {
       }}
     >
       Renders the Box as a Main HTML element
+    </Box>
+  )
+}
+
+export function styledSystemProps() {
+  return (
+    <Box m={3} p={5} bg="primary" color="white">
+      Renders the Box and styles it with styled-system props
     </Box>
   )
 }
