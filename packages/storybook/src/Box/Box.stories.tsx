@@ -1,7 +1,13 @@
 import * as React from 'react'
 import { Box } from '@kodiak/box'
 
-export default { title: 'Box' }
+export default {
+  title: 'Box',
+  component: Box,
+  parameters: {
+    componentSubTitle: 'Base primitive component for all Kodiak components',
+  },
+}
 
 export function initial() {
   return (
