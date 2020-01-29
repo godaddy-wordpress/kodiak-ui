@@ -11,7 +11,8 @@
     "test": "jest --coverage",
     "storybook": "yarn workspace @kodiak/storybook storybook",
     "lerna:prepare": "lerna run prepare",
-    "lerna:clean": "lerna run clean"
+    "lerna:clean": "lerna run clean",
+    "lerna:watch": "lerna run watch"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.0.2",
