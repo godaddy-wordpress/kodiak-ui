@@ -1,7 +1,5 @@
-/** @jsx jsx */
-
 import styled from '@emotion/styled'
-import { css, jsx } from 'theme-ui'
+import { css, IntrinsicSxElements } from 'theme-ui'
 import { SerializedStyles } from '@emotion/serialize'
 import { createShouldForwardProp } from '@styled-system/should-forward-prop'
 import { space, color, SpaceProps, ColorProps } from 'styled-system'
@@ -26,24 +24,17 @@ const sx = (props: any): SerializedStyles => {
   return css(props.sx)(props.theme)
 }
 
-export interface BoxProps
-  extends SpaceProps,
-    ColorProps,
-    JSX.IntrinsicAttributes {
-  /** Pass in a valid React.ElementType to render the Box as a different element than div */
-  as?: React.ElementType
-}
+type BoxProps = { as?: React.ElementType } & SpaceProps &
+  ColorProps &
+  IntrinsicSxElements['div']
 
 /**
  * Box primitive component which is the base compoent for
  * all components in Kodiak
  */
-export const Box = styled(
-  ({ as: T = 'div', ...props }: BoxProps) => <T {...props} />,
-  {
-    shouldForwardProp,
-  },
-)(
+export const Box = styled<'div', BoxProps>('div', {
+  shouldForwardProp,
+})(
   {
     boxSizing: 'border-box',
     margin: 0,
