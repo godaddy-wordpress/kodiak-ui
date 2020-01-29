@@ -2,7 +2,29 @@ import styled from '@emotion/styled'
 import { css, IntrinsicSxElements } from 'theme-ui'
 import { SerializedStyles } from '@emotion/serialize'
 import { createShouldForwardProp } from '@styled-system/should-forward-prop'
-import { space, color, SpaceProps, ColorProps } from 'styled-system'
+import {
+  space,
+  SpaceProps,
+  color,
+  ColorProps,
+  typography,
+  TypographyProps,
+  layout,
+  LayoutProps,
+  flexbox,
+  FlexboxProps,
+  grid,
+  GridProps,
+  background,
+  BackgroundProps,
+  border,
+  BorderProps,
+  position,
+  PositionProps,
+  shadow,
+  ShadowProps,
+  FlexBasisProps,
+} from 'styled-system'
 
 /**
  * propNames are typed as string[] | undefined. Undefined is not
@@ -11,6 +33,14 @@ import { space, color, SpaceProps, ColorProps } from 'styled-system'
 const shouldForwardProp = createShouldForwardProp([
   ...(space.propNames as string[]),
   ...(color.propNames as string[]),
+  ...(typography.propNames as string[]),
+  ...(layout.propNames as string[]),
+  ...(flexbox.propNames as string[]),
+  ...(grid.propNames as string[]),
+  ...(background.propNames as string[]),
+  ...(border.propNames as string[]),
+  ...(position.propNames as string[]),
+  ...(shadow.propNames as string[]),
 ])
 
 /**
@@ -26,6 +56,14 @@ const sx = (props: any): SerializedStyles => {
 
 type BoxProps = { as?: React.ElementType } & SpaceProps &
   ColorProps &
+  TypographyProps &
+  LayoutProps &
+  FlexboxProps &
+  GridProps &
+  BackgroundProps &
+  BorderProps &
+  PositionProps &
+  ShadowProps &
   IntrinsicSxElements['div']
 
 /**
@@ -42,5 +80,13 @@ export const Box = styled<'div', BoxProps>('div', {
   },
   space,
   color,
+  typography,
+  layout,
+  flexbox,
+  grid,
+  background,
+  border,
+  position,
+  shadow,
   sx,
 )
