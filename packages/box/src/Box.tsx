@@ -66,7 +66,7 @@ type BoxProps = { as?: React.ElementType } & SpaceProps &
   IntrinsicSxElements['div']
 
 /**
- * Box primitive component which is the base compoent for
+ * Box primitive component which is the base component for
  * all components in Kodiak
  */
 export const Box = styled<'div', BoxProps>('div', {
