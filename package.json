@@ -4,14 +4,12 @@
     "packages/*"
   ],
   "scripts": {
-    "docs:dev": "yarn workspace @kodiak/docs dev",
-    "docs:build": "yarn workspace @kodiak/docs build",
-    "docs:serve": "yarn workspace @kodiak/docs serve",
     "lint": "eslint './packages/**/*.{js,jsx,ts,tsx}'",
     "test": "jest --coverage",
     "storybook": "yarn workspace @kodiak/storybook storybook",
     "lerna:prepare": "lerna run prepare",
-    "lerna:clean": "lerna run clean"
+    "lerna:clean": "lerna run clean",
+    "lerna:watch": "lerna run watch"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.0.2",
@@ -25,6 +23,7 @@
     "eslint-plugin-prettier": "^3.1.2",
     "husky": "^4.2.1",
     "jest": "^25.1.0",
+    "jest-emotion": "^10.0.27",
     "lerna": "^3.18.4",
     "lint-staged": "^10.0.3",
     "microbundle": "^0.11.0",
@@ -46,12 +45,18 @@
   },
   "jest": {
     "testPathIgnorePatterns": [
-      "<rootDir>/packages/docs",
-      "<rootDir>/packages/storybook",
-      "<rootDir>/node_modules/"
+      "/storybook",
+      "/node_modules",
+      "/dist"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/storybook",
+      "/node_modules",
+      "/dist",
+      "/src/index.ts"
     ],
     "collectCoverageFrom": [
-      "**/packages/**/src/*.ts"
+      "**/packages/**/src/*.(ts|tsx)"
     ],
     "coverageReporters": [
       "lcov",

@@ -2,6 +2,7 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "declaration": true,
+    "declarationDir": "dist",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "jsx": "react",
@@ -13,7 +14,8 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
-    "target": "es5"
+    "target": "es2017",
+    "noImplicitAny": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "src/**/*.test.*"]
