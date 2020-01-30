@@ -4,9 +4,6 @@
     "packages/*"
   ],
   "scripts": {
-    "docs:dev": "yarn workspace @kodiak/docs dev",
-    "docs:build": "yarn workspace @kodiak/docs build",
-    "docs:serve": "yarn workspace @kodiak/docs serve",
     "lint": "eslint './packages/**/*.{js,jsx,ts,tsx}'",
     "test": "jest --coverage",
     "storybook": "yarn workspace @kodiak/storybook storybook",
@@ -48,13 +45,11 @@
   },
   "jest": {
     "testPathIgnorePatterns": [
-      "/docs",
       "/storybook",
       "/node_modules",
       "/dist"
     ],
     "coveragePathIgnorePatterns": [
-      "/docs",
       "/storybook",
       "/node_modules",
       "/dist",

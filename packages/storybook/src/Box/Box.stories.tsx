@@ -1,7 +1,7 @@
-import { Meta } from 'storybook'
+import * as React from 'react'
 import { Box } from '@kodiak/box'
 
-<Meta title="Box" component={Box} />
+export default { title: 'Box' }
 
 export function initial() {
   return (
