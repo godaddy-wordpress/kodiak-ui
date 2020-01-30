@@ -7,7 +7,9 @@ module.exports = {
       options: {
         configureJSX: true,
         babelOptions: {},
-        sourceLoaderOptions: null,
+        sourceLoaderOptions: {
+           parser: 'typescript',
+        },
       },
     },
   ],
