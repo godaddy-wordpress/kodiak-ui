@@ -1,1 +1,1 @@
-export { Box } from './Box'
+export { Box, variant, sx } from './Box'
