@@ -1,6 +1,5 @@
 import * as React from 'react'
-import { Box } from '@kodiak/box'
-import { Flex } from '@kodiak/flex'
+import { Box, Flex } from '@kodiak/primitives'
 
 export default { title: 'Flex' }
 

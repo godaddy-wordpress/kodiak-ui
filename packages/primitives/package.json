@@ -1,7 +1,7 @@
 {
-  "name": "@kodiak/box",
+  "name": "@kodiak/primitives",
   "version": "0.1.0",
-  "description": "Kodiak's Box component which is the base primitive component that all components are built from",
+  "description": "Kodiak's primitive components for building applications and complex components",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "source": "src/index.ts",
