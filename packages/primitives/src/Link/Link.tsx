@@ -47,8 +47,7 @@ type LinkProps<T extends keyof IntrinsicSxElements = 'a'> = {
   ShadowProps
 
 /**
- * Box primitive component which is the base component for
- * all components in Kodiak
+ * Link supports `space`, `color`, `typography`, `background` and `shadow
  */
 export const Link = styled<'a', LinkProps>('a', {
   shouldForwardProp,
