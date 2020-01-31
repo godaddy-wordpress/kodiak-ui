@@ -1,9 +1,11 @@
 import React from 'react'
 import { Box } from '../Box'
 
-export const Label = React.forwardRef<
-  HTMLLabelElement,
-  React.ComponentProps<typeof Box> & JSX.IntrinsicElements['label']
->(({ variant = 'label', ...props }, ref) => (
-  <Box as="label" variant={variant} ref={ref as any} {...props} />
-))
+type LabelProps = JSX.IntrinsicElements['label'] &
+  React.ComponentProps<typeof Box>
+
+export const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
+  ({ variant = 'label', ...props }, ref) => (
+    <Box as="label" variant={variant} ref={ref as any} {...props} />
+  ),
+)

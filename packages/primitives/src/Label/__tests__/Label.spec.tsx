@@ -47,10 +47,15 @@ describe('Label', () => {
     `)
   })
 
-  it('should style the element with styled-system props', () => {
+  it('should style the element with styled-system props and accept label props', () => {
     expect(
       renderer
-        .create(<Label fontWeight="bold">Rendering bold p tag</Label>)
+        .create(
+          <Label htmlFor="myinput" fontWeight="bold">
+            Rendering bold p tag
+            <input id="myinput" />
+          </Label>,
+        )
         .toJSON(),
     ).toMatchInlineSnapshot(`
       .emotion-0 {
