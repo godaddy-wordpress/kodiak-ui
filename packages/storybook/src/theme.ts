@@ -40,7 +40,6 @@ export const theme = {
       flexDirection: 'column',
     },
     root: {
-      margin: 4,
       minHeight: '800px',
       justifyContent: 'space-between',
     },
@@ -51,11 +50,13 @@ export const theme = {
     },
     main: {
       maxWidth: 'main',
+      m: 4,
       width: '100%',
       p: 4,
     },
     aside: {
       maxWidth: 'aside',
+      m: 4,
       width: '100%',
       bg: 'muted',
       p: 2,

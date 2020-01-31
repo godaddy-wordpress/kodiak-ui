@@ -2,9 +2,9 @@ import * as React from 'react'
 import { Flex } from '@kodiak/flex'
 import { Box } from '@kodiak/box'
 
-export default { title: 'Recipes/FlexLayout' }
+export default { title: 'Recipes/Flexbox' }
 
-export function contentSidebar() {
+export function mainAside() {
   return (
     <Flex variant="layout.container">
       <Box as="header" variant="layout.header">
@@ -30,7 +30,7 @@ export function contentSidebar() {
   )
 }
 
-export function sidebarContentSidebar() {
+export function asideMainAside() {
   return (
     <Flex variant="layout.container">
       <Box as="header" variant="layout.header">
@@ -55,6 +55,16 @@ export function sidebarContentSidebar() {
       <Box as="footer" variant="layout.footer">
         Footer
       </Box>
+    </Flex>
+  )
+}
+
+export function grid() {
+  return (
+    <Flex flexWrap="wrap" p={4} m={4}>
+      {Array.from(Array(12).keys()).map(item => (
+        <Box key={item} bg="primary" height={100} width={100} m={3} />
+      ))}
     </Flex>
   )
 }
