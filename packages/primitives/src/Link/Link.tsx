@@ -15,6 +15,7 @@ type LinkVariantProps = {
   theme: Theme
   variant?: string
 }
+
 const linkVariant = ({
   theme,
   variant: defaultVariant = 'links.a',
@@ -26,10 +27,9 @@ const shouldForwardProp = createShouldForwardProp([
   ...(typography.propNames as string[]),
 ])
 
-type LinkProps<T extends keyof IntrinsicSxElements = 'a'> = {
-  as?: T
+type LinkProps = {
   variant?: string
-} & IntrinsicSxElements[T] &
+} & IntrinsicSxElements['a'] &
   SpaceProps &
   ColorProps &
   TypographyProps
