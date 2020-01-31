@@ -73,12 +73,12 @@ function sx(props: any): SerializedStyles {
  *   }
  * }
  */
-interface VariantProps {
+export interface VariantProps {
   theme: Theme
   variant?: string
 }
 
-function variant({ variant, theme }: VariantProps) {
+export function variant({ variant, theme }: VariantProps) {
   const variantKey = variant && variant.split('.')[1]
   return css(
     get(
