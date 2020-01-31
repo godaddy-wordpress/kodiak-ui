@@ -1,0 +1,38 @@
+{
+  "name": "@kodiak/flex",
+  "version": "0.0.1",
+  "description": "Kodiak's Flex component which is the base primitive component that all components are built from",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "source": "src/index.ts",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "author": "Wesley Cole <wes@skyverge.com>",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "prepare": "microbundle",
+    "watch": "microbundle watch"
+  },
+  "peerDependencies": {
+    "@emotion/core": "^10.0.27",
+    "react": "^16.12.0"
+  },
+  "dependencies": {
+    "@emotion/styled": "^10.0.27",
+    "@kodiak/box": "^0.1.0",
+    "@styled-system/should-forward-prop": "^5.1.4",
+    "@styled-system/space": "^5.1.2",
+    "@theme-ui/css": "^0.3.1",
+    "styled-system": "^5.1.4"
+  },
+  "devDependencies": {
+    "@types/styled-system": "^5.1.5",
+    "@types/styled-system__should-forward-prop": "^5.1.0",
+    "@types/theme-ui": "^0.2.7"
+  }
+}
