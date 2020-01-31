@@ -50,7 +50,7 @@ const shouldForwardProp = createShouldForwardProp([
  *
  * @param props any
  */
-function sx(props: any): SerializedStyles {
+export function sx(props: any): SerializedStyles {
   return css(props.sx)(props.theme)
 }
 
