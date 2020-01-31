@@ -36,6 +36,10 @@ export const theme = {
       fontSize: 5,
     },
   },
+  label: {
+    color: 'text',
+    fontWeight: 'bold',
+  },
   layout: {
     container: {
       flexDirection: 'column',
