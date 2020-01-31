@@ -68,6 +68,11 @@ export const theme = {
       p: 4,
     },
   },
+  links: {
+    a: {
+      fontFamily: 'body',
+    },
+  },
   styles: {
     root: {
       fontFamily: 'body',
