@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Box, Flex } from '@kodiak/primitives'
 
-export default { title: 'Flex' }
+export default { title: 'Primitives/Flex' }
 
 export function initial() {
   return <Flex>Basic Box that renders a Div with `display: flex`</Flex>

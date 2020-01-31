@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Box } from '@kodiak/primitives'
 
-export default { title: 'Box' }
+export default { title: 'Primitives/Box' }
 
 export function initial() {
   return (
