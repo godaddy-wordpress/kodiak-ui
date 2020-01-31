@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { IntrinsicSxElements } from 'theme-ui'
+import { IntrinsicSxElements, Theme } from 'theme-ui'
 import { createShouldForwardProp } from '@styled-system/should-forward-prop'
 import {
   space,
@@ -8,30 +8,22 @@ import {
   ColorProps,
   typography,
   TypographyProps,
-  layout,
-  LayoutProps,
-  flexbox,
-  background,
-  BackgroundProps,
-  border,
-  BorderProps,
-  shadow,
-  ShadowProps,
 } from 'styled-system'
 import { variant, sx } from '../Box'
-/**
- * propNames are typed as string[] | undefined. Undefined is not
- * an iterator so we have to cast propNames to only a string[]
- */
+
+type LinkVariantProps = {
+  theme: Theme
+  variant?: string
+}
+const linkVariant = ({
+  theme,
+  variant: defaultVariant = 'links.a',
+}: LinkVariantProps) => variant({ theme, variant: defaultVariant })
+
 const shouldForwardProp = createShouldForwardProp([
   ...(space.propNames as string[]),
   ...(color.propNames as string[]),
   ...(typography.propNames as string[]),
-  ...(layout.propNames as string[]),
-  ...(flexbox.propNames as string[]),
-  ...(background.propNames as string[]),
-  ...(border.propNames as string[]),
-  ...(shadow.propNames as string[]),
 ])
 
 type LinkProps<T extends keyof IntrinsicSxElements = 'a'> = {
@@ -40,14 +32,10 @@ type LinkProps<T extends keyof IntrinsicSxElements = 'a'> = {
 } & IntrinsicSxElements[T] &
   SpaceProps &
   ColorProps &
-  TypographyProps &
-  LayoutProps &
-  BackgroundProps &
-  BorderProps &
-  ShadowProps
+  TypographyProps
 
 /**
- * Link supports `space`, `color`, `typography`, `background` and `shadow
+ * Link supports `space`, `color`, `typography`, `border`
  */
 export const Link = styled<'a', LinkProps>('a', {
   shouldForwardProp,
@@ -57,12 +45,9 @@ export const Link = styled<'a', LinkProps>('a', {
     margin: 0,
     minWidth: 0,
   },
-  ({ theme, variant: defaultVariant = 'links.a' }) =>
-    variant({ theme, variant: defaultVariant }),
+  linkVariant,
   space,
   color,
   typography,
-  background,
-  shadow,
   sx,
 )

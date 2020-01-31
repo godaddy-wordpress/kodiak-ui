@@ -5,7 +5,7 @@ import { Link } from '../Link'
 
 expect.addSnapshotSerializer(serializer)
 
-describe('Box', () => {
+describe('Link', () => {
   it('should render the Link as an a element', () => {
     expect(renderer.create(<Link href="#">Rendering a element</Link>).toJSON())
       .toMatchInlineSnapshot(`
