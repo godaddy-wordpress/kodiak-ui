@@ -49,6 +49,16 @@ export function base({ theme }: { theme: Theme }): SerializedStyles {
   })(theme)
 }
 
+export function buttonVariant({
+  theme,
+  variant: defaultVariant = 'buttons.primary',
+}: {
+  theme: Theme
+  variant?: string
+}) {
+  return variant({ theme, variant: defaultVariant })
+}
+
 export type ButtonProps = {
   variant?: string
 } & SpaceProps &
@@ -75,7 +85,7 @@ export const Button = styled<'button', ButtonProps>('button', {
     transition: 'all 0.2s ease-in-out',
   },
   base,
-  variant,
+  buttonVariant,
   space,
   color,
   typography,

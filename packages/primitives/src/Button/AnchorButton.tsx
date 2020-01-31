@@ -1,5 +1,4 @@
 import styled from '@emotion/styled'
-import { SerializedStyles } from '@emotion/serialize'
 import {
   space,
   color,
@@ -8,11 +7,11 @@ import {
   position,
   shadow,
 } from 'styled-system'
-import { variant, sx } from '../Box/Box'
-import { ButtonProps, shouldForwardProp, base } from './Button'
+import { sx } from '../Box/Box'
+import { ButtonProps, shouldForwardProp, base, buttonVariant } from './Button'
 
 /**
- * Button primitive component
+ * AnchorButton primitive component
  */
 export const AnchorButton = styled<'a', ButtonProps>('a', {
   shouldForwardProp,
@@ -28,7 +27,7 @@ export const AnchorButton = styled<'a', ButtonProps>('a', {
     transition: 'all 0.2s ease-in-out',
   },
   base,
-  variant,
+  buttonVariant,
   space,
   color,
   typography,
