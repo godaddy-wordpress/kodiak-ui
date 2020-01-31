@@ -23,6 +23,7 @@ import {
   PositionProps,
   shadow,
   ShadowProps,
+  get,
 } from 'styled-system'
 
 /**
@@ -49,11 +50,20 @@ const shouldForwardProp = createShouldForwardProp([
  *
  * @param props any
  */
-const sx = (props: any): SerializedStyles => {
+function sx(props: any): SerializedStyles {
   return css(props.sx)(props.theme)
 }
 
-type BoxProps = { as?: React.ElementType } & SpaceProps &
+function variant(props: any) {
+  const { variant, theme } = props
+  const variantKey = variant && variant.split('.')[1]
+  return css(get(theme, variant, get(theme, variantKey)))(theme)
+}
+
+type BoxProps = {
+  as?: React.ElementType
+  variant?: string
+} & SpaceProps &
   ColorProps &
   TypographyProps &
   LayoutProps &
@@ -77,6 +87,7 @@ export const Box = styled<'div', BoxProps>('div', {
     margin: 0,
     minWidth: 0,
   },
+  variant,
   space,
   color,
   typography,
