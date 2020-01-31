@@ -1,6 +1,6 @@
 {
   "name": "@kodiak/primitives",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Kodiak's primitive components for building applications and complex components",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
