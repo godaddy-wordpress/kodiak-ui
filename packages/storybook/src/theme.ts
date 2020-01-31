@@ -33,7 +33,7 @@ export const theme = {
       fontFamily: 'heading',
       lineHeight: 'heading',
       fontWeight: 'heading',
-      fontSize: 32,
+      fontSize: 5,
     },
   },
   layout: {
