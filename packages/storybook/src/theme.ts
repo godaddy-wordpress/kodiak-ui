@@ -24,11 +24,46 @@ export const theme = {
     secondary: '#30c',
     muted: '#f6f6f6',
   },
+  sizes: {
+    main: '60%',
+    aside: '25%',
+  },
   text: {
     heading: {
       fontFamily: 'heading',
       lineHeight: 'heading',
       fontWeight: 'heading',
+    },
+  },
+  layout: {
+    container: {
+      flexDirection: 'column',
+    },
+    root: {
+      margin: 4,
+      minHeight: '800px',
+      justifyContent: 'space-between',
+    },
+    header: {
+      color: 'white',
+      bg: 'primary',
+      p: 4,
+    },
+    main: {
+      maxWidth: 'main',
+      width: '100%',
+      p: 4,
+    },
+    aside: {
+      maxWidth: 'aside',
+      width: '100%',
+      bg: 'muted',
+      p: 2,
+    },
+    footer: {
+      color: 'white',
+      bg: 'secondary',
+      p: 4,
     },
   },
   styles: {
