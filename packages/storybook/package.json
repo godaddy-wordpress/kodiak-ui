@@ -8,6 +8,8 @@
   },
   "dependencies": {
     "@babel/core": "^7.2.2",
+    "@kodiak/box": "^0.1.0",
+    "@kodiak/flex": "^0.0.1",
     "@storybook/addon-docs": "^5.3.9",
     "@storybook/addons": "^5.3.9",
     "@storybook/preset-typescript": "^1.2.0",

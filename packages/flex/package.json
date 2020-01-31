@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "@emotion/styled": "^10.0.27",
+    "@kodiak/box": "^0.1.0",
     "@styled-system/should-forward-prop": "^5.1.4",
     "@styled-system/space": "^5.1.2",
     "@theme-ui/css": "^0.3.1",
