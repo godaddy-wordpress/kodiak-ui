@@ -67,6 +67,14 @@ export const theme = {
       p: 4,
     },
   },
+  buttons: {
+    secondary: {
+      bg: 'secondary',
+      '&:hover': {
+        bg: 'primary',
+      },
+    },
+  },
   styles: {
     root: {
       fontFamily: 'body',
