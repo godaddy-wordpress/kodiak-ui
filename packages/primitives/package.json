@@ -33,5 +33,6 @@
     "@types/styled-system": "^5.1.5",
     "@types/styled-system__should-forward-prop": "^5.1.0",
     "@types/theme-ui": "^0.2.7"
-  }
+  },
+  "gitHead": "b841ac00c2973b57c3539c600bcdd4c4d37c0a8a"
 }
