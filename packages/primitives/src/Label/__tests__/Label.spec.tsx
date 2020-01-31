@@ -1,7 +1,7 @@
 import * as React from 'react'
 import serializer from 'jest-emotion'
 import renderer from 'react-test-renderer'
-import { Label } from '../Label'
+import { Label } from '../'
 
 expect.addSnapshotSerializer(serializer)
 
@@ -16,18 +16,20 @@ describe('Label', () => {
         min-width: 0;
       }
 
-      <p
+      <label
         className="emotion-0"
       >
-        Rendering p element
-      </p>
+        Rendering the default element
+      </label>
     `)
   })
 
   it('should style the element with the `sx` prop', () => {
     expect(
       renderer
-        .create(<Label sx={{ color: 'white' }}>Rendering p with sx prop</Label>)
+        .create(
+          <Label sx={{ color: 'white' }}>Rendering with an sx prop</Label>,
+        )
         .toJSON(),
     ).toMatchInlineSnapshot(`
       .emotion-0 {
@@ -37,11 +39,11 @@ describe('Label', () => {
         color: white;
       }
 
-      <p
+      <label
         className="emotion-0"
       >
-        Rendering p with sx prop
-      </p>
+        Rendering with an sx prop
+      </label>
     `)
   })
 
@@ -58,11 +60,11 @@ describe('Label', () => {
         font-weight: bold;
       }
 
-      <p
+      <label
         className="emotion-0"
       >
         Rendering bold p tag
-      </p>
+      </label>
     `)
   })
 })
