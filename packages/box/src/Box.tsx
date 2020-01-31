@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { css, IntrinsicSxElements } from 'theme-ui'
+import { css, IntrinsicSxElements, Theme } from 'theme-ui'
 import { SerializedStyles } from '@emotion/serialize'
 import { createShouldForwardProp } from '@styled-system/should-forward-prop'
 import {
@@ -54,10 +54,39 @@ function sx(props: any): SerializedStyles {
   return css(props.sx)(props.theme)
 }
 
-function variant(props: any) {
-  const { variant, theme } = props
+/**
+ * variant
+ *
+ * Returns a function that accept's the components
+ * props. The variant and theme props are passed into `css`
+ * to generate the Emotion css that will be applied to the
+ * component
+ *
+ * Variants are defined in the theme with a key and then variant.
+ *
+ * {
+ *   buttons: {
+ *     primary: {
+ *       bg: 'primary',
+ *       color: 'white',
+ *     }
+ *   }
+ * }
+ */
+interface VariantProps {
+  theme: Theme
+  variant?: string
+}
+
+function variant({ variant, theme }: VariantProps) {
   const variantKey = variant && variant.split('.')[1]
-  return css(get(theme, variant, get(theme, variantKey)))(theme)
+  return css(
+    get(
+      theme,
+      variant as string | number,
+      get(theme, variantKey as string | number),
+    ),
+  )(theme)
 }
 
 type BoxProps = {
