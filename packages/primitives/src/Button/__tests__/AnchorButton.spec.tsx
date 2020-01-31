@@ -1,14 +1,17 @@
 import * as React from 'react'
 import serializer from 'jest-emotion'
 import renderer from 'react-test-renderer'
-import { Button } from '../Button'
+import { AnchorButton } from '../AnchorButton'
 
 expect.addSnapshotSerializer(serializer)
 
-describe('Button', () => {
-  it('should render the Button as a div element', () => {
-    expect(renderer.create(<Button>Rendering button</Button>).toJSON())
-      .toMatchInlineSnapshot(`
+describe('AnchorButton', () => {
+  it('should render the AnchorButton as a div element', () => {
+    expect(
+      renderer
+        .create(<AnchorButton>Rendering AnchorButton</AnchorButton>)
+        .toJSON(),
+    ).toMatchInlineSnapshot(`
       .emotion-0 {
         -webkit-appearance: none;
         -moz-appearance: none;
@@ -36,11 +39,11 @@ describe('Button', () => {
         background-color: secondary;
       }
 
-      <button
+      <a
         className="emotion-0"
       >
-        Rendering button
-      </button>
+        Rendering AnchorButton
+      </a>
     `)
   })
 
@@ -48,7 +51,9 @@ describe('Button', () => {
     expect(
       renderer
         .create(
-          <Button sx={{ bg: 'black', color: 'white' }}>Default button</Button>,
+          <AnchorButton sx={{ bg: 'black', color: 'white' }}>
+            Default AnchorButton
+          </AnchorButton>,
         )
         .toJSON(),
     ).toMatchInlineSnapshot(`
@@ -81,17 +86,20 @@ describe('Button', () => {
         background-color: secondary;
       }
 
-      <button
+      <a
         className="emotion-0"
       >
-        Default button
-      </button>
+        Default AnchorButton
+      </a>
     `)
   })
 
   it('should style the element with styled-system props', () => {
-    expect(renderer.create(<Button mr={1}>Default button</Button>).toJSON())
-      .toMatchInlineSnapshot(`
+    expect(
+      renderer
+        .create(<AnchorButton mr={1}>Default AnchorButton</AnchorButton>)
+        .toJSON(),
+    ).toMatchInlineSnapshot(`
       .emotion-0 {
         -webkit-appearance: none;
         -moz-appearance: none;
@@ -120,11 +128,11 @@ describe('Button', () => {
         background-color: secondary;
       }
 
-      <button
+      <a
         className="emotion-0"
       >
-        Default button
-      </button>
+        Default AnchorButton
+      </a>
     `)
   })
 })
