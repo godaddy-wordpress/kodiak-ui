@@ -40,7 +40,7 @@ export const Svg = styled<'svg', SvgProps>('svg', {
   },
   baseStyles,
   ({ variant: variantProp, theme }) =>
-    variant({ variant: variantProp, theme, variantKey: 'inputs' }),
+    variant({ variant: variantProp, theme, variantKey: 'svg' }),
   ...styledSystemProps,
   sx,
 )
