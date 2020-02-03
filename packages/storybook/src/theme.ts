@@ -76,6 +76,11 @@ export const theme = {
       },
     },
   },
+  links: {
+    a: {
+      fontFamily: 'body',
+    },
+  },
   styles: {
     root: {
       fontFamily: 'body',
