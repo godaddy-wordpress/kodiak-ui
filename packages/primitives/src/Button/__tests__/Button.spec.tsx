@@ -6,7 +6,7 @@ import { Button } from '../Button'
 expect.addSnapshotSerializer(serializer)
 
 describe('Button', () => {
-  it('should render the Button as a div element', () => {
+  it('should render the Button as a button element', () => {
     expect(renderer.create(<Button>Rendering button</Button>).toJSON())
       .toMatchInlineSnapshot(`
       .emotion-0 {
