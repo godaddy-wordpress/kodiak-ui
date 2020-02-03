@@ -5,7 +5,7 @@ import { SvgIcon } from '..'
 
 expect.addSnapshotSerializer(serializer)
 
-describe('Svg', () => {
+describe('SvgIcon', () => {
   it('should render the svg with title and desc', () => {
     expect(
       renderer
