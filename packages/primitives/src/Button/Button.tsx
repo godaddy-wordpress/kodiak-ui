@@ -42,7 +42,7 @@ export function base({ theme }: { theme: Theme }): SerializedStyles {
     color: 'white',
     bg: 'primary',
     border: 0,
-    borderRadius: 4,
+    borderRadius: 'default',
     '&:hover': {
       bg: 'secondary',
     },

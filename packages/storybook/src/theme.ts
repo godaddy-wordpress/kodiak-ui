@@ -28,6 +28,9 @@ export const theme = {
     main: '60%',
     aside: '25%',
   },
+  radii: {
+    default: 4,
+  },
   text: {
     heading: {
       fontFamily: 'heading',
