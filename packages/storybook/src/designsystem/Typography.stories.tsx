@@ -1,14 +1,12 @@
 import * as React from 'react'
 import { Box, Text, Flex } from '@kodiak/primitives'
-import { theme } from '../theme'
+import { useThemeUI } from 'theme-ui'
+import { FontSizeProperty } from 'csstype'
 
 export default {
   title: 'Design System/Typography',
 }
 
-type TypographyExampleProps = React.PropsWithChildren<{
-  size: number
-}>
 export function Intro() {
   return (
     <Text p={4}>
@@ -19,12 +17,21 @@ export function Intro() {
 }
 
 export function FontFamily() {
+  const context = useThemeUI()
+  const { theme } = useThemeUI()
+  console.log({ context })
+  console.log('test')
+  console.log({ theme })
+  if (!theme.fonts) {
+    return null
+  }
+
   return (
     <Flex flexDirection="column">
       <Box color="grey.6">
-        {Object.keys(theme.fonts).map((fontsKey, index) => {
+        {Object.keys(theme?.fonts).map((fontsKey, index) => {
           const fontFamily =
-            theme.fonts[fontsKey as keyof typeof theme['fonts']]
+            theme.fonts?.[fontsKey as keyof typeof theme['fonts']]
 
           return (
             <Text key={index} fontFamily={fontFamily}>
@@ -41,12 +48,18 @@ export function FontFamily() {
 }
 
 export function FontWeight() {
+  const { theme } = useThemeUI()
+
+  if (!theme.fontWeights) {
+    return null
+  }
+
   return (
     <Flex flexDirection="column">
       <Box color="grey.6">
         {Object.keys(theme.fontWeights).map((fontWeightKey, index) => {
           const fontWeight =
-            theme.fontWeights[
+            theme.fontWeights?.[
               fontWeightKey as keyof typeof theme['fontWeights']
             ]
 
@@ -63,6 +76,10 @@ export function FontWeight() {
     </Flex>
   )
 }
+
+type TypographyExampleProps = React.PropsWithChildren<{
+  size: FontSizeProperty<string | number>
+}>
 
 function TypographyExample({ size, children }: TypographyExampleProps) {
   return (
@@ -83,10 +100,16 @@ function TypographyExample({ size, children }: TypographyExampleProps) {
 }
 
 export function Sizing() {
+  const { theme } = useThemeUI()
+
+  if (!Array.isArray(theme.fontSizes)) {
+    return
+  }
+
   return (
     <Flex flexDirection="column">
       <Box>
-        {theme.fontSizes.map((fontSize, index) => (
+        {theme.fontSizes?.map((fontSize, index) => (
           <TypographyExample size={fontSize} key={index}>
             Email marketing built for eCommerce stores.
           </TypographyExample>
