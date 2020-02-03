@@ -17,11 +17,8 @@ export function Intro() {
 }
 
 export function FontFamily() {
-  const context = useThemeUI()
   const { theme } = useThemeUI()
-  console.log({ context })
-  console.log('test')
-  console.log({ theme })
+
   if (!theme.fonts) {
     return null
   }
