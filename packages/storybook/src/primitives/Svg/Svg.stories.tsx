@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Flex, Box, Text, Svg, SvgIcon } from '@kodiak/primitives'
+import { Flex, Text, Svg, SvgIcon } from '@kodiak/primitives'
 
 export default { title: 'Primitives/Svg' }
 
