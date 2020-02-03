@@ -23,6 +23,16 @@ export const theme = {
     primary: '#07c',
     secondary: '#30c',
     muted: '#f6f6f6',
+    grey: [
+      '#f7f9fb', // sky1
+      '#e3e9f0', // sky2
+      '#cbd5e1', // sky3
+      '#b3c2d3', // sky4
+      '#8694a7', // ink4
+      '#65778b', // ink3
+      '#485f6f', // ink2
+      '#1c384e', // ink1
+    ],
   },
   sizes: {
     main: '60%',
