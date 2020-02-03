@@ -38,6 +38,10 @@ export const theme = {
     main: '60%',
     aside: '25%',
   },
+  radii: {
+    none: '0',
+    default: '4px',
+  },
   text: {
     heading: {
       fontFamily: 'heading',
@@ -76,6 +80,14 @@ export const theme = {
       color: 'white',
       bg: 'secondary',
       p: 4,
+    },
+  },
+  buttons: {
+    secondary: {
+      bg: 'secondary',
+      '&:hover': {
+        bg: 'primary',
+      },
     },
   },
   links: {
