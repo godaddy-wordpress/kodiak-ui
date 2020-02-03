@@ -1,3 +1,26 @@
+const breakpoints = ['640px', '768px', '1024px', '1280px']
+
+const baseColors = {
+  transparent: 'transparent',
+  black: '#000',
+  white: '#fff',
+  blue: [null, '#0067b6', '#0076d1', '#bfddf3', '#ebf6ff'],
+  green: [null, '#379a58', '#63db8b', '#dbffe7'],
+  yellow: [null, '#db9600', '#ffbe33', '#fff9eb'],
+  red: [null, '#c42020', '#e12f2f', '#ff8c8c', '#ffe5e5'],
+  sky: [null, '#f7f9fb', '#e3e9f0', '#cbd5e1', '#b3c2d3'],
+  ink: [null, '#1c384e', '#485f6f', '#65778b', '#8694a7'],
+}
+
+const colors = {
+  text: baseColors.ink[1],
+  background: baseColors.white,
+  primary: baseColors.blue[2],
+  success: baseColors.green[2],
+  warning: baseColors.yellow[2],
+  danger: baseColors.red[2],
+}
+
 const commonInputStyles = {
   py: 2,
   px: 3,
@@ -8,6 +31,16 @@ const commonInputStyles = {
 }
 
 const inputs = {
+  shadow: {
+    ...commonInputStyles,
+    border: `none`,
+    color: `gray.7`,
+    boxShadow: `default`,
+    '&:focus': {
+      outline: `none`,
+      boxShadow: `outline`,
+    },
+  },
   inline: {
     ...commonInputStyles,
     backgroundColor: `gray.2`,
@@ -39,7 +72,8 @@ const inputs = {
 }
 
 export const theme = {
-  breakpoints: ['40em', '52em', '64em'],
+  breakpoints,
+  colors,
   space: [0, 4, 8, 12, 16, 24, 32, 40, 64, 128, 256, 512],
   fonts: {
     body:
@@ -56,13 +90,6 @@ export const theme = {
   lineHeights: {
     body: 1.5,
     heading: 1.125,
-  },
-  colors: {
-    text: '#000',
-    background: '#fff',
-    primary: '#07c',
-    secondary: '#30c',
-    muted: '#f6f6f6',
   },
   sizes: {
     main: '60%',
@@ -114,10 +141,10 @@ export const theme = {
   },
   buttons: {
     secondary: {
-      bg: 'secondary',
-      '&:hover': {
-        bg: 'primary',
-      },
+      bg: 'transparent',
+      border: '1px solid',
+      borderColor: baseColors.ink[4],
+      color: baseColors.ink[1],
     },
   },
   links: {
