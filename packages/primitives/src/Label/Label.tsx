@@ -1,10 +1,17 @@
 import styled from '@emotion/styled'
-import { Box, variant, sx } from '../Box'
+import {
+  variant,
+  sx,
+  shouldForwardProp,
+  styledSystemProps,
+  StyledSystemProps,
+} from '../Box/Box'
 
-type LabelProps = JSX.IntrinsicElements['label'] &
-  React.ComponentProps<typeof Box>
+type LabelProps = {
+  variant?: string
+} & StyledSystemProps
 
-export const Input = styled<'label', LabelProps>('label', {
+export const Label = styled<'label', LabelProps>('label', {
   shouldForwardProp,
 })(
   {
@@ -12,6 +19,8 @@ export const Input = styled<'label', LabelProps>('label', {
     margin: 0,
     minWidth: 0,
   },
-  ({ variant: variantProp, theme }) => variant({ variant: variantProp, theme }),
+  ({ variant: variantProp, theme }) =>
+    variant({ variantKey: 'labels', variant: variantProp, theme }),
+  ...styledSystemProps,
   sx,
 )
