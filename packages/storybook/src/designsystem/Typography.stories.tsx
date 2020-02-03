@@ -25,7 +25,7 @@ export function FontFamily() {
 
   return (
     <Flex flexDirection="column">
-      <Box color="grey.6">
+      <Box color="grey.7">
         {Object.keys(theme?.fonts).map((fontsKey, index) => {
           const fontFamily =
             theme.fonts?.[fontsKey as keyof typeof theme['fonts']]
@@ -33,7 +33,7 @@ export function FontFamily() {
           return (
             <Text key={index} fontFamily={fontFamily}>
               {fontsKey}{' '}
-              <Text as="span" color="grey.4">
+              <Text as="span" color="grey.5">
                 ({fontFamily})
               </Text>
             </Text>
@@ -53,7 +53,7 @@ export function FontWeight() {
 
   return (
     <Flex flexDirection="column">
-      <Box color="grey.6">
+      <Box color="grey.7">
         {Object.keys(theme.fontWeights).map((fontWeightKey, index) => {
           const fontWeight =
             theme.fontWeights?.[
@@ -63,7 +63,7 @@ export function FontWeight() {
           return (
             <Text key={index} fontWeight={fontWeight}>
               {fontWeightKey}{' '}
-              <Text as="span" color="grey.4">
+              <Text as="span" color="grey.5">
                 ({fontWeight})
               </Text>
             </Text>
@@ -88,7 +88,7 @@ function TypographyExample({ size, children }: TypographyExampleProps) {
       flexDirection="column"
       alignItems="baseline"
     >
-      <Text fontSize={1} color="grey.4">
+      <Text fontSize={1} color="grey.5">
         {size}
       </Text>
       <Text fontSize={size}>{children}</Text>
