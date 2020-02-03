@@ -29,7 +29,8 @@ export const theme = {
     aside: '25%',
   },
   radii: {
-    default: 4,
+    none: '0',
+    default: '4px',
   },
   text: {
     heading: {

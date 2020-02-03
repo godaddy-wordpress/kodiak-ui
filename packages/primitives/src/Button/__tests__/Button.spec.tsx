@@ -29,7 +29,7 @@ describe('Button', () => {
         color: white;
         background-color: primary;
         border: 0;
-        border-radius: 4px;
+        border-radius: default;
       }
 
       .emotion-0:hover {
@@ -72,7 +72,7 @@ describe('Button', () => {
         color: white;
         background-color: primary;
         border: 0;
-        border-radius: 4px;
+        border-radius: default;
         background-color: black;
         color: white;
       }
@@ -112,7 +112,7 @@ describe('Button', () => {
         color: white;
         background-color: primary;
         border: 0;
-        border-radius: 4px;
+        border-radius: default;
         margin-right: 4px;
       }
 

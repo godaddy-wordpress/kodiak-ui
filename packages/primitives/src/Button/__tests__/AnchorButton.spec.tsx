@@ -32,7 +32,7 @@ describe('AnchorButton', () => {
         color: white;
         background-color: primary;
         border: 0;
-        border-radius: 4px;
+        border-radius: default;
       }
 
       .emotion-0:hover {
@@ -77,7 +77,7 @@ describe('AnchorButton', () => {
         color: white;
         background-color: primary;
         border: 0;
-        border-radius: 4px;
+        border-radius: default;
         background-color: black;
         color: white;
       }
@@ -120,7 +120,7 @@ describe('AnchorButton', () => {
         color: white;
         background-color: primary;
         border: 0;
-        border-radius: 4px;
+        border-radius: default;
         margin-right: 4px;
       }
 
