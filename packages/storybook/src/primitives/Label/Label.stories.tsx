@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { Box, Label, Flex } from '@kodiak/primitives'
+import { Box, Label, Flex, Input } from '@kodiak/primitives'
 
-export default { title: 'Form/Label' }
+export default { title: 'Forms/Label' }
 
 export function initial() {
   return (
@@ -17,18 +17,18 @@ export function verticalLabel() {
       <Label mb={2} htmlFor="input">
         Email
       </Label>
-      <input id="input" />
+      <Input id="input" />
     </Flex>
   )
 }
 
 export function horizontalLabel() {
   return (
-    <Box p={4}>
-      <Label mr="2" htmlFor="nestedInput">
+    <Flex p={4} alignItems="center">
+      <Label mr="2" htmlFor="horizontalInput">
         Email
       </Label>
-      <input id="nestedInput"></input>
-    </Box>
+      <Input id="horizontalInput" />
+    </Flex>
   )
 }
