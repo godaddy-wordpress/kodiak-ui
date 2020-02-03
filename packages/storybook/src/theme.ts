@@ -1,3 +1,43 @@
+const commonInputStyles = {
+  py: 2,
+  px: 3,
+  fontSize: `100%`,
+  borderRadius: `default`,
+  appearance: `none`,
+  lineHeight: `tight`,
+}
+
+const inputs = {
+  inline: {
+    ...commonInputStyles,
+    backgroundColor: `gray.2`,
+    borderWidth: `2px`,
+    borderStyle: `solid`,
+    borderColor: `gray.2`,
+    color: `gray.7`,
+    '&:focus': {
+      outline: `none`,
+      borderColor: `primary`,
+      backgroundColor: `white`,
+    },
+  },
+  underline: {
+    ...commonInputStyles,
+    backgroundColor: `transparent`,
+    border: `none`,
+    borderBottomWidth: `2px`,
+    borderBottomStyle: `solid`,
+    borderBottomColor: `primary`,
+    borderRadius: `0px`,
+    color: `gray.7`,
+    '&:focus': {
+      outline: `none`,
+      borderColor: `primary`,
+      backgroundColor: `white`,
+    },
+  },
+}
+
 export const theme = {
   breakpoints: ['40em', '52em', '64em'],
   space: [0, 4, 8, 12, 16, 24, 32, 40, 64, 128, 256, 512],
@@ -140,4 +180,5 @@ export const theme = {
       borderBottomStyle: 'solid',
     },
   },
+  inputs,
 }

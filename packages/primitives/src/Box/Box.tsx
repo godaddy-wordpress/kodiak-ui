@@ -30,7 +30,7 @@ import {
  * propNames are typed as string[] | undefined. Undefined is not
  * an iterator so we have to cast propNames to only a string[]
  */
-const shouldForwardProp = createShouldForwardProp([
+export const shouldForwardProp = createShouldForwardProp([
   ...(space.propNames as string[]),
   ...(color.propNames as string[]),
   ...(typography.propNames as string[]),
@@ -42,6 +42,19 @@ const shouldForwardProp = createShouldForwardProp([
   ...(position.propNames as string[]),
   ...(shadow.propNames as string[]),
 ])
+
+export const styledSystemProps = [
+  space,
+  color,
+  typography,
+  layout,
+  flexbox,
+  grid,
+  background,
+  border,
+  position,
+  shadow,
+]
 
 /**
  * sx function to pass the sx prop and theme
@@ -76,23 +89,20 @@ export function sx(props: any): SerializedStyles {
 export interface VariantProps {
   theme: Theme
   variant?: string
+  variantKey?: string
 }
 
-export function variant({ variant, theme }: VariantProps) {
-  const variantKey = variant && variant.split('.')[1]
+export function variant({ variant, theme, variantKey }: VariantProps) {
   return css(
     get(
       theme,
-      variant as string | number,
+      variantKey ? `${variantKey}.${variant}` : (variant as string | number),
       get(theme, variantKey as string | number),
     ),
   )(theme)
 }
 
-type BoxProps = {
-  as?: React.ElementType
-  variant?: string
-} & SpaceProps &
+export type StyledSystemProps = SpaceProps &
   ColorProps &
   TypographyProps &
   LayoutProps &
@@ -101,7 +111,12 @@ type BoxProps = {
   BackgroundProps &
   BorderProps &
   PositionProps &
-  ShadowProps &
+  ShadowProps
+
+type BoxProps = {
+  as?: React.ElementType
+  variant?: string
+} & StyledSystemProps &
   IntrinsicSxElements['div']
 
 /**
@@ -117,15 +132,6 @@ export const Box = styled<'div', BoxProps>('div', {
     minWidth: 0,
   },
   variant,
-  space,
-  color,
-  typography,
-  layout,
-  flexbox,
-  grid,
-  background,
-  border,
-  position,
-  shadow,
+  ...styledSystemProps,
   sx,
 )
