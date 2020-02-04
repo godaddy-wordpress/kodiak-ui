@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Button } from '@kodiak/primitives'
+import { Button } from '@kodiak-ui/primitives'
 
 export default { title: 'Primitives/Button' }
 

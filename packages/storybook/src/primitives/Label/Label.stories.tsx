@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Box, Label, Flex, Input } from '@kodiak/primitives'
+import { Box, Label, Flex, Input } from '@kodiak-ui/primitives'
 
 export default { title: 'Forms/Label' }
 

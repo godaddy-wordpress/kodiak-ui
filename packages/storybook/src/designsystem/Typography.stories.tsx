@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Box, Text, Flex } from '@kodiak/primitives'
+import { Box, Text, Flex } from '@kodiak-ui/primitives'
 import { useThemeUI } from 'theme-ui'
 import { FontSizeProperty } from 'csstype'
 
