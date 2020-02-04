@@ -20,6 +20,7 @@ export const baseStyles = ({ theme }: { theme: Theme }): SerializedStyles =>
   css({
     fill: 'currentColor',
     color: 'black',
+    display: 'block',
   })(theme)
 
 type SvgProps = {

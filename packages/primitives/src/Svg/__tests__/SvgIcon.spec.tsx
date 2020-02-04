@@ -13,6 +13,8 @@ describe('SvgIcon', () => {
           <SvgIcon
             preserveAspectRatio="none"
             viewBox="0 0 100 100"
+            height="32"
+            width="32"
             title="Sample poly"
             desc="Sample description of the poly"
           >
@@ -27,6 +29,9 @@ describe('SvgIcon', () => {
         min-width: 0;
         fill: currentColor;
         color: black;
+        display: block;
+        height: 32;
+        width: 32;
       }
 
       <svg
