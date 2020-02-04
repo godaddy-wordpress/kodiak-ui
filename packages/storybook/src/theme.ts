@@ -216,10 +216,17 @@ export const theme = {
     th: {
       textAlign: 'left',
       borderBottomStyle: 'solid',
+      borderBottomWidth: 1,
+      borderBottomColor: 'grey.2',
+      padding: 2,
+      backgroundColor: 'grey.0',
     },
     td: {
       textAlign: 'left',
       borderBottomStyle: 'solid',
+      borderBottomWidth: 1,
+      borderBottomColor: 'grey.1',
+      padding: 2,
     },
   },
   inputs,
