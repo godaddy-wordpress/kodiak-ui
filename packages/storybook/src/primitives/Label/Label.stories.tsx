@@ -22,13 +22,29 @@ export function verticalLabel() {
   )
 }
 
-export function horizontalLabel() {
+export function inlineLabel() {
   return (
-    <Flex p={4} alignItems="center">
-      <Label mr={2} htmlFor="horizontalInput">
-        Email
-      </Label>
-      <Input id="horizontalInput" />
+    <Flex flexDirection="column">
+      <Flex p={4} alignItems="center">
+        <Box width={1 / 8}>
+          <Label variant="inline" htmlFor="horizontalInput">
+            Email
+          </Label>
+        </Box>
+        <Box width={7 / 8}>
+          <Input id="horizontalInput" variant="inline" />
+        </Box>
+      </Flex>
+      <Flex p={4} alignItems="center">
+        <Box width={1 / 8}>
+          <Label variant="inline" htmlFor="horizontalInput">
+            Subject
+          </Label>
+        </Box>
+        <Box width={7 / 8}>
+          <Input id="horizontalInput" variant="inline" />
+        </Box>
+      </Flex>
     </Flex>
   )
 }

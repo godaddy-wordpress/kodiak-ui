@@ -19,7 +19,7 @@ export const Label = styled<'label', LabelProps>('label', {
     margin: 0,
     minWidth: 0,
   },
-  ({ variant: variantProp, theme }) =>
+  ({ variant: variantProp = 'default', theme }) =>
     variant({ variantKey: 'labels', variant: variantProp, theme }),
   ...styledSystemProps,
   sx,
