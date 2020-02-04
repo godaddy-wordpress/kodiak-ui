@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Box } from '@kodiak/primitives'
+import { Box } from '@kodiak-ui/primitives'
 
 export default { title: 'Primitives/Box' }
 

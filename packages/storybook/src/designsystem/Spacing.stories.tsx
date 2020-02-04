@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Text, Flex, Box } from '@kodiak/primitives'
+import { Text, Flex, Box } from '@kodiak-ui/primitives'
 import { Styled } from 'theme-ui'
 import { useThemeUI } from 'theme-ui'
 
