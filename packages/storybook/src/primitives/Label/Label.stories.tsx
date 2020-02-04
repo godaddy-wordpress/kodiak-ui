@@ -27,22 +27,22 @@ export function inlineLabel() {
     <Flex flexDirection="column">
       <Flex p={4} alignItems="center">
         <Box width={1 / 8}>
-          <Label variant="inline" htmlFor="horizontalInput">
+          <Label variant="inline" htmlFor="email">
             Email
           </Label>
         </Box>
         <Box width={7 / 8}>
-          <Input id="horizontalInput" variant="inline" />
+          <Input id="email" variant="inline" />
         </Box>
       </Flex>
       <Flex p={4} alignItems="center">
         <Box width={1 / 8}>
-          <Label variant="inline" htmlFor="horizontalInput">
+          <Label variant="inline" htmlFor="subject">
             Subject
           </Label>
         </Box>
         <Box width={7 / 8}>
-          <Input id="horizontalInput" variant="inline" />
+          <Input id="subject" variant="inline" />
         </Box>
       </Flex>
     </Flex>

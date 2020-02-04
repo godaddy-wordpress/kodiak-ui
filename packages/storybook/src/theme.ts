@@ -46,10 +46,14 @@ const commonInputStyles = {
 const labels = {
   default: {
     mb: 2,
+    fontWeight: 'bold',
+    color: 'gray.8',
   },
   inline: {
     mb: 0,
     mr: 2,
+    fontWeight: 'bold',
+    color: 'gray.8',
     display: 'block',
     textAlign: 'right',
   },
@@ -133,8 +137,7 @@ export const theme = {
     },
   },
   label: {
-    color: 'text',
-    fontWeight: 'bold',
+    ...labels.default,
   },
   layout: {
     container: {
