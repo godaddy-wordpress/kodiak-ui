@@ -1,0 +1,60 @@
+import * as React from 'react'
+import serializer from 'jest-emotion'
+import renderer from 'react-test-renderer'
+import { SvgIcon } from '..'
+
+expect.addSnapshotSerializer(serializer)
+
+describe('SvgIcon', () => {
+  it('should render the svg with title and desc', () => {
+    expect(
+      renderer
+        .create(
+          <SvgIcon
+            preserveAspectRatio="none"
+            viewBox="0 0 100 100"
+            height="32"
+            width="32"
+            px="1px"
+            py={1}
+            title="Sample poly"
+            desc="Sample description of the poly"
+          >
+            <polygon points="50,0 100,0 50,100 0,100"></polygon>
+          </SvgIcon>,
+        )
+        .toJSON(),
+    ).toMatchInlineSnapshot(`
+      .emotion-0 {
+        box-sizing: border-box;
+        margin: 0;
+        min-width: 0;
+        fill: currentColor;
+        color: black;
+        display: block;
+        padding-left: 1px;
+        padding-right: 1px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        height: 32;
+        width: 32;
+      }
+
+      <svg
+        className="emotion-0"
+        preserveAspectRatio="none"
+        viewBox="0 0 100 100"
+      >
+        <title>
+          Sample poly
+        </title>
+        <desc>
+          Sample description of the poly
+        </desc>
+        <polygon
+          points="50,0 100,0 50,100 0,100"
+        />
+      </svg>
+    `)
+  })
+})
