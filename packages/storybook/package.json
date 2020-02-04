@@ -1,5 +1,5 @@
 {
-  "name": "@kodiak/storybook",
+  "name": "@kodiak-ui/storybook",
   "version": "0.1.4",
   "private": true,
   "scripts": {
