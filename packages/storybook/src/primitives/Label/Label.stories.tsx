@@ -25,7 +25,7 @@ export function verticalLabel() {
 export function horizontalLabel() {
   return (
     <Flex p={4} alignItems="center">
-      <Label mr="2" htmlFor="horizontalInput">
+      <Label mr={2} htmlFor="horizontalInput">
         Email
       </Label>
       <Input id="horizontalInput" />
