@@ -15,6 +15,8 @@ describe('SvgIcon', () => {
             viewBox="0 0 100 100"
             height="32"
             width="32"
+            px="1px"
+            py={1}
             title="Sample poly"
             desc="Sample description of the poly"
           >
@@ -30,6 +32,10 @@ describe('SvgIcon', () => {
         fill: currentColor;
         color: black;
         display: block;
+        padding-left: 1px;
+        padding-right: 1px;
+        padding-top: 4px;
+        padding-bottom: 4px;
         height: 32;
         width: 32;
       }
