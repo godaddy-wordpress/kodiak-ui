@@ -1,29 +1,6 @@
 import * as React from 'react'
-import { Theme, css } from 'theme-ui'
-import { SerializedStyles } from '@emotion/serialize'
 import { Box, StyledSystemProps } from '../Box/Box'
 import { SvgIcon } from '../Svg'
-
-/**
- * base
- *
- * Generate the base CSS for the button component
- * that is aware of the Theme UI theme
- *
- * @param props
- */
-export const baseStyles = ({ theme }: { theme: Theme }): SerializedStyles =>
-  css({
-    mr: 2,
-    borderRadius: 9999,
-    color: 'gray',
-    'input:checked ~ &': {
-      color: 'primary',
-    },
-    'input:focus ~ &': {
-      bg: 'highlight',
-    },
-  })(theme)
 
 type InputProps = {
   variant?: string
@@ -40,11 +17,7 @@ function RadioUnchecked(props: Pick<InputProps, 'sx' | 'variant'>) {
       viewBox="0 0 16 16"
       {...props}
     >
-      <path
-        d="M15.5 8a7.5 7.5 0 11-15 0 7.5 7.5 0 0115 0z"
-        fill="transparent"
-        stroke="#B3C2D3"
-      />
+      <path d="M8 0C3.584 0 0 3.584 0 8s3.584 8 8 8 8-3.584 8-8-3.584-8-8-8zm0 14.4A6.398 6.398 0 011.6 8c0-3.536 2.864-6.4 6.4-6.4 3.536 0 6.4 2.864 6.4 6.4 0 3.536-2.864 6.4-6.4 6.4z" />
     </SvgIcon>
   )
 }
@@ -58,11 +31,7 @@ function RadioChecked(props: Pick<InputProps, 'sx' | 'variant'>) {
       viewBox="0 0 16 16"
       {...props}
     >
-      <path
-        d="M13.5 8a5.5 5.5 0 11-11 0 5.5 5.5 0 0111 0z"
-        stroke="#0076D1"
-        strokeWidth="5"
-      />
+      <path d="M8 0C3.584 0 0 3.584 0 8C0 12.416 3.584 16 8 16C12.416 16 16 12.416 16 8C16 3.584 12.416 0 8 0ZM8 11C6.5 11 5 9.75484 5 8C5 6.24516 6.5 5 8 5C9.5 5 11 6.19903 11 8C11 9.80097 9.5 11 8 11Z" />
     </SvgIcon>
   )
 }
@@ -70,23 +39,25 @@ function RadioChecked(props: Pick<InputProps, 'sx' | 'variant'>) {
 function RadioIcon({ sx, variant }: InputProps) {
   return (
     <>
+      <RadioChecked
+        sx={{
+          ...sx,
+          display: 'none',
+          'input:checked ~ &': {
+            display: 'block',
+            color: 'primary',
+          },
+        }}
+        variant={variant}
+      />
       <RadioUnchecked
         sx={{
+          ...sx,
+          color: 'defaultGray',
           display: 'block',
           'input:checked ~ &': {
             display: 'none',
           },
-          ...sx,
-        }}
-        variant={variant}
-      />
-      <RadioChecked
-        sx={{
-          display: 'none',
-          'input:checked ~ &': {
-            display: 'block',
-          },
-          ...sx,
         }}
         variant={variant}
       />
@@ -96,7 +67,7 @@ function RadioIcon({ sx, variant }: InputProps) {
 
 export const Radio = React.forwardRef(
   (
-    { sx, variant = 'radios', ...props }: InputProps,
+    { variant = 'radios', ...props }: InputProps,
     ref: React.Ref<HTMLInputElement>,
   ) => (
     <Box>
@@ -113,7 +84,17 @@ export const Radio = React.forwardRef(
           overflow: 'hidden',
         }}
       />
-      <RadioIcon aria-hidden="true" sx={sx} variant={variant} {...props} />
+      <RadioIcon
+        aria-hidden="true"
+        sx={{
+          mr: 2,
+          'input:focus ~ &': {
+            bg: 'highlight',
+          },
+        }}
+        variant={variant}
+        {...props}
+      />
     </Box>
   ),
 )
