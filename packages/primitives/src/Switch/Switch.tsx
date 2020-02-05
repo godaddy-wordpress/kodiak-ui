@@ -1,15 +1,5 @@
 import * as React from 'react'
-import styled from '@emotion/styled'
-import { Theme, css } from 'theme-ui'
-import { SerializedStyles } from '@emotion/serialize'
-import {
-  StyledSystemProps,
-  variant,
-  sx,
-  shouldForwardProp,
-  styledSystemProps,
-  Box,
-} from '../Box/Box'
+import { Box } from '../Box/Box'
 import { Label } from '../Label'
 import { Input } from '../Input'
 
