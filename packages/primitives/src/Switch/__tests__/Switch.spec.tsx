@@ -16,6 +16,8 @@ describe('Switch', () => {
         padding-left: 38px;
         margin-right: 32px;
         margin-bottom: 32px;
+        opacity: 1;
+        font-size: default;
         display: -webkit-inline-box;
         display: -webkit-inline-flex;
         display: -ms-inline-flexbox;
@@ -62,6 +64,7 @@ describe('Switch', () => {
         min-width: 0;
         margin-left: -38px;
         margin-right: 8px;
+        opacity: 1;
         background-color: grey.5;
         display: inline-block;
         height: 16px;
