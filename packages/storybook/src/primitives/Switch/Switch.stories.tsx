@@ -1,26 +1,24 @@
 import * as React from 'react'
-import { Switch } from '@kodiak-ui/primitives'
+import { Switch, Flex } from '@kodiak-ui/primitives'
 
 export default { title: 'Forms/Switch' }
 
-function ControlledSwitch() {
-  const [value, setValue] = React.useState(false)
+export function Initial() {
+  const [checked, setChecked] = React.useState(false)
 
   return (
-    <Switch
-      checked={value}
-      label="Working demo"
-      onChange={() => setValue(!value)}
-    />
-  )
-}
-
-export function initial() {
-  return (
-    <>
-      <ControlledSwitch />
-      <Switch checked={false} label="Unchecked switch" onChange={() => null} />
-      <Switch checked={true} label="Checked switch" onChange={() => null} />
-    </>
+    <Flex flexDirection="column">
+      <Switch
+        checked={checked}
+        label="Toggle this"
+        onChange={() => setChecked(!checked)}
+      />
+      <Switch
+        checked={true}
+        label="Disabled"
+        disabled={true}
+        onChange={() => null}
+      />
+    </Flex>
   )
 }
