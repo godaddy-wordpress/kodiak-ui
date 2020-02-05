@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/node:10
+      - image: circleci/node:12
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -35,4 +35,4 @@ jobs:
 
       # run tests!
       - run: yarn lint
-      - run: yarn test -w 1
+      - run: yarn test -w 2
