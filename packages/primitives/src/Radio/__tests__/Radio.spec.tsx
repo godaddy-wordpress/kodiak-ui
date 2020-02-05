@@ -18,7 +18,7 @@ describe('Radio', () => {
         )
         .toJSON(),
     ).toMatchInlineSnapshot(`
-      .emotion-3 {
+      .emotion-4 {
         box-sizing: border-box;
         margin: 0;
         min-width: 0;
@@ -32,7 +32,7 @@ describe('Radio', () => {
         align-items: center;
       }
 
-      .emotion-2 {
+      .emotion-3 {
         box-sizing: border-box;
         margin: 0;
         min-width: 0;
@@ -42,22 +42,24 @@ describe('Radio', () => {
         box-sizing: border-box;
         margin: 0;
         min-width: 0;
-        fill: currentColor;
-        color: black;
         display: block;
-        height: 16px;
-        width: 16px;
-        margin-right: 8px;
-        display: none;
-      }
-
-      input:focus ~ .emotion-0 {
-        background-color: highlight;
-      }
-
-      input:checked ~ .emotion-0 {
-        display: block;
-        color: primary;
+        width: 100%;
+        padding: 8px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        font-size: inherit;
+        line-height: inherit;
+        border: 1px solid;
+        border-radius: default;
+        color: inherit;
+        background-color: transparent;
+        opacity: 0;
+        width: 100%;
+        height: 1px;
+        overflow: hidden;
+        position: absolute;
+        z-index: -1;
       }
 
       .emotion-1 {
@@ -69,9 +71,7 @@ describe('Radio', () => {
         display: block;
         height: 16px;
         width: 16px;
-        margin-right: 8px;
-        color: defaultGray;
-        display: block;
+        display: none;
       }
 
       input:focus ~ .emotion-1 {
@@ -79,33 +79,46 @@ describe('Radio', () => {
       }
 
       input:checked ~ .emotion-1 {
+        display: block;
+        color: primary;
+      }
+
+      .emotion-2 {
+        box-sizing: border-box;
+        margin: 0;
+        min-width: 0;
+        fill: currentColor;
+        color: black;
+        display: block;
+        height: 16px;
+        width: 16px;
+        color: defaultGray;
+        display: block;
+      }
+
+      input:focus ~ .emotion-2 {
+        background-color: highlight;
+      }
+
+      input:checked ~ .emotion-2 {
         display: none;
       }
 
       <label
-        className="emotion-3"
+        className="emotion-4"
       >
         <div
-          className="emotion-2"
+          className="emotion-3"
         >
           <input
+            className="emotion-0"
             defaultChecked={true}
             name="dark-mode"
-            style={
-              Object {
-                "height": 1,
-                "opacity": 0,
-                "overflow": "hidden",
-                "position": "absolute",
-                "width": 1,
-                "zIndex": -1,
-              }
-            }
             type="radio"
             value="true"
           />
           <svg
-            className="emotion-0"
+            className="emotion-1"
             viewBox="0 0 16 16"
           >
             <title>
@@ -117,7 +130,7 @@ describe('Radio', () => {
             />
           </svg>
           <svg
-            className="emotion-1"
+            className="emotion-2"
             viewBox="0 0 16 16"
           >
             <title>
@@ -145,7 +158,7 @@ describe('Radio', () => {
         )
         .toJSON(),
     ).toMatchInlineSnapshot(`
-      .emotion-3 {
+      .emotion-4 {
         box-sizing: border-box;
         margin: 0;
         min-width: 0;
@@ -159,7 +172,7 @@ describe('Radio', () => {
         align-items: center;
       }
 
-      .emotion-2 {
+      .emotion-3 {
         box-sizing: border-box;
         margin: 0;
         min-width: 0;
@@ -169,22 +182,24 @@ describe('Radio', () => {
         box-sizing: border-box;
         margin: 0;
         min-width: 0;
-        fill: currentColor;
-        color: black;
         display: block;
-        height: 16px;
-        width: 16px;
-        margin-right: 8px;
-        display: none;
-      }
-
-      input:focus ~ .emotion-0 {
-        background-color: highlight;
-      }
-
-      input:checked ~ .emotion-0 {
-        display: block;
-        color: primary;
+        width: 100%;
+        padding: 8px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        font-size: inherit;
+        line-height: inherit;
+        border: 1px solid;
+        border-radius: default;
+        color: inherit;
+        background-color: transparent;
+        opacity: 0;
+        width: 100%;
+        height: 1px;
+        overflow: hidden;
+        position: absolute;
+        z-index: -1;
       }
 
       .emotion-1 {
@@ -196,9 +211,7 @@ describe('Radio', () => {
         display: block;
         height: 16px;
         width: 16px;
-        margin-right: 8px;
-        color: defaultGray;
-        display: block;
+        display: none;
       }
 
       input:focus ~ .emotion-1 {
@@ -206,32 +219,45 @@ describe('Radio', () => {
       }
 
       input:checked ~ .emotion-1 {
+        display: block;
+        color: primary;
+      }
+
+      .emotion-2 {
+        box-sizing: border-box;
+        margin: 0;
+        min-width: 0;
+        fill: currentColor;
+        color: black;
+        display: block;
+        height: 16px;
+        width: 16px;
+        color: defaultGray;
+        display: block;
+      }
+
+      input:focus ~ .emotion-2 {
+        background-color: highlight;
+      }
+
+      input:checked ~ .emotion-2 {
         display: none;
       }
 
       <label
-        className="emotion-3"
+        className="emotion-4"
       >
         <div
-          className="emotion-2"
+          className="emotion-3"
         >
           <input
+            className="emotion-0"
             name="dark-mode"
-            style={
-              Object {
-                "height": 1,
-                "opacity": 0,
-                "overflow": "hidden",
-                "position": "absolute",
-                "width": 1,
-                "zIndex": -1,
-              }
-            }
             type="radio"
             value="false"
           />
           <svg
-            className="emotion-0"
+            className="emotion-1"
             viewBox="0 0 16 16"
           >
             <title>
@@ -243,7 +269,7 @@ describe('Radio', () => {
             />
           </svg>
           <svg
-            className="emotion-1"
+            className="emotion-2"
             viewBox="0 0 16 16"
           >
             <title>
