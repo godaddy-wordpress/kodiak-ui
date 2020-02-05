@@ -1,14 +1,18 @@
 import * as React from 'react'
 import { Box, StyledSystemProps } from '../Box/Box'
 import { SvgIcon } from '../Svg'
+import { Input } from '../Input'
 
 type InputProps = {
   variant?: string
+  variantKey?: string
   sx?: object
 } & StyledSystemProps &
   React.InputHTMLAttributes<HTMLInputElement>
 
-function RadioUnchecked(props: Pick<InputProps, 'sx' | 'variant'>) {
+type RadioIcon = Pick<InputProps, 'sx' | 'variant' | 'variantKey'>
+
+function RadioUnchecked(props: RadioIcon) {
   return (
     <SvgIcon
       title="Radio input unchecked"
@@ -22,7 +26,7 @@ function RadioUnchecked(props: Pick<InputProps, 'sx' | 'variant'>) {
   )
 }
 
-function RadioChecked(props: Pick<InputProps, 'sx' | 'variant'>) {
+function RadioChecked(props: RadioIcon) {
   return (
     <SvgIcon
       title="Radio input checked"
@@ -36,7 +40,7 @@ function RadioChecked(props: Pick<InputProps, 'sx' | 'variant'>) {
   )
 }
 
-function RadioIcon({ sx, variant }: InputProps) {
+function RadioIcon({ sx, variant, variantKey }: InputProps) {
   return (
     <>
       <RadioChecked
@@ -49,6 +53,7 @@ function RadioIcon({ sx, variant }: InputProps) {
           },
         }}
         variant={variant}
+        variantKey={variantKey}
       />
       <RadioUnchecked
         sx={{
@@ -60,6 +65,7 @@ function RadioIcon({ sx, variant }: InputProps) {
           },
         }}
         variant={variant}
+        variantKey={variantKey}
       />
     </>
   )
@@ -67,32 +73,30 @@ function RadioIcon({ sx, variant }: InputProps) {
 
 export const Radio = React.forwardRef(
   (
-    { variant = 'radios', ...props }: InputProps,
+    { variant = 'radio', variantKey = 'forms', ...props }: InputProps,
     ref: React.Ref<HTMLInputElement>,
   ) => (
     <Box>
-      <input
+      <Input
         ref={ref}
         type="radio"
+        position="absolute"
+        opacity={0}
+        zIndex={-1}
+        width={1}
+        height={1}
+        overflow="hidden"
         {...props}
-        style={{
-          position: 'absolute',
-          opacity: 0,
-          zIndex: -1,
-          width: 1,
-          height: 1,
-          overflow: 'hidden',
-        }}
       />
       <RadioIcon
         aria-hidden="true"
         sx={{
-          mr: 2,
           'input:focus ~ &': {
             bg: 'highlight',
           },
         }}
         variant={variant}
+        variantKey={variantKey}
         {...props}
       />
     </Box>

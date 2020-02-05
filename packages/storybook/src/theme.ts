@@ -102,6 +102,12 @@ const inputs = {
   },
 }
 
+const forms = {
+  radio: {
+    mr: 8,
+  },
+}
+
 export const theme = {
   breakpoints,
   colors,
@@ -186,6 +192,7 @@ export const theme = {
       fontFamily: 'body',
     },
   },
+  forms,
   styles: {
     root: {
       fontFamily: 'body',

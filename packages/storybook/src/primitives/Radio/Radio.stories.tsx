@@ -9,7 +9,12 @@ export function initial() {
   return (
     <>
       <Label display="flex" alignItems="center">
-        <Radio name="dark-mode" value="true" defaultChecked={true} />
+        <Radio
+          variant="radio"
+          name="dark-mode"
+          value="true"
+          defaultChecked={true}
+        />
         Dark Mode
       </Label>
       <Label display="flex" alignItems="center">

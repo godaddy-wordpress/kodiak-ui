@@ -25,6 +25,7 @@ export const baseStyles = ({ theme }: { theme: Theme }): SerializedStyles =>
 
 type SvgProps = {
   variant?: string
+  variantKey?: string
 } & StyledSystemProps
 
 /**
@@ -40,8 +41,8 @@ export const Svg = styled<'svg', SvgProps>('svg', {
     minWidth: 0,
   },
   baseStyles,
-  ({ variant: variantProp, theme }) =>
-    variant({ variant: variantProp, theme, variantKey: 'svg' }),
+  ({ variant: variantProp, theme, variantKey = 'svg' }) =>
+    variant({ variant: variantProp, theme, variantKey }),
   ...styledSystemProps,
   sx,
 )
