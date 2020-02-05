@@ -15,7 +15,7 @@ import { Flex } from '../Flex'
 /**
  * base
  *
- * Generate the base CSS for the button component
+ * Generate the base CSS for the styled component
  * that is aware of the Theme UI theme
  *
  * @param props
@@ -39,10 +39,6 @@ type SelectProps = {
 } & StyledSystemProps &
   React.SelectHTMLAttributes<HTMLSelectElement>
 
-// /**
-//  * Box primitive component which is the base component for
-//  * all components in Kodiak
-//  */
 export const SelectStyled = styled<'select', SelectProps>('select', {
   shouldForwardProp,
 })(
