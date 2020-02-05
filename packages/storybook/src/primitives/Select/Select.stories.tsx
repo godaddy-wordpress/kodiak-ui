@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Select, Box } from '@kodiak/primitives'
+import { Select, Box } from '@kodiak-ui/primitives'
 
 export default { title: 'Forms/Select' }
 
