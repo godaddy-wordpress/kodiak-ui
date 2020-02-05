@@ -104,7 +104,7 @@ const inputs = {
 
 const forms = {
   radio: {
-    mr: 8,
+    mr: 2,
   },
 }
 
