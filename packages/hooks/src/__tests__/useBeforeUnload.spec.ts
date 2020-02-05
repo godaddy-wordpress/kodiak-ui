@@ -6,11 +6,12 @@ describe('useBeforeUnload', () => {
   let removeEventListenerSpy: jest.SpyInstance
   beforeEach(() => {
     addEventListenerSpy = jest.spyOn(window, 'addEventListener')
-    removeEventListenerSpy = jest.spyOn(window, 'addEventListener')
+    removeEventListenerSpy = jest.spyOn(window, 'removeEventListener')
   })
 
   afterEach(() => {
     addEventListenerSpy.mockRestore()
+    removeEventListenerSpy.mockRestore()
   })
 
   it('should add event listener', () => {
@@ -19,6 +20,7 @@ describe('useBeforeUnload', () => {
   })
 
   it('should remove event listener', () => {
+    expect(removeEventListenerSpy).toBeCalledTimes(0)
     renderHook(() => useBeforeUnload({ enabled: false }))
     expect(removeEventListenerSpy).toBeCalled()
   })
