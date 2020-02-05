@@ -25,6 +25,7 @@ function SwitchIndicator({
       as="span"
       border="solid"
       borderWidth={1}
+      opacity={disabled ? 0.7 : 1}
       backgroundColor={checked ? 'blue.1' : 'grey.5'}
       borderColor={checked ? 'blue.4' : 'grey.5'} // darkest blue
       borderRadius={40}
@@ -62,53 +63,6 @@ function SwitchIndicator({
   )
 }
 
-// const SwitchIndicator = styled.span<{ checked: boolean; disabled: boolean }>`
-//   background-color: ${({ theme, checked }) =>
-//     checked ? theme.blue : theme.ink4};
-//   border: 1px solid
-//     ${({ theme, checked }) => (checked ? theme.blueDark : theme.ink4)};
-//   border-radius: 40px;
-//   display: inline-block;
-//   height: 16px;
-//   margin-left: -38px;
-//   margin-right: 8px;
-//   position: relative;
-//   transition: ;
-//   width: 28px;
-
-//   ${({ disabled }) =>
-//     disabled &&
-//     css`
-//       cursor: not-allowed;
-//       outline: none !important;
-//     `}
-
-//   input:focus ~ & {
-//     outline: 2px auto ${({ theme }) => theme.blue};
-//     outline-offset: 2px;
-//   }
-
-//   ::before {
-//     background: white;
-//     border-radius: 50%;
-//     content: '';
-//     display: block;
-//     height: 12px;
-//     left: 1px;
-//     position: absolute;
-//     top: 50%;
-//     transform: translateY(-50%);
-//     transition: left 0.1s cubic-bezier(0.4, 1, 0.75, 0.9);
-//     width: 12px;
-
-//     ${({ checked }) =>
-//       checked &&
-//       css`
-//         left: calc(100% - 13px);
-//       `}
-//   }
-// `
-
 interface SwitchProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string
   inline?: boolean
@@ -121,6 +75,7 @@ export function Switch({
   displayInForm = false,
   checked,
   disabled,
+  children,
   ...rest
 }: SwitchProps) {
   return (
@@ -132,7 +87,9 @@ export function Switch({
         cursor: disabled ? 'not-allowed' : 'pointer',
         textTransform: 'none',
       }}
-      pl={7}
+      opacity={disabled ? 0.5 : 1}
+      pl={38}
+      fontSize={'default'}
       position="relative"
       mr={inline ? 2 : 4}
       mb={inline ? 0 : 4}
@@ -149,7 +106,7 @@ export function Switch({
         checked={checked}
       />
       <SwitchIndicator checked={checked} disabled={disabled} />
-      {label}
+      {label || children}
     </Label>
   )
 }
