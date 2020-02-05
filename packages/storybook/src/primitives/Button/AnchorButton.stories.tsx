@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { AnchorButton } from '@kodiak/primitives'
+import { AnchorButton } from '@kodiak-ui/primitives'
 
 export default { title: 'Primitives/AnchorButton' }
 

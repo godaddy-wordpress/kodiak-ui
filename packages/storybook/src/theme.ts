@@ -10,6 +10,17 @@ const baseColors = {
   red: [null, '#c42020', '#e12f2f', '#ff8c8c', '#ffe5e5'],
   sky: [null, '#f7f9fb', '#e3e9f0', '#cbd5e1', '#b3c2d3'],
   ink: [null, '#1c384e', '#485f6f', '#65778b', '#8694a7'],
+  gray: [
+    null,
+    '#f7f9fb', // sky1
+    '#e3e9f0', // sky2
+    '#cbd5e1', // sky3
+    '#b3c2d3', // sky4
+    '#8694a7', // ink4
+    '#65778b', // ink3
+    '#485f6f', // ink2
+    '#1c384e', // ink1
+  ],
 }
 
 const colors = {
@@ -19,6 +30,8 @@ const colors = {
   success: baseColors.green[2],
   warning: baseColors.yellow[2],
   danger: baseColors.red[2],
+  ...baseColors,
+  grey: baseColors.gray,
 }
 
 const commonInputStyles = {
@@ -28,6 +41,22 @@ const commonInputStyles = {
   borderRadius: `default`,
   appearance: `none`,
   lineHeight: `tight`,
+}
+
+const labels = {
+  default: {
+    mb: 2,
+    fontWeight: 'bold',
+    color: 'gray.8',
+  },
+  inline: {
+    mb: 0,
+    mr: 2,
+    fontWeight: 'bold',
+    color: 'gray.8',
+    display: 'block',
+    textAlign: 'right',
+  },
 }
 
 const inputs = {
@@ -106,6 +135,9 @@ export const theme = {
       fontWeight: 'heading',
       fontSize: 5,
     },
+  },
+  label: {
+    ...labels.default,
   },
   layout: {
     container: {
@@ -201,11 +233,19 @@ export const theme = {
     th: {
       textAlign: 'left',
       borderBottomStyle: 'solid',
+      borderBottomWidth: 1,
+      borderBottomColor: 'grey.2',
+      padding: 2,
+      backgroundColor: 'grey.0',
     },
     td: {
       textAlign: 'left',
       borderBottomStyle: 'solid',
+      borderBottomWidth: 1,
+      borderBottomColor: 'grey.1',
+      padding: 2,
     },
   },
+  labels,
   inputs,
 }

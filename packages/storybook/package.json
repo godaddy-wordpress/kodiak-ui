@@ -1,6 +1,6 @@
 {
-  "name": "@kodiak/storybook",
-  "version": "0.1.3",
+  "name": "@kodiak-ui/storybook",
+  "version": "0.1.7",
   "private": true,
   "scripts": {
     "storybook": "start-storybook -p 9009",
