@@ -6,7 +6,7 @@ export default { title: 'Forms/Select' }
 export function initial() {
   return (
     <Box>
-      <Select defaultValue="hello">
+      <Select variant="select" defaultValue="hello">
         <option>Hello</option>
         <option>Hi</option>
         <option>Beep</option>
