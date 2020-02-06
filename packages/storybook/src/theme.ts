@@ -106,6 +106,10 @@ const forms = {
   radio: {
     mr: 2,
   },
+  select: {
+    color: 'black',
+    borderColor: 'gray.3',
+  },
 }
 
 export const theme = {
@@ -136,6 +140,7 @@ export const theme = {
     none: '0',
     default: '4px',
   },
+  forms,
   text: {
     heading: {
       fontFamily: 'heading',
