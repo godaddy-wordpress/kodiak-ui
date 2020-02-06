@@ -106,6 +106,9 @@ const forms = {
   radio: {
     mr: 2,
   },
+  checkbox: {
+    mr: 2,
+  },
 }
 
 export const theme = {
