@@ -1,8 +1,6 @@
 import * as React from 'react'
 import { SxStyleProp } from 'theme-ui'
-import { Box } from '../Box/Box'
-import { Label } from '../Label'
-import { Input } from '../Input'
+import { Box, Input, Label } from '../'
 
 interface SwitchProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string
@@ -44,7 +42,7 @@ function SwitchIndicator({
         ...(disabled && { cursor: 'not-allowed', outline: 'none' }),
 
         'input:focus ~ &': {
-          outlineWidth: '2px',
+          outlineWidth: 2,
           outlineStyle: 'solid',
           outlineOffset: 2,
         },
@@ -53,8 +51,8 @@ function SwitchIndicator({
           borderRadius: '50%',
           content: '""',
           display: 'block',
-          height: '12px',
-          width: '12px',
+          height: 12,
+          width: 12,
           position: 'absolute',
           top: '50%',
           left: checked ? 'calc(100% - 13px)' : '1px',
@@ -93,12 +91,12 @@ export const Switch = React.forwardRef(
         textTransform: 'none',
       }}
       opacity={disabled ? 0.5 : 1}
-      pl={38}
+      pl={6}
       fontSize="default"
       position="relative"
       mr={inline ? 2 : 4}
       mb={inline ? 0 : 4}
-      minHeight={displayInForm ? 32 : 'none'}
+      minHeight={displayInForm ? '32px' : 'none'}
     >
       <Input
         ref={ref}
