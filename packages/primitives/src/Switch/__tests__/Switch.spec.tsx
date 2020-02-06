@@ -28,7 +28,7 @@ describe('Switch', () => {
         box-sizing: border-box;
         margin: 0;
         min-width: 0;
-        padding-left: 38px;
+        padding-left: 128px;
         margin-right: 32px;
         margin-bottom: 32px;
         opacity: 1;
