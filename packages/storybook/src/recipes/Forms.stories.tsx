@@ -5,7 +5,6 @@ import {
   Button,
   Checkbox,
   Radio,
-  Flex,
   Field,
   FieldError,
   Box,
@@ -58,7 +57,7 @@ function ReactFormHooksForm() {
         )}
       </Field>
 
-      <Flex mb={4}>
+      <Box mb={4}>
         <Label display="flex" alignItems="center" mr={4}>
           <Radio name="mode" value="Dark" ref={register} />
           Dark
@@ -67,7 +66,7 @@ function ReactFormHooksForm() {
           <Radio name="mode" value="Light" ref={register} />
           Light
         </Label>
-      </Flex>
+      </Box>
 
       <Box mb={4}>
         <Label display="flex" alignItems="center">

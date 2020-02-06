@@ -9,6 +9,7 @@ import {
 
 type LabelProps = {
   variant?: string
+  variantKey?: string
 } & StyledSystemProps
 
 export const Label = styled<'label', LabelProps>('label', {
@@ -20,8 +21,8 @@ export const Label = styled<'label', LabelProps>('label', {
     margin: 0,
     minWidth: 0,
   },
-  ({ variant: variantProp = 'default', theme }) =>
-    variant({ variantKey: 'labels', variant: variantProp, theme }),
+  ({ variant: variantProp, variantKey = 'labels', theme }) =>
+    variant({ variant: variantProp, variantKey, theme }),
   ...styledSystemProps,
   sx,
 )

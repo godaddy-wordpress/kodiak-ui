@@ -28,6 +28,12 @@ export function underline() {
   )
 }
 
+export function disabled() {
+  return (
+    <Input variant="disabled" placeholder="Disabled input" disabled></Input>
+  )
+}
+
 export function withIcon() {
   return (
     <Flex
