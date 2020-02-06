@@ -116,6 +116,7 @@ export type StyledSystemProps = SpaceProps &
 type BoxProps = {
   as?: React.ElementType
   variant?: string
+  variantKey?: string
 } & StyledSystemProps &
   IntrinsicSxElements['div']
 

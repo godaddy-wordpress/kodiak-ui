@@ -13,6 +13,7 @@ export function Initial() {
         label="Toggle this"
         onChange={() => setChecked(!checked)}
       />
+      <Switch checked={true} label="Always checked" onChange={() => null} />
       <Switch
         checked={true}
         label="Disabled"

@@ -1,23 +1,38 @@
 import * as React from 'react'
+import { SxStyleProp } from 'theme-ui'
 import { Box } from '../Box/Box'
 import { Label } from '../Label'
 import { Input } from '../Input'
 
+interface SwitchProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  label?: string
+  inline?: boolean
+  displayInForm?: boolean
+  sx?: SxStyleProp
+  variant?: string
+  variantKey?: string
+}
+
+type SwitchIndicatorProps = {
+  checked?: boolean
+  disabled?: boolean
+} & Pick<SwitchProps, 'sx' | 'variant' | 'variantKey'>
+
 function SwitchIndicator({
   checked,
   disabled,
-}: {
-  checked?: boolean
-  disabled?: boolean
-}) {
+  sx,
+  variant,
+  variantKey,
+}: SwitchIndicatorProps) {
   return (
     <Box
+      variant={`${variant}.${checked ? 'checked' : 'unchecked'}`}
+      variantKey={variantKey}
       as="span"
-      border="solid"
+      borderStyle="solid"
       borderWidth={1}
       opacity={disabled ? 0.7 : 1}
-      backgroundColor={checked ? 'blue.1' : 'grey.5'}
-      borderColor={checked ? 'blue.4' : 'grey.5'} // darkest blue
       borderRadius={40}
       display="inline-block"
       height={16}
@@ -29,13 +44,12 @@ function SwitchIndicator({
         ...(disabled && { cursor: 'not-allowed', outline: 'none' }),
 
         'input:focus ~ &': {
-          outline: '2px auto',
-          outlineColor: 'blue.2',
+          outlineWidth: '2px',
+          outlineStyle: 'solid',
           outlineOffset: 2,
         },
 
         '&::before': {
-          background: 'white',
           borderRadius: '50%',
           content: '""',
           display: 'block',
@@ -47,16 +61,11 @@ function SwitchIndicator({
           transform: 'translateY(-50%)',
           transition: 'left 0.1s cubic-bezier(0.4, 1, 0.75, 0.9)',
         },
+        ...sx,
       }}
       width={28}
     />
   )
-}
-
-interface SwitchProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  label?: string
-  inline?: boolean
-  displayInForm?: boolean
 }
 
 export function Switch({
@@ -66,6 +75,9 @@ export function Switch({
   checked,
   disabled,
   children,
+  variantKey = 'forms',
+  variant = 'switch',
+  sx,
   ...rest
 }: SwitchProps) {
   return (
@@ -95,7 +107,13 @@ export function Switch({
         {...rest}
         checked={checked}
       />
-      <SwitchIndicator checked={checked} disabled={disabled} />
+      <SwitchIndicator
+        checked={checked}
+        disabled={disabled}
+        variant={variant}
+        variantKey={variantKey}
+        sx={sx}
+      />
       {label || children}
     </Label>
   )

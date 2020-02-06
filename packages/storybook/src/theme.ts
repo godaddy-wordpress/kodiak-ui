@@ -100,10 +100,31 @@ const inputs = {
   },
 }
 
+const switchDefaults = {
+  'input:focus ~ &': {
+    outlineColor: 'blue.1',
+  },
+  '&::before': {
+    background: 'white',
+  },
+}
+
 const forms = {
   select: {
     color: 'black',
     borderColor: 'gray.3',
+  },
+  switch: {
+    checked: {
+      backgroundColor: 'blue.1',
+      borderColor: 'blue.4',
+      ...switchDefaults,
+    },
+    unchecked: {
+      backgroundColor: 'grey.5',
+      borderColor: 'grey.5',
+      ...switchDefaults,
+    },
   },
 }
 
