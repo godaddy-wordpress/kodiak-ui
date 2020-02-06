@@ -2,12 +2,11 @@ import * as React from 'react'
 import { Box, StyledSystemProps } from '../Box/Box'
 import { SvgIcon } from '../Svg'
 import { Input } from '../Input'
-import { SxStyleProp } from 'theme-ui'
 
 type InputProps = {
   variant?: string
   variantKey?: string
-  sx?: SxStyleProp
+  sx?: object
 } & StyledSystemProps &
   React.InputHTMLAttributes<HTMLInputElement>
 
