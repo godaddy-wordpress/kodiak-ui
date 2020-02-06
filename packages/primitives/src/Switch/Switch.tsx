@@ -68,19 +68,22 @@ function SwitchIndicator({
   )
 }
 
-export function Switch({
-  label,
-  inline = false,
-  displayInForm = false,
-  checked,
-  disabled,
-  children,
-  variantKey = 'forms',
-  variant = 'switch',
-  sx,
-  ...rest
-}: SwitchProps) {
-  return (
+export const Switch = React.forwardRef(
+  (
+    {
+      label,
+      inline = false,
+      displayInForm = false,
+      checked,
+      disabled,
+      children,
+      variantKey = 'forms',
+      variant = 'switch',
+      sx,
+      ...rest
+    }: SwitchProps,
+    ref: React.Ref<HTMLInputElement>,
+  ) => (
     <Label
       alignItems="center"
       display="inline-flex"
@@ -91,13 +94,14 @@ export function Switch({
       }}
       opacity={disabled ? 0.5 : 1}
       pl={38}
-      fontSize={'default'}
+      fontSize="default"
       position="relative"
       mr={inline ? 2 : 4}
       mb={inline ? 0 : 4}
       minHeight={displayInForm ? 32 : 'none'}
     >
       <Input
+        ref={ref}
         type="checkbox"
         position="absolute"
         opacity={0}
@@ -116,5 +120,5 @@ export function Switch({
       />
       {label || children}
     </Label>
-  )
-}
+  ),
+)
