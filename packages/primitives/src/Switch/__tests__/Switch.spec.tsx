@@ -65,13 +65,11 @@ describe('Switch', () => {
         margin-left: -38px;
         margin-right: 8px;
         opacity: 1;
-        background-color: grey.5;
         display: inline-block;
         height: 16px;
         width: 28px;
-        border: solid;
+        border-style: solid;
         border-width: 1px;
-        border-color: grey.5;
         border-radius: 40px;
         position: relative;
         -webkit-transition: background-color 0.1s cubic-bezier(0.4,1,0.75,0.9);
@@ -79,13 +77,12 @@ describe('Switch', () => {
       }
 
       input:focus ~ .emotion-1 {
-        outline: 2px auto;
-        outline-color: blue.2;
+        outline-width: 2px;
+        outline-style: solid;
         outline-offset: 2px;
       }
 
       .emotion-1::before {
-        background: white;
         border-radius: 50%;
         content: "";
         display: block;
