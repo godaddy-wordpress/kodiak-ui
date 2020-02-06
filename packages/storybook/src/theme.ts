@@ -143,7 +143,6 @@ export const theme = {
     none: '0',
     default: '4px',
   },
-  forms,
   text: {
     heading: {
       fontFamily: 'heading',
