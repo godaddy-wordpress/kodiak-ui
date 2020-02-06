@@ -104,8 +104,8 @@ export function Switch({
         left={0}
         top={0}
         zIndex={-1}
-        {...rest}
         checked={checked}
+        {...rest}
       />
       <SwitchIndicator
         checked={checked}

@@ -1,11 +1,26 @@
 import * as React from 'react'
 import serializer from 'jest-emotion'
 import renderer from 'react-test-renderer'
+import { render, fireEvent } from '@testing-library/react'
+
 import { Switch } from '../Switch'
 
 expect.addSnapshotSerializer(serializer)
 
 describe('Switch', () => {
+  it('should toggle when clicking', () => {
+    const handleChange = jest.fn()
+
+    const { queryByLabelText } = render(
+      <Switch onChange={handleChange} label="the switch" />,
+    )
+    const switchControl = queryByLabelText('the switch') as HTMLElement
+    expect(switchControl).toBeDefined()
+
+    fireEvent.click(switchControl)
+    expect(handleChange).toBeCalledTimes(1)
+  })
+
   it('should render the switch', () => {
     expect(renderer.create(<Switch label="Toggle this"></Switch>).toJSON())
       .toMatchInlineSnapshot(`
