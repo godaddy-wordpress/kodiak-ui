@@ -16,6 +16,7 @@ export const Label = styled<'label', LabelProps>('label', {
 })(
   {
     boxSizing: 'border-box',
+    display: 'inline-block',
     margin: 0,
     minWidth: 0,
   },
