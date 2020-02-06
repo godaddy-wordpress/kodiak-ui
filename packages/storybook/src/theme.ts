@@ -4,6 +4,7 @@ const baseColors = {
   transparent: 'transparent',
   black: '#000',
   white: '#fff',
+  defaultGray: '#cbd5e1',
   blue: [null, '#0067b6', '#0076d1', '#bfddf3', '#ebf6ff'],
   green: [null, '#379a58', '#63db8b', '#dbffe7'],
   yellow: [null, '#db9600', '#ffbe33', '#fff9eb'],
@@ -30,6 +31,7 @@ const colors = {
   success: baseColors.green[2],
   warning: baseColors.yellow[2],
   danger: baseColors.red[2],
+  highlight: baseColors.blue[3],
   ...baseColors,
   grey: baseColors.gray,
 }
@@ -101,6 +103,9 @@ const inputs = {
 }
 
 const forms = {
+  radio: {
+    mr: 2,
+  },
   select: {
     color: 'black',
     borderColor: 'gray.3',
@@ -192,6 +197,7 @@ export const theme = {
       fontFamily: 'body',
     },
   },
+  forms,
   styles: {
     root: {
       fontFamily: 'body',
