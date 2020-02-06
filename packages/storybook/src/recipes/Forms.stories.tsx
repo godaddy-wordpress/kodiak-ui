@@ -1,134 +1,24 @@
 import * as React from 'react'
-import { Formik, Form, FormikProps, Field, FieldProps } from 'formik'
 import { useForm } from 'react-hook-form'
 import {
   Label,
-  Input,
   Button,
   Checkbox,
   Radio,
   Flex,
-  Field as FieldInput,
+  Field,
   FieldError,
   Box,
 } from '@kodiak-ui/primitives'
 
 export default { title: 'Recipes/Forms' }
 
-interface FormValues {
-  firstName: string
-  lastName: string
-  email: string
-  marketingOptin: string
-  mode: string
-}
-
-function FormikForm() {
-  return (
-    <Formik
-      initialValues={{
-        firstName: '',
-        lastName: '',
-        email: '',
-        marketingOptin: 'true',
-        mode: 'dark',
-      }}
-      onSubmit={values => alert(JSON.stringify(values, null, 2))}
-    >
-      {({ values, isSubmitting, isValid }: FormikProps<FormValues>) => (
-        <Form>
-          <Field name="firstName">
-            {({ field }: FieldProps<FormValues['firstName']>) => (
-              <>
-                <Label htmlFor={field.name}>First name</Label>
-                <Input
-                  id={field.name}
-                  placeholder="Enter first name"
-                  {...field}
-                />
-              </>
-            )}
-          </Field>
-          <Field name="lastName">
-            {({ field }: FieldProps<FormValues['lastName']>) => (
-              <>
-                <Label htmlFor={field.name}>Last name</Label>
-                <Input
-                  id={field.name}
-                  placeholder="Enter last name"
-                  {...field}
-                />
-              </>
-            )}
-          </Field>
-          <Field name="email">
-            {({ field }: FieldProps<FormValues['email']>) => (
-              <>
-                <Label htmlFor={field.name}>Email</Label>
-                <Input
-                  id={field.name}
-                  type="email"
-                  placeholder="Enter last name"
-                  {...field}
-                />
-              </>
-            )}
-          </Field>
-          <Field name="marketingOptin">
-            {({ field }: FieldProps<FormValues['marketingOptin']>) => (
-              <>
-                <Label htmlFor={field.name} display="flex" alignItems="center">
-                  <Checkbox id={field.name} {...field} />
-                  Marketing Optin
-                </Label>
-              </>
-            )}
-          </Field>
-          <Flex justifyContent="space-between">
-            <Field name="mode">
-              {({ field }: FieldProps<FormValues['mode']>) => (
-                <Label htmlFor={field.name} display="flex" alignItems="center">
-                  <Radio
-                    {...field}
-                    name={field.name}
-                    value="dark"
-                    checked={field.value === 'dark'}
-                  />
-                  Dark
-                </Label>
-              )}
-            </Field>
-            <Field name="mode">
-              {({
-                field: { name, value, ...field },
-              }: FieldProps<FormValues['mode']>) => (
-                <Label htmlFor={name} display="flex" alignItems="center">
-                  <Radio
-                    name={name}
-                    value="deep"
-                    checked={value === 'deep'}
-                    {...field}
-                  />
-                  Deep
-                </Label>
-              )}
-            </Field>
-          </Flex>
-          <Button type="submit" disabled={isSubmitting || !isValid}>
-            Submit
-          </Button>
-        </Form>
-      )}
-    </Formik>
-  )
-}
-
-export const FormikExample = () => <FormikForm />
-
 type ReactFormHooksFormData = {
   firstName: string
   lastName: string
   email: string
+  mode: string
+  marketing: boolean
 }
 
 function ReactFormHooksForm() {
@@ -140,7 +30,7 @@ function ReactFormHooksForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <FieldInput
+      <Field
         label="First name"
         name="firstName"
         ref={register({ required: true })}
@@ -152,9 +42,9 @@ function ReactFormHooksForm() {
             Please enter a first name
           </FieldError>
         )}
-      </FieldInput>
+      </Field>
 
-      <FieldInput
+      <Field
         label="Last name"
         name="lastName"
         ref={register({ required: true })}
@@ -166,7 +56,7 @@ function ReactFormHooksForm() {
             Please enter a last name
           </FieldError>
         )}
-      </FieldInput>
+      </Field>
 
       <Flex mb={4}>
         <Label display="flex" alignItems="center" mr={4}>
