@@ -50,13 +50,13 @@
       "/dist"
     ],
     "coveragePathIgnorePatterns": [
-      "/storybook",
       "/node_modules",
-      "/dist",
-      "/src/index.ts"
+      "/index.ts",
+      "/storybook",
+      "/dist"
     ],
     "collectCoverageFrom": [
-      "**/packages/**/src/*.(ts|tsx)"
+      "**/packages/**/src/**/*.(ts|tsx)"
     ],
     "coverageReporters": [
       "lcov",
