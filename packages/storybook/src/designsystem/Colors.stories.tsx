@@ -42,6 +42,7 @@ type ColorSwatchesProps = {
 function ColorSwatches({ colorsArray, colorName }: ColorSwatchesProps) {
   // Would be nice to choose this by darkest color, maybe use d3.hsl to compare lightness
   // since ideally this would support different string color formats
+  // or if convention is lightest to darkest we could take the last color
   const borderLeftColor = colorsArray.find(color => !!color)
 
   return (
