@@ -87,12 +87,15 @@ export function sx(props: any): SerializedStyles {
  * }
  */
 export interface VariantProps {
-  theme: Theme
   variant?: string
   variantKey?: string
 }
 
-export function variant({ variant, theme, variantKey }: VariantProps) {
+export function variant({
+  variant,
+  theme,
+  variantKey,
+}: { theme: Theme } & VariantProps) {
   return css(
     get(
       theme,
@@ -113,8 +116,6 @@ export type StyledSystemProps = SpaceProps &
   PositionProps &
   ShadowProps
 
-export type BoxElements = 'div' | 'main' | 'section' | 'aside'
-
 type BoxProps = {
   as?: React.ElementType
 } & VariantProps &
@@ -125,7 +126,7 @@ type BoxProps = {
  * Box primitive component which is the base component for
  * all components in Kodiak
  */
-export const Box = styled<BoxElements, BoxProps>('div', {
+export const Box = styled<'div', BoxProps>('div', {
   shouldForwardProp,
 })(
   {
