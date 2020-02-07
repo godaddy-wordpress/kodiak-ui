@@ -1,3 +1,9 @@
+<p align="center">
+  <a href="https://skyverge.com">
+    <img src="https://user-images.githubusercontent.com/1162694/74063113-c6bad100-49bd-11ea-982d-3c4b17df80ab.png" alt="SkyVerge" />
+  </a>
+</p>
+
 # Kodiak component and hook library
 
 [![SkyVerge](https://circleci.com/gh/skyverge/kodiak-ui.svg?style=svg)](https://circleci.com/gh/skyverge/kodiak-ui)
