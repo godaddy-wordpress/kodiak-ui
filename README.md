@@ -4,6 +4,8 @@
   </a>
 </p>
 
+<p align="center">Themable component library and utility hooks for React</p>
+
 # Kodiak component and hook library
 
 [![SkyVerge](https://circleci.com/gh/skyverge/kodiak-ui.svg?style=svg)](https://circleci.com/gh/skyverge/kodiak-ui)
