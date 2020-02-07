@@ -1,7 +1,6 @@
 const breakpoints = ['640px', '768px', '1024px', '1280px']
 
 const baseColors = {
-  transparent: 'transparent',
   black: '#000',
   white: '#fff',
   defaultGray: '#cbd5e1',
@@ -22,9 +21,12 @@ const baseColors = {
     '#485f6f', // ink2
     '#1c384e', // ink1
   ],
+  transparent: 'transparent',
 }
 
 const colors = {
+  ...baseColors,
+  grey: baseColors.gray,
   text: baseColors.ink[1],
   background: baseColors.white,
   primary: baseColors.blue[2],
@@ -32,8 +34,6 @@ const colors = {
   warning: baseColors.yellow[2],
   danger: baseColors.red[2],
   highlight: baseColors.blue[3],
-  ...baseColors,
-  grey: baseColors.gray,
 }
 
 const commonInputStyles = {
@@ -113,6 +113,10 @@ const forms = {
     color: 'black',
     borderColor: 'gray.3',
   },
+}
+
+const shadows = {
+  inner: 'inset 0 2px 4px 0 rgba(0,0,0,.06) !important',
 }
 
 export const theme = {
@@ -264,4 +268,5 @@ export const theme = {
   },
   labels,
   inputs,
+  shadows,
 }
