@@ -37,20 +37,24 @@ const colors = {
 }
 
 const commonInputStyles = {
-  py: 2,
+  color: 'gray.8',
   px: 3,
+  py: 2,
   fontSize: `100%`,
   borderRadius: `default`,
+  borderColor: 'gray.3',
   appearance: `none`,
   lineHeight: `tight`,
+  '&:focus': {
+    borderColor: 'primary',
+    outline: 'none',
+  },
 }
 
 const labels = {
-  default: {
-    mb: 2,
-    fontWeight: 'bold',
-    color: 'gray.8',
-  },
+  mb: 2,
+  fontWeight: 'bold',
+  color: 'gray.8',
   inline: {
     mb: 0,
     mr: 2,
@@ -62,6 +66,7 @@ const labels = {
 }
 
 const inputs = {
+  ...commonInputStyles,
   shadow: {
     ...commonInputStyles,
     border: `none`,
@@ -99,6 +104,14 @@ const inputs = {
       borderColor: `primary`,
       backgroundColor: `white`,
     },
+    '&::placeholder': {
+      color: 'gray.5',
+    },
+  },
+  disabled: {
+    ...commonInputStyles,
+    borderColor: 'gray.2',
+    color: 'gray.5',
   },
 }
 
@@ -165,9 +178,6 @@ export const theme = {
       fontSize: 5,
     },
   },
-  label: {
-    ...labels.default,
-  },
   layout: {
     container: {
       flexDirection: 'column',
@@ -213,7 +223,6 @@ export const theme = {
       fontFamily: 'body',
     },
   },
-  forms,
   styles: {
     root: {
       fontFamily: 'body',
@@ -279,4 +288,5 @@ export const theme = {
   labels,
   inputs,
   shadows,
+  forms,
 }

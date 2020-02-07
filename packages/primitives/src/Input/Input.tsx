@@ -33,6 +33,7 @@ export const baseStyles = ({ theme }: { theme: Theme }): SerializedStyles =>
 
 type InputProps = {
   variant?: string
+  variantKey?: string
 } & StyledSystemProps
 
 /**
@@ -48,8 +49,8 @@ export const Input = styled<'input', InputProps>('input', {
     minWidth: 0,
   },
   baseStyles,
-  ({ variant: variantProp, theme }) =>
-    variant({ variant: variantProp, theme, variantKey: 'inputs' }),
+  ({ variant: variantProp, variantKey = 'inputs', theme }) =>
+    variant({ variant: variantProp, theme, variantKey }),
   ...styledSystemProps,
   sx,
 )

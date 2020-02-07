@@ -20,6 +20,7 @@ describe('Radio', () => {
     ).toMatchInlineSnapshot(`
       .emotion-4 {
         box-sizing: border-box;
+        display: inline-block;
         margin: 0;
         min-width: 0;
         display: -webkit-box;
@@ -164,6 +165,7 @@ describe('Radio', () => {
     ).toMatchInlineSnapshot(`
       .emotion-4 {
         box-sizing: border-box;
+        display: inline-block;
         margin: 0;
         min-width: 0;
         display: -webkit-box;
