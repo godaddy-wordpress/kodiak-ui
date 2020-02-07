@@ -87,12 +87,15 @@ export function sx(props: any): SerializedStyles {
  * }
  */
 export interface VariantProps {
-  theme: Theme
   variant?: string
   variantKey?: string
 }
 
-export function variant({ variant, theme, variantKey }: VariantProps) {
+export function variant({
+  variant,
+  theme,
+  variantKey,
+}: { theme: Theme } & VariantProps) {
   return css(
     get(
       theme,
@@ -115,8 +118,8 @@ export type StyledSystemProps = SpaceProps &
 
 type BoxProps = {
   as?: React.ElementType
-  variant?: string
-} & StyledSystemProps &
+} & VariantProps &
+  StyledSystemProps &
   IntrinsicSxElements['div']
 
 /**

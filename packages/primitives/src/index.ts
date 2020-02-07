@@ -1,4 +1,5 @@
 export { Box, sx, variant } from './Box'
+export { Grid } from './Grid'
 export { Flex } from './Flex'
 export { Label } from './Label'
 export { Button, AnchorButton } from './Button'
