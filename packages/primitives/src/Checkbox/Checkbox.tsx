@@ -16,12 +16,21 @@ function CheckboxUnchecked(props: CheckboxIcon) {
   return (
     <SvgIcon
       title="Checkbox input unchecked"
-      height={24}
-      width={24}
-      viewBox="0 0 24 24"
+      height={16}
+      width={16}
+      viewBox="0 0 16 16"
       {...props}
     >
-      <path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z" />
+      <path
+        d="M0 3a3 3 0 013-3h10a3 3 0 013 3v10a3 3 0 01-3 3H3a3 3 0 01-3-3V3z"
+        fill="#fff"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M13 1H3a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V3a2 2 0 00-2-2zM3 0a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V3a3 3 0 00-3-3H3z"
+        fill="currentColor"
+      />
     </SvgIcon>
   )
 }
@@ -30,12 +39,25 @@ function CheckboxChecked(props: CheckboxIcon) {
   return (
     <SvgIcon
       title="Checkbox input checked"
-      height={24}
-      width={24}
-      viewBox="0 0 24 24"
+      height={16}
+      width={16}
+      viewBox="0 0 16 16"
       {...props}
     >
-      <path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+      <path
+        d="M0 3a3 3 0 013-3h10a3 3 0 013 3v10a3 3 0 01-3 3H3a3 3 0 01-3-3V3z"
+        fill="#0076D1"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M13 1H3a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V3a2 2 0 00-2-2zM3 0a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V3a3 3 0 00-3-3H3z"
+        fill="currentColor"
+      />
+      <path
+        d="M12.937 5.062L11.7 3.815a.222.222 0 00-.313 0L6.165 9.068a.221.221 0 01-.314 0L4.615 7.822a.221.221 0 00-.314 0L3.065 9.068a.223.223 0 000 .315l2.786 2.802a.222.222 0 00.314 0l6.772-6.812a.223.223 0 000-.311z"
+        fill="#fff"
+      />
     </SvgIcon>
   )
 }
