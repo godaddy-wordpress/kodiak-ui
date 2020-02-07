@@ -122,6 +122,10 @@ const forms = {
   checkbox: {
     mr: 2,
   },
+  select: {
+    color: 'black',
+    borderColor: 'gray.3',
+  },
 }
 
 export const theme = {

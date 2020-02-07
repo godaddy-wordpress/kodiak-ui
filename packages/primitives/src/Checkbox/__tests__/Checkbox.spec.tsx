@@ -76,7 +76,9 @@ describe('Checkbox', () => {
       }
 
       input:focus ~ .emotion-1 {
-        background-color: highlight;
+        outline: 1px auto;
+        outline-offset: 1px;
+        outline-color: primary;
       }
 
       input:checked ~ .emotion-1 {
@@ -98,7 +100,9 @@ describe('Checkbox', () => {
       }
 
       input:focus ~ .emotion-2 {
-        background-color: highlight;
+        outline: 1px auto;
+        outline-offset: 1px;
+        outline-color: primary;
       }
 
       input:checked ~ .emotion-2 {
@@ -234,7 +238,9 @@ describe('Checkbox', () => {
       }
 
       input:focus ~ .emotion-1 {
-        background-color: highlight;
+        outline: 1px auto;
+        outline-offset: 1px;
+        outline-color: primary;
       }
 
       input:checked ~ .emotion-1 {
@@ -256,7 +262,9 @@ describe('Checkbox', () => {
       }
 
       input:focus ~ .emotion-2 {
-        background-color: highlight;
+        outline: 1px auto;
+        outline-offset: 1px;
+        outline-color: primary;
       }
 
       input:checked ~ .emotion-2 {

@@ -114,7 +114,9 @@ export const Checkbox = React.forwardRef(
         aria-hidden="true"
         sx={{
           'input:focus ~ &': {
-            bg: 'highlight',
+            outline: '1px auto',
+            outlineOffset: '1px',
+            outlineColor: 'primary',
           },
         }}
         variant={variant}
