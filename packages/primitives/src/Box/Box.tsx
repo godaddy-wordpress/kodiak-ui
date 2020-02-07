@@ -113,17 +113,19 @@ export type StyledSystemProps = SpaceProps &
   PositionProps &
   ShadowProps
 
+export type BoxElements = 'div' | 'main' | 'section' | 'aside'
+
 type BoxProps = {
   as?: React.ElementType
-  variant?: string
-} & StyledSystemProps &
+} & VariantProps &
+  StyledSystemProps &
   IntrinsicSxElements['div']
 
 /**
  * Box primitive component which is the base component for
  * all components in Kodiak
  */
-export const Box = styled<'div', BoxProps>('div', {
+export const Box = styled<BoxElements, BoxProps>('div', {
   shouldForwardProp,
 })(
   {
