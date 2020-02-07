@@ -13,16 +13,16 @@ export function Intro() {
 type ColorSwatchProps = {
   color: string
   colorName: string | number
-}
+} & React.ComponentProps<typeof Flex>
 
-function ColorSwatch({ color, colorName }: ColorSwatchProps) {
+function ColorSwatch({ color, colorName, ...props }: ColorSwatchProps) {
   return (
-    <Flex m={4} mr={9} minWidth="initial">
+    <Flex m={4} mr={9} minWidth="initial" flex="1" {...props}>
       <Box
         backgroundColor={color}
         height={96}
         width={96}
-        boxShadow="inner"
+        boxShadow="lg"
         borderRadius="default"
       />
 
@@ -30,6 +30,52 @@ function ColorSwatch({ color, colorName }: ColorSwatchProps) {
         <Box fontWeight="bold">{colorName}</Box>
         <Box color={'grey.5'}>{color}</Box>
       </Flex>
+    </Flex>
+  )
+}
+
+type ColorSwatchesProps = {
+  colorsArray: string[]
+  colorName: string | number
+} & React.ComponentProps<typeof Flex>
+
+function ColorSwatches({ colorsArray, colorName }: ColorSwatchesProps) {
+  // Would be nice to choose this by darkest color, maybe use d3.hsl to compare lightness
+  // since ideally this would support different string color formats
+  const borderLeftColor = colorsArray.find(color => !!color)
+
+  return (
+    <Flex flexDirection="column" key={colorName} width="100%">
+      <Box borderLeft="2px solid" borderLeftColor={borderLeftColor} mt={8}>
+        <Text
+          ml={3}
+          variant="text.heading"
+          sx={{ textTransform: 'capitalize' }}
+        >
+          {colorName}
+        </Text>
+      </Box>
+      <Box
+        display="grid"
+        sx={{
+          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+        }}
+      >
+        {colorsArray.map((value, index) => {
+          if (colorsArray[index] === null) {
+            return null
+          }
+
+          return (
+            <ColorSwatch
+              key={`${colorName}.${index}`}
+              color={value}
+              colorName={`${colorName}.${index}`}
+              pt={4}
+            />
+          )
+        })}
+      </Box>
     </Flex>
   )
 }
@@ -42,42 +88,30 @@ export function Palette() {
   }
 
   return (
-    <Flex flexDirection="row" flexWrap="wrap" width="100%">
+    <Flex flexDirection="column" flexWrap="wrap">
       {Object.keys(theme.colors).map(key => {
         if (Array.isArray(theme?.colors?.[key])) {
-          if (!theme?.colors?.[key]) {
+          if (!theme?.colors?.[key] || key === 'grey') {
             return null
           }
 
           const colorsArray = theme.colors[key] as string[]
-          return (
-            <Flex>
-              <Text>{key}</Text>
-              {colorsArray.map((value, index) => {
-                if (colorsArray[index] === null) {
-                  return null
-                }
-
-                return (
-                  <ColorSwatch
-                    key={key}
-                    color={colorsArray[index]}
-                    colorName={`${key}.${index}`}
-                  />
-                )
-              })}
-            </Flex>
-          )
+          return <ColorSwatches colorsArray={colorsArray} colorName={key} />
         }
+
         if (typeof theme.colors?.[key] === 'string') {
           return (
             <ColorSwatch
               key={key}
               color={theme.colors?.[key]}
               colorName={key}
+              borderTop="1px solid"
+              borderTopColor="gray.2"
+              pt={4}
             />
           )
         }
+
         return null
       })}
     </Flex>
