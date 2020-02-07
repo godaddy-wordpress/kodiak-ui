@@ -23,7 +23,7 @@ Kodiak hooks are small, reusable, and well tested to provide the most consistent
 
 ```
 // Install primitive components
-yarn add @kodiak-ui/primitives react react-dom theme-ui styled-system
+yarn add @kodiak-ui/primitives react react-dom theme-ui
 
 // Install hooks
 yarn add @kodiak-ui/hooks react react-dom
@@ -33,4 +33,34 @@ All complex components (i.e. Dropdown, Combobox, Accordion) are separate package
 
 ```
 yarn add @kodiak-ui/dropdown
+```
+
+Once primitive components or a complex component have been installed, create a theme object to match the design of your application.
+
+```js
+// example theme.js
+export default {
+  fonts: {
+    body: 'system-ui, sans-serif',
+    heading: '"Avenir Next", sans-serif',
+    monospace: 'Menlo, monospace',
+  },
+  colors: {
+    text: '#000',
+    background: '#fff',
+    primary: '#33e',
+  },
+}
+```
+
+Finally, just like in Emotion or Styled Components, you need to wrap your application with Theme UI's ThemeProvider component.
+
+```jsx
+// basic usage
+import React from 'react'
+import { ThemeProvider } from 'theme-ui'
+import theme from './theme'
+export default props => (
+  <ThemeProvider theme={theme}>{props.children}</ThemeProvider>
+)
 ```
