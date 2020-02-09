@@ -91,7 +91,7 @@ export const Switch = React.forwardRef(
         textTransform: 'none',
       }}
       opacity={disabled ? 0.5 : 1}
-      pl={6}
+      pl={38}
       fontSize="default"
       position="relative"
       mr={inline ? 2 : 4}
