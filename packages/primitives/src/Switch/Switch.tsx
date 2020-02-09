@@ -69,7 +69,6 @@ export const Switch = React.forwardRef(
   (
     {
       label,
-      displayInForm = false,
       checked,
       disabled,
       children,
@@ -92,7 +91,6 @@ export const Switch = React.forwardRef(
       pl={38}
       fontSize="default"
       position="relative"
-      minHeight={displayInForm ? '32px' : 'none'}
     >
       <Input
         ref={ref}
