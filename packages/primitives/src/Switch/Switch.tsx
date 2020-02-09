@@ -4,7 +4,6 @@ import { Box, Input, Label } from '../'
 
 interface SwitchProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string
-  inline?: boolean
   displayInForm?: boolean
   sx?: SxStyleProp
   variant?: string
@@ -70,7 +69,6 @@ export const Switch = React.forwardRef(
   (
     {
       label,
-      inline = false,
       displayInForm = false,
       checked,
       disabled,
@@ -94,8 +92,6 @@ export const Switch = React.forwardRef(
       pl={38}
       fontSize="default"
       position="relative"
-      mr={inline ? 2 : 4}
-      mb={inline ? 0 : 4}
       minHeight={displayInForm ? '32px' : 'none'}
     >
       <Input
