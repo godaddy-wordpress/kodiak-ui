@@ -155,6 +155,7 @@ export const theme = {
   radii: {
     none: '0',
     default: '4px',
+    full: '9999px',
   },
   forms,
   text: {
