@@ -2,11 +2,11 @@ import styled from '@emotion/styled'
 import { Theme, css } from 'theme-ui'
 import { SerializedStyles } from '@emotion/serialize'
 import {
-  StyledSystemProps,
+  SystemProps,
   variant,
   sx,
   shouldForwardProp,
-  styledSystemProps,
+  systemProps,
 } from '../Box/Box'
 
 /**
@@ -33,7 +33,7 @@ export const baseStyles = ({ theme }: { theme: Theme }): SerializedStyles =>
 
 type InputProps = {
   variant?: string
-} & StyledSystemProps
+} & SystemProps
 
 /**
  * Box primitive component which is the base component for
@@ -50,6 +50,6 @@ export const Textarea = styled<'textarea', InputProps>('textarea', {
   baseStyles,
   ({ variant: variantProp, theme }) =>
     variant({ variant: variantProp, theme, variantKey: 'textarea' }),
-  ...styledSystemProps,
+  ...systemProps,
   sx,
 )

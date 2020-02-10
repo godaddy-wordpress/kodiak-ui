@@ -1,1 +1,1 @@
-export { Box, variant, sx, shouldForwardProp, styledSystemProps } from './Box'
+export { Box, variant, sx, shouldForwardProp, SystemProps } from './Box'

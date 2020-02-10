@@ -3,13 +3,13 @@ import {
   variant,
   sx,
   shouldForwardProp,
-  styledSystemProps,
-  StyledSystemProps,
+  systemProps,
+  SystemProps,
 } from '../Box/Box'
 
 type LabelProps = {
   variant?: string
-} & StyledSystemProps
+} & SystemProps
 
 export const Label = styled<'label', LabelProps>('label', {
   shouldForwardProp,
@@ -21,6 +21,6 @@ export const Label = styled<'label', LabelProps>('label', {
   },
   ({ variant: variantProp = 'default', theme }) =>
     variant({ variantKey: 'labels', variant: variantProp, theme }),
-  ...styledSystemProps,
+  ...systemProps,
   sx,
 )
