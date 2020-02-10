@@ -51,7 +51,7 @@ function SwitchIndicator({
         width={12}
         height={12}
         borderRadius="full"
-        backgroundColor="white"
+        backgroundColor="background"
         ml="1px"
         sx={{
           transform: `translateX(${checked ? 'calc(100% - 1px)' : '0'})`,
