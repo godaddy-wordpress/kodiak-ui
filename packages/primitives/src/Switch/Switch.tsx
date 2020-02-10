@@ -1,15 +1,15 @@
 import * as React from 'react'
-import { SxStyleProp } from 'theme-ui'
+import { SxProps } from 'theme-ui'
 import { Box, Input } from '../'
+import { SystemProps, VariantProps } from '../Box/Box'
 
-interface SwitchProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  label?: string
+type SwitchProps = {
   displayInForm?: boolean
-  sx?: SxStyleProp
-  variant?: string
-  variantKey?: string
   indicatorVariant?: string
-}
+} & React.InputHTMLAttributes<HTMLInputElement> &
+  SystemProps &
+  VariantProps &
+  SxProps
 
 type SwitchIndicatorProps = {
   checked?: boolean
@@ -30,39 +30,46 @@ function SwitchIndicator({
     <Box
       variant={variant}
       variantKey={variantKey}
-      opacity={disabled ? 0.5 : 1}
-      display="inline-flex"
-      width={28}
-      height={16}
-      borderRadius="full"
-      borderStyle="solid"
-      borderWidth={1}
-      backgroundColor={checked ? 'primary' : 'muted'}
-      borderColor={checked ? 'primary' : 'muted'}
-      sx={{
+      __base={{
+        opacity: disabled ? 0.5 : 1,
         transition: 'background-color 0.1s cubic-bezier(0.4, 1, 0.75, 0.9)',
+        width: 28,
+        height: 16,
+        borderRadius: 'full',
+        borderStyle: 'solid',
+        borderWidth: 1,
+        display: 'inline-flex',
 
         'input:focus ~ &': {
           outlineWidth: 1,
-          outlineStyle: 'solid',
           outlineOffset: 2,
+          outlineStyle: 'solid',
           outlineColor: 'primary',
         },
 
-        ...sx,
+        'input:checked ~ &': {
+          backgroundColor: 'primary',
+          borderColor: 'primary',
+        },
+
+        'input:not(:checked) ~ &': {
+          backgroundColor: 'muted',
+          borderColor: 'muted',
+        },
       }}
+      sx={sx}
       alignItems="center"
     >
       {/* Circle Indicator */}
       <Box
-        width={12}
-        height={12}
         variantKey={variantKey}
         variant={`${variant}.${indicatorVariant}`}
-        borderRadius="full"
-        backgroundColor="background"
-        ml="1px"
-        sx={{
+        __base={{
+          borderRadius: 'full',
+          width: 12,
+          height: 12,
+          ml: '1px',
+          backgroundColor: 'background',
           transform: `translateX(${checked ? 'calc(100% - 1px)' : '0'})`,
           transition: 'transform 0.1s cubic-bezier(0.4, 1, 0.75, 0.9)',
         }}
@@ -92,6 +99,7 @@ export const Switch = React.forwardRef(
         sx={{
           cursor: disabled ? 'not-allowed' : 'pointer',
         }}
+        {...props}
       >
         <Input
           ref={ref}
@@ -100,7 +108,8 @@ export const Switch = React.forwardRef(
           position="absolute"
           left={0}
           top={0}
-          zIndex={-1}
+          height={1}
+          width={1}
           checked={checked}
           onChange={onChange}
           disabled={disabled}

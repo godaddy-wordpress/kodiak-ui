@@ -111,6 +111,20 @@ const forms = {
       backgroundColor: 'background',
     },
   },
+  alternateSwitch: {
+    borderRadius: '2px',
+    'input:checked ~ &': {
+      backgroundColor: 'red.4',
+      borderColor: 'red.4',
+    },
+    'input:not(:checked) ~ &': {
+      backgroundColor: 'gray.5',
+      borderColor: 'gray.5',
+    },
+    indicator: {
+      backgroundColor: 'red.1',
+    },
+  },
 }
 
 export const theme = {
