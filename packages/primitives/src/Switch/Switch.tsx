@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { SxStyleProp } from 'theme-ui'
-import { Box, Input, Label } from '../'
+import { Box, Input } from '../'
 
 interface SwitchProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string
@@ -8,38 +8,45 @@ interface SwitchProps extends React.InputHTMLAttributes<HTMLInputElement> {
   sx?: SxStyleProp
   variant?: string
   variantKey?: string
+  indicatorVariant?: string
 }
 
 type SwitchIndicatorProps = {
   checked?: boolean
-  hasLabel?: boolean
-} & Pick<SwitchProps, 'sx' | 'variant' | 'variantKey'>
+} & Pick<
+  SwitchProps,
+  'sx' | 'variant' | 'variantKey' | 'indicatorVariant' | 'disabled'
+>
 
 function SwitchIndicator({
   checked,
   sx,
   variant,
   variantKey,
-  hasLabel,
+  indicatorVariant,
+  disabled,
 }: SwitchIndicatorProps) {
   return (
     <Box
-      variant={`${variant}.${checked ? 'checked' : 'unchecked'}`}
+      variant={variant}
       variantKey={variantKey}
+      opacity={disabled ? 0.5 : 1}
       display="inline-flex"
       width={28}
       height={16}
       borderRadius="full"
       borderStyle="solid"
       borderWidth={1}
-      mr={hasLabel ? 2 : 0}
+      backgroundColor={checked ? 'primary' : 'muted'}
+      borderColor={checked ? 'primary' : 'muted'}
       sx={{
         transition: 'background-color 0.1s cubic-bezier(0.4, 1, 0.75, 0.9)',
 
         'input:focus ~ &': {
-          outlineWidth: 2,
+          outlineWidth: 1,
           outlineStyle: 'solid',
           outlineOffset: 2,
+          outlineColor: 'primary',
         },
 
         ...sx,
@@ -50,6 +57,8 @@ function SwitchIndicator({
       <Box
         width={12}
         height={12}
+        variantKey={variantKey}
+        variant={`${variant}.${indicatorVariant}`}
         borderRadius="full"
         backgroundColor="background"
         ml="1px"
@@ -66,26 +75,23 @@ export const Switch = React.forwardRef(
   (
     {
       checked,
-      label,
       onChange,
       disabled,
       sx,
       variantKey = 'forms',
       variant = 'switch',
-      children,
+      indicatorVariant = 'indicator',
       ...props
     }: SwitchProps,
     ref: React.Ref<HTMLInputElement>,
   ) => {
     return (
-      <Label
-        alignItems="center"
+      <Box
         display="inline-flex"
-        opacity={disabled ? 0.5 : 1}
+        position="relative"
         sx={{
           cursor: disabled ? 'not-allowed' : 'pointer',
         }}
-        position="relative"
       >
         <Input
           ref={ref}
@@ -94,7 +100,7 @@ export const Switch = React.forwardRef(
           position="absolute"
           left={0}
           top={0}
-          zIndex={1}
+          zIndex={-1}
           checked={checked}
           onChange={onChange}
           disabled={disabled}
@@ -105,10 +111,10 @@ export const Switch = React.forwardRef(
           variant={variant}
           variantKey={variantKey}
           sx={sx}
-          hasLabel={!!label}
+          disabled={disabled}
+          indicatorVariant={indicatorVariant}
         />
-        {label || children}
-      </Label>
+      </Box>
     )
   },
 )
