@@ -15,7 +15,7 @@ import {
   ShadowProps,
 } from 'styled-system'
 import { createShouldForwardProp } from '@styled-system/should-forward-prop'
-import { variant, sx } from '../Box/Box'
+import { variant, sx, VariantProps } from '../Box'
 import { css, Theme } from 'theme-ui'
 
 export const shouldForwardProp = createShouldForwardProp([
@@ -59,9 +59,8 @@ export function buttonVariant({
   return variant({ theme, variant: defaultVariant })
 }
 
-export type ButtonProps = {
-  variant?: string
-} & SpaceProps &
+export type ButtonProps = VariantProps &
+  SpaceProps &
   ColorProps &
   TypographyProps &
   BorderProps &

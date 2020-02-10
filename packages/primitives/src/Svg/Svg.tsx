@@ -2,12 +2,13 @@ import styled from '@emotion/styled'
 import { Theme, css } from 'theme-ui'
 import { SerializedStyles } from '@emotion/serialize'
 import {
-  StyledSystemProps,
   variant,
+  VariantProps,
   sx,
   shouldForwardProp,
-  styledSystemProps,
-} from '../Box/Box'
+  systemProps,
+  SystemProps,
+} from '../Box'
 
 /**
  * base
@@ -23,10 +24,7 @@ export const baseStyles = ({ theme }: { theme: Theme }): SerializedStyles =>
     display: 'block',
   })(theme)
 
-type SvgProps = {
-  variant?: string
-  variantKey?: string
-} & StyledSystemProps
+type SvgProps = VariantProps & SystemProps
 
 /**
  * Box primitive component which is the base component for
@@ -43,6 +41,6 @@ export const Svg = styled<'svg', SvgProps>('svg', {
   baseStyles,
   ({ variant: variantProp, theme, variantKey = 'svg' }) =>
     variant({ variant: variantProp, theme, variantKey }),
-  ...styledSystemProps,
+  ...systemProps,
   sx,
 )

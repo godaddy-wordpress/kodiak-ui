@@ -1,16 +1,14 @@
 import styled from '@emotion/styled'
 import {
   variant,
+  VariantProps,
   sx,
   shouldForwardProp,
-  styledSystemProps,
-  StyledSystemProps,
+  systemProps,
+  SystemProps,
 } from '../Box/Box'
 
-type LabelProps = {
-  variant?: string
-  variantKey?: string
-} & StyledSystemProps
+type LabelProps = VariantProps & SystemProps
 
 export const Label = styled<'label', LabelProps>('label', {
   shouldForwardProp,
@@ -23,6 +21,6 @@ export const Label = styled<'label', LabelProps>('label', {
   },
   ({ variant: variantProp, variantKey = 'labels', theme }) =>
     variant({ variant: variantProp, variantKey, theme }),
-  ...styledSystemProps,
+  ...systemProps,
   sx,
 )
