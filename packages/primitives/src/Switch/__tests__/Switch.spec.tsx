@@ -2,8 +2,8 @@ import * as React from 'react'
 import serializer from 'jest-emotion'
 import renderer from 'react-test-renderer'
 import { render, fireEvent } from '@testing-library/react'
-
-import { Switch } from '../Switch'
+import { Label } from '../../'
+import { Switch } from '../'
 
 expect.addSnapshotSerializer(serializer)
 
@@ -12,7 +12,10 @@ describe('Switch', () => {
     const handleChange = jest.fn()
 
     const { queryByLabelText } = render(
-      <Switch onChange={handleChange} label="the switch" />,
+      <Label>
+        <Switch onChange={handleChange} />
+        the switch
+      </Label>,
     )
     const switchControl = queryByLabelText('the switch') as HTMLElement
     expect(switchControl).toBeDefined()
@@ -22,22 +25,16 @@ describe('Switch', () => {
   })
 
   it('should render the switch', () => {
-    expect(renderer.create(<Switch label="Toggle this"></Switch>).toJSON())
+    expect(renderer.create(<Switch checked={true} />).toJSON())
       .toMatchInlineSnapshot(`
       .emotion-3 {
         box-sizing: border-box;
-        display: inline-block;
         margin: 0;
         min-width: 0;
-        opacity: 1;
         display: -webkit-inline-box;
         display: -webkit-inline-flex;
         display: -ms-inline-flexbox;
         display: inline-flex;
-        -webkit-align-items: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
         position: relative;
         cursor: pointer;
       }
@@ -59,61 +56,74 @@ describe('Switch', () => {
         color: inherit;
         background-color: transparent;
         opacity: 0;
+        height: 1px;
+        width: 100%;
         position: absolute;
         left: 0;
         top: 0;
-        z-index: 1;
       }
 
       .emotion-2 {
         box-sizing: border-box;
         margin: 0;
         min-width: 0;
-        margin-right: 8px;
+        opacity: 1;
+        -webkit-transition: background-color 0.1s cubic-bezier(0.4,1,0.75,0.9);
+        transition: background-color 0.1s cubic-bezier(0.4,1,0.75,0.9);
+        width: 28px;
+        height: 16px;
+        border-radius: full;
+        border-style: solid;
+        border-width: 1px;
         display: -webkit-inline-box;
         display: -webkit-inline-flex;
         display: -ms-inline-flexbox;
         display: inline-flex;
-        width: 28px;
-        height: 16px;
         -webkit-align-items: center;
         -webkit-box-align: center;
         -ms-flex-align: center;
         align-items: center;
-        border-radius: full;
-        border-style: solid;
-        border-width: 1px;
-        -webkit-transition: background-color 0.1s cubic-bezier(0.4,1,0.75,0.9);
-        transition: background-color 0.1s cubic-bezier(0.4,1,0.75,0.9);
       }
 
       input:focus ~ .emotion-2 {
-        outline-width: 2px;
-        outline-style: solid;
+        outline-width: 1px;
         outline-offset: 2px;
+        outline-style: solid;
+        outline-color: primary;
+      }
+
+      input:checked ~ .emotion-2 {
+        background-color: primary;
+        border-color: primary;
+      }
+
+      input:not(:checked) ~ .emotion-2 {
+        background-color: muted;
+        border-color: muted;
       }
 
       .emotion-1 {
         box-sizing: border-box;
         margin: 0;
         min-width: 0;
-        margin-left: 1px;
-        background-color: background;
+        border-radius: full;
         width: 12px;
         height: 12px;
-        border-radius: full;
-        -webkit-transform: translateX(0);
-        -ms-transform: translateX(0);
-        transform: translateX(0);
+        margin-left: 1px;
+        background-color: background;
+        -webkit-transform: translateX(calc(100% - 1px));
+        -ms-transform: translateX(calc(100% - 1px));
+        transform: translateX(calc(100% - 1px));
         -webkit-transition: -webkit-transform 0.1s cubic-bezier(0.4,1,0.75,0.9);
         -webkit-transition: transform 0.1s cubic-bezier(0.4,1,0.75,0.9);
         transition: transform 0.1s cubic-bezier(0.4,1,0.75,0.9);
       }
 
-      <label
+      <div
         className="emotion-3"
       >
         <input
+          checked={true}
           className="emotion-0"
           type="checkbox"
         />
@@ -124,8 +134,7 @@ describe('Switch', () => {
             className="emotion-1"
           />
         </div>
-        Toggle this
-      </label>
+      </div>
     `)
   })
 })
