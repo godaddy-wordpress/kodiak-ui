@@ -128,6 +128,14 @@ const forms = {
   },
 }
 
+const dialogs = {
+  borderRadius: 'default',
+  bg: 'primary',
+  dialogHeader: {},
+  dialogContent: {},
+  dialogFooter: {},
+}
+
 export const theme = {
   breakpoints,
   colors,
@@ -274,4 +282,5 @@ export const theme = {
   labels,
   inputs,
   forms,
+  modals: dialogs,
 }

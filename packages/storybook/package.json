@@ -8,6 +8,9 @@
   },
   "dependencies": {
     "@babel/core": "^7.2.2",
+    "@kodiak-ui/core": "^0.0.0",
+    "@kodiak-ui/dialog": "^0.0.0",
+    "@kodiak-ui/primitives": "^0.7.1",
     "@storybook/addon-docs": "^5.3.9",
     "@storybook/addons": "^5.3.9",
     "@storybook/preset-typescript": "^1.2.0",

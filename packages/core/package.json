@@ -1,6 +1,7 @@
 {
-  "name": "@kodiak-ui/hooks",
-  "version": "0.1.3",
+  "name": "@kodiak-ui/core",
+  "version": "0.0.0",
+  "description": "Kodiak's core package for defining functions that are used across all packages",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "source": "src/index.ts",
@@ -14,19 +15,18 @@
     "access": "public"
   },
   "scripts": {
-    "prepare": "microbundle --jsx React.createElement",
-    "watch": "microbundle watch --jsx React.createElement"
+    "prepare": "microbundle",
+    "watch": "microbundle watch"
   },
-  "peerDependencies": {
-    "react": "^16.12.0"
-  },
-  "gitHead": "4c98961b80b8acdfe605cdff52282aa73c027f15",
   "devDependencies": {
     "microbundle": "^0.11.0"
   },
   "dependencies": {
-    "@kodiak-ui/core": "^0.0.0",
+    "@emotion/serialize": "^0.11.15",
     "@kodiak-ui/dialog": "^0.0.0",
-    "@kodiak-ui/primitives": "^0.7.1"
+    "@kodiak-ui/primitives": "^0.7.1",
+    "@styled-system/should-forward-prop": "^5.1.4",
+    "styled-system": "^5.1.4",
+    "theme-ui": "^0.3.1"
   }
 }
