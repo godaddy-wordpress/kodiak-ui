@@ -4,6 +4,7 @@ const baseColors = {
   transparent: 'transparent',
   black: '#000',
   white: '#fff',
+  defaultGray: '#cbd5e1',
   blue: [null, '#0067b6', '#0076d1', '#bfddf3', '#ebf6ff'],
   green: [null, '#379a58', '#63db8b', '#dbffe7'],
   yellow: [null, '#db9600', '#ffbe33', '#fff9eb'],
@@ -30,25 +31,30 @@ const colors = {
   success: baseColors.green[2],
   warning: baseColors.yellow[2],
   danger: baseColors.red[2],
+  highlight: baseColors.blue[3],
   ...baseColors,
   grey: baseColors.gray,
 }
 
 const commonInputStyles = {
-  py: 2,
+  color: 'gray.8',
   px: 3,
+  py: 2,
   fontSize: `100%`,
   borderRadius: `default`,
+  borderColor: 'gray.3',
   appearance: `none`,
   lineHeight: `tight`,
+  '&:focus': {
+    borderColor: 'primary',
+    outline: 'none',
+  },
 }
 
 const labels = {
-  default: {
-    mb: 2,
-    fontWeight: 'bold',
-    color: 'gray.8',
-  },
+  mb: 2,
+  fontWeight: 'bold',
+  color: 'gray.8',
   inline: {
     mb: 0,
     mr: 2,
@@ -60,6 +66,7 @@ const labels = {
 }
 
 const inputs = {
+  ...commonInputStyles,
   shadow: {
     ...commonInputStyles,
     border: `none`,
@@ -97,6 +104,14 @@ const inputs = {
       borderColor: `primary`,
       backgroundColor: `white`,
     },
+    '&::placeholder': {
+      color: 'gray.5',
+    },
+  },
+  disabled: {
+    ...commonInputStyles,
+    borderColor: 'gray.2',
+    color: 'gray.5',
   },
 }
 
@@ -110,6 +125,12 @@ const switchDefaults = {
 }
 
 const forms = {
+  radio: {
+    mr: 2,
+  },
+  checkbox: {
+    mr: 2,
+  },
   select: {
     color: 'black',
     borderColor: 'gray.3',
@@ -157,7 +178,6 @@ export const theme = {
     default: '4px',
     full: '9999px',
   },
-  forms,
   text: {
     heading: {
       fontFamily: 'heading',
@@ -165,9 +185,6 @@ export const theme = {
       fontWeight: 'heading',
       fontSize: 5,
     },
-  },
-  label: {
-    ...labels.default,
   },
   layout: {
     container: {
@@ -278,4 +295,5 @@ export const theme = {
   },
   labels,
   inputs,
+  forms,
 }

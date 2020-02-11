@@ -43,7 +43,7 @@ export const shouldForwardProp = createShouldForwardProp([
   ...(shadow.propNames as string[]),
 ])
 
-export const styledSystemProps = [
+export const systemProps = [
   space,
   color,
   typography,
@@ -87,12 +87,15 @@ export function sx(props: any): SerializedStyles {
  * }
  */
 export interface VariantProps {
-  theme: Theme
   variant?: string
   variantKey?: string
 }
 
-export function variant({ variant, theme, variantKey }: VariantProps) {
+export function variant({
+  variant,
+  theme,
+  variantKey,
+}: { theme: Theme } & VariantProps) {
   return css(
     get(
       theme,
@@ -102,7 +105,7 @@ export function variant({ variant, theme, variantKey }: VariantProps) {
   )(theme)
 }
 
-export type StyledSystemProps = SpaceProps &
+export type SystemProps = SpaceProps &
   ColorProps &
   TypographyProps &
   LayoutProps &
@@ -115,9 +118,8 @@ export type StyledSystemProps = SpaceProps &
 
 type BoxProps = {
   as?: React.ElementType
-  variant?: string
-  variantKey?: string
-} & StyledSystemProps &
+} & VariantProps &
+  SystemProps &
   IntrinsicSxElements['div']
 
 /**
@@ -133,6 +135,6 @@ export const Box = styled<'div', BoxProps>('div', {
     minWidth: 0,
   },
   variant,
-  ...styledSystemProps,
+  ...systemProps,
   sx,
 )
