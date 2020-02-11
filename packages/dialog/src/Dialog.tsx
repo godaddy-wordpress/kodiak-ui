@@ -11,6 +11,7 @@ import {
   VariantProps,
   sx,
 } from '@kodiak-ui/core'
+import { VisuallyHidden } from '@kodiak-ui/primitives'
 
 type DialogProps = {
   isOpen: boolean
@@ -60,10 +61,16 @@ const StyledDialog: React.FC<DialogProps> = styled(ReachDialog)(
   sx,
 )
 
-export function Dialog({ isOpen, onDismiss, ...props }: DialogProps) {
+export function Dialog({ isOpen, onDismiss, children, ...props }: DialogProps) {
   return (
     <>
-      <StyledDialog isOpen={isOpen} onDismiss={onDismiss} {...props} />
+      <StyledDialog isOpen={isOpen} onDismiss={onDismiss} {...props}>
+        <button className="close-button" onClick={close}>
+          <VisuallyHidden>Close</VisuallyHidden>
+          <span aria-hidden>×</span>
+        </button>
+        {children}
+      </StyledDialog>
       <Global styles={globalStyles} />
     </>
   )

@@ -16,6 +16,7 @@ function DialogExample() {
         aria-label="Warning about next steps"
       >
         <p>Testing</p>
+        <a href="https://google.com">Go to google</a>
       </Dialog>
     </>
   )
