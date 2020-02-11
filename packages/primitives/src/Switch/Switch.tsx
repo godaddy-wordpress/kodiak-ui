@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { SxProps } from 'theme-ui'
-import { Box, Input } from '../'
-import { SystemProps, VariantProps } from '../Box/Box'
+import { Input } from '../Input'
+import { Box, SystemProps, VariantProps } from '../Box/Box'
 
 type SwitchProps = {
   indicatorVariant?: string
@@ -110,7 +110,7 @@ export const Switch = React.forwardRef(
           height={1}
           width={1}
           checked={checked}
-          onChange={event => !disabled && onChange && onChange(event)}
+          onChange={event => !disabled && onChange?.(event)}
           disabled={disabled}
           {...props}
         />
@@ -122,6 +122,7 @@ export const Switch = React.forwardRef(
           disabled={disabled}
           indicatorVariant={indicatorVariant}
         />
+        testing optional chaining
       </Box>
     )
   },
