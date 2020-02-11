@@ -4,7 +4,6 @@ import { Box, Input, Label } from '../'
 
 interface SwitchProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string
-  displayInForm?: boolean
   sx?: SxStyleProp
   variant?: string
   variantKey?: string

@@ -26,6 +26,7 @@ describe('Switch', () => {
       .toMatchInlineSnapshot(`
       .emotion-3 {
         box-sizing: border-box;
+        display: inline-block;
         margin: 0;
         min-width: 0;
         opacity: 1;
