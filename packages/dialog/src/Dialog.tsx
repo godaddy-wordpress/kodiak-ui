@@ -44,8 +44,9 @@ const baseStyles = ({ theme }: { theme: Theme }): SerializedStyles =>
     background: 'white',
     borderRadius: 'default',
     margin: '10vh auto',
+    maxHeight: '90vh',
     outline: 'none',
-    overflow: 'hidden',
+    overflow: 'scroll',
     padding: '0',
     width: '50vw',
   })(theme)
