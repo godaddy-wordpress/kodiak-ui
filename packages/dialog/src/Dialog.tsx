@@ -12,10 +12,11 @@ import {
   sx,
 } from '@kodiak-ui/core'
 import { VisuallyHidden } from '@kodiak-ui/primitives'
+import { DialogHeader } from './DialogHeader'
 
 type DialogProps = {
   isOpen: boolean
-  children: React.ReactNode | React.ReactNodeArray
+  children: React.ReactNode
   allowPinchZoom?: boolean
   onDismiss: () => void
 } & VariantProps &
@@ -44,6 +45,7 @@ const baseStyles = ({ theme }: { theme: Theme }): SerializedStyles =>
     borderRadius: 'default',
     margin: '10vh auto',
     outline: 'none',
+    overflow: 'hidden',
     padding: '0',
     width: '50vw',
   })(theme)
@@ -61,14 +63,27 @@ const StyledDialog: React.FC<DialogProps> = styled(ReachDialog)(
   sx,
 )
 
-export function Dialog({ isOpen, onDismiss, children, ...props }: DialogProps) {
+const StyledCloseButton = styled('button')(
+  ({ theme }: { theme: Theme }): SerializedStyles => css({})(theme),
+)
+
+export function Dialog({
+  isOpen,
+  onDismiss,
+  title,
+  children,
+  ...props
+}: DialogProps & { title?: string | React.ReactNode }) {
   return (
     <>
       <StyledDialog isOpen={isOpen} onDismiss={onDismiss} {...props}>
-        <button className="close-button" onClick={close}>
-          <VisuallyHidden>Close</VisuallyHidden>
-          <span aria-hidden>×</span>
-        </button>
+        <DialogHeader>
+          {title}
+          <StyledCloseButton className="close-button" onClick={close}>
+            <VisuallyHidden>Close</VisuallyHidden>
+            <span aria-hidden>×</span>
+          </StyledCloseButton>
+        </DialogHeader>
         {children}
       </StyledDialog>
       <Global styles={globalStyles} />

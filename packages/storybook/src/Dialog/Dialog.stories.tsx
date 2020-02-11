@@ -12,11 +12,11 @@ function DialogExample() {
       <Button onClick={() => setIsOpen(true)}>Open modal</Button>
       <Dialog
         isOpen={isOpen}
+        title="Testing"
         onDismiss={() => setIsOpen(false)}
         aria-label="Warning about next steps"
       >
-        <p>Testing</p>
-        <a href="https://google.com">Go to google</a>
+        <p>Content</p>
       </Dialog>
     </>
   )

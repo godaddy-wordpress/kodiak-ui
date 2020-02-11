@@ -116,11 +116,13 @@ export type SystemProps = SpaceProps &
   PositionProps &
   ShadowProps
 
+type IntrinicElements = Omit<IntrinsicSxElements['div'], 'color'>
+
 type BoxProps = {
   as?: React.ElementType
 } & VariantProps &
   SystemProps &
-  IntrinsicSxElements['div']
+  IntrinicElements
 
 /**
  * Box primitive component which is the base component for
