@@ -13,7 +13,7 @@ describe('Switch', () => {
 
     const { queryByLabelText } = render(
       <Label>
-        <Switch onChange={handleChange} />
+        <Switch onChange={handleChange} disabled={false} />
         the switch
       </Label>,
     )
@@ -22,6 +22,28 @@ describe('Switch', () => {
 
     fireEvent.click(switchControl)
     expect(handleChange).toBeCalledTimes(1)
+  })
+
+  it('should not allow events if disabled', () => {
+    const handleChange = jest.fn()
+
+    const { queryByLabelText } = render(
+      <Label>
+        <Switch
+          onChange={handleChange}
+          disabled
+          variantKey="forms"
+          variant="switch2"
+          indicatorVariant="indicator2"
+        />
+        the switch
+      </Label>,
+    )
+    const switchControl = queryByLabelText('the switch') as HTMLElement
+    expect(switchControl).toBeDefined()
+
+    fireEvent.click(switchControl)
+    expect(handleChange).toBeCalledTimes(0)
   })
 
   it('should render the switch', () => {
@@ -125,6 +147,7 @@ describe('Switch', () => {
         <input
           checked={true}
           className="emotion-0"
+          onChange={[Function]}
           type="checkbox"
         />
         <div
