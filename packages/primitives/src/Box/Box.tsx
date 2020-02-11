@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { css, IntrinsicSxElements, Theme } from 'theme-ui'
+import { css, IntrinsicSxElements, Theme, SxStyleProp } from 'theme-ui'
 import { SerializedStyles } from '@emotion/serialize'
 import { createShouldForwardProp } from '@styled-system/should-forward-prop'
 import {
@@ -63,8 +63,19 @@ export const systemProps = [
  *
  * @param props any
  */
-export function sx(props: any): SerializedStyles {
-  return css(props.sx)(props.theme)
+export function sx(props: {
+  theme: Theme
+  sx?: SxStyleProp
+}): SerializedStyles {
+  return css(props.sx as any)(props.theme)
+}
+
+/**
+ * base function allow the __base property to set default values
+ * that are read from the theme but can still be overridden by theme variants
+ */
+export function base(props: { theme: Theme; __base?: SxStyleProp }) {
+  return css(props.__base as any)(props.theme)
 }
 
 /**
@@ -116,9 +127,14 @@ export type SystemProps = SpaceProps &
   PositionProps &
   ShadowProps
 
+export interface BaseProp {
+  __base?: SxStyleProp
+}
+
 type BoxProps = {
   as?: React.ElementType
-} & VariantProps &
+} & BaseProp &
+  VariantProps &
   SystemProps &
   IntrinsicSxElements['div']
 
@@ -134,6 +150,7 @@ export const Box = styled<'div', BoxProps>('div', {
     margin: 0,
     minWidth: 0,
   },
+  base,
   variant,
   ...systemProps,
   sx,
