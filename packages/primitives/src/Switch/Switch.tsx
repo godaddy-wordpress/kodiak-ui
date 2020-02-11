@@ -122,7 +122,6 @@ export const Switch = React.forwardRef(
           disabled={disabled}
           indicatorVariant={indicatorVariant}
         />
-        testing optional chaining
       </Box>
     )
   },
