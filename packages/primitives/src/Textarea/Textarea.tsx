@@ -2,12 +2,13 @@ import styled from '@emotion/styled'
 import { Theme, css } from 'theme-ui'
 import { SerializedStyles } from '@emotion/serialize'
 import {
-  SystemProps,
   variant,
+  VariantProps,
   sx,
   shouldForwardProp,
   systemProps,
-} from '../Box/Box'
+  SystemProps,
+} from '../Box'
 
 /**
  * base
@@ -31,9 +32,7 @@ export const baseStyles = ({ theme }: { theme: Theme }): SerializedStyles =>
     bg: 'transparent',
   })(theme)
 
-type InputProps = {
-  variant?: string
-} & SystemProps
+type InputProps = VariantProps & SystemProps
 
 /**
  * Box primitive component which is the base component for

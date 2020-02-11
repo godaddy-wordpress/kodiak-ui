@@ -4,7 +4,6 @@ import { Box, Input } from '../'
 import { SystemProps, VariantProps } from '../Box/Box'
 
 type SwitchProps = {
-  displayInForm?: boolean
   indicatorVariant?: string
 } & React.InputHTMLAttributes<HTMLInputElement> &
   SystemProps &

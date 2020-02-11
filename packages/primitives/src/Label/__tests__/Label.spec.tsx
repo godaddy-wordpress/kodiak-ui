@@ -12,6 +12,7 @@ describe('Label', () => {
     ).toMatchInlineSnapshot(`
       .emotion-0 {
         box-sizing: border-box;
+        display: inline-block;
         margin: 0;
         min-width: 0;
       }
@@ -35,23 +36,24 @@ describe('Label', () => {
         )
         .toJSON(),
     ).toMatchInlineSnapshot(`
-        .emotion-0 {
-          box-sizing: border-box;
-          margin: 0;
-          min-width: 0;
-          font-weight: bold;
-          color: white;
-        }
+      .emotion-0 {
+        box-sizing: border-box;
+        display: inline-block;
+        margin: 0;
+        min-width: 0;
+        font-weight: bold;
+        color: white;
+      }
 
-        <label
-          className="emotion-0"
-          htmlFor="myinput"
-        >
-          Rendering bold
-          <input
-            id="myinput"
-          />
-        </label>
+      <label
+        className="emotion-0"
+        htmlFor="myinput"
+      >
+        Rendering bold
+        <input
+          id="myinput"
+        />
+      </label>
     `)
   })
 })

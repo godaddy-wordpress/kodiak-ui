@@ -3,12 +3,13 @@ import styled from '@emotion/styled'
 import { Theme, css } from 'theme-ui'
 import { SerializedStyles } from '@emotion/serialize'
 import {
-  SystemProps,
   variant,
+  VariantProps,
   sx,
   shouldForwardProp,
   systemProps,
-} from '../Box/Box'
+  SystemProps,
+} from '../Box'
 import { Flex } from '../Flex'
 import { SvgIcon } from '../Svg'
 
@@ -35,9 +36,8 @@ export const baseStyles = ({ theme }: { theme: Theme }): SerializedStyles =>
 
 type SelectProps = {
   children: React.ReactNodeArray
-  variant?: string
-  variantKey?: string
-} & SystemProps &
+} & VariantProps &
+  SystemProps &
   React.SelectHTMLAttributes<HTMLSelectElement>
 
 export const SelectStyled = styled<'select', SelectProps>('select', {
