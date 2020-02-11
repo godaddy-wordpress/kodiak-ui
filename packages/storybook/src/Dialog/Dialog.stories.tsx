@@ -4,7 +4,7 @@ import { Button, Text } from '@kodiak-ui/primitives'
 
 export default { title: 'Dialog' }
 
-function DialogExample() {
+export function Initial() {
   const [isOpen, setIsOpen] = React.useState(false)
 
   return (
@@ -28,6 +28,22 @@ function DialogExample() {
     </>
   )
 }
-export function initial() {
-  return <DialogExample />
+
+export function FullWidth() {
+  const [isOpen, setIsOpen] = React.useState(false)
+
+  return (
+    <>
+      <Button onClick={() => setIsOpen(true)}>Open modal</Button>
+      <Dialog
+        isOpen={isOpen}
+        title="Full-width dialog example"
+        variant="fullWidth"
+        onDismiss={() => setIsOpen(false)}
+        aria-label="Warning about next steps"
+      >
+        <p>Content</p>
+      </Dialog>
+    </>
+  )
 }

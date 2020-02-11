@@ -135,6 +135,11 @@ const dialogs = {
   dialogHeader: {},
   dialogContent: {},
   dialogFooter: {},
+  fullWidth: {
+    margin: '5vh',
+    width: 'calc(100% - 10vh)',
+    height: 'calc(100% - 10vh)',
+  },
 }
 
 export const theme = {
