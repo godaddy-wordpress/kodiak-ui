@@ -16,10 +16,13 @@ type DialogHeaderProps = {
 
 const baseStyles = ({ theme }: { theme: Theme }): SerializedStyles =>
   css({
+    alignItems: 'flex-start',
     background: 'white',
     borderBottom: '1px solid',
-    borderColor: 'default',
-    padding: 2,
+    borderColor: 'muted',
+    display: 'flex',
+    justifyContent: 'space-between',
+    padding: 4,
   })(theme)
 
 export const DialogHeader = styled<'header', DialogHeaderProps>('header')(

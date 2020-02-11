@@ -32,6 +32,7 @@ const colors = {
   warning: baseColors.yellow[2],
   danger: baseColors.red[2],
   highlight: baseColors.blue[3],
+  muted: baseColors.gray[3],
   ...baseColors,
   grey: baseColors.gray,
 }
@@ -130,7 +131,7 @@ const forms = {
 
 const dialogs = {
   borderRadius: 'default',
-  bg: 'primary',
+  bg: 'white',
   dialogHeader: {},
   dialogContent: {},
   dialogFooter: {},
@@ -170,6 +171,7 @@ export const theme = {
       lineHeight: 'heading',
       fontWeight: 'heading',
       fontSize: 5,
+      mt: 0,
     },
   },
   layout: {
@@ -282,5 +284,5 @@ export const theme = {
   labels,
   inputs,
   forms,
-  modals: dialogs,
+  dialogs,
 }
