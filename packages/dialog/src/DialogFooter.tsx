@@ -22,10 +22,11 @@ const baseStyles = ({ theme }: { theme: Theme }): SerializedStyles =>
     borderColor: 'muted',
     display: 'flex',
     justifyContent: 'space-between',
+    marginTop: 'auto',
     padding: 4,
   })(theme)
 
-export const DialogFooter = styled<'header', DialogFooterProps>('header')(
+export const DialogFooter = styled<'footer', DialogFooterProps>('footer')(
   {
     boxSizing: 'border-box',
     margin: 0,

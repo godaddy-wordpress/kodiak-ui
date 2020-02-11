@@ -20,7 +20,7 @@ const baseStyles = ({ theme }: { theme: Theme }): SerializedStyles =>
     padding: 4,
   })(theme)
 
-export const DialogContent = styled<'header', DialogContentProps>('header')(
+export const DialogContent = styled<'div', DialogContentProps>('div')(
   {
     boxSizing: 'border-box',
     margin: 0,
