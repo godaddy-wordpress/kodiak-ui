@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Text, Flex, Box } from '@kodiak-ui/primitives'
+import { Text, Flex, Grid, Box } from '@kodiak-ui/primitives'
 import { useThemeUI } from 'theme-ui'
 
 export default {
@@ -28,7 +28,7 @@ function ColorSwatch({ color, colorName, ...props }: ColorSwatchProps) {
 
       <Flex ml={4} flexDirection="column" justifyContent="center">
         <Box fontWeight="bold">{colorName}</Box>
-        <Box color={'grey.5'}>{color}</Box>
+        <Box color={'gray.5'}>{color}</Box>
       </Flex>
     </Flex>
   )
@@ -56,12 +56,7 @@ function ColorSwatches({ colorsArray, colorName }: ColorSwatchesProps) {
           {colorName}
         </Text>
       </Box>
-      <Box
-        display="grid"
-        sx={{
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-        }}
-      >
+      <Grid gridTemplateColumns="repeat(auto-fit, minmax(300px, 1fr))">
         {colorsArray.map((value, index) => {
           if (colorsArray[index] === null) {
             return null
@@ -76,7 +71,7 @@ function ColorSwatches({ colorsArray, colorName }: ColorSwatchesProps) {
             />
           )
         })}
-      </Box>
+      </Grid>
     </Flex>
   )
 }
