@@ -31,6 +31,7 @@ const colors = {
   success: baseColors.green[2],
   warning: baseColors.yellow[2],
   danger: baseColors.red[2],
+  muted: baseColors.gray[3],
   highlight: baseColors.blue[3],
   muted: baseColors.gray[3],
   ...baseColors,
@@ -127,6 +128,25 @@ const forms = {
     color: 'black',
     borderColor: 'gray.3',
   },
+  switch: {
+    indicator: {
+      backgroundColor: 'background',
+    },
+  },
+  alternateSwitch: {
+    borderRadius: '2px',
+    'input:checked ~ &': {
+      backgroundColor: 'red.4',
+      borderColor: 'red.4',
+    },
+    'input:not(:checked) ~ &': {
+      backgroundColor: 'gray.5',
+      borderColor: 'gray.5',
+    },
+    indicator: {
+      backgroundColor: 'red.1',
+    },
+  },
 }
 
 const dialogs = {
@@ -169,6 +189,7 @@ export const theme = {
   radii: {
     none: '0',
     default: '4px',
+    full: '9999px',
   },
   text: {
     heading: {
