@@ -1,7 +1,6 @@
 const breakpoints = ['640px', '768px', '1024px', '1280px']
 
 const baseColors = {
-  transparent: 'transparent',
   black: '#000',
   white: '#fff',
   defaultGray: '#cbd5e1',
@@ -22,9 +21,12 @@ const baseColors = {
     '#485f6f', // ink2
     '#1c384e', // ink1
   ],
+  transparent: 'transparent',
 }
 
 const colors = {
+  ...baseColors,
+  grey: baseColors.gray,
   text: baseColors.ink[1],
   background: baseColors.white,
   primary: baseColors.blue[2],
@@ -33,8 +35,6 @@ const colors = {
   danger: baseColors.red[2],
   muted: baseColors.gray[3],
   highlight: baseColors.blue[3],
-  ...baseColors,
-  grey: baseColors.gray,
 }
 
 const commonInputStyles = {
@@ -146,6 +146,20 @@ const forms = {
       backgroundColor: 'red.1',
     },
   },
+}
+
+// Tailwind shadows
+const shadows = {
+  inner: 'inset 0 2px 4px 0 rgba(0,0,0,.06) !important',
+  'shadow-xs': '0 0 0 1px rgba(0, 0, 0, 0.05)',
+  default: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
+  sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+  md: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+  lg: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+  xl:
+    '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+  '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+  outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
 }
 
 export const theme = {
@@ -280,19 +294,20 @@ export const theme = {
       textAlign: 'left',
       borderBottomStyle: 'solid',
       borderBottomWidth: 1,
-      borderBottomColor: 'grey.2',
+      borderBottomColor: 'gray.2',
       padding: 2,
-      backgroundColor: 'grey.0',
+      backgroundColor: 'gray.0',
     },
     td: {
       textAlign: 'left',
       borderBottomStyle: 'solid',
       borderBottomWidth: 1,
-      borderBottomColor: 'grey.1',
+      borderBottomColor: 'gray.1',
       padding: 2,
     },
   },
   labels,
   inputs,
+  shadows,
   forms,
 }
