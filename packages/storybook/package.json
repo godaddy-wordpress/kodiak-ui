@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/storybook",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "private": true,
   "scripts": {
     "storybook": "start-storybook -p 9009",
@@ -26,6 +26,7 @@
     "ts-loader": "^6.2.1"
   },
   "devDependencies": {
-    "@storybook/addon-a11y": "^5.3.12"
+    "@storybook/addon-a11y": "^5.3.12",
+    "@babel/plugin-proposal-optional-chaining": "^7.8.3"
   }
 }

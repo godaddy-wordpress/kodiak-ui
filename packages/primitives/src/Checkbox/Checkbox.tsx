@@ -1,13 +1,12 @@
 import * as React from 'react'
-import { Box, StyledSystemProps } from '../Box/Box'
+import { Box, SystemProps, VariantProps } from '../Box'
 import { SvgIcon } from '../Svg'
 import { Input } from '../Input'
 
 type InputProps = {
-  variant?: string
-  variantKey?: string
   sx?: object
-} & StyledSystemProps &
+} & VariantProps &
+  SystemProps &
   React.InputHTMLAttributes<HTMLInputElement>
 
 type CheckboxIcon = Pick<InputProps, 'sx' | 'variant' | 'variantKey'>
