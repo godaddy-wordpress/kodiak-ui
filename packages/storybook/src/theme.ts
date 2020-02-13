@@ -148,6 +148,19 @@ const forms = {
   },
 }
 
+const dialogs = {
+  borderRadius: 'default',
+  bg: 'white',
+  dialogHeader: {},
+  dialogContent: {},
+  dialogFooter: {},
+  fullWidth: {
+    margin: '5vh',
+    width: 'calc(100% - 10vh)',
+    height: 'calc(100% - 10vh)',
+  },
+}
+
 // Tailwind shadows
 const shadows = {
   inner: 'inset 0 2px 4px 0 rgba(0,0,0,.06) !important',
@@ -197,6 +210,7 @@ export const theme = {
       lineHeight: 'heading',
       fontWeight: 'heading',
       fontSize: 5,
+      mt: 0,
     },
   },
   layout: {
@@ -310,4 +324,5 @@ export const theme = {
   inputs,
   shadows,
   forms,
+  dialogs,
 }

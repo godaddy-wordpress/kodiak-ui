@@ -1,31 +1,14 @@
 import styled from '@emotion/styled'
 import { SerializedStyles } from '@emotion/serialize'
 import {
-  space,
-  SpaceProps,
-  color,
-  ColorProps,
-  typography,
-  TypographyProps,
-  border,
-  BorderProps,
-  position,
-  PositionProps,
-  shadow,
-  ShadowProps,
-} from 'styled-system'
-import { createShouldForwardProp } from '@styled-system/should-forward-prop'
-import { variant, sx, VariantProps } from '../Box'
+  variant,
+  sx,
+  VariantProps,
+  systemProps,
+  SystemProps,
+  shouldForwardProp,
+} from '@kodiak-ui/core'
 import { css, Theme } from 'theme-ui'
-
-export const shouldForwardProp = createShouldForwardProp([
-  ...(space.propNames as string[]),
-  ...(color.propNames as string[]),
-  ...(typography.propNames as string[]),
-  ...(border.propNames as string[]),
-  ...(position.propNames as string[]),
-  ...(shadow.propNames as string[]),
-])
 
 /**
  * base
@@ -59,13 +42,7 @@ export function buttonVariant({
   return variant({ theme, variant: defaultVariant })
 }
 
-export type ButtonProps = VariantProps &
-  SpaceProps &
-  ColorProps &
-  TypographyProps &
-  BorderProps &
-  PositionProps &
-  ShadowProps
+export type ButtonProps = VariantProps & SystemProps
 
 /**
  * Button primitive component
@@ -85,11 +62,6 @@ export const Button = styled<'button', ButtonProps>('button', {
   },
   base,
   buttonVariant,
-  space,
-  color,
-  typography,
-  border,
-  position,
-  shadow,
+  ...systemProps,
   sx,
 )

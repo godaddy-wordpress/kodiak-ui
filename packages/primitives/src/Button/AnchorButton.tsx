@@ -1,14 +1,6 @@
 import styled from '@emotion/styled'
-import {
-  space,
-  color,
-  typography,
-  border,
-  position,
-  shadow,
-} from 'styled-system'
-import { sx } from '../Box/Box'
-import { ButtonProps, shouldForwardProp, base, buttonVariant } from './Button'
+import { ButtonProps, base, buttonVariant } from './Button'
+import { shouldForwardProp, sx, systemProps } from '@kodiak-ui/core'
 
 /**
  * AnchorButton primitive component
@@ -28,11 +20,6 @@ export const AnchorButton = styled<'a', ButtonProps>('a', {
   },
   base,
   buttonVariant,
-  space,
-  color,
-  typography,
-  border,
-  position,
-  shadow,
+  ...systemProps,
   sx,
 )

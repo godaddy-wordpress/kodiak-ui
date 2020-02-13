@@ -1,5 +1,4 @@
-import styled from '@emotion/styled'
-import { css, IntrinsicSxElements, Theme, SxStyleProp } from 'theme-ui'
+import { css, Theme } from 'theme-ui'
 import { SerializedStyles } from '@emotion/serialize'
 import { createShouldForwardProp } from '@styled-system/should-forward-prop'
 import {
@@ -43,6 +42,17 @@ export const shouldForwardProp = createShouldForwardProp([
   ...(shadow.propNames as string[]),
 ])
 
+export type SystemProps = SpaceProps &
+  ColorProps &
+  TypographyProps &
+  LayoutProps &
+  FlexboxProps &
+  GridProps &
+  BackgroundProps &
+  BorderProps &
+  PositionProps &
+  ShadowProps
+
 export const systemProps = [
   space,
   color,
@@ -63,19 +73,8 @@ export const systemProps = [
  *
  * @param props any
  */
-export function sx(props: {
-  theme: Theme
-  sx?: SxStyleProp
-}): SerializedStyles {
-  return css(props.sx as any)(props.theme)
-}
-
-/**
- * base function allow the __base property to set default values
- * that are read from the theme but can still be overridden by theme variants
- */
-export function base(props: { theme: Theme; __base?: SxStyleProp }) {
-  return css(props.__base as any)(props.theme)
+export function sx(props: any): SerializedStyles {
+  return css(props.sx)(props.theme)
 }
 
 /**
@@ -115,45 +114,3 @@ export function variant({
     ),
   )(theme)
 }
-
-export type SystemProps = SpaceProps &
-  ColorProps &
-  TypographyProps &
-  LayoutProps &
-  FlexboxProps &
-  GridProps &
-  BackgroundProps &
-  BorderProps &
-  PositionProps &
-  ShadowProps
-
-type IntrinicElements = Omit<IntrinsicSxElements['div'], 'color'>
-
-export interface BaseProp {
-  __base?: SxStyleProp
-}
-
-type BoxProps = {
-  as?: React.ElementType
-} & BaseProp &
-  VariantProps &
-  SystemProps &
-  IntrinicElements
-
-/**
- * Box primitive component which is the base component for
- * all components in Kodiak
- */
-export const Box = styled<'div', BoxProps>('div', {
-  shouldForwardProp,
-})(
-  {
-    boxSizing: 'border-box',
-    margin: 0,
-    minWidth: 0,
-  },
-  base,
-  variant,
-  ...systemProps,
-  sx,
-)
