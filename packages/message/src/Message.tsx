@@ -2,6 +2,12 @@ import * as React from 'react'
 
 type MessageType = 'polite' | 'assertive'
 
-export function Message() {
+type MessageProps = {
+  children: React.ReactNode
+  type: MessageType
+  onDismiss: () => void
+}
+
+export function Message(props: MessageProps) {
   return <div>Testing</div>
 }
