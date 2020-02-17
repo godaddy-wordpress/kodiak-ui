@@ -4,8 +4,8 @@ type MessageType = 'polite' | 'assertive'
 
 type MessageProps = {
   children: React.ReactNode
-  type: MessageType
-  onDismiss: () => void
+  type?: MessageType
+  onDismiss?: () => void
 }
 
 export function Message({ children, ...props }: MessageProps) {
