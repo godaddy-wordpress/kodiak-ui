@@ -8,6 +8,6 @@ type MessageProps = {
   onDismiss: () => void
 }
 
-export function Message(props: MessageProps) {
-  return <div>Testing</div>
+export function Message({ children, ...props }: MessageProps) {
+  return <div {...props}>{children}</div>
 }
