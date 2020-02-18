@@ -161,6 +161,50 @@ const dialogs = {
   },
 }
 
+const baseMessageStyles = {
+  bg: baseColors.gray[8],
+  color: baseColors.white,
+  fontSize: 1,
+}
+
+const messages = {
+  ...baseMessageStyles,
+  warning: {
+    ...baseMessageStyles,
+    borderLeftColor: baseColors.yellow[2],
+  },
+  danger: {
+    ...baseMessageStyles,
+    borderLeftColor: baseColors.red[2],
+  },
+}
+
+const baseBannerMessageStyles = {
+  ...baseMessageStyles,
+  borderRadius: '0',
+  borderColor: 'primary',
+  borderStyle: 'solid',
+  borderWidth: '2px',
+  display: 'flex',
+  lineHeight: '14px', // Need to come up with something better here that is based on the scale
+  minHeight: 48,
+  maxHeight: 48,
+  textAlign: 'center',
+  maxWidth: '100%',
+}
+
+const bannerMessages = {
+  ...baseBannerMessageStyles,
+  warning: {
+    ...baseBannerMessageStyles,
+    borderColor: baseColors.yellow[2],
+  },
+  danger: {
+    ...baseBannerMessageStyles,
+    borderColor: baseColors.red[2],
+  },
+}
+
 // Tailwind shadows
 const shadows = {
   inner: 'inset 0 2px 4px 0 rgba(0,0,0,.06) !important',
@@ -325,4 +369,6 @@ export const theme = {
   shadows,
   forms,
   dialogs,
+  messages,
+  bannerMessages,
 }

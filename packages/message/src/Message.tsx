@@ -1,12 +1,6 @@
 import * as React from 'react'
-import styled from '@emotion/styled'
-import {
-  systemProps,
-  SystemProps,
-  variant,
-  VariantProps,
-  sx,
-} from '@kodiak-ui/core'
+import { SystemProps, VariantProps } from '@kodiak-ui/core'
+import { Box } from '@kodiak-ui/primitives'
 
 type MessageType = 'polite' | 'assertive'
 
@@ -18,24 +12,34 @@ type MessageProps = {
   VariantProps &
   SystemProps
 
-const MessageContainer = styled('div')(
-  ({ variant: variantProp, variantKey = 'messages', theme }) =>
-    variant({ variant: variantProp, theme, variantKey }),
-  ...systemProps,
-  sx,
-)
-
 export const Message = React.forwardRef<HTMLDivElement, MessageProps>(
-  function Message({ children, type = 'polite', ...props }, forwardedRef) {
+  function Message(
+    { children, type = 'polite', variantKey = 'messages', ...props },
+    forwardedRef,
+  ) {
     return (
-      <MessageContainer
-        {...props}
+      <Box
+        __base={{
+          alignItems: 'center',
+          bg: 'highlight',
+          borderLeftStyle: 'solid',
+          borderLeftWidth: t => t.space[2],
+          borderLeftColor: 'primary',
+          borderRadius: 'default',
+          display: 'inline-flex',
+          maxWidth: 636,
+          minWidth: 370,
+          minHeight: 64,
+          padding: 4,
+        }}
         ref={forwardedRef}
         role={type === 'assertive' ? 'alert' : 'status'}
         aria-live={type}
+        variantKey={variantKey}
+        {...props}
       >
         {children}
-      </MessageContainer>
+      </Box>
     )
   },
 )
