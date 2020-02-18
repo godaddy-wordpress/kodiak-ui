@@ -23,3 +23,11 @@ export function MultiLine() {
     </Message>
   )
 }
+
+export function Dismissible() {
+  return (
+    <Message onDismiss={() => alert('Dismissing')}>
+      Testing a dismissible message
+    </Message>
+  )
+}

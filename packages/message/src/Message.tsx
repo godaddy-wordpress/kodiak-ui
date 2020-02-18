@@ -14,7 +14,7 @@ type MessageProps = {
 
 export const Message = React.forwardRef<HTMLDivElement, MessageProps>(
   function Message(
-    { children, type = 'polite', variantKey = 'messages', ...props },
+    { children, type = 'polite', onDismiss, variantKey = 'messages', ...props },
     forwardedRef,
   ) {
     return (
@@ -27,6 +27,7 @@ export const Message = React.forwardRef<HTMLDivElement, MessageProps>(
           borderLeftColor: 'primary',
           borderRadius: 'default',
           display: 'inline-flex',
+          justifyContent: 'space-between',
           maxWidth: 636,
           minWidth: 370,
           minHeight: 64,
@@ -38,7 +39,8 @@ export const Message = React.forwardRef<HTMLDivElement, MessageProps>(
         variantKey={variantKey}
         {...props}
       >
-        {children}
+        <Box>{children}</Box>
+        {onDismiss ? <button onClick={onDismiss}>Dismiss</button> : null}
       </Box>
     )
   },
