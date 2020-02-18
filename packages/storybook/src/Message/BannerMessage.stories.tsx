@@ -22,3 +22,11 @@ export function Danger() {
     </Message>
   )
 }
+
+export function Dismissible() {
+  return (
+    <Message variantKey="bannerMessages" onDismiss={() => alert('Dismissing')}>
+      A dismissible banner message
+    </Message>
+  )
+}

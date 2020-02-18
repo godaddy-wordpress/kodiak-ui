@@ -186,6 +186,7 @@ const baseBannerMessageStyles = {
   borderStyle: 'solid',
   borderWidth: '2px',
   display: 'flex',
+  justifyContent: 'center',
   lineHeight: '14px', // Need to come up with something better here that is based on the scale
   minHeight: 48,
   maxHeight: 48,
@@ -295,6 +296,11 @@ export const theme = {
       border: '1px solid',
       borderColor: baseColors.ink[4],
       color: baseColors.ink[1],
+    },
+    shadow: {
+      bg: 'transparent',
+      padding: '0',
+      border: 'none',
     },
   },
   links: {
