@@ -19,7 +19,7 @@ export function variant() {
   return (
     <>
       <Button mr={2}>Default</Button>
-      <Button variant="buttons.secondary">Secondary button</Button>
+      <Button variant="secondary">Secondary button</Button>
     </>
   )
 }

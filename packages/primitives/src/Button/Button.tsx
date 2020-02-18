@@ -32,15 +32,12 @@ export function base({ theme }: { theme: Theme }): SerializedStyles {
   })(theme)
 }
 
-export function buttonVariant({
+export const buttonVariant = ({
+  variant: variantProp,
+  variantKey = 'buttons',
   theme,
-  variant: defaultVariant = 'buttons.primary',
-}: {
-  theme: Theme
-  variant?: string
-}) {
-  return variant({ theme, variant: defaultVariant })
-}
+}: { theme: Theme } & VariantProps) =>
+  variant({ variant: variantProp, theme, variantKey })
 
 export type ButtonProps = VariantProps & SystemProps
 

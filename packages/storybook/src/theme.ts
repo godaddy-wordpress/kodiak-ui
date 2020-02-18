@@ -206,6 +206,21 @@ const bannerMessages = {
   },
 }
 
+const buttons = {
+  secondary: {
+    bg: 'transparent',
+    border: '1px solid',
+    borderColor: baseColors.ink[4],
+    color: baseColors.ink[1],
+  },
+  shadow: {
+    bg: 'transparent',
+    color: baseColors.ink[1],
+    padding: '0',
+    border: 'none',
+  },
+}
+
 // Tailwind shadows
 const shadows = {
   inner: 'inset 0 2px 4px 0 rgba(0,0,0,.06) !important',
@@ -290,19 +305,6 @@ export const theme = {
       p: 4,
     },
   },
-  buttons: {
-    secondary: {
-      bg: 'transparent',
-      border: '1px solid',
-      borderColor: baseColors.ink[4],
-      color: baseColors.ink[1],
-    },
-    shadow: {
-      bg: 'transparent',
-      padding: '0',
-      border: 'none',
-    },
-  },
   links: {
     a: {
       fontFamily: 'body',
@@ -377,4 +379,5 @@ export const theme = {
   dialogs,
   messages,
   bannerMessages,
+  buttons,
 }
