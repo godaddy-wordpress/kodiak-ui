@@ -20,7 +20,7 @@ type DialogProps = {
   isOpen?: boolean
   children?: React.ReactNode
   allowPinchZoom?: boolean
-  style?: any
+  style?: React.CSSProperties
   onDismiss?: () => void
 } & VariantProps &
   SystemProps
