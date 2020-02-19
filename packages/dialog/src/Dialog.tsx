@@ -53,7 +53,7 @@ const containerStyles = ({ theme }: { theme: Theme }): SerializedStyles =>
     margin: '10vh auto',
     maxHeight: '70vh',
     outline: 'none',
-    overflow: 'scroll',
+    overflow: 'auto',
     padding: '0',
     width: '50vw',
   })(theme)
