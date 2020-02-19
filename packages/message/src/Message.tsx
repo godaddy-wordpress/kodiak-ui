@@ -57,7 +57,11 @@ export const Message = React.forwardRef<HTMLDivElement, MessageProps>(
           {children}
         </Flex>
         {onDismiss ? (
-          <Button variant="shadow" onClick={onDismiss}>
+          <Button
+            variant="shadow"
+            onClick={onDismiss}
+            data-testid="messageDismiss"
+          >
             <VisuallyHidden>
               {dismissLabel ? dismissLabel : 'Dismiss message'}
             </VisuallyHidden>
