@@ -53,7 +53,7 @@ export const Message = React.forwardRef<HTMLDivElement, MessageProps>(
         variantKey={variantKey}
         {...props}
       >
-        <Flex alignItems="center" mr={4}>
+        <Flex alignItems="center" flexGrow={1} mr={4}>
           {children}
         </Flex>
         {onDismiss ? (
