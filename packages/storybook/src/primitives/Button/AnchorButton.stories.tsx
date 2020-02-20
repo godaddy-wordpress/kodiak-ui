@@ -19,7 +19,7 @@ export function variant() {
   return (
     <>
       <AnchorButton mr={2}>Default Anchorbutton</AnchorButton>
-      <AnchorButton href="#" variant="buttons.secondary">
+      <AnchorButton href="#" variant="secondary">
         Secondary AnchorButton
       </AnchorButton>
     </>

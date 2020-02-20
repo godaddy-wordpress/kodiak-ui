@@ -7,9 +7,9 @@
     "lint": "eslint './packages/**/*.{js,jsx,ts,tsx}'",
     "test": "jest --coverage",
     "storybook": "yarn workspace @kodiak-ui/storybook storybook",
-    "lerna:prepare": "lerna run prepare",
-    "lerna:clean": "lerna run clean",
-    "lerna:watch": "lerna run watch"
+    "prepare": "lerna run prepare",
+    "clean": "lerna run clean",
+    "watch": "lerna run watch"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.0.2",
