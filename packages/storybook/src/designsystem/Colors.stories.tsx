@@ -52,19 +52,19 @@ type ColorSwatchesProps = {
 } & React.ComponentProps<typeof Flex>
 
 function ColorSwatches({ colorsArray, colorName }: ColorSwatchesProps) {
-  const borderLeftColor = colorsArray
-    .sort(function darkestColorForSort(color1, color2) {
-      try {
-        const color1Hsl = parseToHsl(color1)
-        const color2Hsl = parseToHsl(color2)
+  const borderLeftColor = [...colorsArray].sort(function darkestColorForSort(
+    color1,
+    color2,
+  ) {
+    try {
+      const color1Hsl = parseToHsl(color1)
+      const color2Hsl = parseToHsl(color2)
 
-        return color1Hsl.lightness - color2Hsl.lightness
-      } catch (error) {
-        return -1
-      }
-    })
-
-    .find(color => !!color)
+      return color1Hsl.lightness - color2Hsl.lightness
+    } catch (error) {
+      return -1
+    }
+  })[0]
 
   return (
     <Flex flexDirection="column" key={colorName} width="100%">
