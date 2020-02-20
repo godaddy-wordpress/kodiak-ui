@@ -29,6 +29,13 @@ function ColorSwatch({ color, colorName, ...props }: ColorSwatchProps) {
         width={96}
         boxShadow="lg"
         borderRadius="default"
+        sx={{
+          transition: 'all 0.2s ease-in-out',
+          '&:hover': {
+            transform: 'scale(1.2)',
+          },
+        }}
+        onClick={() => navigator.clipboard.writeText(color)}
       />
 
       <Flex ml={4} flexDirection="column" justifyContent="center">
@@ -218,10 +225,10 @@ export function NearestThemeColor() {
           label="Find the nearest theme colors"
           name="color"
           ref={register({ required: false })}
-          aria-describedby="error-first-name-required"
+          aria-describedby="error-color"
         ></Field>
         {color && !nearestColors && (
-          <FieldError id="error-first-name-required">
+          <FieldError id="error-color">
             Please enter a valid color (including # for hex)
           </FieldError>
         )}
