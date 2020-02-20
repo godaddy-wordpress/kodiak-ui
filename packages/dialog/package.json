@@ -32,7 +32,6 @@
     "@kodiak-ui/core": "^0.1.6",
     "@kodiak-ui/primitives": "^0.8.2",
     "@reach/dialog": "^0.8.2",
-    "raw.macro": "^0.3.0",
     "theme-ui": "^0.3.1"
   }
 }
