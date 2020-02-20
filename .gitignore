@@ -13,3 +13,5 @@ package-lock.json
 .rts2_cache_umd*
 
 .docz*
+
+storybook-static
