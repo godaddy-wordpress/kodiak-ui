@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "storybook": "start-storybook -p 9009",
-    "build-storybook": "build-storybook -c .storybook -o ../storybook-static"
+    "build-storybook": "build-storybook -c .storybook -o ../../storybook-static"
   },
   "dependencies": {
     "@babel/core": "^7.2.2",
