@@ -28,7 +28,7 @@
     "@emotion/core": "^10.0.27",
     "@emotion/serialize": "^0.11.15",
     "@emotion/styled": "^10.0.27",
-    "@kodiak-ui/core": "^0.1.0",
+    "@kodiak-ui/core": "^0.1.6",
     "@kodiak-ui/primitives": "^0.8.0",
     "theme-ui": "^0.3.1"
   }
