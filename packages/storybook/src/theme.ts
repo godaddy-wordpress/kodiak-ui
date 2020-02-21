@@ -10,6 +10,11 @@ const baseColors = {
   red: [null, '#c42020', '#e12f2f', '#ff8c8c', '#ffe5e5'],
   sky: [null, '#f7f9fb', '#e3e9f0', '#cbd5e1', '#b3c2d3'],
   ink: [null, '#1c384e', '#485f6f', '#65778b', '#8694a7'],
+  cyan: [null, '#cbf4fb', '#25afc6', '#0a6e80'],
+  magenta: [null, '#fadbe4', '#eb4a83', '#bc1b53'],
+  purple: [null, '#e0dcf4', '#8e7dd4', '#6047c2'],
+  pink: [null, '#f4dceb', '#d770b3', '#af3183'],
+  orange: [null, '#ffe8d2', '#d96b30', '#a84f00'],
   gray: [
     null,
     '#f7f9fb', // sky1

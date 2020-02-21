@@ -123,7 +123,7 @@ function deepMapKeys({
     visitorfunction({ value: obj, key, parentKeys })
   } else {
     if (obj) {
-      Object.keys(obj).map(objectKey => {
+      Object.keys(obj).forEach(objectKey => {
         deepMapKeys({
           obj: obj[objectKey],
           visitorfunction,
