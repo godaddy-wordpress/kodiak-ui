@@ -15,8 +15,8 @@
     "access": "public"
   },
   "scripts": {
-    "prepare": "microbundle",
-    "watch": "microbundle watch"
+    "prepare": "microbundle -f es",
+    "watch": "microbundle -f es -watch"
   },
   "peerDependencies": {
     "@emotion/core": "^10.0.27",
