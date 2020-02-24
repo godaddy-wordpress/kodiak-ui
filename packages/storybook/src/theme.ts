@@ -253,6 +253,7 @@ export const theme = {
   fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 96],
   fontWeights: {
     body: 400,
+    medium: 500,
     heading: 700,
     bold: 700,
   },
@@ -385,4 +386,8 @@ export const theme = {
   messages,
   bannerMessages,
   buttons,
+  menuitem: {
+    color: 'blue.2',
+    textDecoration: 'none',
+  },
 }

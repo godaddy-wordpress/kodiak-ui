@@ -7,9 +7,14 @@ import {
   SystemProps,
   systemProps,
   shouldForwardProp,
+  base,
+  BaseProps,
 } from '../Box'
 
-type LinkProps = VariantProps & SystemProps & IntrinsicSxElements['a']
+type LinkProps = VariantProps &
+  SystemProps &
+  IntrinsicSxElements['a'] &
+  BaseProps
 
 export const Link = styled<'a', LinkProps>('a', {
   shouldForwardProp,
@@ -19,6 +24,7 @@ export const Link = styled<'a', LinkProps>('a', {
     margin: 0,
     minWidth: 0,
   },
+  base,
   ({ variant: variantProp = 'a', variantKey = 'links', theme }) =>
     variant({ variant: variantProp, variantKey, theme }),
   ...systemProps,
