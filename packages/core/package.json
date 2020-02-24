@@ -15,8 +15,8 @@
     "access": "public"
   },
   "scripts": {
-    "prepare": "microbundle",
-    "watch": "microbundle watch"
+    "prepare": "microbundle -f es",
+    "watch": "microbundle --watch -f es"
   },
   "devDependencies": {
     "microbundle": "^0.11.0"

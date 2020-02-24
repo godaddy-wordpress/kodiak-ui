@@ -14,8 +14,8 @@
     "access": "public"
   },
   "scripts": {
-    "prepare": "microbundle --jsx React.createElement",
-    "watch": "microbundle watch --jsx React.createElement"
+    "prepare": "microbundle --jsx React.createElement -f es",
+    "watch": "microbundle watch --jsx React.createElement -f es"
   },
   "peerDependencies": {
     "react": "^16.12.0"
