@@ -6,10 +6,9 @@ import { Link } from '../Link'
 type MenuItemProps = {
   children: React.ReactNode
   isCurrent?: boolean
-  dismissLabel?: string
-  onDismiss?: () => void
-  as?: React.ElementType
   href?: string
+  rel?: HTMLAnchorElement['rel']
+  as?: React.ElementType
 } & React.HTMLAttributes<HTMLDivElement> &
   VariantProps &
   SystemProps
@@ -23,6 +22,7 @@ export const MenuItem = React.forwardRef<HTMLDivElement, MenuItemProps>(
       variant,
       as: renderAs = 'a',
       href,
+      rel,
       ...props
     },
     forwardedRef,
@@ -44,11 +44,12 @@ export const MenuItem = React.forwardRef<HTMLDivElement, MenuItemProps>(
               }}
               href={href}
               aria-current={isCurrent}
+              rel={rel}
             >
               {children}
             </Link>
           )}
-          {renderAs !== 'a' && <>{children}</>}
+          {renderAs !== 'a' && <Box as={renderAs}>{children}</Box>}
         </li>
       </Box>
     )
