@@ -74,6 +74,11 @@ export function sx(props: {
  * base function allow the __base property to set default values
  * that are read from the theme but can still be overridden by theme variants
  */
+
+export type BaseProps = {
+  __base?: SxStyleProp
+}
+
 export function base(props: { theme: Theme; __base?: SxStyleProp }) {
   return css(props.__base as any)(props.theme)
 }
