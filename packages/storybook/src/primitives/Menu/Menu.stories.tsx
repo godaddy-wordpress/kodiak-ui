@@ -13,43 +13,44 @@ export function Basic() {
   )
 }
 
-type StyledMenuItemProps = React.ComponentProps<typeof MenuItem>
-
-function StyledMenuItem({
-  isCurrent,
-  children,
-  sx,
-  ...props
-}: StyledMenuItemProps) {
-  return (
-    <MenuItem
-      borderLeftWidth="4px"
-      borderLeftStyle="solid"
-      borderLeftColor={isCurrent ? 'blue.1' : 'transparent'}
-      backgroundColor={isCurrent ? 'sky.1' : 'transparent'}
-      sx={{
-        cursor: 'pointer',
-        ...sx,
-      }}
-      pl={7}
-      py={4}
-      isCurrent={isCurrent}
-      {...props}
-    >
-      {children}
-    </MenuItem>
-  )
-}
-
-const menuItems = [
-  { description: 'Item 0' },
-  { description: 'Item 1' },
-  { description: 'Item 2 (disabled)', isDisabled: true },
-  { description: 'Item 3', href: '#' },
-]
-
 export function SampleStyledMenu() {
   const [selectedIndex, setSelectedIndex] = React.useState(0)
+
+  const menuItems = [
+    { description: 'Item 0' },
+    { description: 'Item 1' },
+    { description: 'Item 2 (disabled)', isDisabled: true },
+    { description: 'Item 3', href: '#' },
+  ]
+
+  type StyledMenuItemProps = React.ComponentProps<typeof MenuItem>
+
+  function StyledMenuItem({
+    isCurrent,
+    children,
+    sx,
+    ...props
+  }: StyledMenuItemProps) {
+    return (
+      <MenuItem
+        borderLeftWidth="4px"
+        borderLeftStyle="solid"
+        borderLeftColor={isCurrent ? 'blue.1' : 'transparent'}
+        backgroundColor={isCurrent ? 'sky.1' : 'transparent'}
+        sx={{
+          cursor: 'pointer',
+          ...sx,
+        }}
+        pl={7}
+        py={4}
+        isCurrent={isCurrent}
+        {...props}
+      >
+        {children}
+      </MenuItem>
+    )
+  }
+
   return (
     <Menu aria-label="Sample styled menu">
       {menuItems.map((menuItem, index) => (
