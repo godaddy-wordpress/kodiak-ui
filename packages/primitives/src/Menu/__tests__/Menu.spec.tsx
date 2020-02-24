@@ -48,43 +48,43 @@ describe('Menu', () => {
         )
         .toJSON(),
     ).toMatchInlineSnapshot(`
-      .emotion-1 {
-        box-sizing: border-box;
-        margin: 0;
-        min-width: 0;
-      }
+.emotion-1 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+}
 
-      .emotion-0 {
-        border: 0;
-        -webkit-clip: rect(0 0 0 0);
-        clip: rect(0 0 0 0);
-        height: 1px;
-        margin: -1px;
-        overflow: hidden;
-        padding: 0;
-        position: absolute;
-        width: 1px;
-        white-space: nowrap;
-        word-wrap: normal;
-      }
+.emotion-0 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
 
-      <div
-        className="emotion-1"
+<div
+  className="emotion-1"
+>
+  <li>
+    <span
+      className="emotion-1"
+    >
+      <span
+        className="emotion-0"
       >
-        <li>
-          <span
-            className="emotion-1"
-          >
-            <span
-              className="emotion-0"
-            >
-              Current category: 
-            </span>
-            Product announcements
-          </span>
-        </li>
-      </div>
-    `)
+        Current category: 
+      </span>
+      Product announcements
+    </span>
+  </li>
+</div>
+`)
   })
 
   it('should render the MenuItems', () => {
