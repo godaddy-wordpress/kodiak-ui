@@ -249,7 +249,7 @@ export function ResponsiveHorizontalMenu() {
         {menuItems.map((menuItem, index) => {
           const isCurrent = selectedIndex === index
           return (
-            <MenuItem key={menuItem.description}>
+            <MenuItem key={menuItem.description} sx={{ pl: 6, py: 4 }}>
               <Link
                 onClick={() => setSelectedIndex(index)}
                 onKeyDown={event => {
@@ -259,8 +259,6 @@ export function ResponsiveHorizontalMenu() {
                 }}
                 aria-current={isCurrent}
                 sx={{
-                  pl: 6,
-                  py: 4,
                   textDecoration: 'none',
                   borderRadius: 'default',
                   cursor: 'pointer',
