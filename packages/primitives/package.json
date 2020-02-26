@@ -16,7 +16,7 @@
   },
   "scripts": {
     "prepare": "microbundle -f es,cjs",
-    "watch": "microbundle --watch -f es,cjs"
+    "watch": "microbundle --watch -f es"
   },
   "peerDependencies": {
     "@emotion/core": "^10.0.27",
