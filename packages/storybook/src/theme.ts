@@ -157,6 +157,7 @@ const dialogs = {
   borderRadius: 'default',
   bg: 'white',
   dialogHeader: {},
+  dialogHeaderCloseIcon: { color: 'gray.5' },
   dialogContent: {},
   dialogFooter: {},
   fullWidth: {
