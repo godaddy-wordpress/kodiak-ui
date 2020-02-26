@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { SystemProps, VariantProps } from '@kodiak-ui/core'
 import { Box } from '../Box'
 import { Link } from '../Link'
 
@@ -7,22 +6,17 @@ type MenuItemProps = {
   children: React.ReactNode
   isCurrent?: boolean
   href?: string
-  rel?: HTMLAnchorElement['rel']
-  as?: React.ElementType
-} & React.HTMLAttributes<HTMLDivElement> &
-  VariantProps &
-  SystemProps
+} & React.ComponentProps<typeof Box>
 
-export const MenuItem = React.forwardRef<HTMLDivElement, MenuItemProps>(
-  function Message(
+export const MenuItem = React.forwardRef<HTMLLIElement, MenuItemProps>(
+  function MenuItem(
     {
       children,
       isCurrent,
       variantKey = 'menuitem',
       variant,
-      as: renderAs = 'a',
+      as: renderAs = 'li',
       href,
-      rel,
       ...props
     },
     forwardedRef,
@@ -31,26 +25,24 @@ export const MenuItem = React.forwardRef<HTMLDivElement, MenuItemProps>(
       <Box
         variantKey={variantKey}
         variant={variant}
-        ref={forwardedRef}
         {...props}
+        as={renderAs}
+        ref={forwardedRef as any}
       >
-        <li>
-          {renderAs === 'a' && (
-            <Link
-              __base={{
-                textDecoration: 'none',
-                color: 'inherit',
-                cursor: 'pointer',
-              }}
-              href={href}
-              aria-current={isCurrent}
-              rel={rel}
-            >
-              {children}
-            </Link>
-          )}
-          {renderAs !== 'a' && <Box as={renderAs}>{children}</Box>}
-        </li>
+        {renderAs === 'a' && (
+          <Link
+            __base={{
+              textDecoration: 'none',
+              color: 'inherit',
+              cursor: 'pointer',
+            }}
+            href={href}
+            aria-current={isCurrent}
+          >
+            {children}
+          </Link>
+        )}
+        {renderAs !== 'a' && <Box as={renderAs}>{children}</Box>}
       </Box>
     )
   },
