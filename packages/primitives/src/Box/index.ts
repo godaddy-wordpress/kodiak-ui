@@ -7,4 +7,6 @@ export {
   shouldForwardProp,
   systemProps,
   SystemProps,
+  base,
+  BaseProps,
 } from './Box'
