@@ -13,6 +13,7 @@ import {
   variant,
   VariantProps,
   sx,
+  shouldForwardProp,
 } from '@kodiak-ui/core'
 import { DialogHeader } from './DialogHeader'
 
@@ -75,7 +76,9 @@ export const DialogOverlay: React.FC<Pick<
 export const DialogContainer: React.FC<Pick<
   DialogProps,
   'variant' | 'variantKey' | 'style'
->> = styled(ReachDialogContent)(
+>> = styled(ReachDialogContent, {
+  shouldForwardProp,
+})(
   {
     boxSizing: 'border-box',
     margin: 0,
