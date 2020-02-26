@@ -55,7 +55,7 @@ describe('Menu', () => {
       renderer
         .create(
           <MenuItem as="span">
-            <VisuallyHidden>Current category: </VisuallyHidden>
+            <VisuallyHidden>Current category:</VisuallyHidden>
             Product announcements
           </MenuItem>,
         )
@@ -87,7 +87,7 @@ describe('Menu', () => {
         <span
           className="emotion-0"
         >
-          Current category: 
+          Current category:
         </span>
         Product announcements
       </span>
