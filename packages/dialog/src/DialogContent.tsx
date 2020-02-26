@@ -8,6 +8,7 @@ import {
   variant,
   VariantProps,
   sx,
+  shouldForwardProp,
 } from '@kodiak-ui/core'
 
 type DialogContentProps = {
@@ -22,7 +23,9 @@ const baseStyles = ({ theme }: { theme: Theme }): SerializedStyles =>
     padding: 4,
   })(theme)
 
-export const DialogContent = styled<'div', DialogContentProps>('div')(
+export const DialogContent = styled('div', {
+  shouldForwardProp,
+})<DialogContentProps>(
   {
     boxSizing: 'border-box',
     margin: 0,

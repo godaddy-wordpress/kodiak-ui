@@ -32,15 +32,20 @@ export const baseStyles = ({ theme }: { theme: Theme }): SerializedStyles =>
     bg: 'transparent',
   })(theme)
 
-type InputProps = VariantProps & SystemProps
+type TextareaProps = React.DetailedHTMLProps<
+  React.TextareaHTMLAttributes<HTMLTextAreaElement>,
+  HTMLTextAreaElement
+> &
+  VariantProps &
+  SystemProps
 
 /**
  * Box primitive component which is the base component for
  * all components in Kodiak
  */
-export const Textarea = styled<'textarea', InputProps>('textarea', {
+export const Textarea = styled<'textarea', TextareaProps>('textarea', {
   shouldForwardProp,
-})(
+})<TextareaProps>(
   {
     boxSizing: 'border-box',
     margin: 0,

@@ -10,12 +10,18 @@ import {
 
 type TextProps = {
   as?: React.ElementType
-} & VariantProps &
+} & React.DetailedHTMLProps<
+  React.HTMLAttributes<
+    HTMLParagraphElement | HTMLSpanElement | HTMLHeadingElement
+  >,
+  HTMLParagraphElement | HTMLSpanElement | HTMLHeadingElement
+> &
+  VariantProps &
   SystemProps
 
-export const Text = styled<'p', TextProps>('p', {
+export const Text = styled('p', {
   shouldForwardProp,
-})(
+})<TextProps>(
   {
     boxSizing: 'border-box',
     margin: 0,

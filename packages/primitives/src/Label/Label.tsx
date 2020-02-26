@@ -8,11 +8,16 @@ import {
   SystemProps,
 } from '../Box/Box'
 
-type LabelProps = VariantProps & SystemProps
+type LabelProps = React.DetailedHTMLProps<
+  React.LabelHTMLAttributes<HTMLLabelElement>,
+  HTMLLabelElement
+> &
+  VariantProps &
+  SystemProps
 
-export const Label = styled<'label', LabelProps>('label', {
+export const Label = styled('label', {
   shouldForwardProp,
-})(
+})<LabelProps>(
   {
     boxSizing: 'border-box',
     display: 'inline-block',
