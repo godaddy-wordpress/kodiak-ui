@@ -29,9 +29,9 @@ const baseStyles = ({ theme }: { theme: Theme }): SerializedStyles =>
     padding: 4,
   })(theme)
 
-export const DialogFooter = styled<'footer', DialogFooterProps>('footer', {
+export const DialogFooter = styled('footer', {
   shouldForwardProp,
-})(
+})<DialogFooterProps>(
   {
     boxSizing: 'border-box',
     margin: 0,

@@ -32,15 +32,20 @@ export const baseStyles = ({ theme }: { theme: Theme }): SerializedStyles =>
     bg: 'transparent',
   })(theme)
 
-type InputProps = VariantProps & SystemProps
+type InputProps = React.DetailedHTMLProps<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+> &
+  VariantProps &
+  SystemProps
 
 /**
  * Box primitive component which is the base component for
  * all components in Kodiak
  */
-export const Input = styled<'input', InputProps>('input', {
+export const Input = styled('input', {
   shouldForwardProp,
-})(
+})<InputProps>(
   {
     boxSizing: 'border-box',
     margin: 0,

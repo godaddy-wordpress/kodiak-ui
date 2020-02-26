@@ -39,14 +39,19 @@ export const buttonVariant = ({
 }: { theme: Theme } & VariantProps) =>
   variant({ variant: variantProp, theme, variantKey })
 
-export type ButtonProps = VariantProps & SystemProps
+export type ButtonProps = React.DetailedHTMLProps<
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  HTMLButtonElement
+> &
+  VariantProps &
+  SystemProps
 
 /**
  * Button primitive component
  */
-export const Button = styled<'button', ButtonProps>('button', {
+export const Button = styled('button', {
   shouldForwardProp,
-})(
+})<ButtonProps>(
   {
     appearance: 'none',
     cursor: 'pointer',

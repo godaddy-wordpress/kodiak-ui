@@ -144,9 +144,9 @@ type BoxProps = {
  * Box primitive component which is the base component for
  * all components in Kodiak
  */
-export const Box = styled<'div', BoxProps>('div', {
+export const Box = styled('div', {
   shouldForwardProp,
-})(
+})<BoxProps>(
   {
     boxSizing: 'border-box',
     margin: 0,

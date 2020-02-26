@@ -1,13 +1,26 @@
 import styled from '@emotion/styled'
-import { ButtonProps, base, buttonVariant } from './Button'
-import { shouldForwardProp, sx, systemProps } from '@kodiak-ui/core'
+import { base, buttonVariant } from './Button'
+import {
+  shouldForwardProp,
+  sx,
+  systemProps,
+  SystemProps,
+  VariantProps,
+} from '@kodiak-ui/core'
+
+export type AnchorButtonProps = React.DetailedHTMLProps<
+  React.AnchorHTMLAttributes<HTMLAnchorElement>,
+  HTMLAnchorElement
+> &
+  VariantProps &
+  SystemProps
 
 /**
  * AnchorButton primitive component
  */
-export const AnchorButton = styled<'a', ButtonProps>('a', {
+export const AnchorButton = styled('a', {
   shouldForwardProp,
-})(
+})<AnchorButtonProps>(
   {
     appearance: 'none',
     cursor: 'pointer',

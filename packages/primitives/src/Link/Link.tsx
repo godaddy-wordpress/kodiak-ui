@@ -11,9 +11,9 @@ import {
 
 type LinkProps = VariantProps & SystemProps & IntrinsicSxElements['a']
 
-export const Link = styled<'a', LinkProps>('a', {
+export const Link = styled('a', {
   shouldForwardProp,
-})(
+})<LinkProps>(
   {
     boxSizing: 'border-box',
     margin: 0,

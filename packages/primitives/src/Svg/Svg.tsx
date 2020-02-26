@@ -9,6 +9,7 @@ import {
   systemProps,
   SystemProps,
 } from '../Box'
+import { TypographyProps, ColorProps } from 'styled-system'
 
 /**
  * base
@@ -24,15 +25,15 @@ export const baseStyles = ({ theme }: { theme: Theme }): SerializedStyles =>
     display: 'block',
   })(theme)
 
-type SvgProps = VariantProps & SystemProps
+type SvgProps = React.SVGProps<SVGSVGElement> & VariantProps & SystemProps
 
 /**
  * Box primitive component which is the base component for
  * all components in Kodiak
  */
-export const Svg = styled<'svg', SvgProps>('svg', {
+export const Svg = styled('svg', {
   shouldForwardProp,
-})(
+})<SvgProps>(
   {
     boxSizing: 'border-box',
     margin: 0,
