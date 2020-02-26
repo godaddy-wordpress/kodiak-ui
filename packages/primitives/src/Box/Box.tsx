@@ -79,7 +79,7 @@ export type BaseProps = {
   __base?: SxStyleProp
 }
 
-export function base(props: { theme: Theme; __base?: SxStyleProp }) {
+export function base(props: { theme: Theme } & BaseProps) {
   return css(props.__base as any)(props.theme)
 }
 
