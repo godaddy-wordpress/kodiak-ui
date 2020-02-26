@@ -1,5 +1,6 @@
 export {
   Box,
+  BoxProps,
   variant,
   VariantProps,
   sx,

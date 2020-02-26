@@ -133,7 +133,7 @@ export interface BaseProp {
   __base?: SxStyleProp
 }
 
-type BoxProps = {
+export type BoxProps = {
   as?: React.ElementType
 } & BaseProp &
   VariantProps &
