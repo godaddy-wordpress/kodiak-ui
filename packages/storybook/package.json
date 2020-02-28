@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/storybook",
-  "version": "0.1.17",
+  "version": "0.1.18",
   "private": true,
   "scripts": {
     "storybook": "start-storybook -p 9009",
@@ -8,10 +8,10 @@
   },
   "dependencies": {
     "@babel/core": "^7.2.2",
-    "@kodiak-ui/core": "^0.1.6",
-    "@kodiak-ui/dialog": "^0.1.13",
-    "@kodiak-ui/message": "^0.1.2",
-    "@kodiak-ui/primitives": "^0.8.5",
+    "@kodiak-ui/core": "^0.1.7",
+    "@kodiak-ui/dialog": "^0.1.14",
+    "@kodiak-ui/message": "^0.1.3",
+    "@kodiak-ui/primitives": "^0.9.0",
     "@storybook/addon-docs": "^5.3.9",
     "@storybook/addons": "^5.3.9",
     "@storybook/preset-typescript": "^1.2.0",
