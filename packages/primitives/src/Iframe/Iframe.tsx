@@ -24,6 +24,7 @@ export const Iframe = styled('iframe', {
 })<IframeProps>(
   {
     boxSizing: 'border-box',
+    display: 'block',
     margin: 0,
     minWidth: 0,
   },
