@@ -8,7 +8,13 @@ export function initial() {
     <Iframe
       title="Example iframe"
       src="http://jilt.com"
-      sx={{ boxShadow: 'none', height: '600px', width: '100%' }}
+      sx={{
+        boxShadow: 'none',
+        border: '1px solid',
+        borderColor: 'black',
+        height: '600px',
+        width: '100%',
+      }}
     />
   )
 }
