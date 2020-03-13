@@ -12,7 +12,7 @@ export function Select({
   ...props
 }: SelectProps) {
   return (
-    <Box variantKey={variantKey} {...props}>
+    <Box __base={{ position: 'relative' }} variantKey={variantKey} {...props}>
       {children}
     </Box>
   )

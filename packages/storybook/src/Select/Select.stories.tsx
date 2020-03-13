@@ -30,11 +30,11 @@ export function Initial() {
       <VisuallyHidden>
         <SelectLabel {...getLabelProps()}>Choose a filter:</SelectLabel>
       </VisuallyHidden>
-      <SelectButton {...getToggleButtonProps()}>
+      <SelectButton isOpen={isOpen} {...getToggleButtonProps()}>
         {selectedItem || 'Filter'}
       </SelectButton>
       {isOpen && (
-        <SelectMenu {...getMenuProps()}>
+        <SelectMenu variant="selectMenu" {...getMenuProps()}>
           {items.map((item, index) => (
             <SelectMenuItem
               key={`${item}${index}`}

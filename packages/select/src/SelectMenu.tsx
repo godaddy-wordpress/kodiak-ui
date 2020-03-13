@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { UseSelectGetMenuPropsOptions } from 'downshift'
 import {
-  variant,
+  variant as getVariantStyles,
   VariantProps,
   sx,
   Theme,
@@ -40,7 +40,18 @@ export function base({ theme }: { theme: Theme }): SerializedStyles {
     maxWidth: '184px',
     overflowY: 'auto',
     padding: 0,
+    position: 'absolute',
+    top: 0,
+    left: 0,
   })(theme)
+}
+
+function variant({
+  variant: variantProp,
+  variantKey,
+  theme,
+}: { theme: Theme } & VariantProps): SerializedStyles {
+  return getVariantStyles({ variant: variantProp, theme, variantKey })
 }
 
 const Ul = styled('ul')<SelectMenuProps>(
@@ -50,8 +61,7 @@ const Ul = styled('ul')<SelectMenuProps>(
     minWidth: 0,
   },
   base,
-  ({ variant: variantProp, variantKey, theme }) =>
-    variant({ variant: variantProp, theme, variantKey }),
+  variant,
   sx,
 )
 
