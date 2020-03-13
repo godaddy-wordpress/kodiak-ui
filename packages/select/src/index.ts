@@ -11,7 +11,6 @@ export {
   UseSelectReturnValue,
   UseSelectState,
   UseSelectStateChangeOptions,
-  UseSelectStateChangeTypes,
 } from 'downshift'
 export { Select, SelectProps } from './Select'
 export { SelectLabel, SelectLabelProps } from './SelectLabel'

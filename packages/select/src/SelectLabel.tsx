@@ -9,14 +9,13 @@ export interface SelectLabelProps
   children: React.ReactNode
 }
 
-export function SelectLabel({
-  children,
-  variantKey = 'selects',
-  ...props
-}: SelectLabelProps) {
+export const SelectLabel = React.forwardRef(function SelectLabel(
+  { children, variantKey = 'selects', ...props }: SelectLabelProps,
+  ref: React.Ref<HTMLLabelElement>,
+) {
   return (
-    <Label variantKey={variantKey} {...props}>
+    <Label ref={ref} variantKey={variantKey} {...props}>
       {children}
     </Label>
   )
-}
+})

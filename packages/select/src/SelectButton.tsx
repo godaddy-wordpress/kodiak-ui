@@ -10,14 +10,13 @@ export interface SelectButtonProps
   type?: 'button' | 'reset' | 'submit' | undefined
 }
 
-export function SelectButton({
-  children,
-  variantKey = 'selects',
-  ...props
-}: SelectButtonProps) {
+export const SelectButton = React.forwardRef(function SelectButton(
+  { children, variantKey = 'selects', ...props }: SelectButtonProps,
+  ref: React.Ref<HTMLButtonElement>,
+) {
   return (
-    <Button variantKey={variantKey} {...props}>
+    <Button ref={ref} variantKey={variantKey} {...props}>
       {children}
     </Button>
   )
-}
+})

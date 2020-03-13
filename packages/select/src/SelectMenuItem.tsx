@@ -1,25 +1,21 @@
 import * as React from 'react'
 import { UseSelectGetItemPropsOptions } from 'downshift'
-import styled from '@emotion/styled'
 import {
   variant,
   VariantProps,
-  systemProps,
-  SystemProps,
   shouldForwardProp,
   sx,
+  styled,
 } from '@kodiak-ui/core'
 
 export type SelectMenuItemProps = {
   ref: React.Ref<HTMLLIElement>
   children: React.ReactNode
+  highlightedIndex?: number
 } & VariantProps &
-  SystemProps &
   UseSelectGetItemPropsOptions<any>
 
-const Li = styled('li', {
-  shouldForwardProp,
-})<SelectMenuItemProps>(
+const Li = styled('li')<SelectMenuItemProps>(
   {
     boxSizing: 'border-box',
     margin: 0,
@@ -27,7 +23,6 @@ const Li = styled('li', {
   },
   ({ variant: variantProp, variantKey, theme }) =>
     variant({ variant: variantProp, theme, variantKey }),
-  ...systemProps,
   sx,
 )
 

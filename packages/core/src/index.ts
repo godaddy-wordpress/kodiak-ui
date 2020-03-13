@@ -1,5 +1,7 @@
 import { css, Theme } from 'theme-ui'
 import { SerializedStyles } from '@emotion/serialize'
+import styled from '@emotion/styled'
+
 import { createShouldForwardProp } from '@styled-system/should-forward-prop'
 import {
   space,
@@ -114,3 +116,5 @@ export function variant({
     ),
   )(theme)
 }
+
+export { css, Theme, SerializedStyles, styled }
