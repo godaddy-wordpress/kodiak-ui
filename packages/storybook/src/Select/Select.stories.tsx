@@ -33,20 +33,22 @@ export function Initial() {
       <SelectButton {...getToggleButtonProps()}>
         {selectedItem || 'Filter'}
       </SelectButton>
-      <SelectMenu {...getMenuProps()}>
-        {isOpen &&
-          items.map((item, index) => (
+      {isOpen && (
+        <SelectMenu {...getMenuProps()}>
+          {items.map((item, index) => (
             <SelectMenuItem
               key={`${item}${index}`}
               {...getItemProps({ item, index })}
               sx={{
-                bg: highlightedIndex === index ? 'highlight' : 'inherit',
+                bg: highlightedIndex === index ? 'primary' : 'inherit',
+                color: highlightedIndex === index ? 'white' : 'inherit',
               }}
             >
               {item}
             </SelectMenuItem>
           ))}
-      </SelectMenu>
+        </SelectMenu>
+      )}
     </Select>
   )
 }

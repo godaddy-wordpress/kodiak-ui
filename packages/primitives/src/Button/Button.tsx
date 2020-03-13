@@ -1,5 +1,3 @@
-import styled from '@emotion/styled'
-import { SerializedStyles } from '@emotion/serialize'
 import {
   variant,
   sx,
@@ -7,8 +5,12 @@ import {
   systemProps,
   SystemProps,
   shouldForwardProp,
+  css,
+  Theme,
+  SerializedStyles,
+  styled,
 } from '@kodiak-ui/core'
-import { css, Theme } from 'theme-ui'
+import { BaseProps } from '../Box'
 
 /**
  * base
@@ -32,6 +34,15 @@ export function base({ theme }: { theme: Theme }): SerializedStyles {
   })(theme)
 }
 
+/**
+ * This allows developers to overwrite the base styles
+ * for a button. This is helpful when using Buttons for Select dropdowns and more
+ * @param props
+ */
+export function baseProp(props: { theme: Theme } & BaseProps) {
+  return css(props.__base as any)(props.theme)
+}
+
 export const buttonVariant = ({
   variant: variantProp,
   variantKey = 'buttons',
@@ -44,7 +55,8 @@ export type ButtonProps = React.DetailedHTMLProps<
   HTMLButtonElement
 > &
   VariantProps &
-  SystemProps
+  SystemProps &
+  BaseProps
 
 /**
  * Button primitive component
@@ -63,6 +75,7 @@ export const Button = styled('button', {
     transition: 'all 0.2s ease-in-out',
   },
   base,
+  baseProp,
   buttonVariant,
   ...systemProps,
   sx,

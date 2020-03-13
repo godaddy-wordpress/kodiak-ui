@@ -15,7 +15,19 @@ export const SelectButton = React.forwardRef(function SelectButton(
   ref: React.Ref<HTMLButtonElement>,
 ) {
   return (
-    <Button ref={ref} variantKey={variantKey} {...props}>
+    <Button
+      __base={{
+        bg: 'inherit',
+        border: '1px solid',
+        borderColor: 'muted',
+        color: 'text',
+        minWidth: '184px',
+        textAlign: 'left',
+      }}
+      ref={ref}
+      variantKey={variantKey}
+      {...props}
+    >
       {children}
     </Button>
   )

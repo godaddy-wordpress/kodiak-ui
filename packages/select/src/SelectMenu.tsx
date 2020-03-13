@@ -27,12 +27,19 @@ export type SelectMenuProps = {
  */
 export function base({ theme }: { theme: Theme }): SerializedStyles {
   return css({
-    maxHeight: '200px',
-    overflowY: 'auto',
-    width: '150px',
-    margin: 0,
     borderTop: 0,
     background: 'white',
+    boxShadow: 'default',
+    border: '1px solid',
+    borderColor: 'muted',
+    borderRadius: 'default',
+    listStyle: 'none',
+    margin: 0,
+    maxHeight: '200px',
+    minWidth: '150px',
+    maxWidth: '184px',
+    overflowY: 'auto',
+    padding: 0,
   })(theme)
 }
 

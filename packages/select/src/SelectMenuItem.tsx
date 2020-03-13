@@ -1,19 +1,46 @@
 import * as React from 'react'
 import { UseSelectGetItemPropsOptions } from 'downshift'
 import {
-  variant,
+  variant as getVariantStyles,
   VariantProps,
-  shouldForwardProp,
   sx,
   styled,
+  Theme,
+  css,
+  SerializedStyles,
 } from '@kodiak-ui/core'
 
 export type SelectMenuItemProps = {
   ref: React.Ref<HTMLLIElement>
   children: React.ReactNode
-  highlightedIndex?: number
 } & VariantProps &
   UseSelectGetItemPropsOptions<any>
+
+/**
+ * base
+ *
+ * Generate the base CSS for the SelectMenuItem component
+ * that is aware of the Theme UI theme
+ *
+ * @param props
+ */
+export function base({ theme }: { theme: Theme }): SerializedStyles {
+  return css({
+    color: 'text',
+    cursor: 'pointer',
+    py: 3,
+    px: 4,
+    transition: 'all 0.2s ease-in-out',
+  })(theme)
+}
+
+function variant({
+  variant: variantProp,
+  variantKey,
+  theme,
+}: { theme: Theme } & VariantProps): SerializedStyles {
+  return getVariantStyles({ variant: variantProp, theme, variantKey })
+}
 
 const Li = styled('li')<SelectMenuItemProps>(
   {
@@ -21,8 +48,8 @@ const Li = styled('li')<SelectMenuItemProps>(
     margin: 0,
     minWidth: 0,
   },
-  ({ variant: variantProp, variantKey, theme }) =>
-    variant({ variant: variantProp, theme, variantKey }),
+  base,
+  variant,
   sx,
 )
 
