@@ -1,5 +1,7 @@
 const breakpoints = ['640px', '768px', '1024px', '1280px']
 
+const space = [0, 4, 8, 12, 16, 24, 32, 40, 64, 128, 256, 512]
+
 const baseColors = {
   black: '#000',
   white: '#fff',
@@ -227,6 +229,12 @@ const buttons = {
   },
 }
 
+const selects = {
+  selectMenu: {
+    top: `calc(100% + ${space[2]}px)`,
+  },
+}
+
 // Tailwind shadows
 const shadows = {
   inner: 'inset 0 2px 4px 0 rgba(0,0,0,.06) !important',
@@ -244,7 +252,7 @@ const shadows = {
 export const theme = {
   breakpoints,
   colors,
-  space: [0, 4, 8, 12, 16, 24, 32, 40, 64, 128, 256, 512],
+  space,
   fonts: {
     body:
       'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
@@ -391,4 +399,5 @@ export const theme = {
     color: 'blue.2',
     textDecoration: 'none',
   },
+  selects,
 }

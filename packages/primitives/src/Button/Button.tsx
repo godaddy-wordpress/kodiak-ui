@@ -1,5 +1,3 @@
-import styled from '@emotion/styled'
-import { SerializedStyles } from '@emotion/serialize'
 import {
   variant,
   sx,
@@ -7,8 +5,12 @@ import {
   systemProps,
   SystemProps,
   shouldForwardProp,
+  css,
+  Theme,
+  SerializedStyles,
+  styled,
 } from '@kodiak-ui/core'
-import { css, Theme } from 'theme-ui'
+import { base as baseProp, BaseProps } from '../Box'
 
 /**
  * base
@@ -44,7 +46,8 @@ export type ButtonProps = React.DetailedHTMLProps<
   HTMLButtonElement
 > &
   VariantProps &
-  SystemProps
+  SystemProps &
+  BaseProps
 
 /**
  * Button primitive component
@@ -63,6 +66,7 @@ export const Button = styled('button', {
     transition: 'all 0.2s ease-in-out',
   },
   base,
+  baseProp,
   buttonVariant,
   ...systemProps,
   sx,
