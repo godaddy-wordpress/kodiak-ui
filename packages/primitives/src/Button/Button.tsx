@@ -10,7 +10,7 @@ import {
   SerializedStyles,
   styled,
 } from '@kodiak-ui/core'
-import { BaseProps } from '../Box'
+import { base as baseProp, BaseProps } from '../Box'
 
 /**
  * base
@@ -32,15 +32,6 @@ export function base({ theme }: { theme: Theme }): SerializedStyles {
       bg: 'secondary',
     },
   })(theme)
-}
-
-/**
- * This allows developers to overwrite the base styles
- * for a button. This is helpful when using Buttons for Select dropdowns and more
- * @param props
- */
-export function baseProp(props: { theme: Theme } & BaseProps) {
-  return css(props.__base as any)(props.theme)
 }
 
 export const buttonVariant = ({
