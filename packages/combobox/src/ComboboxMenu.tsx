@@ -58,11 +58,11 @@ const Ul = styled('ul')<ComboboxMenuProps>(
 )
 
 export const ComboboxMenu = React.forwardRef(function ComboboxMenu(
-  { children, ...props }: ComboboxMenuProps,
+  { children, variantKey = 'comboboxes', ...props }: ComboboxMenuProps,
   ref: React.Ref<HTMLUListElement>,
 ) {
   return (
-    <Ul ref={ref} {...props}>
+    <Ul ref={ref} variantKey={variantKey} {...props}>
       {children}
     </Ul>
   )
