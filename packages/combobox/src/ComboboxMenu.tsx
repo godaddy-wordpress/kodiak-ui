@@ -10,7 +10,7 @@ import {
   VariantProps,
 } from '@kodiak-ui/core'
 
-interface ComboboxMenuProps
+export interface ComboboxMenuProps
   extends UseComboboxGetMenuPropsOptions,
     VariantProps {
   ref: React.Ref<HTMLUListElement>

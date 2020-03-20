@@ -14,5 +14,8 @@ export {
   UseComboboxStateChangeOptions,
 } from 'downshift'
 
-export { Combobox } from './Combobox'
-export { ComboboxLabel } from './ComboboxLabel'
+export { Combobox, ComboboxProps } from './Combobox'
+export { ComboboxLabel, ComboboxLabelProps } from './ComboboxLabel'
+export { ComboboxInput, ComboboxInputProps } from './ComboboxInput'
+export { ComboboxMenu, ComboboxMenuProps } from './ComboboxMenu'
+export { ComboboxMenuItem, ComboboxMenuItemProps } from './ComboboxMenuItem'

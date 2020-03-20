@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Box } from '@kodiak-ui/primitives'
 
-interface ComboboxProps {
+export interface ComboboxProps {
   children: React.ReactNode
 }
 
