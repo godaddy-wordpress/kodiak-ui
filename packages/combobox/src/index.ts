@@ -15,3 +15,4 @@ export {
 } from 'downshift'
 
 export { Combobox } from './Combobox'
+export { ComboboxLabel } from './ComboboxLabel'
