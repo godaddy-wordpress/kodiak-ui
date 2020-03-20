@@ -75,6 +75,7 @@ export function Expanding() {
         title="Dialog that grows with the content"
         onDismiss={() => setIsOpen(false)}
         aria-label="Warning about next steps"
+        overlayVariant="blurred"
       >
         <DialogContent>
           <Text as="p">
@@ -174,7 +175,6 @@ export function FullWidth() {
         variant="fullWidth"
         onDismiss={() => setIsOpen(false)}
         aria-label="Warning about next steps"
-        overlayVariant="dark"
       >
         <DialogContent>
           <Text as="p">
