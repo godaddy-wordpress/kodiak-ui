@@ -17,5 +17,6 @@ export {
 export { Combobox, ComboboxProps } from './Combobox'
 export { ComboboxLabel, ComboboxLabelProps } from './ComboboxLabel'
 export { ComboboxInput, ComboboxInputProps } from './ComboboxInput'
+export { ComboboxButton, ComboboxButtonProps } from './ComboboxButton'
 export { ComboboxMenu, ComboboxMenuProps } from './ComboboxMenu'
 export { ComboboxMenuItem, ComboboxMenuItemProps } from './ComboboxMenuItem'
