@@ -174,6 +174,7 @@ export function FullWidth() {
         variant="fullWidth"
         onDismiss={() => setIsOpen(false)}
         aria-label="Warning about next steps"
+        overlayVariant="dark"
       >
         <DialogContent>
           <Text as="p">

@@ -23,6 +23,7 @@ type DialogProps = {
   allowPinchZoom?: boolean
   style?: React.CSSProperties
   onDismiss?: () => void
+  overlayVariant?: string
 } & VariantProps &
   SystemProps
 
@@ -61,13 +62,21 @@ const containerStyles = ({ theme }: { theme: Theme }): SerializedStyles =>
 
 export const DialogOverlay: React.FC<Pick<
   DialogProps,
-  'isOpen' | 'allowPinchZoom' | 'children' | 'onDismiss' | 'style'
+  | 'isOpen'
+  | 'allowPinchZoom'
+  | 'children'
+  | 'onDismiss'
+  | 'style'
+  | 'variant'
+  | 'variantKey'
 >> = styled(ReachDialogOverlay)(
   {
     boxSizing: 'border-box',
     margin: 0,
     minWidth: 0,
   },
+  ({ variant: variantProp = 'overlay', variantKey = 'dialogs', theme }) =>
+    variant({ variant: variantProp, theme, variantKey }),
   overlayStyles,
   ...systemProps,
   sx,
@@ -96,11 +105,17 @@ export function Dialog({
   onDismiss,
   title,
   children,
+  overlayVariant,
   ...props
 }: DialogProps & { title?: string | React.ReactNode }) {
   return (
     <>
-      <DialogOverlay isOpen={isOpen} onDismiss={onDismiss} {...props}>
+      <DialogOverlay
+        isOpen={isOpen}
+        onDismiss={onDismiss}
+        {...props}
+        variant={overlayVariant}
+      >
         <DialogContainer {...props}>
           <DialogHeader onDismiss={onDismiss}>{title}</DialogHeader>
           {children}
