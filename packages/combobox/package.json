@@ -1,0 +1,33 @@
+{
+  "name": "@kodiak-ui/combobox",
+  "version": "0.0.0",
+  "description": "Component to display custom combobox elements with typeahead capabilities",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "source": "src/index.ts",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "author": "Wesley Cole <wes@skyverge.com>",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "prepare": "microbundle -f es,cjs",
+    "watch": "microbundle --watch -f es,cjs"
+  },
+  "devDependencies": {
+    "microbundle": "^0.11.0"
+  },
+  "peerDependencies": {
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0"
+  },
+  "dependencies": {
+    "@kodiak-ui/core": "^0.1.8",
+    "@kodiak-ui/primitives": "^0.10.2",
+    "downshift": "^5.0.4"
+  }
+}
