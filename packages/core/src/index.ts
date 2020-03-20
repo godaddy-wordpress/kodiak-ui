@@ -1,4 +1,4 @@
-import { css, Theme } from 'theme-ui'
+import { css, Theme, SxStyleProp } from 'theme-ui'
 import { SerializedStyles } from '@emotion/serialize'
 import styled from '@emotion/styled'
 
@@ -117,4 +117,4 @@ export function variant({
   )(theme)
 }
 
-export { css, Theme, SerializedStyles, styled }
+export { css, Theme, SxStyleProp, SerializedStyles, styled }
