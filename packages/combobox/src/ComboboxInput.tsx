@@ -8,8 +8,20 @@ export interface ComboboxInputProps
     VariantProps {}
 
 export const ComboboxInput = React.forwardRef(function ComboboxInput(
-  { variantKey = 'comboboxes', ...props }: ComboboxInputProps,
+  {
+    variantKey = 'inputs',
+    placeholder = 'Start typing...',
+    ...props
+  }: ComboboxInputProps,
   ref: React.Ref<HTMLInputElement>,
 ) {
-  return <Input ref={ref} variantKey={variantKey} {...props} />
+  return (
+    <Input
+      ref={ref}
+      variantKey={variantKey}
+      variant="shadow"
+      placeholder={placeholder}
+      {...props}
+    />
+  )
 })

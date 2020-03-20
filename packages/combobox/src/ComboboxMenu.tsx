@@ -19,22 +19,18 @@ export interface ComboboxMenuProps
 
 export function base({ theme }: { theme: Theme }): SerializedStyles {
   return css({
+    borderRadius: 'default',
+    boxShadow: '0px 2px 6px rgba(28, 56, 78, 0.25)',
+    maxHeight: '180px',
+    overflowY: 'auto',
+    margin: 1,
+    minWidth: '150px',
     borderTop: 0,
     background: 'white',
-    boxShadow: 'default',
-    border: '1px solid',
-    borderColor: 'muted',
-    borderRadius: 'default',
-    listStyle: 'none',
-    margin: 0,
-    maxHeight: '200px',
-    minWidth: '150px',
-    maxWidth: '184px',
-    overflowY: 'auto',
-    padding: 0,
     position: 'absolute',
-    top: 0,
-    left: 0,
+    zIndex: 1000,
+    listStyle: 'none',
+    padding: 0,
   })(theme)
 }
 

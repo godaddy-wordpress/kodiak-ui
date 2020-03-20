@@ -77,12 +77,12 @@ const inputs = {
   ...commonInputStyles,
   shadow: {
     ...commonInputStyles,
-    border: `none`,
-    color: `gray.7`,
-    boxShadow: `default`,
+    border: 'none',
+    color: 'gray.7',
+    boxShadow: 'none',
     '&:focus': {
-      outline: `none`,
-      boxShadow: `outline`,
+      outline: 'none',
+      boxShadow: 'outline',
     },
   },
   inline: {
@@ -223,6 +223,7 @@ const buttons = {
   },
   shadow: {
     bg: 'transparent',
+    borderColor: 'none',
     color: baseColors.ink[1],
     padding: '0',
     border: 'none',

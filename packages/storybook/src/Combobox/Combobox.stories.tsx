@@ -9,7 +9,34 @@ import {
   ComboboxMenuItem,
 } from '@kodiak-ui/combobox'
 
-const items = ['Layouts', 'Pre-built', 'All']
+const items = [
+  'Neptunium',
+  'Plutonium',
+  'Americium',
+  'Curium',
+  'Berkelium',
+  'Californium',
+  'Einsteinium',
+  'Fermium',
+  'Mendelevium',
+  'Nobelium',
+  'Lawrencium',
+  'Rutherfordium',
+  'Dubnium',
+  'Seaborgium',
+  'Bohrium',
+  'Hassium',
+  'Meitnerium',
+  'Darmstadtium',
+  'Roentgenium',
+  'Copernicium',
+  'Nihonium',
+  'Flerovium',
+  'Moscovium',
+  'Livermorium',
+  'Tennessine',
+  'Oganesson',
+]
 
 export default { title: 'Combobox' }
 
@@ -24,12 +51,12 @@ export function Initial() {
     getInputProps,
     getItemProps,
     highlightedIndex,
-  } = useCombobox({
+  } = useCombobox<string>({
     items: inputItems,
     onInputValueChange: ({ inputValue }) => {
       setInputItems(
         items.filter(item =>
-          item.toLowerCase().startsWith(inputValue.toLowerCase()),
+          item.toLowerCase().startsWith(`${inputValue}`.toLowerCase()),
         ),
       )
     },
@@ -38,13 +65,13 @@ export function Initial() {
   return (
     <>
       <ComboboxLabel {...getLabelProps()}>Choose an element:</ComboboxLabel>
-      <Combobox {...getComboboxProps} sx={{ display: 'inline-block' }}>
-        <ComboboxInput {...getInputProps} />
+      <Combobox {...getComboboxProps()}>
+        <ComboboxInput {...getInputProps()} />
         <ComboboxButton {...getToggleButtonProps()}>&#8595;</ComboboxButton>
       </Combobox>
       {isOpen && (
         <ComboboxMenu {...getMenuProps()}>
-          {items.map((item, index) => (
+          {inputItems.map((item, index) => (
             <ComboboxMenuItem
               key={`${item}${index}`}
               {...getItemProps({ item, index })}
