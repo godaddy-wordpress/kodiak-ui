@@ -75,9 +75,9 @@ export const DialogOverlay: React.FC<Pick<
     margin: 0,
     minWidth: 0,
   },
+  overlayStyles,
   ({ variant: variantProp = 'overlay', variantKey = 'dialogs', theme }) =>
     variant({ variant: variantProp, theme, variantKey }),
-  overlayStyles,
   ...systemProps,
   sx,
 )

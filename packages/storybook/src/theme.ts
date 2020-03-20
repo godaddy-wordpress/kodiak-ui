@@ -171,7 +171,7 @@ const dialogs = {
     background: 'hsla(0, 0%, 0%, 0.5)',
   },
   blurred: {
-    backdropFilter: 'blur(2px) opacity(20%)',
+    backdropFilter: 'blur(2px)',
     background: 'rgba(0,0,0,0.6)',
   },
 }
