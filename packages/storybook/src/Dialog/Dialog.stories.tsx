@@ -75,7 +75,6 @@ export function Expanding() {
         title="Dialog that grows with the content"
         onDismiss={() => setIsOpen(false)}
         aria-label="Warning about next steps"
-        overlayVariant="blurred"
       >
         <DialogContent>
           <Text as="p">
@@ -223,10 +222,7 @@ export function Animated() {
       {transitions.map(
         ({ item, key, props: styles }) =>
           item && (
-            <AnimatedDialogOverlay
-              key={key}
-              style={{ opacity: styles.opacity }}
-            >
+            <AnimatedDialogOverlay key={key} variant="blurred">
               <AnimatedDialogContent
                 style={{
                   transform: styles.y.interpolate(
