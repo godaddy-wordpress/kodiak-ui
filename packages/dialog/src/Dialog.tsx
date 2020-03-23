@@ -23,7 +23,6 @@ type DialogProps = {
   allowPinchZoom?: boolean
   style?: React.CSSProperties
   onDismiss?: () => void
-  overlayVariant?: string
 } & VariantProps &
   SystemProps
 
@@ -105,17 +104,11 @@ export function Dialog({
   onDismiss,
   title,
   children,
-  overlayVariant,
   ...props
 }: DialogProps & { title?: string | React.ReactNode }) {
   return (
     <>
-      <DialogOverlay
-        isOpen={isOpen}
-        onDismiss={onDismiss}
-        {...props}
-        variant={overlayVariant}
-      >
+      <DialogOverlay isOpen={isOpen} onDismiss={onDismiss} {...props}>
         <DialogContainer {...props}>
           <DialogHeader onDismiss={onDismiss}>{title}</DialogHeader>
           {children}
