@@ -104,12 +104,13 @@ export function Dialog({
   onDismiss,
   title,
   children,
+  variant,
   ...props
 }: DialogProps & { title?: string | React.ReactNode }) {
   return (
     <>
       <DialogOverlay isOpen={isOpen} onDismiss={onDismiss} {...props}>
-        <DialogContainer {...props}>
+        <DialogContainer {...props} variant={variant}>
           <DialogHeader onDismiss={onDismiss}>{title}</DialogHeader>
           {children}
         </DialogContainer>
