@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/dialog",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Accessible dialog component that works with Theme UI and Styled System's style props",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
