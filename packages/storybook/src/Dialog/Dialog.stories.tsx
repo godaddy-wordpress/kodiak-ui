@@ -222,10 +222,7 @@ export function Animated() {
       {transitions.map(
         ({ item, key, props: styles }) =>
           item && (
-            <AnimatedDialogOverlay
-              key={key}
-              style={{ opacity: styles.opacity }}
-            >
+            <AnimatedDialogOverlay key={key} variant="blurred">
               <AnimatedDialogContent
                 style={{
                   transform: styles.y.interpolate(

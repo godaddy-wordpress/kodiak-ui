@@ -167,6 +167,13 @@ const dialogs = {
     width: 'calc(100% - 10vh)',
     height: 'calc(100% - 10vh)',
   },
+  overlay: {
+    background: 'hsla(0, 0%, 0%, 0.5)',
+  },
+  blurred: {
+    backdropFilter: 'blur(2px)',
+    background: 'rgba(0,0,0,0.6)',
+  },
 }
 
 const baseMessageStyles = {

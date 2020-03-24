@@ -61,7 +61,13 @@ const containerStyles = ({ theme }: { theme: Theme }): SerializedStyles =>
 
 export const DialogOverlay: React.FC<Pick<
   DialogProps,
-  'isOpen' | 'allowPinchZoom' | 'children' | 'onDismiss' | 'style'
+  | 'isOpen'
+  | 'allowPinchZoom'
+  | 'children'
+  | 'onDismiss'
+  | 'style'
+  | 'variant'
+  | 'variantKey'
 >> = styled(ReachDialogOverlay)(
   {
     boxSizing: 'border-box',
@@ -69,6 +75,8 @@ export const DialogOverlay: React.FC<Pick<
     minWidth: 0,
   },
   overlayStyles,
+  ({ variant: variantProp = 'overlay', variantKey = 'dialogs', theme }) =>
+    variant({ variant: variantProp, theme, variantKey }),
   ...systemProps,
   sx,
 )
