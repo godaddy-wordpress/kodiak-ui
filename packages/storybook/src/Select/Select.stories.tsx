@@ -15,7 +15,7 @@ const initialSelectedItem = 'All'
 export default { title: 'Select' }
 
 export function Initial() {
-  const { current, handleMouseDown } = useSelect({})
+  const { current, buttonProps } = useSelect({})
   console.log(current)
 
   return (
@@ -23,9 +23,7 @@ export function Initial() {
       <VisuallyHidden>
         <SelectLabel>Choose a filter:</SelectLabel>
       </VisuallyHidden>
-      <SelectButton isOpen={false} onClick={handleMouseDown}>
-        {'Filter'}
-      </SelectButton>
+      <SelectButton {...buttonProps}>{'Filter'}</SelectButton>
     </Select>
   )
 }

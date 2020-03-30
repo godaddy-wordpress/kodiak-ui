@@ -80,8 +80,8 @@ interface UseSelectProps {
 }
 
 const setListActive = assign<SelectStateData, any>({
-  active: (_, event) => {
-    return event.active
+  active: (_, { active }) => {
+    return active
   },
 })
 
@@ -89,7 +89,7 @@ export function useSelect({
   value,
 }: UseSelectProps): {
   current: StateMachine.State<SelectContext, SelectEvent, SelectState>
-  handleMouseDown: (event: React.MouseEvent) => void
+  getButtonProps: any
 } {
   const machine = useConstant(() =>
     createMachine<SelectContext, SelectEvent, SelectState>({
@@ -124,5 +124,7 @@ export function useSelect({
     [send],
   )
 
-  return { current, handleMouseDown }
+  const buttonProps = React.useMemo(() => ({ onClick: handleMouseDown }), [])
+
+  return { current, buttonProps }
 }
