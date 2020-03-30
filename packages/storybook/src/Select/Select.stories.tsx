@@ -15,40 +15,17 @@ const initialSelectedItem = 'All'
 export default { title: 'Select' }
 
 export function Initial() {
-  const {
-    isOpen,
-    selectedItem,
-    getToggleButtonProps,
-    getLabelProps,
-    getMenuProps,
-    highlightedIndex,
-    getItemProps,
-  } = useSelect<string>({ items, initialSelectedItem })
+  const { current, handleMouseDown } = useSelect({})
+  console.log(current)
 
   return (
     <Select>
       <VisuallyHidden>
-        <SelectLabel {...getLabelProps()}>Choose a filter:</SelectLabel>
+        <SelectLabel>Choose a filter:</SelectLabel>
       </VisuallyHidden>
-      <SelectButton isOpen={isOpen} {...getToggleButtonProps()}>
-        {selectedItem || 'Filter'}
+      <SelectButton isOpen={false} onClick={handleMouseDown}>
+        {'Filter'}
       </SelectButton>
-      {isOpen && (
-        <SelectMenu variant="selectMenu" {...getMenuProps()}>
-          {items.map((item, index) => (
-            <SelectMenuItem
-              key={`${item}${index}`}
-              {...getItemProps({ item, index })}
-              sx={{
-                bg: highlightedIndex === index ? 'primary' : 'inherit',
-                color: highlightedIndex === index ? 'white' : 'inherit',
-              }}
-            >
-              {item}
-            </SelectMenuItem>
-          ))}
-        </SelectMenu>
-      )}
     </Select>
   )
 }

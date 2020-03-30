@@ -28,7 +28,9 @@
   "dependencies": {
     "@emotion/styled": "^10.0.27",
     "@kodiak-ui/core": "^0.1.9",
+    "@kodiak-ui/hooks": "^0.1.8",
     "@kodiak-ui/primitives": "^0.10.3",
+    "@xstate/fsm": "^1.3.0",
     "downshift": "^5.0.4"
   }
 }
