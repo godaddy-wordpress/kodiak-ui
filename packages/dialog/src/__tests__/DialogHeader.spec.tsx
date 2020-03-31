@@ -65,8 +65,8 @@ describe('DialogHeader', () => {
         fill: currentColor;
         color: black;
         display: block;
-        height: 14px;
-        width: 14px;
+        height: 16px;
+        width: 16px;
         display: block;
       }
 
