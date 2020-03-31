@@ -67,8 +67,8 @@ export function DialogHeader({
         <VisuallyHidden>Close</VisuallyHidden>
         <SvgIcon
           viewBox="0 0 14 14"
-          height="14px"
-          width="14px"
+          height="16px"
+          width="16px"
           display="block"
           aria-hidden
           variant="dialogHeaderCloseIcon"
