@@ -28,6 +28,6 @@
   "dependencies": {
     "@kodiak-ui/core": "^0.1.9",
     "@kodiak-ui/primitives": "^0.10.3",
-    "downshift": "^5.0.4"
+    "downshift": "^5.0.5"
   }
 }
