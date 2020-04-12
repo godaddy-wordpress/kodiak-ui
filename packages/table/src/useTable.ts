@@ -27,6 +27,11 @@ export function useTable<Data>({
 }: UseTableOptions<Data>): UseTableReturnValue {
   const tableRef = React.useRef<TableElement>(null)
 
+  /**
+   * Create all of the HTML attributes for an element
+   *
+   * Loops over the object keys and sets the attribute on the element for each key
+   */
   function setAttributes(
     element: TableElement,
     attributes: { [key: string]: string },
@@ -36,6 +41,12 @@ export function useTable<Data>({
     )
   }
 
+  /**
+   * Generate the appropriate aria-describedby text
+   *
+   * Depending on whether a string or a ref is passed into the `describedby` property
+   * in options, this will generate the string of the ID of the elements describing the table
+   */
   function defineDescribedByAriaText(
     options?: RegisterOptions,
   ): { 'aria-describedby': string } | undefined {
@@ -60,6 +71,11 @@ export function useTable<Data>({
     }
   }
 
+  /**
+   * Register the parent table element ref
+   *
+   * Adds the unique ID to the table element and generates the aria-describedby attribute
+   */
   function registerTableRef({
     ref,
     options,
@@ -72,16 +88,22 @@ export function useTable<Data>({
   } {
     tableRef.current = ref
 
-    defineDescribedByAriaText(options)
-
     setAttributes(tableRef.current, {
-      id: 'kodiak-ui-table', // TODO: Make this a unique ID
+      id: 'kodiak-ui-table', // TODO: Make this a unique ID that can be utilized on SSR installations
       ...defineDescribedByAriaText(options),
     })
 
     return { ref, options }
   }
 
+  /**
+   * Register all element refs
+   *
+   * Runs the passed ref and options into a series of functions to
+   * add HTML attributes to all elements with `register` called in the `ref`
+   *
+   * Example: registerTableRef(registerTableBodyRef({ ref, options }))
+   */
   function registerElementRefs(
     ref: TableElement,
     options?: RegisterOptions,
@@ -92,6 +114,14 @@ export function useTable<Data>({
     return registerTableRef({ ref, options })
   }
 
+  /**
+   * Register the table element
+   *
+   * Allows the ability to add the appropriate HTML attributes
+   * to an HTML element. Currently, it is only used for
+   * the table element but should be updated to work with any children
+   * elements
+   */
   function register(
     ref: TableElement,
     options?: RegisterOptions,
