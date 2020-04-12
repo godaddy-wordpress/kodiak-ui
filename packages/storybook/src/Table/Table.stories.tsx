@@ -44,12 +44,14 @@ export function Initial() {
     data,
   })
 
+  const labelRef = React.useRef<HTMLHeadingElement>(null)
+
   return (
     <>
-      <h1 ref={register({ label: true })} id="Title">
+      <h1 ref={labelRef} id="Testing">
         Table example
       </h1>
-      <table ref={register}>
+      <table ref={node => register(node, { describedby: labelRef })}>
         <thead>
           <tr>
             <th>Header 1</th>

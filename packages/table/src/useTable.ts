@@ -11,67 +11,95 @@ export interface UseTableOptions<Data> {
   data: Data[]
 }
 
+export type TableElement = HTMLTableElement | null
+
 export interface UseTableReturnValue {
-  register: (ref: Element | null) => void
+  register: (ref: TableElement, registerOptions: RegisterOptions) => void
 }
 
-export type TableElement = HTMLTableElement
-
-export type RegisterOptions = Partial<{
-  label: boolean
-}>
+export type RegisterOptions = {
+  describedby?: string | React.RefObject<any>
+}
 
 export function useTable<Data>({
   columns: userColumns,
   data: userData,
 }: UseTableOptions<Data>): UseTableReturnValue {
-  const tableRef = React.useRef<Element>()
-  const labelIdRef = React.useRef<string>()
+  const tableRef = React.useRef<TableElement>(null)
 
   function setAttributes(
-    element: Element,
+    element: TableElement,
     attributes: { [key: string]: string },
   ): void {
-    Object.keys(attributes).forEach(key =>
-      element.setAttribute(key, attributes[key]),
+    Object.keys(attributes).forEach(
+      key => element && element.setAttribute(key, attributes[key]),
     )
   }
 
-  function registerLabelRef(ref: Element): void {
-    if (!ref.id) {
-      console.warn(`Missing ID @${ref}`)
+  function defineDescribedByAriaText(
+    options?: RegisterOptions,
+  ): { 'aria-describedby': string } | undefined {
+    if (!(options && options.describedby)) {
+      return
     }
 
-    labelIdRef.current = ref.id
+    if (typeof options.describedby === 'string') {
+      return {
+        'aria-describedby': options.describedby,
+      }
+    }
+
+    if (options.describedby.current && options.describedby.current.id) {
+      return {
+        'aria-describedby': options.describedby.current.id,
+      }
+    } else {
+      console.warn(
+        `When passing a ref, the ref element must have an ID: @${options.describedby.current}`,
+      )
+    }
   }
 
-  function registerTableRef(ref: Element): void {
+  function registerTableRef({
+    ref,
+    options,
+  }: {
+    ref: TableElement
+    options?: RegisterOptions
+  }): {
+    ref: TableElement
+    options?: RegisterOptions
+  } {
     tableRef.current = ref
+
+    defineDescribedByAriaText(options)
 
     setAttributes(tableRef.current, {
       id: 'kodiak-ui-table', // TODO: Make this a unique ID
-      ...(labelIdRef && labelIdRef.current
-        ? { 'aria-describedby': labelIdRef.current }
-        : {}),
+      ...defineDescribedByAriaText(options),
     })
+
+    return { ref, options }
   }
 
-  function registerElementRefs<Element extends TableElement = TableElement>(
-    ref: Element,
-    options: RegisterOptions | Element | null = {},
-  ) {
-    console.log('ref', ref)
-    console.log('options', options)
+  function registerElementRefs(
+    ref: TableElement,
+    options?: RegisterOptions,
+  ): {
+    ref: TableElement
+    options?: RegisterOptions
+  } {
+    return registerTableRef({ ref, options })
   }
 
-  function register<Element extends TableElement = TableElement>(): (
-    ref: Element | null,
-  ) => void
-  function register<Element extends TableElement = TableElement>(
-    refOrOptions?: RegisterOptions | Element | null,
-  ): (ref: Element | null) => void | void {
-    return (ref: Element | null) =>
-      ref && registerElementRefs(ref, refOrOptions)
+  function register(
+    ref: TableElement,
+    options?: RegisterOptions,
+  ): {
+    ref: TableElement
+    options?: RegisterOptions
+  } | null {
+    return ref && registerElementRefs(ref, options)
   }
 
   return {
