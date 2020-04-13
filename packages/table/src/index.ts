@@ -1,1 +1,1 @@
-export { useTable } from './useTable'
+export { useTable, HeaderProps } from './useTable'

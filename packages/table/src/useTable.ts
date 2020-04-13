@@ -3,7 +3,14 @@ import * as React from 'react'
 export interface ColumnProps {
   accessor: string
   id?: number
-  Header?: string | React.ReactNode
+  Cell?: string | React.ReactNode
+}
+
+export interface HeaderProps {
+  key: string
+  id?: number
+  scope: string
+  children: string | React.ReactNode
 }
 
 export interface UseTableOptions<Data> {
@@ -15,6 +22,8 @@ export type TableElement = HTMLTableElement | null
 
 export interface UseTableReturnValue {
   register: (ref: TableElement, registerOptions: RegisterOptions) => void
+  headers: HeaderProps[]
+  rows: any[]
 }
 
 export type RegisterOptions = {
@@ -22,8 +31,8 @@ export type RegisterOptions = {
 }
 
 export function useTable<Data>({
-  columns: userColumns,
-  data: userData,
+  columns,
+  data,
 }: UseTableOptions<Data>): UseTableReturnValue {
   const tableRef = React.useRef<TableElement>(null)
 
@@ -132,7 +141,37 @@ export function useTable<Data>({
     return ref && registerElementRefs(ref, options)
   }
 
+  /**
+   * Return a memoized array or headers
+   *
+   * New array will be created only when the columns param is changed and the appropriate props are added to render
+   * the header inside of the th element
+   */
+  const headers = React.useMemo(
+    () =>
+      columns.map(({ id, accessor, Cell, ...column }) => ({
+        ...column,
+        id,
+        key: `${id}`,
+        scope: 'col',
+        children: Cell,
+      })),
+    [columns],
+  )
+
+  const rows = React.useMemo(
+    () =>
+      data.map((point, index) => ({
+        id: `${index}`,
+        index,
+        cells: ['Michael Scott', 'Regional manager'],
+      })),
+    [data],
+  )
+
   return {
     register,
+    headers,
+    rows,
   }
 }

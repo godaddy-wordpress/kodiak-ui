@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useTable } from '@kodiak-ui/table'
+import { useTable, HeaderProps } from '@kodiak-ui/table'
 
 export default { title: 'Table' }
 
@@ -7,12 +7,12 @@ export function Initial() {
   const columns = React.useMemo(
     () => [
       {
-        Header: 'Column 1',
-        accessor: 'col1', // accessor is the "key" in the data
+        Cell: 'Name',
+        accessor: 'name', // accessor is the "key" in the data
       },
       {
-        Header: 'Column 2',
-        accessor: 'col2',
+        Cell: <span>💼 Job title</span>,
+        accessor: 'jobTitle',
       },
     ],
     [],
@@ -21,24 +21,20 @@ export function Initial() {
   const data = React.useMemo(
     () => [
       {
-        col1: 'Hello',
-        col2: 'World',
+        name: 'Michael Scott',
+        jobTitle: 'Regional Manager',
       },
       {
-        col1: 'react-table',
-        col2: 'rocks',
-      },
-      {
-        col1: 'whatever',
-        col2: 'you want',
+        name: 'Dwight Schrute',
+        jobTitle: 'Assistant to the Regional Manager',
       },
     ],
     [],
   )
 
-  const { register } = useTable<{
-    col1: string
-    col2: string
+  const { register, headers, rows } = useTable<{
+    name: string
+    jobTitle: string
   }>({
     columns,
     data,
@@ -54,15 +50,19 @@ export function Initial() {
       <table ref={node => register(node, { describedby: labelRef })}>
         <thead>
           <tr>
-            <th>Header 1</th>
-            <th>Header 2</th>
+            {headers.map(({ key, ...header }: HeaderProps) => (
+              <th key={key} {...header} />
+            ))}
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Value 1</td>
-            <td>Value 2</td>
-          </tr>
+          {rows.map(({ id, cells }) => (
+            <tr key={id}>
+              {cells.map(cell => (
+                <td key={cell}>{cell}</td>
+              ))}
+            </tr>
+          ))}
         </tbody>
       </table>
     </>
