@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { hasKey } from './utils'
+import { hasKey, setAttributes } from './utils'
 
 export interface ColumnProps {
   Cell: string | React.ReactNode
@@ -32,7 +32,7 @@ export type TableElement = HTMLTableElement | null
 export interface UseTableReturnValue {
   register: (ref: TableElement, registerOptions: RegisterOptions) => void
   headers: HeaderProps[]
-  rows: any[]
+  rows: RowProps[]
 }
 
 export type RegisterOptions = {
@@ -44,20 +44,6 @@ export function useTable<Data>({
   data,
 }: UseTableOptions<Data>): UseTableReturnValue {
   const tableRef = React.useRef<TableElement>(null)
-
-  /**
-   * Create all of the HTML attributes for an element
-   *
-   * Loops over the object keys and sets the attribute on the element for each key
-   */
-  function setAttributes(
-    element: TableElement,
-    attributes: { [key: string]: string },
-  ): void {
-    Object.keys(attributes).forEach(
-      key => element && element.setAttribute(key, attributes[key]),
-    )
-  }
 
   /**
    * Generate the appropriate aria-describedby text
@@ -106,7 +92,7 @@ export function useTable<Data>({
   } {
     tableRef.current = ref
 
-    setAttributes(tableRef.current, {
+    setAttributes<TableElement>(tableRef.current, {
       id: 'kodiak-ui-table', // TODO: Make this a unique ID that can be utilized on SSR installations
       ...defineDescribedByAriaText(options),
     })
