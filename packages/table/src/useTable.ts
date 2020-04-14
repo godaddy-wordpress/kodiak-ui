@@ -1,17 +1,25 @@
 import * as React from 'react'
+import { hasKey } from './utils'
 
 export interface ColumnProps {
-  accessor: string
   Cell: string | React.ReactNode
-  id?: number
+  accessor?: string
   scope?: 'col' | 'row'
 }
 
-export interface HeaderProps {
+export interface CellProps {
   key: string
-  id?: number
-  scope: string
   children: string | React.ReactNode
+}
+
+export interface RowProps {
+  key: string
+  id?: string
+  cells: CellProps[]
+}
+
+export interface HeaderProps extends CellProps {
+  scope: string
 }
 
 export interface UseTableOptions<Data> {
@@ -148,12 +156,11 @@ export function useTable<Data>({
    * New array will be created only when the columns param is changed and the appropriate props are added to render
    * the header inside of the th element
    */
-  const headers = React.useMemo(
+  const headers: HeaderProps[] = React.useMemo(
     () =>
-      columns.map(({ id, accessor, scope = 'col', Cell, ...column }) => ({
+      columns.map(({ scope = 'col', Cell, ...column }, index) => ({
         ...column,
-        id,
-        key: `${id}`,
+        key: `${index}`,
         scope,
         children: Cell,
       })),
@@ -165,14 +172,18 @@ export function useTable<Data>({
    *
    * New array will be created only when `data` is changed.
    */
-  const rows = React.useMemo(
+  const rows: RowProps[] = React.useMemo(
     () =>
-      data.map((point, index) => ({
-        id: `${index}`,
-        index,
-        cells: ['Testing', 'Testing'],
+      data.map((point: Data, index) => ({
+        key: `${index}`,
+        rowIndex: index,
+        cells: columns.map(({ accessor }: ColumnProps, index) => ({
+          key: `${index}`,
+          children:
+            accessor && hasKey(point, accessor) ? point[accessor] : null,
+        })),
       })),
-    [data],
+    [data, columns],
   )
 
   return {

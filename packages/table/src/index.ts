@@ -1,1 +1,7 @@
-export { useTable, HeaderProps } from './useTable'
+export {
+  useTable,
+  ColumnProps,
+  CellProps,
+  HeaderProps,
+  RowProps,
+} from './useTable'
