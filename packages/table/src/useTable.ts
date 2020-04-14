@@ -2,8 +2,9 @@ import * as React from 'react'
 
 export interface ColumnProps {
   accessor: string
+  Cell: string | React.ReactNode
   id?: number
-  Cell?: string | React.ReactNode
+  scope?: 'col' | 'row'
 }
 
 export interface HeaderProps {
@@ -142,29 +143,34 @@ export function useTable<Data>({
   }
 
   /**
-   * Return a memoized array or headers
+   * Return a memoized array of headers
    *
    * New array will be created only when the columns param is changed and the appropriate props are added to render
    * the header inside of the th element
    */
   const headers = React.useMemo(
     () =>
-      columns.map(({ id, accessor, Cell, ...column }) => ({
+      columns.map(({ id, accessor, scope = 'col', Cell, ...column }) => ({
         ...column,
         id,
         key: `${id}`,
-        scope: 'col',
+        scope,
         children: Cell,
       })),
     [columns],
   )
 
+  /**
+   * Return a memoized array of rows
+   *
+   * New array will be created only when `data` is changed.
+   */
   const rows = React.useMemo(
     () =>
       data.map((point, index) => ({
         id: `${index}`,
         index,
-        cells: ['Michael Scott', 'Regional manager'],
+        cells: ['Testing', 'Testing'],
       })),
     [data],
   )
