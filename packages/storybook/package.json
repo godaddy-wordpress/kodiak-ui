@@ -21,7 +21,7 @@
     "@storybook/addons": "^5.3.9",
     "@storybook/preset-typescript": "^1.2.0",
     "@storybook/react": "^5.3.9",
-    "@types/theme-ui": "^0.2.7",
+    "@types/theme-ui": "^0.3.1",
     "babel-loader": "^8.0.6",
     "fork-ts-checker-webpack-plugin": "^4.0.3",
     "polished": "^3.4.4",

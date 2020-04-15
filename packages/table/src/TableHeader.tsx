@@ -1,11 +1,11 @@
-import styled from '@emotion/styled'
 import {
-  css,
-  sx,
   variant as getVariantStyles,
   VariantProps,
+  sx,
   Theme,
+  css,
   SerializedStyles,
+  styled,
 } from '@kodiak-ui/core'
 import { tableRoot } from './Table'
 
@@ -13,7 +13,6 @@ export type TableHeaderProps = React.HTMLAttributes<
   HTMLTableHeaderCellElement
 > &
   VariantProps
-
 /**
  * base
  *
@@ -36,7 +35,7 @@ export function base({ theme }: { theme: Theme }): SerializedStyles {
 
 function variant({
   variant: variantProp,
-  variantKey = 'tables',
+  variantKey,
   theme,
 }: { theme: Theme } & VariantProps): SerializedStyles {
   return getVariantStyles({ variant: variantProp, theme, variantKey })
@@ -53,3 +52,4 @@ export const TableHeader = styled('th')<TableHeaderProps>(
   variant,
   sx,
 )
+

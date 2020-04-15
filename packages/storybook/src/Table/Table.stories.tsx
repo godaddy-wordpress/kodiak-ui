@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { VisuallyHidden } from '@kodiak-ui/primitives'
+import { Text, VisuallyHidden } from '@kodiak-ui/primitives'
 import {
   useTable,
   CellProps,
@@ -149,9 +149,9 @@ export function Initial() {
 
   return (
     <>
-      <h1 ref={labelRef} id="Testing">
+      <Text as="h1" sx={{ color: 'muted' }} ref={labelRef} id="Testing">
         Table example
-      </h1>
+      </Text>
 
       <Table ref={node => register(node, { describedby: labelRef })}>
         <TableHead>

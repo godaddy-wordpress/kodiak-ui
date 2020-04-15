@@ -1,14 +1,12 @@
-import styled from '@emotion/styled'
 import {
-  css,
-  sx,
   variant as getVariantStyles,
   VariantProps,
+  sx,
   Theme,
+  css,
   SerializedStyles,
+  styled,
 } from '@kodiak-ui/core'
-
-export type TableProps = React.HTMLAttributes<HTMLTableElement> & VariantProps
 
 export function tableRoot({ theme }: { theme: Theme }): SerializedStyles {
   return css({
@@ -16,6 +14,8 @@ export function tableRoot({ theme }: { theme: Theme }): SerializedStyles {
     borderSpacing: 0,
   })(theme)
 }
+
+export type TableProps = VariantProps
 
 /**
  * base
@@ -34,7 +34,7 @@ export function base({ theme }: { theme: Theme }): SerializedStyles {
 
 function variant({
   variant: variantProp,
-  variantKey = 'tables',
+  variantKey,
   theme,
 }: { theme: Theme } & VariantProps): SerializedStyles {
   return getVariantStyles({ variant: variantProp, theme, variantKey })
@@ -51,3 +51,4 @@ export const Table = styled('table')<TableProps>(
   variant,
   sx,
 )
+
