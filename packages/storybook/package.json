@@ -14,6 +14,7 @@
     "@kodiak-ui/message": "^0.1.7",
     "@kodiak-ui/primitives": "^0.10.3",
     "@kodiak-ui/select": "^0.1.2",
+    "@kodiak-ui/menu": "^0.0.0",
     "@storybook/addon-docs": "^5.3.9",
     "@storybook/addons": "^5.3.9",
     "@storybook/preset-typescript": "^1.2.0",
