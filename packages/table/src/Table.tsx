@@ -1,3 +1,4 @@
+import * as React from 'react'
 import {
   variant as getVariantStyles,
   VariantProps,
@@ -6,7 +7,9 @@ import {
   css,
   SerializedStyles,
   styled,
+  SxStyleProp,
 } from '@kodiak-ui/core'
+import { Box } from '@kodiak-ui/primitives'
 
 export function tableRoot({ theme }: { theme: Theme }): SerializedStyles {
   return css({
@@ -15,11 +18,16 @@ export function tableRoot({ theme }: { theme: Theme }): SerializedStyles {
   })(theme)
 }
 
-export type TableProps = VariantProps
+export type TableProps = {
+  children: React.ReactNode
+  ref?: (node: HTMLTableElement) => void
+  sx?: SxStyleProp
+} & VariantProps
 
 export function base({ theme }: { theme: Theme }): SerializedStyles {
   return css({
     display: 'table',
+    minWidth: '650px',
     width: '100%',
   })(theme)
 }
@@ -32,7 +40,7 @@ function variant({
   return getVariantStyles({ variant: variantProp, theme, variantKey })
 }
 
-export const Table = styled('table')<TableProps>(
+export const TableElement = styled('table')<TableProps>(
   {
     boxSizing: 'border-box',
     margin: 0,
@@ -44,3 +52,10 @@ export const Table = styled('table')<TableProps>(
   sx,
 )
 
+export function Table({ sx, ...props }: TableProps) {
+  return (
+    <Box __base={{ width: '100%', overflowX: 'auto' }} sx={sx}>
+      <TableElement {...props} />
+    </Box>
+  )
+}

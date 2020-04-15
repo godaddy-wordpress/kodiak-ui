@@ -5,7 +5,7 @@ export {
   HeaderProps,
   RowProps,
 } from './useTable'
-export { Table, TableProps } from './Table'
+export { Table, TableElement, TableProps } from './Table'
 export { TableHead, TableHeadProps } from './TableHead'
 export { TableBody, TableBodyProps } from './TableBody'
 export { TableRow, TableRowProps } from './TableRow'
