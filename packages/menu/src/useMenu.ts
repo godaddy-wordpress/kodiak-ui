@@ -39,11 +39,19 @@ export function useMenu(): UseMenuReturnValue {
   const buttonRef = React.useRef<HTMLButtonElement>()
   const menuRef = React.useRef<HTMLUListElement>()
 
+  function focusMenuRef() {
+    menuRef && menuRef.current && menuRef.current.focus()
+  }
+
+  function focusButtonRef() {
+    buttonRef && buttonRef.current && buttonRef.current.focus()
+  }
+
   React.useEffect(() => {
     if (isExpanded) {
-      menuRef && menuRef.current && menuRef.current.focus()
+      focusMenuRef()
     } else {
-      buttonRef && buttonRef.current && buttonRef.current.focus()
+      focusButtonRef()
     }
   }, [isExpanded])
 
