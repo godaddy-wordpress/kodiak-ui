@@ -155,8 +155,8 @@ export function Initial() {
           </tr>
         </thead>
         <tbody>
-          {rows.map(({ id, cells }) => (
-            <tr key={id}>
+          {rows.map(({ id, cells }, index) => (
+            <tr key={index}>
               {cells.map(({ key, ...cell }: CellProps) => (
                 <td key={key} {...cell} />
               ))}

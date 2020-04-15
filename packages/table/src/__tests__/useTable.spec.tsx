@@ -49,8 +49,8 @@ function Table() {
           </tr>
         </thead>
         <tbody>
-          {rows.map(({ id, cells }) => (
-            <tr key={id}>
+          {rows.map(({ cells }, index) => (
+            <tr key={index}>
               {cells.map(({ key, ...cell }) => (
                 <td key={key} {...cell} />
               ))}
@@ -86,8 +86,8 @@ function TableWithLabelRef() {
           </tr>
         </thead>
         <tbody>
-          {rows.map(({ id, cells }) => (
-            <tr key={id}>
+          {rows.map(({ cells }, index) => (
+            <tr key={index}>
               {cells.map(({ key, ...cell }) => (
                 <td key={key} {...cell} />
               ))}
