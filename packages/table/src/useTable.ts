@@ -46,6 +46,23 @@ export function useTable<Data>({
   const tableRef = React.useRef<TableElement>(null)
 
   /**
+   * Create all of the HTML attributes for an element
+   *
+   * Loops over the object keys and sets the attribute on the element for each key
+   */
+  function setAttributes<T extends Element | null>(
+    element: T,
+    attributes: { [key: string]: string },
+  ): void {
+    Object.keys(attributes).forEach(
+      key =>
+        element &&
+        hasKey(attributes, key) &&
+        element.setAttribute(key, attributes[key]),
+    )
+  }
+
+  /**
    * Generate the appropriate aria-describedby text
    *
    * Depending on whether a string or a ref is passed into the `describedby` property
