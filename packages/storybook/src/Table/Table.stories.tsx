@@ -1,8 +1,15 @@
 import * as React from 'react'
 import { VisuallyHidden } from '@kodiak-ui/primitives'
-import { useTable, CellProps, HeaderProps } from '@kodiak-ui/table'
 import {
-  Checkbox,
+  useTable,
+  CellProps,
+  HeaderProps,
+  Table,
+  TableHead,
+  TableRow,
+  TableHeader,
+} from '@kodiak-ui/table'
+import {
   IconButton,
   Tooltip,
   Menu,
@@ -146,24 +153,24 @@ export function Initial() {
         Table example
       </h1>
 
-      <table ref={node => register(node, { describedby: labelRef })}>
-        <thead>
-          <tr>
+      <Table ref={node => register(node, { describedby: labelRef })}>
+        <TableHead>
+          <TableRow>
             {headers.map(({ key, ...header }: HeaderProps) => (
-              <th key={key} {...header} />
+              <TableHeader key={key} {...header} />
             ))}
-          </tr>
-        </thead>
+          </TableRow>
+        </TableHead>
         <tbody>
           {rows.map(({ id, cells }, index) => (
-            <tr key={index}>
+            <TableRow key={index}>
               {cells.map(({ key, ...cell }: CellProps) => (
                 <td key={key} {...cell} />
               ))}
-            </tr>
+            </TableRow>
           ))}
         </tbody>
-      </table>
+      </Table>
     </>
   )
 }
