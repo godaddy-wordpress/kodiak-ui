@@ -126,7 +126,7 @@ export function useMenu(): UseMenuReturnValue {
   const handleToggleMenu = React.useCallback(
     function handleToggleMenu() {
       setAttributes(buttonRef && (buttonRef.current as Element | null), {
-        'aria-expanded': `${!isOpen}`,
+        'aria-expanded': `${!isExpanded}`,
       })
 
       setIsExpanded(!isExpanded)
