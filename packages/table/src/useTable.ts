@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { hasKey, setAttributes } from './utils'
+import { hasKey } from './utils'
 
 export interface ColumnProps {
   Cell: string | React.ReactNode
