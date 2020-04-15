@@ -13,14 +13,7 @@ export type TableHeaderProps = React.HTMLAttributes<
   HTMLTableHeaderCellElement
 > &
   VariantProps
-/**
- * base
- *
- * Generate the base CSS for the SelectMenu component
- * that is aware of the Theme UI theme
- *
- * @param props
- */
+
 export function base({ theme }: { theme: Theme }): SerializedStyles {
   return css({
     borderBottom: '1px solid',
@@ -35,7 +28,7 @@ export function base({ theme }: { theme: Theme }): SerializedStyles {
 
 function variant({
   variant: variantProp,
-  variantKey,
+  variantKey = 'tables',
   theme,
 }: { theme: Theme } & VariantProps): SerializedStyles {
   return getVariantStyles({ variant: variantProp, theme, variantKey })

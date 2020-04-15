@@ -6,8 +6,10 @@ import {
   HeaderProps,
   Table,
   TableHead,
+  TableBody,
   TableRow,
   TableHeader,
+  TableData,
 } from '@kodiak-ui/table'
 import {
   IconButton,
@@ -161,15 +163,15 @@ export function Initial() {
             ))}
           </TableRow>
         </TableHead>
-        <tbody>
+        <TableBody>
           {rows.map(({ id, cells }, index) => (
             <TableRow key={index}>
               {cells.map(({ key, ...cell }: CellProps) => (
-                <td key={key} {...cell} />
+                <TableData key={key} {...cell} />
               ))}
             </TableRow>
           ))}
-        </tbody>
+        </TableBody>
       </Table>
     </>
   )

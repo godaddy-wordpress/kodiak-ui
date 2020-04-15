@@ -10,14 +10,7 @@ import {
 import { tableRoot } from './Table'
 
 export type TableHeadProps = React.HTMLAttributes<HTMLElement> & VariantProps
-/**
- * base
- *
- * Generate the base CSS for the SelectMenu component
- * that is aware of the Theme UI theme
- *
- * @param props
- */
+
 export function base({ theme }: { theme: Theme }): SerializedStyles {
   return css({
     display: 'table-header-group',
@@ -26,7 +19,7 @@ export function base({ theme }: { theme: Theme }): SerializedStyles {
 
 function variant({
   variant: variantProp,
-  variantKey,
+  variantKey = 'tables',
   theme,
 }: { theme: Theme } & VariantProps): SerializedStyles {
   return getVariantStyles({ variant: variantProp, theme, variantKey })
