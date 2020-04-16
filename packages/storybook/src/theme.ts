@@ -257,6 +257,14 @@ const shadows = {
   outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
 }
 
+const tables = {
+  tableHead: {},
+  tableBody: {},
+  tableRow: {},
+  tableHeader: {},
+  tableData: {},
+}
+
 export const theme = {
   breakpoints,
   colors,
@@ -408,4 +416,5 @@ export const theme = {
     textDecoration: 'none',
   },
   selects,
+  tables,
 }

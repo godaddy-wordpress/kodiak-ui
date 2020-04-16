@@ -22,7 +22,7 @@ export function base({ theme }: { theme: Theme }): SerializedStyles {
 }
 
 function variant({
-  variant: variantProp,
+  variant: variantProp = 'tableRow',
   variantKey = 'tables',
   theme,
 }: { theme: Theme } & VariantProps): SerializedStyles {

@@ -27,7 +27,7 @@ export function base({ theme }: { theme: Theme }): SerializedStyles {
 }
 
 function variant({
-  variant: variantProp,
+  variant: variantProp = 'tableHeader',
   variantKey = 'tables',
   theme,
 }: { theme: Theme } & VariantProps): SerializedStyles {
