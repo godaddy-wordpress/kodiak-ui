@@ -17,6 +17,9 @@ export function base({ theme }: { theme: Theme }): SerializedStyles {
     borderBottom: '1px solid',
     borderColor: 'muted',
     display: 'table-cell',
+    fontSize: 'inherit',
+    fontWeight: 'inherit',
+    lineHeight: 'inherit',
     padding: 3,
     verticalAlign: 'inherit',
   })(theme)

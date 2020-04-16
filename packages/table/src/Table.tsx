@@ -34,13 +34,13 @@ export function base({ theme }: { theme: Theme }): SerializedStyles {
 
 function variant({
   variant: variantProp,
-  variantKey = 'tables',
+  variantKey,
   theme,
 }: { theme: Theme } & VariantProps): SerializedStyles {
   return getVariantStyles({ variant: variantProp, theme, variantKey })
 }
 
-export const TableElement = styled('table')<TableProps>(
+export const TableStyle = styled('table')<TableProps>(
   {
     boxSizing: 'border-box',
     margin: 0,
@@ -52,10 +52,24 @@ export const TableElement = styled('table')<TableProps>(
   sx,
 )
 
-export function Table({ sx, ...props }: TableProps) {
+export function TableElement({ variantKey = 'tables', ...props }: TableProps) {
+  return <TableStyle variantKey={variantKey} {...props} />
+}
+
+export function Table({
+  sx,
+  variant,
+  variantKey = 'tables',
+  ...props
+}: TableProps) {
   return (
-    <Box __base={{ width: '100%', overflowX: 'auto' }} sx={sx}>
-      <TableElement {...props} />
+    <Box
+      __base={{ width: '100%', overflowX: 'auto' }}
+      sx={sx}
+      variant={variant}
+      variantKey={variantKey}
+    >
+      <TableStyle {...props} />
     </Box>
   )
 }

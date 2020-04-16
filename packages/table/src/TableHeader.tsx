@@ -18,8 +18,11 @@ export function base({ theme }: { theme: Theme }): SerializedStyles {
   return css({
     borderBottom: '1px solid',
     borderColor: 'muted',
-    color: 'text',
+    color: 'inherit',
     display: 'table-cell',
+    fontSize: 'inherit',
+    fontWeight: 'inherit',
+    lineHeight: 'inherit',
     padding: 3,
     textAlign: 'left',
     verticalAlign: 'inherit',

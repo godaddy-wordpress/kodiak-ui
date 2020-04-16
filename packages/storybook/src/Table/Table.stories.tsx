@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { VisuallyHidden } from '@kodiak-ui/primitives'
 import {
   useTable,
   CellProps,
@@ -90,10 +91,6 @@ export function Initial() {
         Cell: 'Job title',
         accessor: 'jobTitle',
       },
-      {
-        Cell: <VisuallyHidden>Actions</VisuallyHidden>,
-        accessor: 'actions',
-      },
     ],
     [],
   )
@@ -104,35 +101,21 @@ export function Initial() {
         character: 'Michael Scott',
         portrayedBy: 'Steve Carrel',
         jobTitle: 'Regional manager',
-        actions: (
-          <Actions onActionSelect={value => alert(`${value} Michael Scott`)} />
-        ),
       },
       {
         character: 'Dwight Schrutte',
         portrayedBy: 'Rainn Wilson',
         jobTitle: 'Assistant to the Regional Manager',
-        actions: (
-          <Actions
-            onActionSelect={value => alert(`${value} Dwight Schrutte`)}
-          />
-        ),
       },
       {
         character: 'Pam Beasley',
         portrayedBy: 'Jenna Fischer',
         jobTitle: 'Receptionist',
-        actions: (
-          <Actions onActionSelect={value => alert(`${value} Pam Beasley`)} />
-        ),
       },
       {
         character: 'Angela Martin',
         portrayedBy: 'Angela Kinsey',
         jobTitle: 'Accountant',
-        actions: (
-          <Actions onActionSelect={value => alert(`${value} Angela Martin`)} />
-        ),
       },
     ],
     [],
@@ -154,14 +137,7 @@ export function Initial() {
         Table example
       </h1>
 
-      <Table
-        ref={node => register(node, { describedby: labelRef })}
-        sx={{
-          borderRadius: 'default',
-          boxShadow:
-            '0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)',
-        }}
-      >
+      <Table ref={node => register(node, { describedby: labelRef })}>
         <TableHead>
           <TableRow>
             {headers.map(({ key, ...header }: HeaderProps) => (

@@ -258,11 +258,42 @@ const shadows = {
 }
 
 const tables = {
-  tableHead: {},
-  tableBody: {},
-  tableRow: {},
-  tableHeader: {},
-  tableData: {},
+  border: '1px solid',
+  borderColor: 'gray.2',
+  borderRadius: 'default',
+  fontSize: 1,
+  lineHeight: 1.1,
+  tableHead: {
+    bg: 'gray.1',
+    color: 'text',
+    fontWeight: 'semiBold',
+  },
+  tableRow: {
+    borderBottom: '1px solid',
+    borderColor: 'gray.2',
+    '&:last-of-type': {
+      borderBottom: 'none',
+    },
+  },
+  tableHeader: {
+    borderLeft: '1px solid',
+    borderColor: 'gray.2',
+    paddingY: 3,
+    paddingX: 4,
+    '&:first-child': {
+      borderLeft: 'none',
+    },
+  },
+  tableData: {
+    borderBottom: 'none',
+    borderLeft: '1px solid',
+    borderColor: 'gray.2',
+    paddingY: 3,
+    paddingX: 4,
+    '&:first-child': {
+      borderLeft: 'none',
+    },
+  },
 }
 
 export const theme = {
@@ -279,6 +310,7 @@ export const theme = {
   fontWeights: {
     body: 400,
     medium: 500,
+    semiBold: 600,
     heading: 700,
     bold: 700,
   },

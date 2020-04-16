@@ -25,7 +25,7 @@ function variant({
   return getVariantStyles({ variant: variantProp, theme, variantKey })
 }
 
-export const TableHead = styled('th')<TableHeadProps>(
+export const TableHead = styled('thead')<TableHeadProps>(
   {
     boxSizing: 'border-box',
     margin: 0,
