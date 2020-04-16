@@ -17,6 +17,9 @@ describe('TableData', () => {
         border-bottom: 1px solid;
         border-color: muted;
         display: table-cell;
+        font-size: inherit;
+        font-weight: inherit;
+        line-height: inherit;
         padding: 16px;
         vertical-align: inherit;
       }

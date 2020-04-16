@@ -17,7 +17,7 @@ describe('TableHead', () => {
         display: table-header-group;
       }
 
-      <th
+      <thead
         className="emotion-0"
       />
     `)

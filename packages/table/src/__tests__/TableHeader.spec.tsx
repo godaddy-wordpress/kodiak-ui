@@ -16,8 +16,11 @@ describe('TableHeader', () => {
         border-spacing: 0;
         border-bottom: 1px solid;
         border-color: muted;
-        color: text;
+        color: inherit;
         display: table-cell;
+        font-size: inherit;
+        font-weight: inherit;
+        line-height: inherit;
         padding: 16px;
         text-align: left;
         vertical-align: inherit;
