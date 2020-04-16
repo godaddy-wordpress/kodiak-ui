@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/core",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "Kodiak's core package for defining functions that are used across all packages",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -22,7 +22,7 @@
     "microbundle": "^0.11.0"
   },
   "dependencies": {
-    "@emotion/serialize": "^0.11.15",
+    "@emotion/serialize": "^0.11.16",
     "@emotion/styled": "^10.0.27",
     "@styled-system/should-forward-prop": "^5.1.4",
     "styled-system": "^5.1.4",
