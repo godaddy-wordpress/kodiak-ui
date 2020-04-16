@@ -18,7 +18,7 @@ function checkIsExpanded<T>({ key, expanded }: { key: T; expanded?: T | T[] }) {
   }
 }
 
-export function Initial() {
+export function Simple() {
   const [expanded, setExpanded] = React.useState<string | null>(null)
 
   function toggleExpanded({ key }: { key: string }) {
@@ -40,9 +40,11 @@ export function Initial() {
         }}
       >
         <AccordionHeader
+          id="firstAccordion"
           aria-expanded={checkIsExpanded({ key: 'first', expanded })}
+          aria-controls="firstBody"
           tabIndex={0}
-          onClick={event => {
+          onClick={() => {
             toggleExpanded({ key: 'first' })
           }}
           onKeyUp={event => {
@@ -63,6 +65,9 @@ export function Initial() {
         {checkIsExpanded({ key: 'first', expanded }) && (
           <>
             <AccordionBody
+              id="firstBody"
+              aria-labelledby="firstAccordion"
+              role="region"
               sx={{
                 borderTop: '1px solid',
                 borderBottom: '1px solid',
