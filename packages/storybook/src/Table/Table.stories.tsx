@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { VisuallyHidden } from '@kodiak-ui/primitives'
 import {
   useTable,
   CellProps,
