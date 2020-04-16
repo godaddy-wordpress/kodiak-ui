@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { Text, VisuallyHidden } from '@kodiak-ui/primitives'
 import {
   useTable,
   CellProps,
@@ -151,9 +150,9 @@ export function Initial() {
 
   return (
     <>
-      <Text as="h1" sx={{ color: 'muted' }} ref={labelRef} id="Testing">
+      <h1 ref={labelRef} id="Testing">
         Table example
-      </Text>
+      </h1>
 
       <Table
         ref={node => register(node, { describedby: labelRef })}
@@ -171,8 +170,8 @@ export function Initial() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map(({ id, cells }, index) => (
-            <TableRow key={index}>
+          {rows.map(({ key, cells }) => (
+            <TableRow key={key}>
               {cells.map(({ key, ...cell }: CellProps) => (
                 <TableData key={key} {...cell} />
               ))}

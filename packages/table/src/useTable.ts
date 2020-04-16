@@ -85,7 +85,7 @@ export function useTable<Data>({
       return {
         'aria-describedby': options.describedby.current.id,
       }
-    } else {
+    } else if (process.env.NODE_ENV !== 'production') {
       console.warn(
         `When passing a ref, the ref element must have an ID: @${options.describedby.current}`,
       )
