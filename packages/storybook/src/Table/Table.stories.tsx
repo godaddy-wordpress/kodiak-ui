@@ -1,8 +1,16 @@
 import * as React from 'react'
-import { VisuallyHidden } from '@kodiak-ui/primitives'
-import { useTable, CellProps, HeaderProps } from '@kodiak-ui/table'
 import {
-  Checkbox,
+  useTable,
+  CellProps,
+  HeaderProps,
+  Table,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableHeader,
+  TableData,
+} from '@kodiak-ui/table'
+import {
   IconButton,
   Tooltip,
   Menu,
@@ -82,10 +90,6 @@ export function Initial() {
         Cell: 'Job title',
         accessor: 'jobTitle',
       },
-      {
-        Cell: <VisuallyHidden>Actions</VisuallyHidden>,
-        accessor: 'actions',
-      },
     ],
     [],
   )
@@ -96,35 +100,21 @@ export function Initial() {
         character: 'Michael Scott',
         portrayedBy: 'Steve Carrel',
         jobTitle: 'Regional manager',
-        actions: (
-          <Actions onActionSelect={value => alert(`${value} Michael Scott`)} />
-        ),
       },
       {
         character: 'Dwight Schrutte',
         portrayedBy: 'Rainn Wilson',
         jobTitle: 'Assistant to the Regional Manager',
-        actions: (
-          <Actions
-            onActionSelect={value => alert(`${value} Dwight Schrutte`)}
-          />
-        ),
       },
       {
         character: 'Pam Beasley',
         portrayedBy: 'Jenna Fischer',
         jobTitle: 'Receptionist',
-        actions: (
-          <Actions onActionSelect={value => alert(`${value} Pam Beasley`)} />
-        ),
       },
       {
         character: 'Angela Martin',
         portrayedBy: 'Angela Kinsey',
         jobTitle: 'Accountant',
-        actions: (
-          <Actions onActionSelect={value => alert(`${value} Angela Martin`)} />
-        ),
       },
     ],
     [],
@@ -146,24 +136,24 @@ export function Initial() {
         Table example
       </h1>
 
-      <table ref={node => register(node, { describedby: labelRef })}>
-        <thead>
-          <tr>
+      <Table ref={node => register(node, { describedby: labelRef })}>
+        <TableHead>
+          <TableRow>
             {headers.map(({ key, ...header }: HeaderProps) => (
-              <th key={key} {...header} />
+              <TableHeader key={key} {...header} />
             ))}
-          </tr>
-        </thead>
-        <tbody>
+          </TableRow>
+        </TableHead>
+        <TableBody>
           {rows.map(({ key, cells }) => (
-            <tr key={key}>
+            <TableRow key={key}>
               {cells.map(({ key, ...cell }: CellProps) => (
-                <td key={key} {...cell} />
+                <TableData key={key} {...cell} />
               ))}
-            </tr>
+            </TableRow>
           ))}
-        </tbody>
-      </table>
+        </TableBody>
+      </Table>
     </>
   )
 }
