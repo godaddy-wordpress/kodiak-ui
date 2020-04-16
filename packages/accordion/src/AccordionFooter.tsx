@@ -26,7 +26,10 @@ export const AccordionFooter = styled('div')<AccordionFooterProps>(
     minWidth: 0,
   },
   base,
-  ({ variant: variantProp = 'footer', variantKey = 'accordions', theme }) =>
-    variant({ variant: variantProp, theme, variantKey }),
+  ({
+    variant: variantProp = 'accordionFooter',
+    variantKey = 'accordions',
+    theme,
+  }) => variant({ variant: variantProp, theme, variantKey }),
   sx,
 )

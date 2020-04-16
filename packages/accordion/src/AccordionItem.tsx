@@ -26,7 +26,10 @@ export const AccordionItem = styled('div')<AccordionItemProps>(
     minWidth: 0,
   },
   base,
-  ({ variant: variantProp = 'item', variantKey = 'accordions', theme }) =>
-    variant({ variant: variantProp, theme, variantKey }),
+  ({
+    variant: variantProp = 'accordionItem',
+    variantKey = 'accordions',
+    theme,
+  }) => variant({ variant: variantProp, theme, variantKey }),
   sx,
 )

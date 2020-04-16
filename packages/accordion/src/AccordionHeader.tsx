@@ -26,7 +26,10 @@ export const AccordionHeader = styled('div')<AccordionHeaderProps>(
     minWidth: 0,
   },
   base,
-  ({ variant: variantProp = 'header', variantKey = 'accordions', theme }) =>
-    variant({ variant: variantProp, theme, variantKey }),
+  ({
+    variant: variantProp = 'accordionHeader',
+    variantKey = 'accordions',
+    theme,
+  }) => variant({ variant: variantProp, theme, variantKey }),
   sx,
 )

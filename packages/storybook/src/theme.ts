@@ -237,6 +237,12 @@ const buttons = {
   },
 }
 
+const accordions = {
+  accordionHeader: {},
+  accordionBody: {},
+  accordionFooter: {},
+}
+
 const selects = {
   selectMenu: {
     top: `calc(100% + ${space[2]}px)`,
@@ -408,4 +414,5 @@ export const theme = {
     textDecoration: 'none',
   },
   selects,
+  accordions,
 }

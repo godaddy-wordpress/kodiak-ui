@@ -26,7 +26,10 @@ export const AccordionBody = styled('div')<AccordionBodyProps>(
     minWidth: 0,
   },
   base,
-  ({ variant: variantProp = 'body', variantKey = 'accordions', theme }) =>
-    variant({ variant: variantProp, theme, variantKey }),
+  ({
+    variant: variantProp = 'accordionBody',
+    variantKey = 'accordions',
+    theme,
+  }) => variant({ variant: variantProp, theme, variantKey }),
   sx,
 )
