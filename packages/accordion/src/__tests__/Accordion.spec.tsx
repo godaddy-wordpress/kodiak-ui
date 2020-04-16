@@ -26,6 +26,35 @@ describe('Accordion', () => {
         )
         .toJSON(),
     ).toMatchInlineSnapshot(`
+      .emotion-0 {
+        box-sizing: border-box;
+        margin: 0;
+        min-width: 0;
+      }
+
+      <div
+        className="emotion-0"
+      >
+        <div
+          className="emotion-0"
+        >
+          <div
+            className="emotion-0"
+          >
+            Header
+          </div>
+          <div
+            className="emotion-0"
+          >
+            Body
+          </div>
+          <div
+            className="emotion-0"
+          >
+            Footer
+          </div>
+        </div>
+      </div>
     `)
   })
 })
