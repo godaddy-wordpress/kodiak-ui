@@ -33,6 +33,11 @@ enum MenuElementTagNames {
   Ul = 'UL',
 }
 
+interface RefAndOptions<Element> {
+  ref: Element | null
+  options?: RegisterOptions
+}
+
 export function useMenu(): UseMenuReturnValue {
   const [isExpanded, setIsExpanded] = React.useState(false)
 
@@ -58,10 +63,7 @@ export function useMenu(): UseMenuReturnValue {
   function registerButtonElement<Element extends MenuElement = MenuElement>({
     ref,
     options,
-  }: {
-    ref: Element | null
-    options?: RegisterOptions
-  }): { ref: Element | null; options?: RegisterOptions } {
+  }: RefAndOptions<Element>): RefAndOptions<Element> {
     if (ref && ref.tagName === MenuElementTagNames.Button) {
       buttonRef.current = ref as HTMLButtonElement
 
@@ -78,10 +80,7 @@ export function useMenu(): UseMenuReturnValue {
   function registerMenuElement<Element extends MenuElement = MenuElement>({
     ref,
     options,
-  }: {
-    ref: Element | null
-    options?: RegisterOptions
-  }): { ref: Element | null; options?: RegisterOptions } {
+  }: RefAndOptions<Element>): RefAndOptions<Element> {
     if (ref && ref.tagName === MenuElementTagNames.Ul) {
       menuRef.current = ref as HTMLUListElement
 
@@ -100,10 +99,7 @@ export function useMenu(): UseMenuReturnValue {
   function registerElementRefs<Element extends MenuElement = MenuElement>(
     ref: Element | null,
     options?: RegisterOptions,
-  ): {
-    ref: Element | null
-    options?: RegisterOptions
-  } {
+  ): RefAndOptions<Element> {
     return registerMenuElement(registerButtonElement({ ref, options }))
   }
 
@@ -116,10 +112,7 @@ export function useMenu(): UseMenuReturnValue {
   function register<Element extends MenuElement = MenuElement>(
     ref: Element | null,
     options?: RegisterOptions,
-  ): {
-    ref: Element | null
-    options?: RegisterOptions
-  } | null {
+  ): RefAndOptions<Element> | null {
     return ref && registerElementRefs(ref, options)
   }
 

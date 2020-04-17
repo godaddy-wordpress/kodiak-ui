@@ -7,14 +7,7 @@ import {
   DialogOverlay as ReachDialogOverlay,
   DialogContent as ReachDialogContent,
 } from '@reach/dialog'
-import {
-  systemProps,
-  SystemProps,
-  variant,
-  VariantProps,
-  sx,
-  shouldForwardProp,
-} from '@kodiak-ui/core'
+import { variant, VariantProps, sx } from '@kodiak-ui/core'
 import { DialogHeader } from './DialogHeader'
 
 type DialogProps = {
@@ -23,8 +16,7 @@ type DialogProps = {
   allowPinchZoom?: boolean
   style?: React.CSSProperties
   onDismiss?: () => void
-} & VariantProps &
-  SystemProps
+} & VariantProps
 
 const globalStyles = ({ theme }: { theme: Theme }): SerializedStyles =>
   css({
@@ -59,16 +51,7 @@ const containerStyles = ({ theme }: { theme: Theme }): SerializedStyles =>
     width: '50vw',
   })(theme)
 
-export const DialogOverlay: React.FC<Pick<
-  DialogProps,
-  | 'isOpen'
-  | 'allowPinchZoom'
-  | 'children'
-  | 'onDismiss'
-  | 'style'
-  | 'variant'
-  | 'variantKey'
->> = styled(ReachDialogOverlay)(
+export const DialogOverlay = styled(ReachDialogOverlay)<DialogProps>(
   {
     boxSizing: 'border-box',
     margin: 0,
@@ -77,16 +60,10 @@ export const DialogOverlay: React.FC<Pick<
   overlayStyles,
   ({ variant: variantProp = 'overlay', variantKey = 'dialogs', theme }) =>
     variant({ variant: variantProp, theme, variantKey }),
-  ...systemProps,
   sx,
 )
 
-export const DialogContainer: React.FC<Pick<
-  DialogProps,
-  'variant' | 'variantKey' | 'style'
->> = styled(ReachDialogContent, {
-  shouldForwardProp,
-})(
+export const DialogContainer = styled(ReachDialogContent)<DialogProps>(
   {
     boxSizing: 'border-box',
     margin: 0,
@@ -95,7 +72,6 @@ export const DialogContainer: React.FC<Pick<
   containerStyles,
   ({ variant: variantProp, variantKey = 'dialogs', theme }) =>
     variant({ variant: variantProp, theme, variantKey }),
-  ...systemProps,
   sx,
 )
 
