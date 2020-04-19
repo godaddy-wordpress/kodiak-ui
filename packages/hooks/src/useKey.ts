@@ -1,11 +1,15 @@
 import * as React from 'react'
-import { useEventListener, UseEventListenerTarget } from '@kodiak-ui/hooks'
+import {
+  useEventListener,
+  AddRemoveListenerType,
+  OnOffListenerType,
+} from '@kodiak-ui/hooks'
 
 interface UseKeyOptions {
   key: string
   handler: (event: KeyboardEvent) => void
   event?: 'keydown' | 'keypress' | 'keyup'
-  target?: UseEventListenerTarget
+  target?: Window | AddRemoveListenerType | OnOffListenerType | null
 }
 
 const createKeyPredicate = (

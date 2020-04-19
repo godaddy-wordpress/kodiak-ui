@@ -5,5 +5,9 @@ export { useSubscribe } from './useSubscribe'
 export { useLocalStorage } from './useLocalStorage'
 export { usePortal } from './usePortal'
 export { useKey } from './useKey'
-export { useEventListener, UseEventListenerTarget } from './useEventListener'
+export {
+  useEventListener,
+  AddRemoveListenerType,
+  OnOffListenerType,
+} from './useEventListener'
 export { createStateDispatchContext } from './createStateDispatchContext'

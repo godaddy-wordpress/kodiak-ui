@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-interface AddRemoveListenerType {
+export interface AddRemoveListenerType {
   addEventListener(
     name: string,
     handler: (event?: any) => void,
@@ -13,7 +13,7 @@ interface AddRemoveListenerType {
   ): any
 }
 
-interface OnOffListenerType {
+export interface OnOffListenerType {
   on(name: string, handler: (event?: any) => void, ...args: any[]): any
   off(name: string, handler: (event?: any) => void, ...args: any[]): any
 }
@@ -39,7 +39,7 @@ type AddEventListener<T> = T extends AddRemoveListenerType
 interface UseEventListenerOptions<T> {
   name: Parameters<AddEventListener<T>>[0]
   handler?: null | undefined | Parameters<AddEventListener<T>>[1]
-  target: null | T | Window
+  target?: null | T | Window
   options?: Parameters<AddEventListener<T>>[2]
 }
 

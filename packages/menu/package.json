@@ -19,8 +19,7 @@
     "watch": "microbundle --watch -f es,cjs"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-optional-chaining": "^7.9.0",
-    "microbundle": "^0.12.0-next.8"
+    "microbundle": "^0.11.0"
   },
   "peerDependencies": {
     "react": "^16.13.0",

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { hasKey } from '@kodiak-ui/utils'
-import { usePortal } from '@kodiak-ui/hooks'
+import { usePortal, useKey } from '@kodiak-ui/hooks'
 
 /**
  * Create all of the HTML attributes for an element
@@ -84,6 +84,15 @@ export function useMenu(): UseMenuReturnValue {
         left: ${left}px;
         background: #ffff;
       `
+    },
+  })
+
+  useKey({
+    key: 'Escape',
+    handler: () => {
+      if (isExpanded) {
+        handleClosePortal({})
+      }
     },
   })
 
