@@ -4,8 +4,17 @@ import { useMenu } from '@kodiak-ui/menu'
 
 export default { title: 'Menu' }
 
+const items = ['Action 1', 'Action 2', 'Action 3', 'Action 4', 'Action 5']
+
 export function Inital() {
-  const { register, isExpanded, handleToggleMenu, Portal } = useMenu()
+  const {
+    register,
+    isExpanded,
+    highlightedIndex,
+    handleToggleMenu,
+    options,
+    Portal,
+  } = useMenu<string>({ items })
 
   return (
     <>
@@ -15,8 +24,17 @@ export function Inital() {
       {isExpanded && (
         <Portal>
           <ul ref={node => register(node)}>
-            <li>Action 1</li>
-            <li>Action 2</li>
+            {options.map((option, index) => (
+              <li
+                key={index}
+                style={
+                  highlightedIndex === index
+                    ? { backgroundColor: '#bde4ff' }
+                    : {}
+                }
+                {...option}
+              />
+            ))}
           </ul>
         </Portal>
       )}

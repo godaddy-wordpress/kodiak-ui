@@ -19,12 +19,135 @@ function setAttributes<T extends Element | null>(
   )
 }
 
+interface NextIndexProps {
+  moveAmount: number
+  baseIndex: number
+  itemCount: number
+  getItemNodeFromIndex: (index: number) => HTMLElement | null
+  circular?: boolean
+}
+
+function getNextNonDisabledIndex({
+  moveAmount,
+  baseIndex,
+  itemCount,
+  getItemNodeFromIndex,
+  circular = true,
+}: NextIndexProps): number {
+  const currentElementNode = getItemNodeFromIndex(baseIndex)
+  if (!currentElementNode || !currentElementNode.hasAttribute('disabled')) {
+    return baseIndex
+  }
+
+  if (moveAmount > 0) {
+    for (let index = baseIndex + 1; index < itemCount; index++) {
+      const node = getItemNodeFromIndex(index)
+      if (node && !node.hasAttribute('disabled')) {
+        return index
+      }
+    }
+  } else {
+    for (let index = baseIndex - 1; index >= 0; index--) {
+      const node = getItemNodeFromIndex(index)
+      if (node && !node.hasAttribute('disabled')) {
+        return index
+      }
+    }
+  }
+
+  if (circular) {
+    return moveAmount > 0
+      ? getNextNonDisabledIndex({
+          moveAmount: 1,
+          baseIndex: 0,
+          itemCount,
+          getItemNodeFromIndex,
+          circular: false,
+        })
+      : getNextNonDisabledIndex({
+          moveAmount: -1,
+          baseIndex: itemCount - 1,
+          itemCount,
+          getItemNodeFromIndex,
+          circular: false,
+        })
+  }
+
+  return -1
+}
+
+function getNextIndex({
+  moveAmount,
+  baseIndex,
+  itemCount,
+  getItemNodeFromIndex,
+  circular = true,
+}: NextIndexProps): number {
+  const lastIndex = itemCount - 1
+
+  if (
+    typeof baseIndex !== 'number' ||
+    baseIndex < 0 ||
+    baseIndex >= itemCount
+  ) {
+    baseIndex = moveAmount > 0 ? -1 : lastIndex + 1
+  }
+
+  let newIndex = baseIndex + moveAmount
+
+  if (newIndex < 0) {
+    newIndex = lastIndex
+  } else if (newIndex > lastIndex) {
+    newIndex = 0
+  }
+
+  const nonDisabledNewIndex = getNextNonDisabledIndex({
+    moveAmount,
+    baseIndex: newIndex,
+    itemCount,
+    getItemNodeFromIndex,
+    circular,
+  })
+
+  return nonDisabledNewIndex === -1 ? baseIndex : nonDisabledNewIndex
+}
+
+let idCounter = 0
+
+function generateId() {
+  return String(idCounter++)
+}
+
+interface ElementIds {
+  labelId: string
+  menuId: string
+  getItemId: (index: number) => string
+  buttonId: string
+}
+
+function generateElementIds(): ElementIds {
+  const id = `kodiak-ui-menu-${generateId()}`
+
+  return {
+    labelId: `${id}-label`,
+    menuId: `${id}-menu`,
+    getItemId: (index: number) => `${id}-item-${index}`,
+    buttonId: `${id}-button`,
+  }
+}
+
 interface RegisterOptions {}
+
+interface UseMenuProps<T> {
+  items: T[]
+}
 
 interface UseMenuReturnValue {
   register: (ref: MenuElement, registerOptions?: RegisterOptions) => void
   isExpanded: boolean
+  highlightedIndex: number
   handleToggleMenu: (event: React.MouseEvent<any, MouseEvent>) => void
+  options: { id: string }[]
   Portal: any
 }
 
@@ -40,9 +163,13 @@ interface RefAndOptions<Element> {
   options?: RegisterOptions
 }
 
-export function useMenu(): UseMenuReturnValue {
+export function useMenu<T>({ items }: UseMenuProps<T>): UseMenuReturnValue {
   const buttonRef = React.useRef<HTMLButtonElement | null>(null)
   const menuRef = React.useRef<HTMLUListElement>()
+  const elementIds = React.useRef<ElementIds>(generateElementIds())
+
+  const [highlightedIndex, setHighlightedIndex] = React.useState(0)
+  const [selectedItem, setSelectedItem] = React.useState<T>()
 
   const {
     isOpen: isExpanded,
@@ -87,12 +214,44 @@ export function useMenu(): UseMenuReturnValue {
     },
   })
 
+  function getItemNodeFromIndex(index: number): HTMLElement | null {
+    return document.getElementById(elementIds.current.getItemId(index))
+  }
+
   useKey({
     key: 'Escape',
     handler: () => {
       if (isExpanded) {
         handleClosePortal({})
       }
+    },
+  })
+
+  useKey({
+    key: 'ArrowDown',
+    handler: () => {
+      setHighlightedIndex(
+        getNextIndex({
+          moveAmount: 1,
+          baseIndex: highlightedIndex,
+          itemCount: items.length,
+          getItemNodeFromIndex,
+        }),
+      )
+    },
+  })
+
+  useKey({
+    key: 'ArrowUp',
+    handler: () => {
+      setHighlightedIndex(
+        getNextIndex({
+          moveAmount: -1,
+          baseIndex: highlightedIndex,
+          itemCount: items.length,
+          getItemNodeFromIndex,
+        }),
+      )
     },
   })
 
@@ -120,7 +279,7 @@ export function useMenu(): UseMenuReturnValue {
       buttonRef.current = ref as HTMLButtonElement
 
       setAttributes(buttonRef.current, {
-        id: 'BUTTONIDREF',
+        id: elementIds.current.buttonId,
         'aria-haspopup': 'true',
         'aria-controls': 'IDREF',
       })
@@ -137,7 +296,7 @@ export function useMenu(): UseMenuReturnValue {
       menuRef.current = ref as HTMLUListElement
 
       setAttributes(menuRef.current, {
-        id: 'MENUIDREF',
+        id: elementIds.current.menuId,
         role: 'menu',
         tabIndex: '-1',
         'aria-labelledby':
@@ -179,20 +338,21 @@ export function useMenu(): UseMenuReturnValue {
     [isExpanded, handleOpenPortal, handleClosePortal],
   )
 
-  return Object.assign(
-    [
-      register,
-      isExpanded,
-      handleOpenPortal,
-      handleClosePortal,
-      handleToggleMenu,
-      Portal,
-    ],
-    {
-      register: React.useCallback(register, []),
-      isExpanded,
-      handleToggleMenu,
-      Portal,
-    },
-  )
+  const options = React.useMemo(() => {
+    return items.map((item, index) => ({
+      id: elementIds.current.getItemId(index),
+      role: 'option',
+      'aria-selected': highlightedIndex === index,
+      children: item,
+    }))
+  }, [items, highlightedIndex])
+
+  return {
+    register: React.useCallback(register, []),
+    isExpanded,
+    highlightedIndex,
+    handleToggleMenu,
+    options,
+    Portal,
+  }
 }
