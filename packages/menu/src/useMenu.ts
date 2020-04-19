@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { hasKey } from '@kodiak-ui/utils'
+import { usePortal } from '@kodiak-ui/hooks'
 
 /**
  * Create all of the HTML attributes for an element
@@ -23,7 +24,8 @@ interface RegisterOptions {}
 interface UseMenuReturnValue {
   register: (ref: MenuElement, registerOptions?: RegisterOptions) => void
   isExpanded: boolean
-  menuButtonProps: { onClick: () => void }
+  handleToggleMenu: (event: React.MouseEvent<any, MouseEvent>) => void
+  Portal: any
 }
 
 type MenuElement = HTMLButtonElement | HTMLUListElement | HTMLLIElement
@@ -39,10 +41,51 @@ interface RefAndOptions<Element> {
 }
 
 export function useMenu(): UseMenuReturnValue {
-  const [isExpanded, setIsExpanded] = React.useState(false)
-
-  const buttonRef = React.useRef<HTMLButtonElement>()
+  const buttonRef = React.useRef<HTMLButtonElement | null>(null)
   const menuRef = React.useRef<HTMLUListElement>()
+
+  const {
+    isOpen: isExpanded,
+    handleOpenPortal,
+    handleClosePortal,
+    Portal,
+  } = usePortal({
+    onOpen({ portalRef }) {
+      const clickedElement = buttonRef && buttonRef.current
+      const buttonRect =
+        clickedElement && clickedElement.getBoundingClientRect()
+
+      if (!clickedElement || !buttonRect) {
+        return
+      }
+
+      let left = buttonRect.left
+      let top = buttonRect && buttonRect.top + clickedElement.clientHeight
+
+      const outRight = window.innerWidth < left + clickedElement.offsetWidth
+
+      const outBottom =
+        window.innerHeight < buttonRect.top + portalRef.current.clientHeight
+
+      if (outRight) {
+        left =
+          window.innerWidth -
+          (buttonRect.right - buttonRect.left + clickedElement.offsetWidth)
+      }
+
+      if (outBottom) {
+        top = window.innerHeight - (buttonRect.bottom - buttonRect.top + 200)
+      }
+
+      portalRef.current.style.cssText = `
+        width: ${clickedElement.offsetWidth}px;
+        position: absolute;
+        top: ${top}px;
+        left: ${left}px;
+        background: #ffff;
+      `
+    },
+  })
 
   function focusMenuRef() {
     menuRef && menuRef.current && menuRef.current.focus()
@@ -117,26 +160,30 @@ export function useMenu(): UseMenuReturnValue {
   }
 
   const handleToggleMenu = React.useCallback(
-    function handleToggleMenu() {
+    function handleToggleMenu(event) {
       setAttributes(buttonRef && (buttonRef.current as Element | null), {
         'aria-expanded': `${!isExpanded}`,
       })
 
-      setIsExpanded(!isExpanded)
+      isExpanded ? handleClosePortal(event) : handleOpenPortal(event)
     },
-    [isExpanded],
+    [isExpanded, handleOpenPortal, handleClosePortal],
   )
 
-  const menuButtonProps = React.useMemo(
-    () => ({
-      onClick: handleToggleMenu,
-    }),
-    [handleToggleMenu],
+  return Object.assign(
+    [
+      register,
+      isExpanded,
+      handleOpenPortal,
+      handleClosePortal,
+      handleToggleMenu,
+      Portal,
+    ],
+    {
+      register: React.useCallback(register, []),
+      isExpanded,
+      handleToggleMenu,
+      Portal,
+    },
   )
-
-  return {
-    register: React.useCallback(register, []),
-    isExpanded,
-    menuButtonProps,
-  }
 }

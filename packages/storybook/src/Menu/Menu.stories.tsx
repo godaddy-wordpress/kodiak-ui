@@ -5,18 +5,20 @@ import { useMenu } from '@kodiak-ui/menu'
 export default { title: 'Menu' }
 
 export function Inital() {
-  const { register, isExpanded, menuButtonProps } = useMenu()
+  const { register, isExpanded, handleToggleMenu, Portal } = useMenu()
 
   return (
     <>
-      <Button ref={node => register(node)} {...menuButtonProps}>
+      <Button ref={node => register(node)} onClick={handleToggleMenu}>
         Open menu
       </Button>
       {isExpanded && (
-        <ul ref={node => register(node)}>
-          <li>Action 1</li>
-          <li>Action 2</li>
-        </ul>
+        <Portal>
+          <ul ref={node => register(node)}>
+            <li>Action 1</li>
+            <li>Action 2</li>
+          </ul>
+        </Portal>
       )}
     </>
   )

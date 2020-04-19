@@ -19,7 +19,8 @@
     "watch": "microbundle --watch -f es,cjs"
   },
   "devDependencies": {
-    "microbundle": "^0.11.0"
+    "@babel/plugin-proposal-optional-chaining": "^7.9.0",
+    "microbundle": "^0.12.0-next.8"
   },
   "peerDependencies": {
     "react": "^16.13.0",
@@ -27,6 +28,8 @@
   },
   "dependencies": {
     "@kodiak-ui/core": "^0.1.9",
-    "@kodiak-ui/utils": "^0.0.0"
+    "@kodiak-ui/hooks": "^0.1.8",
+    "@kodiak-ui/utils": "^0.0.0",
+    "react-useportal": "^1.0.13"
   }
 }
