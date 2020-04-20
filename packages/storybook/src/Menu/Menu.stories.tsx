@@ -4,8 +4,6 @@ import { useMenu } from '@kodiak-ui/menu'
 
 export default { title: 'Menu' }
 
-const items = ['Action 1', 'Action 2', 'Action 3', 'Action 4', 'Action 5']
-
 const MenuItem = React.memo(
   React.forwardRef(function MenuItem(props: any, ref) {
     return <li ref={ref} {...props} />
@@ -18,64 +16,75 @@ export function Inital() {
     isExpanded,
     activeItem,
     handleToggleMenu,
+    handleCloseMenu,
+    getItemProps,
     Portal,
   } = useMenu()
 
-  const getStyle = React.useCallback(
-    (name: string): any =>
-      activeItem === name ? { backgroundColor: '#bde4ff' } : {},
-    [activeItem],
-  )
-
   return (
     <>
-      <Button ref={node => register(node)} onClick={handleToggleMenu}>
+      <Button ref={register} onClick={handleToggleMenu}>
         Open menu
       </Button>
       {isExpanded && (
         <Portal>
-          <ul ref={node => register(node)}>
+          <ul ref={register}>
             <MenuItem
               ref={node =>
-                register(node, {
+                register(node as HTMLLIElement, {
                   name: 'action1',
-                  handler: () => alert('action1'),
+                  handler: () => {
+                    console.log('action1')
+                    handleCloseMenu()
+                  },
                 })
               }
-              style={getStyle('action1')}
+              {...getItemProps('action1')}
+              style={
+                activeItem === 'action1' ? { backgroundColor: '#bde4ff' } : {}
+              }
             >
               Action 1
             </MenuItem>
             <MenuItem
               ref={node =>
-                register(node, {
+                register(node as HTMLLIElement, {
                   name: 'action2',
-                  handler: () => alert('action2'),
+                  handler: () => console.log('action2'),
                 })
               }
-              style={getStyle('action2')}
+              {...getItemProps('action2')}
+              style={
+                activeItem === 'action2' ? { backgroundColor: '#bde4ff' } : {}
+              }
             >
               Action 2
             </MenuItem>
             <MenuItem
               ref={node =>
-                register(node, {
+                register(node as HTMLLIElement, {
                   name: 'action3',
-                  handler: () => alert('action3'),
+                  handler: () => console.log('action3'),
                 })
               }
-              style={getStyle('action3')}
+              {...getItemProps('action3')}
+              style={
+                activeItem === 'action3' ? { backgroundColor: '#bde4ff' } : {}
+              }
             >
               Action 3
             </MenuItem>
             <MenuItem
               ref={node =>
-                register(node, {
+                register(node as HTMLLIElement, {
                   name: 'action4',
-                  handler: () => alert('action4'),
+                  handler: () => console.log('action4'),
                 })
               }
-              style={getStyle('action4')}
+              {...getItemProps('action4')}
+              style={
+                activeItem === 'action4' ? { backgroundColor: '#bde4ff' } : {}
+              }
             >
               Action 4
             </MenuItem>

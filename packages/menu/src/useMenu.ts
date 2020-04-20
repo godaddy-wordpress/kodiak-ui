@@ -19,30 +19,6 @@ function setAttributes<T extends Element | null>(
   )
 }
 
-function attachEventListenersToMenu({
-  menu,
-  handler,
-}: {
-  menu: HTMLUListElement
-  handler?: () => void
-}) {
-  if (handler) {
-    menu.addEventListener('click', handler)
-  }
-}
-
-function attachEventListenersToItem({
-  item,
-  handler,
-}: {
-  item: HTMLLIElement | Element
-  handler?: () => void
-}) {
-  if (handler) {
-    item.addEventListener('click', handler)
-  }
-}
-
 interface NextIndexProps {
   moveAmount: number
   baseIndex: number
@@ -171,14 +147,19 @@ interface RegisterOptions {
 }
 
 interface UseMenuReturnValue {
-  register: (ref: MenuElement, registerOptions?: RegisterOptions) => void
+  register: (
+    ref: (HTMLButtonElement | HTMLUListElement | HTMLLIElement) | null,
+    registerOptions?: RegisterOptions,
+  ) => void
   isExpanded: boolean
   activeItem: string
   handleToggleMenu: (event: React.MouseEvent<any, MouseEvent>) => void
+  handleCloseMenu: () => void
+  getItemProps: (
+    name: string,
+  ) => { onClick: (() => void) | undefined; onMouseEnter: () => void }
   Portal: any
 }
-
-type MenuElement = HTMLButtonElement | HTMLUListElement | HTMLLIElement
 
 enum MenuElementTagNames {
   Button = 'BUTTON',
@@ -330,7 +311,7 @@ export function useMenu(): UseMenuReturnValue {
     }
   }, [isExpanded])
 
-  function registerButtonElement<Element extends MenuElement = MenuElement>({
+  function registerButtonElement({
     ref,
     options,
   }: RefAndOptions<Element>): RefAndOptions<Element> {
@@ -347,7 +328,7 @@ export function useMenu(): UseMenuReturnValue {
     return { ref, options }
   }
 
-  function registerMenuElement<Element extends MenuElement = MenuElement>({
+  function registerMenuElement({
     ref,
     options,
   }: RefAndOptions<Element>): RefAndOptions<Element> {
@@ -361,17 +342,12 @@ export function useMenu(): UseMenuReturnValue {
         'aria-labelledby':
           buttonRef && buttonRef.current ? `${buttonRef.current.id}` : '',
       })
-
-      attachEventListenersToMenu({
-        menu: menuRef.current,
-        handler: () => alert('testing'),
-      })
     }
 
     return { ref, options }
   }
 
-  function registerMenuItemElement<Element extends MenuElement = MenuElement>({
+  function registerMenuItemElement({
     ref,
     options,
   }: RefAndOptions<Element>): RefAndOptions<Element> {
@@ -391,21 +367,20 @@ export function useMenu(): UseMenuReturnValue {
         role: 'option',
         'aria-selected': 'false',
       })
-
-      attachEventListenersToItem({ item, handler })
     }
 
     return { ref, options }
   }
 
-  function registerElementRefs<Element extends MenuElement = MenuElement>(
+  const registerElementRefs = React.useCallback(function registerElementRefs(
     ref: Element | null,
     options?: RegisterOptions,
   ): RefAndOptions<Element> {
     return registerMenuItemElement(
       registerMenuElement(registerButtonElement({ ref, options })),
     )
-  }
+  },
+  [])
 
   /**
    * Register the menu elements
@@ -413,15 +388,15 @@ export function useMenu(): UseMenuReturnValue {
    * Allows the ability to add the appropriate HTML attributes
    * to an HTML element.
    */
-  const register = React.useCallback(function register<
-    Element extends MenuElement = MenuElement
-  >(
-    ref: Element | null,
-    options?: RegisterOptions,
-  ): RefAndOptions<Element> | null {
-    return ref && registerElementRefs(ref, options)
-  },
-  [])
+  const register = React.useCallback(
+    function register(
+      ref: (HTMLButtonElement | HTMLUListElement | HTMLLIElement) | null,
+      options?: RegisterOptions,
+    ): RefAndOptions<Element> | null {
+      return ref && registerElementRefs(ref, options)
+    },
+    [registerElementRefs],
+  )
 
   const handleToggleMenu = React.useCallback(
     function handleToggleMenu(event) {
@@ -434,18 +409,31 @@ export function useMenu(): UseMenuReturnValue {
     [isExpanded, handleOpenPortal, handleClosePortal],
   )
 
-  const handleMouseEnter = React.useCallback(function handleMouseEnter(
-    index: number,
-  ) {
-    return () => setActiveItem('')
-  },
-  [])
+  const handleCloseMenu = React.useCallback(
+    function handleCloseMenu() {
+      setAttributes(buttonRef && (buttonRef.current as Element | null), {
+        'aria-expanded': 'false',
+      })
+
+      handleClosePortal({})
+    },
+    [handleClosePortal],
+  )
+
+  const getItemProps = React.useCallback(function getItemProps(name: string) {
+    return {
+      onClick: itemHandlersRef.current[name],
+      onMouseEnter: () => setActiveItem(name),
+    }
+  }, [])
 
   return {
     register,
     isExpanded,
     activeItem,
     handleToggleMenu,
+    handleCloseMenu,
+    getItemProps,
     Portal,
   }
 }
