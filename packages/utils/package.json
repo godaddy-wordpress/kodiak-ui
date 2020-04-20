@@ -20,10 +20,5 @@
   },
   "devDependencies": {
     "microbundle": "^0.11.0"
-  },
-  "peerDependencies": {
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0"
-  },
-  "dependencies": {}
+  }
 }

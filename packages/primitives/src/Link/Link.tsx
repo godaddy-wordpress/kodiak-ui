@@ -1,5 +1,4 @@
 import styled from '@emotion/styled'
-import { IntrinsicSxElements } from 'theme-ui'
 import {
   sx,
   variant,
@@ -11,8 +10,8 @@ import { base, BaseProps } from '../Box'
 
 type LinkProps = VariantProps &
   SystemProps &
-  IntrinsicSxElements['a'] &
-  BaseProps
+  BaseProps &
+  React.HTMLAttributes<HTMLAnchorElement>
 
 export const Link = styled('a')<LinkProps>(
   {

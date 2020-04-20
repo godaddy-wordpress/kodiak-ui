@@ -25,7 +25,5 @@
   "devDependencies": {
     "microbundle": "^0.11.0"
   },
-  "dependencies": {
-    "resize-observer-polyfill": "^1.5.1"
-  }
+  "dependencies": {}
 }
