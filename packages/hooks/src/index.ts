@@ -10,4 +10,5 @@ export {
   AddRemoveListenerType,
   OnOffListenerType,
 } from './useEventListener'
+export { useOnClickOutside } from './useOnClickOutside'
 export { createStateDispatchContext } from './createStateDispatchContext'

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { hasKey } from '@kodiak-ui/utils'
-import { usePortal, useKey } from '@kodiak-ui/hooks'
+import { usePortal, useKey, useOnClickOutside } from '@kodiak-ui/hooks'
 
 /**
  * Create all of the HTML attributes for an element
@@ -17,6 +17,30 @@ function setAttributes<T extends Element | null>(
       hasKey(attributes, key) &&
       element.setAttribute(key, attributes[key]),
   )
+}
+
+function attachEventListenersToMenu({
+  menu,
+  handler,
+}: {
+  menu: HTMLUListElement
+  handler?: () => void
+}) {
+  if (handler) {
+    menu.addEventListener('click', handler)
+  }
+}
+
+function attachEventListenersToItem({
+  item,
+  handler,
+}: {
+  item: HTMLLIElement | Element
+  handler?: () => void
+}) {
+  if (handler) {
+    item.addEventListener('click', handler)
+  }
 }
 
 interface NextIndexProps {
@@ -143,6 +167,7 @@ function generateElementIds(): ElementIds {
 
 interface RegisterOptions {
   name: string
+  handler: () => void
 }
 
 interface UseMenuReturnValue {
@@ -170,6 +195,9 @@ export function useMenu(): UseMenuReturnValue {
   const buttonRef = React.useRef<HTMLButtonElement | null>(null)
   const menuRef = React.useRef<HTMLUListElement>()
   const itemsRef = React.useRef<{ [key: string]: HTMLLIElement | Element }>({})
+  const itemHandlersRef = React.useRef<{
+    [key: string]: (() => void) | undefined
+  }>({})
   const elementIds = React.useRef<ElementIds>(generateElementIds())
 
   const [activeItem, setActiveItem] = React.useState('')
@@ -223,6 +251,7 @@ export function useMenu(): UseMenuReturnValue {
 
   useKey({
     key: 'Escape',
+    target: menuRef.current,
     handler: () => {
       if (isExpanded) {
         handleClosePortal({})
@@ -232,6 +261,7 @@ export function useMenu(): UseMenuReturnValue {
 
   useKey({
     key: 'ArrowDown',
+    target: menuRef.current,
     handler: () => {
       const nextItem = getNextItem({
         moveAmount: 1,
@@ -250,6 +280,7 @@ export function useMenu(): UseMenuReturnValue {
 
   useKey({
     key: 'ArrowUp',
+    target: menuRef.current,
     handler: () => {
       const nextItem = getNextItem({
         moveAmount: -1,
@@ -263,6 +294,23 @@ export function useMenu(): UseMenuReturnValue {
       setAttributes(itemsRef.current[nextItem], {
         'aria-selected': 'true',
       })
+    },
+  })
+
+  useKey({
+    key: 'Enter',
+    target: menuRef.current,
+    handler: () => {
+      const handler = itemHandlersRef.current[activeItem] as () => void
+      handler()
+    },
+  })
+
+  useOnClickOutside({
+    ref: menuRef as React.MutableRefObject<Element>,
+    refException: buttonRef as React.MutableRefObject<Element>,
+    handler: () => {
+      handleClosePortal({})
     },
   })
 
@@ -313,32 +361,42 @@ export function useMenu(): UseMenuReturnValue {
         'aria-labelledby':
           buttonRef && buttonRef.current ? `${buttonRef.current.id}` : '',
       })
+
+      attachEventListenersToMenu({
+        menu: menuRef.current,
+        handler: () => alert('testing'),
+      })
     }
 
     return { ref, options }
   }
 
-  const registerMenuItemElement = React.useCallback(
-    function registerMenuItemElement<
-      Element extends MenuElement = MenuElement
-    >({ ref, options }: RefAndOptions<Element>): RefAndOptions<Element> {
-      if (ref && ref.tagName === MenuElementTagNames.Li) {
-        const name = options && options.name
-        const items = itemsRef.current
+  function registerMenuItemElement<Element extends MenuElement = MenuElement>({
+    ref,
+    options,
+  }: RefAndOptions<Element>): RefAndOptions<Element> {
+    if (ref && ref.tagName === MenuElementTagNames.Li) {
+      const name = options && options.name
+      const handler = options && options.handler
+      const items = itemsRef.current
+      const itemHandlers = itemHandlersRef.current
 
-        items[name as string] = ref
+      items[name as string] = ref
+      itemHandlers[name as string] = handler
 
-        setAttributes(items[name as string], {
-          id: elementIds.current.getItemId(name as string),
-          role: 'option',
-          'aria-selected': activeItem === name ? 'true' : 'false',
-        })
-      }
+      const item = items[name as string]
 
-      return { ref, options }
-    },
-    [activeItem],
-  )
+      setAttributes(item, {
+        id: elementIds.current.getItemId(name as string),
+        role: 'option',
+        'aria-selected': 'false',
+      })
+
+      attachEventListenersToItem({ item, handler })
+    }
+
+    return { ref, options }
+  }
 
   function registerElementRefs<Element extends MenuElement = MenuElement>(
     ref: Element | null,

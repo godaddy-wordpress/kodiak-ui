@@ -36,25 +36,45 @@ export function Inital() {
         <Portal>
           <ul ref={node => register(node)}>
             <MenuItem
-              ref={node => register(node, { name: 'action1' })}
+              ref={node =>
+                register(node, {
+                  name: 'action1',
+                  handler: () => alert('action1'),
+                })
+              }
               style={getStyle('action1')}
             >
               Action 1
             </MenuItem>
             <MenuItem
-              ref={node => register(node, { name: 'action2' })}
+              ref={node =>
+                register(node, {
+                  name: 'action2',
+                  handler: () => alert('action2'),
+                })
+              }
               style={getStyle('action2')}
             >
               Action 2
             </MenuItem>
             <MenuItem
-              ref={node => register(node, { name: 'action3' })}
+              ref={node =>
+                register(node, {
+                  name: 'action3',
+                  handler: () => alert('action3'),
+                })
+              }
               style={getStyle('action3')}
             >
               Action 3
             </MenuItem>
             <MenuItem
-              ref={node => register(node, { name: 'action4' })}
+              ref={node =>
+                register(node, {
+                  name: 'action4',
+                  handler: () => alert('action4'),
+                })
+              }
               style={getStyle('action4')}
             >
               Action 4
