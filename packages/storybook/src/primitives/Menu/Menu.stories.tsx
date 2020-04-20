@@ -122,7 +122,7 @@ export function SimplePillMenuWithTabNavigation() {
                 cursor: 'pointer',
                 fontWeight: 'medium',
                 '&:hover,&:focus': {
-                  color: !isCurrent && 'primary',
+                  ...(!isCurrent && { color: 'primary' }),
                 },
               }}
               tabIndex={0}
