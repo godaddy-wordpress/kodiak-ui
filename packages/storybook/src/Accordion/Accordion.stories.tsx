@@ -6,9 +6,18 @@ import {
   AccordionBody,
   AccordionFooter,
 } from '@kodiak-ui/accordion'
-import { Text } from '@kodiak-ui/primitives'
+import { Text, SvgIcon } from '@kodiak-ui/primitives'
+import { Flex } from 'theme-ui'
 
 export default { title: 'Accordion' }
+
+function CaretFillDown({ ...props }) {
+  return (
+    <SvgIcon viewBox="0 0 16 16" height="16px" width="16px" {...props}>
+      <path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 01.753 1.659l-4.796 5.48a1 1 0 01-1.506 0z" />
+    </SvgIcon>
+  )
+}
 
 function checkIsExpanded<T>({ key, expanded }: { key: T; expanded?: T | T[] }) {
   if (Array.isArray(expanded)) {
@@ -63,11 +72,22 @@ export function FullyControlled() {
             outline: 'none',
             px: 4,
             py: 5,
+            cursor: 'pointer',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
           }}
         >
           <Text fontWeight="bold" fontSize={3} mb={0}>
             Accordion header - toggle me
           </Text>
+          <CaretFillDown
+            sx={{
+              transform: checkIsExpanded({ key: 'first', expanded })
+                ? 'rotate(180deg)'
+                : 'rotate(0)',
+            }}
+          />
         </AccordionHeader>
         {checkIsExpanded({ key: 'first', expanded }) && (
           <>
@@ -122,11 +142,22 @@ export function FullyControlled() {
             outline: 'none',
             px: 4,
             py: 5,
+            cursor: 'pointer',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
           }}
         >
           <Text fontWeight="bold" fontSize={3} mb={0}>
             Accordion header - toggle me
           </Text>
+          <CaretFillDown
+            sx={{
+              transform: checkIsExpanded({ key: 'second', expanded })
+                ? 'rotate(180deg)'
+                : 'rotate(0)',
+            }}
+          />
         </AccordionHeader>
         {checkIsExpanded({ key: 'second', expanded }) && (
           <>
