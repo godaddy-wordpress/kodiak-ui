@@ -15,7 +15,8 @@
     "sourceMap": true,
     "strict": true,
     "target": "es5",
-    "noImplicitAny": true
+    "noImplicitAny": true,
+    "downlevelIteration": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "src/**/*.test.*"]

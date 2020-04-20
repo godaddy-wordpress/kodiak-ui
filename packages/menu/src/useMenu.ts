@@ -22,18 +22,19 @@ function setAttributes<T extends Element | null>(
 interface NextIndexProps {
   moveAmount: number
   baseIndex: number
-  itemCount: number
-  getItemNodeFromIndex: (index: number) => HTMLElement | null
+  items: { [key: string]: HTMLLIElement | Element }
+  getItemNodeFromIndex: (index: number) => HTMLLIElement | Element | null
   circular?: boolean
 }
 
 function getNextNonDisabledIndex({
   moveAmount,
   baseIndex,
-  itemCount,
+  items,
   getItemNodeFromIndex,
   circular = true,
 }: NextIndexProps): number {
+  const itemCount = Object.keys(items).length
   const currentElementNode = getItemNodeFromIndex(baseIndex)
   if (!currentElementNode || !currentElementNode.hasAttribute('disabled')) {
     return baseIndex
@@ -60,14 +61,14 @@ function getNextNonDisabledIndex({
       ? getNextNonDisabledIndex({
           moveAmount: 1,
           baseIndex: 0,
-          itemCount,
+          items,
           getItemNodeFromIndex,
           circular: false,
         })
       : getNextNonDisabledIndex({
           moveAmount: -1,
           baseIndex: itemCount - 1,
-          itemCount,
+          items,
           getItemNodeFromIndex,
           circular: false,
         })
@@ -79,10 +80,11 @@ function getNextNonDisabledIndex({
 function getNextIndex({
   moveAmount,
   baseIndex,
-  itemCount,
+  items,
   getItemNodeFromIndex,
   circular = true,
-}: NextIndexProps): number {
+}: NextIndexProps): string {
+  const itemCount = Object.keys(items).length
   const lastIndex = itemCount - 1
 
   if (
@@ -104,12 +106,15 @@ function getNextIndex({
   const nonDisabledNewIndex = getNextNonDisabledIndex({
     moveAmount,
     baseIndex: newIndex,
-    itemCount,
+    items,
     getItemNodeFromIndex,
     circular,
   })
 
-  return nonDisabledNewIndex === -1 ? baseIndex : nonDisabledNewIndex
+  const nonDisabledNewItem = Object.keys(items)[nonDisabledNewIndex]
+  const baseItem = Object.keys(items)[baseIndex]
+
+  return nonDisabledNewIndex === -1 ? baseItem : nonDisabledNewItem
 }
 
 let idCounter = 0
@@ -121,7 +126,7 @@ function generateId() {
 interface ElementIds {
   labelId: string
   menuId: string
-  getItemId: (index: number) => string
+  getItemId: (name: string) => string
   buttonId: string
 }
 
@@ -131,23 +136,20 @@ function generateElementIds(): ElementIds {
   return {
     labelId: `${id}-label`,
     menuId: `${id}-menu`,
-    getItemId: (index: number) => `${id}-item-${index}`,
+    getItemId: (name: string) => `${id}-item-${name}`,
     buttonId: `${id}-button`,
   }
 }
 
-interface RegisterOptions {}
-
-interface UseMenuProps<T> {
-  items: T[]
+interface RegisterOptions {
+  name: string
 }
 
 interface UseMenuReturnValue {
   register: (ref: MenuElement, registerOptions?: RegisterOptions) => void
   isExpanded: boolean
-  highlightedIndex: number
+  activeItem: string
   handleToggleMenu: (event: React.MouseEvent<any, MouseEvent>) => void
-  options: { id: string }[]
   Portal: any
 }
 
@@ -156,6 +158,7 @@ type MenuElement = HTMLButtonElement | HTMLUListElement | HTMLLIElement
 enum MenuElementTagNames {
   Button = 'BUTTON',
   Ul = 'UL',
+  Li = 'LI',
 }
 
 interface RefAndOptions<Element> {
@@ -163,13 +166,13 @@ interface RefAndOptions<Element> {
   options?: RegisterOptions
 }
 
-export function useMenu<T>({ items }: UseMenuProps<T>): UseMenuReturnValue {
+export function useMenu(): UseMenuReturnValue {
   const buttonRef = React.useRef<HTMLButtonElement | null>(null)
   const menuRef = React.useRef<HTMLUListElement>()
+  const itemsRef = React.useRef<{ [key: string]: HTMLLIElement | Element }>({})
   const elementIds = React.useRef<ElementIds>(generateElementIds())
 
-  const [highlightedIndex, setHighlightedIndex] = React.useState(0)
-  const [selectedItem, setSelectedItem] = React.useState<T>()
+  const [activeItem, setActiveItem] = React.useState('')
 
   const {
     isOpen: isExpanded,
@@ -214,8 +217,8 @@ export function useMenu<T>({ items }: UseMenuProps<T>): UseMenuReturnValue {
     },
   })
 
-  function getItemNodeFromIndex(index: number): HTMLElement | null {
-    return document.getElementById(elementIds.current.getItemId(index))
+  function getItemNodeFromIndex(index: number): HTMLLIElement | Element | null {
+    return itemsRef && itemsRef.current && itemsRef.current[index]
   }
 
   useKey({
@@ -230,11 +233,11 @@ export function useMenu<T>({ items }: UseMenuProps<T>): UseMenuReturnValue {
   useKey({
     key: 'ArrowDown',
     handler: () => {
-      setHighlightedIndex(
+      setActiveItem(
         getNextIndex({
           moveAmount: 1,
-          baseIndex: highlightedIndex,
-          itemCount: items.length,
+          baseIndex: Object.keys(itemsRef.current).indexOf(activeItem),
+          items: itemsRef.current,
           getItemNodeFromIndex,
         }),
       )
@@ -244,11 +247,11 @@ export function useMenu<T>({ items }: UseMenuProps<T>): UseMenuReturnValue {
   useKey({
     key: 'ArrowUp',
     handler: () => {
-      setHighlightedIndex(
+      setActiveItem(
         getNextIndex({
           moveAmount: -1,
-          baseIndex: highlightedIndex,
-          itemCount: items.length,
+          baseIndex: Object.keys(itemsRef.current).indexOf(activeItem),
+          items: itemsRef.current,
           getItemNodeFromIndex,
         }),
       )
@@ -307,11 +310,35 @@ export function useMenu<T>({ items }: UseMenuProps<T>): UseMenuReturnValue {
     return { ref, options }
   }
 
+  const registerMenuItemElement = React.useCallback(
+    function registerMenuItemElement<
+      Element extends MenuElement = MenuElement
+    >({ ref, options }: RefAndOptions<Element>): RefAndOptions<Element> {
+      if (ref && ref.tagName === MenuElementTagNames.Li) {
+        const name = options && options.name
+        const items = itemsRef.current
+
+        items[name as string] = ref
+
+        setAttributes(items[name as string], {
+          id: elementIds.current.getItemId(name as string),
+          role: 'option',
+          'aria-selected': activeItem === name ? 'true' : 'false',
+        })
+      }
+
+      return { ref, options }
+    },
+    [activeItem],
+  )
+
   function registerElementRefs<Element extends MenuElement = MenuElement>(
     ref: Element | null,
     options?: RegisterOptions,
   ): RefAndOptions<Element> {
-    return registerMenuElement(registerButtonElement({ ref, options }))
+    return registerMenuItemElement(
+      registerMenuElement(registerButtonElement({ ref, options })),
+    )
   }
 
   /**
@@ -320,12 +347,15 @@ export function useMenu<T>({ items }: UseMenuProps<T>): UseMenuReturnValue {
    * Allows the ability to add the appropriate HTML attributes
    * to an HTML element.
    */
-  function register<Element extends MenuElement = MenuElement>(
+  const register = React.useCallback(function register<
+    Element extends MenuElement = MenuElement
+  >(
     ref: Element | null,
     options?: RegisterOptions,
   ): RefAndOptions<Element> | null {
     return ref && registerElementRefs(ref, options)
-  }
+  },
+  [])
 
   const handleToggleMenu = React.useCallback(
     function handleToggleMenu(event) {
@@ -338,21 +368,18 @@ export function useMenu<T>({ items }: UseMenuProps<T>): UseMenuReturnValue {
     [isExpanded, handleOpenPortal, handleClosePortal],
   )
 
-  const options = React.useMemo(() => {
-    return items.map((item, index) => ({
-      id: elementIds.current.getItemId(index),
-      role: 'option',
-      'aria-selected': highlightedIndex === index,
-      children: item,
-    }))
-  }, [items, highlightedIndex])
+  const handleMouseEnter = React.useCallback(function handleMouseEnter(
+    index: number,
+  ) {
+    return () => setActiveItem('')
+  },
+  [])
 
   return {
-    register: React.useCallback(register, []),
+    register,
     isExpanded,
-    highlightedIndex,
+    activeItem,
     handleToggleMenu,
-    options,
     Portal,
   }
 }
