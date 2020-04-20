@@ -23,7 +23,8 @@
   },
   "gitHead": "4c98961b80b8acdfe605cdff52282aa73c027f15",
   "devDependencies": {
+    "@types/react": "^16.9.19",
+    "@types/react-dom": "^16.9.6",
     "microbundle": "^0.11.0"
-  },
-  "dependencies": {}
+  }
 }

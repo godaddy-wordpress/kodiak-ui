@@ -32,7 +32,7 @@ export function useKey({
 }: UseKeyOptions) {
   const memoizedHandler = React.useMemo(() => {
     const predicate = createKeyPredicate(key)
-    return function(event: KeyboardEvent) {
+    return function (event: KeyboardEvent) {
       if (predicate(event)) {
         return handler(event)
       }
