@@ -1,9 +1,10 @@
 import * as React from 'react'
+
 import {
   useEventListener,
   AddRemoveListenerType,
   OnOffListenerType,
-} from '@kodiak-ui/hooks'
+} from './useEventListener'
 
 interface UseKeyOptions {
   key: string
