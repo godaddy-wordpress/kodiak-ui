@@ -77,7 +77,7 @@ function getNextNonDisabledIndex({
   return -1
 }
 
-function getNextIndex({
+function getNextItem({
   moveAmount,
   baseIndex,
   items,
@@ -233,28 +233,36 @@ export function useMenu(): UseMenuReturnValue {
   useKey({
     key: 'ArrowDown',
     handler: () => {
-      setActiveItem(
-        getNextIndex({
-          moveAmount: 1,
-          baseIndex: Object.keys(itemsRef.current).indexOf(activeItem),
-          items: itemsRef.current,
-          getItemNodeFromIndex,
-        }),
-      )
+      const nextItem = getNextItem({
+        moveAmount: 1,
+        baseIndex: Object.keys(itemsRef.current).indexOf(activeItem),
+        items: itemsRef.current,
+        getItemNodeFromIndex,
+      })
+
+      setActiveItem(nextItem)
+
+      setAttributes(itemsRef.current[nextItem], {
+        'aria-selected': 'true',
+      })
     },
   })
 
   useKey({
     key: 'ArrowUp',
     handler: () => {
-      setActiveItem(
-        getNextIndex({
-          moveAmount: -1,
-          baseIndex: Object.keys(itemsRef.current).indexOf(activeItem),
-          items: itemsRef.current,
-          getItemNodeFromIndex,
-        }),
-      )
+      const nextItem = getNextItem({
+        moveAmount: -1,
+        baseIndex: Object.keys(itemsRef.current).indexOf(activeItem),
+        items: itemsRef.current,
+        getItemNodeFromIndex,
+      })
+
+      setActiveItem(nextItem)
+
+      setAttributes(itemsRef.current[nextItem], {
+        'aria-selected': 'true',
+      })
     },
   })
 
