@@ -1,7 +1,7 @@
 {
-  "name": "@kodiak-ui/message",
-  "version": "0.1.8",
-  "description": "Component to display messages to users (i.e. alerts, notifications)",
+  "name": "@kodiak-ui/table",
+  "version": "0.1.0",
+  "description": "Components and hook to display accessible and performant HTML tables",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "source": "src/index.ts",
@@ -22,14 +22,12 @@
     "microbundle": "^0.11.0"
   },
   "peerDependencies": {
-    "react": "^16.12.0"
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0"
   },
   "dependencies": {
-    "@emotion/core": "^10.0.28",
-    "@emotion/serialize": "^0.11.16",
-    "@emotion/styled": "^10.0.27",
     "@kodiak-ui/core": "^0.1.10",
     "@kodiak-ui/primitives": "^0.10.4",
-    "theme-ui": "^0.3.1"
+    "@material-ui/icons": "^4.9.1"
   }
 }
