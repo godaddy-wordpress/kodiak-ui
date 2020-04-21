@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/primitives",
-  "version": "0.10.4",
+  "version": "0.10.6",
   "description": "Kodiak's primitive components for building applications and complex components",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -33,8 +33,8 @@
   "devDependencies": {
     "@types/styled-system": "^5.1.5",
     "@types/styled-system__should-forward-prop": "^5.1.0",
-    "@types/theme-ui": "^0.2.7",
+    "@types/theme-ui": "^0.3.1",
     "microbundle": "^0.11.0"
   },
-  "gitHead": "4c98961b80b8acdfe605cdff52282aa73c027f15"
+  "gitHead": "e043cf2cbc9ab31a9c84f9ea13c674b5a8157946"
 }

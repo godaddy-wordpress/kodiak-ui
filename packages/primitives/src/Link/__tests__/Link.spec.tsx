@@ -62,6 +62,7 @@ describe('Link', () => {
 
       <a
         className="emotion-0"
+        color="red"
         href="https://jilt.com"
       >
         jilt.com

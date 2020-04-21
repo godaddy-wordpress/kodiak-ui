@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/storybook",
-  "version": "0.1.28",
+  "version": "0.1.30",
   "private": true,
   "scripts": {
     "storybook": "start-storybook -p 9009",
@@ -8,13 +8,15 @@
   },
   "dependencies": {
     "@babel/core": "^7.2.2",
-    "@kodiak-ui/combobox": "^0.1.2",
-    "@kodiak-ui/core": "^0.1.10",
-    "@kodiak-ui/dialog": "^0.2.4",
-    "@kodiak-ui/message": "^0.1.8",
-    "@kodiak-ui/primitives": "^0.10.4",
-    "@kodiak-ui/select": "^0.1.3",
-    "@kodiak-ui/table": "^0.1.0",
+    "@kodiak-ui/combobox": "^0.1.4",
+    "@kodiak-ui/core": "^0.1.9",
+    "@kodiak-ui/dialog": "^0.2.6",
+    "@kodiak-ui/hooks": "^0.3.0",
+    "@kodiak-ui/menu": "^0.0.2",
+    "@kodiak-ui/message": "^0.1.10",
+    "@kodiak-ui/primitives": "^0.10.6",
+    "@kodiak-ui/select": "^0.1.5",
+    "@kodiak-ui/table": "^0.1.2",
     "@material-ui/core": "^4.9.10",
     "@material-ui/icons": "^4.9.1",
     "@storybook/addon-docs": "^5.3.9",
@@ -33,7 +35,7 @@
     "react-scripts": "3.3.0",
     "react-spring": "^8.0.27",
     "theme-ui": "^0.3.1",
-    "ts-loader": "^6.2.1"
+    "ts-loader": "^7.0.1"
   },
   "devDependencies": {
     "@babel/helper-builder-react-jsx-experimental": "^7.9.5",

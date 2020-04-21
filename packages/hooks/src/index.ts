@@ -3,4 +3,12 @@ export { useBeforeUnload } from './useBeforeUnload'
 export { useIsMounted } from './useIsMounted'
 export { useSubscribe } from './useSubscribe'
 export { useLocalStorage } from './useLocalStorage'
+export { usePortal } from './usePortal'
+export { useKey } from './useKey'
+export {
+  useEventListener,
+  AddRemoveListenerType,
+  OnOffListenerType,
+} from './useEventListener'
+export { useOnClickOutside } from './useOnClickOutside'
 export { createStateDispatchContext } from './createStateDispatchContext'
