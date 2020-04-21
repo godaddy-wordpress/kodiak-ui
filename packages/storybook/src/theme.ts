@@ -237,6 +237,12 @@ const buttons = {
   },
 }
 
+const accordions = {
+  accordionHeader: {},
+  accordionBody: {},
+  accordionFooter: {},
+}
+
 const selects = {
   selectMenu: {
     top: `calc(100% + ${space[2]}px)`,
@@ -306,7 +312,7 @@ export const theme = {
     heading: 'inherit',
     monospace: 'Menlo, monospace',
   },
-  fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 96],
+  fontSizes: [12, 13, 14, 16, 18, 20, 24, 32, 48, 64, 96],
   fontWeights: {
     body: 400,
     medium: 500,
@@ -448,5 +454,6 @@ export const theme = {
     textDecoration: 'none',
   },
   selects,
+  accordions,
   tables,
 }

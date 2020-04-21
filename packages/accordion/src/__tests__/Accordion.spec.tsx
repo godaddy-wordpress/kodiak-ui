@@ -1,0 +1,60 @@
+import * as React from 'react'
+import serializer from 'jest-emotion'
+import renderer from 'react-test-renderer'
+import {
+  Accordion,
+  AccordionItem,
+  AccordionHeader,
+  AccordionBody,
+  AccordionFooter,
+} from '../'
+
+expect.addSnapshotSerializer(serializer)
+
+describe('Accordion', () => {
+  it('should render the Accordion', () => {
+    expect(
+      renderer
+        .create(
+          <Accordion>
+            <AccordionItem>
+              <AccordionHeader>Header</AccordionHeader>
+              <AccordionBody>Body</AccordionBody>
+              <AccordionFooter>Footer</AccordionFooter>
+            </AccordionItem>
+          </Accordion>,
+        )
+        .toJSON(),
+    ).toMatchInlineSnapshot(`
+      .emotion-0 {
+        box-sizing: border-box;
+        margin: 0;
+        min-width: 0;
+      }
+
+      <div
+        className="emotion-0"
+      >
+        <div
+          className="emotion-0"
+        >
+          <div
+            className="emotion-0"
+          >
+            Header
+          </div>
+          <div
+            className="emotion-0"
+          >
+            Body
+          </div>
+          <div
+            className="emotion-0"
+          >
+            Footer
+          </div>
+        </div>
+      </div>
+    `)
+  })
+})
