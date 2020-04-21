@@ -1,5 +1,7 @@
 import * as React from 'react'
 import { setAttributes } from '@kodiak-ui/utils'
+import memoize from 'micro-memoize'
+import { deepEqual } from 'fast-equals'
 
 type RegisterOptions<KeyType> = {
   key: KeyType
@@ -9,6 +11,12 @@ type RegisterOptions<KeyType> = {
 type AccordionRef = HTMLElement
 
 type KeyType = string | number
+
+type GetHeaderPropsReturn = {
+  onClick: () => void
+  onKeyUp: (event: React.KeyboardEvent) => void
+  'aria-expanded': boolean
+}
 
 export function useAccordion({
   defaultExpandedItems = [],
@@ -149,17 +157,20 @@ export function useAccordion({
   }
 
   const getHeaderProps = React.useCallback(
-    function getHeaderProps({ key }: { key: KeyType }) {
-      return {
-        onClick: () => toggleExpanded({ key }),
-        onKeyUp: (event: React.KeyboardEvent) => {
-          if (['Enter', ' '].includes(event.key)) {
-            toggleExpanded({ key })
-          }
-        },
-        'aria-expanded': checkIsExpanded({ key }),
-      }
-    },
+    memoize<({ key }: { key: KeyType }) => GetHeaderPropsReturn>(
+      function getHeaderProps({ key }: { key: KeyType }): GetHeaderPropsReturn {
+        return {
+          onClick: () => toggleExpanded({ key }),
+          onKeyUp: (event: React.KeyboardEvent) => {
+            if (['Enter', ' '].includes(event.key)) {
+              toggleExpanded({ key })
+            }
+          },
+          'aria-expanded': checkIsExpanded({ key }),
+        }
+      },
+      { isEqual: deepEqual },
+    ),
     [checkIsExpanded, toggleExpanded],
   )
 

@@ -183,6 +183,16 @@ export function FullyControlled() {
   )
 }
 
+function TestInput() {
+  const [inputValue, setInputValue] = React.useState('')
+
+  return (
+    <input
+      value={inputValue}
+      onChange={event => setInputValue(event.target.value)}
+    />
+  )
+}
 export function AccordionHookSingle() {
   const {
     setExpandedItems,
@@ -223,7 +233,9 @@ export function AccordionHookSingle() {
           {checkIsExpanded({ key: 'first' }) && (
             <>
               <AccordionBody ref={node => register(node, { key: 'first' })}>
-                First body contents
+                First body contents. Things that change are in their own
+                component so that they don't trigger re-renders
+                <TestInput />
               </AccordionBody>
               <AccordionFooter>Footer</AccordionFooter>
             </>
