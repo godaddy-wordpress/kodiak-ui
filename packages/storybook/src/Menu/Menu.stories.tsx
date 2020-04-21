@@ -1,14 +1,101 @@
 import * as React from 'react'
-import { Button } from '@kodiak-ui/primitives'
-import { useMenu } from '@kodiak-ui/menu'
+import { Button, Flex, Box } from '@kodiak-ui/primitives'
+import { useMenu, MenuList, MenuListItem } from '@kodiak-ui/menu'
 
 export default { title: 'Menu' }
 
-const MenuItem = React.memo(
-  React.forwardRef(function MenuItem(props: any, ref) {
-    return <li ref={ref} {...props} />
-  }),
-)
+function AlignedRight() {
+  const {
+    register,
+    isExpanded,
+    activeItem,
+    handleToggleMenu,
+    handleCloseMenu,
+    getItemProps,
+    Portal,
+  } = useMenu({ align: 'right', width: 91 })
+
+  return (
+    <>
+      <Button ref={register} onClick={handleToggleMenu}>
+        Open menu
+      </Button>
+      {isExpanded && (
+        <Portal>
+          <MenuList ref={register}>
+            <MenuListItem
+              ref={node =>
+                register(node as HTMLLIElement, {
+                  name: 'action1',
+                  handler: () => {
+                    console.log('action1')
+                    handleCloseMenu()
+                  },
+                })
+              }
+              {...getItemProps('action1')}
+              sx={{
+                ...(activeItem === 'action1'
+                  ? { bg: 'primary', color: 'white' }
+                  : {}),
+              }}
+            >
+              Action 1
+            </MenuListItem>
+            <MenuListItem
+              ref={node =>
+                register(node as HTMLLIElement, {
+                  name: 'action2',
+                  handler: () => console.log('action2'),
+                })
+              }
+              {...getItemProps('action2')}
+              sx={{
+                ...(activeItem === 'action2'
+                  ? { bg: 'primary', color: 'white' }
+                  : {}),
+              }}
+            >
+              Action 2
+            </MenuListItem>
+            <MenuListItem
+              ref={node =>
+                register(node as HTMLLIElement, {
+                  name: 'action3',
+                  handler: () => console.log('action3'),
+                })
+              }
+              {...getItemProps('action3')}
+              sx={{
+                ...(activeItem === 'action3'
+                  ? { bg: 'primary', color: 'white' }
+                  : {}),
+              }}
+            >
+              Action 3
+            </MenuListItem>
+            <MenuListItem
+              ref={node =>
+                register(node as HTMLLIElement, {
+                  name: 'action4',
+                  handler: () => console.log('action4'),
+                })
+              }
+              {...getItemProps('action4')}
+              sx={{
+                ...(activeItem === 'action4'
+                  ? { bg: 'primary', color: 'white' }
+                  : {}),
+              }}
+            >
+              Action 4
+            </MenuListItem>
+          </MenuList>
+        </Portal>
+      )}
+    </>
+  )
+}
 
 export function Inital() {
   const {
@@ -23,74 +110,87 @@ export function Inital() {
 
   return (
     <>
-      <Button ref={register} onClick={handleToggleMenu}>
-        Open menu
-      </Button>
-      {isExpanded && (
-        <Portal>
-          <ul ref={register}>
-            <MenuItem
-              ref={node =>
-                register(node as HTMLLIElement, {
-                  name: 'action1',
-                  handler: () => {
-                    console.log('action1')
-                    handleCloseMenu()
-                  },
-                })
-              }
-              {...getItemProps('action1')}
-              style={
-                activeItem === 'action1' ? { backgroundColor: '#bde4ff' } : {}
-              }
-            >
-              Action 1
-            </MenuItem>
-            <MenuItem
-              ref={node =>
-                register(node as HTMLLIElement, {
-                  name: 'action2',
-                  handler: () => console.log('action2'),
-                })
-              }
-              {...getItemProps('action2')}
-              style={
-                activeItem === 'action2' ? { backgroundColor: '#bde4ff' } : {}
-              }
-            >
-              Action 2
-            </MenuItem>
-            <MenuItem
-              ref={node =>
-                register(node as HTMLLIElement, {
-                  name: 'action3',
-                  handler: () => console.log('action3'),
-                })
-              }
-              {...getItemProps('action3')}
-              style={
-                activeItem === 'action3' ? { backgroundColor: '#bde4ff' } : {}
-              }
-            >
-              Action 3
-            </MenuItem>
-            <MenuItem
-              ref={node =>
-                register(node as HTMLLIElement, {
-                  name: 'action4',
-                  handler: () => console.log('action4'),
-                })
-              }
-              {...getItemProps('action4')}
-              style={
-                activeItem === 'action4' ? { backgroundColor: '#bde4ff' } : {}
-              }
-            >
-              Action 4
-            </MenuItem>
-          </ul>
-        </Portal>
-      )}
+      <Box sx={{ p: 5 }}>
+        <Button ref={register} onClick={handleToggleMenu}>
+          Open menu
+        </Button>
+        {isExpanded && (
+          <Portal>
+            <MenuList ref={register}>
+              <MenuListItem
+                ref={node =>
+                  register(node as HTMLLIElement, {
+                    name: 'action1',
+                    handler: () => {
+                      console.log('action1')
+                      handleCloseMenu()
+                    },
+                  })
+                }
+                {...getItemProps('action1')}
+                sx={{
+                  ...(activeItem === 'action1'
+                    ? { bg: 'primary', color: 'white' }
+                    : {}),
+                }}
+              >
+                Long Name Action 1
+              </MenuListItem>
+              <MenuListItem
+                ref={node =>
+                  register(node as HTMLLIElement, {
+                    name: 'action2',
+                    handler: () => console.log('action2'),
+                  })
+                }
+                {...getItemProps('action2')}
+                sx={{
+                  ...(activeItem === 'action2'
+                    ? { bg: 'primary', color: 'white' }
+                    : {}),
+                }}
+              >
+                Action 2
+              </MenuListItem>
+              <MenuListItem
+                ref={node =>
+                  register(node as HTMLLIElement, {
+                    name: 'action3',
+                    handler: () => console.log('action3'),
+                  })
+                }
+                {...getItemProps('action3')}
+                sx={{
+                  ...(activeItem === 'action3'
+                    ? { bg: 'primary', color: 'white' }
+                    : {}),
+                }}
+              >
+                Action 3
+              </MenuListItem>
+              <MenuListItem
+                ref={node =>
+                  register(node as HTMLLIElement, {
+                    name: 'action4',
+                    handler: () => console.log('action4'),
+                  })
+                }
+                {...getItemProps('action4')}
+                sx={{
+                  ...(activeItem === 'action4'
+                    ? { bg: 'primary', color: 'white' }
+                    : {}),
+                }}
+              >
+                Action 4
+              </MenuListItem>
+            </MenuList>
+          </Portal>
+        )}
+      </Box>
+      <Flex sx={{ justifyContent: 'flex-end', p: 5 }}>
+        <AlignedRight />
+      </Flex>
     </>
   )
 }
