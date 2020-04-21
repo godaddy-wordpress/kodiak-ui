@@ -238,9 +238,38 @@ const buttons = {
 }
 
 const accordions = {
-  accordionHeader: {},
-  accordionBody: {},
-  accordionFooter: {},
+  '& > :not(:last-child)': {
+    mb: 4,
+  },
+  accordionHeader: {
+    px: 4,
+    py: 5,
+    cursor: 'pointer',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    outline: 'none',
+    '&:focus-within': {
+      bg: 'grey.1',
+    },
+  },
+  accordionItem: {
+    border: '1px solid',
+    borderColor: 'gray.2',
+    borderRadius: 'default',
+    maxWidth: '400px',
+  },
+  accordionBody: {
+    borderTop: '1px solid',
+    borderBottom: '1px solid',
+    borderColor: 'gray.2',
+    px: 4,
+    py: 5,
+  },
+  accordionFooter: {
+    px: 4,
+    py: 5,
+  },
 }
 
 const selects = {
