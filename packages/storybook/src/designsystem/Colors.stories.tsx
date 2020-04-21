@@ -284,7 +284,7 @@ export function Palette() {
           return (
             <ColorSwatch
               key={key}
-              color={theme.colors?.[key]}
+              color={theme.colors?.[key] as string}
               colorName={key}
               borderTop="1px solid"
               borderTopColor="gray.2"

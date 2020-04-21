@@ -2,20 +2,13 @@ import * as React from 'react'
 import styled from '@emotion/styled'
 import { css, Theme } from 'theme-ui'
 import { SerializedStyles } from '@emotion/serialize'
-import {
-  systemProps,
-  SystemProps,
-  variant,
-  VariantProps,
-  sx,
-} from '@kodiak-ui/core'
+import { variant, VariantProps, sx } from '@kodiak-ui/core'
 import { VisuallyHidden, SvgIcon } from '@kodiak-ui/primitives'
 
 type DialogHeaderProps = {
   children: React.ReactNode
   onDismiss?: () => void | undefined
-} & SystemProps &
-  VariantProps
+} & VariantProps
 
 const baseStyles = ({ theme }: { theme: Theme }): SerializedStyles =>
   css({
@@ -28,10 +21,7 @@ const baseStyles = ({ theme }: { theme: Theme }): SerializedStyles =>
     padding: 4,
   })(theme)
 
-const StyledDialogHeader: React.FC<Omit<
-  DialogHeaderProps,
-  'title' | 'onDismiss'
->> = styled<'header', DialogHeaderProps>('header')(
+const StyledDialogHeader = styled('header')<DialogHeaderProps>(
   {
     boxSizing: 'border-box',
     margin: 0,
@@ -40,7 +30,6 @@ const StyledDialogHeader: React.FC<Omit<
   baseStyles,
   ({ variant: variantProp, variantKey, theme }) =>
     variant({ variant: variantProp, theme, variantKey }),
-  ...systemProps,
   sx,
 )
 

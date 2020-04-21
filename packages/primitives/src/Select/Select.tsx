@@ -40,9 +40,9 @@ type SelectProps = {
   SystemProps &
   React.SelectHTMLAttributes<HTMLSelectElement>
 
-export const SelectStyled = styled<'select', SelectProps>('select', {
+export const SelectStyled = styled('select', {
   shouldForwardProp,
-})(
+})<SelectProps>(
   {
     boxSizing: 'border-box',
     margin: 0,

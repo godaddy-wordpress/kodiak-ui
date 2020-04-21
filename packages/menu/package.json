@@ -1,6 +1,7 @@
 {
-  "name": "@kodiak-ui/hooks",
-  "version": "0.1.8",
+  "name": "@kodiak-ui/menu",
+  "version": "0.0.0",
+  "description": "Component to display custom, accessible, and performant dropdown menus",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "source": "src/index.ts",
@@ -17,13 +18,16 @@
     "prepare": "microbundle -f es,cjs",
     "watch": "microbundle --watch -f es,cjs"
   },
-  "peerDependencies": {
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0"
-  },
-  "gitHead": "4c98961b80b8acdfe605cdff52282aa73c027f15",
   "devDependencies": {
     "microbundle": "^0.11.0"
   },
-  "dependencies": {}
+  "peerDependencies": {
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0"
+  },
+  "dependencies": {
+    "@kodiak-ui/core": "^0.1.9",
+    "@kodiak-ui/hooks": "^0.1.8",
+    "@kodiak-ui/utils": "^0.0.0" 
+  }
 }
