@@ -12,7 +12,7 @@ function AlignedRight() {
     handleToggleMenu,
     handleCloseMenu,
     getItemProps,
-    Portal,
+    Menu,
   } = useMenu({ align: 'right', width: 91 })
 
   return (
@@ -21,7 +21,7 @@ function AlignedRight() {
         Open menu
       </Button>
       {isExpanded && (
-        <Portal>
+        <Menu>
           <MenuList ref={register}>
             <MenuListItem
               ref={node =>
@@ -91,7 +91,7 @@ function AlignedRight() {
               Action 4
             </MenuListItem>
           </MenuList>
-        </Portal>
+        </Menu>
       )}
     </>
   )
@@ -105,7 +105,7 @@ export function Inital() {
     handleToggleMenu,
     handleCloseMenu,
     getItemProps,
-    Portal,
+    Menu,
   } = useMenu()
 
   return (
@@ -115,7 +115,7 @@ export function Inital() {
           Open menu
         </Button>
         {isExpanded && (
-          <Portal>
+          <Menu>
             <MenuList ref={register}>
               <MenuListItem
                 ref={node =>
@@ -185,7 +185,7 @@ export function Inital() {
                 Action 4
               </MenuListItem>
             </MenuList>
-          </Portal>
+          </Menu>
         )}
       </Box>
       <Flex sx={{ justifyContent: 'flex-end', p: 5 }}>

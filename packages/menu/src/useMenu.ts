@@ -163,7 +163,7 @@ interface UseMenuReturnValue {
   getItemProps: (
     name: string,
   ) => { onClick: (() => void) | undefined; onMouseEnter: () => void }
-  Portal: any
+  Menu: any
 }
 
 enum MenuElementTagNames {
@@ -445,6 +445,6 @@ export function useMenu({
     handleToggleMenu,
     handleCloseMenu,
     getItemProps,
-    Portal,
+    Menu: Portal,
   }
 }
