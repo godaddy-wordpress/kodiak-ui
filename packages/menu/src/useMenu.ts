@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { hasKey } from '@kodiak-ui/utils'
 import { usePortal, useKey, useOnClickOutside } from '@kodiak-ui/hooks'
+import { hasKey } from './utils'
 
 /**
  * Create all of the HTML attributes for an element

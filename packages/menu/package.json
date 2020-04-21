@@ -29,5 +29,6 @@
     "@kodiak-ui/core": "^0.1.9",
     "@kodiak-ui/hooks": "^0.2.0",
     "@kodiak-ui/utils": "^0.0.1"
-  }
+  },
+  "gitHead": "e043cf2cbc9ab31a9c84f9ea13c674b5a8157946"
 }

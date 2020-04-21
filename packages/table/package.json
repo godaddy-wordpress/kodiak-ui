@@ -29,5 +29,6 @@
     "@kodiak-ui/core": "^0.1.10",
     "@kodiak-ui/primitives": "^0.10.5",
     "@material-ui/icons": "^4.9.1"
-  }
+  },
+  "gitHead": "e043cf2cbc9ab31a9c84f9ea13c674b5a8157946"
 }
