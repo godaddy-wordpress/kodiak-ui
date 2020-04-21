@@ -184,13 +184,15 @@ export function FullyControlled() {
 }
 
 export function AccordionHookSingle() {
-  const { setExpanded, toggleExpanded, checkIsExpanded } = useAccordion<string>(
-    {
-      onChange: ({ expanded }) => console.info({ expanded }),
-      defaultExpanded: ['second'],
-      allowMultiple: false,
-    },
-  )
+  const {
+    setExpandedItems,
+    toggleExpandedItems,
+    checkIsExpanded,
+  } = useAccordion<string>({
+    onChange: ({ expanded }) => console.info({ expanded }),
+    defaultExpandedItems: ['second'],
+    allowMultiple: false,
+  })
 
   return (
     <Flex sx={{ flexDirection: 'column', p: 6 }}>
@@ -202,11 +204,11 @@ export function AccordionHookSingle() {
             aria-controls="firstBody"
             tabIndex={-1}
             onClick={() => {
-              toggleExpanded({ key: 'first' })
+              toggleExpandedItems({ key: 'first' })
             }}
             onKeyUp={(event: any) => {
               if (['Enter', ' '].includes(event.key)) {
-                toggleExpanded({ key: 'first' })
+                toggleExpandedItems({ key: 'first' })
               }
             }}
           >
@@ -216,7 +218,7 @@ export function AccordionHookSingle() {
             <CaretFillDown
               tabIndex={0}
               onClick={() => {
-                toggleExpanded({ key: 'first' })
+                toggleExpandedItems({ key: 'first' })
               }}
               sx={{
                 transform: checkIsExpanded({ key: 'first' })
@@ -246,11 +248,11 @@ export function AccordionHookSingle() {
             aria-controls="secondBody"
             tabIndex={-1}
             onClick={() => {
-              toggleExpanded({ key: 'second' })
+              toggleExpandedItems({ key: 'second' })
             }}
             onKeyUp={(event: any) => {
               if (['Enter', ' '].includes(event.key)) {
-                toggleExpanded({ key: 'second' })
+                toggleExpandedItems({ key: 'second' })
               }
             }}
           >
@@ -260,7 +262,7 @@ export function AccordionHookSingle() {
             <CaretFillDown
               tabIndex={0}
               onClick={() => {
-                toggleExpanded({ key: 'first' })
+                toggleExpandedItems({ key: 'first' })
               }}
               sx={{
                 transform: checkIsExpanded({ key: 'second' })
@@ -284,7 +286,7 @@ export function AccordionHookSingle() {
         </AccordionItem>
       </Accordion>
       <Flex sx={{ pt: 6 }}>
-        <Button variant="secondary" onClick={() => setExpanded(['first'])}>
+        <Button variant="secondary" onClick={() => setExpandedItems(['first'])}>
           Open first
         </Button>
       </Flex>
@@ -294,12 +296,12 @@ export function AccordionHookSingle() {
 
 export function AccordionHookMultiple() {
   const {
-    expanded,
-    setExpanded,
+    expandedItems,
+    setExpandedItems,
     toggleExpanded,
     checkIsExpanded,
-  } = useAccordion<string>({
-    defaultExpanded: ['first'],
+  } = useAccordion({
+    defaultExpandedItems: ['first'],
     allowMultiple: true,
   })
 
@@ -387,13 +389,13 @@ export function AccordionHookMultiple() {
         </AccordionItem>
       </Accordion>
       <Flex sx={{ pt: 6 }}>
-        <Button variant="secondary" onClick={() => setExpanded(['first'])}>
+        <Button variant="secondary" onClick={() => setExpandedItems(['first'])}>
           Open only the first
         </Button>
       </Flex>
 
       <Flex sx={{ pt: 6 }}>
-        Opened keys: {Array.isArray(expanded) && expanded.join(', ')}
+        Opened keys: {Array.isArray(expandedItems) && expandedItems.join(', ')}
       </Flex>
     </Flex>
   )

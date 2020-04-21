@@ -2,60 +2,67 @@ import * as React from 'react'
 // import { hasKey, setAttributes } from '@kodiak-ui/utils'
 
 export function useAccordion<KeyType>({
-  defaultExpanded = [],
+  defaultExpandedItems = [],
   onChange,
   allowMultiple,
 }: {
-  defaultExpanded?: KeyType[]
-  onChange?: ({ expanded }: { expanded: KeyType[] }) => void
+  defaultExpandedItems?: KeyType[]
+  onChange?: ({ expandedItems }: { expandedItems: KeyType[] }) => void
   allowMultiple?: boolean
 }) {
-  const [expanded, setExpanded] = React.useState<KeyType[]>(defaultExpanded)
+  const [expandedItems, setExpandedItems] = React.useState<KeyType[]>(
+    defaultExpandedItems,
+  )
 
-  const handleSetExpandedChange = React.useCallback(
+  const handleSetExpandedItemsChange = React.useCallback(
     (expanded: KeyType[] | KeyType) => {
       const newExpanded = Array.isArray(expanded) ? expanded : [expanded]
-      onChange && onChange({ expanded: newExpanded })
-      setExpanded(newExpanded)
+      onChange && onChange({ expandedItems: newExpanded })
+      setExpandedItems(newExpanded)
     },
     [onChange],
   )
 
   const checkIsExpanded = React.useCallback(
     function checkIsExpanded({ key }: { key: KeyType }) {
-      return Array.isArray(expanded) && expanded.includes(key)
+      return Array.isArray(expandedItems) && expandedItems.includes(key)
     },
-    [expanded],
+    [expandedItems],
   )
 
   const toggleExpanded = React.useCallback(
     function toggleExpanded({ key }: { key: KeyType }) {
       if (allowMultiple) {
         // Just toggle the current one in the array
-        const newExpanded = Array.isArray(expanded) ? expanded : []
+        const newExpanded = Array.isArray(expandedItems) ? expandedItems : []
 
         if (!checkIsExpanded({ key })) {
-          handleSetExpandedChange([...newExpanded, key])
+          handleSetExpandedItemsChange([...newExpanded, key])
         } else {
-          handleSetExpandedChange(
+          handleSetExpandedItemsChange(
             newExpanded.filter(expandedItem => expandedItem !== key),
           )
         }
       } else {
         if (!checkIsExpanded({ key })) {
-          handleSetExpandedChange([key])
+          handleSetExpandedItemsChange([key])
         } else {
-          handleSetExpandedChange([])
+          handleSetExpandedItemsChange([])
         }
       }
     },
-    [checkIsExpanded, handleSetExpandedChange, allowMultiple, expanded],
+    [
+      checkIsExpanded,
+      handleSetExpandedItemsChange,
+      allowMultiple,
+      expandedItems,
+    ],
   )
 
   return {
-    expanded,
+    expandedItems,
     toggleExpanded,
     checkIsExpanded,
-    setExpanded: handleSetExpandedChange,
+    setExpandedItems: handleSetExpandedItemsChange,
   }
 }
