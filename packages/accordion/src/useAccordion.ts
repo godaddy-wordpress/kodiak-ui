@@ -52,16 +52,10 @@ export function useAccordion<KeyType>({
     [checkIsExpanded, handleSetExpandedChange, allowMultiple, expanded],
   )
 
-  // const register = React.useCallback(function register(
-  //   element: HTMLDivElement,
-  // ) {},
-  // [])
-
   return {
     expanded,
     toggleExpanded,
     checkIsExpanded,
     setExpanded: handleSetExpandedChange,
-    // register,
   }
 }
