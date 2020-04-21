@@ -1,7 +1,16 @@
 import * as React from 'react'
-// import { hasKey, setAttributes } from '@kodiak-ui/utils'
+import { setAttributes } from '@kodiak-ui/utils'
 
-export function useAccordion<KeyType>({
+type RegisterOptions<KeyType> = {
+  key: KeyType
+  role: 'accordionHeader' | 'accordionBody'
+}
+
+type AccordionRef = HTMLDivElement
+
+type KeyType = string | number
+
+export function useAccordion({
   defaultExpandedItems = [],
   onChange,
   allowMultiple,
@@ -13,6 +22,14 @@ export function useAccordion<KeyType>({
   const [expandedItems, setExpandedItems] = React.useState<KeyType[]>(
     defaultExpandedItems,
   )
+
+  const elementRefDictionary = React.useRef<{
+    accordionHeaders: { [key in KeyType]: AccordionRef }
+    accordionBodies: { [key in KeyType]: AccordionRef }
+  }>({
+    accordionHeaders: {},
+    accordionBodies: {},
+  })
 
   const handleSetExpandedItemsChange = React.useCallback(
     (expanded: KeyType[] | KeyType) => {
@@ -59,10 +76,97 @@ export function useAccordion<KeyType>({
     ],
   )
 
+  function registerAccordionHeader({
+    ref,
+    options,
+  }: {
+    ref: AccordionRef
+    options: RegisterOptions<KeyType>
+  }) {
+    if (options.role === 'accordionHeader') {
+      const accordionHead = ref
+      elementRefDictionary.current.accordionHeaders[options.key] = ref
+
+      const headerId = accordionHead.id
+      if (headerId === undefined || headerId === '') {
+        setAttributes(accordionHead, { id: `${options.key}` })
+      }
+    }
+
+    return {
+      ref,
+      options,
+    }
+  }
+
+  // Register the body
+  function registerAccordionBody({
+    ref,
+    options,
+  }: {
+    ref: AccordionRef
+    options: RegisterOptions<KeyType>
+  }) {
+    if (options.role === 'accordionBody') {
+      const accordionBody = ref
+      elementRefDictionary.current.accordionBodies[options.key] = ref
+
+      let accordionBodyId = accordionBody.id
+      if (accordionBodyId === undefined || accordionBodyId === '') {
+        accordionBodyId = options.key + '-Body'
+        setAttributes(accordionBody, { id: accordionBodyId })
+      }
+
+      // try to link up the aria controls/labelled by
+      const accordionHead =
+        elementRefDictionary.current.accordionHeaders[options.key]
+      if (accordionHead) {
+        const headerId = accordionHead.id
+        setAttributes(accordionHead, { 'aria-controls': accordionBodyId })
+        setAttributes(accordionBody, {
+          'aria-labelledby': headerId,
+          role: 'region',
+        })
+      }
+    }
+
+    return {
+      ref,
+      options,
+    }
+  }
+
+  function register(
+    ref: AccordionRef | null,
+    options: RegisterOptions<KeyType>,
+  ): {
+    ref: AccordionRef
+    options: RegisterOptions<KeyType>
+  } | null {
+    return (
+      // ref && registerAccordionHeader({ ref, options })
+      ref && registerAccordionBody(registerAccordionHeader({ ref, options }))
+    )
+  }
+
+  function getHeaderProps({ key }: { key: KeyType }) {
+    return {
+      onClick: () => toggleExpanded({ key }),
+      onKeyUp: (event: React.KeyboardEvent) => {
+        if (['Enter', ' '].includes(event.key)) {
+          toggleExpanded({ key })
+        }
+      },
+      'aria-expanded': checkIsExpanded({ key }),
+    }
+  }
+
   return {
+    register,
     expandedItems,
     toggleExpanded,
     checkIsExpanded,
     setExpandedItems: handleSetExpandedItemsChange,
+    getHeaderProps,
   }
 }

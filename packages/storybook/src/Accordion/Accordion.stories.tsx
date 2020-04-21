@@ -186,10 +186,12 @@ export function FullyControlled() {
 export function AccordionHookSingle() {
   const {
     setExpandedItems,
-    toggleExpandedItems,
+    toggleExpanded,
     checkIsExpanded,
-  } = useAccordion<string>({
-    onChange: ({ expanded }) => console.info({ expanded }),
+    register,
+    getHeaderProps,
+  } = useAccordion({
+    onChange: ({ expandedItems }) => console.info({ expandedItems }),
     defaultExpandedItems: ['second'],
     allowMultiple: false,
   })
@@ -199,18 +201,11 @@ export function AccordionHookSingle() {
       <Accordion>
         <AccordionItem>
           <AccordionHeader
-            id="firstAccordion"
-            aria-expanded={checkIsExpanded({ key: 'first' })}
-            aria-controls="firstBody"
             tabIndex={-1}
-            onClick={() => {
-              toggleExpandedItems({ key: 'first' })
-            }}
-            onKeyUp={(event: any) => {
-              if (['Enter', ' '].includes(event.key)) {
-                toggleExpandedItems({ key: 'first' })
-              }
-            }}
+            ref={node =>
+              register(node, { key: 'first', role: 'accordionHeader' })
+            }
+            {...getHeaderProps({ key: 'first' })}
           >
             <Text fontWeight="bold" fontSize={3} mb={0}>
               Accordion header - toggle me
@@ -218,7 +213,7 @@ export function AccordionHookSingle() {
             <CaretFillDown
               tabIndex={0}
               onClick={() => {
-                toggleExpandedItems({ key: 'first' })
+                toggleExpanded({ key: 'first' })
               }}
               sx={{
                 transform: checkIsExpanded({ key: 'first' })
@@ -230,11 +225,11 @@ export function AccordionHookSingle() {
           {checkIsExpanded({ key: 'first' }) && (
             <>
               <AccordionBody
-                id="firstBody"
-                aria-labelledby="firstAccordion"
-                role="region"
+                ref={node =>
+                  register(node, { key: 'first', role: 'accordionBody' })
+                }
               >
-                Body
+                First body contents
               </AccordionBody>
               <AccordionFooter>Footer</AccordionFooter>
             </>
@@ -243,18 +238,11 @@ export function AccordionHookSingle() {
 
         <AccordionItem>
           <AccordionHeader
-            id="secondAccordion"
-            aria-expanded={checkIsExpanded({ key: 'second' })}
-            aria-controls="secondBody"
+            ref={node =>
+              register(node, { key: 'second', role: 'accordionHeader' })
+            }
             tabIndex={-1}
-            onClick={() => {
-              toggleExpandedItems({ key: 'second' })
-            }}
-            onKeyUp={(event: any) => {
-              if (['Enter', ' '].includes(event.key)) {
-                toggleExpandedItems({ key: 'second' })
-              }
-            }}
+            {...getHeaderProps({ key: 'second' })}
           >
             <Text fontWeight="bold" fontSize={3} mb={0}>
               Accordion header - toggle me
@@ -262,7 +250,7 @@ export function AccordionHookSingle() {
             <CaretFillDown
               tabIndex={0}
               onClick={() => {
-                toggleExpandedItems({ key: 'first' })
+                toggleExpanded({ key: 'second' })
               }}
               sx={{
                 transform: checkIsExpanded({ key: 'second' })
@@ -274,9 +262,9 @@ export function AccordionHookSingle() {
           {checkIsExpanded({ key: 'second' }) && (
             <>
               <AccordionBody
-                id="secondBody"
-                aria-labelledby="secondAccordion"
-                role="region"
+                ref={node =>
+                  register(node, { key: 'second', role: 'accordionBody' })
+                }
               >
                 Body
               </AccordionBody>
