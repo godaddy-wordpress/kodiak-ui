@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/combobox",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Component to display custom combobox elements with typeahead capabilities",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@kodiak-ui/core": "^0.1.10",
-    "@kodiak-ui/primitives": "^0.10.4",
+    "@kodiak-ui/primitives": "^0.10.5",
     "downshift": "^5.0.5"
   }
 }
