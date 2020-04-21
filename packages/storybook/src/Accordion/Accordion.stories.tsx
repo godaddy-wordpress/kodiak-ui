@@ -202,9 +202,7 @@ export function AccordionHookSingle() {
         <AccordionItem>
           <AccordionHeader
             tabIndex={-1}
-            ref={node =>
-              register(node, { key: 'first', role: 'accordionHeader' })
-            }
+            ref={node => register(node, { key: 'first' })}
             {...getHeaderProps({ key: 'first' })}
           >
             <Text fontWeight="bold" fontSize={3} mb={0}>
@@ -224,11 +222,7 @@ export function AccordionHookSingle() {
           </AccordionHeader>
           {checkIsExpanded({ key: 'first' }) && (
             <>
-              <AccordionBody
-                ref={node =>
-                  register(node, { key: 'first', role: 'accordionBody' })
-                }
-              >
+              <AccordionBody ref={node => register(node, { key: 'first' })}>
                 First body contents
               </AccordionBody>
               <AccordionFooter>Footer</AccordionFooter>
@@ -238,9 +232,7 @@ export function AccordionHookSingle() {
 
         <AccordionItem>
           <AccordionHeader
-            ref={node =>
-              register(node, { key: 'second', role: 'accordionHeader' })
-            }
+            ref={node => register(node, { key: 'second' })}
             tabIndex={-1}
             {...getHeaderProps({ key: 'second' })}
           >
@@ -261,11 +253,7 @@ export function AccordionHookSingle() {
           </AccordionHeader>
           {checkIsExpanded({ key: 'second' }) && (
             <>
-              <AccordionBody
-                ref={node =>
-                  register(node, { key: 'second', role: 'accordionBody' })
-                }
-              >
+              <AccordionBody ref={node => register(node, { key: 'second' })}>
                 Body
               </AccordionBody>
               <AccordionFooter>Footer</AccordionFooter>

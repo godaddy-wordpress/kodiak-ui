@@ -3,10 +3,10 @@ import { setAttributes } from '@kodiak-ui/utils'
 
 type RegisterOptions<KeyType> = {
   key: KeyType
-  role: 'accordionHeader' | 'accordionBody'
+  role?: 'accordionHeader' | 'accordionBody'
 }
 
-type AccordionRef = HTMLDivElement
+type AccordionRef = HTMLElement
 
 type KeyType = string | number
 
@@ -83,7 +83,7 @@ export function useAccordion({
     ref: AccordionRef
     options: RegisterOptions<KeyType>
   }) {
-    if (options.role === 'accordionHeader') {
+    if (options.role === 'accordionHeader' || ref.tagName === 'HEADER') {
       const accordionHead = ref
       elementRefDictionary.current.accordionHeaders[options.key] = ref
 
@@ -107,7 +107,7 @@ export function useAccordion({
     ref: AccordionRef
     options: RegisterOptions<KeyType>
   }) {
-    if (options.role === 'accordionBody') {
+    if (options.role === 'accordionBody' || ref.tagName === 'SECTION') {
       const accordionBody = ref
       elementRefDictionary.current.accordionBodies[options.key] = ref
 
@@ -144,22 +144,24 @@ export function useAccordion({
     options: RegisterOptions<KeyType>
   } | null {
     return (
-      // ref && registerAccordionHeader({ ref, options })
       ref && registerAccordionBody(registerAccordionHeader({ ref, options }))
     )
   }
 
-  function getHeaderProps({ key }: { key: KeyType }) {
-    return {
-      onClick: () => toggleExpanded({ key }),
-      onKeyUp: (event: React.KeyboardEvent) => {
-        if (['Enter', ' '].includes(event.key)) {
-          toggleExpanded({ key })
-        }
-      },
-      'aria-expanded': checkIsExpanded({ key }),
-    }
-  }
+  const getHeaderProps = React.useCallback(
+    function getHeaderProps({ key }: { key: KeyType }) {
+      return {
+        onClick: () => toggleExpanded({ key }),
+        onKeyUp: (event: React.KeyboardEvent) => {
+          if (['Enter', ' '].includes(event.key)) {
+            toggleExpanded({ key })
+          }
+        },
+        'aria-expanded': checkIsExpanded({ key }),
+      }
+    },
+    [checkIsExpanded, toggleExpanded],
+  )
 
   return {
     register,

@@ -19,7 +19,7 @@ export function base({ theme }: { theme: Theme }): SerializedStyles {
   return css({})(theme)
 }
 
-export const AccordionBody = styled('div')<AccordionBodyProps>(
+export const AccordionBody = styled('section')<AccordionBodyProps>(
   {
     boxSizing: 'border-box',
     margin: 0,
