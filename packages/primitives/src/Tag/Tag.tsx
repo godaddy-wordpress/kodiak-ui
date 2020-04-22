@@ -11,13 +11,17 @@ import {
 
 export type TagProps = { children: React.ReactNode } & VariantProps
 
-export function base({ theme }: { theme: Theme }): SerializedStyles {
+function base({ theme }: { theme: Theme }): SerializedStyles {
   return css({
     alignItems: 'center',
     bg: 'muted',
     borderRadius: 'default',
     color: 'text',
     display: 'inline-flex',
+    fontSize: 1,
+    lineHeight: 1.2,
+    py: 1,
+    px: 2,
   })(theme)
 }
 
