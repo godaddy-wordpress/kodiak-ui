@@ -19,7 +19,7 @@ export function base({ theme }: { theme: Theme }): SerializedStyles {
   return css({})(theme)
 }
 
-export const AccordionHeader = styled('div')<AccordionHeaderProps>(
+export const AccordionHeader = styled('header')<AccordionHeaderProps>(
   {
     boxSizing: 'border-box',
     margin: 0,
