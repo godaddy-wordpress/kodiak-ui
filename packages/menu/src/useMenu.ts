@@ -146,6 +146,11 @@ interface RegisterOptions {
   handler: () => void
 }
 
+interface UseMenuProps {
+  align?: 'left' | 'right'
+  width?: number
+}
+
 interface UseMenuReturnValue {
   register: (
     ref: (HTMLButtonElement | HTMLUListElement | HTMLLIElement) | null,
@@ -158,7 +163,7 @@ interface UseMenuReturnValue {
   getItemProps: (
     name: string,
   ) => { onClick: (() => void) | undefined; onMouseEnter: () => void }
-  Portal: any
+  Menu: any
 }
 
 enum MenuElementTagNames {
@@ -172,7 +177,10 @@ interface RefAndOptions<Element> {
   options?: RegisterOptions
 }
 
-export function useMenu(): UseMenuReturnValue {
+export function useMenu({
+  align = 'left',
+  width,
+}: UseMenuProps = {}): UseMenuReturnValue {
   const buttonRef = React.useRef<HTMLButtonElement | null>(null)
   const menuRef = React.useRef<HTMLUListElement>()
   const itemsRef = React.useRef<{ [key: string]: HTMLLIElement | Element }>({})
@@ -216,12 +224,15 @@ export function useMenu(): UseMenuReturnValue {
         top = window.innerHeight - (buttonRect.bottom - buttonRect.top + 200)
       }
 
+      const leftStyle =
+        align === 'right' && width
+          ? `left: ${buttonRect.left - (width - buttonRect.width)}px;`
+          : `left: ${left}px;`
+
       portalRef.current.style.cssText = `
-        width: ${clickedElement.offsetWidth}px;
         position: absolute;
         top: ${top}px;
-        left: ${left}px;
-        background: #ffff;
+        ${leftStyle}
       `
     },
   })
@@ -434,6 +445,6 @@ export function useMenu(): UseMenuReturnValue {
     handleToggleMenu,
     handleCloseMenu,
     getItemProps,
-    Portal,
+    Menu: Portal,
   }
 }
