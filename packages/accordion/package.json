@@ -36,9 +36,7 @@
   },
   "dependencies": {
     "@kodiak-ui/core": "^0.1.9",
-    "@kodiak-ui/primitives": "^0.10.3",
-    "fast-equals": "^2.0.0",
-    "micro-memoize": "^4.0.9"
+    "@kodiak-ui/primitives": "^0.10.3"
   },
   "repository": {
     "type": "git",
