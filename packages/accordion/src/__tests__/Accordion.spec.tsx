@@ -38,16 +38,16 @@ describe('Accordion', () => {
         <div
           className="emotion-0"
         >
-          <div
+          <header
             className="emotion-0"
           >
             Header
-          </div>
-          <div
+          </header>
+          <section
             className="emotion-0"
           >
             Body
-          </div>
+          </section>
           <div
             className="emotion-0"
           >
