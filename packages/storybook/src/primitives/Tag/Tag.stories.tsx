@@ -25,7 +25,7 @@ export function Dismiss() {
   return (
     <TagDismiss
       icon={<Icon sx={{ color: 'gray7' }} />}
-      onDismiss={() => console.log('dismiss')}
+      onDismiss={() => alert('dismiss')}
     >
       Dismiss
     </TagDismiss>
