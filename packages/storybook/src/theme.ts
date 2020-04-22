@@ -296,6 +296,33 @@ const tables = {
   },
 }
 
+const tags = {
+  default: {
+    bg: 'gray.1',
+    border: '1px solid',
+    borderColor: 'gray.3',
+    color: 'gray.7',
+    fontWeight: 'semiBold',
+  },
+  pill: {
+    bg: 'white',
+    border: '1px solid',
+    borderColor: 'gray.4',
+    borderRadius: '15px',
+    color: 'gray.5',
+    fontWeight: 'semiBold',
+  },
+  tagDismiss: {
+    bg: 'gray.1',
+    borderColor: 'gray.3',
+    color: 'gray.7',
+    fontWeight: 'semiBold',
+  },
+  tagLabel: {
+    borderColor: 'gray.3',
+  },
+}
+
 export const theme = {
   breakpoints,
   colors,
@@ -449,4 +476,5 @@ export const theme = {
   },
   selects,
   tables,
+  tags,
 }

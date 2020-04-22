@@ -9,15 +9,12 @@ import {
   SerializedStyles,
 } from '@kodiak-ui/core'
 
-export type TagProps = { children: React.ReactNode } & VariantProps
+export type TagLabelProps = { children: React.ReactNode } & VariantProps
 
 function base({ theme }: { theme: Theme }): SerializedStyles {
   return css({
-    alignItems: 'center',
-    bg: 'muted',
-    borderRadius: 'default',
+    border: 'none',
     color: 'text',
-    display: 'inline-flex',
     fontSize: 1,
     lineHeight: 1.2,
     py: 1,
@@ -25,18 +22,14 @@ function base({ theme }: { theme: Theme }): SerializedStyles {
   })(theme)
 }
 
-const TagStyle = styled('div')<TagProps>(
+export const TagLabel = styled('span')<TagLabelProps>(
   {
     boxSizing: 'border-box',
     margin: 0,
     minWidth: 0,
   },
   base,
-  ({ variant: variantProp = 'default', variantKey = 'tags', theme }) =>
+  ({ variant: variantProp = 'tagLabel', variantKey = 'tags', theme }) =>
     variant({ variant: variantProp, theme, variantKey }),
   sx,
 )
-
-export function Tag(props: TagProps) {
-  return <TagStyle {...props} />
-}
