@@ -10,7 +10,7 @@ describe('TagDismiss', () => {
     expect(
       renderer
         .create(
-          <TagDismiss icon={null} onDismiss={() => console.log('testing')}>
+          <TagDismiss icon={null} onDismiss={() => alert('testing')}>
             Label
           </TagDismiss>,
         )
