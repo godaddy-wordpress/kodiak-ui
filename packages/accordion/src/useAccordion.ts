@@ -1,7 +1,5 @@
 import * as React from 'react'
 import { setAttributes } from '@kodiak-ui/utils'
-import memoize from 'micro-memoize'
-import { deepEqual } from 'fast-equals'
 
 type RegisterOptions<KeyType> = {
   key: KeyType
@@ -18,15 +16,17 @@ type GetHeaderPropsReturn = {
   'aria-expanded': boolean
 }
 
+type UseAccordionProps = {
+  defaultExpandedItems?: KeyType[]
+  onChange?: ({ expandedItems }: { expandedItems: KeyType[] }) => void
+  allowMultiple?: boolean
+}
+
 export function useAccordion({
   defaultExpandedItems = [],
   onChange,
   allowMultiple,
-}: {
-  defaultExpandedItems?: KeyType[]
-  onChange?: ({ expandedItems }: { expandedItems: KeyType[] }) => void
-  allowMultiple?: boolean
-}) {
+}: UseAccordionProps) {
   const [expandedItems, setExpandedItems] = React.useState<KeyType[]>(
     defaultExpandedItems,
   )
@@ -156,23 +156,17 @@ export function useAccordion({
     )
   }
 
-  const getHeaderProps = React.useCallback(
-    memoize<({ key }: { key: KeyType }) => GetHeaderPropsReturn>(
-      function getHeaderProps({ key }: { key: KeyType }): GetHeaderPropsReturn {
-        return {
-          onClick: () => toggleExpanded({ key }),
-          onKeyUp: (event: React.KeyboardEvent) => {
-            if (['Enter', ' '].includes(event.key)) {
-              toggleExpanded({ key })
-            }
-          },
-          'aria-expanded': checkIsExpanded({ key }),
+  function getHeaderProps({ key }: { key: KeyType }): GetHeaderPropsReturn {
+    return {
+      onClick: () => toggleExpanded({ key }),
+      onKeyUp: (event: React.KeyboardEvent) => {
+        if (['Enter', ' '].includes(event.key)) {
+          toggleExpanded({ key })
         }
       },
-      { isEqual: deepEqual },
-    ),
-    [checkIsExpanded, toggleExpanded],
-  )
+      'aria-expanded': checkIsExpanded({ key }),
+    }
+  }
 
   return {
     register,
