@@ -16,3 +16,11 @@ export { Text } from './Text'
 export { Textarea } from './Textarea'
 export { VisuallyHidden } from './VisuallyHidden'
 export { Iframe } from './Iframe'
+export {
+  Tag,
+  TagProps,
+  TagLabel,
+  TagLabelProps,
+  TagDismiss,
+  TagDismissProps,
+} from './Tag'
