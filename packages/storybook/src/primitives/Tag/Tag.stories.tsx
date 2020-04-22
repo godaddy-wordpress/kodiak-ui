@@ -24,7 +24,7 @@ export function Pill() {
 export function Dismiss() {
   return (
     <TagDismiss
-      icon={<Icon sx={{ color: 'gray7' }} />}
+      icon={<Icon sx={{ color: 'gray.7' }} />}
       onDismiss={() => alert('dismiss')}
     >
       Dismiss
