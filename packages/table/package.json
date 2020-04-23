@@ -27,8 +27,7 @@
   },
   "dependencies": {
     "@kodiak-ui/core": "^0.1.14",
-    "@kodiak-ui/primitives": "^0.11.0",
-    "@material-ui/icons": "^4.9.1"
+    "@kodiak-ui/primitives": "^0.11.0"
   },
   "gitHead": "e043cf2cbc9ab31a9c84f9ea13c674b5a8157946"
 }
