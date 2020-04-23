@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/menu",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Component to display custom, accessible, and performant dropdown menus",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -26,7 +26,7 @@
     "react-dom": "^16.13.0"
   },
   "dependencies": {
-    "@kodiak-ui/core": "^0.1.12",
+    "@kodiak-ui/core": "^0.1.14",
     "@kodiak-ui/hooks": "^0.3.0"
   },
   "gitHead": "e043cf2cbc9ab31a9c84f9ea13c674b5a8157946"
