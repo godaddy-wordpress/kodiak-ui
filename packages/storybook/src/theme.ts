@@ -303,6 +303,7 @@ const tables = {
     color: 'text',
     fontWeight: 'semiBold',
   },
+  tableWrapper: {},
   tableRow: {
     borderBottom: '1px solid',
     borderColor: 'gray.2',
@@ -315,7 +316,7 @@ const tables = {
     borderColor: 'gray.2',
     paddingY: 3,
     paddingX: 4,
-    '&:first-child': {
+    '&:first-of-type': {
       borderLeft: 'none',
     },
   },
@@ -325,7 +326,7 @@ const tables = {
     borderColor: 'gray.2',
     paddingY: 3,
     paddingX: 4,
-    '&:first-child': {
+    '&:first-of-type': {
       borderLeft: 'none',
     },
   },

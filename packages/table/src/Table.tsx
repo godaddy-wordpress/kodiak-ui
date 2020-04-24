@@ -34,7 +34,7 @@ export function base({ theme }: { theme: Theme }): SerializedStyles {
 
 function variant({
   variant: variantProp,
-  variantKey,
+  variantKey = 'tables',
   theme,
 }: { theme: Theme } & VariantProps): SerializedStyles {
   return getVariantStyles({ variant: variantProp, theme, variantKey })
@@ -66,10 +66,10 @@ export function Table({
     <Box
       __base={{ width: '100%', overflowX: 'auto' }}
       sx={sx}
-      variant={variant}
+      variant="tableWrapper"
       variantKey={variantKey}
     >
-      <TableStyle {...props} />
+      <TableStyle variant={variant} variantKey={variantKey} {...props} />
     </Box>
   )
 }
