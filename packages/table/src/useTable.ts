@@ -12,10 +12,11 @@ export interface CellProps {
   children: string | React.ReactNode
 }
 
-export interface RowProps {
+export interface RowProps<Data> {
   key: string
   id?: string
   cells: CellProps[]
+  rowData: Data
 }
 
 export interface HeaderProps extends CellProps {
@@ -29,10 +30,10 @@ export interface UseTableOptions<Data> {
 
 export type TableElement = HTMLTableElement | null
 
-export interface UseTableReturnValue {
+export interface UseTableReturnValue<Data> {
   register: (ref: TableElement, registerOptions: RegisterOptions) => void
   headers: HeaderProps[]
-  rows: RowProps[]
+  rows: RowProps<Data>[]
 }
 
 export type RegisterOptions = {
@@ -42,7 +43,7 @@ export type RegisterOptions = {
 export function useTable<Data>({
   columns,
   data,
-}: UseTableOptions<Data>): UseTableReturnValue {
+}: UseTableOptions<Data>): UseTableReturnValue<Data> {
   const tableRef = React.useRef<TableElement>(null)
 
   /**
@@ -175,15 +176,21 @@ export function useTable<Data>({
    *
    * New array will be created only when `data` is changed.
    */
-  const rows: RowProps[] = React.useMemo(
+  const rows: RowProps<Data>[] = React.useMemo(
     () =>
       data.map((point: Data, index) => ({
         key: `${index}`,
+        rowData: point,
         rowIndex: index,
-        cells: columns.map(({ accessor }: ColumnProps, index) => ({
+        cells: columns.map((column: ColumnProps, index) => ({
           key: `${index}`,
           children:
-            accessor && hasKey(point, accessor) ? point[accessor] : null,
+            column.accessor && hasKey(point, column.accessor)
+              ? typeof point[column.accessor] === 'function'
+                ? (point[column.accessor] as any)({ rowData: point })
+                : point[column.accessor]
+              : null,
+          rowData: point,
         })),
       })),
     [data, columns],
