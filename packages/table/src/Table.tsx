@@ -19,7 +19,7 @@ export function tableRoot({ theme }: { theme: Theme }): SerializedStyles {
 }
 
 export type TableProps = {
-  children?: React.ReactNode
+  children?: React.ReactNode // Type error if this isn't optional
   ref?: (node: HTMLTableElement) => void
   sx?: SxStyleProp
 } & VariantProps
