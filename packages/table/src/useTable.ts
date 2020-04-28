@@ -7,19 +7,20 @@ export interface ColumnProps {
   scope?: 'col' | 'row'
 }
 
-export interface CellProps {
+export interface CellProps<Data> {
   key: string
   children: string | React.ReactNode
+  rowData?: Data
 }
 
 export interface RowProps<Data> {
   key: string
   id?: string
-  cells: CellProps[]
+  cells: CellProps<Data>[]
   rowData: Data
 }
 
-export interface HeaderProps extends CellProps {
+export interface HeaderProps<Data> extends CellProps<Data> {
   scope: string
 }
 
@@ -32,7 +33,7 @@ export type TableElement = HTMLTableElement | null
 
 export interface UseTableReturnValue<Data> {
   register: (ref: TableElement, registerOptions: RegisterOptions) => void
-  headers: HeaderProps[]
+  headers: HeaderProps<Data>[]
   rows: RowProps<Data>[]
 }
 
@@ -160,7 +161,7 @@ export function useTable<Data>({
    * New array will be created only when the columns param is changed and the appropriate props are added to render
    * the header inside of the th element
    */
-  const headers: HeaderProps[] = React.useMemo(
+  const headers: HeaderProps<Data>[] = React.useMemo(
     () =>
       columns.map(({ scope = 'col', Cell, ...column }, index) => ({
         ...column,
