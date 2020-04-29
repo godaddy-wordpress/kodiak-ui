@@ -19,7 +19,7 @@ export function tableRoot({ theme }: { theme: Theme }): SerializedStyles {
 }
 
 export type TableProps = {
-  children: React.ReactNode
+  children?: React.ReactNode // Type error if this isn't optional
   ref?: (node: HTMLTableElement) => void
   sx?: SxStyleProp
 } & VariantProps
@@ -56,12 +56,13 @@ export function TableElement({ variantKey = 'tables', ...props }: TableProps) {
   return <TableStyle variantKey={variantKey} {...props} />
 }
 
-export function Table({
-  sx,
-  variant,
-  variantKey = 'tables',
-  ...props
-}: TableProps) {
+export const Table = React.forwardRef<
+  HTMLTableElement,
+  React.ComponentProps<typeof TableStyle>
+>(function Table(
+  { sx, variant, variantKey = 'tables', ...props }: TableProps,
+  ref,
+) {
   return (
     <Box
       __base={{ width: '100%', overflowX: 'auto' }}
@@ -69,7 +70,12 @@ export function Table({
       variant="tableWrapper"
       variantKey={variantKey}
     >
-      <TableStyle variant={variant} variantKey={variantKey} {...props} />
+      <TableStyle
+        variant={variant}
+        variantKey={variantKey}
+        ref={ref as any}
+        {...props}
+      />
     </Box>
   )
-}
+})

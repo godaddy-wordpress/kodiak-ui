@@ -51,9 +51,12 @@ function Table() {
         <tbody>
           {rows.map(({ cells }, index) => (
             <tr key={index}>
-              {cells.map(({ key, ...cell }) => (
-                <td key={key} {...cell} />
-              ))}
+              {
+                // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                cells.map(({ key, rowData, ...cell }) => (
+                  <td key={key} {...cell} />
+                ))
+              }
             </tr>
           ))}
         </tbody>
@@ -88,9 +91,12 @@ function TableWithLabelRef() {
         <tbody>
           {rows.map(({ cells }, index) => (
             <tr key={index}>
-              {cells.map(({ key, ...cell }) => (
-                <td key={key} {...cell} />
-              ))}
+              {
+                // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                cells.map(({ key, rowData, ...cell }) => (
+                  <td key={key} {...cell} />
+                ))
+              }
             </tr>
           ))}
         </tbody>
@@ -129,17 +135,44 @@ describe('useTable', () => {
       },
     ])
 
-    expect(result.current.rows).toEqual([
-      {
-        cells: [
-          { children: 'Michael Scott', key: '0' },
-          { children: 'Steve Carrel', key: '1' },
-          { children: 'Regional Manager', key: '2' },
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { rowData, ...row } = result.current.rows[0]
+
+    expect(row).toMatchInlineSnapshot(`
+      Object {
+        "cells": Array [
+          Object {
+            "children": "Michael Scott",
+            "key": "0",
+            "rowData": Object {
+              "character": "Michael Scott",
+              "jobTitle": "Regional Manager",
+              "portrayedBy": "Steve Carrel",
+            },
+          },
+          Object {
+            "children": "Steve Carrel",
+            "key": "1",
+            "rowData": Object {
+              "character": "Michael Scott",
+              "jobTitle": "Regional Manager",
+              "portrayedBy": "Steve Carrel",
+            },
+          },
+          Object {
+            "children": "Regional Manager",
+            "key": "2",
+            "rowData": Object {
+              "character": "Michael Scott",
+              "jobTitle": "Regional Manager",
+              "portrayedBy": "Steve Carrel",
+            },
+          },
         ],
-        key: '0',
-        rowIndex: 0,
-      },
-    ])
+        "key": "0",
+        "rowIndex": 0,
+      }
+    `)
 
     expect(result.current.register).toBeDefined()
   })

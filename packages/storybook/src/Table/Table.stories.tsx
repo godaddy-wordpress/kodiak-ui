@@ -1,8 +1,7 @@
 import * as React from 'react'
+import { Box } from '@kodiak-ui/primitives'
 import {
   useTable,
-  CellProps,
-  HeaderProps,
   Table,
   TableHead,
   TableBody,
@@ -24,6 +23,11 @@ import FileCopyIcon from '@material-ui/icons/FileCopy'
 
 export default { title: 'Table' }
 
+type Row = {
+  character: string
+  portrayedBy: string
+  jobTitle: string
+}
 function Actions({
   onActionSelect,
 }: {
@@ -90,40 +94,56 @@ export function Initial() {
         Cell: 'Job title',
         accessor: 'jobTitle',
       },
+      {
+        Cell: 'Complex',
+        accessor: 'complexSample',
+      },
+      {
+        Cell: 'Actions',
+        accessor: 'actions',
+      },
     ],
     [],
   )
 
   const data = React.useMemo(
-    () => [
-      {
-        character: 'Michael Scott',
-        portrayedBy: 'Steve Carrel',
-        jobTitle: 'Regional manager',
-      },
-      {
-        character: 'Dwight Schrutte',
-        portrayedBy: 'Rainn Wilson',
-        jobTitle: 'Assistant to the Regional Manager',
-      },
-      {
-        character: 'Pam Beasley',
-        portrayedBy: 'Jenna Fischer',
-        jobTitle: 'Receptionist',
-      },
-      {
-        character: 'Angela Martin',
-        portrayedBy: 'Angela Kinsey',
-        jobTitle: 'Accountant',
-      },
-    ],
+    () =>
+      [
+        {
+          character: 'Michael Scott',
+          portrayedBy: 'Steve Carrel',
+          jobTitle: 'Regional manager',
+        },
+        {
+          character: 'Dwight Schrutte',
+          portrayedBy: 'Rainn Wilson',
+          jobTitle: 'Assistant to the Regional Manager',
+        },
+        {
+          character: 'Pam Beasley',
+          portrayedBy: 'Jenna Fischer',
+          jobTitle: 'Receptionist',
+        },
+        {
+          character: 'Angela Martin',
+          portrayedBy: 'Angela Kinsey',
+          jobTitle: 'Accountant',
+        },
+      ].map(dataRow => ({
+        ...dataRow,
+        actions: <Actions onActionSelect={() => null}></Actions>,
+        complexSample: (props: { rowData: Row }) => {
+          return (
+            <Box>
+              {props.rowData.character} - {props.rowData.portrayedBy}
+            </Box>
+          )
+        },
+      })),
     [],
   )
 
-  const { register, headers, rows } = useTable<{
-    character: string
-    portrayedBy: string
-  }>({
+  const { register, headers, rows } = useTable<Row>({
     columns,
     data,
   })
@@ -139,17 +159,25 @@ export function Initial() {
       <Table ref={node => register(node, { describedby: labelRef })}>
         <TableHead>
           <TableRow>
-            {headers.map(({ key, ...header }: HeaderProps) => (
+            {headers.map(({ key, ...header }) => (
               <TableHeader key={key} {...header} />
             ))}
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map(({ key, cells }) => (
-            <TableRow key={key}>
-              {cells.map(({ key, ...cell }: CellProps) => (
-                <TableData key={key} {...cell} />
-              ))}
+          {rows.map(({ key, cells, rowData }) => (
+            <TableRow
+              key={key}
+              sx={{
+                bg: rowData.jobTitle === 'Receptionist' ? 'green.3' : 'white',
+              }}
+            >
+              {
+                //eslint-disable-next-line @typescript-eslint/no-unused-vars
+                cells.map(({ key, rowData, ...cell }) => (
+                  <TableData key={key} {...cell} />
+                ))
+              }
             </TableRow>
           ))}
         </TableBody>
