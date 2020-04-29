@@ -191,7 +191,6 @@ export function Inital() {
       <Flex sx={{ justifyContent: 'flex-end', p: 5 }}>
         <AlignedRight />
       </Flex>
-      <Box sx={{ height: '1000px', bg: 'purple' }} />
     </>
   )
 }

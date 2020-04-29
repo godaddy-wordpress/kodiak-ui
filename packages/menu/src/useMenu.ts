@@ -2,7 +2,6 @@ import * as React from 'react'
 import { createPopper, VirtualElement, Placement } from '@popperjs/core'
 import { usePortal, useKey, useOnClickOutside } from '@kodiak-ui/hooks'
 import { hasKey } from './utils'
-import { OffsetModifier } from '@popperjs/core/lib/modifiers/offset'
 
 /**
  * Create all of the HTML attributes for an element
