@@ -1,6 +1,8 @@
 import * as React from 'react'
+import { createPopper, VirtualElement, Placement } from '@popperjs/core'
 import { usePortal, useKey, useOnClickOutside } from '@kodiak-ui/hooks'
 import { hasKey } from './utils'
+import { OffsetModifier } from '@popperjs/core/lib/modifiers/offset'
 
 /**
  * Create all of the HTML attributes for an element
@@ -147,8 +149,8 @@ interface RegisterOptions {
 }
 
 interface UseMenuProps {
-  align?: 'left' | 'right'
-  width?: number
+  placement?: Placement
+  offset?: [number, number]
 }
 
 interface UseMenuReturnValue {
@@ -163,7 +165,7 @@ interface UseMenuReturnValue {
   getItemProps: (
     name: string,
   ) => { onClick: (() => void) | undefined; onMouseEnter: () => void }
-  Menu: any
+  Menu: React.ReactNode
 }
 
 enum MenuElementTagNames {
@@ -178,8 +180,8 @@ interface RefAndOptions<Element> {
 }
 
 export function useMenu({
-  align = 'left',
-  width,
+  placement = 'bottom-start',
+  offset = [0, 8],
 }: UseMenuProps = {}): UseMenuReturnValue {
   const buttonRef = React.useRef<HTMLButtonElement | null>(null)
   const menuRef = React.useRef<HTMLUListElement>()
@@ -188,6 +190,7 @@ export function useMenu({
     [key: string]: (() => void) | undefined
   }>({})
   const elementIds = React.useRef<ElementIds>(generateElementIds())
+  const popperInstanceRef = React.useRef<any | null>(null)
 
   const [activeItem, setActiveItem] = React.useState('')
 
@@ -196,46 +199,32 @@ export function useMenu({
     handleOpenPortal,
     handleClosePortal,
     Portal,
-  } = usePortal({
-    onOpen({ portalRef }) {
-      const clickedElement = buttonRef && buttonRef.current
-      const buttonRect =
-        clickedElement && clickedElement.getBoundingClientRect()
+  } = usePortal()
 
-      if (!clickedElement || !buttonRect) {
+  React.useLayoutEffect(
+    function initializePopper() {
+      if (!isExpanded && (!buttonRef.current || !menuRef.current)) {
         return
       }
 
-      let left = buttonRect.left
-      let top = buttonRect && buttonRect.top + clickedElement.clientHeight
+      const popperInstance = createPopper(
+        buttonRef.current as Element | VirtualElement,
+        menuRef.current as HTMLElement,
+        {
+          placement,
+          modifiers: [{ name: 'offset', options: { offset } }],
+        },
+      )
 
-      const outRight = window.innerWidth < left + clickedElement.offsetWidth
+      popperInstanceRef.current = popperInstance
 
-      const outBottom =
-        window.innerHeight < buttonRect.top + portalRef.current.clientHeight
-
-      if (outRight) {
-        left =
-          window.innerWidth -
-          (buttonRect.right - buttonRect.left + clickedElement.offsetWidth)
+      return () => {
+        popperInstance.destroy()
+        popperInstanceRef.current = null
       }
-
-      if (outBottom) {
-        top = window.innerHeight - (buttonRect.bottom - buttonRect.top + 200)
-      }
-
-      const leftStyle =
-        align === 'right' && width
-          ? `left: ${buttonRect.left - (width - buttonRect.width)}px;`
-          : `left: ${left}px;`
-
-      portalRef.current.style.cssText = `
-        position: absolute;
-        top: ${top}px;
-        ${leftStyle}
-      `
     },
-  })
+    [isExpanded, placement, offset],
+  )
 
   function getItemNodeFromIndex(index: number): HTMLLIElement | Element | null {
     return itemsRef && itemsRef.current && itemsRef.current[index]

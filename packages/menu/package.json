@@ -27,7 +27,8 @@
   },
   "dependencies": {
     "@kodiak-ui/core": "^0.1.14",
-    "@kodiak-ui/hooks": "^0.3.0"
+    "@kodiak-ui/hooks": "^0.3.0",
+    "@popperjs/core": "^2.4.0"
   },
   "gitHead": "e043cf2cbc9ab31a9c84f9ea13c674b5a8157946"
 }

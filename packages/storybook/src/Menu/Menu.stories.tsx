@@ -13,7 +13,7 @@ function AlignedRight() {
     handleCloseMenu,
     getItemProps,
     Menu,
-  } = useMenu({ align: 'right', width: 91 })
+  } = useMenu({ placement: 'bottom-end' })
 
   return (
     <>
@@ -191,6 +191,7 @@ export function Inital() {
       <Flex sx={{ justifyContent: 'flex-end', p: 5 }}>
         <AlignedRight />
       </Flex>
+      <Box sx={{ height: '1000px', bg: 'purple' }} />
     </>
   )
 }
