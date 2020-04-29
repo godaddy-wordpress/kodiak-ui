@@ -164,7 +164,7 @@ interface UseMenuReturnValue {
   getItemProps: (
     name: string,
   ) => { onClick: (() => void) | undefined; onMouseEnter: () => void }
-  Menu: React.ReactNode
+  Menu: any
 }
 
 enum MenuElementTagNames {
