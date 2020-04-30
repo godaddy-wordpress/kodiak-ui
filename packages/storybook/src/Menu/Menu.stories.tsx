@@ -13,7 +13,7 @@ function AlignedRight() {
     handleCloseMenu,
     getItemProps,
     Menu,
-  } = useMenu({ align: 'right', width: 91 })
+  } = useMenu({ placement: 'bottom-end' })
 
   return (
     <>
