@@ -1,0 +1,18 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.14.1
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  SNYK-JS-LODASH-567746:
+    - '@emotion/styled > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
+        patched: '2020-04-30T21:11:24.431Z'
+    - '@kodiak-ui/core > @emotion/styled > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
+        patched: '2020-04-30T21:11:24.431Z'
+    - '@kodiak-ui/core > theme-ui > @theme-ui/mdx > @emotion/styled > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
+        patched: '2020-04-30T21:11:24.431Z'
+    - '@kodiak-ui/core > theme-ui > @theme-ui/theme-provider > @emotion/core > @emotion/css > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
+        patched: '2020-04-30T21:11:24.431Z'
+    - '@kodiak-ui/core > theme-ui > @theme-ui/theme-provider > @theme-ui/mdx > @emotion/core > @emotion/css > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
+        patched: '2020-04-30T21:11:24.431Z'
+    - '@kodiak-ui/core > theme-ui > @theme-ui/theme-provider > @theme-ui/color-modes > @theme-ui/core > @emotion/core > @emotion/css > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
+        patched: '2020-04-30T21:11:24.431Z'
