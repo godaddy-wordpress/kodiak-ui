@@ -15,8 +15,9 @@
     "access": "public"
   },
   "scripts": {
-    "prepare": "microbundle -f es,cjs",
-    "watch": "microbundle --watch -f es"
+    "prepare": "npm run snyk-protect && microbundle -f es,cjs",
+    "watch": "microbundle --watch -f es",
+    "snyk-protect": "snyk protect"
   },
   "peerDependencies": {
     "@emotion/core": "^10.0.27",
@@ -28,7 +29,8 @@
     "@styled-system/should-forward-prop": "^5.1.4",
     "@styled-system/space": "^5.1.2",
     "@theme-ui/css": "^0.3.1",
-    "styled-system": "^5.1.4"
+    "styled-system": "^5.1.4",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "@types/styled-system": "^5.1.5",
@@ -36,5 +38,6 @@
     "@types/theme-ui": "^0.3.1",
     "microbundle": "^0.11.0"
   },
-  "gitHead": "e043cf2cbc9ab31a9c84f9ea13c674b5a8157946"
+  "gitHead": "e043cf2cbc9ab31a9c84f9ea13c674b5a8157946",
+  "snyk": true
 }
