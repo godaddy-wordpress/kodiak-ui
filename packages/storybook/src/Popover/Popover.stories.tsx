@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Button } from '@kodiak-ui/primitives'
-import { usePopover } from '@kodiak-ui/popover'
+import { usePopover, Popover, PopoverArrow } from '@kodiak-ui/popover'
 
 export default { title: 'Popover' }
 
@@ -15,11 +15,14 @@ export function Initial() {
       >
         Hover over me
       </Button>
-      {isVisible && (
-        <Portal>
-          <div ref={register}>Testing</div>
-        </Portal>
-      )}
+      <Portal>
+        <Popover ref={register}>
+          This domain has failed verification. Please contact support.
+        </Popover>
+        <PopoverArrow
+          ref={(node: HTMLElement) => register(node, { arrow: true })}
+        />
+      </Portal>
     </>
   )
 }
