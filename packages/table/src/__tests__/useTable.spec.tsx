@@ -114,26 +114,37 @@ describe('useTable', () => {
       }),
     )
 
-    expect(result.current.headers).toEqual([
-      {
-        accessor: 'character',
-        children: 'Character',
-        key: '0',
-        scope: 'col',
-      },
-      {
-        accessor: 'portrayedBy',
-        children: 'Portrayed by',
-        key: '1',
-        scope: 'col',
-      },
-      {
-        accessor: 'jobTitle',
-        children: 'Job title',
-        key: '2',
-        scope: 'col',
-      },
-    ])
+    expect(result.current.headers).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "children": "Character",
+          "column": Object {
+            "Cell": "Character",
+            "accessor": "character",
+          },
+          "key": "0",
+          "scope": "col",
+        },
+        Object {
+          "children": "Portrayed by",
+          "column": Object {
+            "Cell": "Portrayed by",
+            "accessor": "portrayedBy",
+          },
+          "key": "1",
+          "scope": "col",
+        },
+        Object {
+          "children": "Job title",
+          "column": Object {
+            "Cell": "Job title",
+            "accessor": "jobTitle",
+          },
+          "key": "2",
+          "scope": "col",
+        },
+      ]
+    `)
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { rowData, ...row } = result.current.rows[0]
@@ -143,6 +154,10 @@ describe('useTable', () => {
         "cells": Array [
           Object {
             "children": "Michael Scott",
+            "column": Object {
+              "Cell": "Character",
+              "accessor": "character",
+            },
             "key": "0",
             "rowData": Object {
               "character": "Michael Scott",
@@ -152,6 +167,10 @@ describe('useTable', () => {
           },
           Object {
             "children": "Steve Carrel",
+            "column": Object {
+              "Cell": "Portrayed by",
+              "accessor": "portrayedBy",
+            },
             "key": "1",
             "rowData": Object {
               "character": "Michael Scott",
@@ -161,6 +180,10 @@ describe('useTable', () => {
           },
           Object {
             "children": "Regional Manager",
+            "column": Object {
+              "Cell": "Job title",
+              "accessor": "jobTitle",
+            },
             "key": "2",
             "rowData": Object {
               "character": "Michael Scott",
