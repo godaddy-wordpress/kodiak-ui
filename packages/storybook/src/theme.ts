@@ -6,17 +6,17 @@ const baseColors = {
   black: '#000',
   white: '#fff',
   defaultGray: '#cbd5e1',
-  blue: [null, '#0067b6', '#0076d1', '#bfddf3', '#ebf6ff'],
-  green: [null, '#379a58', '#63db8b', '#dbffe7'],
-  yellow: [null, '#db9600', '#ffbe33', '#fff9eb'],
-  red: [null, '#c42020', '#e12f2f', '#ff8c8c', '#ffe5e5'],
+  blue: [null, '#ebf6ff', '#bfddf3', '#0076d1', '#0067b6'],
+  green: [null, '#dbffe7', '#63db8b', '#379a58'],
+  yellow: [null, '#fff9eb', '#ffbe33', '#db9600'],
+  red: [null, '#ffe5e5', '#ff8c8c', '#e12f2f', '#c42020'],
   sky: [null, '#f7f9fb', '#e3e9f0', '#cbd5e1', '#b3c2d3'],
   ink: [null, '#1c384e', '#485f6f', '#65778b', '#8694a7'],
-  cyan: [null, '#cbf4fb', '#25afc6', '#0a6e80'],
-  magenta: [null, '#fadbe4', '#eb4a83', '#bc1b53'],
-  purple: [null, '#e0dcf4', '#8e7dd4', '#6047c2'],
-  pink: [null, '#f4dceb', '#d770b3', '#af3183'],
-  orange: [null, '#ffe8d2', '#d96b30', '#a84f00'],
+  cyan: [null, '#CBF4FB', '#25AFC6', '#0A6E80'],
+  magenta: [null, '#FADBE4', '#EB4A83', '#BC1B53'],
+  purple: [null, '#E0DCF4', '#8E7DD4', '#6047C2'],
+  pink: [null, '#F4DCEB', '#D770B3', '#AF3183'],
+  orange: [null, '#FFE8D2', '#D96B30', '#A84F00'],
   gray: [
     null,
     '#f7f9fb', // sky1
@@ -36,12 +36,12 @@ const colors = {
   grey: baseColors.gray,
   text: baseColors.ink[1],
   background: baseColors.white,
-  primary: baseColors.blue[2],
+  primary: baseColors.blue[3],
   success: baseColors.green[2],
   warning: baseColors.yellow[2],
   danger: baseColors.red[2],
   muted: baseColors.gray[3],
-  highlight: baseColors.blue[3],
+  highlight: baseColors.blue[2],
 }
 
 const commonInputStyles = {
@@ -142,15 +142,15 @@ const forms = {
   alternateSwitch: {
     borderRadius: '2px',
     'input:checked ~ &': {
-      backgroundColor: 'red.4',
-      borderColor: 'red.4',
+      backgroundColor: 'cyan.3',
+      borderColor: 'cyan.3',
     },
     'input:not(:checked) ~ &': {
       backgroundColor: 'gray.5',
       borderColor: 'gray.5',
     },
     indicator: {
-      backgroundColor: 'red.1',
+      backgroundColor: 'cyan.4',
     },
   },
 }
@@ -190,7 +190,7 @@ const messages = {
   },
   danger: {
     ...baseMessageStyles,
-    borderLeftColor: baseColors.red[2],
+    borderLeftColor: baseColors.red[3],
   },
 }
 
@@ -507,7 +507,7 @@ export const theme = {
   bannerMessages,
   buttons,
   menuitem: {
-    color: 'blue.2',
+    color: 'blue.3',
     textDecoration: 'none',
   },
   selects,

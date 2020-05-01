@@ -40,7 +40,7 @@ export function SampleStyledMenu() {
           <MenuItem
             borderLeftWidth="4px"
             borderLeftStyle="solid"
-            borderLeftColor={isCurrent ? 'blue.1' : 'transparent'}
+            borderLeftColor={isCurrent ? 'blue.4' : 'transparent'}
             backgroundColor={isCurrent ? 'sky.1' : 'transparent'}
             pl={7}
             py={4}
