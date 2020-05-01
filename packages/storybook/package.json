@@ -14,6 +14,7 @@
     "@kodiak-ui/hooks": "^0.3.0",
     "@kodiak-ui/menu": "^0.1.2",
     "@kodiak-ui/message": "^0.1.12",
+    "@kodiak-ui/popover": "^0.0.0",
     "@kodiak-ui/primitives": "^0.11.0",
     "@kodiak-ui/select": "^0.1.7",
     "@kodiak-ui/table": "^0.2.0",

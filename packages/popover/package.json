@@ -1,0 +1,36 @@
+{
+  "name": "@kodiak-ui/popover",
+  "version": "0.0.0",
+  "description": "Popover component and hook for displaying small messages on click or hover",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "source": "src/index.ts",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "author": "Wesley Cole <wes@skyverge.com>",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "prepare": "microbundle -f es,cjs",
+    "watch": "microbundle --watch -f es,cjs"
+  },
+  "devDependencies": {
+    "microbundle": "^0.11.0"
+  },
+  "peerDependencies": {
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0"
+  },
+  "dependencies": {
+    "@kodiak-ui/core": "^0.1.14",
+    "@kodiak-ui/hooks": "^0.3.0",
+    "@kodiak-ui/primitives": "^0.11.0",
+    "@kodiak-ui/utils": "^0.0.3",
+    "@popperjs/core": "^2.4.0"
+  },
+  "gitHead": "e043cf2cbc9ab31a9c84f9ea13c674b5a8157946"
+}
