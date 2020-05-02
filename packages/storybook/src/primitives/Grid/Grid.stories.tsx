@@ -6,7 +6,7 @@ export default { title: 'Primitives/Grid' }
 export function initial() {
   return (
     <Grid gridTemplateColumns="repeat(2, auto)" gridGap={3}>
-      <Box p={3} bg="blue.2">
+      <Box p={3} bg="blue.3">
         1
       </Box>
       <Box p={3} bg="yellow.2">
