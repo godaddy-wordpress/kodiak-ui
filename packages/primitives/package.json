@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/primitives",
-  "version": "0.11.0",
+  "version": "0.11.1",
   "description": "Kodiak's primitive components for building applications and complex components",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -29,8 +29,8 @@
     "@styled-system/should-forward-prop": "^5.1.4",
     "@styled-system/space": "^5.1.2",
     "@theme-ui/css": "^0.3.1",
-    "styled-system": "^5.1.4",
-    "snyk": "^1.316.1"
+    "snyk": "^1.316.1",
+    "styled-system": "^5.1.4"
   },
   "devDependencies": {
     "@types/styled-system": "^5.1.5",
