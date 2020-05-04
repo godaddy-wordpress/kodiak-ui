@@ -9,8 +9,10 @@ import {
   styled,
   SxStyleProp,
 } from '@kodiak-ui/core'
+import { Placement } from '@popperjs/core'
 
 export type TooltipArrowProps = {
+  placement: Placement
   sx?: SxStyleProp
 } & VariantProps
 
@@ -26,9 +28,9 @@ export function base({ theme }: { theme: Theme }): SerializedStyles {
     ...rootStyles,
     '::before': {
       ...rootStyles,
+      bg: 'black',
       content: '""',
       transform: 'rotate(45deg)',
-      background: 'white',
     },
   })(theme)
 }
@@ -36,8 +38,6 @@ export function base({ theme }: { theme: Theme }): SerializedStyles {
 const TooltipArrowStyle = styled('div')<TooltipArrowProps>(
   {
     boxSizing: 'border-box',
-    margin: 0,
-    minWidth: 0,
   },
   base,
   ({ variant: variantProp = 'tooltipArrow', variantKey = 'tooltips', theme }) =>

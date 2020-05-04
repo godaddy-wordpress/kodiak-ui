@@ -21,7 +21,6 @@ export function base({ theme }: { theme: Theme }): SerializedStyles {
     border: '1px solid',
     borderColor: 'muted',
     borderRadius: 'default',
-    p: 2,
     maxWidth: '250px',
   })(theme)
 }

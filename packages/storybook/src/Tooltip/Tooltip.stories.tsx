@@ -1,14 +1,21 @@
 import * as React from 'react'
-import { Button } from '@kodiak-ui/primitives'
+import { Button, Box } from '@kodiak-ui/primitives'
 import { useTooltip, Tooltip, TooltipArrow } from '@kodiak-ui/tooltip'
 
 export default { title: 'Tooltip' }
 
 export function Initial() {
-  const { isVisible, register, getTriggerProps, Portal } = useTooltip()
+  const {
+    isVisible,
+    register,
+    getTriggerProps,
+    getTooltipProps,
+    getArrowProps,
+    Portal,
+  } = useTooltip({ placement: 'bottom' })
 
   return (
-    <>
+    <Box sx={{ margin: '25%' }}>
       <Button
         ref={node => register(node, { trigger: true })}
         {...getTriggerProps()}
@@ -16,13 +23,14 @@ export function Initial() {
         Hover over me
       </Button>
       <Portal>
-        <Tooltip ref={register}>
+        <Tooltip ref={register} {...getTooltipProps()}>
           This domain has failed verification. Please contact support.
+          <TooltipArrow
+            ref={(node: HTMLElement) => register(node, { arrow: true })}
+            {...getArrowProps()}
+          />
         </Tooltip>
-        <TooltipArrow
-          ref={(node: HTMLElement) => register(node, { arrow: true })}
-        />
       </Portal>
-    </>
+    </Box>
   )
 }

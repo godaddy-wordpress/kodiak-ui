@@ -10,6 +10,8 @@ interface UseTooltipReturn {
     options?: RegisterOptions,
   ) => { ref: TooltipRef; options?: RegisterOptions }
   getTriggerProps: () => {}
+  getTooltipProps: () => {}
+  getArrowProps: () => {}
   Portal: any
 }
 
@@ -47,11 +49,6 @@ export function useTooltip({
 
   const id = useId()
 
-  const [state, setState] = React.useState<{
-    styles: object
-    attributes: object
-  }>()
-
   const {
     isOpen: isVisible,
     handleOpenPortal,
@@ -60,43 +57,25 @@ export function useTooltip({
     portalRef,
   } = usePortal()
 
-  const updateStateModifier = React.useMemo(
-    () => ({
-      name: 'updateState',
-      enabled: true,
-      phase: 'write' as 'write',
-      fn: ({ state }: any) => {
-        const elements = Object.keys(state.elements)
-
-        setState({
-          styles: fromEntries(
-            elements.map(element => [element, state.styles[element] || {}]),
-          ),
-          attributes: fromEntries(
-            elements.map(element => [element, state.attributes[element]]),
-          ),
-        })
-      },
-      requires: ['computeStyles'],
-    }),
-    [],
-  )
-
   React.useLayoutEffect(
     function initializePopper() {
-      if (!isVisible && (!triggerRef.current || !portalRef.current)) {
+      if (!isVisible && (!triggerRef.current || !tooltipRef.current)) {
         return
       }
 
       const popperInstance = createPopper(
         triggerRef.current as Element | VirtualElement,
-        portalRef.current as HTMLElement,
+        tooltipRef.current as HTMLElement,
         {
           placement,
           modifiers: [
-            { name: 'offset', options: { offset } },
-            { name: 'applyStyles', enabled: false },
-            updateStateModifier,
+            offset ? { name: 'offset', options: { offset } } : {},
+            arrowRef && arrowRef.current
+              ? {
+                  name: 'arrow',
+                  options: { element: arrowRef && arrowRef.current },
+                }
+              : {},
           ],
         },
       )
@@ -108,7 +87,7 @@ export function useTooltip({
         popperInstanceRef.current = null
       }
     },
-    [isVisible],
+    [isVisible, offset, placement],
   )
 
   useOnClickOutside({
@@ -194,10 +173,25 @@ export function useTooltip({
     [handleOpenPortal, handleClosePortal],
   )
 
+  const getTooltipProps = React.useCallback(function getTooltipProps() {
+    return {}
+  }, [])
+
+  const getArrowProps = React.useCallback(
+    function getArrowProps() {
+      return {
+        placement,
+      }
+    },
+    [placement],
+  )
+
   return {
     isVisible,
     register,
     getTriggerProps,
+    getTooltipProps,
+    getArrowProps,
     Portal,
   }
 }
