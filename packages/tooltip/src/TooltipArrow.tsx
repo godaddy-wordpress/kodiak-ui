@@ -10,7 +10,7 @@ import {
   SxStyleProp,
 } from '@kodiak-ui/core'
 
-export type PopoverArrowProps = {
+export type TooltipArrowProps = {
   sx?: SxStyleProp
 } & VariantProps
 
@@ -33,21 +33,21 @@ export function base({ theme }: { theme: Theme }): SerializedStyles {
   })(theme)
 }
 
-const PopoverArrowStyle = styled('div')<PopoverArrowProps>(
+const TooltipArrowStyle = styled('div')<TooltipArrowProps>(
   {
     boxSizing: 'border-box',
     margin: 0,
     minWidth: 0,
   },
   base,
-  ({ variant: variantProp = 'popoverArrow', variantKey = 'popovers', theme }) =>
+  ({ variant: variantProp = 'tooltipArrow', variantKey = 'tooltips', theme }) =>
     variant({ variant: variantProp, theme, variantKey }),
   sx,
 )
 
-export const PopoverArrow = React.forwardRef(function PopoverArrow(
-  props: PopoverArrowProps,
+export const TooltipArrow = React.forwardRef(function TooltipArrow(
+  props: TooltipArrowProps,
   ref: any,
 ) {
-  return <PopoverArrowStyle ref={ref} {...props} />
+  return <TooltipArrowStyle ref={ref} {...props} />
 })

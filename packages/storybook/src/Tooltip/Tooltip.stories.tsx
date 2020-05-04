@@ -1,11 +1,11 @@
 import * as React from 'react'
 import { Button } from '@kodiak-ui/primitives'
-import { usePopover, Popover, PopoverArrow } from '@kodiak-ui/popover'
+import { useTooltip, Tooltip, TooltipArrow } from '@kodiak-ui/tooltip'
 
-export default { title: 'Popover' }
+export default { title: 'Tooltip' }
 
 export function Initial() {
-  const { isVisible, register, getTriggerProps, Portal } = usePopover()
+  const { isVisible, register, getTriggerProps, Portal } = useTooltip()
 
   return (
     <>
@@ -16,10 +16,10 @@ export function Initial() {
         Hover over me
       </Button>
       <Portal>
-        <Popover ref={register}>
+        <Tooltip ref={register}>
           This domain has failed verification. Please contact support.
-        </Popover>
-        <PopoverArrow
+        </Tooltip>
+        <TooltipArrow
           ref={(node: HTMLElement) => register(node, { arrow: true })}
         />
       </Portal>

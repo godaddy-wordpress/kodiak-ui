@@ -3,22 +3,22 @@ import { createPopper, VirtualElement, Placement } from '@popperjs/core'
 import { setAttributes } from '@kodiak-ui/utils'
 import { usePortal, useOnClickOutside, useId, useKey } from '@kodiak-ui/hooks'
 
-interface UsePopoverReturn {
+interface UseTooltipReturn {
   isVisible: boolean
   register: (
-    ref: PopoverRef | null,
+    ref: TooltipRef | null,
     options?: RegisterOptions,
-  ) => { ref: PopoverRef; options?: RegisterOptions }
+  ) => { ref: TooltipRef; options?: RegisterOptions }
   getTriggerProps: () => {}
   Portal: any
 }
 
-interface UsePopoverProps {
+interface UseTooltipProps {
   placement?: Placement
   offset?: [number, number]
 }
 
-type PopoverRef = HTMLElement | null
+type TooltipRef = HTMLElement | null
 
 interface RegisterOptions {
   trigger?: boolean
@@ -26,7 +26,7 @@ interface RegisterOptions {
 }
 
 interface RefAndOptions {
-  ref: PopoverRef
+  ref: TooltipRef
   options?: RegisterOptions
 }
 
@@ -36,12 +36,12 @@ export const fromEntries = (entries: any) =>
     return acc
   }, {})
 
-export function usePopover({
+export function useTooltip({
   placement = 'top',
   offset = [0, 10],
-}: UsePopoverProps = {}): UsePopoverReturn {
+}: UseTooltipProps = {}): UseTooltipReturn {
   const triggerRef = React.useRef<HTMLElement | null>(null)
-  const popoverRef = React.useRef<HTMLElement | null>(null)
+  const tooltipRef = React.useRef<HTMLElement | null>(null)
   const arrowRef = React.useRef<HTMLElement | null>(null)
   const popperInstanceRef = React.useRef<any>(null)
 
@@ -137,21 +137,21 @@ export function usePopover({
       triggerRef.current = ref
 
       setAttributes(triggerRef.current, {
-        'aria-describedby': `kodiak-ui-popover-${id}`,
+        'aria-describedby': `kodiak-ui-tooltip-${id}`,
       })
     }
 
     return { ref, options }
   }
 
-  function registerPopoverElement({
+  function registerTooltipElement({
     ref,
     options,
   }: RefAndOptions): RefAndOptions {
     if ((ref && !options) || (options && !options.trigger && !options.arrow)) {
-      popoverRef.current = ref
-      setAttributes(popoverRef.current, {
-        id: `kodiak-ui-popover-${id}`,
+      tooltipRef.current = ref
+      setAttributes(tooltipRef.current, {
+        id: `kodiak-ui-tooltip-${id}`,
         role: 'tooltip',
       })
     }
@@ -171,14 +171,14 @@ export function usePopover({
   }
 
   function register(
-    ref: PopoverRef,
+    ref: TooltipRef,
     options?: RegisterOptions,
   ): {
-    ref: PopoverRef
+    ref: TooltipRef
     options?: RegisterOptions
   } {
     return registerArrowElement(
-      registerTriggerElement(registerPopoverElement({ ref, options })),
+      registerTriggerElement(registerTooltipElement({ ref, options })),
     )
   }
 

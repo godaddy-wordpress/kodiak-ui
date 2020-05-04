@@ -1,7 +1,7 @@
 {
-  "name": "@kodiak-ui/popover",
+  "name": "@kodiak-ui/tooltip",
   "version": "0.0.0",
-  "description": "Popover component and hook for displaying small messages on click or hover",
+  "description": "Tooltip component and hook for displaying small messages on hover",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "source": "src/index.ts",

@@ -10,7 +10,7 @@ import {
   SxStyleProp,
 } from '@kodiak-ui/core'
 
-export type PopoverProps = {
+export type TooltipProps = {
   children: React.ReactNode
   sx?: SxStyleProp
 } & VariantProps
@@ -26,7 +26,7 @@ export function base({ theme }: { theme: Theme }): SerializedStyles {
   })(theme)
 }
 
-const PopoverStyle = styled('div')<PopoverProps>(
+const TooltipStyle = styled('div')<TooltipProps>(
   {
     boxSizing: 'border-box',
     margin: 0,
@@ -38,8 +38,8 @@ const PopoverStyle = styled('div')<PopoverProps>(
   sx,
 )
 
-export const Popover = React.forwardRef<HTMLElement, PopoverProps>(
-  function Popover(props: PopoverProps, ref: any) {
-    return <PopoverStyle ref={ref} tabIndex={-1} {...props} />
+export const Tooltip = React.forwardRef<HTMLElement, TooltipProps>(
+  function Tooltip(props: TooltipProps, ref: any) {
+    return <TooltipStyle ref={ref} tabIndex={-1} {...props} />
   },
 )
