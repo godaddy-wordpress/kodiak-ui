@@ -28,7 +28,7 @@
   "dependencies": {
     "@kodiak-ui/core": "^0.1.14",
     "@kodiak-ui/hooks": "^0.3.0",
-    "@kodiak-ui/primitives": "^0.11.0",
+    "@kodiak-ui/primitives": "^0.11.2",
     "@kodiak-ui/utils": "^0.0.3",
     "@popperjs/core": "^2.4.0"
   },
