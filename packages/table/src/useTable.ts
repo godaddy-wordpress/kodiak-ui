@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { hasKey } from './utils'
+import { SxStyleProp } from '@kodiak-ui/core'
 
 export interface ColumnProps {
   Cell: string | React.ReactNode
@@ -37,10 +38,17 @@ export interface UseTableReturnValue<Data> {
   register: (ref: TableElement, registerOptions: RegisterOptions) => void
   headers: HeaderProps<Data>[]
   rows: RowProps<Data>[]
+  getTableProps: () => {
+    sx: SxStyleProp
+  }
 }
 
 export type RegisterOptions = {
   describedby?: string | React.RefObject<any>
+}
+
+function hasWidthProvided(columns?: ColumnProps[]) {
+  return !!(columns && columns.some(column => column.width))
 }
 
 export function useTable<Data>({
@@ -48,7 +56,14 @@ export function useTable<Data>({
   data,
 }: UseTableOptions<Data>): UseTableReturnValue<Data> {
   const tableRef = React.useRef<TableElement>(null)
+  const [hasFixedTableWidth, setHasFixedTableWidth] = React.useState(false)
 
+  React.useEffect(
+    function checkHasWidthProvided() {
+      setHasFixedTableWidth(hasWidthProvided(columns))
+    },
+    [columns],
+  )
   /**
    * Create all of the HTML attributes for an element
    *
@@ -203,9 +218,19 @@ export function useTable<Data>({
     [data, columns],
   )
 
+  const getTableProps = React.useCallback((): { sx: SxStyleProp } => {
+    return {
+      sx: {
+        tableLayout: hasFixedTableWidth ? 'fixed' : 'auto',
+        width: hasFixedTableWidth ? 'auto' : '100%',
+      },
+    }
+  }, [hasFixedTableWidth])
+
   return {
     register,
     headers,
     rows,
+    getTableProps,
   }
 }

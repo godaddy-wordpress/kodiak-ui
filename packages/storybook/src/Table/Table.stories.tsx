@@ -80,6 +80,7 @@ function Actions({
 }
 
 export function Initial() {
+  const [hasFixedLayout, setHasFixedLayout] = React.useState(true)
   const columns = React.useMemo(
     () => [
       {
@@ -101,10 +102,10 @@ export function Initial() {
       {
         Cell: 'Actions',
         accessor: 'actions',
-        width: '72px',
+        width: hasFixedLayout ? '72px' : undefined,
       },
     ],
-    [],
+    [hasFixedLayout],
   )
 
   const data = React.useMemo(
@@ -144,13 +145,12 @@ export function Initial() {
     [],
   )
 
-  const { register, headers, rows } = useTable<Row>({
+  const { register, headers, rows, getTableProps } = useTable<Row>({
     columns,
     data,
   })
 
   const labelRef = React.useRef<HTMLHeadingElement>(null)
-  const [hasFixedLayout, setHasFixedLayout] = React.useState(true)
 
   return (
     <>
@@ -160,10 +160,7 @@ export function Initial() {
 
       <Table
         ref={node => register(node, { describedby: labelRef })}
-        sx={{
-          tableLayout: hasFixedLayout ? 'fixed' : 'auto',
-          width: hasFixedLayout ? 'auto' : '100%',
-        }}
+        {...getTableProps()}
       >
         <TableHead>
           <TableRow>
