@@ -11,4 +11,5 @@ export {
   OnOffListenerType,
 } from './useEventListener'
 export { useOnClickOutside } from './useOnClickOutside'
+export { useId } from './useId'
 export { createStateDispatchContext } from './createStateDispatchContext'

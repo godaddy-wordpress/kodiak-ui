@@ -361,6 +361,22 @@ const tags = {
   },
 }
 
+const tooltips = {
+  borderColor: 'gray.2',
+  "&[data-popper-placement^='top'] > #kodiak-ui-tooltip-arrow::before": {
+    borderColor: 'gray.2',
+  },
+  "&[data-popper-placement^='bottom'] > #kodiak-ui-tooltip-arrow::before": {
+    borderColor: 'gray.2',
+  },
+  "&[data-popper-placement^='right'] > #kodiak-ui-tooltip-arrow::before": {
+    borderColor: 'gray.2',
+  },
+  "&[data-popper-placement^='left'] > #kodiak-ui-tooltip-arrow::before": {
+    borderColor: 'gray.2',
+  },
+}
+
 export const theme = {
   breakpoints,
   colors,
@@ -516,4 +532,5 @@ export const theme = {
   accordions,
   tables,
   tags,
+  tooltips,
 }
