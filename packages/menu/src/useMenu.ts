@@ -229,6 +229,14 @@ export function useMenu({
     return itemsRef && itemsRef.current && itemsRef.current[index]
   }
 
+  function focusMenuRef() {
+    menuRef && menuRef.current && menuRef.current.focus()
+  }
+
+  function focusButtonRef() {
+    buttonRef && buttonRef.current && buttonRef.current.focus()
+  }
+
   useKey({
     key: 'Escape',
     target: menuRef.current,
@@ -236,6 +244,7 @@ export function useMenu({
       if (isExpanded) {
         handleClosePortal({})
       }
+      focusButtonRef()
     },
   })
 
@@ -294,19 +303,9 @@ export function useMenu({
     },
   })
 
-  function focusMenuRef() {
-    menuRef && menuRef.current && menuRef.current.focus()
-  }
-
-  function focusButtonRef() {
-    buttonRef && buttonRef.current && buttonRef.current.focus()
-  }
-
   React.useEffect(() => {
     if (isExpanded) {
       focusMenuRef()
-    } else {
-      focusButtonRef()
     }
   }, [isExpanded])
 

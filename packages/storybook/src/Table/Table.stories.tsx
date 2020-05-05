@@ -169,7 +169,7 @@ export function Initial() {
             <TableRow
               key={key}
               sx={{
-                bg: rowData.jobTitle === 'Receptionist' ? 'green.3' : 'white',
+                bg: rowData.jobTitle === 'Receptionist' ? 'green.1' : 'white',
               }}
             >
               {
