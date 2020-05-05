@@ -1,53 +1,36 @@
 import * as React from 'react'
-import {
-  variant,
-  VariantProps,
-  sx,
-  Theme,
-  css,
-  SerializedStyles,
-  styled,
-  SxStyleProp,
-} from '@kodiak-ui/core'
-import { Placement } from '@popperjs/core'
+import { Box } from '@kodiak-ui/primitives'
+import { VariantProps } from '@kodiak-ui/core'
 
-export type TooltipArrowProps = {
-  placement: Placement
-  sx?: SxStyleProp
-} & VariantProps
-
-const rootStyles: any = {
-  position: 'absolute',
-  width: '8px',
-  height: '8px',
-  zIndex: -1,
-}
-
-export function base({ theme }: { theme: Theme }): SerializedStyles {
-  return css({
-    ...rootStyles,
-    '::before': {
-      ...rootStyles,
-      bg: 'black',
-      content: '""',
-      transform: 'rotate(45deg)',
-    },
-  })(theme)
-}
-
-const TooltipArrowStyle = styled('div')<TooltipArrowProps>(
-  {
-    boxSizing: 'border-box',
-  },
-  base,
-  ({ variant: variantProp = 'tooltipArrow', variantKey = 'tooltips', theme }) =>
-    variant({ variant: variantProp, theme, variantKey }),
-  sx,
-)
+type TooltipArrowProps = VariantProps
 
 export const TooltipArrow = React.forwardRef(function TooltipArrow(
-  props: TooltipArrowProps,
+  { variant = 'tooltipArrow', ...props }: TooltipArrowProps,
   ref: any,
 ) {
-  return <TooltipArrowStyle ref={ref} {...props} />
+  return (
+    <Box
+      ref={ref}
+      sx={{
+        position: 'absolute',
+        width: '8px',
+        height: '8px',
+        zIndex: -1,
+        '::before': {
+          bg: 'white',
+          content: "''",
+          transform: 'rotate(45deg)',
+          position: 'absolute',
+          width: '8px',
+          height: '8px',
+          zIndex: -1,
+        },
+      }}
+      id="kodiak-ui-tooltip-arrow"
+      variantKey="tooltips"
+      variant={variant}
+      data-popper-arrow
+      {...props}
+    />
+  )
 })

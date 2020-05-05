@@ -12,7 +12,7 @@ export function Initial() {
     getTooltipProps,
     getArrowProps,
     Portal,
-  } = useTooltip({ placement: 'bottom' })
+  } = useTooltip({ placement: 'right' })
 
   return (
     <Box sx={{ margin: '25%' }}>
@@ -22,15 +22,17 @@ export function Initial() {
       >
         Hover over me
       </Button>
-      <Portal>
-        <Tooltip ref={register} {...getTooltipProps()}>
-          This domain has failed verification. Please contact support.
-          <TooltipArrow
-            ref={(node: HTMLElement) => register(node, { arrow: true })}
-            {...getArrowProps()}
-          />
-        </Tooltip>
-      </Portal>
+      {isVisible && (
+        <Portal>
+          <Tooltip ref={register} {...getTooltipProps()}>
+            This domain has failed verification. Please contact support.
+            <TooltipArrow
+              ref={(node: HTMLElement) => register(node, { arrow: true })}
+              {...getArrowProps()}
+            />
+          </Tooltip>
+        </Portal>
+      )}
     </Box>
   )
 }
