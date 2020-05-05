@@ -4,14 +4,9 @@ import { Box, Button } from '@kodiak-ui/primitives'
 import { Tooltip, TooltipArrow, useTooltip } from '../'
 
 export function Example() {
-  const {
-    isVisible,
-    register,
-    getTriggerProps,
-    getTooltipProps,
-    getArrowProps,
-    Portal,
-  } = useTooltip({ placement: 'right' })
+  const { isVisible, register, getTriggerProps, Portal } = useTooltip({
+    placement: 'right',
+  })
 
   return (
     <Box sx={{ margin: '25%' }}>
@@ -23,11 +18,10 @@ export function Example() {
       </Button>
       {isVisible && (
         <Portal>
-          <Tooltip ref={register} {...getTooltipProps()}>
+          <Tooltip ref={register}>
             This domain has failed verification.
             <TooltipArrow
               ref={(node: HTMLElement) => register(node, { arrow: true })}
-              {...getArrowProps()}
             />
           </Tooltip>
         </Portal>
@@ -49,6 +43,18 @@ describe('useTooltip', () => {
     expect(tooltip).toBeDefined()
 
     fireEvent(trigger, new MouseEvent('mouseout'))
+    expect(tooltip).toBeNull()
+
+    fireEvent.focus(trigger)
+    expect(tooltip).toBeDefined()
+
+    fireEvent.keyUp(trigger, { key: 'Escape', code: 'Escape' })
+    expect(tooltip).toBeNull()
+
+    fireEvent.focus(trigger)
+    expect(tooltip).toBeDefined()
+
+    fireEvent.blur(trigger)
     expect(tooltip).toBeNull()
   })
 })

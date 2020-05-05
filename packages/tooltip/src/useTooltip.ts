@@ -10,8 +10,6 @@ interface UseTooltipReturn {
     options?: RegisterOptions,
   ) => { ref: TooltipRef; options?: RegisterOptions }
   getTriggerProps: () => {}
-  getTooltipProps: () => {}
-  getArrowProps: () => {}
   Portal: any
 }
 
@@ -173,25 +171,10 @@ export function useTooltip({
     [handleOpenPortal, handleClosePortal],
   )
 
-  const getTooltipProps = React.useCallback(function getTooltipProps() {
-    return {}
-  }, [])
-
-  const getArrowProps = React.useCallback(
-    function getArrowProps() {
-      return {
-        placement,
-      }
-    },
-    [placement],
-  )
-
   return {
     isVisible,
     register,
     getTriggerProps,
-    getTooltipProps,
-    getArrowProps,
     Portal,
   }
 }

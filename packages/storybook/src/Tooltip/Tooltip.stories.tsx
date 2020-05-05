@@ -5,14 +5,9 @@ import { useTooltip, Tooltip, TooltipArrow } from '@kodiak-ui/tooltip'
 export default { title: 'Tooltip' }
 
 export function Initial() {
-  const {
-    isVisible,
-    register,
-    getTriggerProps,
-    getTooltipProps,
-    getArrowProps,
-    Portal,
-  } = useTooltip({ placement: 'right' })
+  const { isVisible, register, getTriggerProps, Portal } = useTooltip({
+    placement: 'right',
+  })
 
   return (
     <Box sx={{ margin: '25%' }}>
@@ -24,11 +19,10 @@ export function Initial() {
       </Button>
       {isVisible && (
         <Portal>
-          <Tooltip ref={register} {...getTooltipProps()}>
+          <Tooltip ref={register}>
             This domain has failed verification. Please contact support.
             <TooltipArrow
               ref={(node: HTMLElement) => register(node, { arrow: true })}
-              {...getArrowProps()}
             />
           </Tooltip>
         </Portal>
