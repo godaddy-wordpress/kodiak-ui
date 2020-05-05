@@ -1,16 +1,19 @@
 import * as React from 'react'
 import { hasKey } from './utils'
+import { SxStyleProp } from '@kodiak-ui/core'
 
 export interface ColumnProps {
   Cell: string | React.ReactNode
   accessor?: string
   scope?: 'col' | 'row'
+  width?: React.CSSProperties['width']
 }
 
 export interface CellProps<Data> {
   key: string
   children: string | React.ReactNode
   rowData?: Data
+  column?: ColumnProps
 }
 
 export interface RowProps<Data> {
@@ -35,10 +38,17 @@ export interface UseTableReturnValue<Data> {
   register: (ref: TableElement, registerOptions: RegisterOptions) => void
   headers: HeaderProps<Data>[]
   rows: RowProps<Data>[]
+  getTableProps: () => {
+    sx: SxStyleProp
+  }
 }
 
 export type RegisterOptions = {
   describedby?: string | React.RefObject<any>
+}
+
+function hasWidthProvided(columns?: ColumnProps[]) {
+  return !!(columns && columns.some(column => column.width))
 }
 
 export function useTable<Data>({
@@ -46,7 +56,14 @@ export function useTable<Data>({
   data,
 }: UseTableOptions<Data>): UseTableReturnValue<Data> {
   const tableRef = React.useRef<TableElement>(null)
+  const [hasFixedTableWidth, setHasFixedTableWidth] = React.useState(false)
 
+  React.useEffect(
+    function checkHasWidthProvided() {
+      setHasFixedTableWidth(hasWidthProvided(columns))
+    },
+    [columns],
+  )
   /**
    * Create all of the HTML attributes for an element
    *
@@ -163,11 +180,11 @@ export function useTable<Data>({
    */
   const headers: HeaderProps<Data>[] = React.useMemo(
     () =>
-      columns.map(({ scope = 'col', Cell, ...column }, index) => ({
-        ...column,
+      columns.map((column, index) => ({
+        column,
         key: `${index}`,
-        scope,
-        children: Cell,
+        scope: column.scope || 'col',
+        children: column.Cell,
       })),
     [columns],
   )
@@ -177,29 +194,43 @@ export function useTable<Data>({
    *
    * New array will be created only when `data` is changed.
    */
+
   const rows: RowProps<Data>[] = React.useMemo(
     () =>
       data.map((point: Data, index) => ({
         key: `${index}`,
         rowData: point,
         rowIndex: index,
-        cells: columns.map((column: ColumnProps, index) => ({
-          key: `${index}`,
-          children:
-            column.accessor && hasKey(point, column.accessor)
-              ? typeof point[column.accessor] === 'function'
-                ? (point[column.accessor] as any)({ rowData: point })
-                : point[column.accessor]
-              : null,
-          rowData: point,
-        })),
+        cells: columns.map((column: ColumnProps, index) => {
+          return {
+            key: `${index}`,
+            column,
+            children:
+              column.accessor && hasKey(point, column.accessor)
+                ? typeof point[column.accessor] === 'function'
+                  ? (point[column.accessor] as any)({ rowData: point })
+                  : point[column.accessor]
+                : null,
+            rowData: point,
+          }
+        }),
       })),
     [data, columns],
   )
+
+  const getTableProps = React.useCallback((): { sx: SxStyleProp } => {
+    return {
+      sx: {
+        tableLayout: hasFixedTableWidth ? 'fixed' : 'auto',
+        width: hasFixedTableWidth ? 'auto' : '100%',
+      },
+    }
+  }, [hasFixedTableWidth])
 
   return {
     register,
     headers,
     rows,
+    getTableProps,
   }
 }

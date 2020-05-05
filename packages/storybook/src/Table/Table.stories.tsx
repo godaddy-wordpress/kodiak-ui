@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Box } from '@kodiak-ui/primitives'
+import { Box, Button } from '@kodiak-ui/primitives'
 import {
   useTable,
   Table,
@@ -80,6 +80,7 @@ function Actions({
 }
 
 export function Initial() {
+  const [hasFixedLayout, setHasFixedLayout] = React.useState(true)
   const columns = React.useMemo(
     () => [
       {
@@ -101,9 +102,10 @@ export function Initial() {
       {
         Cell: 'Actions',
         accessor: 'actions',
+        width: hasFixedLayout ? '72px' : undefined,
       },
     ],
-    [],
+    [hasFixedLayout],
   )
 
   const data = React.useMemo(
@@ -143,7 +145,7 @@ export function Initial() {
     [],
   )
 
-  const { register, headers, rows } = useTable<Row>({
+  const { register, headers, rows, getTableProps } = useTable<Row>({
     columns,
     data,
   })
@@ -156,11 +158,18 @@ export function Initial() {
         Table example
       </h1>
 
-      <Table ref={node => register(node, { describedby: labelRef })}>
+      <Table
+        ref={node => register(node, { describedby: labelRef })}
+        {...getTableProps()}
+      >
         <TableHead>
           <TableRow>
-            {headers.map(({ key, ...header }) => (
-              <TableHeader key={key} {...header} />
+            {headers.map(({ key, column, ...header }) => (
+              <TableHeader
+                key={key}
+                {...header}
+                sx={{ width: column?.width }}
+              />
             ))}
           </TableRow>
         </TableHead>
@@ -174,14 +183,29 @@ export function Initial() {
             >
               {
                 //eslint-disable-next-line @typescript-eslint/no-unused-vars
-                cells.map(({ key, rowData, ...cell }) => (
-                  <TableData key={key} {...cell} />
-                ))
+                cells.map(({ key, rowData, ...cell }) => {
+                  return (
+                    <TableData
+                      key={key}
+                      {...cell}
+                      sx={{
+                        width: cell.column?.width,
+                      }}
+                    />
+                  )
+                })
               }
             </TableRow>
           ))}
         </TableBody>
       </Table>
+      <Button
+        sx={{ mt: 4 }}
+        variant="secondary"
+        onClick={() => setHasFixedLayout(!hasFixedLayout)}
+      >
+        Toggle fixed layout
+      </Button>
     </>
   )
 }
