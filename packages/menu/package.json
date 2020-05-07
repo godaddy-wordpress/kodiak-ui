@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/menu",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Component to display custom, accessible, and performant dropdown menus",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -30,5 +30,5 @@
     "@kodiak-ui/hooks": "^0.4.0",
     "@popperjs/core": "^2.4.0"
   },
-  "gitHead": "be0456b768f0d4cb9983134514112ab5adba7413"
+  "gitHead": "87aa724b895bd2be4f74dea3a95ed6ca5f6e1c24"
 }
