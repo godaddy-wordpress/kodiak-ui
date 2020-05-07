@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/menu",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Component to display custom, accessible, and performant dropdown menus",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
