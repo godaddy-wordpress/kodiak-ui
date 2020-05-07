@@ -163,7 +163,10 @@ interface UseMenuReturnValue {
   handleCloseMenu: () => void
   getItemProps: (
     name: string,
-  ) => { onClick: (() => void) | undefined; onMouseEnter: () => void }
+  ) => {
+    onClick: ((event: React.MouseEvent<any, MouseEvent>) => void) | undefined
+    onMouseEnter: () => void
+  }
   Menu: any
 }
 
@@ -186,7 +189,7 @@ export function useMenu({
   const menuRef = React.useRef<HTMLUListElement>()
   const itemsRef = React.useRef<{ [key: string]: HTMLLIElement | Element }>({})
   const itemHandlersRef = React.useRef<{
-    [key: string]: (() => void) | undefined
+    [key: string]: ((event: any) => void) | undefined
   }>({})
   const elementIds = React.useRef<ElementIds>(generateElementIds())
   const popperInstanceRef = React.useRef<any | null>(null)
@@ -420,7 +423,12 @@ export function useMenu({
 
   function getItemProps(name: string) {
     return {
-      onClick: itemHandlersRef.current[name],
+      onClick: (event: React.MouseEvent<any, MouseEvent>) => {
+        // TS doesn't like this itemHandlersRef.current[name] && itemHandlersRef.current[name](event)
+        // this will work when the bundler supports conditional chaining itemHandlersRef.current[name]?.(event)
+        const itemHandler = itemHandlersRef.current[name]
+        itemHandler && itemHandler(event)
+      },
       onMouseEnter: () => setActiveItem(name),
     }
   }
