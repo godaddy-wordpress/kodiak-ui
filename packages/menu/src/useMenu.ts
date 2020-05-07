@@ -418,12 +418,12 @@ export function useMenu({
     [handleClosePortal],
   )
 
-  const getItemProps = React.useCallback(function getItemProps(name: string) {
+  function getItemProps(name: string) {
     return {
       onClick: itemHandlersRef.current[name],
       onMouseEnter: () => setActiveItem(name),
     }
-  }, [])
+  }
 
   return {
     register,
