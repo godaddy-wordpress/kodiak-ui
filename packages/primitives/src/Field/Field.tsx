@@ -22,7 +22,7 @@ export const Field = React.forwardRef(
       <Label htmlFor={name} mb={2}>
         {label}
       </Label>
-      <Input ref={ref} id={name} name={name} type={type} placeholder={placeholder} defaultValue={defaultValue} />
+      <Input ref={ref} id={name} name={name} defaultValue={defaultValue} {...props} />
       {children}
     </Box>
   ),
