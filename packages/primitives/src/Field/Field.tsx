@@ -4,13 +4,11 @@ import { Label } from '../Label'
 import { Input } from '../Input'
 import { Text } from '../Text'
 
-interface FieldProps {
+interface FieldProps extends React.HTMLAttributes<HTMLInputElement> {
   children?: React.ReactNode
   defaultValue?: string
   label: string
   name: string
-  placeholder?: string
-  type?: string
 }
 
 export const Field = React.forwardRef(
@@ -22,7 +20,13 @@ export const Field = React.forwardRef(
       <Label htmlFor={name} mb={2}>
         {label}
       </Label>
-      <Input ref={ref} id={name} name={name} defaultValue={defaultValue} {...props} />
+      <Input
+        ref={ref}
+        id={name}
+        name={name}
+        defaultValue={defaultValue}
+        {...props}
+      />
       {children}
     </Box>
   ),
