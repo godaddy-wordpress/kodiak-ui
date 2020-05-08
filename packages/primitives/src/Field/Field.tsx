@@ -5,22 +5,24 @@ import { Input } from '../Input'
 import { Text } from '../Text'
 
 interface FieldProps {
+  children?: React.ReactNode
+  defaultValue?: string
   label: string
   name: string
-  defaultValue?: string
-  children?: React.ReactNode
+  placeholder?: string
+  type?: string
 }
 
 export const Field = React.forwardRef(
   (
-    { label, name, defaultValue, children }: FieldProps,
+    { children, defaultValue, label, name, placeholder, type }: FieldProps,
     ref: React.Ref<HTMLInputElement>,
   ) => (
     <Box mb={4}>
       <Label htmlFor={name} mb={2}>
         {label}
       </Label>
-      <Input ref={ref} id={name} name={name} defaultValue={defaultValue} />
+      <Input ref={ref} id={name} name={name} type={type} placeholder={placeholder} defaultValue={defaultValue} />
       {children}
     </Box>
   ),
