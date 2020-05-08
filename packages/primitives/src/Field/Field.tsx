@@ -15,7 +15,7 @@ interface FieldProps {
 
 export const Field = React.forwardRef(
   (
-    { children, defaultValue, label, name, placeholder, type }: FieldProps,
+    { children, defaultValue, label, name, ...props }: FieldProps,
     ref: React.Ref<HTMLInputElement>,
   ) => (
     <Box mb={4}>
