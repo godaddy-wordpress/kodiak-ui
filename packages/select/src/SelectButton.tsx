@@ -2,19 +2,26 @@ import * as React from 'react'
 import { UseSelectGetToggleButtonPropsOptions } from 'downshift'
 import { VariantProps } from '@kodiak-ui/core'
 import { Button, SvgIcon } from '@kodiak-ui/primitives'
+import { SelectLoading } from './SelectLoading'
 
 export interface SelectButtonProps
   extends VariantProps,
     UseSelectGetToggleButtonPropsOptions {
   children: React.ReactNode
   isOpen: boolean
+  isLoading?: boolean
+  loadingElement?: React.ReactNode | null
   type?: 'button' | 'reset' | 'submit' | undefined
 }
 
 export const SelectButton = React.forwardRef(function SelectButton(
-  { children, isOpen, variantKey = 'selects', ...props }: SelectButtonProps,
+  { children, isOpen, isLoading = false, loadingElement = null, variantKey = 'selects', ...props }: SelectButtonProps,
   ref: React.Ref<HTMLButtonElement>,
 ) {
+  function renderLoading() {
+    return loadingElement || <SelectLoading />
+  }
+
   return (
     <Button
       __base={{
@@ -32,7 +39,7 @@ export const SelectButton = React.forwardRef(function SelectButton(
       variantKey={variantKey}
       {...props}
     >
-      {children}
+      {isLoading ? renderLoading() : children}
       <SvgIcon
         viewBox="0 0 16 16"
         sx={{
