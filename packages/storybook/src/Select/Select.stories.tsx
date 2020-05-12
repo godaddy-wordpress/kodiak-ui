@@ -15,7 +15,7 @@ import {
   Box,
   Flex,
   Text,
-  LoadingIndicator,
+  DotLoadingIndicator,
 } from '@kodiak-ui/primitives'
 
 const items = ['Layouts', 'Pre-built', 'All']
@@ -71,7 +71,7 @@ export function Loading() {
         <Box sx={{ flex: 1 }}>
           <Text sx={{ color: 'gray.3' }}>Loading</Text>
         </Box>
-        <LoadingIndicator sx={{ mr: 1 }} />
+        <DotLoadingIndicator sx={{ mr: 1 }} />
       </Flex>
     </SelectButton>
   )
