@@ -1,1 +1,1 @@
-export { LoadingIndicator, LoadingIndicatorProps } from './LoadingIndicator'
+export { DotLoadingIndicator, DotLoadingIndicatorProps } from './DotLoadingIndicator'

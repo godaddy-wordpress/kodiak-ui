@@ -41,7 +41,7 @@ function LoadingDot({ delay, size, offset }: LoadingDotProps) {
   )
 }
 
-export type LoadingIndicatorProps = {
+export type DotLoadingIndicatorProps = {
   size?: number,
   delay?: number
 } & VariantProps
@@ -59,7 +59,7 @@ function base({ theme }: { theme: Theme }): SerializedStyles {
   })(theme)
 }
 
-const LoadingIndicatorStyle = styled('div')<LoadingIndicatorProps>(
+const LoadingIndicatorStyle = styled('div')<DotLoadingIndicatorProps>(
   {
     boxSizing: 'border-box',
     margin: 0,
@@ -71,7 +71,7 @@ const LoadingIndicatorStyle = styled('div')<LoadingIndicatorProps>(
   sx,
 )
 
-export function LoadingIndicator({ size = 4, delay = 160, ...rest }: LoadingIndicatorProps) {
+export function DotLoadingIndicator({ size = 4, delay = 160, ...rest }: DotLoadingIndicatorProps) {
   return (
     <LoadingIndicatorStyle {...rest}>
       <LoadingDot delay={0} size={size} offset={true} />
