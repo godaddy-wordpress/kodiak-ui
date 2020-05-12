@@ -2,7 +2,6 @@ import * as React from 'react'
 import { UseSelectGetToggleButtonPropsOptions } from 'downshift'
 import { VariantProps } from '@kodiak-ui/core'
 import { Button, SvgIcon } from '@kodiak-ui/primitives'
-import { SelectLoading } from './SelectLoading'
 
 export interface SelectButtonProps
   extends VariantProps,
@@ -33,7 +32,7 @@ export const SelectButton = React.forwardRef(function SelectButton(
       variantKey={variantKey}
       {...props}
     >
-      {isLoading ? renderLoading() : children}
+      {children}
       <SvgIcon
         viewBox="0 0 16 16"
         sx={{
