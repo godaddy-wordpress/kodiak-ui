@@ -9,7 +9,7 @@ import {
   Theme,
   SerializedStyles,
 } from '@kodiak-ui/core'
-import { Box } from '../Box';
+import { Box } from '../Box'
 
 const loadingDotAnimations = keyframes`
   0%, 80%, 100% { opacity: 0; }
@@ -17,8 +17,8 @@ const loadingDotAnimations = keyframes`
 `
 
 type LoadingDotProps = {
-  delay: number,
-  size: number,
+  delay: number
+  size: number
   offset: boolean
 }
 
@@ -42,7 +42,7 @@ function LoadingDot({ delay, size, offset }: LoadingDotProps) {
 }
 
 export type DotLoadingIndicatorProps = {
-  size?: number,
+  size?: number
   delay?: number
 } & VariantProps
 
@@ -66,12 +66,19 @@ const LoadingIndicatorStyle = styled('div')<DotLoadingIndicatorProps>(
     minWidth: 0,
   },
   base,
-  ({ variant: variantProp = 'default', variantKey = 'loadingIndicators', theme }) =>
-    variant({ variant: variantProp, theme, variantKey }),
+  ({
+    variant: variantProp = 'default',
+    variantKey = 'loadingIndicators',
+    theme,
+  }) => variant({ variant: variantProp, theme, variantKey }),
   sx,
 )
 
-export function DotLoadingIndicator({ size = 4, delay = 160, ...rest }: DotLoadingIndicatorProps) {
+export function DotLoadingIndicator({
+  size = 4,
+  delay = 160,
+  ...rest
+}: DotLoadingIndicatorProps) {
   return (
     <LoadingIndicatorStyle {...rest}>
       <LoadingDot delay={0} size={size} offset={true} />
