@@ -9,7 +9,7 @@ import {
   useSelect,
 } from '@kodiak-ui/select'
 import { css } from '@kodiak-ui/core'
-import { VisuallyHidden, Button, Box, Flex, LoadingIndicator } from '@kodiak-ui/primitives'
+import { VisuallyHidden, Button, Box, Flex, Text, LoadingIndicator } from '@kodiak-ui/primitives'
 
 const items = ['Layouts', 'Pre-built', 'All']
 const initialSelectedItem = 'All'
@@ -60,9 +60,9 @@ export function Loading() {
 
   return (
     <SelectButton isOpen={false} {...getToggleButtonProps()}>
-      <Flex>
-        Loading
-        <LoadingIndicator />
+      <Flex sx={{ width: '100%' }}>
+        <Box sx={{ flex: 1 }}><Text sx={{ color: 'gray.3' }}>Loading</Text></Box>
+        <LoadingIndicator sx={{ mr: 1 }}/>
       </Flex>
     </SelectButton>
   )

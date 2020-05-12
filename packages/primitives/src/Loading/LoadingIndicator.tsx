@@ -31,7 +31,7 @@ function LoadingDot({ delay, size, offset }: LoadingDotProps) {
         backgroundColor: 'currentColor',
         borderRadius: size,
         display: 'inline-block',
-        marginLeft: 1,
+        marginLeft: `${size / 2}px`,
         marginTop: 1,
         height: size,
         verticalAlign: 'bottom',
