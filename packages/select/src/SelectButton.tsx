@@ -9,19 +9,13 @@ export interface SelectButtonProps
     UseSelectGetToggleButtonPropsOptions {
   children: React.ReactNode
   isOpen: boolean
-  isLoading?: boolean
-  loadingElement?: React.ReactNode | null
   type?: 'button' | 'reset' | 'submit' | undefined
 }
 
 export const SelectButton = React.forwardRef(function SelectButton(
-  { children, isOpen, isLoading = false, loadingElement = null, variantKey = 'selects', ...props }: SelectButtonProps,
+  { children, isOpen, variantKey = 'selects', ...props }: SelectButtonProps,
   ref: React.Ref<HTMLButtonElement>,
 ) {
-  function renderLoading() {
-    return loadingElement || <SelectLoading />
-  }
-
   return (
     <Button
       __base={{

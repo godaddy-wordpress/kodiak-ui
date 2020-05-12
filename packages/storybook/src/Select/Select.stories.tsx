@@ -1,4 +1,5 @@
 import * as React from 'react'
+import styled from '@emotion/styled'
 import {
   Select,
   SelectLabel,
@@ -7,7 +8,8 @@ import {
   SelectMenuItem,
   useSelect,
 } from '@kodiak-ui/select'
-import { VisuallyHidden, Button, Flex } from '@kodiak-ui/primitives'
+import { css } from '@kodiak-ui/core'
+import { VisuallyHidden, Button, Box, Flex, LoadingIndicator } from '@kodiak-ui/primitives'
 
 const items = ['Layouts', 'Pre-built', 'All']
 const initialSelectedItem = 'All'
@@ -54,47 +56,14 @@ export function Initial() {
 }
 
 export function Loading() {
-  const {
-    isOpen,
-    selectedItem,
-    getToggleButtonProps,
-    getLabelProps,
-    getMenuProps,
-    highlightedIndex,
-    getItemProps,
-  } = useSelect<string>({ items })
-  const [isLoading, setIsLoading] = React.useState<boolean>(true)
+  const { getToggleButtonProps } = useSelect<string>({ items })
 
   return (
-    <Flex>
-      <Select sx={{ mr: 2 }}>
-        <SelectButton
-          isOpen={isOpen}
-          isLoading={isLoading}
-          {...getToggleButtonProps()}
-         >
-          {selectedItem || 'Filter'}
-        </SelectButton>
-        {isOpen && (
-          <SelectMenu variant="selectMenu" {...getMenuProps()}>
-            {items.map((item, index) => (
-              <SelectMenuItem
-                key={`${item}${index}`}
-                {...getItemProps({ item, index })}
-                sx={{
-                  bg: highlightedIndex === index ? 'primary' : 'inherit',
-                  color: highlightedIndex === index ? 'white' : 'inherit',
-                }}
-              >
-                {item}
-              </SelectMenuItem>
-            ))}
-          </SelectMenu>
-        )}
-      </Select>
-      <Button onClick={() => setIsLoading(false)}>
-        Done loading
-      </Button>
-    </Flex>
+    <SelectButton isOpen={false} {...getToggleButtonProps()}>
+      <Flex>
+        Loading
+        <LoadingIndicator />
+      </Flex>
+    </SelectButton>
   )
 }
