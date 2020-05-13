@@ -55,7 +55,7 @@ export function Initial() {
             >
               {item}
             </SelectMenuItem>
-          ))}
+          o)}
         </SelectMenu>
       )}
     </Select>

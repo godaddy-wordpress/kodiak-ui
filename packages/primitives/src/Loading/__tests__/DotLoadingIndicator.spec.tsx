@@ -55,7 +55,6 @@ describe('DotLoadingIndicator', () => {
         -ms-flex-item-align: center;
         align-self: center;
         text-align: center;
-        vertical-align: bottom;
       }
 
       .emotion-0 {
@@ -68,9 +67,7 @@ describe('DotLoadingIndicator', () => {
         border-radius: 4px;
         display: inline-block;
         margin-left: 2px;
-        margin-top: 4px;
         height: 4px;
-        vertical-align: bottom;
         width: 4px;
       }
 
@@ -84,9 +81,7 @@ describe('DotLoadingIndicator', () => {
         border-radius: 4px;
         display: inline-block;
         margin-left: 2px;
-        margin-top: 4px;
         height: 4px;
-        vertical-align: bottom;
         width: 4px;
       }
 
@@ -100,9 +95,7 @@ describe('DotLoadingIndicator', () => {
         border-radius: 4px;
         display: inline-block;
         margin-left: 2px;
-        margin-top: 4px;
         height: 4px;
-        vertical-align: bottom;
         width: 4px;
       }
 
@@ -206,7 +199,6 @@ describe('DotLoadingIndicator', () => {
         -ms-flex-item-align: center;
         align-self: center;
         text-align: center;
-        vertical-align: bottom;
         color: red;
       }
 
@@ -220,9 +212,7 @@ describe('DotLoadingIndicator', () => {
         border-radius: 10px;
         display: inline-block;
         margin-left: 5px;
-        margin-top: 4px;
         height: 10px;
-        vertical-align: bottom;
         width: 10px;
       }
 
@@ -236,9 +226,7 @@ describe('DotLoadingIndicator', () => {
         border-radius: 10px;
         display: inline-block;
         margin-left: 5px;
-        margin-top: 4px;
         height: 10px;
-        vertical-align: bottom;
         width: 10px;
       }
 
@@ -252,9 +240,7 @@ describe('DotLoadingIndicator', () => {
         border-radius: 10px;
         display: inline-block;
         margin-left: 5px;
-        margin-top: 4px;
         height: 10px;
-        vertical-align: bottom;
         width: 10px;
       }
 
