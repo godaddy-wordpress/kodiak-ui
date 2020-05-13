@@ -1,5 +1,4 @@
 import * as React from 'react'
-import styled from '@emotion/styled'
 import {
   Select,
   SelectLabel,
@@ -8,10 +7,8 @@ import {
   SelectMenuItem,
   useSelect,
 } from '@kodiak-ui/select'
-import { css } from '@kodiak-ui/core'
 import {
   VisuallyHidden,
-  Button,
   Box,
   Flex,
   Text,
@@ -71,7 +68,7 @@ export function Loading() {
         <Box sx={{ flex: 1 }}>
           <Text sx={{ color: 'gray.3' }}>Loading</Text>
         </Box>
-        <DotLoadingIndicator sx={{ mr: 1, mt: 1 }} />
+        <DotLoadingIndicator sx={{ mr: 1 }} />
       </Flex>
     </SelectButton>
   )
