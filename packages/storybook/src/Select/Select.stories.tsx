@@ -7,7 +7,13 @@ import {
   SelectMenuItem,
   useSelect,
 } from '@kodiak-ui/select'
-import { VisuallyHidden } from '@kodiak-ui/primitives'
+import {
+  VisuallyHidden,
+  Box,
+  Flex,
+  Text,
+  DotLoadingIndicator,
+} from '@kodiak-ui/primitives'
 
 const items = ['Layouts', 'Pre-built', 'All']
 const initialSelectedItem = 'All'
@@ -50,5 +56,20 @@ export function Initial() {
         </SelectMenu>
       )}
     </Select>
+  )
+}
+
+export function Loading() {
+  const { getToggleButtonProps } = useSelect<string>({ items })
+
+  return (
+    <SelectButton isOpen={false} {...getToggleButtonProps()}>
+      <Flex sx={{ width: '100%' }}>
+        <Box sx={{ flex: 1 }}>
+          <Text sx={{ color: 'gray.3' }}>Loading</Text>
+        </Box>
+        <DotLoadingIndicator sx={{ mr: 1 }} />
+      </Flex>
+    </SelectButton>
   )
 }

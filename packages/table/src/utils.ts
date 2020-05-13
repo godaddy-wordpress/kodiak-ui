@@ -4,4 +4,3 @@ export function hasKey<O>(
 ): key is keyof O {
   return key in obj
 }
-

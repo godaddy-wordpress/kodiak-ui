@@ -48,4 +48,3 @@ export const TableHeader = styled('th')<TableHeaderProps>(
   variant,
   sx,
 )
-

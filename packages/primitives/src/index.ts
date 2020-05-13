@@ -24,3 +24,4 @@ export {
   TagDismiss,
   TagDismissProps,
 } from './Tag'
+export { DotLoadingIndicator, DotLoadingIndicatorProps } from './Loading'
