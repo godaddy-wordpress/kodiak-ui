@@ -32,9 +32,7 @@ function LoadingDot({ delay, size, offset }: LoadingDotProps) {
         borderRadius: size,
         display: 'inline-block',
         marginLeft: `${size / 2}px`,
-        marginTop: 1,
         height: size,
-        verticalAlign: 'bottom',
         width: size,
       }}
     />
@@ -55,7 +53,6 @@ function base({ theme }: { theme: Theme }): SerializedStyles {
     marginLeft: 1,
     alignSelf: 'center',
     textAlign: 'center',
-    verticalAlign: 'bottom',
   })(theme)
 }
 

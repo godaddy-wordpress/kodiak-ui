@@ -71,7 +71,7 @@ export function Loading() {
         <Box sx={{ flex: 1 }}>
           <Text sx={{ color: 'gray.3' }}>Loading</Text>
         </Box>
-        <DotLoadingIndicator sx={{ mr: 1 }} />
+        <DotLoadingIndicator sx={{ mr: 1, mt: 1 }} />
       </Flex>
     </SelectButton>
   )
