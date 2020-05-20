@@ -90,21 +90,24 @@ export function useLocalStorage<T>(
 
   // Return a wrapped version of useState's setter function that ...
   // ... persists the new value to localStorage.
-  function setValue(value: T) {
-    try {
-      // Allow value to be a function so we have same API as useState
-      const valueToStore =
-        value instanceof Function ? value(storedValue) : value
-      // Save state
-      setStoredValue(valueToStore)
-      // Save to local storage
-      const itemValue = JSON.stringify(valueToStore)
-      window.localStorage.setItem(key, itemValue)
-      publish(`useLocalStorage:${key}`, { key: key, newValue: itemValue })
-    } catch (error) {
-      throw error
-    }
-  }
+  const setValue = React.useCallback(
+    function setValue(value: T) {
+      try {
+        // Allow value to be a function so we have same API as useState
+        const valueToStore =
+          value instanceof Function ? value(storedValue) : value
+        // Save state
+        setStoredValue(valueToStore)
+        // Save to local storage
+        const itemValue = JSON.stringify(valueToStore)
+        window.localStorage.setItem(key, itemValue)
+        publish(`useLocalStorage:${key}`, { key: key, newValue: itemValue })
+      } catch (error) {
+        throw error
+      }
+    },
+    [key, storedValue],
+  )
 
   return [storedValue, setValue]
 }
