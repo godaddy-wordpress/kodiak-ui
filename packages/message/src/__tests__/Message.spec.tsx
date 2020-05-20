@@ -85,7 +85,6 @@ describe('Message', () => {
         box-sizing: border-box;
         margin: 0;
         min-width: 0;
-        margin-right: 32px;
         -webkit-align-items: center;
         -webkit-box-align: center;
         -ms-flex-align: center;
