@@ -18,18 +18,22 @@ type GetHeaderPropsReturn = {
 
 type UseAccordionProps = {
   defaultExpandedItems?: KeyType[]
+  expandedItems?: KeyType[]
   onChange?: ({ expandedItems }: { expandedItems: KeyType[] }) => void
   allowMultiple?: boolean
 }
 
 export function useAccordion({
   defaultExpandedItems = [],
+  expandedItems: controlledExpandedItems,
   onChange,
   allowMultiple,
 }: UseAccordionProps) {
-  const [expandedItems, setExpandedItems] = React.useState<KeyType[]>(
-    defaultExpandedItems,
+  const [expandedItemsLocal, setExpandedItemsLocal] = React.useState<KeyType[]>(
+    controlledExpandedItems || defaultExpandedItems,
   )
+
+  const expandedItems = controlledExpandedItems || expandedItemsLocal
 
   const elementRefDictionary = React.useRef<{
     accordionHeaders: { [key in KeyType]: AccordionRef }
@@ -43,7 +47,7 @@ export function useAccordion({
     (expanded: KeyType[] | KeyType) => {
       const newExpanded = Array.isArray(expanded) ? expanded : [expanded]
       onChange && onChange({ expandedItems: newExpanded })
-      setExpandedItems(newExpanded)
+      !controlledExpandedItems && setExpandedItemsLocal(newExpanded)
     },
     [onChange],
   )

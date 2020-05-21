@@ -374,3 +374,113 @@ export function AccordionHookMultiple() {
     </Flex>
   )
 }
+
+export function AccordionHookControlled() {
+  const [items, setItems] = React.useState<string[]>(['first'])
+
+  const {
+    expandedItems,
+    setExpandedItems,
+    toggleExpanded,
+    checkIsExpanded,
+  } = useAccordion({
+    expandedItems: items,
+    allowMultiple: true,
+    onChange: ({ expandedItems }) => setItems(expandedItems as string[]),
+  })
+
+  return (
+    <Flex sx={{ flexDirection: 'column', p: 6 }}>
+      <Accordion>
+        <AccordionItem>
+          <AccordionHeader
+            id="firstAccordion"
+            aria-expanded={checkIsExpanded({ key: 'first' })}
+            aria-controls="firstBody"
+            tabIndex={0}
+            onClick={() => {
+              toggleExpanded({ key: 'first' })
+            }}
+            onKeyUp={(event: any) => {
+              if (['Enter', ' '].includes(event.key)) {
+                toggleExpanded({ key: 'first' })
+              }
+            }}
+          >
+            <Text fontWeight="bold" fontSize={3} mb={0}>
+              Accordion header - toggle me
+            </Text>
+            <CaretFillDown
+              sx={{
+                transform: checkIsExpanded({ key: 'first' })
+                  ? 'rotate(180deg)'
+                  : 'rotate(0)',
+              }}
+            />
+          </AccordionHeader>
+          {checkIsExpanded({ key: 'first' }) && (
+            <>
+              <AccordionBody
+                id="firstBody"
+                aria-labelledby="firstAccordion"
+                role="region"
+              >
+                Body
+              </AccordionBody>
+              <AccordionFooter>Footer</AccordionFooter>
+            </>
+          )}
+        </AccordionItem>
+
+        <AccordionItem>
+          <AccordionHeader
+            id="secondAccordion"
+            aria-expanded={checkIsExpanded({ key: 'second' })}
+            aria-controls="secondBody"
+            tabIndex={0}
+            onClick={() => {
+              toggleExpanded({ key: 'second' })
+            }}
+            onKeyUp={(event: any) => {
+              if (['Enter', ' '].includes(event.key)) {
+                toggleExpanded({ key: 'second' })
+              }
+            }}
+          >
+            <Text fontWeight="bold" fontSize={3} mb={0}>
+              Accordion header - toggle me
+            </Text>
+            <CaretFillDown
+              sx={{
+                transform: checkIsExpanded({ key: 'second' })
+                  ? 'rotate(180deg)'
+                  : 'rotate(0)',
+              }}
+            />
+          </AccordionHeader>
+          {checkIsExpanded({ key: 'second' }) && (
+            <>
+              <AccordionBody
+                id="secondBody"
+                aria-labelledby="secondAccordion"
+                role="region"
+              >
+                Body
+              </AccordionBody>
+              <AccordionFooter>Footer</AccordionFooter>
+            </>
+          )}
+        </AccordionItem>
+      </Accordion>
+      <Flex sx={{ pt: 6 }}>
+        <Button variant="secondary" onClick={() => setExpandedItems(['first'])}>
+          Open only the first
+        </Button>
+      </Flex>
+
+      <Flex sx={{ pt: 6 }}>
+        Opened keys: {Array.isArray(expandedItems) && expandedItems.join(', ')}
+      </Flex>
+    </Flex>
+  )
+}
