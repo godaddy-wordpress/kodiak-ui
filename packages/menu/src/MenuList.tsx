@@ -23,6 +23,8 @@ export function base({ theme }: { theme: Theme }): SerializedStyles {
     listStyle: 'none',
     margin: 0,
     mt: 2,
+    outline: 'none',
+    overflow: 'hidden',
     padding: 0,
   })(theme)
 }

@@ -16,6 +16,7 @@ export type MenuListItemProps = {
 
 export function base({ theme }: { theme: Theme }): SerializedStyles {
   return css({
+    cursor: 'pointer',
     lineHeight: 1,
     py: 3,
     px: 4,
