@@ -49,11 +49,12 @@ export function useAccordion({
       onChange && onChange({ expandedItems: newExpanded })
       !controlledExpandedItems && setExpandedItemsLocal(newExpanded)
     },
-    [onChange],
+    [controlledExpandedItems, onChange],
   )
 
   const checkIsExpanded = React.useCallback(
     function checkIsExpanded({ key }: { key: KeyType }) {
+      console.log(expandedItems)
       return Array.isArray(expandedItems) && expandedItems.includes(key)
     },
     [expandedItems],

@@ -13,12 +13,18 @@ function getLocalStorageValue<T>({
 }: {
   key: string
   initialValue: T
-}) {
+}): string {
   try {
     // Get from local storage by key
     const item = window.localStorage.getItem(key)
 
-    return item ? item : stringify(initialValue)
+    if (!item) {
+      const value = stringify(initialValue)
+      window.localStorage.setItem(key, value)
+      return value
+    }
+
+    return item
   } catch (error) {
     // If error also return initialValue
     return stringify(initialValue)
