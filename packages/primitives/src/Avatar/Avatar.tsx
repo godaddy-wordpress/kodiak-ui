@@ -18,11 +18,19 @@ export type AvatarProps = {
 }
 
 export function Avatar({ imageSrc, text, sx = {} }: AvatarProps) {
-  const mergedSx = { borderRadius: 'full', ...sx }
-
   return imageSrc ? (
-    <Image src={imageSrc} sx={mergedSx} alt={text} />
+    <Image src={imageSrc} sx={{ borderRadius: 'full', ...sx }} alt={text} />
   ) : (
-    <Box sx={mergedSx}>{text}</Box>
+    <Box
+      sx={{
+        borderRadius: 'full',
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        ...sx,
+      }}
+    >
+      {text}
+    </Box>
   )
 }

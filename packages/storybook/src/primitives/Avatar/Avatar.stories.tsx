@@ -8,12 +8,23 @@ export function WithImage() {
   return (
     <Avatar
       imageSrc={imageFile}
-      text="C"
+      text="G"
       sx={{ width: '64px', height: '64px' }}
     />
   )
 }
 
 export function WithoutImage() {
-  return <Avatar text="C" sx={{ width: '64px', height: '64px' }} />
+  return (
+    <Avatar
+      text="G"
+      sx={{
+        bg: 'gray.5',
+        color: 'white',
+        width: '64px',
+        height: '64px',
+        fontSize: '24px',
+      }}
+    />
+  )
 }
