@@ -1,15 +1,15 @@
 import * as React from 'react'
 import { Box } from '../Box'
 
-type MenuItemProps = {
+type NavItemProps = {
   children: React.ReactNode
 } & React.ComponentProps<typeof Box>
 
-export const MenuItem = React.forwardRef<HTMLLIElement, MenuItemProps>(
-  function MenuItem(
+export const NavItem = React.forwardRef<HTMLLIElement, NavItemProps>(
+  function NavItem(
     {
       children,
-      variantKey = 'menuitem',
+      variantKey = 'navitem',
       variant,
       as: renderAs = 'li',
       ...props
