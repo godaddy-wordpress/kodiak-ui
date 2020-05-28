@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/storybook",
-  "version": "0.1.51",
+  "version": "0.1.52",
   "private": true,
   "scripts": {
     "storybook": "start-storybook -p 9009",
@@ -11,8 +11,8 @@
     "@kodiak-ui/combobox": "^0.1.12",
     "@kodiak-ui/core": "^0.1.14",
     "@kodiak-ui/dialog": "^0.2.15",
-    "@kodiak-ui/hooks": "^0.4.1",
-    "@kodiak-ui/menu": "^0.1.11",
+    "@kodiak-ui/hooks": "^0.5.0",
+    "@kodiak-ui/menu": "^0.1.12",
     "@kodiak-ui/message": "^0.2.0",
     "@kodiak-ui/primitives": "^0.12.2",
     "@kodiak-ui/select": "^0.1.13",
