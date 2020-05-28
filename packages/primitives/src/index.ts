@@ -25,3 +25,4 @@ export {
   TagDismissProps,
 } from './Tag'
 export { DotLoadingIndicator, DotLoadingIndicatorProps } from './Loading'
+export { Avatar, AvatarProps } from './Avatar'
