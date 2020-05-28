@@ -13,3 +13,4 @@ export {
 export { useOnClickOutside } from './useOnClickOutside'
 export { useId } from './useId'
 export { createStateDispatchContext } from './createStateDispatchContext'
+export { useTranslation } from './useTranslation'
