@@ -1,20 +1,12 @@
 import * as React from 'react'
-import { Image, SxProps } from 'theme-ui'
-import {
-  variant,
-  VariantProps,
-  styled,
-  css,
-  sx,
-  Theme,
-  SerializedStyles,
-} from '@kodiak-ui/core'
+import { Image } from 'theme-ui'
+import { SxStyleProp } from '@kodiak-ui/core'
 import { Box } from '../Box'
 
 export type AvatarProps = {
   imageSrc?: string
   text: string
-  sx?: SxProps
+  sx?: SxStyleProp
 }
 
 export function Avatar({ imageSrc, text, sx = {} }: AvatarProps) {
