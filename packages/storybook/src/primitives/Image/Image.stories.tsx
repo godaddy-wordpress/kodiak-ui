@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Image } from '@kodiak-ui/Primitives'
+import { Image } from '@kodiak-ui/primitives'
 import imageFile from './image.jpg'
 
 export default { title: 'Primitives/Image' }
