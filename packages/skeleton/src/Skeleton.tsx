@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from '@emotion/core'
+import { jsx } from 'theme-ui'
 import * as React from 'react'
 import { Box } from '@kodiak-ui/primitives'
 import { css, keyframes } from '@emotion/core'
@@ -74,6 +74,8 @@ export const Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(
           as="span"
           css={
             duration &&
+            // TODO: check why this animation isn't getting rendered
+            // the animation name seems to be mangled
             css`
               animation: ${skeletonKeyframes} ${duration} ease-in-out infinite;
             `
