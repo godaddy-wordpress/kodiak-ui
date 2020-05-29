@@ -73,6 +73,12 @@ const labels = {
   },
 }
 
+const images = {
+  avatar: {
+    borderRadius: 'full',
+  },
+}
+
 const inputs = {
   ...commonInputStyles,
   shadow: {
@@ -517,6 +523,7 @@ export const theme = {
     },
   },
   labels,
+  images,
   inputs,
   shadows,
   forms,
