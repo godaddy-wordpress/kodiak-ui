@@ -1,7 +1,7 @@
 import * as React from 'react'
 import {
-  Menu,
-  MenuItem,
+  Nav,
+  NavItem,
   Link,
   VisuallyHidden,
   Box,
@@ -9,19 +9,19 @@ import {
   Flex,
 } from '@kodiak-ui/primitives'
 
-export default { title: 'Primitives/Menu' }
+export default { title: 'Primitives/Nav' }
 
 export function Basic() {
   return (
-    <Menu aria-label="Basic menu">
-      <MenuItem>Item 1</MenuItem>
-      <MenuItem>Item 2</MenuItem>
-      <MenuItem>Item 3</MenuItem>
-    </Menu>
+    <Nav aria-label="Basic menu">
+      <NavItem>Item 1</NavItem>
+      <NavItem>Item 2</NavItem>
+      <NavItem>Item 3</NavItem>
+    </Nav>
   )
 }
 
-export function SampleStyledMenu() {
+export function SampleStyledNav() {
   const [selectedIndex, setSelectedIndex] = React.useState(0)
 
   const menuItems = [
@@ -33,11 +33,11 @@ export function SampleStyledMenu() {
   ]
 
   return (
-    <Menu aria-label="Sample styled menu">
+    <Nav aria-label="Sample styled menu">
       {menuItems.map((menuItem, index) => {
         const isCurrent = selectedIndex === index
         return (
-          <MenuItem
+          <NavItem
             borderLeftWidth="4px"
             borderLeftStyle="solid"
             borderLeftColor={isCurrent ? 'blue.4' : 'transparent'}
@@ -46,7 +46,7 @@ export function SampleStyledMenu() {
             py={4}
             key={menuItem.description}
             onClick={() => setSelectedIndex(index)}
-            onKeyDown={event => {
+            onKeyDown={(event: any) => {
               if (event.key === 'Enter' || event.key === ' ') {
                 !menuItem.isDisabled && setSelectedIndex(index)
               }
@@ -77,14 +77,14 @@ export function SampleStyledMenu() {
                 {menuItem.description}
               </span>
             )}
-          </MenuItem>
+          </NavItem>
         )
       })}
-    </Menu>
+    </Nav>
   )
 }
 
-export function SimplePillMenuWithTabNavigation() {
+export function SimplePillNavWithTabNavigation() {
   const [selectedIndex, setSelectedIndex] = React.useState(0)
 
   const menuItems = [
@@ -94,7 +94,7 @@ export function SimplePillMenuWithTabNavigation() {
   ]
 
   return (
-    <Menu
+    <Nav
       aria-label="Simple styled menu"
       maxWidth="30ch"
       display="flex"
@@ -103,7 +103,7 @@ export function SimplePillMenuWithTabNavigation() {
       {menuItems.map((menuItem, index) => {
         const isCurrent = selectedIndex === index
         return (
-          <MenuItem key={menuItem.description} display="flex">
+          <NavItem key={menuItem.description} display="flex">
             <Link
               onClick={() => setSelectedIndex(index)}
               onKeyDown={event => {
@@ -129,10 +129,10 @@ export function SimplePillMenuWithTabNavigation() {
             >
               {menuItem.description}
             </Link>
-          </MenuItem>
+          </NavItem>
         )
       })}
-    </Menu>
+    </Nav>
   )
 }
 
@@ -171,9 +171,48 @@ function IconClose() {
   )
 }
 
-export function ResponsiveHorizontalMenu() {
+export function HorizontalNav() {
   const [selectedIndex, setSelectedIndex] = React.useState(0)
-  const [isMenuOpen, setIsMenuOpen] = React.useState(true)
+  const navItems = [
+    { description: 'Product' },
+    { description: 'Pricing' },
+    { description: 'Learn' },
+    { description: 'Support' },
+    { description: 'Log In' },
+  ]
+
+  console.log(selectedIndex)
+
+  return (
+    <Nav variant="horizontal" aria-label="Mobile menu" sx={{ pb: 4 }}>
+      {navItems.map((menuItem, index) => {
+        return (
+          <NavItem
+            key={index}
+            variant="horizontalNavItem"
+            onClick={() => setSelectedIndex(index)}
+            sx={{
+              color: selectedIndex === index ? 'primary' : 'gray.6',
+              '&:hover': {
+                color: 'primary',
+              },
+              '::after': {
+                bg: selectedIndex === index ? 'primary' : 'gray.2',
+                height: selectedIndex === index ? '2px' : '1px',
+              },
+            }}
+          >
+            {menuItem.description}
+          </NavItem>
+        )
+      })}
+    </Nav>
+  )
+}
+
+export function ResponsiveHorizontalNav() {
+  const [selectedIndex, setSelectedIndex] = React.useState(0)
+  const [isNavOpen, setIsNavOpen] = React.useState(true)
   const menuItems = [
     { description: 'Product' },
     { description: 'Pricing' },
@@ -185,35 +224,35 @@ export function ResponsiveHorizontalMenu() {
   return (
     <Flex justifyContent="flex-end">
       {/* Mobile */}
-      {!isMenuOpen && (
+      {!isNavOpen && (
         <Link
           display={['inline-flex', 'none']}
           m={4}
           p={1}
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          onClick={() => setIsNavOpen(!isNavOpen)}
           sx={{ cursor: 'pointer' }}
         >
           <IconHamburger />
         </Link>
       )}
 
-      {isMenuOpen && (
+      {isNavOpen && (
         <Box display={['block', 'none']} boxShadow="md">
           <Flex justifyContent="flex-end">
             <Link
               m={4}
               p={1}
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              onClick={() => setIsNavOpen(!isNavOpen)}
               sx={{ cursor: 'pointer' }}
             >
               <IconClose />
             </Link>
           </Flex>
           <Box width="99vw">
-            <Menu aria-label="Mobile menu" pb={4}>
+            <Nav aria-label="Mobile menu" pb={4}>
               {menuItems.map((menuItem, index) => {
                 return (
-                  <MenuItem
+                  <NavItem
                     key={index}
                     pl={5}
                     py={3}
@@ -228,20 +267,20 @@ export function ResponsiveHorizontalMenu() {
                     }}
                   >
                     {menuItem.description}
-                  </MenuItem>
+                  </NavItem>
                 )
               })}
-            </Menu>
+            </Nav>
           </Box>
         </Box>
       )}
 
       {/* Full screen */}
-      <Menu
+      <Nav
         aria-label="Simple styled menu"
         display={[false ? 'flex' : 'none', 'flex']}
         sx={{
-          flexDirection: [isMenuOpen && 'column', 'row'],
+          flexDirection: [isNavOpen && 'column', 'row'],
         }}
         justifyContent="flex-end"
         alignItems="center"
@@ -249,7 +288,7 @@ export function ResponsiveHorizontalMenu() {
         {menuItems.map((menuItem, index) => {
           const isCurrent = selectedIndex === index
           return (
-            <MenuItem key={menuItem.description} sx={{ pl: 6, py: 4 }}>
+            <NavItem key={menuItem.description} sx={{ pl: 6, py: 4 }}>
               <Link
                 onClick={() => setSelectedIndex(index)}
                 onKeyDown={event => {
@@ -272,10 +311,10 @@ export function ResponsiveHorizontalMenu() {
               >
                 {menuItem.description}
               </Link>
-            </MenuItem>
+            </NavItem>
           )
         })}
-      </Menu>
+      </Nav>
     </Flex>
   )
 }

@@ -9,8 +9,8 @@ export const NavItem = React.forwardRef<HTMLLIElement, NavItemProps>(
   function NavItem(
     {
       children,
-      variantKey = 'navitem',
-      variant,
+      variantKey = 'navs',
+      variant = 'navItem',
       as: renderAs = 'li',
       ...props
     },
@@ -20,9 +20,10 @@ export const NavItem = React.forwardRef<HTMLLIElement, NavItemProps>(
       <Box
         variantKey={variantKey}
         variant={variant}
-        {...props}
         as={renderAs}
         ref={forwardedRef as any}
+        sx={{ cursor: 'pointer', transition: 'all 0.2s ease-in-out' }}
+        {...props}
       >
         {children}
       </Box>
