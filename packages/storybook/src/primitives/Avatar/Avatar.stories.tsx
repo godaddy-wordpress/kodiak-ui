@@ -1,14 +1,14 @@
 import * as React from 'react'
-import { Avatar } from '@kodiak-ui/primitives'
+import { Box, Image } from '@kodiak-ui/primitives'
 import imageFile from './image.jpg'
 
 export default { title: 'Primitives/Avatar' }
 
 export function WithImage() {
   return (
-    <Avatar
-      imageSrc={imageFile}
-      text="G"
+    <Image
+      variant="avatar"
+      src={imageFile}
       sx={{ width: '64px', height: '64px' }}
     />
   )
@@ -16,8 +16,8 @@ export function WithImage() {
 
 export function WithoutImage() {
   return (
-    <Avatar
-      text="G"
+    <Box
+      variant="avatar"
       sx={{
         bg: 'gray.5',
         color: 'white',
@@ -25,6 +25,8 @@ export function WithoutImage() {
         height: '64px',
         fontSize: '24px',
       }}
-    />
+    >
+      G
+    </Box>
   )
 }
