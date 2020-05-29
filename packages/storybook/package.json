@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.2.2",
+    "@emotion/core": "^10.0.28",
     "@kodiak-ui/combobox": "^0.1.12",
     "@kodiak-ui/core": "^0.1.14",
     "@kodiak-ui/dialog": "^0.2.15",
