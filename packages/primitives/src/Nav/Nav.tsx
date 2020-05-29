@@ -1,15 +1,15 @@
 import * as React from 'react'
 import { Box } from '../Box'
 
-type MenuProps = {
+type NavProps = {
   children: React.ReactNode
   'aria-label'?: string
   dismissLabel?: string
   onDismiss?: () => void
 } & React.ComponentProps<typeof Box>
 
-export const Menu = React.forwardRef<HTMLUListElement, MenuProps>(function Menu(
-  { children, variantKey = 'menu', variant, ...props },
+export const Nav = React.forwardRef<HTMLUListElement, NavProps>(function Menu(
+  { children, variantKey = 'navs', variant, ...props },
   forwardedRef,
 ) {
   return (

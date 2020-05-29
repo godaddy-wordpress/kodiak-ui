@@ -1,20 +1,20 @@
 import * as React from 'react'
 import serializer from 'jest-emotion'
 import renderer from 'react-test-renderer'
-import { Menu } from '../Menu'
-import { MenuItem } from '../MenuItem'
+import { Nav } from '../Nav'
+import { NavItem } from '../NavItem'
 import { VisuallyHidden } from '../../VisuallyHidden'
 
 expect.addSnapshotSerializer(serializer)
 
-describe('Menu', () => {
-  it('should render the Menu', () => {
+describe('Nav', () => {
+  it('should render the Nav', () => {
     expect(
       renderer
         .create(
-          <Menu aria-label="Menu in test">
-            <MenuItem>Product</MenuItem>
-          </Menu>,
+          <Nav aria-label="Menu in test">
+            <NavItem>Product</NavItem>
+          </Nav>,
         )
         .toJSON(),
     ).toMatchInlineSnapshot(`
