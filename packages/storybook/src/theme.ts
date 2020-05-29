@@ -31,7 +31,7 @@ const baseColors = {
   transparent: 'transparent',
 }
 
-const colors = {
+export const colors = {
   ...baseColors,
   grey: baseColors.gray,
   text: baseColors.ink[1],
@@ -377,6 +377,35 @@ const tooltips = {
   },
 }
 
+const skeletonColor = colors.gray[2]
+const defaultHighlightColor = colors.gray[1]
+
+const skeletonBase = {
+  backgroundColor: skeletonColor,
+  backgroundImage: `linear-gradient(
+      90deg,
+      ${skeletonColor},
+      ${defaultHighlightColor},
+      ${skeletonColor}
+    )`,
+  backgroundSize: `200px 100%`,
+  backgroundRepeat: `no-repeat`,
+  borderRadius: 'default',
+  display: 'inline-block',
+  lineHeight: 1,
+  width: '100%',
+}
+
+export const skeletons = {
+  ...skeletonBase,
+  circle: {
+    ...skeletonBase,
+    borderRadius: 'full',
+    height: '50px',
+    width: '50px',
+  },
+}
+
 export const theme = {
   breakpoints,
   colors,
@@ -529,6 +558,7 @@ export const theme = {
     textDecoration: 'none',
   },
   selects,
+  skeletons,
   accordions,
   tables,
   tags,

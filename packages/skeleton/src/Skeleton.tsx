@@ -38,7 +38,10 @@ const skeletonBaseStyles = {
 
 type RepeatProps = { count?: number; children: React.ReactNode }
 
-export function Repeat({ count = 1, children }: RepeatProps) {
+export function Repeat({
+  count = 1,
+  children,
+}: RepeatProps): React.ReactElement {
   const lines = new Array(count).fill(null)
 
   return (
@@ -52,24 +55,33 @@ export function Repeat({ count = 1, children }: RepeatProps) {
 
 export const Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(
   function Skeleton(
-    { variantKey = 'skeletons', variant, duration = '1.2s', ...props },
+    {
+      variantKey = 'skeletons',
+      variant,
+      duration = '1.2s',
+      children,
+      ...props
+    },
     forwardedRef,
   ) {
     return (
-      <Box
-        __base={skeletonBaseStyles}
-        ref={forwardedRef as any}
-        variantKey={variantKey}
-        variant={variant}
-        css={
-          duration &&
-          css`
-            animation: ${skeletonKeyframes} ${duration} ease-in-out infinite;
-          `
-        }
-        {...props}
-      >
-        &zwnj;
+      <Box as="span">
+        <Box
+          __base={skeletonBaseStyles}
+          ref={forwardedRef as any}
+          variantKey={variantKey}
+          variant={variant}
+          as="span"
+          css={
+            duration &&
+            css`
+              animation: ${skeletonKeyframes} ${duration} ease-in-out infinite;
+            `
+          }
+          {...props}
+        >
+          &zwnj;{children}
+        </Box>
       </Box>
     )
   },
