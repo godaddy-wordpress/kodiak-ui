@@ -181,8 +181,6 @@ export function HorizontalNav() {
     { description: 'Log In' },
   ]
 
-  console.log(selectedIndex)
-
   return (
     <Nav variant="horizontal" aria-label="Mobile menu" sx={{ pb: 4 }}>
       {navItems.map((menuItem, index) => {
