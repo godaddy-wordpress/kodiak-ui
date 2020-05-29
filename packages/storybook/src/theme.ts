@@ -377,6 +377,33 @@ const tooltips = {
   },
 }
 
+const navs = {
+  horizontal: {
+    display: 'flex',
+  },
+  horizontalNavItem: {
+    color: 'gray.6',
+    cursor: 'pointer',
+    lineHeight: '1.3',
+    position: 'relative',
+    p: 4,
+    '::after': {
+      bg: 'gray.6',
+      bottom: '0',
+      content: '""',
+      left: '0',
+      height: '1px',
+      position: 'absolute',
+      right: '0',
+      width: '100%',
+    },
+  },
+  navItem: {
+    color: 'blue.3',
+    textDecoration: 'none',
+  },
+}
+
 export const theme = {
   breakpoints,
   colors,
@@ -524,13 +551,10 @@ export const theme = {
   messages,
   bannerMessages,
   buttons,
-  menuitem: {
-    color: 'blue.3',
-    textDecoration: 'none',
-  },
   selects,
   accordions,
   tables,
   tags,
   tooltips,
+  navs,
 }
