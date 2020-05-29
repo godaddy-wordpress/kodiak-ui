@@ -1,8 +1,7 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
+import { css, keyframes, jsx } from '@emotion/core'
 import * as React from 'react'
 import { Box } from '@kodiak-ui/primitives'
-import { css, keyframes } from '@emotion/core'
 
 type SkeletonProps = { duration?: number } & React.ComponentProps<typeof Box>
 
