@@ -66,19 +66,14 @@ export const Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(
     return (
       <Box as="span">
         <Box
-          __base={skeletonBaseStyles}
+          __base={{
+            ...skeletonBaseStyles,
+            animation: `${skeletonKeyframes} ${duration} ease-in-out infinite`,
+          }}
           ref={forwardedRef as any}
           variantKey={variantKey}
           variant={variant}
           as="span"
-          css={
-            duration &&
-            // TODO: check why this animation isn't getting rendered
-            // the animation name seems to be mangled
-            css`
-              animation: ${skeletonKeyframes} ${duration} ease-in-out infinite;
-            `
-          }
           {...props}
         >
           &zwnj;{children}

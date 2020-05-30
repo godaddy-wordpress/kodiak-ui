@@ -61,7 +61,7 @@ export function LoadingSkeleton() {
               >
                 Multiple lines of text appear
                 <br />
-                Todo: fix the loading animation
+                Awesome sauce
                 <br />
                 Multiple lines of text
                 <br />
