@@ -439,6 +439,16 @@ const navs = {
   },
 }
 
+const progresses = {
+  container: {
+    bg: 'gray.2',
+    borderRadius: '5px',
+  },
+  bar: {
+    borderRadius: '5px',
+  },
+}
+
 export const theme = {
   breakpoints,
   colors,
@@ -600,4 +610,5 @@ export const theme = {
   tags,
   tooltips,
   navs,
+  progresses,
 }
