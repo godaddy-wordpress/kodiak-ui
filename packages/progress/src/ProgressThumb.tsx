@@ -1,12 +1,14 @@
 import * as React from 'react'
 import { Box } from '@kodiak-ui/primitives'
 import { useMeasure } from '@kodiak-ui/hooks'
-import { VariantProps } from '@kodiak-ui/core'
+import { VariantProps, SxStyleProp } from '@kodiak-ui/core'
 
-type ProgressThumb = {
+type ProgressThumbProps = {
   value: number
   min?: number
   max?: number
+  sx?: SxStyleProp
+  children?: React.ReactNode
 } & VariantProps
 
 export function ProgressThumb({
@@ -15,7 +17,9 @@ export function ProgressThumb({
   max,
   variant = 'thumb',
   variantKey = 'progresses',
-}: ProgressThumb) {
+  children,
+  ...props
+}: ProgressThumbProps) {
   const [bind, { width }] = useMeasure<HTMLDivElement>()
 
   return (
@@ -41,8 +45,9 @@ export function ProgressThumb({
       }}
       variant={variant}
       variantKey={variantKey}
+      {...props}
     >
-      {value}
+      {children ? children : value}
     </Box>
   )
 }

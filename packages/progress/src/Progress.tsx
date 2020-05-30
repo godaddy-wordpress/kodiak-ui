@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Box } from '@kodiak-ui/primitives'
+import { SxStyleProp } from '@kodiak-ui/core'
 
 type ProgressProps = {
   value: number
@@ -7,6 +8,7 @@ type ProgressProps = {
   max?: number
   containerVariant?: string
   barVariant?: string
+  sx?: SxStyleProp
   children?: React.ReactNode
 }
 
@@ -17,6 +19,7 @@ export function Progress({
   containerVariant = 'container',
   barVariant = 'bar',
   children,
+  ...props
 }: ProgressProps) {
   const progressWidth = ((value - min) * 100) / (max - min)
 
@@ -29,6 +32,7 @@ export function Progress({
       }}
       variant={containerVariant}
       variantKey="progresses"
+      {...props}
     >
       <Box
         __base={{
