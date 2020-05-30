@@ -7,6 +7,7 @@ type ProgressProps = {
   max?: number
   containerVariant?: string
   barVariant?: string
+  children?: React.ReactNode
 }
 
 export function Progress({
@@ -15,6 +16,7 @@ export function Progress({
   max = 100,
   containerVariant = 'container',
   barVariant = 'bar',
+  children,
 }: ProgressProps) {
   const progressWidth = ((value - min) * 100) / (max - min)
 
@@ -24,7 +26,6 @@ export function Progress({
         bg: 'muted',
         borderRadius: 'default',
         height: '12px',
-        overflow: 'hidden',
       }}
       variant={containerVariant}
       variantKey="progresses"
@@ -34,6 +35,7 @@ export function Progress({
           bg: 'primary',
           height: '100%',
           transition: 'all 0.2s ease-in-out 0s',
+          position: 'relative',
           width: `${progressWidth}%`,
         }}
         role="progressbar"
@@ -42,7 +44,9 @@ export function Progress({
         aria-valuemax={max}
         variant={barVariant}
         variantKey="progresses"
-      />
+      >
+        {children}
+      </Box>
     </Box>
   )
 }
