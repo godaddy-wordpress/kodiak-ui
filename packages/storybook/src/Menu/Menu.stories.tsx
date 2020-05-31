@@ -24,15 +24,13 @@ function AlignedRight() {
         <Menu>
           <MenuList ref={register}>
             <MenuListItem
-              ref={node =>
-                register(node as HTMLLIElement, {
-                  name: 'action1',
-                  handler: () => {
-                    console.log('action1')
-                    handleCloseMenu()
-                  },
-                })
-              }
+              ref={register({
+                name: 'action1',
+                handler: () => {
+                  console.log('action1')
+                  handleCloseMenu()
+                },
+              })}
               {...getItemProps('action1')}
               sx={{
                 ...(activeItem === 'action1'
@@ -43,12 +41,10 @@ function AlignedRight() {
               Action 1
             </MenuListItem>
             <MenuListItem
-              ref={node =>
-                register(node as HTMLLIElement, {
-                  name: 'action2',
-                  handler: () => console.log('action2'),
-                })
-              }
+              ref={register({
+                name: 'action2',
+                handler: () => console.log('action2'),
+              })}
               {...getItemProps('action2')}
               sx={{
                 ...(activeItem === 'action2'
@@ -59,12 +55,10 @@ function AlignedRight() {
               Action 2
             </MenuListItem>
             <MenuListItem
-              ref={node =>
-                register(node as HTMLLIElement, {
-                  name: 'action3',
-                  handler: () => console.log('action3'),
-                })
-              }
+              ref={register({
+                name: 'action3',
+                handler: () => console.log('action3'),
+              })}
               {...getItemProps('action3')}
               sx={{
                 ...(activeItem === 'action3'
@@ -75,12 +69,10 @@ function AlignedRight() {
               Action 3
             </MenuListItem>
             <MenuListItem
-              ref={node =>
-                register(node as HTMLLIElement, {
-                  name: 'action4',
-                  handler: () => console.log('action4'),
-                })
-              }
+              ref={register({
+                name: 'action4',
+                handler: () => console.log('action4'),
+              })}
               {...getItemProps('action4')}
               sx={{
                 ...(activeItem === 'action4'
@@ -118,15 +110,13 @@ export function Inital() {
           <Menu>
             <MenuList ref={register}>
               <MenuListItem
-                ref={node =>
-                  register(node as HTMLLIElement, {
-                    name: 'action1',
-                    handler: () => {
-                      console.log('action1')
-                      handleCloseMenu()
-                    },
-                  })
-                }
+                ref={register({
+                  name: 'action1',
+                  handler: () => {
+                    console.log('action1')
+                    handleCloseMenu()
+                  },
+                })}
                 {...getItemProps('action1')}
                 sx={{
                   ...(activeItem === 'action1'
@@ -137,12 +127,10 @@ export function Inital() {
                 Long Name Action 1
               </MenuListItem>
               <MenuListItem
-                ref={node =>
-                  register(node as HTMLLIElement, {
-                    name: 'action2',
-                    handler: () => console.log('action2'),
-                  })
-                }
+                ref={register({
+                  name: 'action2',
+                  handler: () => console.log('action2'),
+                })}
                 {...getItemProps('action2')}
                 sx={{
                   ...(activeItem === 'action2'
@@ -153,12 +141,10 @@ export function Inital() {
                 Action 2
               </MenuListItem>
               <MenuListItem
-                ref={node =>
-                  register(node as HTMLLIElement, {
-                    name: 'action3',
-                    handler: () => console.log('action3'),
-                  })
-                }
+                ref={register({
+                  name: 'action3',
+                  handler: () => console.log('action3'),
+                })}
                 {...getItemProps('action3')}
                 sx={{
                   ...(activeItem === 'action3'
@@ -169,12 +155,10 @@ export function Inital() {
                 Action 3
               </MenuListItem>
               <MenuListItem
-                ref={node =>
-                  register(node as HTMLLIElement, {
-                    name: 'action4',
-                    handler: () => console.log('action4'),
-                  })
-                }
+                ref={register({
+                  name: 'action4',
+                  handler: () => console.log('action4'),
+                })}
                 {...getItemProps('action4')}
                 sx={{
                   ...(activeItem === 'action4'

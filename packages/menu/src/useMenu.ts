@@ -1,24 +1,7 @@
 import * as React from 'react'
 import { createPopper, VirtualElement, Placement } from '@popperjs/core'
-import { usePortal, useKey, useOnClickOutside } from '@kodiak-ui/hooks'
-import { hasKey } from './utils'
-
-/**
- * Create all of the HTML attributes for an element
- *
- * Loops over the object keys and sets the attribute on the element for each key
- */
-function setAttributes<T extends Element | null>(
-  element: T,
-  attributes: { [key: string]: string },
-): void {
-  Object.keys(attributes).forEach(
-    key =>
-      element &&
-      hasKey(attributes, key) &&
-      element.setAttribute(key, attributes[key]),
-  )
-}
+import { setAttributes, isElement } from '@kodiak-ui/utils'
+import { usePortal, useKey, useOnClickOutside, useId } from '@kodiak-ui/hooks'
 
 interface NextIndexProps {
   moveAmount: number
@@ -118,12 +101,6 @@ function getNextItem({
   return nonDisabledNewIndex === -1 ? baseItem : nonDisabledNewItem
 }
 
-let idCounter = 0
-
-function generateId() {
-  return String(idCounter++)
-}
-
 interface ElementIds {
   labelId: string
   menuId: string
@@ -132,7 +109,8 @@ interface ElementIds {
 }
 
 function generateElementIds(): ElementIds {
-  const id = `kodiak-ui-menu-${generateId()}`
+  const genId = useId()
+  const id = `kodiak-ui-menu-${genId}`
 
   return {
     labelId: `${id}-label`,
@@ -143,8 +121,8 @@ function generateElementIds(): ElementIds {
 }
 
 interface RegisterOptions {
-  name: string
-  handler: () => void
+  name?: string
+  handler?: () => void
 }
 
 interface UseMenuProps {
@@ -153,10 +131,10 @@ interface UseMenuProps {
 }
 
 interface UseMenuReturnValue {
-  register: (
-    ref: (HTMLButtonElement | HTMLUListElement | HTMLLIElement) | null,
-    registerOptions?: RegisterOptions,
-  ) => void
+  register<TElement extends Element>(
+    refOrOptions?: RegisterOptions | TElement | null,
+    options?: RegisterOptions,
+  ): ((ref: TElement | null) => void) | void
   isExpanded: boolean
   activeItem: string
   handleToggleMenu: (event: React.MouseEvent<any, MouseEvent>) => void
@@ -178,7 +156,7 @@ enum MenuElementTagNames {
 
 interface RefAndOptions<Element> {
   ref: Element | null
-  options?: RegisterOptions
+  options: RegisterOptions | null
 }
 
 export function useMenu({
@@ -189,7 +167,7 @@ export function useMenu({
   const menuRef = React.useRef<HTMLUListElement>()
   const itemsRef = React.useRef<{ [key: string]: HTMLLIElement | Element }>({})
   const itemHandlersRef = React.useRef<{
-    [key: string]: ((event: any) => void) | undefined
+    [key: string]: ((event: any) => void) | null | undefined
   }>({})
   const elementIds = React.useRef<ElementIds>(generateElementIds())
   const popperInstanceRef = React.useRef<any | null>(null)
@@ -373,31 +351,27 @@ export function useMenu({
     return { ref, options }
   }
 
-  const registerElementRefs = React.useCallback(function registerElementRefs(
-    ref: Element | null,
-    options?: RegisterOptions,
+  function registerElementRefs<TElement extends Element>(
+    ref: TElement | null,
+    options: RegisterOptions | null = null,
   ): RefAndOptions<Element> {
     return registerMenuItemElement(
       registerMenuElement(registerButtonElement({ ref, options })),
     )
-  },
-  [])
+  }
 
-  /**
-   * Register the menu elements
-   *
-   * Allows the ability to add the appropriate HTML attributes
-   * to an HTML element.
-   */
-  const register = React.useCallback(
-    function register(
-      ref: (HTMLButtonElement | HTMLUListElement | HTMLLIElement) | null,
-      options?: RegisterOptions,
-    ): RefAndOptions<Element> | null {
-      return ref && registerElementRefs(ref, options)
-    },
-    [registerElementRefs],
-  )
+  function register<TElement extends Element>(
+    refOrOptions?: RegisterOptions | TElement | null,
+    options?: RegisterOptions,
+  ): ((ref: TElement | null) => void) | void {
+    if (refOrOptions instanceof Element) {
+      registerElementRefs(refOrOptions as TElement | null, options)
+    }
+
+    return function (ref: TElement | null) {
+      ref && registerElementRefs(ref, refOrOptions as RegisterOptions)
+    }
+  }
 
   const handleToggleMenu = React.useCallback(
     function handleToggleMenu(event) {
@@ -434,7 +408,7 @@ export function useMenu({
   }
 
   return {
-    register,
+    register: React.useCallback(register, []),
     isExpanded,
     activeItem,
     handleToggleMenu,

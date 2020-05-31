@@ -16,3 +16,7 @@ export function setAttributes<T extends Element | null>(
       element.setAttribute(key, attributes[key]),
   )
 }
+
+export function isElement(element: any) {
+  return element instanceof Element || element instanceof HTMLDocument
+}
