@@ -131,9 +131,8 @@ interface UseMenuProps {
 }
 
 interface UseMenuReturnValue {
-  register<TElement extends Element>(): (ref: TElement | null) => void
   register<TElement extends Element>(
-    options: RegisterOptions,
+    options?: RegisterOptions,
   ): (ref: TElement | null) => void
   register<TElement extends Element>(
     ref: TElement | null,
