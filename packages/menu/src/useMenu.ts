@@ -133,11 +133,11 @@ interface UseMenuProps {
 interface UseMenuReturnValue {
   register<TElement extends Element>(): (ref: TElement | null) => void
   register<TElement extends Element>(
-    validationOptions: RegisterOptions,
+    options: RegisterOptions,
   ): (ref: TElement | null) => void
   register<TElement extends Element>(
     ref: TElement | null,
-    validationOptions?: RegisterOptions,
+    options?: RegisterOptions,
   ): void
   register<TElement extends Element>(
     refOrOptions?: RegisterOptions | TElement | null,
@@ -370,11 +370,11 @@ export function useMenu({
 
   function register<TElement extends Element>(): (ref: TElement | null) => void
   function register<TElement extends Element>(
-    validationOptions: RegisterOptions,
+    options: RegisterOptions,
   ): (ref: TElement | null) => void
   function register<TElement extends Element>(
     ref: TElement | null,
-    validationOptions?: RegisterOptions,
+    options?: RegisterOptions,
   ): void
   function register<TElement extends Element>(
     refOrOptions?: RegisterOptions | TElement | null,
