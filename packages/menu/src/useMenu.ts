@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { createPopper, VirtualElement, Placement } from '@popperjs/core'
-import { setAttributes, isElement } from '@kodiak-ui/utils'
+import { setAttributes } from '@kodiak-ui/utils'
 import { usePortal, useKey, useOnClickOutside, useId } from '@kodiak-ui/hooks'
 
 interface NextIndexProps {
@@ -131,6 +131,14 @@ interface UseMenuProps {
 }
 
 interface UseMenuReturnValue {
+  register<TElement extends Element>(): (ref: TElement | null) => void
+  register<TElement extends Element>(
+    validationOptions: RegisterOptions,
+  ): (ref: TElement | null) => void
+  register<TElement extends Element>(
+    ref: TElement | null,
+    validationOptions?: RegisterOptions,
+  ): void
   register<TElement extends Element>(
     refOrOptions?: RegisterOptions | TElement | null,
     options?: RegisterOptions,
@@ -360,6 +368,14 @@ export function useMenu({
     )
   }
 
+  function register<TElement extends Element>(): (ref: TElement | null) => void
+  function register<TElement extends Element>(
+    validationOptions: RegisterOptions,
+  ): (ref: TElement | null) => void
+  function register<TElement extends Element>(
+    ref: TElement | null,
+    validationOptions?: RegisterOptions,
+  ): void
   function register<TElement extends Element>(
     refOrOptions?: RegisterOptions | TElement | null,
     options?: RegisterOptions,
