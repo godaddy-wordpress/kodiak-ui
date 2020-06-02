@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { Box, Image } from '@kodiak-ui/primitives'
-import imageFile from './image.jpg'
 
 export default { title: 'Primitives/Avatar' }
 
@@ -8,7 +7,7 @@ export function WithImage() {
   return (
     <Image
       variant="avatar"
-      src={imageFile}
+      src={'https://api.adorable.io/avatars/400/abott@adorable.io.png'}
       sx={{ width: '64px', height: '64px' }}
     />
   )
