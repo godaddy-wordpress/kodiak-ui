@@ -31,15 +31,15 @@ export function ProgressThumb({
         borderColor: 'muted',
         borderRadius: 'default',
         left:
-          value === min
+          min && value <= min
             ? 0
-            : value === max
+            : max && value >= max
             ? 'auto'
             : `calc(100% - ${width / 2}px)`,
         lineHeight: 1,
         p: 2,
         position: 'absolute',
-        right: value === max ? '0' : 'auto',
+        right: max && value >= max ? '0' : 'auto',
         top: '50%',
         transform: 'translateY(-50%)',
       }}
