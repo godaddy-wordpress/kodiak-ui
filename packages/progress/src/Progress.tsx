@@ -40,7 +40,9 @@ export function Progress({
           height: '100%',
           transition: 'all 0.2s ease-in-out 0s',
           position: 'relative',
-          width: `${progressWidth}%`,
+          width: `${
+            progressWidth > 100 ? 100 : progressWidth < 0 ? 0 : progressWidth
+          }%`,
         }}
         role="progressbar"
         aria-valuenow={value}
