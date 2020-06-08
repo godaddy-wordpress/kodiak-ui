@@ -4,7 +4,14 @@ import { useTabs } from '@kodiak-ui/tabs'
 export default { title: 'Tabs' }
 
 export function Initial() {
-  const { selectedIndex } = useTabs()
+  const tabs = React.useMemo(function generateTabs() {
+    return [
+      { tab: 'Tab 1', panel: 'Tab 1' },
+      { tab: 'Tab 2', panel: 'Tab 2' },
+    ]
+  }, [])
+
+  const { selectedIndex } = useTabs({ tabs })
 
   return (
     <>
