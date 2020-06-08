@@ -2,7 +2,7 @@
 #
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
-version: 2
+version: 2.1
 jobs:
   build:
     resource_class: "medium+"
@@ -16,6 +16,22 @@ jobs:
       # - image: circleci/mongo:3.4.4
 
     working_directory: ~/repo
+
+    orbs:
+      chromatic: wave/chromatic@1.3.0
+
+    workflows:
+      approval:
+        jobs:
+          - ready:
+            filters:
+              branches:
+                ignore: master
+            type: approval
+          - chromatic/test:
+            requires:
+              - ready
+            resource_class: xlarge
 
     steps:
       - checkout

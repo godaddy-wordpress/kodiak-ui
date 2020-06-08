@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "storybook": "start-storybook -p 9009",
-    "build-storybook": "build-storybook -c .storybook -o ../../storybook-static"
+    "build-storybook": "build-storybook -c .storybook -o ../../storybook-static",
+    "chromatic": "chromatic --project-token=shho9ajjlwp"
   },
   "dependencies": {
     "@babel/core": "^7.2.2",
@@ -42,6 +43,7 @@
     "@babel/helper-builder-react-jsx-experimental": "^7.9.5",
     "@babel/helper-validator-identifier": "^7.9.5",
     "@babel/plugin-proposal-optional-chaining": "^7.8.3",
-    "@storybook/addon-a11y": "^5.3.12"
+    "@storybook/addon-a11y": "^5.3.12",
+    "chromatic": "^4.0.3"
   }
 }
