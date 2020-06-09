@@ -1,4 +1,6 @@
+/** @jsx jsx */
 import * as React from 'react'
+import { jsx } from 'theme-ui'
 import { useTabs } from '@kodiak-ui/tabs'
 
 export default { title: 'Tabs' }
@@ -11,12 +13,10 @@ export function Initial() {
     ]
   }, [])
 
-  const { tabs, tabPanels, selectedIndex } = useTabs({ tabs: tabsData })
-
-  console.log(selectedIndex)
+  const { tabs, tabPanels } = useTabs({ tabs: tabsData })
 
   return (
-    <>
+    <React.Fragment>
       <div role="tablist" aria-label="Payment methods">
         {tabs.map((props, index) => (
           <button key={index} {...props} />
@@ -25,7 +25,7 @@ export function Initial() {
       {tabPanels.map((props, index) => (
         <div key={index} {...props} />
       ))}
-    </>
+    </React.Fragment>
   )
 }
 

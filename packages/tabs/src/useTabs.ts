@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { SxStyleProp } from 'theme-ui'
+import { useId } from '@kodiak-ui/hooks'
 
 interface UserTab {
   tab: string | React.ReactNode
@@ -28,30 +29,25 @@ interface UseTabsReturn {
 export function useTabs(
   { initialIndex = 0, tabs: userTabs }: UseTabsOptions = { tabs: [] },
 ): UseTabsReturn {
+  const id = useId()
   const [selectedIndex, setSelectedIndex] = React.useState(initialIndex)
-
-  const handleSelectTab = React.useCallback(function handleSelectTab(
-    index: number,
-  ) {
-    setSelectedIndex(index)
-  },
-  [])
 
   const tabs = React.useMemo(
     function generateTabProps(): Tab[] {
       return (
         userTabs &&
         userTabs.map(({ tab }: UserTab, index: number) => ({
+          id: `kodiak-ui-tabs-${id}-tabitem-${index}`,
           children: tab,
-          tabIndex: -1,
+          tabIndex: selectedIndex === index ? 0 : -1,
           role: 'tab',
-          onClick: () => handleSelectTab(index),
-          'aria-controls': '',
+          onClick: () => setSelectedIndex(index),
+          'aria-controls': `kodiak-ui-tabs-${id}-tabpanel-${index}`,
           'aria-selected': selectedIndex === index,
         }))
       )
     },
-    [userTabs, selectedIndex, handleSelectTab],
+    [id, userTabs, selectedIndex],
   )
 
   const tabPanels = React.useMemo(
@@ -60,15 +56,15 @@ export function useTabs(
         userTabs &&
         userTabs.map(({ panel }: UserTab, index: number) => ({
           children: panel,
-          id: '',
+          id: `kodiak-ui-tabs-${id}-tabpanel-${index}`,
           role: 'tabpanel',
-          tabIndex: 0,
-          'aria-labelledby': '',
+          hidden: selectedIndex === index ? false : true,
           sx: { display: selectedIndex === index ? 'block' : 'none' },
+          'aria-labelledby': `kodiak-ui-tabs-${id}-tabitem-${index}`,
         }))
       )
     },
-    [userTabs, selectedIndex],
+    [id, userTabs, selectedIndex],
   )
 
   return {
