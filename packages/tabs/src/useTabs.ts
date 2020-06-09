@@ -32,6 +32,27 @@ export function useTabs(
   const id = useId()
   const [selectedIndex, setSelectedIndex] = React.useState(initialIndex)
 
+  const handleOnClick = React.useCallback(function handleOnClick(
+    index: number,
+  ) {
+    setSelectedIndex(index)
+  },
+  [])
+
+  const onKeyUp = React.useCallback(function handleOnKeyUp(
+    event: React.KeyboardEvent,
+  ) {
+    switch (event.key) {
+      case 'ArrowLeft':
+        console.log('ArrowLeft')
+        break
+      case 'ArrowRight':
+        console.log('ArrowRight')
+        break
+    }
+  },
+  [])
+
   const tabs = React.useMemo(
     function generateTabProps(): Tab[] {
       return (
@@ -41,7 +62,8 @@ export function useTabs(
           children: tab,
           tabIndex: selectedIndex === index ? 0 : -1,
           role: 'tab',
-          onClick: () => setSelectedIndex(index),
+          onClick: () => handleOnClick(index),
+          onKeyUp,
           'aria-controls': `kodiak-ui-tabs-${id}-tabpanel-${index}`,
           'aria-selected': selectedIndex === index,
         }))
