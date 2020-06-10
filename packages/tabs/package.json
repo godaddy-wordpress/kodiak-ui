@@ -1,0 +1,44 @@
+{
+  "name": "@kodiak-ui/tabs",
+  "version": "0.0.0",
+  "description": "Tabs hook and components",
+  "keywords": [
+    "tabs"
+  ],
+  "author": "Wesley Cole <wesley@skyverge.com>",
+  "homepage": "https://kodiak-ui.com",
+  "license": "MIT",
+  "source": "src/index.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "prepare": "microbundle -f es,cjs",
+    "watch": "microbundle --watch -f es,cjs"
+  },
+  "devDependencies": {
+    "microbundle": "^0.11.0"
+  },
+  "peerDependencies": {
+    "@emotion/core": "10.0.27",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "theme-ui": "^0.3.1"
+  },
+  "dependencies": {
+    "@kodiak-ui/core": "^0.1.14",
+    "@kodiak-ui/hooks": "^0.6.0",
+    "@kodiak-ui/primitives": "^0.12.2",
+    "@kodiak-ui/utils": "^0.0.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skyverge/kodiak-ui.git"
+  }
+}
