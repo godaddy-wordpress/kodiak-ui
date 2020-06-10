@@ -32,6 +32,7 @@
     "theme-ui": "^0.3.1"
   },
   "dependencies": {
+    "@kodiak-ui/core": "^0.1.14",
     "@kodiak-ui/hooks": "^0.6.0",
     "@kodiak-ui/primitives": "^0.12.2",
     "@kodiak-ui/utils": "^0.0.3"

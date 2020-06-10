@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import * as React from 'react'
 import { jsx } from 'theme-ui'
-import { useTabs } from '@kodiak-ui/tabs'
+import { useTabs, Tabs, TabList, Tab, TabPanel } from '@kodiak-ui/tabs'
 
 export default { title: 'Tabs' }
 
@@ -22,19 +22,36 @@ export function Initial() {
     ]
   }, [])
 
-  const { tabs, tabPanels } = useTabs({ tabs: tabsData })
+  const { tabs, tabPanels, selectedIndex } = useTabs({ tabs: tabsData })
 
   return (
-    <React.Fragment>
-      <div role="tablist" aria-label="Payment methods">
+    <Tabs sx={{ border: '1px solid', borderColor: 'gray.2' }}>
+      <TabList aria-label="Payment methods">
         {tabs.map((props, index) => (
-          <button key={index} {...props} />
+          <Tab
+            key={index}
+            {...props}
+            sx={{
+              color: selectedIndex === index ? 'primary' : 'text',
+              position: 'relative',
+              '::after': {
+                bg: selectedIndex === index ? 'primary' : 'muted',
+                bottom: 0,
+                content: '""',
+                height: selectedIndex === index ? '2px' : '1px',
+                left: 0,
+                position: 'absolute',
+                right: 0,
+                width: '100%',
+              },
+            }}
+          />
         ))}
-      </div>
+      </TabList>
       {tabPanels.map((props, index) => (
-        <div key={index} {...props} />
+        <TabPanel key={index} {...props} sx={{ p: 4 }} />
       ))}
-    </React.Fragment>
+    </Tabs>
   )
 }
 
