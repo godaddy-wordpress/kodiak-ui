@@ -22,7 +22,7 @@ interface UseTabsOptions {
 }
 
 interface UseTabsReturn {
-  selectedIndex: number | string
+  selectedIndex: number
   tabs: Tab[]
   tabPanels: TabPanel[]
 }
@@ -41,50 +41,64 @@ export function useTabs(
 ): UseTabsReturn {
   const id = useId()
   const tabsRef = React.useRef<{ [key: string]: Element | null }>({})
-  const [selectedIndex, setSelectedIndex] = React.useState<string | number>(
-    initialIndex,
-  )
+  const [selectedIndex, setSelectedIndex] = React.useState<number>(initialIndex)
 
   const onClick = React.useCallback(function handleOnClick(index: number) {
     return () => setSelectedIndex(index)
   }, [])
 
   function getItemNodeFromIndex(index: number): Element | null {
-    return tabsRef && tabsRef.current && tabsRef.current[index]
+    const key =
+      tabsRef && tabsRef.current && Object.keys(tabsRef.current)[index]
+    return tabsRef.current[key]
   }
 
-  const onKeyUp = React.useCallback(function handleOnKeyUp(
-    event: React.KeyboardEvent,
+  const handleTabFocus = React.useCallback(function handleTabFocus(
+    index: number,
   ) {
-    console.log(tabsRef.current)
-    switch (event.key) {
-      case 'ArrowLeft':
-        const nextIndex = getNextIndex({
-          moveAmount: -1,
-          baseIndex: Object.keys(tabsRef.current).indexOf(
-            selectedIndex as string,
-          ),
-          items: tabsRef.current,
-          getItemNodeFromIndex,
-        })
-        console.log(nextIndex)
-        setSelectedIndex(nextIndex)
-        break
-      case 'ArrowRight':
-        console.log('ArrowRight')
-        break
-      case 'Enter':
-        console.log('Enter')
-        break
-      case 'Home':
-        console.log('Home')
-        break
-      case 'End':
-        console.log('End')
-        break
-    }
+    const node = getItemNodeFromIndex(index) as HTMLElement
+    node.focus()
   },
   [])
+
+  const onKeyUp = React.useCallback(
+    function handleOnKeyUp(event: React.KeyboardEvent) {
+      switch (event.key) {
+        case 'ArrowLeft':
+          const prevIndex = getNextIndex({
+            moveAmount: -1,
+            baseIndex: selectedIndex,
+            items: tabsRef.current,
+            getItemNodeFromIndex,
+          })
+
+          handleTabFocus(prevIndex)
+          setSelectedIndex(prevIndex)
+          break
+        case 'ArrowRight':
+          const nextIndex = getNextIndex({
+            moveAmount: 1,
+            baseIndex: selectedIndex,
+            items: tabsRef.current,
+            getItemNodeFromIndex,
+          })
+
+          handleTabFocus(nextIndex)
+          setSelectedIndex(nextIndex)
+          break
+        case 'Home':
+          handleTabFocus(0)
+          setSelectedIndex(0)
+          break
+        case 'End':
+          const count = Object.keys(tabsRef.current).length - 1
+          handleTabFocus(count)
+          setSelectedIndex(count)
+          break
+      }
+    },
+    [selectedIndex, handleTabFocus],
+  )
 
   function registerTabElements<TElement extends HTMLButtonElement>({
     ref,

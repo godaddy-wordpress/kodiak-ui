@@ -8,8 +8,17 @@ export default { title: 'Tabs' }
 export function Initial() {
   const tabsData = React.useMemo(function generateTabs() {
     return [
-      { tab: 'Tab 1', panel: 'Tab 1' },
+      {
+        tab: 'Tab 1',
+        panel: (
+          <div>
+            <h3>Testing</h3>
+          </div>
+        ),
+      },
       { tab: 'Tab 2', panel: 'Tab 2' },
+      { tab: 'Tab 3', panel: 'Tab 3' },
+      { tab: 'Tab 4', panel: 'Tab 4' },
     ]
   }, [])
 

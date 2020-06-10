@@ -31,9 +31,10 @@ function getNextNonDisabledIndex({
   items,
   getItemNodeFromIndex,
   circular = true,
-}: NextIndexProps): number | string {
+}: NextIndexProps): number {
   const itemCount = Object.keys(items).length
   const currentElementNode = getItemNodeFromIndex(baseIndex)
+
   if (!currentElementNode || !currentElementNode.hasAttribute('disabled')) {
     return baseIndex
   }
@@ -81,7 +82,7 @@ export function getNextIndex({
   items,
   getItemNodeFromIndex,
   circular = true,
-}: NextIndexProps): number | string {
+}: NextIndexProps): number {
   const itemCount = Object.keys(items).length
   const lastIndex = itemCount - 1
 
@@ -109,9 +110,6 @@ export function getNextIndex({
     circular,
   })
 
-  const nonDisabledNewItem = Object.keys(items)[nonDisabledNewIndex as number]
-  const baseItem = Object.keys(items)[baseIndex]
-
-  return nonDisabledNewIndex === -1 ? baseItem : nonDisabledNewItem
+  return nonDisabledNewIndex === -1 ? newIndex : nonDisabledNewIndex
 }
 
