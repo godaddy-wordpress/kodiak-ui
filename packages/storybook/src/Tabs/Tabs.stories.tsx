@@ -22,11 +22,13 @@ export function Initial() {
     ]
   }, [])
 
-  const { tabs, tabPanels, selectedIndex } = useTabs({ tabs: tabsData })
+  const { tabs, tabPanels, selectedIndex } = useTabs({
+    tabs: tabsData,
+  })
 
   return (
     <Tabs sx={{ border: '1px solid', borderColor: 'gray.2' }}>
-      <TabList aria-label="Payment methods">
+      <TabList aria-label="Describes the tabs">
         {tabs.map((props, index) => (
           <Tab
             key={index}
