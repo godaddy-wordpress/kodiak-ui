@@ -1,12 +1,11 @@
 import * as React from 'react'
-import { Box, SystemProps, VariantProps } from '../Box'
+import { Box, VariantProps } from '../Box'
 import { SvgIcon } from '../Svg'
 import { Input } from '../Input'
 
 type InputProps = {
   sx?: object
 } & VariantProps &
-  SystemProps &
   React.InputHTMLAttributes<HTMLInputElement>
 
 type RadioIcon = Pick<InputProps, 'sx' | 'variant' | 'variantKey'>
@@ -72,19 +71,21 @@ function RadioIcon({ sx, variant, variantKey }: InputProps) {
 
 export const Radio = React.forwardRef(
   (
-    { variant = 'radio', variantKey = 'forms', ...props }: InputProps,
+    { variant = 'radio', variantKey = 'forms', sx, ...props }: InputProps,
     ref: React.Ref<HTMLInputElement>,
   ) => (
     <Box>
       <Input
         ref={ref}
         type="radio"
-        position="absolute"
-        opacity={0}
-        zIndex={-1}
-        width={1}
-        height={1}
-        overflow="hidden"
+        sx={{
+          height: 1,
+          opacity: 0,
+          overflow: 'hidden',
+          position: 'absolute',
+          width: 1,
+          zIndex: -1,
+        }}
         {...props}
       />
       <RadioIcon
@@ -95,6 +96,7 @@ export const Radio = React.forwardRef(
             outlineOffset: '1px',
             outlineColor: 'primary',
           },
+          ...sx,
         }}
         variant={variant}
         variantKey={variantKey}
