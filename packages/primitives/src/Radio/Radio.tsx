@@ -1,10 +1,11 @@
 import * as React from 'react'
-import { Box, VariantProps } from '../Box'
+import { VariantProps, SxStyleProp } from '@kodiak-ui/core'
+import { Box } from '../Box'
 import { SvgIcon } from '../Svg'
 import { Input } from '../Input'
 
 type InputProps = {
-  sx?: object
+  sx?: SxStyleProp
 } & VariantProps &
   React.InputHTMLAttributes<HTMLInputElement>
 
