@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/accordion",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Accordion for expanded and collapsed areas",
   "keywords": [
     "accordion",
@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@kodiak-ui/core": "^0.1.14",
-    "@kodiak-ui/primitives": "^0.14.1"
+    "@kodiak-ui/primitives": "^0.14.2"
   },
   "repository": {
     "type": "git",
