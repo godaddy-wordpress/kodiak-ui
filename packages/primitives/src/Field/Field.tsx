@@ -9,6 +9,7 @@ interface FieldProps extends React.HTMLAttributes<HTMLInputElement> {
   defaultValue?: string
   label: string
   name: string
+  type?: string
 }
 
 export const Field = React.forwardRef(

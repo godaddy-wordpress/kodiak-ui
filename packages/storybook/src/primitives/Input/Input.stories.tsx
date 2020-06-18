@@ -3,23 +3,23 @@ import { Input, Flex, Box } from '@kodiak-ui/primitives'
 
 export default { title: 'Forms/Input' }
 
-export function initial() {
+export function Initial() {
   return <Input placeholder="Type something..."></Input>
 }
 
-export function shadow() {
+export function Shadow() {
   return (
     <Input variant="shadow" placeholder="Input with shadow variant"></Input>
   )
 }
 
-export function inline() {
+export function Inline() {
   return (
     <Input variant="inline" placeholder="Input with inline variant"></Input>
   )
 }
 
-export function underline() {
+export function Underline() {
   return (
     <Input
       variant="underline"
@@ -28,13 +28,17 @@ export function underline() {
   )
 }
 
-export function disabled() {
+export function Disabled() {
   return (
     <Input variant="disabled" placeholder="Disabled input" disabled></Input>
   )
 }
 
-export function withIcon() {
+export function Password() {
+  return <Input type="password" placeholder="Password" />
+}
+
+export function WithIcon() {
   return (
     <Flex
       alignItems="center"
