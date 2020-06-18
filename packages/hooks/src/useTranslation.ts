@@ -1,7 +1,7 @@
 // Simple proxy function as a placeholder for react-i18next
 // until we need the entire translation library this provides a way to
 // start wrapping our texts
-function t(stringToTranslate: string) {
+export function t(stringToTranslate: string) {
   return stringToTranslate
 }
 
