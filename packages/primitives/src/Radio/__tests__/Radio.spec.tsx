@@ -55,11 +55,11 @@ describe('Radio', () => {
         border-radius: default;
         color: inherit;
         background-color: transparent;
-        opacity: 0;
-        width: 100%;
         height: 1px;
+        opacity: 0;
         overflow: hidden;
         position: absolute;
+        width: 1px;
         z-index: -1;
       }
 
@@ -200,11 +200,11 @@ describe('Radio', () => {
         border-radius: default;
         color: inherit;
         background-color: transparent;
-        opacity: 0;
-        width: 100%;
         height: 1px;
+        opacity: 0;
         overflow: hidden;
         position: absolute;
+        width: 1px;
         z-index: -1;
       }
 
