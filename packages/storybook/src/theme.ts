@@ -449,6 +449,13 @@ const progresses = {
   },
 }
 
+const paginations = {
+  borderColor: 'gray.3',
+  button: {
+    borderColor: 'gray.3',
+  },
+}
+
 export const theme = {
   breakpoints,
   colors,
@@ -611,4 +618,5 @@ export const theme = {
   tooltips,
   navs,
   progresses,
+  paginations,
 }
