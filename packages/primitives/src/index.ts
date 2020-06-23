@@ -1,5 +1,5 @@
 export { Box, sx, variant } from './Box'
-export { Button, AnchorButton } from './Button'
+export { Button, AnchorButton, ButtonProps } from './Button'
 export { Checkbox } from './Checkbox'
 export { Field, FieldError } from './Field'
 export { Flex } from './Flex'

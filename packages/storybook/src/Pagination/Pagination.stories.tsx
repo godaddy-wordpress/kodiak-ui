@@ -5,7 +5,7 @@ import {
   Pagination,
   PaginationButton,
 } from '@kodiak-ui/pagination'
-import { Box, Text } from '@kodiak-ui/primitives'
+import { Flex, Text } from '@kodiak-ui/primitives'
 
 export default { title: 'Pagination' }
 
@@ -28,15 +28,25 @@ export function Cursor() {
   return (
     <>
       {input && (
-        <Box>
+        <Flex
+          sx={{
+            mb: 5,
+            '> *': {
+              mr: 4,
+            },
+          }}
+        >
           <Text>First: {input.first}</Text>
           <Text>Last: {input.last}</Text>
           <Text>Before: {input.before}</Text>
           <Text>After: {input.after}</Text>
-        </Box>
+        </Flex>
       )}
       <Pagination>
-        <PaginationButton onClick={() => handleNavigate({ name: 'first' })}>
+        <PaginationButton
+          onClick={() => handleNavigate({ name: 'first' })}
+          disabled
+        >
           First
         </PaginationButton>
         <PaginationButton onClick={() => handleNavigate({ name: 'prev' })}>

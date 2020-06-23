@@ -453,6 +453,12 @@ const paginations = {
   borderColor: 'gray.3',
   button: {
     borderColor: 'gray.3',
+    ':disabled': {
+      bg: 'gray.2',
+      boxShadow: 'none',
+      color: 'gray.4',
+      cursor: 'not-allowed',
+    },
   },
 }
 

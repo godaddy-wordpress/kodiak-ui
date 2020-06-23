@@ -2,10 +2,18 @@ import * as React from 'react'
 import { VariantProps } from '@kodiak-ui/core'
 import { Button } from '@kodiak-ui/primitives'
 
-type PaginationButtonProps = { children: React.ReactNode } & VariantProps &
-  React.HTMLAttributes<HTMLButtonElement>
+export type PaginationButtonProps = {
+  disabled?: boolean
+} & React.DetailedHTMLProps<
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  HTMLButtonElement
+> &
+  VariantProps
 
-export function PaginationButton({ children }: PaginationButtonProps) {
+export function PaginationButton({
+  children,
+  ...props
+}: PaginationButtonProps) {
   return (
     <Button
       variantKey="paginations"
@@ -31,6 +39,7 @@ export function PaginationButton({ children }: PaginationButtonProps) {
           borderRight: 'none',
         },
       }}
+      {...props}
     >
       {children}
     </Button>
