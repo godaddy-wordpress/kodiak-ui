@@ -28,7 +28,7 @@
   "dependencies": {
     "@kodiak-ui/core": "^0.1.14",
     "@kodiak-ui/primitives": "^0.14.5",
-    "downshift": "^5.0.5"
+    "downshift": "^5.4.5"
   },
   "gitHead": "be0456b768f0d4cb9983134514112ab5adba7413"
 }
