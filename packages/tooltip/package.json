@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/tooltip",
-  "version": "0.1.16",
+  "version": "0.1.17",
   "description": "Tooltip component and hook for displaying small messages on hover",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -28,7 +28,7 @@
   "dependencies": {
     "@kodiak-ui/core": "^0.1.14",
     "@kodiak-ui/hooks": "^0.7.0",
-    "@kodiak-ui/primitives": "^0.14.4",
+    "@kodiak-ui/primitives": "^0.14.5",
     "@kodiak-ui/utils": "^0.0.4",
     "@popperjs/core": "^2.4.0"
   },
