@@ -142,6 +142,7 @@ describe('Message', () => {
         background-color: primary;
         border: 0;
         border-radius: default;
+        color: currentColor;
       }
 
       .emotion-5:hover {
@@ -169,9 +170,9 @@ describe('Message', () => {
         fill: currentColor;
         color: black;
         display: block;
-        color: white;
         height: 16px;
         width: 16px;
+        color: currentColor;
       }
 
       <div
