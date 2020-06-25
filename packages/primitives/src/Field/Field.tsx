@@ -10,15 +10,20 @@ interface FieldProps extends React.HTMLAttributes<HTMLInputElement> {
   label: string
   name: string
   type?: string
+  required?: boolean
 }
 
 export const Field = React.forwardRef(
   (
-    { children, defaultValue, label, name, ...props }: FieldProps,
+    { children, defaultValue, label, name, required, ...props }: FieldProps,
     ref: React.Ref<HTMLInputElement>,
   ) => (
-    <Box mb={4}>
-      <Label htmlFor={name} mb={2}>
+    <Box sx={{ mb: 4 }}>
+      <Label
+        htmlFor={name}
+        variant={required ? 'required' : undefined}
+        sx={{ mb: 2 }}
+      >
         {label}
       </Label>
       <Input
@@ -40,7 +45,7 @@ interface FieldErrorProps extends JSX.IntrinsicAttributes {
 
 export function FieldError({ children, ...props }: FieldErrorProps) {
   return (
-    <Text as="span" color="danger" role="alert" {...props}>
+    <Text as="span" role="alert" sx={{ color: 'danger' }} {...props}>
       {children}
     </Text>
   )
