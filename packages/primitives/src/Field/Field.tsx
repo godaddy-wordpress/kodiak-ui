@@ -43,9 +43,9 @@ interface FieldErrorProps extends JSX.IntrinsicAttributes {
   id: string
 }
 
-export function FieldError({ children, ...props }: FieldErrorProps) {
+export function FieldError({ children, sx, ...props }: FieldErrorProps) {
   return (
-    <Text as="span" role="alert" sx={{ color: 'danger' }} {...props}>
+    <Text as="span" role="alert" sx={{ color: 'danger', ...sx }} {...props}>
       {children}
     </Text>
   )
