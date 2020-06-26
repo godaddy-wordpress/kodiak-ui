@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useForm } from 'react-hook-form'
+import { useForm, Controller } from 'react-hook-form'
 import {
   Label,
   Button,
@@ -9,8 +9,60 @@ import {
   FieldError,
   Box,
 } from '@kodiak-ui/primitives'
+import {
+  Select,
+  SelectLabel,
+  SelectButton,
+  SelectMenu,
+  SelectMenuItem,
+  useSelect,
+} from '@kodiak-ui/select'
 
 export default { title: 'Recipes/Forms' }
+
+const items = ['Layouts', 'Pre-built', 'All']
+const initialSelectedItem = 'All'
+
+function ControlledSelect({
+  onSelectedItemChange,
+}: {
+  onSelectedItemChange: (changes: object) => void
+}) {
+  const {
+    isOpen,
+    selectedItem,
+    getToggleButtonProps,
+    getLabelProps,
+    getMenuProps,
+    highlightedIndex,
+    getItemProps,
+  } = useSelect<string>({ items, initialSelectedItem, onSelectedItemChange })
+
+  return (
+    <Select>
+      <SelectLabel {...getLabelProps()}>Choose a filter:</SelectLabel>
+      <SelectButton isOpen={isOpen} {...getToggleButtonProps()}>
+        {selectedItem || 'Filter'}
+      </SelectButton>
+      {isOpen && (
+        <SelectMenu variant="selectMenu" {...getMenuProps()}>
+          {items.map((item, index) => (
+            <SelectMenuItem
+              key={`${item}${index}`}
+              {...getItemProps({ item, index })}
+              sx={{
+                bg: highlightedIndex === index ? 'primary' : 'inherit',
+                color: highlightedIndex === index ? 'white' : 'inherit',
+              }}
+            >
+              {item}
+            </SelectMenuItem>
+          ))}
+        </SelectMenu>
+      )}
+    </Select>
+  )
+}
 
 type ReactFormHooksFormData = {
   firstName: string
@@ -18,10 +70,13 @@ type ReactFormHooksFormData = {
   email: string
   mode: string
   marketing: boolean
+  layout: string
 }
 
-function ReactFormHooksForm() {
-  const { register, handleSubmit, errors } = useForm<ReactFormHooksFormData>()
+export function ReactFormHooksForm() {
+  const { register, setValue, handleSubmit, control, errors } = useForm<
+    ReactFormHooksFormData
+  >()
 
   function onSubmit(data: ReactFormHooksFormData) {
     console.log(data)
@@ -57,6 +112,18 @@ function ReactFormHooksForm() {
         )}
       </Field>
 
+      <Box sx={{ mb: 4 }}>
+        <Controller
+          name="layout"
+          as={ControlledSelect}
+          control={control}
+          defaultValue=""
+          onSelectedItemChange={(changes: any) =>
+            setValue('layout', changes.selectedItem)
+          }
+        />
+      </Box>
+
       <Box mb={4}>
         <Label display="flex" alignItems="center" mr={4}>
           <Radio name="mode" value="Dark" ref={register} />
@@ -84,5 +151,3 @@ function ReactFormHooksForm() {
     </form>
   )
 }
-
-export const ReactFormHooks = () => <ReactFormHooksForm />
