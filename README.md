@@ -15,7 +15,7 @@
 
 Kodiak UI is a set of primitive and complex components and React hooks for building applications. It is used and built by the fine folks at [SkyVerge](https://skyverge.com) on [Jilt](https://jilt.com) and other products.
 
-All components are built on the [Theme UI](https://theme-ui.com/) and [Styled System](https://styled-system) libraries to build applications on constraint-based design principles. All components accept the styled-system style props for quick and consistent stylign based upon the Theme UI theme specification.
+All components are built on the [Theme UI](https://theme-ui.com/) and [Styled System](https://styled-system) libraries to build applications on constraint-based design principles. All components accept the styled-system style props for quick and consistent styling based upon the Theme UI theme specification.
 
 Kodiak hooks are small, reusable, and well tested to provide the most consistent approach to manipulating state, data, and side effects.
 
