@@ -183,7 +183,7 @@ const dialogs = {
 }
 
 const baseMessageStyles = {
-  bg: baseColors.gray[8],
+  bg: 'gray.8',
   color: baseColors.white,
   fontSize: 1,
 }
