@@ -7,7 +7,6 @@ module.exports = {
   organizationName: 'skyverge',
   projectName: 'kodiak-ui',
   themeConfig: {
-    sidebarCollapsible: false,
     navbar: {
       title: 'Kodiak UI',
       logo: {
@@ -40,12 +39,12 @@ module.exports = {
           title: 'Docs',
           items: [
             {
-              label: 'Style Guide',
-              to: 'docs/',
+              label: 'Docs',
+              to: '/introduction',
             },
             {
-              label: 'Second Doc',
-              to: 'docs/doc2/',
+              label: 'Storybook',
+              href: 'https://kodiak-ui.com',
             },
           ],
         },
@@ -53,26 +52,14 @@ module.exports = {
           title: 'Community',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
               label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
+              href: 'https://twitter.com/skyverge',
             },
           ],
         },
         {
           title: 'More',
           items: [
-            {
-              label: 'Blog',
-              to: 'blog',
-            },
             {
               label: 'GitHub',
               href: 'https://github.com/facebook/docusaurus',
@@ -87,26 +74,26 @@ module.exports = {
     },
   },
   stylesheets: ['https://use.typekit.net/fsd0oby.css'],
+  themes: ['@docusaurus/theme-live-codeblock'],
   presets: [
     [
       '@docusaurus/preset-classic',
       {
         docs: {
-          // It is recommended to set document id as docs home page (`docs/` path).
-          homePageId: 'doc1',
+          path: 'docs',
+          routeBasePath: '/',
+          include: ['**/*.md', '**/*.mdx'],
           sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
           editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/',
-        },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/blog/',
+            'https://github.com/kamilkisiela/graphql-config/edit/master/website/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
+        },
+        sitemap: {
+          cacheTime: 600 * 1001, // 600 sec - cache purge period
+          changefreq: 'weekly',
+          priority: 0.5,
         },
       },
     ],

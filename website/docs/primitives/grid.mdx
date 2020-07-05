@@ -1,0 +1,19 @@
+---
+id: grid
+title: Grid
+sidebar_label: Grid
+---
+
+```tsx
+<Grid sx={{ gridGap: 4, gridTemplateColumns: '1fr 1fr' }}>
+  <Box p={2} bg="primary" sx={{ flex: '1 1 auto' }}>
+    CSS
+  </Box>
+  <Box p={2} bg="muted">
+    Grid
+  </Box>
+</Grid>
+```
+
+`Grid` is the same thing as `Box` except that `display: grid` is set by default. `Grid` accepts the `sx`
+prop as well as all CSS Grid properties.

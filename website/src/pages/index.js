@@ -2,7 +2,7 @@ import React from 'react'
 import { Redirect } from '@docusaurus/router'
 
 function Home() {
-  return <Redirect to="/docs/introduction" />
+  return <Redirect to="/introduction" />
 }
 
 export default Home
