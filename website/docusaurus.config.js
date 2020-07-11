@@ -65,7 +65,6 @@ module.exports = {
     },
   },
   stylesheets: ['https://use.typekit.net/fsd0oby.css'],
-  themes: ['@docusaurus/theme-live-codeblock'],
   presets: [
     [
       '@docusaurus/preset-classic',
