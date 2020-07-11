@@ -4,6 +4,25 @@ title: Input
 sidebar_label: Input
 ---
 
+Render a HTML input element for working with forms and accepting text data from the user.
+
 ```tsx
 <Input placeholder="Type something..." />
 ```
+
+## API
+
+### Import
+
+```tsx
+import { Input } from '@kodiak-ui/primitives'
+```
+
+### Props
+
+| Name       | Type        | Default | Description                                                            |
+| ---------- | ----------- | ------- | ---------------------------------------------------------------------- |
+| type       | string      | text    |                                                                        |
+| variant    | string      |         | Name of the variant from the theme                                     |
+| variantKey | string      | inputs  | Name of the variant key in the theme to know where to find the variant |
+| sx         | SxStyleProp |         | Style object for the component                                         |

@@ -4,16 +4,30 @@ title: Flex
 sidebar_label: Flex
 ---
 
+`Flex` is the same thing as `Box` except that `display: flex` is set by default. `Flex` accepts the `sx`
+prop as well as all flexbox properties.
+
 ```tsx
 <Flex sx={{ alignItems: 'center' }}>
-  <Box p={2} bg="primary" sx={{ flex: '1 1 auto' }}>
-    Flex
-  </Box>
-  <Box p={2} bg="muted">
-    Box
-  </Box>
+  <Box sx={{ flex: '1 1 auto' }}>Flex</Box>
+  <Box>Box</Box>
 </Flex>
 ```
 
-`Flex` is the same thing as `Box` except that `display: flex` is set by default. `Flex` accepts the `sx`
-prop as well as all flexbox properties.
+## API
+
+### Import
+
+```tsx
+import { Flex } from '@kodiak-ui/primitives'
+```
+
+### Props
+
+| Name       | Type        | Default | Description                                                            |
+| ---------- | ----------- | ------- | ---------------------------------------------------------------------- |
+| children   | ReactNode   |         | The content                                                            |
+| as         | string      | div     | The HTML element to render                                             |
+| variant    | string      |         | Name of the variant from the theme                                     |
+| variantKey | string      |         | Name of the variant key in the theme to know where to find the variant |
+| sx         | SxStyleProp |         | Style object for the component                                         |

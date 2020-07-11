@@ -4,6 +4,27 @@ title: Button
 sidebar_label: Button
 ---
 
+Buttons are used to allow users to perform actions within the application (form submits).
+
 ```tsx
 <Button type="button">Default Button</Button>
 ```
+
+## API
+
+`Button` will contain all of the normal and expected attributes from HTML button elements as well as the props defined below.
+
+### Import
+
+```tsx
+import { Button } from '@kodiak-ui/primitives'
+```
+
+### Props
+
+| Name       | Type        | Default | Description                                                            |
+| ---------- | ----------- | ------- | ---------------------------------------------------------------------- |
+| children   | ReactNode   |         | The content                                                            |
+| variant    | string      |         | Name of the variant from the theme                                     |
+| variantKey | string      | buttons | Name of the variant key in the theme to know where to find the variant |
+| sx         | SxStyleProp |         | Style object for the component                                         |

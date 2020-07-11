@@ -4,6 +4,28 @@ title: AnchorButton
 sidebar_label: AnchorButton
 ---
 
+Anchor buttons are used to render an anchor tag that looks like a button.
+
 ```tsx
 <AnchorButton href="#">Default AnchorButton</AnchorButton>
 ```
+
+## API
+
+### Import
+
+```tsx
+import { AnchorButton } from '@kodiak-ui/primitives'
+```
+
+### Props
+
+`AnchorButton` will accept all normal and expected attributes for an HTML anchor element as well as the props defined below.
+
+| Name       | Type        | Default | Description                                                            |
+| ---------- | ----------- | ------- | ---------------------------------------------------------------------- |
+| children   | ReactNode   |         | The button content                                                     |
+| href       | string      |         | Link to the destination                                                |
+| variant    | string      |         | Name of the variant from the theme                                     |
+| variantKey | string      | buttons | Name of the variant key in the theme to know where to find the variant |
+| sx         | SxStyleProp |         | Style object for the component                                         |

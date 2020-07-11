@@ -4,14 +4,27 @@ title: Box
 sidebar_label: Box
 ---
 
-```tsx
-<Box sx={{ bg: 'rebeccapurple' }}>I'm rendered in a `div` element</Box>
-```
-
 `Box` is the most basic building block to Kodiak UI. By default it will render a `div` and is the component that you should use whenever adding structural elements to your application.
 
-`Box` can be rendered as any other structural element by passing in the `as` prop.
+```tsx
+<Box>Renders a div element</Box>
+<Box as="main">Renders a main element</Box>
+```
+
+## API
+
+### Import
 
 ```tsx
-<Box as="main">I'm rendered in a `main` element</Box>
+import { Box } from '@kodiak-ui/primitives'
 ```
+
+### Props
+
+| Name       | Type        | Default | Description                                                            |
+| ---------- | ----------- | ------- | ---------------------------------------------------------------------- |
+| children   | ReactNode   |         | The content                                                            |
+| as         | string      | div     | The HTML element to render                                             |
+| variant    | string      |         | Name of the variant from the theme                                     |
+| variantKey | string      |         | Name of the variant key in the theme to know where to find the variant |
+| sx         | SxStyleProp |         | Style object for the component                                         |
