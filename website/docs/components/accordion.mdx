@@ -1,0 +1,243 @@
+---
+id: accordion
+title: Accordion
+sidebar_label: Accordion
+---
+
+```tsx
+const {
+  setExpandedItems,
+  toggleExpanded,
+  checkIsExpanded,
+  register,
+  getHeaderProps,
+} = useAccordion({
+  onChange: ({ expandedItems }) => console.info({ expandedItems }),
+  defaultExpandedItems: ['second'],
+  allowMultiple: false,
+})
+
+return (
+  <Flex sx={{ flexDirection: 'column', p: 6 }}>
+    <Accordion>
+      <AccordionItem>
+        <AccordionHeader
+          ref={node => register(node, { key: 'first' })}
+          {...getHeaderProps({ key: 'first' })}
+        >
+          <Text fontWeight="bold" fontSize={3} mb={0}>
+            Accordion header - toggle me
+          </Text>
+          <CaretFillDown
+            tabIndex={0}
+            onClick={() => {
+              toggleExpanded({ key: 'first' })
+            }}
+            sx={{
+              transform: checkIsExpanded({ key: 'first' })
+                ? 'rotate(180deg)'
+                : 'rotate(0)',
+            }}
+          />
+        </AccordionHeader>
+        {checkIsExpanded({ key: 'first' }) && (
+          <>
+            <AccordionBody ref={node => register(node, { key: 'first' })}>
+              First body contents.
+            </AccordionBody>
+            <AccordionFooter>Footer</AccordionFooter>
+          </>
+        )}
+      </AccordionItem>
+
+      <AccordionItem>
+        <AccordionHeader
+          ref={node => register(node, { key: 'second' })}
+          {...getHeaderProps({ key: 'second' })}
+        >
+          <Text fontWeight="bold" fontSize={3} mb={0}>
+            Accordion header - toggle me
+          </Text>
+          <CaretFillDown
+            tabIndex={0}
+            onClick={() => {
+              toggleExpanded({ key: 'second' })
+            }}
+            sx={{
+              transform: checkIsExpanded({ key: 'second' })
+                ? 'rotate(180deg)'
+                : 'rotate(0)',
+            }}
+          />
+        </AccordionHeader>
+        {checkIsExpanded({ key: 'second' }) && (
+          <>
+            <AccordionBody ref={node => register(node, { key: 'second' })}>
+              Body
+            </AccordionBody>
+            <AccordionFooter>Footer</AccordionFooter>
+          </>
+        )}
+      </AccordionItem>
+    </Accordion>
+  </Flex>
+)
+```
+
+## Controlled
+
+```tsx
+const [expanded, setExpanded] = React.useState<string | null>(null)
+
+function toggleExpanded({ key }: { key: string }) {
+  if (!checkIsExpanded({ key, expanded })) {
+    setExpanded(key)
+  } else {
+    setExpanded(null)
+  }
+}
+
+return (
+  <Accordion
+    sx={{
+      p: 6,
+      '& > *:not(:last-child)': {
+        mb: 4,
+      },
+    }}
+  >
+    <AccordionItem>
+      <AccordionHeader
+        id="firstAccordion"
+        aria-expanded={checkIsExpanded({ key: 'first', expanded })}
+        aria-controls="firstBody"
+        tabIndex={0}
+        onClick={() => {
+          toggleExpanded({ key: 'first' })
+        }}
+        onKeyUp={(event: any) => {
+          if (['Enter', ' '].includes(event.key)) {
+            toggleExpanded({ key: 'first' })
+          }
+        }}
+        sx={{
+          outline: 'none',
+          px: 4,
+          py: 5,
+          cursor: 'pointer',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}
+      >
+        <Text fontWeight="bold" fontSize={3} mb={0}>
+          Accordion header - toggle me
+        </Text>
+        <CaretFillDown
+          sx={{
+            transform: checkIsExpanded({ key: 'first', expanded })
+              ? 'rotate(180deg)'
+              : 'rotate(0)',
+          }}
+        />
+      </AccordionHeader>
+      {checkIsExpanded({ key: 'first', expanded }) && (
+        <>
+          <AccordionBody
+            id="firstBody"
+            aria-labelledby="firstAccordion"
+            role="region"
+            sx={{
+              borderTop: '1px solid',
+              borderBottom: '1px solid',
+              borderColor: 'gray.2',
+              px: 4,
+              py: 5,
+            }}
+          >
+            Body
+          </AccordionBody>
+          <AccordionFooter
+            sx={{
+              px: 4,
+              py: 5,
+            }}
+          >
+            Footer
+          </AccordionFooter>
+        </>
+      )}
+    </AccordionItem>
+
+    <AccordionItem
+      sx={{
+        border: '1px solid',
+        borderColor: 'gray.2',
+        borderRadius: 'default',
+        maxWidth: '400px',
+      }}
+    >
+      <AccordionHeader
+        id="secondAccordion"
+        aria-expanded={checkIsExpanded({ key: 'second', expanded })}
+        aria-controls="secondBody"
+        tabIndex={0}
+        onClick={() => {
+          toggleExpanded({ key: 'second' })
+        }}
+        onKeyUp={(event: any) => {
+          if (['Enter', ' '].includes(event.key)) {
+            toggleExpanded({ key: 'second' })
+          }
+        }}
+        sx={{
+          outline: 'none',
+          px: 4,
+          py: 5,
+          cursor: 'pointer',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}
+      >
+        <Text fontWeight="bold" fontSize={3} mb={0}>
+          Accordion header - toggle me
+        </Text>
+        <CaretFillDown
+          sx={{
+            transform: checkIsExpanded({ key: 'second', expanded })
+              ? 'rotate(180deg)'
+              : 'rotate(0)',
+          }}
+        />
+      </AccordionHeader>
+      {checkIsExpanded({ key: 'second', expanded }) && (
+        <>
+          <AccordionBody
+            id="secondBody"
+            aria-labelledby="secondAccordion"
+            role="region"
+            sx={{
+              borderTop: '1px solid',
+              borderBottom: '1px solid',
+              borderColor: 'gray.2',
+              px: 4,
+              py: 5,
+            }}
+          >
+            Body
+          </AccordionBody>
+          <AccordionFooter
+            sx={{
+              px: 4,
+              py: 5,
+            }}
+          >
+            Footer
+          </AccordionFooter>
+        </>
+      )}
+    </AccordionItem>
+  </Accordion>
+)
+```

@@ -1,0 +1,66 @@
+---
+id: nav
+title: Nav
+sidebar_label: Nav
+---
+
+```tsx
+<Nav aria-label="Basic menu">
+  <NavItem>Item 1</NavItem>
+  <NavItem>Item 2</NavItem>
+  <NavItem>Item 3</NavItem>
+</Nav>
+```
+
+## Styled Nav
+
+```tsx
+<Nav aria-label="Sample styled menu">
+  {menuItems.map((menuItem, index) => {
+    const isCurrent = selectedIndex === index
+    return (
+      <NavItem
+        borderLeftWidth="4px"
+        borderLeftStyle="solid"
+        borderLeftColor={isCurrent ? 'blue.4' : 'transparent'}
+        backgroundColor={isCurrent ? 'sky.1' : 'transparent'}
+        pl={7}
+        py={4}
+        key={menuItem.description}
+        onClick={() => setSelectedIndex(index)}
+        onKeyDown={(event: any) => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            !menuItem.isDisabled && setSelectedIndex(index)
+          }
+        }}
+        sx={{
+          cursor: 'pointer',
+          pointerEvents: menuItem.isDisabled ? 'none' : 'auto',
+          color: 'ink.2',
+          fontWeight: 'medium',
+        }}
+      >
+        {menuItem.href ? (
+          <Link
+            sx={{
+              textDecoration: 'none',
+              color: 'inherit',
+            }}
+            href={menuItem.href}
+            rel="noopener"
+            aria-current={isCurrent}
+            tabIndex={menuItem.isDisabled ? -1 : 0}
+          >
+            {menuItem.description}
+          </Link>
+        ) : (
+          <span tabIndex={menuItem.isDisabled ? -1 : 0}>
+            {isCurrent && <VisuallyHidden>Current Page:</VisuallyHidden>}
+            {menuItem.description}
+          </span>
+        )}
+      </NavItem>
+    )
+  })}
+</Nav>
+```

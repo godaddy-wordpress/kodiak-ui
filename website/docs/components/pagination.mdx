@@ -1,0 +1,38 @@
+---
+id: pagination
+title: Pagination
+sidebar_label: Pagination
+---
+
+```tsx
+const { handleNavigate } = usePagination({
+  numberOfItems: 10,
+  pageInfo: {
+    startCursor: 'MUT',
+    hasNextPage: true,
+    hasPreviousPage: true,
+    endCursor: 'EVA',
+  },
+  onPageChange: handlePageChange,
+})
+
+return (
+  <Pagination>
+    <PaginationButton
+      onClick={() => handleNavigate({ name: 'first' })}
+      disabled
+    >
+      First
+    </PaginationButton>
+    <PaginationButton onClick={() => handleNavigate({ name: 'prev' })}>
+      Previous
+    </PaginationButton>
+    <PaginationButton onClick={() => handleNavigate({ name: 'next' })}>
+      Next
+    </PaginationButton>
+    <PaginationButton onClick={() => handleNavigate({ name: 'last' })}>
+      Last
+    </PaginationButton>
+  </Pagination>
+)
+```

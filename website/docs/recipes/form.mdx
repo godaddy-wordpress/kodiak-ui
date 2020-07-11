@@ -1,0 +1,84 @@
+---
+id: forms
+title: Forms Example
+sidebar_label: Forms
+---
+
+```tsx
+const { register, setValue, handleSubmit, control, errors } = useForm<
+  ReactFormHooksFormData
+>()
+
+function onSubmit(data: ReactFormHooksFormData) {
+  console.log(data)
+}
+
+return (
+  <form onSubmit={handleSubmit(onSubmit)}>
+    <Field
+      label="First name"
+      name="firstName"
+      ref={register({ required: true })}
+      aria-invalid={errors?.firstName ? 'true' : 'false'}
+      aria-describedby="error-first-name-required"
+    >
+      {errors?.firstName && (
+        <FieldError id="error-first-name-required">
+          Please enter a first name
+        </FieldError>
+      )}
+    </Field>
+
+    <Field
+      label="Last name"
+      name="lastName"
+      ref={register({ required: true })}
+      aria-invalid={errors?.lastName ? 'true' : 'false'}
+      aria-describedby="error-last-name-required"
+    >
+      {errors?.lastName && (
+        <FieldError id="error-last-name-required">
+          Please enter a last name
+        </FieldError>
+      )}
+    </Field>
+
+    <Box sx={{ mb: 4 }}>
+      <Controller
+        name="layout"
+        as={ControlledSelect}
+        control={control}
+        defaultValue=""
+        onSelectedItemChange={(changes: any) =>
+          setValue('layout', changes.selectedItem)
+        }
+      />
+    </Box>
+
+    <Box mb={4}>
+      <Label display="flex" alignItems="center" mr={4}>
+        <Radio name="mode" value="Dark" ref={register} />
+        Dark
+      </Label>
+      <Label display="flex" alignItems="center" mr={4}>
+        <Radio name="mode" value="Light" ref={register} />
+        Light
+      </Label>
+    </Box>
+
+    <Box mb={4}>
+      <Label display="flex" alignItems="center">
+        <Checkbox
+          variant="checkbox"
+          name="marketing"
+          defaultChecked={true}
+          ref={register}
+        />
+        Subscribe to marketing emails
+      </Label>
+    </Box>
+
+    <Button type="submit">Submit</Button>
+  </form>
+)
+```

@@ -1,0 +1,44 @@
+---
+id: select
+title: Select
+sidebar_label: Select
+---
+
+```tsx
+const {
+  isOpen,
+  selectedItem,
+  getToggleButtonProps,
+  getLabelProps,
+  getMenuProps,
+  highlightedIndex,
+  getItemProps,
+} = useSelect<string>({ items, initialSelectedItem })
+
+return (
+  <Select>
+    <VisuallyHidden>
+      <SelectLabel {...getLabelProps()}>Choose a filter:</SelectLabel>
+    </VisuallyHidden>
+    <SelectButton isOpen={isOpen} {...getToggleButtonProps()}>
+      {selectedItem || 'Filter'}
+    </SelectButton>
+    {isOpen && (
+      <SelectMenu variant="selectMenu" {...getMenuProps()}>
+        {items.map((item, index) => (
+          <SelectMenuItem
+            key={`${item}${index}`}
+            {...getItemProps({ item, index })}
+            sx={{
+              bg: highlightedIndex === index ? 'primary' : 'inherit',
+              color: highlightedIndex === index ? 'white' : 'inherit',
+            }}
+          >
+            {item}
+          </SelectMenuItem>
+        ))}
+      </SelectMenu>
+    )}
+  </Select>
+)
+```

@@ -15,14 +15,9 @@ module.exports = {
       },
       links: [
         {
-          to: 'docs/introduction',
+          to: '/introduction',
           activeBasePath: '',
           label: 'Documentation',
-          position: 'right',
-        },
-        {
-          href: 'https://kodiak-ui.com',
-          label: 'Storybook',
           position: 'right',
         },
         {
