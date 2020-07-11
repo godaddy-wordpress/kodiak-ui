@@ -37,10 +37,6 @@ module.exports = {
               label: 'Docs',
               to: '/introduction',
             },
-            {
-              label: 'Storybook',
-              href: 'https://kodiak-ui.com',
-            },
           ],
         },
         {
@@ -62,7 +58,7 @@ module.exports = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} SkyVerge Inc. Built with Docusaurus.`,
     },
     prism: {
       theme: require('prism-react-renderer/themes/dracula'),
