@@ -1,8 +1,8 @@
 {
   "name": "@kodiak-ui/hooks",
   "version": "0.9.1",
-  "main": "dist/index.js",
-  "module": "dist/index.es.js",
+  "main": "dist/hooks.cjs.js",
+  "module": "dist/hooks.esm.js",
   "source": "src/index.ts",
   "types": "dist/index.d.ts",
   "files": [

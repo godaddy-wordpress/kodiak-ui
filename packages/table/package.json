@@ -2,8 +2,8 @@
   "name": "@kodiak-ui/table",
   "version": "0.2.20",
   "description": "Components and hook to display accessible and performant HTML tables",
-  "main": "dist/index.js",
-  "module": "dist/index.es.js",
+  "main": "dist/table.cjs.js",
+  "module": "dist/table.esm.js",
   "source": "src/index.ts",
   "types": "dist/index.d.ts",
   "files": [

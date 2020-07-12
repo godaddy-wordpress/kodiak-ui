@@ -2,8 +2,8 @@
   "name": "@kodiak-ui/select",
   "version": "0.2.7",
   "description": "Component to display custom select elements that behave like native HTML select elements",
-  "main": "dist/index.js",
-  "module": "dist/index.es.js",
+  "main": "dist/select.cjs.js",
+  "module": "dist/select.esm.js",
   "source": "src/index.ts",
   "types": "dist/index.d.ts",
   "files": [
