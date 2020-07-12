@@ -5,7 +5,7 @@
   "main": "dist/combobox.cjs.js",
   "module": "dist/combobox.esm.js",
   "source": "src/index.ts",
-  "types": "dist/index.d.ts",
+  "types": "dist/combobox.cjs.d.ts",
   "files": [
     "dist"
   ],
@@ -23,7 +23,8 @@
   },
   "peerDependencies": {
     "react": "^16.13.0",
-    "react-dom": "^16.13.0"
+    "react-dom": "^16.13.0",
+    "@kodiak-ui/primitives": "^0.14.5"
   },
   "dependencies": {
     "@kodiak-ui/core": "^0.1.14",

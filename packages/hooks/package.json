@@ -4,7 +4,7 @@
   "main": "dist/hooks.cjs.js",
   "module": "dist/hooks.esm.js",
   "source": "src/index.ts",
-  "types": "dist/index.d.ts",
+  "types": "dist/hooks.cjs.d.ts",
   "files": [
     "dist"
   ],
@@ -19,7 +19,8 @@
   },
   "peerDependencies": {
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "resize-observer-polyfill": "^1.5.1"
   },
   "gitHead": "35b7b93d2cd6cfef459ac533babfd0cd9e6d936b",
   "devDependencies": {

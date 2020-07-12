@@ -4,6 +4,7 @@
   "description": "Kodiak's core package for defining functions that are used across all packages",
   "main": "dist/core.cjs.js",
   "module": "dist/core.esm.js",
+  "types": "dist/core.cjs.d.ts",
   "author": "Wesley Cole <wes@skyverge.com>",
   "license": "MIT",
   "publishConfig": {
