@@ -29,7 +29,7 @@ jobs:
 
       - run: yarn install
 
-      - run: yarn prepare
+      - run: yarn build
 
       - save_cache:
           paths:

@@ -12,6 +12,7 @@
     "clean": "lerna run clean",
     "watch": "lerna run watch",
     "build": "preconstruct build",
+    "release": "preconstruct build && lerna publish",
     "postinstall": "preconstruct dev"
   },
   "devDependencies": {
