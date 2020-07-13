@@ -16,7 +16,8 @@
   },
   "scripts": {
     "prepare": "microbundle -f es,cjs",
-    "watch": "microbundle --watch -f es,cjs"
+    "watch": "microbundle --watch -f es,cjs",
+    "postinstall": "preconstruct dev"
   },
   "devDependencies": {
     "@types/reach__dialog": "^0.1.0",

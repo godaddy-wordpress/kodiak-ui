@@ -15,7 +15,8 @@
   },
   "scripts": {
     "prepare": "microbundle -f es,cjs",
-    "watch": "microbundle --watch -f es,cjs"
+    "watch": "microbundle --watch -f es,cjs",
+    "postinstall": "preconstruct dev"
   },
   "peerDependencies": {
     "react": "^16.12.0",
