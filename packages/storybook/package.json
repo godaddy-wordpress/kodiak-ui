@@ -1,6 +1,8 @@
 {
   "name": "@kodiak-ui/storybook",
   "version": "0.1.76",
+  "main": "dist/storybook.cjs.js",
+  "module": "dist/storybook.esm.js",
   "private": true,
   "scripts": {
     "storybook": "start-storybook -p 9009",
