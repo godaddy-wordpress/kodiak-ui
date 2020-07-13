@@ -10,19 +10,16 @@
   "homepage": "https://github.com/skyverge/kodiak-ui#readme",
   "license": "MIT",
   "source": "src/index.ts",
-  "main": "dist/index.js",
-  "module": "dist/index.es.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/data-visualization.cjs.js",
+  "module": "dist/data-visualization.esm.js",
+  "types": "dist/data-visualization.cjs.d.ts",
   "files": [
     "dist"
   ],
   "publishConfig": {
     "access": "public"
   },
-  "scripts": {
-    "prepare": "microbundle -f es,cjs",
-    "watch": "microbundle --watch -f es,cjs"
-  },
+  "scripts": {},
   "devDependencies": {
     "microbundle": "^0.11.0"
   },

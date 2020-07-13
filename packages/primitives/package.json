@@ -17,7 +17,6 @@
   "scripts": {
     "prepare": "npm run snyk-protect && microbundle -f es,cjs",
     "watch": "microbundle --watch -f es",
-    "postinstall": "preconstruct dev",
     "snyk-protect": "snyk protect"
   },
   "peerDependencies": {

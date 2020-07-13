@@ -16,8 +16,7 @@
   },
   "scripts": {
     "prepare": "microbundle -f es,cjs",
-    "watch": "microbundle --watch -f es,cjs",
-    "postinstall": "preconstruct dev"
+    "watch": "microbundle --watch -f es,cjs"
   },
   "devDependencies": {
     "microbundle": "^0.11.0"

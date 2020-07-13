@@ -110,7 +110,7 @@ export const Switch = React.forwardRef(
           height={1}
           width={1}
           checked={checked}
-          onChange={event => !disabled && onChange?.(event)}
+          onChange={event => !disabled && onChange && onChange(event)}
           disabled={disabled}
           {...props}
         />
