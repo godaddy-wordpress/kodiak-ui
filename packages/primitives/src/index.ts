@@ -1,11 +1,13 @@
 export { Badge, BadgeProps } from './Badge'
 export { Box, sx, variant } from './Box'
-export { Button, AnchorButton, ButtonProps } from './Button'
+export { Button, AnchorButton } from './Button'
+export type { ButtonProps } from './Button'
 export { Checkbox } from './Checkbox'
 export { Field, FieldError } from './Field'
 export { Flex } from './Flex'
 export { Grid } from './Grid'
-export { Image, ImageProps } from './Image'
+export { Image } from './Image'
+export type { ImageProps } from './Image'
 export { Input } from './Input'
 export { InputGroup } from './InputGroup'
 export { InputAddon } from './InputAddon'
@@ -20,18 +22,11 @@ export { Text } from './Text'
 export { Textarea } from './Textarea'
 export { VisuallyHidden } from './VisuallyHidden'
 export { Iframe } from './Iframe'
-export {
-  Tag,
-  TagProps,
-  TagLabel,
-  TagLabelProps,
-  TagDismiss,
-  TagDismissProps,
-} from './Tag'
-export {
-  DotLoadingIndicator,
+export { Tag, TagLabel, TagDismiss } from './Tag'
+export type { TagProps, TagLabelProps, TagDismissProps } from './Tag'
+export { DotLoadingIndicator, ClipLoadingIndicator } from './Loading'
+export type {
   DotLoadingIndicatorProps,
-  ClipLoadingIndicator,
   ClipLoadingIndicatorProps,
 } from './Loading'
 export * from './Avatar'

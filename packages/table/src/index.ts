@@ -1,14 +1,16 @@
-export {
-  useTable,
-  ColumnProps,
-  CellProps,
-  HeaderProps,
-  RowProps,
-} from './useTable'
-export { Table, TableElement, TableProps } from './Table'
-export { TableHead, TableHeadProps } from './TableHead'
-export { TableBody, TableBodyProps } from './TableBody'
-export { TableFoot, TableFootProps } from './TableFoot'
-export { TableRow, TableRowProps } from './TableRow'
-export { TableHeader, TableHeaderProps } from './TableHeader'
-export { TableData, TableDataProps } from './TableData'
+export { useTable } from './useTable'
+export type { ColumnProps, CellProps, HeaderProps, RowProps } from './useTable'
+export { Table, TableElement } from './Table'
+export type { TableProps } from './Table'
+export { TableHead } from './TableHead'
+export type { TableHeadProps } from './TableHead'
+export { TableBody } from './TableBody'
+export type { TableBodyProps } from './TableBody'
+export { TableFoot } from './TableFoot'
+export type { TableFootProps } from './TableFoot'
+export { TableRow } from './TableRow'
+export type { TableRowProps } from './TableRow'
+export { TableHeader } from './TableHeader'
+export type { TableHeaderProps } from './TableHeader'
+export { TableData } from './TableData'
+export type { TableDataProps } from './TableData'

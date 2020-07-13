@@ -7,7 +7,7 @@
     // "lib": [],                             /* Specify library files to be included in the compilation. */
     // "allowJs": true,                       /* Allow javascript files to be compiled. */
     // "checkJs": true,                       /* Report errors in .js files. */
-    // "jsx": "preserve",                     /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */
+    "jsx": "react" /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */,
     // "declaration": true,                   /* Generates corresponding '.d.ts' file. */
     // "declarationMap": true,                /* Generates a sourcemap for each corresponding '.d.ts' file. */
     // "sourceMap": true,                     /* Generates corresponding '.map' file. */
@@ -61,5 +61,24 @@
     /* Experimental Options */
     // "experimentalDecorators": true,        /* Enables experimental support for ES7 decorators. */
     // "emitDecoratorMetadata": true,         /* Enables experimental support for emitting type metadata for decorators. */
-  }
+  },
+
+  // "compilerOptions": {
+  //   "allowSyntheticDefaultImports": true,
+  //   "declaration": true,
+  //   "esModuleInterop": true,
+  //   "forceConsistentCasingInFileNames": true,
+  //   "jsx": "react",
+  //   "module": "esnext",
+  //   "moduleResolution": "node",
+  //   "noEmit": true,
+  //   "outDir": "dist",
+  //   "resolveJsonModule": true,
+  //   "skipLibCheck": true,
+  //   "sourceMap": true,
+  //   "strict": true,
+  //   "target": "es5"
+  // },
+  "include": ["packages/**/*.tsx?"]
+  // "exclude": ["node_modules", "src/**/*.test.*"]
 }

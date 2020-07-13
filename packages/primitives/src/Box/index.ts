@@ -1,12 +1,3 @@
-export {
-  Box,
-  BoxProps,
-  variant,
-  VariantProps,
-  sx,
-  shouldForwardProp,
-  systemProps,
-  SystemProps,
-  base,
-  BaseProps,
-} from './Box'
+export { Box, variant, systemProps, sx, shouldForwardProp, base } from './Box'
+
+export type { BoxProps, VariantProps, SystemProps, BaseProps } from './Box'
