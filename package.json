@@ -11,8 +11,8 @@
     "build-storybook": "yarn workspace @kodiak-ui/storybook build-storybook",
     "clean": "lerna run clean",
     "watch": "lerna run watch",
+    "build": "preconstruct build",
     "postinstall": "preconstruct dev"
-    "build": "yarn preconstruct build"
   },
   "devDependencies": {
     "@babel/core": "^7.10.4",

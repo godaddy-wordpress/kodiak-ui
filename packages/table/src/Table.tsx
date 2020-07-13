@@ -6,7 +6,10 @@ import {
   css,
   SerializedStyles,
   styled,
+  VariantProps,
+  SxStyleProp,
 } from '@kodiak-ui/core'
+
 export type { VariantProps, SxStyleProp } from '@kodiak-ui/core'
 import { Box } from '@kodiak-ui/primitives'
 

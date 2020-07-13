@@ -1,5 +1,7 @@
-export {
-  useSelect,
+export { useSelect } from 'downshift'
+
+export type {
+  UseSelectProps,
   UseSelectActions,
   UseSelectGetItemPropsOptions,
   UseSelectGetLabelPropsOptions,
@@ -11,8 +13,6 @@ export {
   UseSelectState,
   UseSelectStateChangeOptions,
 } from 'downshift'
-
-export type { UseSelectProps } from 'downshift'
 
 export { Select } from './Select'
 export type { SelectProps } from './Select'
