@@ -5,7 +5,7 @@
   "main": "dist/select.cjs.js",
   "module": "dist/select.esm.js",
   "source": "src/index.ts",
-  "types": "dist/select.cjs.d.ts",
+
   "files": [
     "dist"
   ],

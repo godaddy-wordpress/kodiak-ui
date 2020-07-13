@@ -5,7 +5,7 @@
   "main": "dist/message.cjs.js",
   "module": "dist/message.esm.js",
   "source": "src/index.ts",
-  "types": "dist/message.cjs.d.ts",
+
   "files": [
     "dist"
   ],

@@ -5,7 +5,7 @@
   "main": "dist/combobox.cjs.js",
   "module": "dist/combobox.esm.js",
   "source": "src/index.ts",
-  "types": "dist/combobox.cjs.d.ts",
+
   "files": [
     "dist"
   ],

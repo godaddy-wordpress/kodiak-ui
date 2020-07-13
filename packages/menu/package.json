@@ -5,7 +5,7 @@
   "main": "dist/menu.cjs.js",
   "module": "dist/menu.esm.js",
   "source": "src/index.ts",
-  "types": "dist/menu.cjs.d.ts",
+
   "files": [
     "dist"
   ],

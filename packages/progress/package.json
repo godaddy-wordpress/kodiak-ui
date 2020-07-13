@@ -12,7 +12,7 @@
   "source": "src/index.ts",
   "main": "dist/progress.cjs.js",
   "module": "dist/progress.esm.js",
-  "types": "dist/progress.cjs.d.ts",
+
   "files": [
     "dist"
   ],

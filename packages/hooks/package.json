@@ -4,7 +4,7 @@
   "main": "dist/hooks.cjs.js",
   "module": "dist/hooks.esm.js",
   "source": "src/index.ts",
-  "types": "dist/hooks.cjs.d.ts",
+
   "files": [
     "dist"
   ],

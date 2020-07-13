@@ -5,7 +5,7 @@
   "main": "dist/utils.cjs.js",
   "module": "dist/utils.esm.js",
   "source": "src/index.ts",
-  "types": "dist/utils.cjs.d.ts",
+
   "files": [
     "dist"
   ],
