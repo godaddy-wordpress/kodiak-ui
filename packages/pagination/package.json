@@ -21,7 +21,7 @@
     "access": "public"
   },
   "scripts": {
-    "watch": "microbundle --watch -f es,cjs"
+
   },
   "devDependencies": {
     "microbundle": "^0.11.0"
