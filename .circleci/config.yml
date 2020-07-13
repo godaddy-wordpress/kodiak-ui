@@ -5,7 +5,7 @@
 version: 2.1
 jobs:
   build:
-    resource_class: "medium+"
+    resource_class: "medium"
     docker:
       # specify the version you desire here
       - image: circleci/node:12
