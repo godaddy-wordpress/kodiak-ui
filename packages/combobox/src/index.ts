@@ -1,5 +1,5 @@
-export {
-  useCombobox,
+export { useCombobox } from 'downshift'
+export type {
   UseComboboxActions,
   UseComboboxGetComboboxPropsOptions,
   UseComboboxGetInputPropsOptions,
