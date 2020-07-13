@@ -10,7 +10,9 @@
     "storybook": "yarn workspace @kodiak-ui/storybook storybook",
     "build-storybook": "yarn workspace @kodiak-ui/storybook build-storybook",
     "clean": "lerna run clean",
-    "watch": "lerna run watch"
+    "watch": "lerna run watch",
+    "postinstall": "yarn preconstruct dev",
+    "build": "yarn preconstruct build"
   },
   "devDependencies": {
     "@babel/core": "^7.10.4",
