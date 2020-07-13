@@ -13,6 +13,7 @@
     "watch": "lerna run watch",
     "build": "preconstruct build",
     "release": "preconstruct build && lerna publish",
+    "add:package": "preconstruct init",
     "postinstall": "preconstruct dev"
   },
   "devDependencies": {
