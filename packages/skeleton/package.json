@@ -24,7 +24,10 @@
   },
   "devDependencies": {
     "@emotion/core": "^10.0.27",
-    "microbundle": "^0.11.0"
+    "microbundle": "^0.11.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "theme-ui": "^0.3.1"
   },
   "peerDependencies": {
     "@emotion/core": "^10.0.27",
