@@ -12,7 +12,7 @@
   "source": "src/index.ts",
   "main": "dist/accordion.cjs.js",
   "module": "dist/accordion.esm.js",
-  "types": "dist/index.d.ts",
+  "types": "dist/accordion.cjs.d.ts",
   "files": [
     "dist"
   ],

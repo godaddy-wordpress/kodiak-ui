@@ -5,7 +5,7 @@
   "main": "dist/tooltip.cjs.js",
   "module": "dist/tooltip.esm.js",
   "source": "src/index.ts",
-  "types": "dist/index.d.ts",
+  "types": "dist/tooltip.cjs.d.ts",
   "files": [
     "dist"
   ],
