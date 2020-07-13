@@ -10,7 +10,6 @@
     "access": "public"
   },
   "scripts": {
-    "prepare": "microbundle -f es,cjs",
     "watch": "microbundle --watch -f es"
   },
   "devDependencies": {

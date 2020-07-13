@@ -14,7 +14,6 @@
     "access": "public"
   },
   "scripts": {
-    "prepare": "microbundle -f es,cjs",
     "watch": "microbundle --watch -f es,cjs"
   },
   "peerDependencies": {
@@ -24,6 +23,7 @@
   },
   "gitHead": "35b7b93d2cd6cfef459ac533babfd0cd9e6d936b",
   "devDependencies": {
-    "microbundle": "^0.11.0"
+    "microbundle": "^0.11.0",
+    "resize-observer-polyfill": "^1.5.1"
   }
 }

@@ -20,11 +20,12 @@
     "access": "public"
   },
   "scripts": {
-    "prepare": "microbundle -f es,cjs",
     "watch": "microbundle --watch -f es,cjs"
   },
   "devDependencies": {
-    "microbundle": "^0.11.0"
+    "microbundle": "^0.11.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   },
   "peerDependencies": {
     "react": "^16.13.0",
