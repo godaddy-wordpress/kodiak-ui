@@ -15,8 +15,7 @@
     "access": "public"
   },
   "scripts": {
-    "prepare": "npm run snyk-protect && microbundle -f es,cjs",
-    "watch": "microbundle --watch -f es",
+    "prepare": "npm run snyk-protect",
     "snyk-protect": "snyk protect"
   },
   "peerDependencies": {
@@ -38,8 +37,7 @@
   "devDependencies": {
     "@types/styled-system": "^5.1.5",
     "@types/styled-system__should-forward-prop": "^5.1.0",
-    "@types/theme-ui": "^0.3.1",
-    "microbundle": "^0.11.0"
+    "@types/theme-ui": "^0.3.1"
   },
   "gitHead": "35b7b93d2cd6cfef459ac533babfd0cd9e6d936b",
   "snyk": true

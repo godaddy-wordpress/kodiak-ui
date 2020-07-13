@@ -20,9 +20,7 @@
     "access": "public"
   },
   "scripts": {},
-  "devDependencies": {
-    "microbundle": "^0.11.0"
-  },
+  "devDependencies": {},
   "peerDependencies": {
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
