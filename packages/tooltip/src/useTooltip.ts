@@ -9,7 +9,12 @@ interface UseTooltipReturn {
     ref: TooltipRef | null,
     options?: RegisterOptions,
   ) => { ref: TooltipRef; options?: RegisterOptions }
-  getTriggerProps: () => {}
+  getTriggerProps: () => {
+    onFocus: (event) => void
+    onBlur: (event) => void
+    onMouseEnter: (event) => void
+    onMouseLeave: (event) => void
+  }
   Portal: any
 }
 

@@ -1,12 +1,14 @@
 import * as React from 'react'
 
+type OnMessage = (props?: any) => void
+
 type Subscriptions = {
-  [key: string]: Function[]
+  [key: string]: OnMessage[]
 }
 
 const subscriptions: Subscriptions = {}
 
-export function subscribe<T>(key: string, onMessage: (message: T) => void) {
+export function subscribe<T>(key: string, onMessage: OnMessage) {
   if (!subscriptions[key]) {
     subscriptions[key] = [onMessage]
   } else {
@@ -14,7 +16,7 @@ export function subscribe<T>(key: string, onMessage: (message: T) => void) {
   }
 }
 
-export function unsubscribe(key: string, onMessage: Function) {
+export function unsubscribe(key: string, onMessage: OnMessage) {
   if (!subscriptions[key]) {
     return
   }
