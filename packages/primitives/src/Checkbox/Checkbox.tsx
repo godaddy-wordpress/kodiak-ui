@@ -19,16 +19,21 @@ type CheckboxProps = {
 } & VariantProps &
   React.InputHTMLAttributes<HTMLInputElement>
 
-type CheckboxIcon = Pick<CheckboxProps, 'sx' | 'variant' | 'variantKey'>
+type CheckboxIcon = React.ComponentProps<typeof SvgIcon>
 
-function CheckboxUnchecked(props: CheckboxIcon) {
+function CheckboxUnchecked({ sx, ...props }: CheckboxIcon) {
   return (
     <SvgIcon
       title="Checkbox input unchecked"
       height={16}
       width={16}
       viewBox="0 0 16 16"
-      {...props}
+      sx={{
+        height: '16px',
+        width: '16px',
+        ...sx,
+      }}
+      {...(props as any)}
     >
       <path
         d="M0 3a3 3 0 013-3h10a3 3 0 013 3v10a3 3 0 01-3 3H3a3 3 0 01-3-3V3z"
@@ -44,14 +49,17 @@ function CheckboxUnchecked(props: CheckboxIcon) {
   )
 }
 
-function CheckboxChecked(props: CheckboxIcon) {
+function CheckboxChecked({ sx, ...props }: CheckboxIcon) {
   return (
     <SvgIcon
       title="Checkbox input checked"
-      height={16}
-      width={16}
       viewBox="0 0 16 16"
-      {...props}
+      sx={{
+        height: '16px',
+        width: '16px',
+        ...sx,
+      }}
+      {...(props as any)}
     >
       <path
         d="M0 3a3 3 0 013-3h10a3 3 0 013 3v10a3 3 0 01-3 3H3a3 3 0 01-3-3V3z"
@@ -102,7 +110,7 @@ function CheckboxIcon({ checked, indeterminate, sx, ...props }: CheckboxProps) {
   if (checked) {
     return (
       <CheckboxChecked
-        {...props}
+        {...(props as any)}
         sx={{
           ...sx,
           color: 'primary',
@@ -115,7 +123,7 @@ function CheckboxIcon({ checked, indeterminate, sx, ...props }: CheckboxProps) {
   if (indeterminate) {
     return (
       <CheckboxIndeterminate
-        {...props}
+        {...(props as any)}
         sx={{
           ...sx,
           color: 'primary',
@@ -127,7 +135,7 @@ function CheckboxIcon({ checked, indeterminate, sx, ...props }: CheckboxProps) {
 
   return (
     <CheckboxUnchecked
-      {...props}
+      {...(props as any)}
       sx={{
         ...sx,
         color: 'defaultGray',

@@ -35,7 +35,7 @@ function SwitchIndicator({
         borderStyle: 'solid',
         borderWidth: 1,
         display: 'inline-flex',
-        alignItens: 'center',
+        alignItems: 'center',
         'input:focus ~ &': {
           outlineWidth: 1,
           outlineOffset: 2,

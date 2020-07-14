@@ -55,9 +55,12 @@ export const SelectStyled = styled<'select', SelectProps>('select', {
 )
 
 export const Select = React.forwardRef(
-  (props: SelectProps, ref: React.Ref<HTMLSelectElement>) => (
+  (
+    props: React.ComponentProps<typeof SelectStyled>,
+    ref: React.Ref<HTMLSelectElement>,
+  ) => (
     <Flex>
-      <SelectStyled ref={ref} {...(props as any)} />
+      <SelectStyled ref={ref} {...props} />
       <SvgIcon
         viewBox="0 0 16 16"
         height="16px"

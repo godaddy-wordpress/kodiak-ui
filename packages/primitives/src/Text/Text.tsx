@@ -20,7 +20,6 @@ export const Text = styled<'p', TextProps>('p', {
     boxSizing: 'border-box',
     margin: 0,
     minWidth: 0,
-    color: 'red',
   },
   ({ variant: variantProp, variantKey = 'text', theme }) =>
     variant({ variant: variantProp, theme, variantKey }),
