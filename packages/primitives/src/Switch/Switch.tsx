@@ -1,21 +1,18 @@
 import * as React from 'react'
-import { SxProps } from 'theme-ui'
+import { SxStyleProp } from 'theme-ui'
 import { Input } from '../Input'
 import { Box, SystemProps, VariantProps } from '../Box/Box'
 
 type SwitchProps = {
   indicatorVariant?: string
+  sx?: SxStyleProp
 } & React.InputHTMLAttributes<HTMLInputElement> &
   SystemProps &
-  VariantProps &
-  SxProps
+  VariantProps
 
 type SwitchIndicatorProps = {
   checked?: boolean
-} & Pick<
-  SwitchProps,
-  'sx' | 'variant' | 'variantKey' | 'indicatorVariant' | 'disabled'
->
+} & SwitchProps
 
 function SwitchIndicator({
   checked,
@@ -38,7 +35,7 @@ function SwitchIndicator({
         borderStyle: 'solid',
         borderWidth: 1,
         display: 'inline-flex',
-
+        alignItens: 'center',
         'input:focus ~ &': {
           outlineWidth: 1,
           outlineOffset: 2,
@@ -56,8 +53,7 @@ function SwitchIndicator({
           borderColor: 'muted',
         },
       }}
-      sx={sx}
-      alignItems="center"
+      sx={sx as any}
     >
       {/* Circle Indicator */}
       <Box
@@ -98,7 +94,7 @@ export const Switch = React.forwardRef(
         sx={{
           cursor: disabled ? 'not-allowed' : 'pointer',
         }}
-        {...props}
+        {...(props as any)}
       >
         <Input
           ref={ref}
@@ -112,13 +108,13 @@ export const Switch = React.forwardRef(
           checked={checked}
           onChange={event => !disabled && onChange && onChange(event)}
           disabled={disabled}
-          {...props}
+          {...(props as any)}
         />
         <SwitchIndicator
           checked={checked}
           variant={variant}
           variantKey={variantKey}
-          sx={sx}
+          sx={sx as any}
           disabled={disabled}
           indicatorVariant={indicatorVariant}
         />

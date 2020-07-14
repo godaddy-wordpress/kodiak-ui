@@ -37,12 +37,11 @@ export const baseStyles = ({ theme }: { theme: Theme }): SerializedStyles =>
 type SelectProps = {
   children: React.ReactNodeArray
 } & VariantProps &
-  SystemProps &
-  React.SelectHTMLAttributes<HTMLSelectElement>
+  SystemProps
 
-export const SelectStyled = styled('select', {
+export const SelectStyled = styled<'select', SelectProps>('select', {
   shouldForwardProp,
-})<SelectProps>(
+})(
   {
     boxSizing: 'border-box',
     margin: 0,
@@ -58,7 +57,7 @@ export const SelectStyled = styled('select', {
 export const Select = React.forwardRef(
   (props: SelectProps, ref: React.Ref<HTMLSelectElement>) => (
     <Flex>
-      <SelectStyled ref={ref} {...props} />
+      <SelectStyled ref={ref} {...(props as any)} />
       <SvgIcon
         viewBox="0 0 16 16"
         height="16px"

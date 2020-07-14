@@ -35,7 +35,7 @@
     "theme-ui": "^0.3.1"
   },
   "devDependencies": {
-    "@types/styled-system": "^5.1.5",
+    "@types/styled-system": "^5.1.9",
     "@types/styled-system__should-forward-prop": "^5.1.0",
     "@types/theme-ui": "^0.3.1"
   },

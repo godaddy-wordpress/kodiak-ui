@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { systemProps, SystemProps } from '@kodiak-ui/core'
 import {
   variant,
   VariantProps,
@@ -8,16 +9,13 @@ import {
   base,
 } from '../Box/Box'
 
-export type ImageProps = React.DetailedHTMLProps<
-  React.HTMLAttributes<HTMLImageElement>,
-  HTMLImageElement
-> &
-  VariantProps &
-  BaseProp
+import { SxProps } from 'theme-ui'
 
-export const Image = styled('img', {
+export type ImageProps = VariantProps & SystemProps & SxProps & BaseProp
+
+export const Image = styled<'img', ImageProps>('img', {
   shouldForwardProp,
-})<ImageProps>(
+})(
   {
     boxSizing: 'border-box',
     margin: 0,
@@ -26,5 +24,6 @@ export const Image = styled('img', {
   base,
   ({ variant: variantProp, variantKey = 'images', theme }) =>
     variant({ variant: variantProp, variantKey, theme }),
+  ...systemProps,
   sx,
 )

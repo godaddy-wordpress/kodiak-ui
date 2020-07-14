@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
-import { Theme, css } from 'theme-ui'
+import { SxStyleProp, Theme, css } from 'theme-ui'
 import { SerializedStyles } from '@emotion/serialize'
+
 import {
   variant,
   VariantProps,
@@ -37,15 +38,15 @@ type InputProps = React.DetailedHTMLProps<
   HTMLInputElement
 > &
   VariantProps &
-  SystemProps
+  SystemProps & { sx?: SxStyleProp }
 
 /**
  * Box primitive component which is the base component for
  * all components in Kodiak
  */
-export const Input = styled('input', {
+export const Input = styled<'input', InputProps>('input', {
   shouldForwardProp,
-})<InputProps>(
+})(
   {
     boxSizing: 'border-box',
     margin: 0,

@@ -10,22 +10,17 @@ import {
 
 type TextProps = {
   as?: React.ElementType
-} & React.DetailedHTMLProps<
-  React.HTMLAttributes<
-    HTMLParagraphElement | HTMLSpanElement | HTMLHeadingElement
-  >,
-  HTMLParagraphElement | HTMLSpanElement | HTMLHeadingElement
-> &
-  VariantProps &
+} & VariantProps &
   SystemProps
 
-export const Text = styled('p', {
+export const Text = styled<'p', TextProps>('p', {
   shouldForwardProp,
-})<TextProps>(
+})(
   {
     boxSizing: 'border-box',
     margin: 0,
     minWidth: 0,
+    color: 'red',
   },
   ({ variant: variantProp, variantKey = 'text', theme }) =>
     variant({ variant: variantProp, theme, variantKey }),
