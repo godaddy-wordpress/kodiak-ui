@@ -4,8 +4,26 @@ title: Link
 sidebar_label: Link
 ---
 
+Used to render an anchor tag and is used primarily for navigation.
+
 ```tsx
 <Link href="https://kodiak-ui.com" target="_blank" rel="noreferrer">
   kodiak-ui.com
 </Link>
 ```
+
+## API
+
+### Import
+
+```tsx
+import { Link } from '@kodiak-ui/primitives'
+```
+
+### Props
+
+| Name       | Type        | Default | Description                                                            |
+| ---------- | ----------- | ------- | ---------------------------------------------------------------------- |
+| variant    | string      |         | Name of the variant from the theme                                     |
+| variantKey | string      | inputs  | Name of the variant key in the theme to know where to find the variant |
+| sx         | SxStyleProp |         | Style object for the component                                         |

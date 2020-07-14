@@ -4,12 +4,25 @@ title: Text
 sidebar_label: Text
 ---
 
-```tsx
-<Text>Renders a `p` tag by default</Text>>
-```
-
-## as Prop
+Used to render any text and defaults to rendering a `p` tag.
 
 ```tsx
-<Text as="span">Renders the Text component as a `span` HTML element</Text>
+<Text>Renders a `p` tag by default</Text>
 ```
+
+## API
+
+### Import
+
+```tsx
+import { Tag, TagDismiss } from '@kodiak-ui/primitives'
+```
+
+### Props
+
+| Name       | Type        | Default | Description                                                            |
+| ---------- | ----------- | ------- | ---------------------------------------------------------------------- |
+| as         | string      |         | HTML element to render                                                 |
+| variant    | string      |         | Name of the variant from the theme                                     |
+| variantKey | string      | inputs  | Name of the variant key in the theme to know where to find the variant |
+| sx         | SxStyleProp |         | Style object for the component                                         |

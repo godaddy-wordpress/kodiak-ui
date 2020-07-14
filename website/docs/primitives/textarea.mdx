@@ -4,6 +4,24 @@ title: Textarea
 sidebar_label: Textarea
 ---
 
+Used to render an HTML textarea element which allows you to create multi-line inputs.
+
 ```tsx
 <Textarea placeholder="Type something..." />
 ```
+
+## API
+
+### Import
+
+```tsx
+import { Tag, TagDismiss } from '@kodiak-ui/primitives'
+```
+
+### Props
+
+| Name       | Type        | Default | Description                                                            |
+| ---------- | ----------- | ------- | ---------------------------------------------------------------------- |
+| variant    | string      |         | Name of the variant from the theme                                     |
+| variantKey | string      | inputs  | Name of the variant key in the theme to know where to find the variant |
+| sx         | SxStyleProp |         | Style object for the component                                         |

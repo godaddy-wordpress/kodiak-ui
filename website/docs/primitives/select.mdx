@@ -4,6 +4,8 @@ title: Select
 sidebar_label: Select
 ---
 
+Renders a HTML select element that allows you to select a value from multiple pre-defined options.
+
 ```tsx
 <Select name="select" defaultValue="hello">
   <option>Hello</option>
@@ -12,3 +14,19 @@ sidebar_label: Select
   <option>Boop</option>
 </Select>
 ```
+
+## API
+
+### Import
+
+```tsx
+import { Select } from '@kodiak-ui/primitives'
+```
+
+### Props
+
+| Name       | Type        | Default | Description                                                            |
+| ---------- | ----------- | ------- | ---------------------------------------------------------------------- |
+| variant    | string      |         | Name of the variant from the theme                                     |
+| variantKey | string      | inputs  | Name of the variant key in the theme to know where to find the variant |
+| sx         | SxStyleProp |         | Style object for the component                                         |

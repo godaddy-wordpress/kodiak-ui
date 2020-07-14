@@ -4,23 +4,26 @@ title: Tag
 sidebar_label: Tag
 ---
 
+Used for items that need to be labeled or categorized via keywords.
+
 ```tsx
 <Tag>Label</Tag>>
 ```
 
-## Variant
+## API
+
+### Import
 
 ```tsx
-<Tag variant="pill">Pill Label</Tag>
+import { Tag, TagDismiss } from '@kodiak-ui/primitives'
 ```
 
-## Dismiss
+### Props
 
-```tsx
-<TagDismiss
-  icon={<Icon sx={{ color: 'gray.7' }} />}
-  onDismiss={() => alert('dismiss')}
->
-  Dismiss
-</TagDismiss>
-```
+| Name       | Type        | Default | Description                                                            |
+| ---------- | ----------- | ------- | ---------------------------------------------------------------------- |
+| icon       | ReactNode   | null    | Add an icon to use for the dismiss button                              |
+| onDismiss  | () => void  | null    | Callback when the icon is called                                       |
+| variant    | string      |         | Name of the variant from the theme                                     |
+| variantKey | string      | inputs  | Name of the variant key in the theme to know where to find the variant |
+| sx         | SxStyleProp |         | Style object for the component                                         |

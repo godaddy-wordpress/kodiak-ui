@@ -4,6 +4,24 @@ title: Label
 sidebar_label: Label
 ---
 
+Used to render a HTML label for inputs.
+
 ```tsx
 <Label>Renders a `label` tag by default</Label>
 ```
+
+## API
+
+### Import
+
+```tsx
+import { Label } from '@kodiak-ui/primitives'
+```
+
+### Props
+
+| Name       | Type        | Default | Description                                                            |
+| ---------- | ----------- | ------- | ---------------------------------------------------------------------- |
+| variant    | string      |         | Name of the variant from the theme                                     |
+| variantKey | string      | inputs  | Name of the variant key in the theme to know where to find the variant |
+| sx         | SxStyleProp |         | Style object for the component                                         |

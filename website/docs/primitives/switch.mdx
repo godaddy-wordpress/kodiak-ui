@@ -4,6 +4,24 @@ title: Switch
 sidebar_label: Switch
 ---
 
+Renders a toggle switch for toggling a boolean value. Can be used in forms or standalone in an application. It is an alternative to the `Checkbox` component and allows you to switch between enabled/disabled states.
+
 ```tsx
 <Switch checked={checked} onChange={() => setChecked(!checked)} />
 ```
+
+## API
+
+### Import
+
+```tsx
+import { Switch } from '@kodiak-ui/primitives'
+```
+
+### Props
+
+| Name       | Type        | Default | Description                                                            |
+| ---------- | ----------- | ------- | ---------------------------------------------------------------------- |
+| variant    | string      |         | Name of the variant from the theme                                     |
+| variantKey | string      | inputs  | Name of the variant key in the theme to know where to find the variant |
+| sx         | SxStyleProp |         | Style object for the component                                         |
