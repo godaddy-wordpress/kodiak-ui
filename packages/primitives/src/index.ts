@@ -1,3 +1,4 @@
+export { Badge, BadgeProps } from './Badge'
 export { Box, sx, variant } from './Box'
 export { Button, AnchorButton, ButtonProps } from './Button'
 export { Checkbox } from './Checkbox'

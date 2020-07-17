@@ -1,3 +1,5 @@
+export const __DEV__ = process.env.NODE_ENV !== 'production'
+
 export function hasKey<O>(
   obj: O,
   key: string | number | symbol,
@@ -112,4 +114,3 @@ export function getNextIndex({
 
   return nonDisabledNewIndex === -1 ? newIndex : nonDisabledNewIndex
 }
-
