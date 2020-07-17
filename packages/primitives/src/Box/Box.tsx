@@ -1,6 +1,5 @@
 import styled from '@emotion/styled'
-import { css, IntrinsicSxElements, Theme } from 'theme-ui'
-import type { SxStyleProp } from '@kodiak-ui/core'
+import { css, IntrinsicSxElements, Theme, SxStyleProp } from 'theme-ui'
 import { SerializedStyles } from '@emotion/serialize'
 import { createShouldForwardProp } from '@styled-system/should-forward-prop'
 import {
