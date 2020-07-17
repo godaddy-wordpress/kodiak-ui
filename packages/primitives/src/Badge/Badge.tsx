@@ -104,7 +104,7 @@ export const Badge = React.forwardRef(function Badge(
           position: hasLabel ? 'static' : 'absolute',
           py: 0,
           px: hasLabel ? 2 : '6px',
-          transition: '225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
+          transition: 'transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
           zIndex: 1,
           ...(!hasLabel ? getPositionStyles(position) : null),
         }}
