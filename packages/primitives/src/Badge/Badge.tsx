@@ -12,7 +12,7 @@ function getPositionStyles(position: Position): SxStyleProp {
       return {
         top: 0,
         right: 0,
-        transform: 'scale(1) translate(50%, -50%)',
+        transform: 'translate(50%, -50%)',
         transformOrigin: '100% 0%',
       }
 
@@ -20,7 +20,7 @@ function getPositionStyles(position: Position): SxStyleProp {
       return {
         top: 0,
         left: 0,
-        transform: 'scale(1) translate(-50%, -50%)',
+        transform: 'translate(-50%, -50%)',
         transformOrigin: '100% 0%',
       }
 
@@ -28,7 +28,7 @@ function getPositionStyles(position: Position): SxStyleProp {
       return {
         right: 0,
         bottom: 0,
-        transform: 'scale(1) translate(50%, 50%)',
+        transform: 'translate(50%, 50%)',
         transformOrigin: '100% 100%',
       }
 
@@ -36,7 +36,7 @@ function getPositionStyles(position: Position): SxStyleProp {
       return {
         left: 0,
         bottom: 0,
-        transform: 'scale(1) translate(-50%, 50%)',
+        transform: 'translate(-50%, 50%)',
         transformOrigin: '100% 100%',
       }
 
@@ -104,7 +104,7 @@ export const Badge = React.forwardRef(function Badge(
           position: hasLabel ? 'static' : 'absolute',
           py: 0,
           px: hasLabel ? 2 : '6px',
-          transform: '225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
+          transition: '225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
           zIndex: 1,
           ...(!hasLabel ? getPositionStyles(position) : null),
         }}
