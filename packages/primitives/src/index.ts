@@ -25,4 +25,9 @@ export {
   TagDismiss,
   TagDismissProps,
 } from './Tag'
-export { DotLoadingIndicator, DotLoadingIndicatorProps } from './Loading'
+export {
+  DotLoadingIndicator,
+  DotLoadingIndicatorProps,
+  ClipLoadingIndicator,
+  ClipLoadingIndicatorProps,
+} from './Loading'
