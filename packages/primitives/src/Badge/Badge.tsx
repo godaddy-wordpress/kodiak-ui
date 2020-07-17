@@ -6,13 +6,23 @@ import { Text } from '../Text'
 
 type Position = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right'
 
-function getPositionStyles(position: Position): SxStyleProp {
+function getPositionStyles({
+  count,
+  position,
+  showZero,
+}: {
+  count: number
+  position: Position
+  showZero: boolean
+}): SxStyleProp {
+  const scale = (count === 0 && showZero) || count > 0 ? 'scale(1)' : 'scale(0)'
+
   switch (position) {
     case 'top-right':
       return {
         top: 0,
         right: 0,
-        transform: 'translate(50%, -50%)',
+        transform: `${scale} translate(50%, -50%)`,
         transformOrigin: '100% 0%',
       }
 
@@ -20,7 +30,7 @@ function getPositionStyles(position: Position): SxStyleProp {
       return {
         top: 0,
         left: 0,
-        transform: 'translate(-50%, -50%)',
+        transform: `${scale} translate(-50%, -50%)`,
         transformOrigin: '100% 0%',
       }
 
@@ -28,7 +38,7 @@ function getPositionStyles(position: Position): SxStyleProp {
       return {
         right: 0,
         bottom: 0,
-        transform: 'translate(50%, 50%)',
+        transform: `${scale} translate(50%, 50%)`,
         transformOrigin: '100% 100%',
       }
 
@@ -36,7 +46,7 @@ function getPositionStyles(position: Position): SxStyleProp {
       return {
         left: 0,
         bottom: 0,
-        transform: 'translate(-50%, 50%)',
+        transform: `${scale} translate(-50%, 50%)`,
         transformOrigin: '100% 100%',
       }
 
@@ -49,6 +59,7 @@ export type BadgeProps = {
   count: number
   max?: number
   position?: Position
+  showZero?: boolean
   children: React.ReactNode
 } & VariantProps
 
@@ -57,6 +68,7 @@ export const Badge = React.forwardRef(function Badge(
     count: userCount,
     max = 100,
     position = 'top-right',
+    showZero = false,
     variant,
     variantKey = 'badges',
     children,
@@ -106,7 +118,9 @@ export const Badge = React.forwardRef(function Badge(
           px: hasLabel ? 2 : '6px',
           transition: 'transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
           zIndex: 1,
-          ...(!hasLabel ? getPositionStyles(position) : null),
+          ...(!hasLabel
+            ? getPositionStyles({ count: userCount, position, showZero })
+            : null),
         }}
       >
         {content}
