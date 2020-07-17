@@ -11,7 +11,7 @@ describe('Badge', () => {
         className="css-13hvbvu"
       >
         <span
-          className="css-1hcexh6"
+          className="css-272kur"
         >
           <span
             className="css-vurnku"
@@ -58,7 +58,7 @@ describe('Badge', () => {
           />
         </svg>
         <span
-          className="css-19sufwy"
+          className="css-18y6qmd"
         >
           99+
         </span>
