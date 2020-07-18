@@ -1,0 +1,38 @@
+---
+id: badge
+title: Badge
+sidebar_label: Badge
+---
+
+Use `Badge` to create a small element that is rendered inline with a label or on the corner of another element.
+
+```tsx
+<Badge count={23}>new</Badge>
+<Badge count={2}>
+  <IconChatBubble />
+</Badge>
+```
+
+## API
+
+If a string is passed as the child for the `Badge` component, the text will be rendered inside of the badge.
+
+If a React component is passed as the child of `Badge`, the badge will be rendered in the top-right corner of the child component.
+
+### Import
+
+```tsx
+import { Badge } from '@kodiak-ui/primitives'
+```
+
+### Props
+
+| Name       | Type                | Default   | Description                                                            |
+| ---------- | ------------------- | --------- | ---------------------------------------------------------------------- |
+| children   | string or ReactNode |           | The label or the element to attache the badge to                       |
+| count      | number              |           | The content of the badge                                               |
+| max        | number              | 100       | Caps the value of the badge                                            |
+| position   | string              | top-right | Position of the badge on the element passed as a child                 |
+| variant    | string              |           | Name of the variant from the theme                                     |
+| variantKey | string              | badges    | Name of the variant key in the theme to know where to find the variant |
+| sx         | SxStyleProp         |           | Style object for the component                                         |

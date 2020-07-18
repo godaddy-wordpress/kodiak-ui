@@ -10,6 +10,7 @@ module.exports = {
       label: 'Primitives',
       items: [
         'primitives/anchorButton',
+        'primitives/badge',
         'primitives/box',
         'primitives/button',
         'primitives/checkbox',
