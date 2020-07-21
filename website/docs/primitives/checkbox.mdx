@@ -37,14 +37,16 @@ Below are examples of using the Checkbox component for rendering with and withou
 import { Checkbox } from '@kodiak-ui/primitives'
 ```
 
-| Name          | Type        | Default  | Description                                                                |
-| ------------- | ----------- | -------- | -------------------------------------------------------------------------- |
-| label         | string      |          | Optionally display a label around the input, ignore to wrap your own label |
-| indeterminate | boolean     | false    | Display the 'mixed' state of a checkbox                                    |
-| variant       | string      | checkbox | Name of the variant from the theme                                         |
-| variantKey    | string      | forms    | Name of the variant key in the theme to know where to find the variant     |
-| sx            | SxStyleProp |          | Style object for the component                                             |
-| onChange      |             |          | Callback when input changes                                                |
+| Name           | Type        | Default  | Description                                                                |
+| -------------- | ----------- | -------- | -------------------------------------------------------------------------- |
+| label          | string      |          | Optionally display a label around the input, ignore to wrap your own label |
+| checked        | boolean     | false    | Controlled: Determine whether checkbox is checked                          |
+| defaultChecked | boolean     | false    | Whether checked on initial render or not                                   |
+| indeterminate  | boolean     | false    | Display the 'mixed' state of a checkbox                                    |
+| variant        | string      | checkbox | Name of the variant from the theme                                         |
+| variantKey     | string      | forms    | Name of the variant key in the theme to know where to find the variant     |
+| sx             | SxStyleProp |          | Style object for the component                                             |
+| onChange       |             |          | Callback when input changes                                                |
 
 ## Examples
 
