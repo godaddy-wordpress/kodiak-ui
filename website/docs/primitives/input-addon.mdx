@@ -1,0 +1,36 @@
+---
+id: input-addon
+title: Input Addon
+sidebar_label: Input Addon
+---
+
+Used to render an element to the left or right of the input.
+
+```tsx
+<InputGroup>
+  <InputAddon position="left">
+    <Text as="span">$</Text>
+  </InputAddon>
+  <Input variant="shadow" placeholder="All the monies..." />
+  <InputAddon position="right">
+    <Text as="span">.00</Text>
+  </InputAddon>
+</InputGroup>
+```
+
+## API
+
+### Import
+
+```tsx
+import { InputAddon } from '@kodiak-ui/primitives'
+```
+
+### Props
+
+| Name       | Type        | Default | Description                                                            |
+| ---------- | ----------- | ------- | ---------------------------------------------------------------------- |
+| position   | string      | left    | Position of the addon for styling                                      |
+| variant    | string      |         | Name of the variant from the theme                                     |
+| variantKey | string      | inputs  | Name of the variant key in the theme to know where to find the variant |
+| sx         | SxStyleProp |         | Style object for the component                                         |

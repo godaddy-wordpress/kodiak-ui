@@ -18,6 +18,8 @@ module.exports = {
         'primitives/grid',
         'primitives/image',
         'primitives/input',
+        'primitives/input-group',
+        'primitives/input-addon',
         'primitives/label',
         'primitives/link',
         'primitives/loading',

@@ -1,0 +1,32 @@
+---
+id: input-group
+title: Input Group
+sidebar_label: Input Group
+---
+
+Used to render a wrapping element around an input when adding addons and other elements next to an input.
+
+```tsx
+<InputGroup>
+  <Input variant="shadow" placeholder="Your name..." />
+</InputGroup>
+```
+
+**Note:** It is important to use the `shadow` variant on the `Input` component. By default the `InputGroup` component will be styled
+however your normal `Input` components are styled, and if you don't add the `shadow` variant, you will have multiple borders and multiple spaces added.
+
+## API
+
+### Import
+
+```tsx
+import { InputGroup } from '@kodiak-ui/primitives'
+```
+
+### Props
+
+| Name       | Type        | Default | Description                                                            |
+| ---------- | ----------- | ------- | ---------------------------------------------------------------------- |
+| variant    | string      | group   | Name of the variant from the theme                                     |
+| variantKey | string      | inputs  | Name of the variant key in the theme to know where to find the variant |
+| sx         | SxStyleProp |         | Style object for the component                                         |
