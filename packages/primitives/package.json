@@ -26,6 +26,7 @@
   "dependencies": {
     "@emotion/styled": "^10.0.27",
     "@kodiak-ui/core": "^0.1.14",
+    "@kodiak-ui/hooks": "^0.7.0",
     "@kodiak-ui/utils": "^0.0.4",
     "@styled-system/should-forward-prop": "^5.1.4",
     "@styled-system/space": "^5.1.2",
