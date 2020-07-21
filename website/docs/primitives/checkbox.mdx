@@ -10,6 +10,21 @@ Used to render a styled checkbox type input for use in forms or standalone.
 <Checkbox name="dark-mode" />
 ```
 
+## Usage
+
+Below are examples of using the Checkbox component for rendering with and without labels as well as the indeterminate/mixed state.
+
+```tsx
+// Render a checkbox without a label
+<Checkbox name="noLabel" />
+
+// Render checkbox with label
+<Checkbox label="Displays with label" name="withLabel" />
+
+// Render indeterminate/mixed state
+<Checkbox label="Indeterminate checkbox" name="indeterminate" indeterminate={true} />
+```
+
 ## API
 
 ### Props
@@ -22,8 +37,71 @@ Used to render a styled checkbox type input for use in forms or standalone.
 import { Checkbox } from '@kodiak-ui/primitives'
 ```
 
-| Name       | Type        | Default  | Description                                                            |
-| ---------- | ----------- | -------- | ---------------------------------------------------------------------- |
-| variant    | string      | checkbox | Name of the variant from the theme                                     |
-| variantKey | string      | forms    | Name of the variant key in the theme to know where to find the variant |
-| sx         | SxStyleProp |          | Style object for the component                                         |
+| Name          | Type        | Default  | Description                                                                |
+| ------------- | ----------- | -------- | -------------------------------------------------------------------------- |
+| label         | string      |          | Optionally display a label around the input, ignore to wrap your own label |
+| indeterminate | boolean     | false    | Display the 'mixed' state of a checkbox                                    |
+| variant       | string      | checkbox | Name of the variant from the theme                                         |
+| variantKey    | string      | forms    | Name of the variant key in the theme to know where to find the variant     |
+| sx            | SxStyleProp |          | Style object for the component                                             |
+| onChange      |             |          | Callback when input changes                                                |
+
+## Examples
+
+### Indeterminate example
+
+```tsx
+const [checkedItems, setCheckedItems] = React.useState<{
+  [key: string]: boolean
+}>({
+  option1: false,
+  option2: false,
+})
+
+const allChecked = Object.keys(checkedItems)
+  ?.map(key => checkedItems[key] === true)
+  ?.every(Boolean)
+const someChecked = Object.keys(checkedItems)
+  ?.map(key => checkedItems[key] === true)
+  ?.some(Boolean)
+
+return (
+  <>
+    <Checkbox
+      label="Select all"
+      checked={allChecked}
+      indeterminate={someChecked && !allChecked}
+      onChange={e =>
+        setCheckedItems({
+          option1: e.target.checked,
+          option2: e.target.checked,
+        })
+      }
+    />
+    <Flex sx={{ flexDirection: 'column', pl: 6 }}>
+      <Checkbox
+        label="Option 1"
+        name="option1"
+        checked={checkedItems?.option1}
+        onChange={e =>
+          setCheckedItems({
+            ...checkedItems,
+            option1: e.target.checked,
+          })
+        }
+      />
+      <Checkbox
+        label="Option 2"
+        name="option2"
+        checked={checkedItems?.option2}
+        onChange={e =>
+          setCheckedItems({
+            ...checkedItems,
+            option2: e.target.checked,
+          })
+        }
+      />
+    </Flex>
+  </>
+)
+```
