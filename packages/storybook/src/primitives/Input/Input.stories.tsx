@@ -1,5 +1,12 @@
 import * as React from 'react'
-import { Input, Flex, Box } from '@kodiak-ui/primitives'
+import {
+  Input,
+  InputGroup,
+  InputAddon,
+  Flex,
+  Box,
+  Text,
+} from '@kodiak-ui/primitives'
 
 export default { title: 'Forms/Input' }
 
@@ -62,5 +69,35 @@ export function WithIcon() {
       </Box>
       <Input variant="shadow" placeholder="Shadowed input with icon"></Input>
     </Flex>
+  )
+}
+
+export function InputAddons() {
+  return (
+    <>
+      <InputGroup sx={{ mb: 4 }}>
+        <InputAddon>
+          <Text as="span">$</Text>
+        </InputAddon>
+        <Input variant="shadow" placeholder="Name" />
+      </InputGroup>
+
+      <InputGroup sx={{ mb: 4 }}>
+        <Input variant="shadow" placeholder="Name" />
+        <InputAddon position="right">
+          <Text as="span">.00</Text>
+        </InputAddon>
+      </InputGroup>
+
+      <InputGroup>
+        <InputAddon position="left">
+          <Text as="span">$</Text>
+        </InputAddon>
+        <Input variant="shadow" placeholder="Name" />
+        <InputAddon position="right">
+          <Text as="span">.00</Text>
+        </InputAddon>
+      </InputGroup>
+    </>
   )
 }

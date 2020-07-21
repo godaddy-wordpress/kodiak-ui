@@ -50,6 +50,7 @@ const commonInputStyles = {
   py: 2,
   fontSize: `100%`,
   borderRadius: `default`,
+  border: '1px solid',
   borderColor: 'gray.3',
   appearance: `none`,
   lineHeight: `tight`,
