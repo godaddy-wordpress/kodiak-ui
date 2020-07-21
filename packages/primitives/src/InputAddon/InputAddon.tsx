@@ -1,10 +1,11 @@
 import * as React from 'react'
-import { VariantProps } from '@kodiak-ui/core'
+import { VariantProps, SxStyleProp } from '@kodiak-ui/core'
 import { Box } from '../Box'
 
 type InputAddonProps = {
   children: React.ReactNode
   position?: 'left' | 'right'
+  sx?: SxStyleProp
 } & VariantProps
 
 export const InputAddon = React.forwardRef(function InputAddon(
@@ -12,6 +13,7 @@ export const InputAddon = React.forwardRef(function InputAddon(
     position = 'left',
     variant = 'addon',
     variantKey = 'inputs',
+    sx,
     children,
     ...props
   }: InputAddonProps,
@@ -48,6 +50,7 @@ export const InputAddon = React.forwardRef(function InputAddon(
       variant={variant}
       variantKey={variantKey}
       sx={{
+        ...sx,
         ...radii,
         ...borders,
         display: 'flex',
