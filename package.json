@@ -22,7 +22,7 @@
     "coveralls": "^3.0.9",
     "eslint-config-prettier": "^6.9.0",
     "eslint-plugin-no-only-tests": "^2.4.0",
-    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.2.1",
     "jest": "^26.0.1",
     "jest-emotion": "^10.0.27",

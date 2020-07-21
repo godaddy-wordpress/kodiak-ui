@@ -1,15 +1,20 @@
 import * as React from 'react'
-import { Box, SystemProps, VariantProps } from '../Box'
+import { Box, VariantProps } from '../Box'
 import { SvgIcon } from '../Svg'
 import { Input } from '../Input'
+import { useCheckbox } from './useCheckbox'
+import { Label } from '../Label'
 
-type InputProps = {
+type CheckboxProps = {
+  children?: React.ReactNode
+  label?: string
+  indeterminate?: boolean
   sx?: object
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
 } & VariantProps &
-  SystemProps &
   React.InputHTMLAttributes<HTMLInputElement>
 
-type CheckboxIcon = Pick<InputProps, 'sx' | 'variant' | 'variantKey'>
+type CheckboxIcon = Pick<CheckboxProps, 'sx' | 'variant' | 'variantKey'>
 
 function CheckboxUnchecked(props: CheckboxIcon) {
   return (
@@ -61,67 +66,132 @@ function CheckboxChecked(props: CheckboxIcon) {
   )
 }
 
-function CheckboxIcon({ sx, variant, variantKey }: InputProps) {
+function CheckboxIndeterminate(props: CheckboxIcon) {
   return (
-    <>
+    <SvgIcon
+      title="Checkbox input checked"
+      height={16}
+      width={16}
+      viewBox="0 0 16 16"
+      {...props}
+    >
+      <path
+        d="M0 3a3 3 0 013-3h10a3 3 0 013 3v10a3 3 0 01-3 3H3a3 3 0 01-3-3V3z"
+        fill="#0076D1"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M13 1H3a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V3a2 2 0 00-2-2zM3 0a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V3a3 3 0 00-3-3H3z"
+        fill="currentColor"
+      />
+      <path
+        d="M11.478 6.75H4.522A.529.529 0 004 7.286v1.428c0 .296.234.536.522.536h6.956c.288 0 .522-.24.522-.536V7.286a.529.529 0 00-.522-.536z"
+        fill="#fff"
+      />
+    </SvgIcon>
+  )
+}
+
+function CheckboxIcon({ checked, indeterminate, sx, ...props }: CheckboxProps) {
+  if (checked) {
+    return (
       <CheckboxChecked
+        {...props}
         sx={{
           ...sx,
-          display: 'none',
-          'input:checked ~ &': {
-            display: 'block',
-            color: 'primary',
-          },
-        }}
-        variant={variant}
-        variantKey={variantKey}
-      />
-      <CheckboxUnchecked
-        sx={{
-          ...sx,
-          color: 'defaultGray',
+          color: 'primary',
           display: 'block',
-          'input:checked ~ &': {
-            display: 'none',
-          },
         }}
-        variant={variant}
-        variantKey={variantKey}
       />
-    </>
+    )
+  }
+
+  if (indeterminate) {
+    return (
+      <CheckboxIndeterminate
+        {...props}
+        sx={{
+          ...sx,
+          color: 'primary',
+          display: 'block',
+        }}
+      />
+    )
+  }
+
+  return (
+    <CheckboxUnchecked
+      {...props}
+      sx={{
+        ...sx,
+        color: 'defaultGray',
+        display: 'block',
+      }}
+    />
+  )
+}
+
+function CheckboxWrapper({
+  label,
+  children,
+  ...props
+}: {
+  label?: string
+  children: React.ReactNode
+}) {
+  return label ? (
+    <Label {...props} sx={{ alignItems: 'center', display: 'flex' }}>
+      {children} {label}
+    </Label>
+  ) : (
+    <>{children}</>
   )
 }
 
 export const Checkbox = React.forwardRef(
   (
-    { variant = 'checkbox', variantKey = 'forms', ...props }: InputProps,
+    {
+      label,
+      variant = 'checkbox',
+      variantKey = 'forms',
+      ...props
+    }: CheckboxProps,
     ref: React.Ref<HTMLInputElement>,
-  ) => (
-    <Box>
-      <Input
-        ref={ref}
-        type="checkbox"
-        position="absolute"
-        opacity={0}
-        zIndex={-1}
-        width={1}
-        height={1}
-        overflow="hidden"
-        {...props}
-      />
-      <CheckboxIcon
-        aria-hidden="true"
-        sx={{
-          'input:focus ~ &': {
-            outline: '1px auto',
-            outlineOffset: '1px',
-            outlineColor: 'primary',
-          },
-        }}
-        variant={variant}
-        variantKey={variantKey}
-        {...props}
-      />
-    </Box>
-  ),
+  ) => {
+    const { getLabelProps, getInputProps, getIconProps } = useCheckbox({
+      ...props,
+    })
+
+    return (
+      <CheckboxWrapper label={label} {...getLabelProps()}>
+        <Box>
+          <Input
+            {...getInputProps()}
+            ref={ref}
+            sx={{
+              height: 1,
+              position: 'absolute',
+              opacity: 0,
+              overflow: 'hidden',
+              width: 1,
+              zIndex: -1,
+            }}
+          />
+          <CheckboxIcon
+            {...getIconProps()}
+            variant={variant}
+            variantKey={variantKey}
+            sx={{
+              'input:focus ~ &': {
+                outline: '1px auto',
+                outlineOffset: '1px',
+                outlineColor: 'primary',
+              },
+            }}
+          />
+        </Box>
+      </CheckboxWrapper>
+    )
+  },
 )
