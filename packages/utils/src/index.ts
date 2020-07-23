@@ -114,3 +114,5 @@ export function getNextIndex({
 
   return nonDisabledNewIndex === -1 ? newIndex : nonDisabledNewIndex
 }
+
+export const isClient = typeof window === 'object'

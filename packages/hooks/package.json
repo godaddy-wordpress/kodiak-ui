@@ -24,5 +24,8 @@
   "gitHead": "e043cf2cbc9ab31a9c84f9ea13c674b5a8157946",
   "devDependencies": {
     "microbundle": "^0.11.0"
+  },
+  "dependencies": {
+    "@kodiak-ui/utils": "^0.0.5"
   }
 }
