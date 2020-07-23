@@ -40,5 +40,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/skyverge/kodiak-ui.git"
-  }
+  },
+  "gitHead": "35b7b93d2cd6cfef459ac533babfd0cd9e6d936b"
 }

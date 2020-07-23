@@ -21,11 +21,9 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   },
-  "gitHead": "e043cf2cbc9ab31a9c84f9ea13c674b5a8157946",
+  "gitHead": "35b7b93d2cd6cfef459ac533babfd0cd9e6d936b",
   "devDependencies": {
     "microbundle": "^0.11.0"
   },
-  "dependencies": {
-    "@kodiak-ui/utils": "^0.0.6"
-  }
+  "dependencies": {}
 }

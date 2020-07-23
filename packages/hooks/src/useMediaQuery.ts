@@ -1,9 +1,8 @@
 import * as React from 'react'
-import { isClient } from '@kodiak-ui/utils'
 
 export const useMediaQuery = (query: string, defaultState = false) => {
   const [state, setState] = React.useState(
-    isClient ? () => window.matchMedia(query).matches : defaultState,
+    () => window.matchMedia(query).matches,
   )
 
   React.useEffect(() => {
