@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/hooks",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "source": "src/index.ts",
@@ -24,6 +24,5 @@
   "gitHead": "35b7b93d2cd6cfef459ac533babfd0cd9e6d936b",
   "devDependencies": {
     "microbundle": "^0.11.0"
-  },
-  "dependencies": {}
+  }
 }
