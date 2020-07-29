@@ -19,6 +19,7 @@ describe('Tooltip', () => {
         border-radius: default;
         max-width: 250px;
         padding: 8px;
+        z-index: 9999;
       }
 
       .emotion-0[data-popper-placement^='top'] > #kodiak-ui-tooltip-arrow {
