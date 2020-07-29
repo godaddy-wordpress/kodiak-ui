@@ -23,6 +23,7 @@ export function base({ theme }: { theme: Theme }): SerializedStyles {
     borderRadius: 'default',
     maxWidth: '250px',
     p: 2,
+    zIndex: 9999,
     "&[data-popper-placement^='top'] > #kodiak-ui-tooltip-arrow": {
       bottom: '-5px',
     },
