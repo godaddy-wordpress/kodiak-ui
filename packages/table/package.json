@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/table",
-  "version": "0.2.17",
+  "version": "0.2.18",
   "description": "Components and hook to display accessible and performant HTML tables",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@kodiak-ui/core": "^0.1.14",
-    "@kodiak-ui/primitives": "^0.16.2"
+    "@kodiak-ui/primitives": "^0.16.3"
   },
   "gitHead": "35b7b93d2cd6cfef459ac533babfd0cd9e6d936b"
 }
