@@ -91,6 +91,7 @@ describe('Checkbox', () => {
           <input
             checked={true}
             className="emotion-0"
+            name="dark-mode"
             onChange={[Function]}
             type="checkbox"
           />
@@ -208,6 +209,7 @@ describe('Checkbox', () => {
           <input
             checked={false}
             className="emotion-0"
+            name="dark-mode"
             onChange={[Function]}
             type="checkbox"
           />
