@@ -13,6 +13,7 @@ export function useCheckbox({
   readOnly,
   disabled,
   onChange,
+  name,
 }: UseCheckboxProps) {
   const [isChecked, setIsChecked] = useControlled({
     controlled: checkedProp,
@@ -49,7 +50,7 @@ export function useCheckbox({
   )
 
   const getInputProps = React.useCallback(
-    function getInputProps() {
+    function getInputProps(...props) {
       return {
         id: id,
         type: 'checkbox',
@@ -58,9 +59,11 @@ export function useCheckbox({
         disabled,
         'aria-disabled': disabled,
         onChange: handleOnChange,
+        name,
+        ...props,
       }
     },
-    [id, readOnly, disabled, isChecked, handleOnChange],
+    [id, readOnly, disabled, isChecked, handleOnChange, name],
   )
 
   const getIconProps = React.useCallback(
