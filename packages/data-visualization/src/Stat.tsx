@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Box, Label, Grid } from '@kodiak-ui/primitives'
+import { Box, Label, Flex, Grid } from '@kodiak-ui/primitives'
 import { SxStyleProp } from '@kodiak-ui/core'
 
 type Props = {
@@ -14,19 +14,27 @@ type Props = {
 
 export function Stat({ value, label, children, icon, ...props }: Props) {
   return (
-    <Box
+    <Flex
       __base={{
         borderRadius: 'default',
+        border: '1px solid',
+        borderColor: 'gray.2',
+        alignItems: 'start',
+        p: 4,
       }}
-      variant={'dataVisualization'}
-      variantKey="stat"
+      variant="dataVisualization"
+      variantKey="stats"
       {...props}
     >
-      {icon}
-      <Grid>
-        <Label>{label}</Label>
-        {children}
-      </Grid>
-    </Box>
+      <Box>{icon}</Box>
+      <Flex sx={{ flexDirection: 'column', ml: 4 }}>
+        <Label variant="stat">{label}</Label>
+        <Box
+          sx={{ fontWeight: 'bold', mt: 2, fontSize: 4, lineHeight: '16px' }}
+        >
+          {children}
+        </Box>
+      </Flex>
+    </Flex>
   )
 }
