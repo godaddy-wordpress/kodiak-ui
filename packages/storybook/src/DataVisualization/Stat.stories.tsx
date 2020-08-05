@@ -63,6 +63,8 @@ export function Static() {
       >
         77.27%
       </Stat>
+
+      <Stat label="CTOR">No icon</Stat>
     </Grid>
   )
 }
