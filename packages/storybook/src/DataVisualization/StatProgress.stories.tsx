@@ -12,7 +12,7 @@ export function StatProgressSample() {
   }, [])
 
   return (
-    <Grid sx={{ gap: 4 }}>
+    <Grid sx={{ gap: 5 }}>
       <StatProgress
         label={'Opened - 17%'}
         labelRight={'132 opens'}
@@ -23,14 +23,14 @@ export function StatProgressSample() {
       <StatProgress
         color={'red.3'}
         label={'Opened - 10%'}
-        labelRight={'132 opens'}
+        labelRight={'10/100 opens'}
         min={0}
         max={100}
         value={10}
       />
       <StatProgress
         color={'green.3'}
-        label={'Animated 99%'}
+        label={'Animated'}
         labelRight={'99 percent awesome'}
         min={0}
         max={100}
