@@ -3,7 +3,6 @@ import { Box, Label, Flex, Grid } from '@kodiak-ui/primitives'
 import { SxStyleProp } from '@kodiak-ui/core'
 
 type Props = {
-  value?: number
   label?: React.ReactNode
   icon?: React.ReactNode
   containerVariant?: string
@@ -12,7 +11,7 @@ type Props = {
   children?: React.ReactNode
 } & React.ComponentPropsWithRef<typeof Box>
 
-export function Stat({ value, label, children, icon, ...props }: Props) {
+export function Stat({ label, children, icon, ...props }: Props) {
   return (
     <Grid
       __base={{

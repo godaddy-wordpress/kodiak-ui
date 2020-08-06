@@ -49,6 +49,9 @@ module.exports = {
         'components/table',
         'components/tabs',
         'components/tooltip',
+        {
+          'Data Vizualization': ['components/DataVisualization/stat'],
+        },
       ],
     },
     {
