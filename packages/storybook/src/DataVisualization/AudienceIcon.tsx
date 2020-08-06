@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { SvgIcon } from '@material-ui/core'
+import { SvgIcon } from '@kodiak-ui/primitives'
 
 export function AudienceIcon(props: React.ComponentProps<typeof SvgIcon>) {
   return (
