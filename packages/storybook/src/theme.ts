@@ -72,6 +72,10 @@ const labels = {
     display: 'block',
     textAlign: 'right',
   },
+  stat: {
+    color: 'gray.6',
+    fontWeight: 'semiBold',
+  },
 }
 
 const images = {
@@ -242,6 +246,15 @@ const buttons = {
     padding: '0',
     border: 'none',
   },
+}
+
+const stats = {
+  borderColor: 'gray.2',
+  border: '1px solid',
+}
+
+const dataVisualizations = {
+  stats,
 }
 
 const accordions = {
@@ -626,4 +639,5 @@ export const theme = {
   navs,
   progresses,
   paginations,
+  dataVisualizations,
 }

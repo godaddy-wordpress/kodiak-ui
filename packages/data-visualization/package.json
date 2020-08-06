@@ -1,0 +1,44 @@
+{
+  "name": "@kodiak-ui/data-visualization",
+  "version": "0.1.0",
+  "description": "Kodiak UI's data visualization components",
+  "keywords": [
+    "data-visualization",
+    "visualization"
+  ],
+  "author": "Alex Chan <alex@skyverge.com>",
+  "homepage": "https://github.com/skyverge/kodiak-ui#readme",
+  "license": "MIT",
+  "source": "src/index.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "prepare": "microbundle -f es,cjs",
+    "watch": "microbundle --watch -f es,cjs"
+  },
+  "devDependencies": {
+    "microbundle": "^0.11.0"
+  },
+  "peerDependencies": {
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "theme-ui": "^0.3.1"
+  },
+  "dependencies": {
+    "@kodiak-ui/core": "^0.1.14",
+    "@kodiak-ui/hooks": "^0.9.1",
+    "@kodiak-ui/primitives": "^0.12.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skyverge/kodiak-ui.git"
+  },
+  "gitHead": "35b7b93d2cd6cfef459ac533babfd0cd9e6d936b"
+}

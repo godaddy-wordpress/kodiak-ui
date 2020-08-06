@@ -39,6 +39,9 @@ module.exports = {
       items: [
         'components/accordion',
         'components/combobox',
+        {
+          'Data Vizualization': ['components/DataVisualization/stat'],
+        },
         'components/dialog',
         'components/iframe',
         'components/menu',
