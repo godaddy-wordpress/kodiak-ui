@@ -130,8 +130,8 @@ export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
           overflow: 'hidden',
           position: 'relative',
           userSelect: 'none',
-          width: 32,
-          height: 32,
+          width: '32px',
+          height: '32px',
         }}
         {...props}
       >
