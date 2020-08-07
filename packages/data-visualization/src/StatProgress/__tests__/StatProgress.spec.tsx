@@ -79,16 +79,16 @@ describe('StatProgress', () => {
         <div
           className="emotion-2"
         >
-          <span
+          <div
             className="emotion-0"
           >
             Sample
-          </span>
-          <span
+          </div>
+          <div
             className="emotion-0"
           >
             Right label
-          </span>
+          </div>
         </div>
         <div
           className="emotion-4"
