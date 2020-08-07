@@ -1,7 +1,7 @@
 import * as React from 'react'
 import serializer from 'jest-emotion'
 import renderer from 'react-test-renderer'
-import { Stat } from '..'
+import { Stat } from '../..'
 
 expect.addSnapshotSerializer(serializer)
 
