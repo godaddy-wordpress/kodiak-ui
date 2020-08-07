@@ -5,22 +5,20 @@ export default { title: 'Primitives/Avatar' }
 
 export function AvatarWithSrc() {
   return (
-    <>
-      <Avatar
-        alt="Test face"
-        src="https://images.unsplash.com/photo-1516908205727-40afad9449a8?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-        // Optionally provide srcSet
-        srcSet={`https://api.adorable.io/avatars/400/abott@adorable.io.png 480w,
+    <Avatar
+      alt="Test face"
+      src="https://images.unsplash.com/photo-1516908205727-40afad9449a8?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+      // Optionally provide srcSet
+      srcSet={`https://api.adorable.io/avatars/400/abott@adorable.io.png 480w,
         https://images.unsplash.com/photo-1516908205727-40afad9449a8?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80 800w`}
-        sx={{
-          bg: 'blue.3',
-          color: 'white',
-          fontSize: 6,
-          height: '64px',
-          width: '64px',
-        }}
-      />
-    </>
+      sx={{
+        bg: 'blue.3',
+        color: 'white',
+        fontSize: 6,
+        height: '64px',
+        width: '64px',
+      }}
+    />
   )
 }
 
