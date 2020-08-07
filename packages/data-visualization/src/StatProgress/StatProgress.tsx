@@ -30,12 +30,8 @@ export function StatProgress({
           justifyContent: 'space-between',
         }}
       >
-        <Text as="span" sx={{ fontWeight: 'semiBold' }}>
-          {label}
-        </Text>
-        <Text as="span" sx={{ fontWeight: 'semiBold' }}>
-          {labelRight}
-        </Text>
+        <Box sx={{ fontWeight: 'semiBold' }}>{label}</Box>
+        <Box sx={{ fontWeight: 'semiBold' }}>{labelRight}</Box>
       </Flex>
       <Progress
         progressSx={progressSx}
