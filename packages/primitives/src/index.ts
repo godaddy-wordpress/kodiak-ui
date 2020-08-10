@@ -34,3 +34,4 @@ export {
   ClipLoadingIndicator,
   ClipLoadingIndicatorProps,
 } from './Loading'
+export * from './Avatar'

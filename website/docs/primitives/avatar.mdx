@@ -1,0 +1,41 @@
+---
+title: Avatar
+sidebar_label: Avatar
+---
+
+The avatar component can be used to display an image or svg icon
+
+### Import
+
+```tsx
+import { Avatar } from '@kodiak-ui/primitives'
+```
+
+## API
+
+```tsx
+<Avatar src="/path/to/image.jpg" alt="T"/>
+<Avatar>T</Avatar>
+```
+
+## Variants
+
+- `avatar` - Root element
+- `avatar.image` - Image properties overridden with imgProps
+
+### Props
+
+| Name       | Type        | Default    | Description                                                            |
+| ---------- | ----------- | ---------- | ---------------------------------------------------------------------- |
+| children?  | ReactNode   |            | The content                                                            |
+| src?       | string      |            | Link to the destination                                                |
+| srcSet?    | string      |            | Name of the variant from the theme                                     |
+| alt?       | string      |            | Passed down to img and first character used if errors loading          |
+| imgProps?  | object      |            | Passed down to img                                                     |
+| variantKey | string      | avatar     | Name of the variant key in the theme to know where to find the variant |
+| variant    | string      | '', images | Used by the image variant but can be overridden by imgProps            |
+| sx         | SxStyleProp |            | Style object for the component                                         |
+
+### Default root element
+
+`Box`

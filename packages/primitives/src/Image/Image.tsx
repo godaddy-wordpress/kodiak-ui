@@ -4,13 +4,16 @@ import {
   VariantProps,
   sx,
   shouldForwardProp,
+  BaseProp,
+  base,
 } from '../Box/Box'
 
 export type ImageProps = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLImageElement>,
   HTMLImageElement
 > &
-  VariantProps
+  VariantProps &
+  BaseProp
 
 export const Image = styled('img', {
   shouldForwardProp,
@@ -20,6 +23,7 @@ export const Image = styled('img', {
     margin: 0,
     minWidth: 0,
   },
+  base,
   ({ variant: variantProp, variantKey = 'images', theme }) =>
     variant({ variant: variantProp, variantKey, theme }),
   sx,
