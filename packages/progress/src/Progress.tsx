@@ -6,19 +6,23 @@ type ProgressProps = {
   value: number
   min?: number
   max?: number
+  color?: string
   containerVariant?: string
   barVariant?: string
   sx?: SxStyleProp
   children?: React.ReactNode
+  progressSx?: SxStyleProp
 }
 
 export function Progress({
   value,
   min = 0,
   max = 100,
+  color = 'primary',
   containerVariant = 'container',
   barVariant = 'bar',
   children,
+  progressSx,
   ...props
 }: ProgressProps) {
   const progressWidth = ((value - min) * 100) / (max - min)
@@ -36,7 +40,7 @@ export function Progress({
     >
       <Box
         __base={{
-          bg: 'primary',
+          bg: color,
           height: '100%',
           transition: 'all 0.2s ease-in-out 0s',
           position: 'relative',
@@ -50,6 +54,7 @@ export function Progress({
         aria-valuemax={max}
         variant={barVariant}
         variantKey="progresses"
+        sx={progressSx}
       >
         {children}
       </Box>

@@ -34,7 +34,8 @@
   "dependencies": {
     "@kodiak-ui/core": "^0.1.14",
     "@kodiak-ui/hooks": "^0.9.1",
-    "@kodiak-ui/primitives": "^0.12.2"
+    "@kodiak-ui/primitives": "^0.12.2",
+    "@kodiak-ui/progress": "^0.1.6"
   },
   "repository": {
     "type": "git",
