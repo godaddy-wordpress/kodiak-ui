@@ -103,7 +103,7 @@ export function base(props: { theme: Theme } & BaseProps) {
  *   }
  * }
  */
-export interface VariantProps {
+export type VariantProps = {
   variant?: string
   variantKey?: string
 }

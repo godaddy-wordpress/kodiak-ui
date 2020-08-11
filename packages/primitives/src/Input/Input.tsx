@@ -1,15 +1,8 @@
 import styled from '@emotion/styled'
 import { SxStyleProp, Theme, css } from 'theme-ui'
 import { SerializedStyles } from '@emotion/serialize'
-
-import {
-  variant,
-  VariantProps,
-  sx,
-  shouldForwardProp,
-  systemProps,
-  SystemProps,
-} from '../Box'
+import { variant, sx, shouldForwardProp, systemProps } from '../Box'
+import type { VariantProps, SystemProps } from '../Box'
 
 /**
  * base

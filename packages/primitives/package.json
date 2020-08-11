@@ -4,7 +4,7 @@
   "description": "Kodiak's primitive components for building applications and complex components",
   "main": "dist/primitives.cjs.js",
   "module": "dist/primitives.esm.js",
-
+  "types": "dist/primitives.cjs.d.ts",
   "source": "src/index.ts",
   "files": [
     "dist"
