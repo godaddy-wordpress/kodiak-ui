@@ -5,7 +5,6 @@
   "main": "dist/combobox.cjs.js",
   "module": "dist/combobox.esm.js",
   "source": "src/index.ts",
-
   "files": [
     "dist"
   ],
@@ -14,13 +13,9 @@
   "publishConfig": {
     "access": "public"
   },
-  "scripts": {
-  },
-  "devDependencies": {
-    "@kodiak-ui/primitives": "^0.14.5"
-  },
+  "scripts": {},
   "peerDependencies": {
-    "@kodiak-ui/primitives": "^0.14.5",
+    "@kodiak-ui/primitives": "^0.16.5",
     "react": "^16.13.0",
     "react-dom": "^16.13.0"
   },
