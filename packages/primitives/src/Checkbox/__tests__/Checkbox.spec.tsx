@@ -190,6 +190,8 @@ describe('Checkbox', () => {
         display: block;
         height: 16px;
         width: 16px;
+        height: 16px;
+        width: 16px;
         color: defaultGray;
         display: block;
       }
