@@ -39,7 +39,7 @@ export interface UseTableReturnValue<Data> {
   headers: HeaderProps<Data>[]
   rows: RowProps<Data>[]
   getTableProps: () => {
-    sx: any
+    sx: SxStyleProp
   }
 }
 
