@@ -12,7 +12,8 @@
     "clean": "lerna run clean",
     "watch": "lerna run watch",
     "build": "preconstruct build",
-    "release": "preconstruct build && lerna publish",
+    "build:watch": "preconstruct watch",
+    "release": "yarn run build && lerna publish",
     "add:package": "preconstruct init",
     "postinstall": "preconstruct dev"
   },
