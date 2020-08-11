@@ -22,6 +22,14 @@
 
 - Run `yarn release`
 
+## Adding a new package
+
+- Run `cd packages` from root and `mkdir yourpackagename`
+- Go into the package folder and run `yarn init -y` and update the `package.json` with any specifics
+- Create the file `src/index.tsx`
+- Run `yarn run preconstruct init` to setup the main and module folder
+- Add the `types: "dist/yourpackagename.cjs.d.ts`
+
 ## Documentation Website Development
 
 - from the root `cd website` to change to the docs folder.
