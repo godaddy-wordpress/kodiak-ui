@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { Theme, css } from 'theme-ui'
+import { Theme, css, SxStyleProp } from 'theme-ui'
 import { SerializedStyles } from '@emotion/serialize'
 import {
   variant,
@@ -25,7 +25,9 @@ export const baseStyles = ({ theme }: { theme: Theme }): SerializedStyles =>
     display: 'block',
   })(theme)
 
-type SvgProps = React.SVGProps<SVGSVGElement> & VariantProps & SystemProps
+type SvgProps = React.SVGProps<SVGSVGElement> &
+  VariantProps &
+  SystemProps & { sx?: SxStyleProp }
 
 /**
  * Box primitive component which is the base component for

@@ -6,18 +6,14 @@ import {
   shouldForwardProp,
   systemProps,
   SystemProps,
-} from '../Box/Box'
+} from '../Box'
+import { SxProps } from 'theme-ui'
 
-type LabelProps = React.DetailedHTMLProps<
-  React.LabelHTMLAttributes<HTMLLabelElement>,
-  HTMLLabelElement
-> &
-  VariantProps &
-  SystemProps
+type LabelProps = VariantProps & SystemProps & SxProps
 
-export const Label = styled('label', {
+export const Label = styled<'label', LabelProps>('label', {
   shouldForwardProp,
-})<LabelProps>(
+})(
   {
     boxSizing: 'border-box',
     display: 'inline-block',

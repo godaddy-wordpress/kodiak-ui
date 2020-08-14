@@ -31,7 +31,7 @@ export function FontFamily() {
             theme.fonts?.[fontsKey as keyof typeof theme['fonts']]
 
           return (
-            <Text key={index} fontFamily={fontFamily}>
+            <Text key={index} fontFamily={fontFamily as any}>
               {fontsKey}{' '}
               <Text as="span" color="gray.5">
                 ({fontFamily})
@@ -61,7 +61,7 @@ export function FontWeight() {
             ]
 
           return (
-            <Text key={index} fontWeight={fontWeight}>
+            <Text key={index} fontWeight={fontWeight as any}>
               {fontWeightKey}{' '}
               <Text as="span" color="gray.5">
                 ({fontWeight})

@@ -2,10 +2,10 @@
   "name": "@kodiak-ui/select",
   "version": "0.2.7",
   "description": "Component to display custom select elements that behave like native HTML select elements",
-  "main": "dist/index.js",
-  "module": "dist/index.es.js",
+  "main": "dist/select.cjs.js",
+  "module": "dist/select.esm.js",
   "source": "src/index.ts",
-  "types": "dist/index.d.ts",
+
   "files": [
     "dist"
   ],
@@ -15,11 +15,9 @@
     "access": "public"
   },
   "scripts": {
-    "prepare": "microbundle -f es,cjs",
-    "watch": "microbundle --watch -f es,cjs"
+
   },
   "devDependencies": {
-    "microbundle": "^0.11.0"
   },
   "peerDependencies": {
     "react": "^16.13.0",

@@ -9,9 +9,9 @@
   "homepage": "https://kodiak-ui.com",
   "license": "MIT",
   "source": "src/index.ts",
-  "main": "dist/index.js",
-  "module": "dist/index.es.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/tabs.cjs.js",
+  "module": "dist/tabs.esm.js",
+
   "files": [
     "dist"
   ],
@@ -19,14 +19,13 @@
     "access": "public"
   },
   "scripts": {
-    "prepare": "microbundle -f es,cjs",
-    "watch": "microbundle --watch -f es,cjs"
+
   },
   "devDependencies": {
-    "microbundle": "^0.11.0"
+    "@emotion/core": "^10.0.27"
   },
   "peerDependencies": {
-    "@emotion/core": "10.0.27",
+    "@emotion/core": "^10.0.27",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "theme-ui": "^0.3.1"

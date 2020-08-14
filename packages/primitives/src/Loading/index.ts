@@ -1,8 +1,4 @@
-export {
-  DotLoadingIndicator,
-  DotLoadingIndicatorProps,
-} from './DotLoadingIndicator'
-export {
-  ClipLoadingIndicator,
-  ClipLoadingIndicatorProps,
-} from './ClipLoadingIndicator'
+export { DotLoadingIndicator } from './DotLoadingIndicator'
+export type { DotLoadingIndicatorProps } from './DotLoadingIndicator'
+export { ClipLoadingIndicator } from './ClipLoadingIndicator'
+export type { ClipLoadingIndicatorProps } from './ClipLoadingIndicator'

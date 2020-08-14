@@ -21,7 +21,7 @@
     "no-console": ["error", { "allow": ["warn", "error"] }],
     "no-only-tests/no-only-tests": "error",
     "no-debugger": "error",
-    "@typescript-eslint/ban-ts-ignore": "warn",
+    "@typescript-eslint/ban-ts-comment": "warn",
     "@typescript-eslint/explicit-function-return-type": 0,
     "@typescript-eslint/explicit-member-accessibility": 0,
     "@typescript-eslint/no-var-requires": 0,

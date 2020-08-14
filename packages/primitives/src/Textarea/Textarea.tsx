@@ -32,12 +32,7 @@ export const baseStyles = ({ theme }: { theme: Theme }): SerializedStyles =>
     bg: 'transparent',
   })(theme)
 
-type TextareaProps = React.DetailedHTMLProps<
-  React.TextareaHTMLAttributes<HTMLTextAreaElement>,
-  HTMLTextAreaElement
-> &
-  VariantProps &
-  SystemProps
+type TextareaProps = VariantProps & SystemProps
 
 /**
  * Box primitive component which is the base component for
@@ -45,7 +40,7 @@ type TextareaProps = React.DetailedHTMLProps<
  */
 export const Textarea = styled<'textarea', TextareaProps>('textarea', {
   shouldForwardProp,
-})<TextareaProps>(
+})(
   {
     boxSizing: 'border-box',
     margin: 0,

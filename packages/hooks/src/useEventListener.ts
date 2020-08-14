@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-export interface AddRemoveListenerType {
+export type AddRemoveListenerType = {
   addEventListener(
     name: string,
     handler: (event?: any) => void,

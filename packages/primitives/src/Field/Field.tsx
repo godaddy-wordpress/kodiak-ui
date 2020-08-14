@@ -3,6 +3,7 @@ import { Box } from '../Box'
 import { Label } from '../Label'
 import { Input } from '../Input'
 import { Text } from '../Text'
+import { SxStyleProp } from '@kodiak-ui/core'
 
 interface FieldProps extends React.HTMLAttributes<HTMLInputElement> {
   children?: React.ReactNode
@@ -11,6 +12,7 @@ interface FieldProps extends React.HTMLAttributes<HTMLInputElement> {
   name: string
   type?: string
   required?: boolean
+  sx?: SxStyleProp
 }
 
 export const Field = React.forwardRef(
@@ -31,21 +33,27 @@ export const Field = React.forwardRef(
         id={name}
         name={name}
         defaultValue={defaultValue}
-        {...props}
+        {...(props as any)}
       />
       {children}
     </Box>
   ),
 )
 
-interface FieldErrorProps extends JSX.IntrinsicAttributes {
+type FieldErrorProps = {
   children: React.ReactNode
   id: string
+  sx?: SxStyleProp
 }
 
 export function FieldError({ children, sx, ...props }: FieldErrorProps) {
   return (
-    <Text as="span" role="alert" sx={{ color: 'danger', ...sx }} {...props}>
+    <Text
+      as="span"
+      role="alert"
+      sx={{ color: 'danger', ...(sx as any) }}
+      {...props}
+    >
       {children}
     </Text>
   )

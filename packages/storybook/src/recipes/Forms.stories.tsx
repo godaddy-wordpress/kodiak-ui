@@ -26,7 +26,7 @@ const initialSelectedItem = 'All'
 function ControlledSelect({
   onSelectedItemChange,
 }: {
-  onSelectedItemChange: (changes: object) => void
+  onSelectedItemChange: (changes?: any) => void
 }) {
   const {
     isOpen,

@@ -1,12 +1,12 @@
 import styled from '@emotion/styled'
-import { Theme, css } from 'theme-ui'
+import { SxStyleProp, Theme, css } from 'theme-ui'
 import { SerializedStyles } from '@emotion/serialize'
 import {
   variant,
-  VariantProps,
   sx,
   shouldForwardProp,
   systemProps,
+  VariantProps,
   SystemProps,
 } from '../Box'
 
@@ -37,7 +37,7 @@ type InputProps = React.DetailedHTMLProps<
   HTMLInputElement
 > &
   VariantProps &
-  SystemProps
+  SystemProps & { sx?: SxStyleProp }
 
 /**
  * Box primitive component which is the base component for

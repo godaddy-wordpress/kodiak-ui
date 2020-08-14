@@ -2,10 +2,10 @@
   "name": "@kodiak-ui/message",
   "version": "0.2.15",
   "description": "Component to display messages to users (i.e. alerts, notifications)",
-  "main": "dist/index.js",
-  "module": "dist/index.es.js",
+  "main": "dist/message.cjs.js",
+  "module": "dist/message.esm.js",
   "source": "src/index.ts",
-  "types": "dist/index.d.ts",
+
   "files": [
     "dist"
   ],
@@ -15,11 +15,9 @@
     "access": "public"
   },
   "scripts": {
-    "prepare": "microbundle -f es,cjs",
-    "watch": "microbundle --watch -f es,cjs"
+
   },
   "devDependencies": {
-    "microbundle": "^0.11.0"
   },
   "peerDependencies": {
     "react": "^16.12.0"

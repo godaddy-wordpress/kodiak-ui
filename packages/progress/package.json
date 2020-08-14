@@ -10,9 +10,9 @@
   "homepage": "https://github.com/skyverge/kodiak-ui#readme",
   "license": "MIT",
   "source": "src/index.ts",
-  "main": "dist/index.js",
-  "module": "dist/index.es.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/progress.cjs.js",
+  "module": "dist/progress.esm.js",
+
   "files": [
     "dist"
   ],
@@ -20,11 +20,9 @@
     "access": "public"
   },
   "scripts": {
-    "prepare": "microbundle -f es,cjs",
-    "watch": "microbundle --watch -f es,cjs"
+
   },
   "devDependencies": {
-    "microbundle": "^0.11.0"
   },
   "peerDependencies": {
     "react": "^16.13.0",

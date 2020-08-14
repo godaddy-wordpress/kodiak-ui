@@ -8,20 +8,15 @@ import {
   SystemProps,
 } from '../Box'
 
-type IframeProps = React.DetailedHTMLProps<
-  React.IframeHTMLAttributes<HTMLIFrameElement>,
-  HTMLIFrameElement
-> &
-  VariantProps &
-  SystemProps
+type IframeProps = VariantProps & SystemProps
 
 /**
  * Box primitive component which is the base component for
  * all components in Kodiak
  */
-export const Iframe = styled('iframe', {
+export const Iframe = styled<'iframe', IframeProps>('iframe', {
   shouldForwardProp,
-})<IframeProps>(
+})(
   {
     boxSizing: 'border-box',
     display: 'block',

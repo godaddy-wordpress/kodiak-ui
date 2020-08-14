@@ -117,4 +117,5 @@ export function variant({
   )(theme)
 }
 
-export { css, Theme, SxStyleProp, SerializedStyles, styled }
+export { css, styled }
+export type { Theme, SxStyleProp, SerializedStyles }

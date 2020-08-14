@@ -2,10 +2,10 @@
   "name": "@kodiak-ui/dialog",
   "version": "0.3.7",
   "description": "Accessible dialog component that works with Theme UI and Styled System's style props",
-  "main": "dist/index.js",
-  "module": "dist/index.es.js",
+  "main": "dist/dialog.cjs.js",
+  "module": "dist/dialog.esm.js",
   "source": "src/index.ts",
-  "types": "dist/index.d.ts",
+
   "files": [
     "dist"
   ],
@@ -15,12 +15,10 @@
     "access": "public"
   },
   "scripts": {
-    "prepare": "microbundle -f es,cjs",
-    "watch": "microbundle --watch -f es,cjs"
+
   },
   "devDependencies": {
-    "@types/reach__dialog": "^0.1.0",
-    "microbundle": "^0.11.0"
+    "@types/reach__dialog": "^0.1.0"
   },
   "peerDependencies": {
     "react": "^16.12.0"

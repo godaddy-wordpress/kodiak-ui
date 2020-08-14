@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
-import { css, IntrinsicSxElements, Theme, SxStyleProp } from 'theme-ui'
+import { css, IntrinsicSxElements, Theme } from 'theme-ui'
+import type { SxStyleProp } from '@kodiak-ui/core'
 import { SerializedStyles } from '@emotion/serialize'
 import { createShouldForwardProp } from '@styled-system/should-forward-prop'
 import {
@@ -102,7 +103,7 @@ export function base(props: { theme: Theme } & BaseProps) {
  *   }
  * }
  */
-export interface VariantProps {
+export type VariantProps = {
   variant?: string
   variantKey?: string
 }
@@ -149,9 +150,9 @@ export type BoxProps = {
  * Box primitive component which is the base component for
  * all components in Kodiak
  */
-export const Box = styled('div', {
+export const Box = styled<'div', BoxProps>('div', {
   shouldForwardProp,
-})<BoxProps>(
+})(
   {
     boxSizing: 'border-box',
     margin: 0,
