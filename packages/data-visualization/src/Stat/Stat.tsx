@@ -30,7 +30,7 @@ export function Stat({ label, children, icon, ...props }: Props) {
     >
       {icon && <Box>{icon}</Box>}
       <Flex sx={{ flexDirection: 'column' }}>
-        <Label variant="stat">{label}</Label>
+        {typeof label === 'object' ? label : <Label>{label}</Label>}
         <Box sx={{ fontWeight: 'bold', mt: 2, fontSize: 4 }}>{children}</Box>
       </Flex>
     </Grid>
