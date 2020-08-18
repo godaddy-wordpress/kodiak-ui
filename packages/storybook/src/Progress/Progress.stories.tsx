@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Progress, ProgressThumb } from '@kodiak-ui/progress'
 
-export default { title: 'Progress' }
+export default { title: 'Progress', component: Progress }
 
 export function Static() {
   return (

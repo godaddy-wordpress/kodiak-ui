@@ -21,7 +21,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert'
 import DeleteIcon from '@material-ui/icons/Delete'
 import FileCopyIcon from '@material-ui/icons/FileCopy'
 
-export default { title: 'Table' }
+export default { title: 'Table', component: Table }
 
 type Row = {
   character: string

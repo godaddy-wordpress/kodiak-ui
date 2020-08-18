@@ -38,7 +38,7 @@ const items = [
   'Oganesson',
 ]
 
-export default { title: 'Combobox' }
+export default { title: 'Combobox', component: Combobox }
 
 export function Initial() {
   const [inputItems, setInputItems] = React.useState(items)

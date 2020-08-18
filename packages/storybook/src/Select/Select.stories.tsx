@@ -18,7 +18,7 @@ import {
 const items = ['Layouts', 'Pre-built', 'All']
 const initialSelectedItem = 'All'
 
-export default { title: 'Select' }
+export default { title: 'Select', component: Select }
 
 export function Initial() {
   const {

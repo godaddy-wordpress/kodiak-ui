@@ -9,7 +9,7 @@ import {
   Flex,
 } from '@kodiak-ui/primitives'
 
-export default { title: 'Primitives/Nav' }
+export default { title: 'Primitives/Nav', component: Nav }
 
 export function Basic() {
   return (

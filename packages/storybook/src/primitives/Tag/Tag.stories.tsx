@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Tag, TagDismiss, SvgIcon } from '@kodiak-ui/primitives'
 
-export default { title: 'Primitives/Tag' }
+export default { title: 'Primitives/Tag', component: Tag }
 
 function Icon() {
   return (
