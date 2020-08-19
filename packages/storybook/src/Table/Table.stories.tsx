@@ -145,12 +145,13 @@ export function Initial() {
     [],
   )
 
-  const { register, headers, rows, getTableProps } = useTable<Row>({
+  const labelRef = React.useRef<HTMLHeadingElement>(null)
+
+  const { headers, rows, getTableProps } = useTable<Row>({
     columns,
     data,
+    describedby: labelRef,
   })
-
-  const labelRef = React.useRef<HTMLHeadingElement>(null)
 
   return (
     <>
@@ -158,10 +159,7 @@ export function Initial() {
         Table example
       </h1>
 
-      <Table
-        ref={node => register(node, { describedby: labelRef })}
-        {...getTableProps()}
-      >
+      <Table {...getTableProps()}>
         <TableHead>
           <TableRow>
             {headers.map(({ key, column, ...header }) => (
