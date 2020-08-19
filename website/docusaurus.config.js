@@ -1,4 +1,5 @@
 const remarkCodesandbox = require('remark-codesandbox')
+const path = require('path')
 
 module.exports = {
   title: 'Kodiak UI',
@@ -76,16 +77,33 @@ module.exports = {
           routeBasePath: '/',
           include: ['**/*.md', '**/*.mdx'],
           sidebarPath: require.resolve('./sidebars.js'),
+
           remarkPlugins: [
             [
               remarkCodesandbox,
               {
                 mode: 'iframe',
                 customTemplates: {
-                  'kodiak-ui': {
-                    // The code sandbox to base off of
+                  // !!! The template must be small, the files are passed in a GET request and compressed
+                  // but still can hit the limit quickly.  Including the full theme in the example_template
+                  // for example will cause the sandbox to fail
+                  kodiak: {
                     extends: 'cold-fire-ry31x',
                     entry: 'src/App.tsx',
+                  },
+                  'kodiak-file': {
+                    extends: `file:${path.resolve('./example_template/')}`,
+                    entry: 'src/App.tsx',
+                  },
+                  //
+                  // Alias `react` to `new`
+                  react: {
+                    extends: 'new',
+                  },
+                  // Alias `react-component` to `new`, but also override `entry` to `src/App.js`
+                  'react-component': {
+                    extends: 'new',
+                    entry: 'src/App.js',
                   },
                 },
               },
