@@ -33,6 +33,7 @@ export interface UseTableProps<Data> {
   data: Data[]
   id?: string
   describedby?: React.MutableRefObject<any> | string
+  tableLayout?: 'auto' | 'fixed'
 }
 
 export type TableElement = HTMLTableElement | null
@@ -49,25 +50,14 @@ export interface UseTableReturnValue<Data> {
   getTableProps: () => GetTableProps
 }
 
-function hasWidthProvided(columns?: ColumnProps[]) {
-  return !!(columns && columns.some(column => column.width))
-}
-
 export function useTable<Data>({
   columns,
   data,
   id: userId,
   describedby,
+  tableLayout = 'auto',
 }: UseTableProps<Data>): UseTableReturnValue<Data> {
-  const [hasFixedTableWidth, setHasFixedTableWidth] = React.useState(false)
   const id = useId(userId)
-
-  React.useEffect(
-    function checkHasWidthProvided() {
-      setHasFixedTableWidth(hasWidthProvided(columns))
-    },
-    [columns],
-  )
 
   /**
    * Generate the appropriate aria-describedby text
@@ -156,11 +146,10 @@ export function useTable<Data>({
       ...getDescribedByAriaText(),
       id: `kodiak-ui-table-${id}`,
       sx: {
-        tableLayout: hasFixedTableWidth ? 'fixed' : 'auto',
-        width: hasFixedTableWidth ? 'auto' : '100%',
+        tableLayout,
       },
     }
-  }, [hasFixedTableWidth])
+  }, [id, tableLayout])
 
   return {
     headers,

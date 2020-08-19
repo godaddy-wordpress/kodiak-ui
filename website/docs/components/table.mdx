@@ -70,7 +70,7 @@ const data = React.useMemo(
   [],
 )
 
-const { register, headers, rows, getTableProps } = useTable<Row>({
+const { headers, rows, getTableProps } = useTable<Row>({
   columns,
   data,
 })
@@ -83,10 +83,7 @@ return (
       Table example
     </h1>
 
-    <Table
-      ref={node => register(node, { describedby: labelRef })}
-      {...getTableProps()}
-    >
+    <Table {...getTableProps()}>
       <TableHead>
         <TableRow>
           {headers.map(({ key, column, ...header }) => (
