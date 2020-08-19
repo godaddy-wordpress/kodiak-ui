@@ -77,8 +77,7 @@ module.exports = {
           include: ['**/*.md', '**/*.mdx'],
           sidebarPath: require.resolve('./sidebars.js'),
           remarkPlugins: [[remarkCodesandbox, { mode: 'iframe' }]],
-          editUrl:
-            'https://github.com/kamilkisiela/graphql-config/edit/master/website/',
+          editUrl: 'https://github.com/skyverge/kodiak-ui/edit/master/website/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
