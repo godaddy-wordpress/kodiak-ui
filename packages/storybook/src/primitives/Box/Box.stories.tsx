@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Box } from '@kodiak-ui/primitives'
 
-export default { title: 'Primitives/Box' }
+export default { title: 'Primitives/Box', component: Box }
 
 export function initial() {
   return (

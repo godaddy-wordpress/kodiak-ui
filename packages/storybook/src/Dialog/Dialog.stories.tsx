@@ -10,7 +10,7 @@ import {
 } from '@kodiak-ui/dialog'
 import { Button, Text } from '@kodiak-ui/primitives'
 
-export default { title: 'Dialog' }
+export default { title: 'Dialog', component: Dialog }
 
 export function Initial() {
   const [isOpen, setIsOpen] = React.useState(false)

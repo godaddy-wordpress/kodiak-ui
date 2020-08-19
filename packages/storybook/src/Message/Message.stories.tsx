@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Message } from '@kodiak-ui/message'
 import { SvgIcon, Text } from '@kodiak-ui/primitives'
 
-export default { title: 'Message' }
+export default { title: 'Message', component: Message }
 
 export function Initial() {
   return <Message>Testing a message</Message>

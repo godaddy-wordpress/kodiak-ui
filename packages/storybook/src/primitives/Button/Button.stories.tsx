@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Button } from '@kodiak-ui/primitives'
 
-export default { title: 'Primitives/Button' }
+export default { title: 'Primitives/Button', component: Button }
 
 export function initial() {
   return <Button>Default button</Button>
