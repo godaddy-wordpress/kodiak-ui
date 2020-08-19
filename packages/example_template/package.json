@@ -1,0 +1,55 @@
+{
+  "name": "@kodiak-ui/example_template",
+  "version": "0.1.0",
+  "main": "src/index.tsx",
+  "private": true,
+  "dependencies": {
+    "@kodiak-ui/combobox": "^0.2.7",
+    "@kodiak-ui/core": "^0.1.14",
+    "@kodiak-ui/data-visualization": "^0.1.2",
+    "@kodiak-ui/dialog": "^0.3.7",
+    "@kodiak-ui/hooks": "^0.9.1",
+    "@kodiak-ui/menu": "^0.1.18",
+    "@kodiak-ui/message": "^0.2.15",
+    "@kodiak-ui/pagination": "^0.1.3",
+    "@kodiak-ui/primitives": "^0.16.5",
+    "@kodiak-ui/progress": "^0.1.7",
+    "@kodiak-ui/select": "^0.2.7",
+    "@kodiak-ui/table": "^0.2.20",
+    "@kodiak-ui/tabs": "^0.1.5",
+    "@types/theme-ui": "^0.3.1",
+    "theme-ui": "^0.3.1",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "@types/jest": "^24.0.0",
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.3",
+    "typescript": "~3.7.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
