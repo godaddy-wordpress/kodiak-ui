@@ -27,7 +27,7 @@ const data = [
 ]
 
 function Table() {
-  const { register, headers, rows } = useTable({
+  const { headers, rows } = useTable({
     columns,
     data,
   })
@@ -37,10 +37,7 @@ function Table() {
       <h1 id="LabelId" data-testid="describedByLabel">
         Table example
       </h1>
-      <table
-        ref={node => register(node, { describedby: 'LabelId' })}
-        data-testid="table"
-      >
+      <table data-testid="table">
         <thead>
           <tr>
             {headers.map(({ key, ...header }) => (
@@ -67,7 +64,7 @@ function Table() {
 
 function TableWithLabelRef() {
   const labelRef = React.useRef<HTMLHeadingElement>(null)
-  const { register, headers, rows } = useTable({
+  const { headers, rows } = useTable({
     columns,
     data,
   })
@@ -77,10 +74,7 @@ function TableWithLabelRef() {
       <h1 ref={labelRef} id="LabelId">
         Table example
       </h1>
-      <table
-        ref={node => register(node, { describedby: labelRef })}
-        data-testid="table"
-      >
+      <table data-testid="table">
         <thead>
           <tr>
             {headers.map(({ key, ...header }) => (
@@ -196,8 +190,6 @@ describe('useTable', () => {
         "rowIndex": 0,
       }
     `)
-
-    expect(result.current.register).toBeDefined()
   })
 
   it('should add the appropriate HTML attributes to the table element with string ID passed to describedby', () => {
