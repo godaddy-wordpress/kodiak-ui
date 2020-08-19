@@ -27,9 +27,10 @@ const data = [
 ]
 
 function Table() {
-  const { headers, rows } = useTable({
+  const { headers, rows, getTableProps } = useTable({
     columns,
     data,
+    describedby: 'LabelId',
   })
 
   return (
@@ -37,7 +38,7 @@ function Table() {
       <h1 id="LabelId" data-testid="describedByLabel">
         Table example
       </h1>
-      <table data-testid="table">
+      <table data-testid="table" {...getTableProps()}>
         <thead>
           <tr>
             {headers.map(({ key, ...header }) => (
@@ -64,9 +65,10 @@ function Table() {
 
 function TableWithLabelRef() {
   const labelRef = React.useRef<HTMLHeadingElement>(null)
-  const { headers, rows } = useTable({
+  const { headers, rows, getTableProps } = useTable({
     columns,
     data,
+    describedby: labelRef,
   })
 
   return (
@@ -74,7 +76,7 @@ function TableWithLabelRef() {
       <h1 ref={labelRef} id="LabelId">
         Table example
       </h1>
-      <table data-testid="table">
+      <table data-testid="table" {...getTableProps()}>
         <thead>
           <tr>
             {headers.map(({ key, ...header }) => (

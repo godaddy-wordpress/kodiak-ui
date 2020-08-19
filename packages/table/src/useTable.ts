@@ -89,11 +89,14 @@ export function useTable<Data>({
         }
       }
 
-      if (describedby.current && describedby.current.id) {
+      if (describedby?.current?.id) {
         return {
           'aria-describedby': describedby.current.id,
         }
-      } else if (process.env.NODE_ENV !== 'production') {
+      } else if (
+        process.env.NODE_ENV !== 'production' &&
+        !describedby?.current?.id
+      ) {
         console.warn(
           `When passing a ref, the ref element must have an ID: @${describedby.current}`,
         )
