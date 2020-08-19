@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Box, Button } from '@kodiak-ui/primitives'
+import { Box } from '@kodiak-ui/primitives'
 import {
   useTable,
   Table,
@@ -79,8 +79,7 @@ function Actions({
   )
 }
 
-export function Initial() {
-  const [hasFixedLayout, setHasFixedLayout] = React.useState(true)
+export function AutoLayout() {
   const columns = React.useMemo(
     () => [
       {
@@ -102,10 +101,10 @@ export function Initial() {
       {
         Cell: 'Actions',
         accessor: 'actions',
-        width: hasFixedLayout ? '72px' : undefined,
+        width: '100px',
       },
     ],
-    [hasFixedLayout],
+    [],
   )
 
   const data = React.useMemo(
@@ -145,20 +144,13 @@ export function Initial() {
     [],
   )
 
-  const labelRef = React.useRef<HTMLHeadingElement>(null)
-
   const { headers, rows, getTableProps } = useTable<Row>({
     columns,
     data,
-    describedby: labelRef,
   })
 
   return (
     <>
-      <h1 ref={labelRef} id="Testing">
-        Table example
-      </h1>
-
       <Table {...getTableProps()}>
         <TableHead>
           <TableRow>
@@ -197,13 +189,121 @@ export function Initial() {
           ))}
         </TableBody>
       </Table>
-      <Button
-        sx={{ mt: 4 }}
-        variant="secondary"
-        onClick={() => setHasFixedLayout(!hasFixedLayout)}
-      >
-        Toggle fixed layout
-      </Button>
+    </>
+  )
+}
+
+export function FixedLayout() {
+  const columns = React.useMemo(
+    () => [
+      {
+        Cell: 'Character',
+        accessor: 'character', // accessor is the "key" in the data
+      },
+      {
+        Cell: 'Portrayed by',
+        accessor: 'portrayedBy',
+      },
+      {
+        Cell: 'Job title',
+        accessor: 'jobTitle',
+      },
+      {
+        Cell: 'Complex',
+        accessor: 'complexSample',
+      },
+      {
+        Cell: 'Actions',
+        accessor: 'actions',
+        width: '100px',
+      },
+    ],
+    [],
+  )
+
+  const data = React.useMemo(
+    () =>
+      [
+        {
+          character: 'Michael Scott',
+          portrayedBy: 'Steve Carrel',
+          jobTitle: 'Regional manager',
+        },
+        {
+          character: 'Dwight Schrutte',
+          portrayedBy: 'Rainn Wilson',
+          jobTitle: 'Assistant to the Regional Manager',
+        },
+        {
+          character: 'Pam Beasley',
+          portrayedBy: 'Jenna Fischer',
+          jobTitle: 'Receptionist',
+        },
+        {
+          character: 'Angela Martin',
+          portrayedBy: 'Angela Kinsey',
+          jobTitle: 'Accountant',
+        },
+      ].map(dataRow => ({
+        ...dataRow,
+        actions: <Actions onActionSelect={() => null}></Actions>,
+        complexSample: (props: { rowData: Row }) => {
+          return (
+            <Box>
+              {props.rowData.character} - {props.rowData.portrayedBy}
+            </Box>
+          )
+        },
+      })),
+    [],
+  )
+
+  const { headers, rows, getTableProps } = useTable<Row>({
+    columns,
+    data,
+    tableLayout: 'fixed',
+  })
+
+  return (
+    <>
+      <Table {...getTableProps()}>
+        <TableHead>
+          <TableRow>
+            {headers.map(({ key, column, ...header }) => (
+              <TableHeader
+                key={key}
+                {...header}
+                sx={{ width: column?.width }}
+              />
+            ))}
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {rows.map(({ key, cells, rowData }) => (
+            <TableRow
+              key={key}
+              sx={{
+                bg: rowData.jobTitle === 'Receptionist' ? 'green.1' : 'white',
+              }}
+            >
+              {
+                //eslint-disable-next-line @typescript-eslint/no-unused-vars
+                cells.map(({ key, rowData, ...cell }) => {
+                  return (
+                    <TableData
+                      key={key}
+                      {...cell}
+                      sx={{
+                        width: cell.column?.width,
+                      }}
+                    />
+                  )
+                })
+              }
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
     </>
   )
 }
