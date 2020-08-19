@@ -387,13 +387,15 @@ export function SelectableRows() {
     [],
   )
 
-  const { headers, rows, getTableProps } = useTable<Data>({
+  const { headers, rows, flatSelectedRows, getTableProps } = useTable<Data>({
     columns,
     data,
     tableLayout: 'fixed',
     selectable: true,
     initialSelectedIds: [2],
   })
+
+  console.log(flatSelectedRows)
 
   return (
     <Table {...getTableProps()}>

@@ -16,7 +16,7 @@ export type Column = {
   Cell: string | React.ReactNode
   accessor?: string
   scope?: Scope
-  width?: React.CSSProperties['width']
+  width?: string
 }
 
 export type Cell = {
@@ -58,6 +58,7 @@ export interface UseTableReturnValue {
   headers: Header[]
   rows: Row[]
   selectedRows: SelectedRowsState
+  flatSelectedRows: ID[]
   allSelected: boolean
   someSelected: boolean
   selectedCount: number
@@ -76,6 +77,7 @@ export function useTable<T extends Data>({
   const id = useId(userId)
   const {
     selectedRows,
+    flatSelectedRows,
     allSelected,
     someSelected,
     selectedCount,
@@ -199,6 +201,7 @@ export function useTable<T extends Data>({
     headers,
     rows,
     selectedRows,
+    flatSelectedRows,
     allSelected,
     someSelected,
     selectedCount,

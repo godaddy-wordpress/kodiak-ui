@@ -24,6 +24,7 @@ export function createRowState<T extends Data>({
 
 interface UseRowSelectReturn {
   selectedRows: SelectedRowsState
+  flatSelectedRows: ID[]
   allSelected: boolean
   someSelected: boolean
   selectedCount: number
@@ -62,6 +63,14 @@ export function useRowSelect({
   const selectedCount = React.useMemo(
     () =>
       selectedRows ? Object.values(selectedRows)?.filter(Boolean).length : 0,
+    [selectedRows],
+  )
+
+  const flatSelectedRows = React.useMemo(
+    () =>
+      Object.keys(selectedRows)
+        ?.map(key => (selectedRows[key] ? key : null))
+        ?.filter(x => x),
     [selectedRows],
   )
 
@@ -112,6 +121,7 @@ export function useRowSelect({
 
   return {
     selectedRows,
+    flatSelectedRows,
     allSelected,
     someSelected,
     selectedCount,
