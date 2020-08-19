@@ -2236,6 +2236,54 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
+"@kodiak-ui/combobox@latest":
+  version "0.2.7"
+  resolved "https://registry.yarnpkg.com/@kodiak-ui/combobox/-/combobox-0.2.7.tgz#d34ebc842a29ae4f7962cbeaac3d33a76bc78e1a"
+  integrity sha512-wUmMNTZEw3OuyN8TvyNwl5tkGhE02sAmYy2h4IpfriVKZpcLmy1tFdRdSwWamDasUzPnfpz2OBdQ+5EcZPB9sw==
+  dependencies:
+    "@kodiak-ui/core" "^0.1.14"
+    "@kodiak-ui/primitives" "^0.16.5"
+    downshift "^5.4.5"
+
+"@kodiak-ui/core@latest":
+  version "0.1.14"
+  resolved "https://registry.yarnpkg.com/@kodiak-ui/core/-/core-0.1.14.tgz#102094549376d5c6e463d2996b318d771d5799be"
+  integrity sha512-YbTOzTIiLAfRVVuqzjGFtgJrFqeZe0IrssZxBAVE8gc6EA4SpqYoKWSsUuk32JikKANG8iSQBqIbt8jbY1QubQ==
+  dependencies:
+    "@emotion/serialize" "^0.11.16"
+    "@emotion/styled" "^10.0.27"
+    "@styled-system/should-forward-prop" "^5.1.4"
+    styled-system "^5.1.4"
+    theme-ui "^0.3.1"
+
+"@kodiak-ui/data-visualization@latest":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@kodiak-ui/data-visualization/-/data-visualization-0.1.2.tgz#204adf03bafaa2293406495f3463e1a5aa104243"
+  integrity sha512-lx4wn20NEMpEgAQhLJUgreCj4JXKIaIVeWAOToz8B7BO+kul8yMKM60zjDPp1LwaILtiE61T86vV7eqRgrn21A==
+  dependencies:
+    "@kodiak-ui/core" "^0.1.14"
+    "@kodiak-ui/hooks" "^0.9.1"
+    "@kodiak-ui/primitives" "^0.12.2"
+    "@kodiak-ui/progress" "^0.1.7"
+
+"@kodiak-ui/dialog@latest":
+  version "0.3.7"
+  resolved "https://registry.yarnpkg.com/@kodiak-ui/dialog/-/dialog-0.3.7.tgz#660a6826317f3102c8267f4db2b93b06876be3cc"
+  integrity sha512-DOuh098ek2k+Gf5qEznYOd3TJ1pnRSKtMp1UqE1XpaiV3E5Wvjl0qn82cuJzdSgxHTdeu2nfHXVmBd/6jlYFFg==
+  dependencies:
+    "@emotion/core" "^10.0.28"
+    "@emotion/serialize" "^0.11.16"
+    "@emotion/styled" "^10.0.27"
+    "@kodiak-ui/core" "^0.1.14"
+    "@kodiak-ui/primitives" "^0.16.5"
+    "@reach/dialog" "^0.8.2"
+    theme-ui "^0.3.1"
+
+"@kodiak-ui/hooks@latest":
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/@kodiak-ui/hooks/-/hooks-0.9.1.tgz#c1eff91837b6c4ad2a5c224cfc472433fa8f317a"
+  integrity sha512-RcygL/G9Ak4awfHBYFnKn7FCrtE3hR4nxdi5Jxjz9wgSYG+Evo/PsqolDtx+pXp5hmsotmixuqzg6mW6KH84bg==
+
 "@kodiak-ui/primitives@^0.12.2":
   version "0.12.2"
   resolved "https://registry.yarnpkg.com/@kodiak-ui/primitives/-/primitives-0.12.2.tgz#b0def2e22f31b008b88276ca6fbb88633e7f7cbd"

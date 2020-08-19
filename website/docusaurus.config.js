@@ -1,3 +1,5 @@
+const remarkCodesandbox = require('remark-codesandbox')
+
 module.exports = {
   title: 'Kodiak UI',
   tagline: 'A performant and accessible hook and component library for React',
@@ -74,6 +76,7 @@ module.exports = {
           routeBasePath: '/',
           include: ['**/*.md', '**/*.mdx'],
           sidebarPath: require.resolve('./sidebars.js'),
+          remarkPlugins: [[remarkCodesandbox, { mode: 'iframe' }]],
           editUrl:
             'https://github.com/kamilkisiela/graphql-config/edit/master/website/',
         },
