@@ -7,7 +7,7 @@ module.exports = {
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
       propFilter: prop => {
-        if (/node_modules/.test(prop?.parent?.fileName)) {
+        if (/node_modules/.test(prop && prop.parent && prop.parent.fileName)) {
           return false
         }
         return true
