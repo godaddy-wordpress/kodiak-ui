@@ -1,3 +1,4 @@
+import * as React from 'react'
 import {
   variant as getVariantStyles,
   VariantProps,
@@ -29,7 +30,7 @@ function variant({
   return getVariantStyles({ variant: variantProp, theme, variantKey })
 }
 
-export const TableRow = styled('tr')<TableRowProps>(
+export const TableRowStyle = styled('tr')<TableRowProps>(
   {
     boxSizing: 'border-box',
     margin: 0,
@@ -40,3 +41,7 @@ export const TableRow = styled('tr')<TableRowProps>(
   variant,
   sx,
 )
+
+export const TableRow = React.memo(function TableRow(props) {
+  return <TableRowStyle {...props} />
+})

@@ -1,3 +1,4 @@
+import * as React from 'react'
 import {
   variant as getVariantStyles,
   VariantProps,
@@ -33,7 +34,7 @@ function variant({
   return getVariantStyles({ variant: variantProp, theme, variantKey })
 }
 
-export const TableData = styled('td')<TableDataProps>(
+export const TableDataStyle = styled('td')<TableDataProps>(
   {
     boxSizing: 'border-box',
     margin: 0,
@@ -44,3 +45,7 @@ export const TableData = styled('td')<TableDataProps>(
   variant,
   sx,
 )
+
+export const TableData = React.memo(function TableData(props) {
+  return <TableDataStyle {...props} />
+})
