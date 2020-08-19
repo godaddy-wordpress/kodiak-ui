@@ -76,7 +76,21 @@ module.exports = {
           routeBasePath: '/',
           include: ['**/*.md', '**/*.mdx'],
           sidebarPath: require.resolve('./sidebars.js'),
-          remarkPlugins: [[remarkCodesandbox, { mode: 'iframe' }]],
+          remarkPlugins: [
+            [
+              remarkCodesandbox,
+              {
+                mode: 'iframe',
+                customTemplates: {
+                  'kodiak-ui': {
+                    // The code sandbox to base off of
+                    extends: 'cold-fire-ry31x',
+                    entry: 'src/App.tsx',
+                  },
+                },
+              },
+            ],
+          ],
           editUrl: 'https://github.com/skyverge/kodiak-ui/edit/master/website/',
         },
         theme: {
