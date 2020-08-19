@@ -150,13 +150,18 @@ function CheckboxWrapper({
   children,
   ...props
 }: {
-  label?: string
+  label?: string | React.ReactNode
   children: React.ReactNode
 }) {
   return label ? (
     <Label
       {...props}
-      sx={{ alignItems: 'center', display: 'flex', position: 'relative' }}
+      sx={{
+        alignItems: 'center',
+        display: 'flex',
+        position: 'relative',
+        mb: 0,
+      }}
     >
       {children} {label}
     </Label>

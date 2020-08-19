@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Box } from '@kodiak-ui/primitives'
+import { Box, VisuallyHidden } from '@kodiak-ui/primitives'
 import {
   useTable,
   Table,
@@ -23,11 +23,13 @@ import FileCopyIcon from '@material-ui/icons/FileCopy'
 
 export default { title: 'Table' }
 
-type Row = {
+type Data = {
+  id: number
   character: string
   portrayedBy: string
   jobTitle: string
 }
+
 function Actions({
   onActionSelect,
 }: {
@@ -99,7 +101,7 @@ export function AutoLayout() {
         accessor: 'complexSample',
       },
       {
-        Cell: 'Actions',
+        Cell: <VisuallyHidden>Actions</VisuallyHidden>,
         accessor: 'actions',
         width: '100px',
       },
@@ -111,21 +113,25 @@ export function AutoLayout() {
     () =>
       [
         {
+          id: 1,
           character: 'Michael Scott',
           portrayedBy: 'Steve Carrel',
           jobTitle: 'Regional manager',
         },
         {
+          id: 2,
           character: 'Dwight Schrutte',
           portrayedBy: 'Rainn Wilson',
           jobTitle: 'Assistant to the Regional Manager',
         },
         {
+          id: 3,
           character: 'Pam Beasley',
           portrayedBy: 'Jenna Fischer',
           jobTitle: 'Receptionist',
         },
         {
+          id: 4,
           character: 'Angela Martin',
           portrayedBy: 'Angela Kinsey',
           jobTitle: 'Accountant',
@@ -133,7 +139,7 @@ export function AutoLayout() {
       ].map(dataRow => ({
         ...dataRow,
         actions: <Actions onActionSelect={() => null}></Actions>,
-        complexSample: (props: { rowData: Row }) => {
+        complexSample: (props: { rowData: Data }) => {
           return (
             <Box>
               {props.rowData.character} - {props.rowData.portrayedBy}
@@ -144,7 +150,7 @@ export function AutoLayout() {
     [],
   )
 
-  const { headers, rows, getTableProps } = useTable<Row>({
+  const { headers, rows, getTableProps } = useTable<Data>({
     columns,
     data,
   })
@@ -213,7 +219,7 @@ export function FixedLayout() {
         accessor: 'complexSample',
       },
       {
-        Cell: 'Actions',
+        Cell: <VisuallyHidden>Actions</VisuallyHidden>,
         accessor: 'actions',
         width: '100px',
       },
@@ -225,21 +231,25 @@ export function FixedLayout() {
     () =>
       [
         {
+          id: 1,
           character: 'Michael Scott',
           portrayedBy: 'Steve Carrel',
           jobTitle: 'Regional manager',
         },
         {
+          id: 2,
           character: 'Dwight Schrutte',
           portrayedBy: 'Rainn Wilson',
           jobTitle: 'Assistant to the Regional Manager',
         },
         {
+          id: 3,
           character: 'Pam Beasley',
           portrayedBy: 'Jenna Fischer',
           jobTitle: 'Receptionist',
         },
         {
+          id: 4,
           character: 'Angela Martin',
           portrayedBy: 'Angela Kinsey',
           jobTitle: 'Accountant',
@@ -247,7 +257,7 @@ export function FixedLayout() {
       ].map(dataRow => ({
         ...dataRow,
         actions: <Actions onActionSelect={() => null}></Actions>,
-        complexSample: (props: { rowData: Row }) => {
+        complexSample: (props: { rowData: Data }) => {
           return (
             <Box>
               {props.rowData.character} - {props.rowData.portrayedBy}
@@ -258,7 +268,7 @@ export function FixedLayout() {
     [],
   )
 
-  const { headers, rows, getTableProps } = useTable<Row>({
+  const { headers, rows, getTableProps } = useTable<Data>({
     columns,
     data,
     tableLayout: 'fixed',
@@ -305,5 +315,107 @@ export function FixedLayout() {
         </TableBody>
       </Table>
     </>
+  )
+}
+
+export function SelectableRows() {
+  const columns = React.useMemo(
+    () => [
+      {
+        Cell: 'Character',
+        accessor: 'character', // accessor is the "key" in the data
+      },
+      {
+        Cell: 'Portrayed by',
+        accessor: 'portrayedBy',
+      },
+      {
+        Cell: 'Job title',
+        accessor: 'jobTitle',
+      },
+      {
+        Cell: 'Complex',
+        accessor: 'complexSample',
+      },
+      {
+        Cell: <VisuallyHidden>Actions</VisuallyHidden>,
+        accessor: 'actions',
+        width: '80px',
+      },
+    ],
+    [],
+  )
+
+  const data = React.useMemo(
+    () =>
+      [
+        {
+          id: 1,
+          character: 'Michael Scott',
+          portrayedBy: 'Steve Carrel',
+          jobTitle: 'Regional manager',
+        },
+        {
+          id: 2,
+          character: 'Dwight Schrutte',
+          portrayedBy: 'Rainn Wilson',
+          jobTitle: 'Assistant to the Regional Manager',
+        },
+        {
+          id: 3,
+          character: 'Pam Beasley',
+          portrayedBy: 'Jenna Fischer',
+          jobTitle: 'Receptionist',
+        },
+        {
+          id: 4,
+          character: 'Angela Martin',
+          portrayedBy: 'Angela Kinsey',
+          jobTitle: 'Accountant',
+        },
+      ].map(dataRow => ({
+        ...dataRow,
+        actions: <Actions onActionSelect={() => null}></Actions>,
+        complexSample: (props: { rowData: Data }) => {
+          return (
+            <Box>
+              {props.rowData.character} - {props.rowData.portrayedBy}
+            </Box>
+          )
+        },
+      })),
+    [],
+  )
+
+  const { headers, rows, getTableProps } = useTable<Data>({
+    columns,
+    data,
+    tableLayout: 'fixed',
+    selectable: true,
+    initialSelectedIds: [2],
+  })
+
+  return (
+    <Table {...getTableProps()}>
+      <TableHead>
+        <TableRow>
+          {headers?.map(({ key, column, ...header }) => (
+            <TableHeader key={key} {...header} />
+          ))}
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {rows.map(({ key, cells, rowData }) => (
+          <TableRow key={key}>
+            {
+              //eslint-disable-next-line @typescript-eslint/no-unused-vars
+              cells.map(({ key, rowData, ...cell }) => {
+                return <TableData key={key} {...cell} />
+              })
+            }
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
   )
 }

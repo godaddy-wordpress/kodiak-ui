@@ -1,49 +1,52 @@
 import * as React from 'react'
 import { SxStyleProp } from 'theme-ui'
 import { useId } from '@kodiak-ui/hooks'
-import { Checkbox } from '@kodiak-ui/primitives'
 import { hasKey } from './utils'
-import {
-  useRowSelect,
-  createInitialState,
-  SelectedRowsState,
-} from './useRowSelect'
+import { useRowSelect, createRowState, SelectedRowsState } from './useRowSelect'
 
-export interface ColumnProps {
+export type ID = string | number
+export type Scope = 'col' | 'row'
+export type TableLayout = 'auto' | 'fixed'
+
+export type Data = {
+  id: ID
+}
+
+export type Column = {
   Cell: string | React.ReactNode
   accessor?: string
-  scope?: 'col' | 'row'
+  scope?: Scope
   width?: React.CSSProperties['width']
 }
 
-export interface CellProps<Data> {
+export type Cell = {
+  column?: Column
   key: string
-  children: string | React.ReactNode
-  rowData?: Data
-  column?: ColumnProps
+  children: React.ReactNode
+  rowData?: any
+  width?: string
 }
 
-export interface RowProps<Data> {
+export type Header = { scope?: Scope } & Cell
+
+export type Row = {
   key: string
-  id: string
-  cells: CellProps<Data>[]
-  rowData: Data
+  id: ID
+  cells: Cell[]
+  rowData: any
 }
 
-export interface HeaderProps<Data> extends CellProps<Data> {
-  scope: string
-}
-
-export interface UseTableProps<Data> {
-  columns: ColumnProps[]
-  data: Data[]
-  id?: string
-  describedby?: React.MutableRefObject<any> | string
-  tableLayout?: 'auto' | 'fixed'
+export interface UseTableProps<T> {
+  columns: Column[]
+  data: T[]
+  tableLayout?: TableLayout
   selectable?: boolean
+  initialSelectedIds?: ID[]
+  attributes?: {
+    id?: string
+    describedby?: React.MutableRefObject<any> | string
+  }
 }
-
-export type TableElement = HTMLTableElement | null
 
 export type GetTableProps = {
   id: string
@@ -51,28 +54,47 @@ export type GetTableProps = {
   'aria-describedby'?: string
 }
 
-export interface UseTableReturnValue<Data> {
-  headers: HeaderProps<Data>[]
-  rows: RowProps<Data>[]
+export interface UseTableReturnValue {
+  headers: Header[]
+  rows: Row[]
   selectedRows: SelectedRowsState
+  allSelected: boolean
+  someSelected: boolean
+  selectedCount: number
   getTableProps: () => GetTableProps
 }
 
-export function useTable<Data>({
+export function useTable<T extends Data>({
   columns,
   data,
-  id: userId,
-  describedby,
   tableLayout = 'auto',
   selectable = false,
-}: UseTableProps<Data>): UseTableReturnValue<Data> {
+  initialSelectedIds,
+  attributes = {},
+}: UseTableProps<T>): UseTableReturnValue {
+  const { id: userId, describedby } = attributes
   const id = useId(userId)
   const {
     selectedRows,
     allSelected,
     someSelected,
+    selectedCount,
     setSelectedRows,
-  } = useRowSelect(createInitialState(data, false))
+    getSelectAllCheckbox,
+    getRowCheckbox,
+  } = useRowSelect({
+    selectable,
+    initialState: createRowState<T>({ data, state: false, initialSelectedIds }),
+    onSelect: (event, id) =>
+      setSelectedRows({
+        ...selectedRows,
+        [id]: event.target.checked,
+      }),
+    onSelectAll: event =>
+      setSelectedRows(
+        createRowState<T>({ data, state: event.target.checked }),
+      ),
+  })
 
   /**
    * Generate the appropriate aria-describedby text
@@ -110,53 +132,24 @@ export function useTable<Data>({
     [describedby],
   )
 
-  function getSelectAllCheckbox() {
-    if (selectable) {
-      return {
-        children: (
-          <Checkbox checked={allSelected} indeterminate={someSelected} />
-        ),
-        width: '48px',
-      }
-    }
-  }
-
-  function getRowCheckbox(id: string | number) {
-    if (selectable) {
-      return {
-        children: (
-          <Checkbox
-            checked={selectedRows?.[id]}
-            onChange={e => {
-              setSelectedRows({
-                ...selectedRows,
-                [id]: e.target.checked,
-              })
-            }}
-          />
-        ),
-        width: '48px',
-      }
-    }
-  }
-
   /**
    * Return a memoized array of headers
    *
    * New array will be created only when the columns param is changed and the appropriate props are added to render
    * the header inside of the th element
    */
-  const headers: HeaderProps<Data>[] = React.useMemo(
+  const headers = React.useMemo(
     () => [
-      getSelectAllCheckbox(),
+      ...getSelectAllCheckbox(),
       ...columns.map((column, index) => ({
         column,
         key: `${index}`,
         scope: column.scope || 'col',
         children: column.Cell,
+        width: column.width,
       })),
     ],
-    [selectable, columns, selectedRows],
+    [columns, getSelectAllCheckbox],
   )
 
   /**
@@ -165,15 +158,16 @@ export function useTable<Data>({
    * New array will be created only when `data` is changed.
    */
 
-  const rows: RowProps<Data>[] = React.useMemo(
+  const rows = React.useMemo(
     () =>
-      data.map((point: Data, index) => ({
+      data.map((point: any, index) => ({
+        id: point?.id,
         key: `${index}`,
         rowData: point,
         rowIndex: index,
         cells: [
-          getRowCheckbox(point?.id),
-          ...columns.map((column: ColumnProps, index) => {
+          ...getRowCheckbox(point?.id),
+          ...columns.map((column: Column, index) => {
             return {
               key: `${index}`,
               column,
@@ -188,7 +182,7 @@ export function useTable<Data>({
           }),
         ],
       })),
-    [data, columns, selectedRows],
+    [data, columns, getRowCheckbox],
   )
 
   const getTableProps = React.useCallback((): GetTableProps => {
@@ -199,12 +193,15 @@ export function useTable<Data>({
         tableLayout,
       },
     }
-  }, [id, tableLayout])
+  }, [id, tableLayout, getDescribedByAriaText])
 
   return {
     headers,
     rows,
     selectedRows,
+    allSelected,
+    someSelected,
+    selectedCount,
     getTableProps,
   }
 }
