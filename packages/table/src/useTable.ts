@@ -28,9 +28,10 @@ export interface HeaderProps<Data> extends CellProps<Data> {
   scope: string
 }
 
-export interface UseTableOptions<Data> {
+export interface UseTableProps<Data> {
   columns: ColumnProps[]
   data: Data[]
+  id?: string
   describedby?: React.MutableRefObject<any> | string
 }
 
@@ -55,8 +56,9 @@ function hasWidthProvided(columns?: ColumnProps[]) {
 export function useTable<Data>({
   columns,
   data,
+  id,
   describedby,
-}: UseTableOptions<Data>): UseTableReturnValue<Data> {
+}: UseTableProps<Data>): UseTableReturnValue<Data> {
   const [hasFixedTableWidth, setHasFixedTableWidth] = React.useState(false)
   const id = useId()
 
@@ -97,7 +99,7 @@ export function useTable<Data>({
         )
       }
     },
-    [],
+    [describedby],
   )
 
   /**
@@ -149,7 +151,7 @@ export function useTable<Data>({
   const getTableProps = React.useCallback((): GetTableProps => {
     return {
       ...getDescribedByAriaText(),
-      id: `kodiak-ui-table-${id}`,
+      id: id || `kodiak-ui-table-${id}`,
       sx: {
         tableLayout: hasFixedTableWidth ? 'fixed' : 'auto',
         width: hasFixedTableWidth ? 'auto' : '100%',
