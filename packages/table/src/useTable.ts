@@ -56,11 +56,11 @@ function hasWidthProvided(columns?: ColumnProps[]) {
 export function useTable<Data>({
   columns,
   data,
-  id,
+  id: userId,
   describedby,
 }: UseTableProps<Data>): UseTableReturnValue<Data> {
   const [hasFixedTableWidth, setHasFixedTableWidth] = React.useState(false)
-  const id = useId()
+  const id = useId(userId)
 
   React.useEffect(
     function checkHasWidthProvided() {
@@ -151,7 +151,7 @@ export function useTable<Data>({
   const getTableProps = React.useCallback((): GetTableProps => {
     return {
       ...getDescribedByAriaText(),
-      id: id || `kodiak-ui-table-${id}`,
+      id: `kodiak-ui-table-${id}`,
       sx: {
         tableLayout: hasFixedTableWidth ? 'fixed' : 'auto',
         width: hasFixedTableWidth ? 'auto' : '100%',
