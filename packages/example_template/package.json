@@ -1,7 +1,7 @@
 {
   "name": "@kodiak-ui/example_template",
   "version": "0.1.0",
-  "main": "src/index.tsx",
+  "main": "src/App.tsx",
   "private": true,
   "dependencies": {
     "@kodiak-ui/combobox": "latest",
