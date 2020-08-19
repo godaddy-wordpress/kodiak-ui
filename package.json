@@ -95,7 +95,9 @@
   },
   "preconstruct": {
     "packages": [
-      "packages/*"
+      "packages/*",
+      "!packages/example_template",
+      "!packages/storybook"
     ]
   }
 }
