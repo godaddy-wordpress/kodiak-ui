@@ -18,7 +18,7 @@
     "react-dom": "^16.12.0",
     "resize-observer-polyfill": "^1.5.1"
   },
-  "gitHead": "35b7b93d2cd6cfef459ac533babfd0cd9e6d936b",
+  "gitHead": "fe05dc108a105dcf18b4a7210d9f3d0ff5197bd3",
   "devDependencies": {
     "resize-observer-polyfill": "^1.5.1"
   }

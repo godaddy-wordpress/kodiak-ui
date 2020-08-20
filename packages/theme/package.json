@@ -5,5 +5,9 @@
   "main": "dist/theme.cjs.js",
   "module": "dist/theme.esm.js",
   "author": "Alex Chan <alex@skyverge.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "gitHead": "fe05dc108a105dcf18b4a7210d9f3d0ff5197bd3",
+  "publishConfig": {
+    "access": "public"
+  }
 }
