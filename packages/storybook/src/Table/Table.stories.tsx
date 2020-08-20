@@ -153,7 +153,6 @@ export function AutoLayout() {
   const { headers, rows, getTableProps } = useTable<Data>({
     columns,
     data,
-    describedby: labelRef,
   })
 
   return (
