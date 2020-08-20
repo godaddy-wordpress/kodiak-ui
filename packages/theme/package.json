@@ -1,0 +1,9 @@
+{
+  "name": "@kodiak-ui/theme",
+  "description": "Default theme for kodiak-ui",
+  "version": "1.0.0",
+  "main": "dist/theme.cjs.js",
+  "module": "dist/theme.esm.js",
+  "author": "Alex Chan <alex@skyverge.com>",
+  "license": "MIT"
+}
