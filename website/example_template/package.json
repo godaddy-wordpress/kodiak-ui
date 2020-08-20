@@ -2,7 +2,11 @@
   "name": "react-typescript",
   "version": "1.0.0",
   "description": "React and TypeScript example starter project",
-  "keywords": ["typescript", "react", "starter"],
+  "keywords": [
+    "typescript",
+    "react",
+    "starter"
+  ],
   "main": "src/index.tsx",
   "dependencies": {
     "react": "^16.12.0",
@@ -21,6 +25,7 @@
     "@kodiak-ui/select": "latest",
     "@kodiak-ui/table": "latest",
     "@kodiak-ui/tabs": "latest",
+    "@kodiak-ui/theme": "latest",
     "@types/theme-ui": "^0.3.1",
     "theme-ui": "^0.3.1"
   },
@@ -35,5 +40,10 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "browserslist": [">0.2%", "not dead", "not ie <= 11", "not op_mini all"]
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

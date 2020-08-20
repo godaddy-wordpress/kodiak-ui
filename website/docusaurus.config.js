@@ -77,7 +77,6 @@ module.exports = {
           routeBasePath: '/',
           include: ['**/*.md', '**/*.mdx'],
           sidebarPath: require.resolve('./sidebars.js'),
-
           remarkPlugins: [
             [
               remarkCodesandbox,
@@ -88,10 +87,8 @@ module.exports = {
                   // but still can hit the limit quickly.  Including the full theme in the example_template
                   // for example will cause the sandbox to fail
                   kodiak: {
-                    extends: 'cold-fire-ry31x',
-                    entry: 'src/App.tsx',
-                  },
-                  'kodiak-file': {
+                    // this can also reference a code sandbox template
+                    // extends: 'cold-fire-ry31x'
                     extends: `file:${path.resolve('./example_template/')}`,
                     entry: 'src/App.tsx',
                   },
