@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/accordion",
-  "version": "0.2.14",
+  "version": "0.2.16",
   "description": "Accordion for expanded and collapsed areas",
   "keywords": [
     "accordion",
@@ -12,15 +12,13 @@
   "source": "src/index.ts",
   "main": "dist/accordion.cjs.js",
   "module": "dist/accordion.esm.js",
-
   "files": [
     "dist"
   ],
   "publishConfig": {
     "access": "public"
   },
-  "scripts": {
-  },
+  "scripts": {},
   "devDependencies": {
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
@@ -30,13 +28,13 @@
     "react-dom": "^16.13.0"
   },
   "dependencies": {
-    "@kodiak-ui/core": "^0.1.14",
-    "@kodiak-ui/primitives": "^0.16.5",
+    "@kodiak-ui/core": "^0.1.16",
+    "@kodiak-ui/primitives": "^0.16.7",
     "@kodiak-ui/utils": "^0.0.4"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/skyverge/kodiak-ui.git"
   },
-  "gitHead": "35b7b93d2cd6cfef459ac533babfd0cd9e6d936b"
+  "gitHead": "fe05dc108a105dcf18b4a7210d9f3d0ff5197bd3"
 }

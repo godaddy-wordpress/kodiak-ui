@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/skeleton",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "description": "Skeleton for loading",
   "keywords": [
     "skeleton",
@@ -12,16 +12,13 @@
   "source": "src/index.ts",
   "main": "dist/skeleton.cjs.js",
   "module": "dist/skeleton.esm.js",
-
   "files": [
     "dist"
   ],
   "publishConfig": {
     "access": "public"
   },
-  "scripts": {
-
-  },
+  "scripts": {},
   "devDependencies": {
     "@emotion/core": "^10.0.27",
     "react": "^16.13.1",
@@ -41,5 +38,5 @@
     "type": "git",
     "url": "git+https://github.com/skyverge/kodiak-ui.git"
   },
-  "gitHead": "be0456b768f0d4cb9983134514112ab5adba7413"
+  "gitHead": "fe05dc108a105dcf18b4a7210d9f3d0ff5197bd3"
 }
