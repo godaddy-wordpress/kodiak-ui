@@ -7,7 +7,8 @@ expect.addSnapshotSerializer(serializer)
 
 describe('TableData', () => {
   it('should render as td', () => {
-    expect(renderer.create(<TableData />).toJSON()).toMatchInlineSnapshot(`
+    expect(renderer.create(<TableData>Cell content</TableData>).toJSON())
+      .toMatchInlineSnapshot(`
       .emotion-0 {
         box-sizing: border-box;
         margin: 0;
@@ -26,7 +27,9 @@ describe('TableData', () => {
 
       <td
         className="emotion-0"
-      />
+      >
+        Cell content
+      </td>
     `)
   })
 })

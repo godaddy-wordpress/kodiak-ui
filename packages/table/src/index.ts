@@ -1,5 +1,5 @@
 export { useTable } from './useTable'
-export type { ColumnProps, CellProps, HeaderProps, RowProps } from './useTable'
+export type { Column, Cell, Header, Row } from './useTable'
 export { Table, TableElement } from './Table'
 export type { TableProps } from './Table'
 export { TableHead } from './TableHead'

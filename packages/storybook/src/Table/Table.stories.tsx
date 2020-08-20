@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Box, Button } from '@kodiak-ui/primitives'
+import { Box, VisuallyHidden } from '@kodiak-ui/primitives'
 import {
   useTable,
   Table,
@@ -23,11 +23,13 @@ import FileCopyIcon from '@material-ui/icons/FileCopy'
 
 export default { title: 'Table', component: Table }
 
-type Row = {
+type Data = {
+  id: number
   character: string
   portrayedBy: string
   jobTitle: string
 }
+
 function Actions({
   onActionSelect,
 }: {
@@ -79,8 +81,7 @@ function Actions({
   )
 }
 
-export function Initial() {
-  const [hasFixedLayout, setHasFixedLayout] = React.useState(true)
+export function AutoLayout() {
   const columns = React.useMemo(
     () => [
       {
@@ -100,33 +101,37 @@ export function Initial() {
         accessor: 'complexSample',
       },
       {
-        Cell: 'Actions',
+        Cell: <VisuallyHidden>Actions</VisuallyHidden>,
         accessor: 'actions',
-        width: hasFixedLayout ? '72px' : undefined,
+        width: '100px',
       },
     ],
-    [hasFixedLayout],
+    [],
   )
 
   const data = React.useMemo(
     () =>
       [
         {
+          id: 1,
           character: 'Michael Scott',
           portrayedBy: 'Steve Carrel',
           jobTitle: 'Regional manager',
         },
         {
+          id: 2,
           character: 'Dwight Schrutte',
           portrayedBy: 'Rainn Wilson',
           jobTitle: 'Assistant to the Regional Manager',
         },
         {
+          id: 3,
           character: 'Pam Beasley',
           portrayedBy: 'Jenna Fischer',
           jobTitle: 'Receptionist',
         },
         {
+          id: 4,
           character: 'Angela Martin',
           portrayedBy: 'Angela Kinsey',
           jobTitle: 'Accountant',
@@ -134,7 +139,7 @@ export function Initial() {
       ].map(dataRow => ({
         ...dataRow,
         actions: <Actions onActionSelect={() => null}></Actions>,
-        complexSample: (props: { rowData: Row }) => {
+        complexSample: (props: { rowData: Data }) => {
           return (
             <Box>
               {props.rowData.character} - {props.rowData.portrayedBy}
@@ -145,20 +150,13 @@ export function Initial() {
     [],
   )
 
-  const labelRef = React.useRef<HTMLHeadingElement>(null)
-
-  const { headers, rows, getTableProps } = useTable<Row>({
+  const { headers, rows, getTableProps } = useTable<Data>({
     columns,
     data,
-    describedby: labelRef,
   })
 
   return (
     <>
-      <h1 ref={labelRef} id="Testing">
-        Table example
-      </h1>
-
       <Table {...getTableProps()}>
         <TableHead>
           <TableRow>
@@ -197,13 +195,229 @@ export function Initial() {
           ))}
         </TableBody>
       </Table>
-      <Button
-        sx={{ mt: 4 }}
-        variant="secondary"
-        onClick={() => setHasFixedLayout(!hasFixedLayout)}
-      >
-        Toggle fixed layout
-      </Button>
     </>
+  )
+}
+
+export function FixedLayout() {
+  const columns = React.useMemo(
+    () => [
+      {
+        Cell: 'Character',
+        accessor: 'character', // accessor is the "key" in the data
+      },
+      {
+        Cell: 'Portrayed by',
+        accessor: 'portrayedBy',
+      },
+      {
+        Cell: 'Job title',
+        accessor: 'jobTitle',
+      },
+      {
+        Cell: 'Complex',
+        accessor: 'complexSample',
+      },
+      {
+        Cell: <VisuallyHidden>Actions</VisuallyHidden>,
+        accessor: 'actions',
+        width: '100px',
+      },
+    ],
+    [],
+  )
+
+  const data = React.useMemo(
+    () =>
+      [
+        {
+          id: 1,
+          character: 'Michael Scott',
+          portrayedBy: 'Steve Carrel',
+          jobTitle: 'Regional manager',
+        },
+        {
+          id: 2,
+          character: 'Dwight Schrutte',
+          portrayedBy: 'Rainn Wilson',
+          jobTitle: 'Assistant to the Regional Manager',
+        },
+        {
+          id: 3,
+          character: 'Pam Beasley',
+          portrayedBy: 'Jenna Fischer',
+          jobTitle: 'Receptionist',
+        },
+        {
+          id: 4,
+          character: 'Angela Martin',
+          portrayedBy: 'Angela Kinsey',
+          jobTitle: 'Accountant',
+        },
+      ].map(dataRow => ({
+        ...dataRow,
+        actions: <Actions onActionSelect={() => null}></Actions>,
+        complexSample: (props: { rowData: Data }) => {
+          return (
+            <Box>
+              {props.rowData.character} - {props.rowData.portrayedBy}
+            </Box>
+          )
+        },
+      })),
+    [],
+  )
+
+  const { headers, rows, getTableProps } = useTable<Data>({
+    columns,
+    data,
+    tableLayout: 'fixed',
+  })
+
+  return (
+    <>
+      <Table {...getTableProps()}>
+        <TableHead>
+          <TableRow>
+            {headers.map(({ key, column, ...header }) => (
+              <TableHeader
+                key={key}
+                {...header}
+                sx={{ width: column?.width }}
+              />
+            ))}
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {rows.map(({ key, cells, rowData }) => (
+            <TableRow
+              key={key}
+              sx={{
+                bg: rowData.jobTitle === 'Receptionist' ? 'green.1' : 'white',
+              }}
+            >
+              {
+                //eslint-disable-next-line @typescript-eslint/no-unused-vars
+                cells.map(({ key, rowData, ...cell }) => {
+                  return (
+                    <TableData
+                      key={key}
+                      {...cell}
+                      sx={{
+                        width: cell.column?.width,
+                      }}
+                    />
+                  )
+                })
+              }
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </>
+  )
+}
+
+export function SelectableRows() {
+  const columns = React.useMemo(
+    () => [
+      {
+        Cell: 'Character',
+        accessor: 'character', // accessor is the "key" in the data
+      },
+      {
+        Cell: 'Portrayed by',
+        accessor: 'portrayedBy',
+      },
+      {
+        Cell: 'Job title',
+        accessor: 'jobTitle',
+      },
+      {
+        Cell: 'Complex',
+        accessor: 'complexSample',
+      },
+      {
+        Cell: <VisuallyHidden>Actions</VisuallyHidden>,
+        accessor: 'actions',
+        width: '80px',
+      },
+    ],
+    [],
+  )
+
+  const data = React.useMemo(
+    () =>
+      [
+        {
+          id: 1,
+          character: 'Michael Scott',
+          portrayedBy: 'Steve Carrel',
+          jobTitle: 'Regional manager',
+        },
+        {
+          id: 2,
+          character: 'Dwight Schrutte',
+          portrayedBy: 'Rainn Wilson',
+          jobTitle: 'Assistant to the Regional Manager',
+        },
+        {
+          id: 3,
+          character: 'Pam Beasley',
+          portrayedBy: 'Jenna Fischer',
+          jobTitle: 'Receptionist',
+        },
+        {
+          id: 4,
+          character: 'Angela Martin',
+          portrayedBy: 'Angela Kinsey',
+          jobTitle: 'Accountant',
+        },
+      ].map(dataRow => ({
+        ...dataRow,
+        actions: <Actions onActionSelect={() => null}></Actions>,
+        complexSample: (props: { rowData: Data }) => {
+          return (
+            <Box>
+              {props.rowData.character} - {props.rowData.portrayedBy}
+            </Box>
+          )
+        },
+      })),
+    [],
+  )
+
+  const { headers, rows, flatSelectedRows, getTableProps } = useTable<Data>({
+    columns,
+    data,
+    tableLayout: 'fixed',
+    selectable: true,
+    initialSelectedIds: [2],
+  })
+
+  console.log(flatSelectedRows)
+
+  return (
+    <Table {...getTableProps()}>
+      <TableHead>
+        <TableRow>
+          {headers?.map(({ key, column, ...header }) => (
+            <TableHeader key={key} {...header} />
+          ))}
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {rows.map(({ key, cells, rowData }) => (
+          <TableRow key={key}>
+            {
+              //eslint-disable-next-line @typescript-eslint/no-unused-vars
+              cells.map(({ key, rowData, ...cell }) => {
+                return <TableData key={key} {...cell} />
+              })
+            }
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
   )
 }

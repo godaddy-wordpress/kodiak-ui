@@ -12,7 +12,7 @@ type InputProps = {
 
 type CheckboxProps = {
   children?: React.ReactNode
-  label?: string
+  label?: string | React.ReactNode
   indeterminate?: boolean
   sx?: SxStyleProp
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
@@ -150,13 +150,18 @@ function CheckboxWrapper({
   children,
   ...props
 }: {
-  label?: string
+  label?: string | React.ReactNode
   children: React.ReactNode
 }) {
   return label ? (
     <Label
       {...props}
-      sx={{ alignItems: 'center', display: 'flex', position: 'relative' }}
+      sx={{
+        alignItems: 'center',
+        display: 'flex',
+        position: 'relative',
+        mb: 0,
+      }}
     >
       {children} {label}
     </Label>

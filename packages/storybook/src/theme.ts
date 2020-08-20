@@ -336,7 +336,6 @@ const tables = {
     borderColor: 'gray.2',
     paddingY: 3,
     paddingX: 4,
-    width: '150px',
     '&:first-of-type': {
       borderLeft: 'none',
     },
@@ -347,7 +346,6 @@ const tables = {
     borderColor: 'gray.2',
     paddingY: 3,
     paddingX: 4,
-    width: '150px',
     '&:first-of-type': {
       borderLeft: 'none',
     },

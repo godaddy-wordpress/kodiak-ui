@@ -59,27 +59,28 @@ export function TableElement({ variantKey = 'tables', ...props }: TableProps) {
   return <TableStyle variantKey={variantKey} {...props} />
 }
 
-export const Table = React.forwardRef<
-  HTMLTableElement,
-  React.ComponentProps<typeof TableStyle>
->(function Table(
-  { sx, wrapperSx, variant, variantKey = 'tables', ...props }: TableProps,
-  ref,
-) {
-  return (
-    <Box
-      __base={{ width: '100%', overflowX: 'auto' }}
-      sx={wrapperSx}
-      variant="tableWrapper"
-      variantKey={variantKey}
-    >
-      <TableStyle
-        variant={variant}
-        variantKey={variantKey}
-        ref={ref as any}
-        sx={sx}
-        {...props}
-      />
-    </Box>
-  )
-})
+export const Table = React.memo(
+  React.forwardRef<HTMLTableElement, React.ComponentProps<typeof TableStyle>>(
+    function Table(
+      { sx, wrapperSx, variant, variantKey = 'tables', ...props }: TableProps,
+      ref,
+    ) {
+      return (
+        <Box
+          __base={{ width: '100%', overflowX: 'auto' }}
+          sx={wrapperSx}
+          variant="tableWrapper"
+          variantKey={variantKey}
+        >
+          <TableStyle
+            variant={variant}
+            variantKey={variantKey}
+            ref={ref as any}
+            sx={sx}
+            {...props}
+          />
+        </Box>
+      )
+    },
+  ),
+)
