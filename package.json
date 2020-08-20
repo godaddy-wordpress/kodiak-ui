@@ -9,6 +9,8 @@
     "test": "jest --coverage",
     "storybook": "yarn workspace @kodiak-ui/storybook storybook",
     "build-storybook": "yarn workspace @kodiak-ui/storybook build-storybook",
+    "typecheck": "yarn run tsc --noEmit",
+    "docs": "yarn --cwd ./website start",
     "clean": "lerna run clean",
     "watch": "lerna run watch",
     "build": "preconstruct build",

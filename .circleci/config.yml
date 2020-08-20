@@ -5,7 +5,7 @@
 version: 2.1
 jobs:
   build:
-    resource_class: "medium"
+    resource_class: 'medium'
     docker:
       # specify the version you desire here
       - image: circleci/node:14
@@ -28,6 +28,9 @@ jobs:
             - v1-dependencies-
 
       - run: yarn install
+
+      # type check only
+      - run: yarn run typecheck
 
       - run: yarn build
 
