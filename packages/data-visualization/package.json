@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/data-visualization",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Kodiak UI's data visualization components",
   "keywords": [
     "data-visualization",
@@ -27,7 +27,7 @@
   "dependencies": {
     "@kodiak-ui/core": "^0.1.16",
     "@kodiak-ui/hooks": "^0.9.3",
-    "@kodiak-ui/primitives": "^0.16.7",
+    "@kodiak-ui/primitives": "^0.16.8",
     "@kodiak-ui/progress": "^0.1.9"
   },
   "repository": {
