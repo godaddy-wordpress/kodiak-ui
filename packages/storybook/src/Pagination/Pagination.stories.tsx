@@ -7,7 +7,7 @@ import {
 } from '@kodiak-ui/pagination'
 import { Flex, Text } from '@kodiak-ui/primitives'
 
-export default { title: 'Pagination' }
+export default { title: 'Pagination', component: Pagination }
 
 export function Cursor() {
   const [input, setInput] = React.useState<CursorConnectionInput>({})

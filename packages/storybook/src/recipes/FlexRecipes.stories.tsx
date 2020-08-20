@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Box, Flex } from '@kodiak-ui/primitives'
 
-export default { title: 'Recipes/Flexbox' }
+export default { title: 'Recipes/Flexbox', component: Flex }
 
 export function mainAside() {
   return (

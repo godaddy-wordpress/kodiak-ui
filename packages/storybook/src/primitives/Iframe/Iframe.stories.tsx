@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Iframe } from '@kodiak-ui/primitives'
 
-export default { title: 'Iframe' }
+export default { title: 'Iframe', component: Iframe }
 
 export function initial() {
   return (

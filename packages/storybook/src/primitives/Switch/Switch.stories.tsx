@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Switch, Flex, Label } from '@kodiak-ui/primitives'
 
-export default { title: 'Forms/Switch' }
+export default { title: 'Forms/Switch', component: Switch }
 
 export function Initial() {
   const [checked, setChecked] = React.useState(false)

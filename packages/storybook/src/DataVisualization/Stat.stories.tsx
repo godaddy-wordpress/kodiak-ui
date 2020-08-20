@@ -3,7 +3,7 @@ import { Stat } from '@kodiak-ui/data-visualization'
 import { Box, Grid } from '@kodiak-ui/primitives'
 import { AudienceIcon } from './AudienceIcon'
 
-export default { title: 'Data Visualization/Stat' }
+export default { title: 'Data Visualization/Stat', component: Stat }
 
 export function StatSample() {
   return (

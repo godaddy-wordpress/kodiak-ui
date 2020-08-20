@@ -6,7 +6,11 @@ import {
 
 import { withA11y } from '@storybook/addon-a11y'
 
-export default { title: 'Primitives/Loading', decorators: [withA11y] }
+export default {
+  title: 'Primitives/Loading',
+  decorators: [withA11y],
+  component: DotLoadingIndicator,
+}
 
 export function dotInitial() {
   return <DotLoadingIndicator />

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Image } from '@kodiak-ui/primitives'
 
-export default { title: 'Primitives/Image' }
+export default { title: 'Primitives/Image', component: Image }
 
 export function initial() {
   return (

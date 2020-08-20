@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Message } from '@kodiak-ui/message'
 import { Box, SvgIcon, Flex } from '@kodiak-ui/primitives'
 
-export default { title: 'Message/Banner' }
+export default { title: 'Message/Banner', component: Message }
 
 export function Initial() {
   return (

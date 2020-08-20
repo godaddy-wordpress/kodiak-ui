@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Select, Box } from '@kodiak-ui/primitives'
 
-export default { title: 'Forms/Select' }
+export default { title: 'Forms/Select', component: Select }
 
 export function initial() {
   return (

@@ -21,7 +21,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert'
 import DeleteIcon from '@material-ui/icons/Delete'
 import FileCopyIcon from '@material-ui/icons/FileCopy'
 
-export default { title: 'Table' }
+export default { title: 'Table', component: Table }
 
 type Data = {
   id: number
@@ -153,6 +153,7 @@ export function AutoLayout() {
   const { headers, rows, getTableProps } = useTable<Data>({
     columns,
     data,
+    describedby: labelRef,
   })
 
   return (

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Grid, Box } from '@kodiak-ui/primitives'
 
-export default { title: 'Primitives/Grid' }
+export default { title: 'Primitives/Grid', component: Grid }
 
 export function initial() {
   return (

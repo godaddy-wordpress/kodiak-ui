@@ -8,7 +8,7 @@ import {
   Text,
 } from '@kodiak-ui/primitives'
 
-export default { title: 'Forms/Input' }
+export default { title: 'Forms/Input', component: Input }
 
 export function Initial() {
   return <Input placeholder="Type something..."></Input>

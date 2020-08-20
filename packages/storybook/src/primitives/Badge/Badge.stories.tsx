@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Badge, Flex } from '@kodiak-ui/primitives'
 
-export default { title: 'Primitives/Badge' }
+export default { title: 'Primitives/Badge', component: Badge }
 
 export function WithLabel() {
   return <Badge count={103}>new</Badge>
