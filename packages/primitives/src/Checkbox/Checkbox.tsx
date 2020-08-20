@@ -12,7 +12,7 @@ type InputProps = {
 
 type CheckboxProps = {
   children?: React.ReactNode
-  label?: string
+  label?: string | React.ReactNode
   indeterminate?: boolean
   sx?: SxStyleProp
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void

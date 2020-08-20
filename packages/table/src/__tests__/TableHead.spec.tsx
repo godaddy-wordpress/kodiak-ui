@@ -7,7 +7,17 @@ expect.addSnapshotSerializer(serializer)
 
 describe('TableHead', () => {
   it('should render as thead', () => {
-    expect(renderer.create(<TableHead />).toJSON()).toMatchInlineSnapshot(`
+    expect(
+      renderer
+        .create(
+          <TableHead>
+            <tr>
+              <th>Header</th>
+            </tr>
+          </TableHead>,
+        )
+        .toJSON(),
+    ).toMatchInlineSnapshot(`
       .emotion-0 {
         box-sizing: border-box;
         margin: 0;
@@ -19,7 +29,13 @@ describe('TableHead', () => {
 
       <thead
         className="emotion-0"
-      />
+      >
+        <tr>
+          <th>
+            Header
+          </th>
+        </tr>
+      </thead>
     `)
   })
 })
