@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Box, Image, SvgIcon, Avatar } from '@kodiak-ui/primitives'
 
-export default { title: 'Primitives/Avatar' }
+export default { title: 'Primitives/Avatar', component: Avatar }
 
 export function AvatarWithSrc() {
   return (

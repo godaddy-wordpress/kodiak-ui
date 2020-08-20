@@ -3,7 +3,11 @@ import { Box, Flex, Text, Label, Radio } from '@kodiak-ui/primitives'
 
 import { withA11y } from '@storybook/addon-a11y'
 
-export default { title: 'Forms/Radio', decorators: [withA11y] }
+export default {
+  title: 'Forms/Radio',
+  decorators: [withA11y],
+  component: Radio,
+}
 
 export function Initial() {
   return (

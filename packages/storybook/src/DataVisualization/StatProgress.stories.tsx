@@ -2,7 +2,10 @@ import * as React from 'react'
 import { StatProgress } from '@kodiak-ui/data-visualization'
 import { Grid } from '@kodiak-ui/primitives'
 
-export default { title: 'Data Visualization/StatProgress' }
+export default {
+  title: 'Data Visualization/StatProgress',
+  component: StatProgress,
+}
 
 export function StatProgressSample() {
   const [animatedValue, setAnimatedValue] = React.useState(0)

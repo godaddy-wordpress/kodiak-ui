@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { renderHook } from '@testing-library/react-hooks'
-import { useTable } from '../useTable'
+import { useTable, ID } from '../useTable'
 import { render } from '@testing-library/react'
 
 const columns = [
@@ -20,6 +20,7 @@ const columns = [
 
 const data = [
   {
+    id: 1,
     character: 'Michael Scott',
     portrayedBy: 'Steve Carrel',
     jobTitle: 'Regional Manager',
@@ -30,7 +31,9 @@ function Table() {
   const { headers, rows, getTableProps } = useTable({
     columns,
     data,
-    describedby: 'LabelId',
+    attributes: {
+      describedby: 'LabelId',
+    },
   })
 
   return (
@@ -68,7 +71,9 @@ function TableWithLabelRef() {
   const { headers, rows, getTableProps } = useTable({
     columns,
     data,
-    describedby: labelRef,
+    attributes: {
+      describedby: labelRef,
+    },
   })
 
   return (
@@ -104,7 +109,12 @@ function TableWithLabelRef() {
 describe('useTable', () => {
   it('should return mapped headers and rows', () => {
     const { result } = renderHook(() =>
-      useTable<{ character: string; portrayedBy: string; jobTitle: string }>({
+      useTable<{
+        id: ID
+        character: string
+        portrayedBy: string
+        jobTitle: string
+      }>({
         columns,
         data,
       }),
@@ -120,6 +130,7 @@ describe('useTable', () => {
           },
           "key": "0",
           "scope": "col",
+          "width": undefined,
         },
         Object {
           "children": "Portrayed by",
@@ -129,6 +140,7 @@ describe('useTable', () => {
           },
           "key": "1",
           "scope": "col",
+          "width": undefined,
         },
         Object {
           "children": "Job title",
@@ -138,6 +150,7 @@ describe('useTable', () => {
           },
           "key": "2",
           "scope": "col",
+          "width": undefined,
         },
       ]
     `)
@@ -157,6 +170,7 @@ describe('useTable', () => {
             "key": "0",
             "rowData": Object {
               "character": "Michael Scott",
+              "id": 1,
               "jobTitle": "Regional Manager",
               "portrayedBy": "Steve Carrel",
             },
@@ -170,6 +184,7 @@ describe('useTable', () => {
             "key": "1",
             "rowData": Object {
               "character": "Michael Scott",
+              "id": 1,
               "jobTitle": "Regional Manager",
               "portrayedBy": "Steve Carrel",
             },
@@ -183,11 +198,13 @@ describe('useTable', () => {
             "key": "2",
             "rowData": Object {
               "character": "Michael Scott",
+              "id": 1,
               "jobTitle": "Regional Manager",
               "portrayedBy": "Steve Carrel",
             },
           },
         ],
+        "id": 1,
         "key": "0",
         "rowIndex": 0,
       }

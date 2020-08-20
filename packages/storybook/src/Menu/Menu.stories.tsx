@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Button, Flex, Box } from '@kodiak-ui/primitives'
 import { useMenu, MenuList, MenuListItem } from '@kodiak-ui/menu'
 
-export default { title: 'Menu' }
+export default { title: 'Menu', component: MenuList }
 
 function AlignedRight() {
   const {

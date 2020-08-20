@@ -9,7 +9,7 @@ import {
 } from '@kodiak-ui/accordion'
 import { Flex, Text, SvgIcon, Button } from '@kodiak-ui/primitives'
 
-export default { title: 'Accordion' }
+export default { title: 'Accordion', component: Accordion }
 
 function CaretFillDown({ ...props }) {
   return (

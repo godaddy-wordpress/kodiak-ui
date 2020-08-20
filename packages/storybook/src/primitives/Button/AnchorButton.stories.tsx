@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { AnchorButton } from '@kodiak-ui/primitives'
 
-export default { title: 'Primitives/AnchorButton' }
+export default { title: 'Primitives/AnchorButton', component: AnchorButton }
 
 export function initial() {
   return <AnchorButton href="#">Default AnchorButton</AnchorButton>

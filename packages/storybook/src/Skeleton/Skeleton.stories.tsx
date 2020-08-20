@@ -3,7 +3,7 @@ import { Box, Flex, Button } from '@kodiak-ui/primitives'
 import { Skeleton, Repeat } from '@kodiak-ui/skeleton'
 import { Styled } from 'theme-ui'
 
-export default { title: 'Skeleton' }
+export default { title: 'Skeleton', component: Skeleton }
 
 export function LoadingSkeleton() {
   const [isLoading, setIsLoading] = React.useState(true)

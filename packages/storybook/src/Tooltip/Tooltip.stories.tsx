@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Button, Box } from '@kodiak-ui/primitives'
 import { useTooltip, Tooltip, TooltipArrow } from '@kodiak-ui/tooltip'
 
-export default { title: 'Tooltip' }
+export default { title: 'Tooltip', component: Tooltip }
 
 export function Initial() {
   const { isVisible, register, getTriggerProps, Portal } = useTooltip({
