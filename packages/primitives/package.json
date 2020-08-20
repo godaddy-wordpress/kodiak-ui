@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/primitives",
-  "version": "0.16.6",
+  "version": "0.16.7",
   "description": "Kodiak's primitive components for building applications and complex components",
   "main": "dist/primitives.cjs.js",
   "module": "dist/primitives.esm.js",
@@ -23,9 +23,9 @@
   },
   "dependencies": {
     "@emotion/styled": "^10.0.27",
-    "@kodiak-ui/core": "^0.1.15",
-    "@kodiak-ui/hooks": "^0.9.2",
-    "@kodiak-ui/utils": "^0.0.8",
+    "@kodiak-ui/core": "^0.1.16",
+    "@kodiak-ui/hooks": "^0.9.3",
+    "@kodiak-ui/utils": "^0.0.9",
     "@styled-system/should-forward-prop": "^5.1.4",
     "@styled-system/space": "^5.1.2",
     "@theme-ui/css": "^0.3.1",
