@@ -1,3 +1,4 @@
+import * as React from 'react'
 import {
   variant as getVariantStyles,
   VariantProps,
@@ -37,7 +38,7 @@ function variant({
   return getVariantStyles({ variant: variantProp, theme, variantKey })
 }
 
-export const TableHeader = styled('th')<TableHeaderProps>(
+export const TableHeaderStyle = styled('th')<TableHeaderProps>(
   {
     boxSizing: 'border-box',
     margin: 0,
@@ -48,3 +49,9 @@ export const TableHeader = styled('th')<TableHeaderProps>(
   variant,
   sx,
 )
+
+export const TableHeader = React.memo(function TableHeader(props: {
+  children: React.ReactNode
+}) {
+  return <TableHeaderStyle {...props} />
+})
