@@ -9,9 +9,6 @@
   ],
   "main": "src/index.tsx",
   "dependencies": {
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3",
     "@kodiak-ui/combobox": "latest",
     "@kodiak-ui/core": "latest",
     "@kodiak-ui/data-visualization": "latest",
@@ -27,6 +24,10 @@
     "@kodiak-ui/tabs": "latest",
     "@kodiak-ui/theme": "latest",
     "@types/theme-ui": "^0.3.6",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.3",
+    "resize-observer-polyfill": "^1.5.1",
     "theme-ui": "^0.3.1"
   },
   "devDependencies": {
