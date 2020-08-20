@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/tabs",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Tabs hook and components",
   "keywords": [
     "tabs"
@@ -11,16 +11,13 @@
   "source": "src/index.ts",
   "main": "dist/tabs.cjs.js",
   "module": "dist/tabs.esm.js",
-
   "files": [
     "dist"
   ],
   "publishConfig": {
     "access": "public"
   },
-  "scripts": {
-
-  },
+  "scripts": {},
   "devDependencies": {
     "@emotion/core": "^10.0.27"
   },
@@ -31,10 +28,10 @@
     "theme-ui": "^0.3.1"
   },
   "dependencies": {
-    "@kodiak-ui/core": "^0.1.14",
-    "@kodiak-ui/hooks": "^0.9.1",
+    "@kodiak-ui/core": "^0.1.15",
+    "@kodiak-ui/hooks": "^0.9.2",
     "@kodiak-ui/primitives": "^0.12.2",
-    "@kodiak-ui/utils": "^0.0.7"
+    "@kodiak-ui/utils": "^0.0.8"
   },
   "repository": {
     "type": "git",

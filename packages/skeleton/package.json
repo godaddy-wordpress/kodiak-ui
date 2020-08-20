@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/skeleton",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Skeleton for loading",
   "keywords": [
     "skeleton",
@@ -12,16 +12,13 @@
   "source": "src/index.ts",
   "main": "dist/skeleton.cjs.js",
   "module": "dist/skeleton.esm.js",
-
   "files": [
     "dist"
   ],
   "publishConfig": {
     "access": "public"
   },
-  "scripts": {
-
-  },
+  "scripts": {},
   "devDependencies": {
     "@emotion/core": "^10.0.27",
     "react": "^16.13.1",
