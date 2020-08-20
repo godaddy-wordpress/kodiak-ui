@@ -16,10 +16,9 @@ module.exports = {
         alt: 'SkyVerge Logo',
         src: 'img/logo.svg',
       },
-      links: [
+      items: [
         {
           to: '/introduction',
-          activeBasePath: '',
           label: 'Documentation',
           position: 'right',
         },
