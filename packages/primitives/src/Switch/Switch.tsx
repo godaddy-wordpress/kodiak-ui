@@ -10,12 +10,9 @@ type SwitchProps = {
   SystemProps &
   VariantProps
 
-type SwitchIndicatorProps = {
-  checked?: boolean
-} & SwitchProps
+type SwitchIndicatorProps = SwitchProps
 
 function SwitchIndicator({
-  checked,
   sx,
   variant,
   variantKey,
@@ -46,11 +43,17 @@ function SwitchIndicator({
         'input:checked ~ &': {
           backgroundColor: 'primary',
           borderColor: 'primary',
+          '& > div': {
+            transform: `translateX(calc(100% - 1px))`,
+          },
         },
 
         'input:not(:checked) ~ &': {
           backgroundColor: 'muted',
           borderColor: 'muted',
+          '& > div': {
+            transform: `translateX(0)`,
+          },
         },
       }}
       sx={sx as any}
@@ -65,7 +68,6 @@ function SwitchIndicator({
           height: 12,
           ml: '1px',
           backgroundColor: 'background',
-          transform: `translateX(${checked ? 'calc(100% - 1px)' : '0'})`,
           transition: 'transform 0.1s cubic-bezier(0.4, 1, 0.75, 0.9)',
         }}
       />
@@ -111,7 +113,6 @@ export const Switch = React.forwardRef(
           {...(props as any)}
         />
         <SwitchIndicator
-          checked={checked}
           variant={variant}
           variantKey={variantKey}
           sx={sx as any}
