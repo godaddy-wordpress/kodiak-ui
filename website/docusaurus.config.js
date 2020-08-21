@@ -7,6 +7,10 @@ module.exports = {
   organizationName: 'skyverge',
   projectName: 'kodiak-ui',
   themeConfig: {
+    algolia: {
+      apiKey: '704c4830b1c72946dd20fe251945d2e6',
+      indexName: 'kodiak-ui',
+    },
     navbar: {
       title: 'Kodiak UI',
       logo: {
@@ -26,10 +30,6 @@ module.exports = {
           position: 'right',
         },
       ],
-      algolia: {
-        apiKey: '704c4830b1c72946dd20fe251945d2e6',
-        indexName: 'kodiak-ui',
-      },
     },
     footer: {
       style: 'dark',
