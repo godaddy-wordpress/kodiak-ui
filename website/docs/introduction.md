@@ -17,3 +17,7 @@ Kodiak UI was created to solve a couple of problems that we were running into wh
 5. We wanted to utilize the same components across multiple projects
 
 Our journey through the problems above led us to create Kodiak UI which is a library that contains both React hooks and components for building fully-featured UIs with React.
+
+## Storybook
+
+Explore th kodiak-ui storybook available at [storybook.kodiak-ui.com](http://storybook.kodiak-ui.com/)
