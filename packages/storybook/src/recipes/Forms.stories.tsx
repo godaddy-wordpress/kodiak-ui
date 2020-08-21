@@ -8,6 +8,8 @@ import {
   Field,
   FieldError,
   Box,
+  Switch,
+  Text,
 } from '@kodiak-ui/primitives'
 import {
   Select,
@@ -144,6 +146,15 @@ export function ReactFormHooksForm() {
             ref={register}
           />
           Subscribe to marketing emails
+        </Label>
+      </Box>
+
+      <Box mb={4}>
+        <Label display="flex" sx={{ alignItems: 'center' }}>
+          <Switch defaultChecked={true} name="updates" ref={register} />
+          <Text as="span" sx={{ ml: 2 }}>
+            Subscribe to updates
+          </Text>
         </Label>
       </Box>
 
