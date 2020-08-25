@@ -119,9 +119,21 @@ describe('Switch', () => {
         border-color: primary;
       }
 
+      input:checked ~ .emotion-2 > div {
+        -webkit-transform: translateX(calc(100% - 1px));
+        -ms-transform: translateX(calc(100% - 1px));
+        transform: translateX(calc(100% - 1px));
+      }
+
       input:not(:checked) ~ .emotion-2 {
         background-color: muted;
         border-color: muted;
+      }
+
+      input:not(:checked) ~ .emotion-2 > div {
+        -webkit-transform: translateX(0);
+        -ms-transform: translateX(0);
+        transform: translateX(0);
       }
 
       .emotion-1 {
@@ -133,9 +145,6 @@ describe('Switch', () => {
         height: 12px;
         margin-left: 1px;
         background-color: background;
-        -webkit-transform: translateX(calc(100% - 1px));
-        -ms-transform: translateX(calc(100% - 1px));
-        transform: translateX(calc(100% - 1px));
         -webkit-transition: -webkit-transform 0.1s cubic-bezier(0.4,1,0.75,0.9);
         -webkit-transition: transform 0.1s cubic-bezier(0.4,1,0.75,0.9);
         transition: transform 0.1s cubic-bezier(0.4,1,0.75,0.9);
