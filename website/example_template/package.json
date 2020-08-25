@@ -1,0 +1,50 @@
+{
+  "name": "react-typescript",
+  "version": "1.0.0",
+  "description": "React and TypeScript example starter project",
+  "keywords": [
+    "typescript",
+    "react",
+    "starter"
+  ],
+  "main": "src/index.tsx",
+  "dependencies": {
+    "@kodiak-ui/combobox": "latest",
+    "@kodiak-ui/core": "latest",
+    "@kodiak-ui/data-visualization": "latest",
+    "@kodiak-ui/dialog": "latest",
+    "@kodiak-ui/hooks": "latest",
+    "@kodiak-ui/menu": "latest",
+    "@kodiak-ui/message": "latest",
+    "@kodiak-ui/pagination": "latest",
+    "@kodiak-ui/primitives": "latest",
+    "@kodiak-ui/progress": "latest",
+    "@kodiak-ui/select": "latest",
+    "@kodiak-ui/table": "latest",
+    "@kodiak-ui/tabs": "latest",
+    "@kodiak-ui/theme": "latest",
+    "@types/theme-ui": "^0.3.6",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.3",
+    "resize-observer-polyfill": "^1.5.1",
+    "theme-ui": "^0.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "16.9.46",
+    "@types/react-dom": "16.9.8",
+    "typescript": "3.9.7"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

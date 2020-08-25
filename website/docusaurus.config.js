@@ -1,3 +1,6 @@
+const remarkCodesandbox = require('remark-codesandbox')
+const path = require('path')
+
 module.exports = {
   title: 'Kodiak UI',
   tagline: 'A performant and accessible hook and component library for React',
@@ -77,8 +80,36 @@ module.exports = {
           routeBasePath: '/',
           include: ['**/*.md', '**/*.mdx'],
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl:
-            'https://github.com/kamilkisiela/graphql-config/edit/master/website/',
+          remarkPlugins: [
+            [
+              remarkCodesandbox,
+              {
+                mode: 'iframe',
+                customTemplates: {
+                  // !!! The template must be small, the files are passed in a GET request and compressed
+                  // but still can hit the limit quickly.  Including the full theme in the example_template
+                  // for example will cause the sandbox to fail
+                  kodiak: {
+                    // this can also reference a code sandbox template
+                    // extends: 'cold-fire-ry31x'
+                    extends: `file:${path.resolve('./example_template/')}`,
+                    entry: 'src/App.tsx',
+                  },
+                  //
+                  // Alias `react` to `new`
+                  react: {
+                    extends: 'new',
+                  },
+                  // Alias `react-component` to `new`, but also override `entry` to `src/App.js`
+                  'react-component': {
+                    extends: 'new',
+                    entry: 'src/App.js',
+                  },
+                },
+              },
+            ],
+          ],
+          editUrl: 'https://github.com/skyverge/kodiak-ui/edit/master/website/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
