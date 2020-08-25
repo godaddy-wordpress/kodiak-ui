@@ -74,7 +74,6 @@ export function Expanding() {
         isOpen={isOpen}
         title="Dialog that grows with the content"
         onDismiss={() => setIsOpen(false)}
-        aria-label="Warning about next steps"
       >
         <DialogContent>
           <Text as="p">

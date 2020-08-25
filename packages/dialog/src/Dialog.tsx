@@ -94,7 +94,11 @@ export function Dialog({
         onDismiss={onOverlayDismiss || onDismiss}
         {...props}
       >
-        <DialogContainer {...props} variant={variant}>
+        <DialogContainer
+          {...props}
+          variant={variant}
+          aria-label={props?.['aria-label'] || title}
+        >
           <DialogHeader onDismiss={onDismiss}>{title}</DialogHeader>
           {children}
         </DialogContainer>
