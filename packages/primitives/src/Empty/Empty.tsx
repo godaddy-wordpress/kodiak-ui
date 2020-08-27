@@ -1,10 +1,13 @@
 import * as React from 'react'
+import { SxStyleProp } from 'theme-ui'
 import { Flex } from '../Flex'
 import { Text } from '../Text'
 
+export function useStyles(styles: { [key: string]: SxStyleProp }) {}
+
 export interface EmptyProps {
   illustration?: React.ReactNode
-  title?: string
+  title: string
   children?: React.ReactNode
 }
 
