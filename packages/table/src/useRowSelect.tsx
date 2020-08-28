@@ -68,9 +68,11 @@ export function useRowSelect({
 
   const flatSelectedRows = React.useMemo(
     () =>
-      Object.keys(selectedRows)
-        ?.map(key => (selectedRows[key] ? key : null))
-        ?.filter(x => x),
+      selectedRows
+        ? Object.keys(selectedRows)
+            ?.map(key => (selectedRows[key] ? key : null))
+            ?.filter(x => x)
+        : [],
     [selectedRows],
   )
 

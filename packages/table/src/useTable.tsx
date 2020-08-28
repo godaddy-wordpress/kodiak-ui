@@ -162,7 +162,7 @@ export function useTable<T extends Data>({
 
   const rows = React.useMemo(
     () =>
-      data.map((point: any, index) => ({
+      data?.map((point: any, index) => ({
         id: point?.id,
         key: `${index}`,
         rowData: point,
