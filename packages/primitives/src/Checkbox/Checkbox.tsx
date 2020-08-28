@@ -146,16 +146,19 @@ function CheckboxIcon({ checked, indeterminate, sx, ...props }: CheckboxProps) {
 }
 
 function CheckboxWrapper({
+  id,
   label,
   children,
   ...props
 }: {
+  id?: string
   label?: string | React.ReactNode
   children: React.ReactNode
 }) {
   return label ? (
     <Label
       {...props}
+      htmlFor={id}
       sx={{
         alignItems: 'center',
         display: 'flex',
@@ -173,6 +176,7 @@ function CheckboxWrapper({
 export const Checkbox = React.forwardRef(
   (
     {
+      id,
       label,
       variant = 'checkbox',
       variantKey = 'forms',
@@ -181,11 +185,12 @@ export const Checkbox = React.forwardRef(
     ref: React.Ref<HTMLInputElement>,
   ) => {
     const { getLabelProps, getInputProps, getIconProps } = useCheckbox({
+      id,
       ...props,
     })
 
     return (
-      <CheckboxWrapper label={label} {...getLabelProps()}>
+      <CheckboxWrapper id={id} label={label} {...getLabelProps()}>
         <Box>
           <Input
             {...getInputProps()}

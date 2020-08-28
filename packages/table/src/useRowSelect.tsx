@@ -104,6 +104,7 @@ export function useRowSelect({
             key: `select-${id}`,
             children: (
               <Checkbox
+                id={`row-${id}`}
                 label={<VisuallyHidden>Select row {id}</VisuallyHidden>}
                 checked={selectedRows?.[id]}
                 onChange={e => onSelect(e, id)}
