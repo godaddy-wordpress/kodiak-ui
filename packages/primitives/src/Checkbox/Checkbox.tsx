@@ -178,6 +178,7 @@ export const Checkbox = React.forwardRef(
     {
       id,
       label,
+      checked = false,
       variant = 'checkbox',
       variantKey = 'forms',
       ...props
@@ -186,6 +187,7 @@ export const Checkbox = React.forwardRef(
   ) => {
     const { getLabelProps, getInputProps, getIconProps } = useCheckbox({
       id,
+      checked,
       ...props,
     })
 

@@ -86,12 +86,14 @@ export function useTable<T extends Data>({
     getRowCheckbox,
   } = useRowSelect({
     selectable,
-    initialState: createRowState<T>({ data, state: false, initialSelectedIds }),
-    onSelect: (event, id) =>
+    data,
+    initialSelectedIds,
+    onSelect: (event, id) => {
       setSelectedRows({
         ...selectedRows,
         [id]: event.target.checked,
-      }),
+      })
+    },
     onSelectAll: event =>
       setSelectedRows(
         createRowState<T>({ data, state: event.target.checked }),

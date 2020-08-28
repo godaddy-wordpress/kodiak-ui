@@ -33,21 +33,32 @@ interface UseRowSelectReturn {
   getRowCheckbox: (id: string | number) => Cell[]
 }
 
-interface UseRowSelectProps {
+interface UseRowSelectProps<Data> {
   selectable: boolean
-  initialState: SelectedRowsState
+  data: any
+  initialSelectedIds: ID[]
   onSelect: (event: React.ChangeEvent<HTMLInputElement>, id: ID) => void
   onSelectAll: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-export function useRowSelect({
+export function useRowSelect<Data>({
   selectable,
-  initialState,
+  data,
+  initialSelectedIds = null,
   onSelect,
   onSelectAll,
-}: UseRowSelectProps): UseRowSelectReturn {
+}: UseRowSelectProps<Data>): UseRowSelectReturn {
   const [selectedRows, setSelectedRows] = React.useState<SelectedRowsState>(
-    initialState,
+    null,
+  )
+
+  React.useEffect(
+    function () {
+      setSelectedRows(
+        createRowState({ data, state: false, initialSelectedIds }),
+      )
+    },
+    [data],
   )
 
   const allSelected = React.useMemo(
@@ -98,29 +109,26 @@ export function useRowSelect({
     [selectable, allSelected, someSelected, onSelectAll],
   )
 
-  const getRowCheckbox = React.useCallback(
-    function getRowCheckbox(id: string | number): Cell[] {
-      if (selectable) {
-        return [
-          {
-            key: `select-${id}`,
-            children: (
-              <Checkbox
-                id={`row-${id}`}
-                label={<VisuallyHidden>Select row {id}</VisuallyHidden>}
-                checked={selectedRows?.[id]}
-                onChange={e => onSelect(e, id)}
-              />
-            ),
-            width: '48px',
-          },
-        ]
-      }
+  function getRowCheckbox(id: string | number): Cell[] {
+    if (selectable) {
+      return [
+        {
+          key: `select-${id}`,
+          children: (
+            <Checkbox
+              id={`row-${id}`}
+              label={<VisuallyHidden>Select row {id}</VisuallyHidden>}
+              checked={selectedRows?.[id]}
+              onChange={e => onSelect(e, id)}
+            />
+          ),
+          width: '48px',
+        },
+      ]
+    }
 
-      return []
-    },
-    [selectable, selectedRows, onSelect],
-  )
+    return []
+  }
 
   return {
     selectedRows,

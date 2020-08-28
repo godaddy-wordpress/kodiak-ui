@@ -50,7 +50,7 @@ export function useCheckbox({
   )
 
   const getInputProps = React.useCallback(
-    function getInputProps(...props) {
+    function getInputProps() {
       return {
         id: id,
         type: 'checkbox',
@@ -60,7 +60,6 @@ export function useCheckbox({
         'aria-disabled': disabled,
         onChange: handleOnChange,
         name,
-        ...props,
       }
     },
     [id, readOnly, disabled, isChecked, handleOnChange, name],
