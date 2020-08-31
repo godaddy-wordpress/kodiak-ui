@@ -10,13 +10,17 @@ export type TagWithButtonProps = {
   onClick: () => void
 } & VariantProps
 
-export function TagWithButton({ children, icon, onClick }: TagWithButtonProps) {
+export const TagWithButton = React.forwardRef(function TagWithButton(
+  { children, icon, onClick }: TagWithButtonProps,
+  ref: React.MutableRefObject<any>,
+) {
   return (
     <Tag sx={{ p: 0 }}>
       <TagLabel sx={{ borderRight: '1px solid', borderColor: 'muted' }}>
         {children}
       </TagLabel>
       <Button
+        ref={ref}
         variantKey="tags"
         variant="tagButton" // TODO: These variants aren't working for some reason
         onClick={onClick}
@@ -34,4 +38,4 @@ export function TagWithButton({ children, icon, onClick }: TagWithButtonProps) {
       </Button>
     </Tag>
   )
-}
+})
