@@ -370,7 +370,7 @@ const tags = {
     color: 'gray.5',
     fontWeight: 'semiBold',
   },
-  tagDismiss: {
+  tagButton: {
     bg: 'gray.1',
     borderColor: 'gray.3',
     color: 'gray.7',

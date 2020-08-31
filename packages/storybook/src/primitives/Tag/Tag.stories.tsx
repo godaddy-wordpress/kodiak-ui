@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Tag, TagDismiss, SvgIcon } from '@kodiak-ui/primitives'
+import { Tag, TagDismiss, TagWithButton, SvgIcon } from '@kodiak-ui/primitives'
 
 export default { title: 'Primitives/Tag', component: Tag }
 
@@ -29,5 +29,16 @@ export function Dismiss() {
     >
       Dismiss
     </TagDismiss>
+  )
+}
+
+export function WithButton() {
+  return (
+    <TagWithButton
+      icon={<Icon sx={{ color: 'gray.7' }} />}
+      onClick={() => alert('dismiss')}
+    >
+      2 more
+    </TagWithButton>
   )
 }

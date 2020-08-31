@@ -23,7 +23,7 @@ export { Text } from './Text'
 export { Textarea } from './Textarea'
 export { VisuallyHidden } from './VisuallyHidden'
 export { Iframe } from './Iframe'
-export { Tag, TagLabel, TagDismiss } from './Tag'
+export { Tag, TagLabel, TagDismiss, TagWithButton } from './Tag'
 export type { TagProps, TagLabelProps, TagDismissProps } from './Tag'
 export { DotLoadingIndicator, ClipLoadingIndicator } from './Loading'
 export type {
