@@ -22,10 +22,11 @@ export function TagWithButton({ children, icon, onClick }: TagWithButtonProps) {
         onClick={onClick}
         __base={{
           alignItems: 'center',
+          border: 'none',
           bg: 'gray.1',
           color: 'gray.7',
           display: 'flex',
-          px: 2,
+          px: 0,
           py: 0,
         }}
       >
