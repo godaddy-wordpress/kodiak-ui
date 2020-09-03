@@ -20,4 +20,4 @@ Our journey through the problems above led us to create Kodiak UI which is a lib
 
 ## Storybook
 
-Explore th kodiak-ui storybook available at [storybook.kodiak-ui.com](http://storybook.kodiak-ui.com/)
+Explore the kodiak-ui storybook available at [storybook.kodiak-ui.com](http://storybook.kodiak-ui.com/).
