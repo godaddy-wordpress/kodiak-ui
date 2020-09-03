@@ -19,6 +19,7 @@ type TabPanel = {
 interface UseTabsOptions {
   initialIndex?: number
   tabs: UserTab[]
+  onTabChange?: (index: number) => void
 }
 
 interface UseTabsReturn {
@@ -37,11 +38,20 @@ interface RefAndOptions<Element> {
 }
 
 export function useTabs(
-  { initialIndex = 0, tabs: userTabs }: UseTabsOptions = { tabs: [] },
+  { initialIndex = 0, tabs: userTabs, onTabChange }: UseTabsOptions = {
+    tabs: [],
+  },
 ): UseTabsReturn {
   const id = useId()
   const tabsRef = React.useRef<{ [key: string]: Element | null }>({})
   const [selectedIndex, setSelectedIndex] = React.useState<number>(initialIndex)
+
+  React.useEffect(
+    function handleOnTabChangeCallback() {
+      onTabChange?.(selectedIndex)
+    },
+    [selectedIndex, onTabChange],
+  )
 
   const onClick = React.useCallback(function handleOnClick(index: number) {
     return () => setSelectedIndex(index)
