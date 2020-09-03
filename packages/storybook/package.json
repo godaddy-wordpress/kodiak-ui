@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/storybook",
-  "version": "0.1.92",
+  "version": "0.1.93",
   "main": "dist/storybook.cjs.js",
   "module": "dist/storybook.esm.js",
   "private": true,
@@ -23,7 +23,7 @@
     "@kodiak-ui/progress": "^0.1.11",
     "@kodiak-ui/select": "^0.2.20",
     "@kodiak-ui/table": "^0.2.35",
-    "@kodiak-ui/tabs": "^0.1.9",
+    "@kodiak-ui/tabs": "^0.1.10",
     "@material-ui/core": "^4.9.10",
     "@material-ui/icons": "^4.9.1",
     "@storybook/addon-docs": "^6.0.12",
