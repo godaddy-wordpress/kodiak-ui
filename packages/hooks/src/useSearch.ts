@@ -12,14 +12,15 @@ export function useSearch({
 }: UseSearchProps): [SearchTerm, React.Dispatch<React.SetStateAction<string>>] {
   const [searchTerm, setSearchTerm] = React.useState<string>('')
   const debouncedSearchTerm = useDebounce<string>(searchTerm, 300)
+  const prevDebouncedTerm = usePrevious(debouncedSearchTerm)
 
   React.useEffect(
     function handleSearch() {
-      if (debouncedSearchTerm) {
+      if (debouncedSearchTerm !== prevDebouncedTerm) {
         handler?.(debouncedSearchTerm)
       }
     },
-    [debouncedSearchTerm, handler],
+    [debouncedSearchTerm, prevDebouncedTerm, handler],
   )
 
   return [searchTerm, setSearchTerm]
