@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/progress",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "description": "Kodiak UI's progress bar component",
   "keywords": [
     "progress",
@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@kodiak-ui/core": "^0.1.16",
-    "@kodiak-ui/hooks": "^0.10.4",
+    "@kodiak-ui/hooks": "^0.10.5",
     "@kodiak-ui/primitives": "^0.12.2"
   },
   "repository": {
