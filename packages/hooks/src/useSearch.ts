@@ -10,7 +10,7 @@ interface UseSearchProps {
 export function useSearch({
   handler,
 }: UseSearchProps): [SearchTerm, React.Dispatch<React.SetStateAction<string>>] {
-  const [searchTerm, setSearchTerm] = React.useState<string>(null)
+  const [searchTerm, setSearchTerm] = React.useState<string>('')
   const debouncedSearchTerm = useDebounce<string>(searchTerm, 300)
 
   React.useEffect(
