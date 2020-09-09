@@ -9,7 +9,7 @@ import {
   SerializedStyles,
   styled,
 } from '@kodiak-ui/core'
-import Box from '@kodiak-ui/primitives/box'
+import { Box } from '@kodiak-ui/primitives/box'
 
 export type SelectMenuProps = {
   ref: React.Ref<HTMLUListElement>

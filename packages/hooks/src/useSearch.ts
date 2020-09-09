@@ -15,7 +15,7 @@ export function useSearch({
 
   React.useEffect(
     function handleSearch() {
-      if (debouncedSearchTerm !== prevDebouncedTerm) {
+      if (debouncedSearchTerm) {
         handler?.(debouncedSearchTerm)
       }
     },
