@@ -140,3 +140,5 @@ export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
     )
   },
 )
+
+export default Avatar

@@ -1,5 +1,6 @@
 import * as React from 'react'
-import { Flex, Box, Text } from '@kodiak-ui/primitives'
+import Box from '@kodiak-ui/box'
+import { Flex } from '@kodiak-ui/Flex'
 import { Progress, ProgressThumb } from '@kodiak-ui/progress'
 import { SxStyleProp } from '@kodiak-ui/core'
 

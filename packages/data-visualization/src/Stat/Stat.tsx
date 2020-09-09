@@ -1,6 +1,9 @@
 import * as React from 'react'
-import { Box, Label, Flex, Grid } from '@kodiak-ui/primitives'
 import { SxStyleProp } from '@kodiak-ui/core'
+import { Box } from '@kodiak-ui/primitives/box'
+import { Flex } from '@kodiak-ui/primitives/flex'
+import { Grid } from '@kodiak-ui/primitives/grid'
+import { Label } from '@kodiak-ui/primitives/label'
 
 type Props = {
   label?: React.ReactNode
