@@ -1,5 +1,5 @@
 import * as React from 'react'
-import Box from '@kodiak-ui/primitives/box'
+import { Box } from '@kodiak-ui/primitives/box'
 import { VariantProps, SxStyleProp } from '@kodiak-ui/core'
 
 export type TabsProps = {
