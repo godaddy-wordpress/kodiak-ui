@@ -1,12 +1,10 @@
 import * as React from 'react'
 import { SystemProps, VariantProps } from '@kodiak-ui/core'
-import {
-  Box,
-  VisuallyHidden,
-  Flex,
-  SvgIcon,
-  Button,
-} from '@kodiak-ui/primitives'
+import Box from '@kodiak-ui/primitives/box'
+import Button from '@kodiak-ui/primitives/button'
+import Flex from '@kodiak-ui/primitives/flex'
+import { SvgIcon } from '@kodiak-ui/primitives/svg'
+import VisuallyHidden from '@kodiak-ui/primitives/visually-hidden'
 
 type MessageType = 'polite' | 'assertive'
 
