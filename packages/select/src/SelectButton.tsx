@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { UseSelectGetToggleButtonPropsOptions } from 'downshift'
 import { VariantProps } from '@kodiak-ui/core'
-import Button from '@kodiak-ui/primitives/button'
+import { Button } from '@kodiak-ui/primitives/button'
 import { SvgIcon } from '@kodiak-ui/primitives/svg'
 
 export interface SelectButtonProps
