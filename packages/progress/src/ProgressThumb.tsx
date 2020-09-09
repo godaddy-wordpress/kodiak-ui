@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { Box } from '@kodiak-ui/primitives'
-import { useMeasure } from '@kodiak-ui/hooks'
+import { Box } from '@kodiak-ui/primitives/box'
+import { useMeasure } from '@kodiak-ui/hooks/use-measure'
 import { VariantProps, SxStyleProp } from '@kodiak-ui/core'
 
 type ProgressThumbProps = {

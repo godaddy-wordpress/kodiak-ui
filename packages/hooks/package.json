@@ -4,9 +4,6 @@
   "main": "dist/hooks.cjs.js",
   "module": "dist/hooks.esm.js",
   "source": "src/index.ts",
-  "files": [
-    "dist"
-  ],
   "author": "Wesley Cole <wes@skyverge.com>",
   "license": "MIT",
   "publishConfig": {
@@ -21,5 +18,24 @@
   "gitHead": "fe05dc108a105dcf18b4a7210d9f3d0ff5197bd3",
   "devDependencies": {
     "resize-observer-polyfill": "^1.5.1"
+  },
+  "preconstruct": {
+    "entrypoints": [
+      ".",
+      "use-before-unload",
+      "use-controlled",
+      "use-debounce",
+      "use-event-listener",
+      "use-id",
+      "use-is-mounted",
+      "use-key",
+      "use-measure",
+      "use-media-query",
+      "use-on-click-outside",
+      "use-portal",
+      "use-previous",
+      "use-subscribe",
+      "use-translation"
+    ]
   }
 }

@@ -5,9 +5,6 @@
   "main": "dist/primitives.cjs.js",
   "module": "dist/primitives.esm.js",
   "source": "src/index.ts",
-  "files": [
-    "dist"
-  ],
   "author": "Wesley Cole <wes@skyverge.com>",
   "license": "MIT",
   "publishConfig": {
@@ -39,5 +36,26 @@
     "@types/theme-ui": "^0.3.1"
   },
   "gitHead": "fe05dc108a105dcf18b4a7210d9f3d0ff5197bd3",
-  "snyk": true
+  "snyk": true,
+  "preconstruct": {
+    "entrypoints": [
+      ".",
+      "avatar",
+      "badge",
+      "box",
+      "button",
+      "flex",
+      "grid",
+      "iframe",
+      "image",
+      "label",
+      "link",
+      "loading",
+      "nav",
+      "svg",
+      "tag",
+      "text",
+      "visually-hidden"
+    ]
+  }
 }
