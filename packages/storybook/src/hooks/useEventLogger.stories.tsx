@@ -23,31 +23,35 @@ export function LogEvent() {
   function LogRouteEvent() {
     const [log, setLog] = React.useState([])
     const logEvent = useEventLogger()
+    const currentPrice = '12345'
 
-    useEventLoggerReducers({
-      initialEventReducers: [
-        // Add an id to the event
-        event => {
-          return { ...event, id: ++id, userId: '12345' }
-        },
-        // Console.log the event
-        event => {
-          if (!event) {
-            return
-          }
-          console.log(event)
-          return event
-        },
-        // add it to an event log
-        event => {
-          if (!event) {
-            return
-          }
-          setLog(log => [...log, event])
-          return event
-        },
-      ],
-    })
+    useEventLoggerReducers(
+      {
+        initialEventReducers: [
+          // Add an id to the event
+          event => {
+            return { ...event, id: ++id, currentPrice }
+          },
+          // Console.log the event
+          event => {
+            if (!event) {
+              return
+            }
+            console.log(event)
+            return event
+          },
+          // add it to an event log
+          event => {
+            if (!event) {
+              return
+            }
+            setLog(log => [...log, event])
+            return event
+          },
+        ],
+      },
+      [currentPrice], // needs a dependency array if the initial config depends on these
+    )
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { key, ...location } = useLocation() // we don't want to watch key changes if the user stays on the same route
