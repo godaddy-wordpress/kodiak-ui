@@ -31,12 +31,14 @@ interface UseRowSelectReturn {
   setSelectedRows: React.Dispatch<React.SetStateAction<SelectedRowsState>>
   getSelectAllCheckbox: () => Header[]
   getRowCheckbox: (id: string | number) => Cell[]
+  clearSelection: () => void
 }
 
 interface UseRowSelectProps<Data> {
   selectable: boolean
   data: any
   initialSelectedIds: ID[]
+  allRecordsSelected?: boolean
   onSelect: (event: React.ChangeEvent<HTMLInputElement>, id: ID) => void
   onSelectAll: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
@@ -45,6 +47,7 @@ export function useRowSelect<Data>({
   selectable,
   data,
   initialSelectedIds = null,
+  allRecordsSelected,
   onSelect,
   onSelectAll,
 }: UseRowSelectProps<Data>): UseRowSelectReturn {
@@ -118,7 +121,7 @@ export function useRowSelect<Data>({
             <Checkbox
               id={`row-${id}`}
               label={<VisuallyHidden>Select row {id}</VisuallyHidden>}
-              checked={selectedRows?.[id] || false}
+              checked={allRecordsSelected || selectedRows?.[id] || false}
               onChange={e => onSelect(e, id)}
             />
           ),
@@ -130,6 +133,10 @@ export function useRowSelect<Data>({
     return []
   }
 
+  const clearSelection = React.useCallback(function clearSelection() {
+    setSelectedRows([])
+  }, [])
+
   return {
     selectedRows,
     flatSelectedRows,
@@ -139,5 +146,6 @@ export function useRowSelect<Data>({
     setSelectedRows,
     getSelectAllCheckbox,
     getRowCheckbox,
+    clearSelection,
   }
 }

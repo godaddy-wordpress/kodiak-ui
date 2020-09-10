@@ -42,6 +42,7 @@ export interface UseTableProps<T> {
   tableLayout?: TableLayout
   selectable?: boolean
   initialSelectedIds?: ID[]
+  allRecordsSelected?: boolean
   attributes?: {
     id?: string
     describedby?: React.MutableRefObject<any> | string
@@ -63,6 +64,7 @@ export interface UseTableReturnValue {
   someSelected: boolean
   selectedCount: number
   getTableProps: () => GetTableProps
+  clearSelection: () => void
 }
 
 export function useTable<T extends Data>({
@@ -71,6 +73,7 @@ export function useTable<T extends Data>({
   tableLayout = 'auto',
   selectable = false,
   initialSelectedIds,
+  allRecordsSelected,
   attributes = {},
 }: UseTableProps<T>): UseTableReturnValue {
   const { id: userId, describedby } = attributes
@@ -84,10 +87,12 @@ export function useTable<T extends Data>({
     setSelectedRows,
     getSelectAllCheckbox,
     getRowCheckbox,
+    clearSelection,
   } = useRowSelect({
     selectable,
     data,
     initialSelectedIds,
+    allRecordsSelected,
     onSelect: (event, id) => {
       setSelectedRows({
         ...selectedRows,
@@ -208,5 +213,6 @@ export function useTable<T extends Data>({
     someSelected,
     selectedCount,
     getTableProps,
+    clearSelection,
   }
 }
