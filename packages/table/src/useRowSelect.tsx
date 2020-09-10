@@ -134,7 +134,7 @@ export function useRowSelect<Data>({
   }
 
   const clearSelection = React.useCallback(function clearSelection() {
-    setSelectedRows([])
+    setSelectedRows(null)
   }, [])
 
   return {
