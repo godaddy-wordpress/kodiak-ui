@@ -1,7 +1,10 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import * as React from 'react'
-import { useEventLoggerReducers } from '@kodiak-ui/hooks/use-event-logger'
+import {
+  useEventLoggerReducers,
+  useEventLogger,
+} from '@kodiak-ui/hooks/use-event-logger'
 import { useEventLogRoute } from '@kodiak-ui/hooks'
 import {
   Link,
@@ -10,7 +13,7 @@ import {
   BrowserRouter,
   useLocation,
 } from 'react-router-dom'
-import { Box, Grid, Text } from '@kodiak-ui/primitives'
+import { Box, Button, Grid, Text } from '@kodiak-ui/primitives'
 
 export default { title: 'Hooks/useEventLogger' }
 
@@ -19,6 +22,7 @@ let id = 0
 export function LogEvent() {
   function LogRouteEvent() {
     const [log, setLog] = React.useState([])
+    const logEvent = useEventLogger()
 
     useEventLoggerReducers({
       initialEventReducers: [
@@ -60,9 +64,24 @@ export function LogEvent() {
           <Link to="/pricing">Pricing</Link>
           <Text>Current iframe route: </Text>
           <Switch>
-            <Route path="/home">Home</Route>
             <Route path="/pricing">Pricing</Route>
+            <Route path="/home">Home</Route>
           </Switch>
+          <Button
+            aria-label="aria-label for the event target"
+            onMouseOver={e => {
+              const target = e.target as HTMLButtonElement
+              logEvent({
+                name: 'MOUSE_OVER',
+                payload: {
+                  source:
+                    target?.getAttribute('aria-label') || target.textContent,
+                },
+              })
+            }}
+          >
+            Fire a mouse over event
+          </Button>
         </Grid>
 
         <Grid sx={{ mt: 4 }}>

@@ -34,9 +34,7 @@ export const useEventLoggerStore = create<EventLoggerStore>(
 export function useEventLogger() {
   const logEvent = useEventLoggerStore(store => store.logEvent)
 
-  return {
-    logEvent,
-  }
+  return logEvent
 }
 
 const emptyArray = []

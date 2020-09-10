@@ -60,6 +60,11 @@ module.exports = {
     },
     {
       type: 'category',
+      label: 'Hooks',
+      items: ['hooks/use-event-logger'],
+    },
+    {
+      type: 'category',
       label: 'Recipes',
       items: ['recipes/forms'],
     },

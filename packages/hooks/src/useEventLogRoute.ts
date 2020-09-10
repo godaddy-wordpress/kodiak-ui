@@ -7,7 +7,7 @@ interface RouteEvent extends Event {
 }
 
 export function useEventLogRoute({ location }: { location: string }) {
-  const { logEvent } = useEventLogger()
+  const logEvent = useEventLogger()
 
   React.useEffect(
     function logRouteEvent() {
