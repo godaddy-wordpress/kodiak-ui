@@ -22497,6 +22497,11 @@ yarn-or-npm@^3.0.1:
     cross-spawn "^6.0.5"
     pkg-dir "^4.2.0"
 
+zustand@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/zustand/-/zustand-3.1.1.tgz#c48d7d4f612aa0e4c64568db931645f179e6275b"
+  integrity sha512-VypPwGrcmUp0gjdKiW2W+RzcPSKl8VYBiP1QxAX0AsiSTh7M2al6+8zWxnWNSem+Z6gqPN3anNp12q+1MiH32w==
+
 zwitch@^1.0.0:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/zwitch/-/zwitch-1.0.5.tgz#d11d7381ffed16b742f6af7b3f223d5cd9fe9920"
