@@ -1,5 +1,4 @@
 {
-  "name": "kodiak-ui",
   "private": true,
   "workspaces": [
     "packages/*"
