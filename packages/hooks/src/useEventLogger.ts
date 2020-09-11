@@ -60,3 +60,20 @@ export function useEventLoggerReducers(
 
   return [eventReducers, setEventReducers]
 }
+
+export function wrapHandlerWithLog({ name, handler }) {
+  return event => {
+    const target = event?.target as HTMLElement
+    const logEvent = useEventLoggerStore.getState().logEvent
+
+    logEvent({
+      name,
+      payload: {
+        event,
+        sourceLabel: target?.getAttribute('aria-label') || target.textContent,
+      },
+    })
+
+    handler?.(event)
+  }
+}
