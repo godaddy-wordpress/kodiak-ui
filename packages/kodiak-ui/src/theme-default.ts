@@ -41,12 +41,6 @@ export const theme: Theme = {
       lineHeight: 'body',
       margin: 0,
       padding: 0,
-      h1: {
-        fontFamily: 'heading',
-        fontSize: 6,
-        lineHeight: 'heading',
-        mt: 0,
-      },
     },
   },
 }

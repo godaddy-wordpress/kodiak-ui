@@ -1,6 +1,13 @@
 import * as CSS from 'csstype'
-import { ColorMode } from 'theme-ui'
+import {
+  jsx,
+  css,
+  ColorMode,
+  Theme as ThemeUiTheme,
+  ThemeProvider,
+} from 'theme-ui'
 import themeDefault from './theme-default'
+import { Global } from '@emotion/core'
 
 export type ScaleArray<T> = T[]
 export type ScaleObject<T> = { [K: string]: T | Scale<T>; [I: number]: T }
@@ -58,24 +65,56 @@ type CreateDesignSystemOptions = {
   useBorderBox?: boolean
   useLocalStorage?: boolean
   styles?: any
+  global?: any
 }
 
 export function createDesignSystem({
   system,
   styles,
+  global,
   ...rest
 }: CreateDesignSystemOptions): { theme: Theme } {
   const theme = {
-    ...themeDefault,
     ...rest,
+    ...themeDefault,
     ...system,
     styles: {
       ...themeDefault?.styles,
       ...styles,
     },
+    global,
   }
 
   return {
     theme,
   }
+}
+
+const GlobalStyles = () =>
+  jsx(Global, {
+    styles: emotionTheme => {
+      const theme = emotionTheme as ThemeUiTheme
+
+      return css({
+        '*': {
+          boxSizing: 'border-box',
+        },
+        body: {
+          margin: 0,
+          variant: 'styles.root',
+        },
+        h1: {
+          variant: 'global.h1',
+        },
+      })(theme)
+    },
+  })
+
+interface ProviderProps {
+  theme: ThemeUiTheme
+  children?: React.ReactNode
+}
+
+export function Provider({ theme, children }: ProviderProps) {
+  return jsx(ThemeProvider, { theme }, children)
 }
