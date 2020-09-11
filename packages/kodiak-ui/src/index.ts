@@ -1,5 +1,5 @@
 import * as CSS from 'csstype'
-import { ColorMode, Theme } from 'theme-ui'
+import { ColorMode } from 'theme-ui'
 import themeDefault from './theme-default'
 
 export type ScaleArray<T> = T[]
@@ -47,25 +47,32 @@ export type System = {
   // opacities?: Scale<CSS.OpacityProperty>
 }
 
-export type Root = {
-  html: any
-  body: any
-}
-
 export type Theme = System & { styles?: any }
 
 type CreateDesignSystemOptions = {
   system: System
-  root: Root
+  useCustomProperties?: boolean
+  useBodyStyles?: boolean
+  initialColorModeName?: string
+  useColorSchemeMediaQuery?: boolean
+  useBorderBox?: boolean
+  useLocalStorage?: boolean
+  styles?: any
 }
 
 export function createDesignSystem({
   system,
-  root,
+  styles,
+  ...rest
 }: CreateDesignSystemOptions): { theme: Theme } {
   const theme = {
     ...themeDefault,
+    ...rest,
     ...system,
+    styles: {
+      ...themeDefault?.styles,
+      ...styles,
+    },
   }
 
   return {
