@@ -13,7 +13,14 @@ import {
   BrowserRouter,
   useLocation,
 } from 'react-router-dom'
-import { Box, Button, Grid, Text } from '@kodiak-ui/primitives'
+import {
+  Box,
+  Button,
+  AnchorButton,
+  Grid,
+  Text,
+  Link as KodiakLink,
+} from '@kodiak-ui/primitives'
 
 export default { title: 'Hooks/useEventLogger' }
 
@@ -66,6 +73,10 @@ export function LogEvent() {
           </Text>
           <Link to="/home">Home</Link>
           <Link to="/pricing">Pricing</Link>
+          <KodiakLink href="https://jilt.com" target="_blank">
+            External link
+          </KodiakLink>
+
           <Text>Current iframe route: </Text>
           <Switch>
             <Route path="/pricing">Pricing</Route>
@@ -91,6 +102,14 @@ export function LogEvent() {
             <Button>
               <Text>Button with no aria-label</Text>
             </Button>
+
+            <AnchorButton
+              variant="secondary"
+              href="https://app.jilt.com"
+              target="_blank"
+            >
+              Anchor button
+            </AnchorButton>
           </Grid>
         </Grid>
 
