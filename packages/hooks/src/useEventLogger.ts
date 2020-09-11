@@ -72,19 +72,19 @@ export function wrapHandlerWithLog({
   handler,
   addToPayload,
 }: WrapHandlerWithLogProps) {
-  return event => {
-    const target = event?.target as HTMLElement
+  return sourceEvent => {
+    const target = sourceEvent?.target as HTMLElement
     const logEvent = useEventLoggerStore.getState().logEvent
 
     logEvent({
       name,
       payload: {
-        event,
+        sourceEvent,
         sourceLabel: target?.getAttribute('aria-label') || target.textContent,
-        ...(addToPayload ? addToPayload(event) : {}),
+        ...(addToPayload ? addToPayload(sourceEvent) : {}),
       },
     })
 
-    handler?.(event)
+    handler?.(sourceEvent)
   }
 }
