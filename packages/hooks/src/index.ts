@@ -1,5 +1,7 @@
 export { usePrevious } from './usePrevious'
 export { useBeforeUnload } from './useBeforeUnload'
+export { useEventLogger } from './useEventLogger'
+export { useEventLogRoute } from './useEventLogRoute'
 export { useIsMounted } from './useIsMounted'
 export { useSubscribe } from './useSubscribe'
 export { useLocalStorage } from './useLocalStorage'
