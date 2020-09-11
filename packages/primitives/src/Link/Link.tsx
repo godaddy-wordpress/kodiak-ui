@@ -34,10 +34,10 @@ export function addToPayload(event) {
   }
 }
 
-export function Link({
-  eventLog = true,
-  ...props
-}: { eventLog?: boolean } & React.ComponentProps<typeof StyledLink>) {
+export const Link = React.forwardRef<
+  HTMLAnchorElement,
+  { eventLog?: boolean } & React.ComponentProps<typeof StyledLink>
+>(({ eventLog = true, ...props }, ref) => {
   const wrappedOnClick = useWrappedEventHandler({
     name: 'LINK_CLICK',
     handler: props.onClick,
@@ -45,5 +45,5 @@ export function Link({
     addToPayload,
   })
 
-  return <StyledLink {...props} onClick={wrappedOnClick} />
-}
+  return <StyledLink {...props} ref={ref} onClick={wrappedOnClick} />
+})

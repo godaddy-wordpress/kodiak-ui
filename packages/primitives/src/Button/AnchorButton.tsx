@@ -40,10 +40,10 @@ export const StyledAnchorButton = styled('a', {
   sx,
 )
 
-export function AnchorButton({
-  eventLog = true,
-  ...props
-}: { eventLog?: boolean } & React.ComponentProps<typeof StyledAnchorButton>) {
+export const AnchorButton = React.forwardRef<
+  HTMLAnchorElement,
+  { eventLog?: boolean } & React.ComponentProps<typeof StyledAnchorButton>
+>(({ eventLog = true, ...props }, ref) => {
   const wrappedOnClick = useWrappedEventHandler({
     name: 'ANCHOR_BUTTON_CLICK',
     handler: props.onClick,
@@ -51,5 +51,5 @@ export function AnchorButton({
     addToPayload,
   })
 
-  return <StyledAnchorButton {...props} onClick={wrappedOnClick} />
-}
+  return <StyledAnchorButton {...props} ref={ref} onClick={wrappedOnClick} />
+})
