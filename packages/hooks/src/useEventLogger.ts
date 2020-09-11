@@ -65,6 +65,7 @@ type WrapHandlerWithLogProps = {
   name?: string
   handler?: (any) => void
   addToPayload?: (event) => void
+  eventLog?: boolean
 }
 
 export function wrapHandlerWithLog({

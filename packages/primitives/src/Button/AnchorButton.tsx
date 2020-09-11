@@ -40,20 +40,23 @@ export const StyledAnchorButton = styled('a', {
 )
 
 export function AnchorButton({
+  eventLog = true,
   ...props
-}: React.ComponentProps<typeof StyledAnchorButton>) {
+}: { eventLog?: boolean } & React.ComponentProps<typeof StyledAnchorButton>) {
   const onClick = props?.onClick
 
   const wrappedOnClick = React.useMemo(
     () =>
-      wrapHandlerWithLog({
-        name: 'ANCHOR_BUTTON_CLICK',
-        handler: onClick,
-        addToPayload: event => ({
-          href: event?.target?.getAttribute('href'),
-        }),
-      }),
-    [onClick],
+      eventLog
+        ? wrapHandlerWithLog({
+            name: 'ANCHOR_BUTTON_CLICK',
+            handler: onClick,
+            addToPayload: event => ({
+              href: event?.target?.getAttribute('href'),
+            }),
+          })
+        : onClick,
+    [onClick, eventLog],
   )
 
   return <StyledAnchorButton {...props} onClick={wrappedOnClick} />

@@ -28,19 +28,24 @@ export const StyledLink = styled('a')<LinkProps>(
   sx,
 )
 
-export function Link({ ...props }: React.ComponentProps<typeof StyledLink>) {
+export function Link({
+  eventLog = true,
+  ...props
+}: { eventLog?: boolean } & React.ComponentProps<typeof StyledLink>) {
   const onClick = props?.onClick
 
   const wrappedOnClick = React.useMemo(
     () =>
-      wrapHandlerWithLog({
-        name: 'LINK_CLICK',
-        handler: onClick,
-        addToPayload: event => ({
-          href: event?.target?.getAttribute('href'),
-        }),
-      }),
-    [onClick],
+      eventLog
+        ? wrapHandlerWithLog({
+            name: 'LINK_CLICK',
+            handler: onClick,
+            addToPayload: event => ({
+              href: event?.target?.getAttribute('href'),
+            }),
+          })
+        : onClick,
+    [onClick, eventLog],
   )
 
   return <StyledLink {...props} onClick={wrappedOnClick} />

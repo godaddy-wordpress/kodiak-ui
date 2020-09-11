@@ -83,13 +83,17 @@ export type ButtonEvent = {
 }
 
 export function Button({
+  eventLog = true,
   ...props
-}: React.ComponentProps<typeof StyledButton>) {
+}: { eventLog?: boolean } & React.ComponentProps<typeof StyledButton>) {
   const onClick = props?.onClick
 
   const wrappedOnClick = React.useMemo(
-    () => wrapHandlerWithLog({ name: 'BUTTON_CLICK', handler: onClick }),
-    [onClick], // eslint prefers a function so that it can check the dependencies statically so we useMemo instead of useCallback
+    () =>
+      eventLog
+        ? wrapHandlerWithLog({ name: 'BUTTON_CLICK', handler: onClick })
+        : onClick,
+    [onClick, eventLog], // eslint prefers a function so that it can check the dependencies statically so we useMemo instead of useCallback
   )
 
   return <StyledButton {...props} onClick={wrappedOnClick} />

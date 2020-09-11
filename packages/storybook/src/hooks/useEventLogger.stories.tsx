@@ -48,7 +48,7 @@ export function LogEvent() {
                 ...payload,
                 id: ++id,
                 currentPrice,
-                role: sourceEvent.target?.getAttribute('role'),
+                role: sourceEvent?.target?.getAttribute('role'),
               },
             }
           },
