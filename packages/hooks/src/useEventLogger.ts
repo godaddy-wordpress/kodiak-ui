@@ -31,12 +31,13 @@ export const useEventLoggerStore = create<EventLoggerStore>(
   }),
 )
 
-const logEventAtom = (store: EventLoggerStore) => store.logEvent
-const setEventReducersAtom = (store: EventLoggerStore) => store.setEventReducers
-const eventReducersAtom = (store: EventLoggerStore) => store.eventReducers
+const logEventSelector = (store: EventLoggerStore) => store.logEvent
+const setEventReducersSelector = (store: EventLoggerStore) =>
+  store.setEventReducers
+const eventReducersSelector = (store: EventLoggerStore) => store.eventReducers
 
 export function useEventLogger() {
-  const logEvent = useEventLoggerStore(logEventAtom)
+  const logEvent = useEventLoggerStore(logEventSelector)
 
   return logEvent
 }
@@ -45,8 +46,8 @@ export function useEventLoggerReducers(
   { initialEventReducers },
   deps?: React.DependencyList, // if we need to re-initialize the event reducers there needs to be a dependency array
 ) {
-  const setEventReducers = useEventLoggerStore(setEventReducersAtom)
-  const eventReducers = useEventLoggerStore(eventReducersAtom)
+  const setEventReducers = useEventLoggerStore(setEventReducersSelector)
+  const eventReducers = useEventLoggerStore(eventReducersSelector)
   const initialEventReducersRef = React.useRef(initialEventReducers)
 
   React.useEffect(
