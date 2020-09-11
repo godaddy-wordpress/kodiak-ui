@@ -4,6 +4,7 @@ import * as React from 'react'
 import {
   useEventLoggerReducers,
   useEventLogger,
+  Event,
 } from '@kodiak-ui/hooks/use-event-logger'
 import { useEventLogRoute } from '@kodiak-ui/hooks'
 import {
@@ -36,8 +37,20 @@ export function LogEvent() {
       {
         initialEventReducers: [
           // Add an id to the event
-          event => {
-            return { ...event, id: ++id, currentPrice }
+          (event: Event) => {
+            // We get rid of the source event before console logging
+            // because it is a synthetic event
+            // but we still have access to it
+            const { sourceEvent, ...payload } = event?.payload
+            return {
+              ...event,
+              payload: {
+                ...payload,
+                id: ++id,
+                currentPrice,
+                role: sourceEvent.target?.getAttribute('role'),
+              },
+            }
           },
           // Console.log the event
           event => {
@@ -107,6 +120,7 @@ export function LogEvent() {
               variant="secondary"
               href="https://app.jilt.com"
               target="_blank"
+              onClick={event => console.info('Clicked the anchor button')}
             >
               Anchor button
             </AnchorButton>
