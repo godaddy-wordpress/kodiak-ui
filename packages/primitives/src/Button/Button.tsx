@@ -1,3 +1,4 @@
+import * as React from 'react'
 import {
   variant,
   sx,
@@ -10,6 +11,7 @@ import {
   SerializedStyles,
   styled,
 } from '@kodiak-ui/core'
+import { wrapHandlerWithLog } from '@kodiak-ui/hooks/use-event-logger'
 import { base as baseProp, BaseProps } from '../Box'
 
 /**
@@ -52,7 +54,7 @@ export type ButtonProps = React.DetailedHTMLProps<
 /**
  * Button primitive component
  */
-export const Button = styled('button', {
+export const StyledButton = styled('button', {
   shouldForwardProp,
 })<ButtonProps>(
   {
@@ -71,3 +73,22 @@ export const Button = styled('button', {
   ...systemProps,
   sx,
 )
+
+export type ButtonEvent = {
+  name: string
+  payload: {
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+    sourceLabel: string
+  }
+}
+
+export function Button({ ...props }) {
+  const onClick = props?.onClick
+
+  const wrappedOnClick = React.useMemo(
+    () => wrapHandlerWithLog({ name: 'BUTTON_CLICK', handler: onClick }),
+    [onClick], // eslint prefers a function so that it can check the dependencies statically so we useMemo instead of useCallback
+  )
+
+  return <StyledButton {...props} onClick={wrappedOnClick} />
+}
