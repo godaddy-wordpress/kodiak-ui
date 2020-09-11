@@ -61,7 +61,17 @@ export function useEventLoggerReducers(
   return [eventReducers, setEventReducers]
 }
 
-export function wrapHandlerWithLog({ name, handler }) {
+type WrapHandlerWithLogProps = {
+  name?: string
+  handler?: (any) => void
+  addToPayload?: (event) => void
+}
+
+export function wrapHandlerWithLog({
+  name,
+  handler,
+  addToPayload,
+}: WrapHandlerWithLogProps) {
   return event => {
     const target = event?.target as HTMLElement
     const logEvent = useEventLoggerStore.getState().logEvent
@@ -71,6 +81,7 @@ export function wrapHandlerWithLog({ name, handler }) {
       payload: {
         event,
         sourceLabel: target?.getAttribute('aria-label') || target.textContent,
+        ...(addToPayload ? addToPayload(event) : {}),
       },
     })
 
