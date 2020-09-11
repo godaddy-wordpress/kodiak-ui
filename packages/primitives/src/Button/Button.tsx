@@ -82,7 +82,9 @@ export type ButtonEvent = {
   }
 }
 
-export function Button({ ...props }) {
+export function Button({
+  ...props
+}: React.ComponentProps<typeof StyledButton>) {
   const onClick = props?.onClick
 
   const wrappedOnClick = React.useMemo(
