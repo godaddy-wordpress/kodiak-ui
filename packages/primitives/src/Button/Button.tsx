@@ -84,7 +84,10 @@ export type ButtonEvent = {
 
 export const Button = React.forwardRef<
   HTMLButtonElement,
-  { eventLog?: boolean } & React.ComponentProps<typeof StyledButton>
+  { eventLog?: boolean } & Omit<
+    React.ComponentProps<typeof StyledButton>,
+    'ref'
+  >
 >(({ eventLog = true, ...props }, ref) => {
   const wrappedOnClick = useWrappedEventHandler({
     name: 'BUTTON_CLICK',

@@ -12,9 +12,12 @@ export interface SelectButtonProps
   type?: 'button' | 'reset' | 'submit' | undefined
 }
 
-export const SelectButton = React.forwardRef(function SelectButton(
-  { children, isOpen, variantKey = 'selects', ...props }: SelectButtonProps,
-  ref: React.Ref<HTMLButtonElement>,
+export const SelectButton = React.forwardRef<
+  HTMLButtonElement,
+  SelectButtonProps
+>(function SelectButton(
+  { children, isOpen, variantKey = 'selects', ...props },
+  ref,
 ) {
   return (
     <Button
@@ -29,7 +32,7 @@ export const SelectButton = React.forwardRef(function SelectButton(
         minWidth: '184px',
         textAlign: 'left',
       }}
-      ref={ref}
+      ref={ref as any} // Legacy ref possibly something related to https://github.com/downshift-js/downshift/issues/718
       variantKey={variantKey}
       {...props}
     >
