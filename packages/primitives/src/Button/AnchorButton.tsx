@@ -1,6 +1,7 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
 import { base, buttonVariant } from './Button'
+import { addToPayload } from '../Link/Link'
 import {
   shouldForwardProp,
   sx,
@@ -8,7 +9,7 @@ import {
   SystemProps,
   VariantProps,
 } from '@kodiak-ui/core'
-import { wrapHandlerWithLog } from '@kodiak-ui/hooks/use-event-logger'
+import { useWrappedEventHandler } from '@kodiak-ui/hooks/use-event-logger'
 
 export type AnchorButtonProps = React.DetailedHTMLProps<
   React.AnchorHTMLAttributes<HTMLAnchorElement>,
@@ -43,21 +44,12 @@ export function AnchorButton({
   eventLog = true,
   ...props
 }: { eventLog?: boolean } & React.ComponentProps<typeof StyledAnchorButton>) {
-  const onClick = props?.onClick
-
-  const wrappedOnClick = React.useMemo(
-    () =>
-      eventLog
-        ? wrapHandlerWithLog({
-            name: 'ANCHOR_BUTTON_CLICK',
-            handler: onClick,
-            addToPayload: event => ({
-              href: event?.target?.getAttribute('href'),
-            }),
-          })
-        : onClick,
-    [onClick, eventLog],
-  )
+  const wrappedOnClick = useWrappedEventHandler({
+    name: 'ANCHOR_BUTTON_CLICK',
+    handler: props.onClick,
+    isActive: eventLog,
+    addToPayload,
+  })
 
   return <StyledAnchorButton {...props} onClick={wrappedOnClick} />
 }

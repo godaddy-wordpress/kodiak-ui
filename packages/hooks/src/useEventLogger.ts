@@ -61,31 +61,46 @@ export function useEventLoggerReducers(
   return [eventReducers, setEventReducers]
 }
 
-type WrapHandlerWithLogProps = {
-  name?: string
+type UseWrappedEventHandlerProps = {
+  isActive?: boolean
+  name: string
   handler?: (any) => void
   addToPayload?: (event) => void
-  eventLog?: boolean
 }
 
-export function wrapHandlerWithLog({
+export function useWrappedEventHandler({
   name,
   handler,
   addToPayload,
-}: WrapHandlerWithLogProps) {
-  return sourceEvent => {
-    const target = sourceEvent?.target as HTMLElement
-    const logEvent = useEventLoggerStore.getState().logEvent
+  isActive = true,
+}: UseWrappedEventHandlerProps) {
+  // use ref's in case they are not memoized so the user doesn't need
+  // to remember to memoize
+  const handlerRef = React.useRef({ handler, addToPayload })
+  handlerRef.current = { handler, addToPayload }
 
-    logEvent({
-      name,
-      payload: {
-        sourceEvent,
-        sourceLabel: target?.getAttribute('aria-label') || target.textContent,
-        ...(addToPayload ? addToPayload(sourceEvent) : {}),
-      },
-    })
+  const wrappedEvent = React.useCallback(
+    function handleEvent(sourceEvent) {
+      if (isActive) {
+        const target = sourceEvent?.target as HTMLElement
+        const logEvent = useEventLoggerStore.getState().logEvent
 
-    handler?.(sourceEvent)
-  }
+        logEvent({
+          name,
+          payload: {
+            sourceEvent,
+            sourceLabel:
+              target?.getAttribute('aria-label') || target.textContent,
+            ...(handlerRef?.current?.addToPayload
+              ? handlerRef?.current?.addToPayload?.(sourceEvent)
+              : {}),
+          },
+        })
+      }
+      handlerRef?.current?.handler?.(sourceEvent)
+    },
+    [isActive, name], // eslint prefers a function so that it can check the dependencies statically so we useMemo instead of useCallback
+  )
+
+  return wrappedEvent
 }

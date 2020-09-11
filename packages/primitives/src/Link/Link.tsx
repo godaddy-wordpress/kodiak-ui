@@ -7,7 +7,7 @@ import {
   systemProps,
   SystemProps,
 } from '@kodiak-ui/core'
-import { wrapHandlerWithLog } from '@kodiak-ui/hooks/use-event-logger'
+import { useWrappedEventHandler } from '@kodiak-ui/hooks/use-event-logger'
 import { base, BaseProps } from '../Box'
 
 type LinkProps = VariantProps &
@@ -28,25 +28,22 @@ export const StyledLink = styled('a')<LinkProps>(
   sx,
 )
 
+export function addToPayload(event) {
+  return {
+    href: event?.target?.getAttribute('href'),
+  }
+}
+
 export function Link({
   eventLog = true,
   ...props
 }: { eventLog?: boolean } & React.ComponentProps<typeof StyledLink>) {
-  const onClick = props?.onClick
-
-  const wrappedOnClick = React.useMemo(
-    () =>
-      eventLog
-        ? wrapHandlerWithLog({
-            name: 'LINK_CLICK',
-            handler: onClick,
-            addToPayload: event => ({
-              href: event?.target?.getAttribute('href'),
-            }),
-          })
-        : onClick,
-    [onClick, eventLog],
-  )
+  const wrappedOnClick = useWrappedEventHandler({
+    name: 'LINK_CLICK',
+    handler: props.onClick,
+    isActive: eventLog,
+    addToPayload,
+  })
 
   return <StyledLink {...props} onClick={wrappedOnClick} />
 }

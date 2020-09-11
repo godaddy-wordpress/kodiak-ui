@@ -11,7 +11,7 @@ import {
   SerializedStyles,
   styled,
 } from '@kodiak-ui/core'
-import { wrapHandlerWithLog } from '@kodiak-ui/hooks/use-event-logger'
+import { useWrappedEventHandler } from '@kodiak-ui/hooks/use-event-logger'
 import { base as baseProp, BaseProps } from '../Box'
 
 /**
@@ -86,15 +86,11 @@ export function Button({
   eventLog = true,
   ...props
 }: { eventLog?: boolean } & React.ComponentProps<typeof StyledButton>) {
-  const onClick = props?.onClick
-
-  const wrappedOnClick = React.useMemo(
-    () =>
-      eventLog
-        ? wrapHandlerWithLog({ name: 'BUTTON_CLICK', handler: onClick })
-        : onClick,
-    [onClick, eventLog], // eslint prefers a function so that it can check the dependencies statically so we useMemo instead of useCallback
-  )
+  const wrappedOnClick = useWrappedEventHandler({
+    name: 'BUTTON_CLICK',
+    handler: props.onClick,
+    isActive: eventLog,
+  })
 
   return <StyledButton {...props} onClick={wrappedOnClick} />
 }
