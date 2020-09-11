@@ -9,5 +9,7 @@
   "peerDependencies": {
     "react": "^16.12.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "csstype": "^3.0.3"
+  }
 }
