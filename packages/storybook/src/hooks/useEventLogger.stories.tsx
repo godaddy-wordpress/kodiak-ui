@@ -71,21 +71,27 @@ export function LogEvent() {
             <Route path="/pricing">Pricing</Route>
             <Route path="/home">Home</Route>
           </Switch>
-          <Button
-            aria-label="aria-label for the event target"
-            onMouseOver={e => {
-              const target = e.target as HTMLButtonElement
-              logEvent({
-                name: 'MOUSE_OVER',
-                payload: {
-                  source:
-                    target?.getAttribute('aria-label') || target.textContent,
-                },
-              })
-            }}
-          >
-            Fire a mouse over event
-          </Button>
+          <Grid sx={{ maxWidth: '200px', gap: 4 }}>
+            <Button
+              aria-label="aria-label for the event target"
+              onMouseOver={e => {
+                const target = e.target as HTMLButtonElement
+                logEvent({
+                  name: 'MOUSE_OVER',
+                  payload: {
+                    sourceLabel:
+                      target?.getAttribute('aria-label') || target.textContent,
+                  },
+                })
+              }}
+            >
+              Fire a mouse over event
+            </Button>
+
+            <Button>
+              <Text>Button with no aria-label</Text>
+            </Button>
+          </Grid>
         </Grid>
 
         <Grid sx={{ mt: 4 }}>
