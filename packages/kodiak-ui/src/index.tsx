@@ -116,5 +116,5 @@ interface ProviderProps {
 }
 
 export function Provider({ theme, children }: ProviderProps) {
-  return jsx(ThemeProvider, { theme }, children)
+  return jsx(ThemeProvider, { theme }, jsx(GlobalStyles), children)
 }
