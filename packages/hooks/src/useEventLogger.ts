@@ -31,20 +31,22 @@ export const useEventLoggerStore = create<EventLoggerStore>(
   }),
 )
 
+const logEventAtom = (store: EventLoggerStore) => store.logEvent
+const setEventReducersAtom = (store: EventLoggerStore) => store.setEventReducers
+const eventReducersAtom = (store: EventLoggerStore) => store.eventReducers
+
 export function useEventLogger() {
-  const logEvent = useEventLoggerStore(store => store.logEvent)
+  const logEvent = useEventLoggerStore(logEventAtom)
 
   return logEvent
 }
-
-const emptyArray = []
 
 export function useEventLoggerReducers(
   { initialEventReducers },
   deps?: React.DependencyList, // if we need to re-initialize the event reducers there needs to be a dependency array
 ) {
-  const setEventReducers = useEventLoggerStore(store => store.setEventReducers)
-  const eventReducers = useEventLoggerStore(store => store.eventReducers)
+  const setEventReducers = useEventLoggerStore(setEventReducersAtom)
+  const eventReducers = useEventLoggerStore(eventReducersAtom)
   const initialEventReducersRef = React.useRef(initialEventReducers)
 
   React.useEffect(
@@ -52,7 +54,7 @@ export function useEventLoggerReducers(
       setEventReducers(initialEventReducersRef.current)
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [setEventReducers, ...[deps ? deps : emptyArray]],
+    [setEventReducers, ...(Array.isArray(deps) ? deps : [])],
   )
 
   return [eventReducers, setEventReducers]
