@@ -39,7 +39,7 @@ describe('useEventLogger', () => {
     )
 
     expect(log.length).toBe(3)
-    expect(log[3].payload.location).toBe('/home')
+    expect(log[2].payload.location).toBe('/home')
 
     location = '/my_account'
     useEventLogRouteHook.rerender()
