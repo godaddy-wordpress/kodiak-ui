@@ -1,7 +1,7 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
 import { base, buttonVariant } from './Button'
-import { addToPayload } from '../Link/Link'
+import { addHrefToPayload } from '../Link/Link'
 import {
   shouldForwardProp,
   sx,
@@ -47,8 +47,8 @@ export const AnchorButton = React.forwardRef<
   const wrappedOnClick = useWrappedEventHandler({
     name: 'ANCHOR_BUTTON_CLICK',
     handler: props.onClick,
-    isActive: eventLog,
-    addToPayload,
+    isLoggingEventsActive: eventLog,
+    addToPayload: addHrefToPayload,
   })
 
   return <StyledAnchorButton {...props} ref={ref} onClick={wrappedOnClick} />

@@ -92,7 +92,7 @@ export const Button = React.forwardRef<
   const wrappedOnClick = useWrappedEventHandler({
     name: 'BUTTON_CLICK',
     handler: props.onClick,
-    isActive: eventLog,
+    isLoggingEventsActive: eventLog,
   })
 
   return <StyledButton {...props} ref={ref} onClick={wrappedOnClick} />

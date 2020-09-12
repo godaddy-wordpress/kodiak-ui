@@ -28,7 +28,7 @@ export const StyledLink = styled('a')<LinkProps>(
   sx,
 )
 
-export function addToPayload(event) {
+export function addHrefToPayload(event) {
   return {
     href: event?.target?.getAttribute('href'),
   }
@@ -41,8 +41,8 @@ export const Link = React.forwardRef<
   const wrappedOnClick = useWrappedEventHandler({
     name: 'LINK_CLICK',
     handler: props.onClick,
-    isActive: eventLog,
-    addToPayload,
+    isLoggingEventsActive: eventLog,
+    addToPayload: addHrefToPayload,
   })
 
   return <StyledLink {...props} ref={ref} onClick={wrappedOnClick} />

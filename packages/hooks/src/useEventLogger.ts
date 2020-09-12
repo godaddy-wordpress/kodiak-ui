@@ -62,7 +62,7 @@ export function useEventLoggerReducers(
 }
 
 type UseWrappedEventHandlerProps = {
-  isActive?: boolean
+  isLoggingEventsActive?: boolean
   name: string
   handler?: (any) => void
   addToPayload?: (event) => void
@@ -72,7 +72,7 @@ export function useWrappedEventHandler({
   name,
   handler,
   addToPayload,
-  isActive = true,
+  isLoggingEventsActive: isActive = true,
 }: UseWrappedEventHandlerProps) {
   // use ref's in case they are not memoized so the user doesn't need
   // to remember to memoize
@@ -99,7 +99,7 @@ export function useWrappedEventHandler({
       }
       handlerRef?.current?.handler?.(sourceEvent)
     },
-    [isActive, name], // eslint prefers a function so that it can check the dependencies statically so we useMemo instead of useCallback
+    [isActive, name],
   )
 
   return wrappedEvent
