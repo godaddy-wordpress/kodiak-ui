@@ -90,7 +90,7 @@ export function createDesignSystem({
   }
 }
 
-const GlobalStyles = () =>
+const GlobalStyles = ({ global }) =>
   jsx(Global, {
     styles: emotionTheme => {
       const theme = emotionTheme as ThemeUiTheme
@@ -103,18 +103,17 @@ const GlobalStyles = () =>
           margin: 0,
           variant: 'styles.root',
         },
-        h1: {
-          variant: 'global.h1',
-        },
+        ...global,
       })(theme)
     },
   })
 
 interface ProviderProps {
-  theme: ThemeUiTheme
+  theme: ThemeUiTheme & { global: any }
   children?: React.ReactNode
 }
 
 export function Provider({ theme, children }: ProviderProps) {
-  return jsx(ThemeProvider, { theme }, jsx(GlobalStyles), children)
+  const global = theme?.global
+  return jsx(ThemeProvider, { theme }, jsx(GlobalStyles, { global }), children)
 }

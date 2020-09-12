@@ -2,7 +2,7 @@ import { Theme } from './'
 
 const breakpoints = ['40em', '56em', '64em']
 
-export const theme: Theme = {
+export const theme: Theme & { global: any } = {
   breakpoints,
   colors: {
     text: '#000',
@@ -33,14 +33,23 @@ export const theme: Theme = {
     large: `@media screen and (min-width: ${breakpoints[2]})`,
   },
   space: [0, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80],
-  styles: {
-    root: {
+  global: {
+    html: {
       fontFamily: 'body',
-      fontSize: '16px',
+      fontSize: '100%',
       fontWeight: 'body',
       lineHeight: 'body',
+    },
+    body: {
       margin: 0,
       padding: 0,
+    },
+    h1: {
+      fontSize: [
+        '2.25rem',
+        'calc(2.25rem + (((100vw - 20rem) / (90 - 20))) * (4.75 - 2.25))',
+        '4.75rem',
+      ],
     },
   },
 }
