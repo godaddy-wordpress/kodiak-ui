@@ -82,7 +82,10 @@ export function createDesignSystem({
       ...themeDefault?.styles,
       ...styles,
     },
-    global,
+    global: {
+      ...themeDefault?.global,
+      ...global,
+    },
   }
 
   return {
