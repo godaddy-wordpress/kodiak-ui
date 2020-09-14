@@ -5,7 +5,7 @@ import {
   ThemeProvider,
   Theme as ThemeUiTheme,
 } from '@theme-ui/core'
-import { css } from '@theme-ui/css'
+import { css, ThemeUiStyleObject } from '@theme-ui/css'
 import { Global } from '@emotion/core'
 import themeDefault from './theme-default'
 
@@ -49,12 +49,9 @@ export type System = {
   shadows?: ScaleObject<CSS.Property.BoxShadow>
   transitions?: ScaleObject<CSS.Property.Transition>
   zIndices?: ScaleObject<CSS.Property.ZIndex>
-  // colorStyles?: Scale<ThemeUICSSProperties>
-  // textStyles?: Scale<ThemeUICSSProperties>
-  // opacities?: Scale<CSS.OpacityProperty>
 }
 
-export type Theme = System & { styles?: any }
+type GlobalStyles = { [k: string]: ThemeUiStyleObject }
 
 type CreateDesignSystemOptions = {
   system: System
@@ -64,13 +61,13 @@ type CreateDesignSystemOptions = {
   useColorSchemeMediaQuery?: boolean
   useBorderBox?: boolean
   useLocalStorage?: boolean
-  styles?: any
-  global?: any
+  global?: GlobalStyles
 }
+
+type Theme = ThemeUiTheme & { global: GlobalStyles }
 
 export function createDesignSystem({
   system,
-  styles,
   global,
   ...rest
 }: CreateDesignSystemOptions): { theme: Theme } {
@@ -78,10 +75,6 @@ export function createDesignSystem({
     ...rest,
     ...themeDefault,
     ...system,
-    styles: {
-      ...themeDefault?.styles,
-      ...styles,
-    },
     global: {
       ...themeDefault?.global,
       ...global,
@@ -108,7 +101,7 @@ const GlobalStyles = ({ global }) =>
   })
 
 interface ProviderProps {
-  theme: ThemeUiTheme & { global: any }
+  theme: ThemeUiTheme & { global: GlobalStyles }
   children?: React.ReactNode
 }
 

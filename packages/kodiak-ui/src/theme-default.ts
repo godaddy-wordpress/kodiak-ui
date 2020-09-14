@@ -41,12 +41,13 @@ export const theme: Theme & { global: any } = {
     md: `@media screen and (min-width: ${breakpoints[1]})`,
     lg: `@media screen and (min-width: ${breakpoints[2]})`,
   },
+  space: [0, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80],
   radii: {
+    default: '4px',
     sm: '2px',
     md: '4px',
     lg: '6px',
   },
-  space: [0, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80],
   text: {
     heading: {
       fontFamily: 'heading',
@@ -60,13 +61,11 @@ export const theme: Theme & { global: any } = {
     },
   },
   global: {
-    html: {
+    body: {
       fontFamily: 'body',
       fontSize: '100%',
       fontWeight: 'body',
       lineHeight: 'body',
-    },
-    body: {
       margin: 0,
       padding: 0,
     },
