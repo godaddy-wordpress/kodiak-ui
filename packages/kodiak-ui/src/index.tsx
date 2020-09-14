@@ -1,13 +1,13 @@
 import * as CSS from 'csstype'
 import {
   jsx,
-  css,
   ColorMode,
-  Theme as ThemeUiTheme,
   ThemeProvider,
-} from 'theme-ui'
-import themeDefault from './theme-default'
+  Theme as ThemeUiTheme,
+} from '@theme-ui/core'
+import { css } from '@theme-ui/css'
 import { Global } from '@emotion/core'
+import themeDefault from './theme-default'
 
 export type ScaleArray<T> = T[]
 export type ScaleObject<T> = { [K: string]: T | Scale<T>; [I: number]: T }
@@ -101,10 +101,6 @@ const GlobalStyles = ({ global }) =>
       return css({
         '*': {
           boxSizing: 'border-box',
-        },
-        body: {
-          margin: 0,
-          variant: 'styles.root',
         },
         ...global,
       })(theme)

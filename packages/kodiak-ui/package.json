@@ -6,11 +6,10 @@
   "module": "dist/kodiak-ui.esm.js",
   "author": "Wesley Cole <wes@skyverge.com>",
   "license": "MIT",
-  "peerDependencies": {
-    "theme-ui": "^0.3.1"
-  },
   "dependencies": {
     "@emotion/core": "^10.0.35",
+    "@theme-ui/core": "^0.3.1",
+    "@theme-ui/css": "^0.3.1",
     "csstype": "^3.0.3"
   }
 }
