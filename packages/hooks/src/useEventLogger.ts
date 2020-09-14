@@ -90,7 +90,7 @@ export function useWrappedEventHandler({
           payload: {
             sourceEvent,
             sourceLabel:
-              target?.getAttribute('aria-label') || target.textContent,
+              target?.getAttribute?.('aria-label') || target.textContent,
             ...(handlerRef?.current?.addToPayload
               ? handlerRef?.current?.addToPayload?.(sourceEvent)
               : {}),
