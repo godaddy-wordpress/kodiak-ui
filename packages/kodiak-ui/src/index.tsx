@@ -54,7 +54,7 @@ export type System = {
   // opacities?: Scale<CSS.OpacityProperty>
 }
 
-export type Theme = System & { styles?: any }
+export type Theme = System & { styles?: any; global?: any }
 
 type CreateDesignSystemOptions = {
   system: System
@@ -73,7 +73,7 @@ export function createDesignSystem({
   styles,
   global,
   ...rest
-}: CreateDesignSystemOptions): { theme: Theme } {
+}: CreateDesignSystemOptions): { theme: any } {
   const theme = {
     ...rest,
     ...themeDefault,
