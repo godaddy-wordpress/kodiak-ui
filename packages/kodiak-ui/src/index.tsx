@@ -8,19 +8,30 @@ import {
 } from '@theme-ui/core'
 import { css, ThemeUiStyleObject } from '@theme-ui/css'
 import create from 'zustand'
+import createVanilla from 'zustand/vanilla'
 import themeDefault from './theme-default'
 
-type VariantsState = {
-  variants: any
+type Variant = {
+  [key: string]: ThemeUiStyleObject
 }
 
-export const useVariants = create<VariantsState>(set => ({
+type VariantsState = {
+  variants: Variant
+  variant: (key: string, styles: ThemeUiStyleObject) => void
+}
+
+export const variantsStore = createVanilla<VariantsState>(set => ({
   variants: null,
-  variant: (variant: any) =>
+  variant: (key: string, styles: ThemeUiStyleObject) =>
     set((state: VariantsState) => ({
-      variants: { ...state.variants, variant },
+      variants: { ...state.variants, [key]: styles },
     })),
 }))
+
+const variantsSelector = (state: VariantsState) => state.variants
+
+export const variant = variantsStore.getState().variant
+export const useVariants = create(variantsStore)
 
 export type ScaleArray<T> = T[]
 export type ScaleObject<T> = { [K: string]: T | Scale<T>; [I: number]: T }
@@ -118,7 +129,14 @@ interface ProviderProps {
   children?: React.ReactNode
 }
 
-export function Provider({ theme, children }: ProviderProps) {
-  const global = theme?.global
+export function Provider({ theme: baseTheme, children }: ProviderProps) {
+  const variants = useVariants(variantsSelector)
+  const global = baseTheme?.global
+
+  const theme = {
+    ...baseTheme,
+    ...variants,
+  }
+
   return jsx(ThemeProvider, { theme }, jsx(GlobalStyles, { global }), children)
 }
