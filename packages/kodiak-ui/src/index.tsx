@@ -1,4 +1,5 @@
 import * as CSS from 'csstype'
+import { Global } from '@emotion/core'
 import {
   jsx,
   ColorMode,
@@ -6,8 +7,20 @@ import {
   Theme as ThemeUiTheme,
 } from '@theme-ui/core'
 import { css, ThemeUiStyleObject } from '@theme-ui/css'
-import { Global } from '@emotion/core'
+import create from 'zustand'
 import themeDefault from './theme-default'
+
+type VariantsState = {
+  variants: any
+}
+
+export const useVariants = create<VariantsState>(set => ({
+  variants: null,
+  variant: (variant: any) =>
+    set((state: VariantsState) => ({
+      variants: { ...state.variants, variant },
+    })),
+}))
 
 export type ScaleArray<T> = T[]
 export type ScaleObject<T> = { [K: string]: T | Scale<T>; [I: number]: T }
