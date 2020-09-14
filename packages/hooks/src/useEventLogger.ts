@@ -60,3 +60,47 @@ export function useEventLoggerReducers(
 
   return [eventReducers, setEventReducers]
 }
+
+type UseWrappedEventHandlerProps = {
+  isLoggingEventsActive?: boolean
+  name: string
+  handler?: (any) => void
+  addToPayload?: (event) => void
+}
+
+export function useWrappedEventHandler({
+  name,
+  handler,
+  addToPayload,
+  isLoggingEventsActive: isActive = true,
+}: UseWrappedEventHandlerProps) {
+  // use ref's in case they are not memoized so the user doesn't need
+  // to remember to memoize
+  const handlerRef = React.useRef({ handler, addToPayload })
+  handlerRef.current = { handler, addToPayload }
+
+  const wrappedEvent = React.useCallback(
+    function handleEvent(sourceEvent) {
+      if (isActive) {
+        const target = sourceEvent?.target as HTMLElement
+        const logEvent = useEventLoggerStore.getState().logEvent
+
+        logEvent({
+          name,
+          payload: {
+            sourceEvent,
+            sourceLabel:
+              target?.getAttribute?.('aria-label') || target.textContent,
+            ...(handlerRef?.current?.addToPayload
+              ? handlerRef?.current?.addToPayload?.(sourceEvent)
+              : {}),
+          },
+        })
+      }
+      handlerRef?.current?.handler?.(sourceEvent)
+    },
+    [isActive, name],
+  )
+
+  return wrappedEvent
+}

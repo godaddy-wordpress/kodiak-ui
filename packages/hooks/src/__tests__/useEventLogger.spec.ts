@@ -1,5 +1,9 @@
 import { renderHook } from '@testing-library/react-hooks'
-import { useEventLogger, useEventLoggerReducers } from '../useEventLogger'
+import {
+  useEventLogger,
+  useEventLoggerReducers,
+  useWrappedEventHandler,
+} from '../useEventLogger'
 import { useEventLogRoute } from '../useEventLogRoute'
 
 describe('useEventLogger', () => {
@@ -46,5 +50,28 @@ describe('useEventLogger', () => {
 
     expect(log.length).toBe(4)
     expect(log[3].payload.location).toBe('/my_account')
+  })
+
+  it('should add an event wrapper', () => {
+    const addToPayload = jest.fn(event => ({
+      test: true,
+      href: event.target.href,
+    }))
+    const handler = jest.fn()
+    const hook = renderHook(() =>
+      useWrappedEventHandler({
+        name: 'TEST_WRAPPER',
+        addToPayload,
+        handler,
+      }),
+    )
+
+    const event = { target: { href: 'https://jilt.com' } }
+    hook.result?.current(event)
+    expect(addToPayload).toBeCalledTimes(1)
+    expect(addToPayload).toBeCalledWith(event)
+    expect(addToPayload).toReturnWith({ test: true, href: event.target.href })
+    expect(handler).toBeCalledTimes(1)
+    expect(handler).toBeCalledWith(event)
   })
 })

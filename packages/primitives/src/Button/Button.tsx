@@ -1,3 +1,4 @@
+import * as React from 'react'
 import {
   variant,
   sx,
@@ -10,6 +11,7 @@ import {
   SerializedStyles,
   styled,
 } from '@kodiak-ui/core'
+import { useWrappedEventHandler } from '@kodiak-ui/hooks/use-event-logger'
 import { base as baseProp, BaseProps } from '../Box'
 
 /**
@@ -52,7 +54,7 @@ export type ButtonProps = React.DetailedHTMLProps<
 /**
  * Button primitive component
  */
-export const Button = styled('button', {
+export const StyledButton = styled('button', {
   shouldForwardProp,
 })<ButtonProps>(
   {
@@ -71,3 +73,27 @@ export const Button = styled('button', {
   ...systemProps,
   sx,
 )
+
+export type ButtonEvent = {
+  name: string
+  payload: {
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+    sourceLabel: string
+  }
+}
+
+export const Button = React.forwardRef<
+  HTMLButtonElement,
+  { eventLog?: boolean } & Omit<
+    React.ComponentProps<typeof StyledButton>,
+    'ref'
+  >
+>(({ eventLog = true, ...props }, ref) => {
+  const wrappedOnClick = useWrappedEventHandler({
+    name: 'BUTTON_CLICK',
+    handler: props.onClick,
+    isLoggingEventsActive: eventLog,
+  })
+
+  return <StyledButton {...props} ref={ref} onClick={wrappedOnClick} />
+})

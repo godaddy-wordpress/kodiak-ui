@@ -66,6 +66,7 @@ describe('PaginationButton', () => {
 
       <button
         className="emotion-0"
+        onClick={[Function]}
       >
         Rendering Pagination Button
       </button>

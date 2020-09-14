@@ -12,6 +12,7 @@ export type PaginationButtonProps = {
 
 export function PaginationButton({
   children,
+  ref,
   ...props
 }: PaginationButtonProps) {
   return (
@@ -39,6 +40,7 @@ export function PaginationButton({
           borderRight: 'none',
         },
       }}
+      ref={ref as any}
       {...props}
     >
       {children}

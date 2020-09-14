@@ -156,6 +156,7 @@ describe('Text', () => {
         </label>
         <button
           className="emotion-2"
+          onClick={[Function]}
         >
           Filter:
           <svg

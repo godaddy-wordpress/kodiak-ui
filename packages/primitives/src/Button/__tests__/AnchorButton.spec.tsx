@@ -41,6 +41,7 @@ describe('AnchorButton', () => {
 
       <a
         className="emotion-0"
+        onClick={[Function]}
       >
         Rendering AnchorButton
       </a>
@@ -88,6 +89,7 @@ describe('AnchorButton', () => {
 
       <a
         className="emotion-0"
+        onClick={[Function]}
       >
         Default AnchorButton
       </a>
@@ -130,6 +132,7 @@ describe('AnchorButton', () => {
 
       <a
         className="emotion-0"
+        onClick={[Function]}
       >
         Default AnchorButton
       </a>

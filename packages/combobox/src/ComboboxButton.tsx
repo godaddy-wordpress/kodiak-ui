@@ -32,7 +32,12 @@ export const ComboboxButton = React.forwardRef(function ComboboxButton(
   )
 
   return (
-    <Button __base={baseStyles} ref={ref} variantKey={variantKey} {...props}>
+    <Button
+      __base={baseStyles}
+      ref={ref as any}
+      variantKey={variantKey}
+      {...props}
+    >
       {children}
     </Button>
   )
