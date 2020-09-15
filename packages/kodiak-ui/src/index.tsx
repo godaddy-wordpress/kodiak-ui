@@ -1,11 +1,7 @@
 import * as CSS from 'csstype'
 import { Global } from '@emotion/core'
-import {
-  jsx,
-  ColorMode,
-  ThemeProvider,
-  Theme as ThemeUiTheme,
-} from '@theme-ui/core'
+import { ThemeProvider } from '@kodiak-ui/core'
+import { jsx, ColorMode, Theme as ThemeUiTheme } from '@theme-ui/core'
 import { css, ThemeUiStyleObject } from '@theme-ui/css'
 import create from 'zustand'
 import createVanilla from 'zustand/vanilla'

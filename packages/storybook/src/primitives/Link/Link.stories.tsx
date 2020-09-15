@@ -15,8 +15,7 @@ export function withHover() {
   return (
     <Link
       href="https://jilt.com"
-      color="red"
-      sx={{ '&:hover': { color: 'blue' } }}
+      sx={{ color: 'red', '&:hover': { color: 'blue' } }}
       target="_blank"
       rel="noreferrer"
     >

@@ -48,12 +48,14 @@ export function Password() {
 export function WithIcon() {
   return (
     <Flex
-      alignItems="center"
-      border="1px solid"
-      borderColor="text"
-      borderRadius="default"
+      sx={{
+        alignItems: 'center',
+        border: '1px solid',
+        borderColor: 'text',
+        borderRadius: 'default',
+      }}
     >
-      <Box ml={4}>
+      <Box sx={{ ml: 4 }}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="24"

@@ -11,28 +11,8 @@ import { css, Theme, ThemeUIStyleObject } from '@theme-ui/css'
 type SxStyleProp = ThemeUIStyleObject
 
 import { createShouldForwardProp } from '@styled-system/should-forward-prop'
-import {
-  space,
-  SpaceProps,
-  color,
-  ColorProps,
-  typography,
-  TypographyProps,
-  layout,
-  LayoutProps,
-  flexbox,
-  FlexboxProps,
-  grid,
-  GridProps,
-  background,
-  BackgroundProps,
-  border,
-  BorderProps,
-  position,
-  PositionProps,
-  shadow,
-  ShadowProps,
-} from 'styled-system'
+
+export const shouldForwardProp = createShouldForwardProp([])
 
 // based on https://github.com/developit/dlv
 export const get = (
@@ -72,55 +52,6 @@ const parseProps = props => {
 
 export const jsx: typeof React.createElement = (type, props, ...children) =>
   emotion.apply(undefined, [type, parseProps(props), ...children])
-
-/**
- * propNames are typed as string[] | undefined. Undefined is not
- * an iterator so we have to cast propNames to only a string[]
- *
- * @deprecated
- */
-export const shouldForwardProp = createShouldForwardProp([
-  ...(space.propNames as string[]),
-  ...(color.propNames as string[]),
-  ...(typography.propNames as string[]),
-  ...(layout.propNames as string[]),
-  ...(flexbox.propNames as string[]),
-  ...(grid.propNames as string[]),
-  ...(background.propNames as string[]),
-  ...(border.propNames as string[]),
-  ...(position.propNames as string[]),
-  ...(shadow.propNames as string[]),
-])
-
-/**
- * @deprecated
- */
-export type SystemProps = SpaceProps &
-  ColorProps &
-  TypographyProps &
-  LayoutProps &
-  FlexboxProps &
-  GridProps &
-  BackgroundProps &
-  BorderProps &
-  PositionProps &
-  ShadowProps
-
-/**
- * @deprecated
- */
-export const systemProps = [
-  space,
-  color,
-  typography,
-  layout,
-  flexbox,
-  grid,
-  background,
-  border,
-  position,
-  shadow,
-]
 
 /**
  * sx function to pass the sx prop and theme
@@ -214,6 +145,32 @@ export const getComponentBase = (base: string | string[]) => (theme: Theme) =>
         }, {}),
       )(theme)
     : css(get(theme, base as string))(theme)
+
+export interface ContextValue {
+  theme: Theme
+}
+
+export const Context = React.createContext<ContextValue>({
+  theme: {},
+})
+
+export const useKodiakUi = () => React.useContext(Context)
+
+interface ProviderProps {
+  theme: Theme
+  children: React.ReactNode
+}
+
+export function ThemeProvider({ theme, children }: ProviderProps) {
+  return jsx(
+    EmotionContext.Provider,
+    { value: theme },
+    jsx(Context.Provider, {
+      value: theme,
+      children,
+    }),
+  )
+}
 
 export { css, styled }
 export type { Theme, SxStyleProp, SerializedStyles }

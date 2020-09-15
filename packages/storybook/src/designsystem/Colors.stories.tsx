@@ -22,14 +22,14 @@ type ColorSwatchProps = {
 
 function ColorSwatch({ color, colorName, ...props }: ColorSwatchProps) {
   return (
-    <Flex m={4} mr={9} minWidth="initial" flex="1" {...props}>
+    <Flex sx={{ m: 4, mr: 9, minWidth: 'initial', flex: '1' }} {...props}>
       <Box
-        backgroundColor={color}
-        height={96}
-        width={96}
-        boxShadow="lg"
-        borderRadius="default"
         sx={{
+          bg: color,
+          height: 96,
+          width: 96,
+          boxShadow: 'lg',
+          borderRadius: 'default',
           transition: 'all 0.2s ease-in-out',
           '&:hover': {
             transform: 'scale(1.2)',
@@ -38,9 +38,9 @@ function ColorSwatch({ color, colorName, ...props }: ColorSwatchProps) {
         onClick={() => navigator.clipboard.writeText(color)}
       />
 
-      <Flex ml={4} flexDirection="column" justifyContent="center">
-        <Box fontWeight="bold">{colorName}</Box>
-        <Box color={'gray.5'}>{color}</Box>
+      <Flex sx={{ ml: 4, flexDirection: 'column', justifyContent: 'center' }}>
+        <Box sx={{ fontWeight: 'bold' }}>{colorName}</Box>
+        <Box sx={{ color: 'gray.5' }}>{color}</Box>
       </Flex>
     </Flex>
   )
@@ -67,8 +67,8 @@ function ColorSwatches({ colorsArray, colorName }: ColorSwatchesProps) {
   })[0]
 
   return (
-    <Flex flexDirection="column" key={colorName} width="100%">
-      <Box borderLeft="2px solid" borderLeftColor={borderLeftColor} mt={8}>
+    <Flex sx={{ flexDirection: 'column', width: '100%' }} key={colorName}>
+      <Box sx={{ borderLeft: '2px solid', borderLeftColor, mt: 8 }}>
         <Text
           ml={3}
           variant="text.heading"
@@ -77,7 +77,7 @@ function ColorSwatches({ colorsArray, colorName }: ColorSwatchesProps) {
           {colorName}
         </Text>
       </Box>
-      <Grid gridTemplateColumns="repeat(auto-fit, minmax(300px, 1fr))">
+      <Grid sx={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr)' }}>
         {colorsArray.map((value, index) => {
           if (colorsArray[index] === null) {
             return null
@@ -88,7 +88,7 @@ function ColorSwatches({ colorsArray, colorName }: ColorSwatchesProps) {
               key={`${colorName}.${index}`}
               color={value}
               colorName={`${colorName}.${index}`}
-              pt={4}
+              sx={{ pt: 4 }}
             />
           )
         })}
@@ -241,7 +241,7 @@ export function NearestThemeColor() {
               key={color}
               color={color}
               colorName={'Your color'}
-              pt={4}
+              sx={{ pt: 4 }}
             />
           </Box>
 
@@ -251,7 +251,7 @@ export function NearestThemeColor() {
                 key={index}
                 color={color.color}
                 colorName={color.colorKey}
-                pt={4}
+                sx={{ pt: 4 }}
               />
             ))}
           </Box>
@@ -269,7 +269,7 @@ export function Palette() {
   }
 
   return (
-    <Flex flexDirection="column" flexWrap="wrap">
+    <Flex sx={{ flexDirection: 'column', flexWrap: 'wrap' }}>
       {Object.keys(theme.colors).map(key => {
         if (Array.isArray(theme?.colors?.[key])) {
           if (!theme?.colors?.[key] || key === 'grey') {
@@ -286,9 +286,7 @@ export function Palette() {
               key={key}
               color={theme.colors?.[key] as string}
               colorName={key}
-              borderTop="1px solid"
-              borderTopColor="gray.2"
-              pt={4}
+              sx={{ borderTop: '1px solid', borderTopColor: 'gray.2', pt: 4 }}
             />
           )
         }

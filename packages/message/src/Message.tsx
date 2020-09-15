@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { SystemProps, VariantProps } from '@kodiak-ui/core'
+import { VariantProps } from '@kodiak-ui/core'
 import { Box } from '@kodiak-ui/primitives/box'
 import { Button } from '@kodiak-ui/primitives/button'
 import { Flex } from '@kodiak-ui/primitives/flex'
@@ -14,8 +14,7 @@ type MessageProps = {
   dismissLabel?: string
   onDismiss?: () => void
 } & React.HTMLAttributes<HTMLDivElement> &
-  VariantProps &
-  SystemProps
+  VariantProps
 
 export const Message = React.forwardRef<HTMLDivElement, MessageProps>(
   function Message(
@@ -51,9 +50,7 @@ export const Message = React.forwardRef<HTMLDivElement, MessageProps>(
         variantKey={variantKey}
         {...props}
       >
-        <Flex alignItems="center" flexGrow={1}>
-          {children}
-        </Flex>
+        <Flex sx={{ alignItems: 'center', flexGrow: 1 }}>{children}</Flex>
         {onDismiss ? (
           <Button
             variant="shadow"

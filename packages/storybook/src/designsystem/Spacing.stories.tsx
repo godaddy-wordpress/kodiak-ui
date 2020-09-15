@@ -19,7 +19,7 @@ export function Spacing() {
   }
 
   return (
-    <Flex flexDirection="column">
+    <Flex sx={{ flexDirection: 'column' }}>
       <Styled.table>
         <thead>
           <Styled.tr>
@@ -35,10 +35,7 @@ export function Spacing() {
               <Styled.td>{spacing}</Styled.td>
               <Styled.td>
                 <Box
-                  my={2}
-                  height={12}
-                  width={spacing}
-                  backgroundColor="primary"
+                  sx={{ bg: 'primary', height: 12, my: 2, width: spacing }}
                 />
               </Styled.td>
             </tr>

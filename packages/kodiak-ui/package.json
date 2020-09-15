@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@emotion/core": "^10.0.35",
+    "@kodiak-ui/core": "^0.1.16",
     "@theme-ui/core": "^0.3.1",
     "@theme-ui/css": "^0.3.1",
     "csstype": "^3.0.3",

@@ -5,13 +5,9 @@ export default { title: 'Primitives/Grid', component: Grid }
 
 export function initial() {
   return (
-    <Grid gridTemplateColumns="repeat(2, auto)" gridGap={3}>
-      <Box p={3} bg="blue.3">
-        1
-      </Box>
-      <Box p={3} bg="yellow.2">
-        2
-      </Box>
+    <Grid sx={{ gridTemplateColumns: 'repeat(2, auto)', gap: 3 }}>
+      <Box sx={{ p: 3, bg: 'blue.3' }}>1</Box>
+      <Box sx={{ p: 3, bg: 'yellow.2' }}>2</Box>
     </Grid>
   )
 }

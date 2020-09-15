@@ -1,15 +1,7 @@
 import styled from '@emotion/styled'
 import { Theme, css, SxStyleProp } from 'theme-ui'
 import { SerializedStyles } from '@emotion/serialize'
-import {
-  variant,
-  VariantProps,
-  sx,
-  shouldForwardProp,
-  systemProps,
-  SystemProps,
-} from '../Box'
-import { TypographyProps, ColorProps } from 'styled-system'
+import { variant, VariantProps, sx } from '@kodiak-ui/core'
 
 /**
  * base
@@ -26,16 +18,13 @@ export const baseStyles = ({ theme }: { theme: Theme }): SerializedStyles =>
   })(theme)
 
 type SvgProps = React.SVGProps<SVGSVGElement> &
-  VariantProps &
-  SystemProps & { sx?: SxStyleProp }
+  VariantProps & { sx?: SxStyleProp }
 
 /**
  * Box primitive component which is the base component for
  * all components in Kodiak
  */
-export const Svg = styled('svg', {
-  shouldForwardProp,
-})<SvgProps>(
+export const Svg = styled('svg')<SvgProps>(
   {
     boxSizing: 'border-box',
     margin: 0,
@@ -44,6 +33,5 @@ export const Svg = styled('svg', {
   baseStyles,
   ({ variant: variantProp, theme, variantKey = 'svg' }) =>
     variant({ variant: variantProp, theme, variantKey }),
-  ...systemProps,
   sx,
 )

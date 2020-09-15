@@ -1,22 +1,13 @@
 import styled from '@emotion/styled'
-import {
-  variant,
-  VariantProps,
-  sx,
-  shouldForwardProp,
-  systemProps,
-  SystemProps,
-} from '../Box'
+import { variant, VariantProps, sx } from '../Box'
 
-type IframeProps = VariantProps & SystemProps
+type IframeProps = VariantProps
 
 /**
  * Box primitive component which is the base component for
  * all components in Kodiak
  */
-export const Iframe = styled<'iframe', IframeProps>('iframe', {
-  shouldForwardProp,
-})(
+export const Iframe = styled('iframe')<IframeProps>(
   {
     boxSizing: 'border-box',
     display: 'block',
@@ -25,6 +16,5 @@ export const Iframe = styled<'iframe', IframeProps>('iframe', {
   },
   ({ variant: variantProp, theme }) =>
     variant({ variant: variantProp, theme, variantKey: 'iframes' }),
-  ...systemProps,
   sx,
 )

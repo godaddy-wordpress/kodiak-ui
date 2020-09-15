@@ -1,3 +1,4 @@
+import { getVariants } from '@kodiak-ui/core'
 import {
   variant,
   sx,
@@ -41,6 +42,10 @@ export const buttonVariant = ({
   variants,
   theme,
 }) => {
+  if (variants) {
+    return getVariants(variants)(theme)
+  }
+
   return variant({ variant: variantProp, theme, variantKey, variants })
 }
 

@@ -1,19 +1,10 @@
 import styled from '@emotion/styled'
-import {
-  variant,
-  VariantProps,
-  sx,
-  shouldForwardProp,
-  systemProps,
-  SystemProps,
-} from '../Box'
+import { variant, VariantProps, sx } from '@kodiak-ui/core'
 import { SxProps } from 'theme-ui'
 
-type LabelProps = VariantProps & SystemProps & SxProps
+type LabelProps = VariantProps & SxProps
 
-export const Label = styled<'label', LabelProps>('label', {
-  shouldForwardProp,
-})(
+export const Label = styled<'label', LabelProps>('label')(
   {
     boxSizing: 'border-box',
     display: 'inline-block',
@@ -22,6 +13,5 @@ export const Label = styled<'label', LabelProps>('label', {
   },
   ({ variant: variantProp, variantKey = 'labels', theme }) =>
     variant({ variant: variantProp, variantKey, theme }),
-  ...systemProps,
   sx,
 )

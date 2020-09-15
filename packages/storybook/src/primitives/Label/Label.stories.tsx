@@ -5,7 +5,7 @@ export default { title: 'Forms/Label', component: Label }
 
 export function initial() {
   return (
-    <Box p={4}>
+    <Box sx={{ p: 4 }}>
       <Label>Renders a `label` tag by default</Label>
     </Box>
   )
@@ -13,8 +13,8 @@ export function initial() {
 
 export function verticalLabel() {
   return (
-    <Flex flexDirection="column" p={4}>
-      <Label mb={2} htmlFor="input">
+    <Flex sx={{ flexDirection: 'column', p: 4 }}>
+      <Label sx={{ mb: 2 }} htmlFor="input">
         Email
       </Label>
       <Input id="input" />
@@ -24,24 +24,24 @@ export function verticalLabel() {
 
 export function inlineLabel() {
   return (
-    <Flex flexDirection="column">
-      <Flex p={4} alignItems="center">
-        <Box width={1 / 8}>
+    <Flex sx={{ flexDirection: 'column' }}>
+      <Flex sx={{ alignItems: 'center', p: 4 }}>
+        <Box sx={{ width: 1 / 8 }}>
           <Label variant="inline" htmlFor="email">
             Email
           </Label>
         </Box>
-        <Box width={7 / 8}>
+        <Box sx={{ width: 7 / 8 }}>
           <Input id="email" variant="inline" />
         </Box>
       </Flex>
-      <Flex p={4} alignItems="center">
-        <Box width={1 / 8}>
+      <Flex sx={{ p: 4, alignItems: 'center' }}>
+        <Box sx={{ width: 1 / 8 }}>
           <Label variant="inline" htmlFor="subject">
             Subject
           </Label>
         </Box>
-        <Box width={7 / 8}>
+        <Box sx={{ width: 7 / 8 }}>
           <Input id="subject" variant="inline" />
         </Box>
       </Flex>
