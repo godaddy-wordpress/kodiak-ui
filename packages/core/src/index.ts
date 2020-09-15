@@ -1,6 +1,8 @@
-import { css, Theme, SxStyleProp } from 'theme-ui'
 import { SerializedStyles } from '@emotion/serialize'
 import styled from '@emotion/styled'
+import { css, Theme, ThemeUIStyleObject } from '@theme-ui/css'
+
+type SxStyleProp = ThemeUIStyleObject
 
 import { createShouldForwardProp } from '@styled-system/should-forward-prop'
 import {
@@ -24,8 +26,22 @@ import {
   PositionProps,
   shadow,
   ShadowProps,
-  get,
 } from 'styled-system'
+
+// based on https://github.com/developit/dlv
+export const get = (
+  obj: Record<string, unknown>,
+  key: any,
+  def?: any,
+  p?: any,
+  undef?: any,
+) => {
+  key = key && key.split ? key.split('.') : [key]
+  for (p = 0; p < key.length; p++) {
+    obj = obj ? obj[key[p]] : undef
+  }
+  return obj === undef ? def : obj
+}
 
 /**
  * propNames are typed as string[] | undefined. Undefined is not

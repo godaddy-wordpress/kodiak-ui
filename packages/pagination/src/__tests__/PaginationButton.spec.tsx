@@ -27,14 +27,6 @@ describe('PaginationButton', () => {
         text-decoration: none;
         -webkit-transition: all 0.2s ease-in-out;
         transition: all 0.2s ease-in-out;
-        padding-left: 16px;
-        padding-right: 16px;
-        padding-top: 8px;
-        padding-bottom: 8px;
-        color: white;
-        background-color: primary;
-        border: 0;
-        border-radius: default;
         background-color: white;
         border-right: 1px solid;
         border-color: gray.3;
@@ -47,10 +39,6 @@ describe('PaginationButton', () => {
         padding-bottom: 8px;
         padding-left: 16px;
         padding-right: 16px;
-      }
-
-      .emotion-0:hover {
-        background-color: secondary;
       }
 
       .emotion-0:first-of-type {

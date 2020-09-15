@@ -1,6 +1,4 @@
-/** @jsx jsx */
 import * as React from 'react'
-import { jsx } from 'theme-ui'
 import { useTabs, Tabs, TabList, Tab, TabPanel } from '@kodiak-ui/tabs'
 
 export default { title: 'Tabs', component: Tabs }
