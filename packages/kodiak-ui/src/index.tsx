@@ -104,7 +104,7 @@ export function createDesignSystem({
   system,
   global,
   ...rest
-}: CreateDesignSystemOptions): { theme: Theme } {
+}: CreateDesignSystemOptions): { theme: any } {
   const theme = {
     ...rest,
     ...themeDefault,

@@ -18,6 +18,7 @@ describe('Link', () => {
       <a
         className="emotion-0"
         href="#"
+        onClick={[Function]}
       >
         Rendering a element
       </a>
@@ -37,6 +38,7 @@ describe('Link', () => {
 
       <a
         className="emotion-0"
+        onClick={[Function]}
       >
         A link
       </a>
@@ -64,6 +66,7 @@ describe('Link', () => {
         className="emotion-0"
         color="red"
         href="https://jilt.com"
+        onClick={[Function]}
       >
         jilt.com
       </a>
