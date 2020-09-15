@@ -119,9 +119,9 @@ export function variant({
             ...get(theme, curr),
           }
         }, {}),
-      )
+      )(theme)
     }
-    return css(get(theme, variants as string))
+    return css(get(theme, variants as string))(theme)
   }
 
   return css(
@@ -143,10 +143,10 @@ export function getComponentBase(base: string | string[]) {
             ...get(theme, curr),
           }
         }, {}),
-      )
+      )(theme)
     }
 
-    return css(get(theme, base as string))
+    return css(get(theme, base as string))(theme)
   }
 }
 

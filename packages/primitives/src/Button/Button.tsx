@@ -2,13 +2,10 @@ import {
   variant,
   sx,
   VariantProps,
-  systemProps,
-  SystemProps,
   shouldForwardProp,
-  Theme,
-  SerializedStyles,
   styled,
   getComponentBase,
+  css,
 } from '@kodiak-ui/core'
 import { base as baseProp, BaseProps } from '../Box'
 
@@ -20,19 +17,22 @@ import { base as baseProp, BaseProps } from '../Box'
  *
  * @param props
  */
-export function base({ theme, base }: { theme: Theme; base: string }) {
-  // return css({
-  //   // px: 3,
-  //   // py: 2,
-  //   // color: 'white',
-  //   // bg: 'primary',
-  //   // border: 0,
-  //   // borderRadius: 'default',
-  //   // '&:hover': {
-  //   //   bg: 'secondary',
-  //   // },
-  // })(theme)
-  return getComponentBase(base ? base : 'button')(theme)
+export function base({ theme, base }) {
+  const styles = getComponentBase(base ? base : 'button')(theme)
+  if (!styles) {
+    return css({
+      px: 3,
+      py: 2,
+      color: 'white',
+      bg: 'primary',
+      border: 0,
+      borderRadius: 'default',
+      '&:hover': {
+        bg: 'secondary',
+      },
+    })(theme)
+  }
+  return styles
 }
 
 export const buttonVariant = ({
@@ -40,7 +40,7 @@ export const buttonVariant = ({
   variantKey = 'buttons',
   variants,
   theme,
-}: { theme: Theme } & VariantProps) => {
+}) => {
   return variant({ variant: variantProp, theme, variantKey, variants })
 }
 
@@ -49,7 +49,6 @@ export type ButtonProps = React.DetailedHTMLProps<
   HTMLButtonElement
 > &
   VariantProps &
-  SystemProps &
   BaseProps
 
 /**
@@ -71,6 +70,5 @@ export const Button = styled('button', {
   base,
   baseProp,
   buttonVariant,
-  ...systemProps,
   sx,
 )

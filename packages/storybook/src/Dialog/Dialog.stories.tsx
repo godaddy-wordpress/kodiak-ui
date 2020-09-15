@@ -54,7 +54,7 @@ export function Initial() {
         </DialogContent>
         <DialogFooter>
           {/* eslint-disable-next-line @typescript-eslint/no-empty-function */}
-          <Button ml="auto" onClick={() => setIsOpen(false)}>
+          <Button onClick={() => setIsOpen(false)} sx={{ ml: 'auto' }}>
             Close
           </Button>
         </DialogFooter>
@@ -81,8 +81,8 @@ export function Expanding() {
             and then will scroll to display content.
           </Text>
           <Button
-            mt={2}
             onClick={() => setDisplayMoreContent(!displayMoreContent)}
+            sx={{ mt: 2 }}
           >
             Display more content
           </Button>
@@ -152,7 +152,7 @@ export function Expanding() {
           )}
         </DialogContent>
         <DialogFooter>
-          <Button ml="auto" onClick={() => setIsOpen(false)}>
+          <Button onClick={() => setIsOpen(false)} sx={{ ml: 'auto' }}>
             Close
           </Button>
         </DialogFooter>
@@ -196,7 +196,7 @@ export function FullWidth() {
           </Text>
         </DialogContent>
         <DialogFooter>
-          <Button ml="auto" onClick={() => setIsOpen(false)}>
+          <Button onClick={() => setIsOpen(false)} sx={{ ml: 'auto' }}>
             Close
           </Button>
         </DialogFooter>
@@ -247,7 +247,7 @@ export function BlockDismiss() {
         </DialogContent>
         <DialogFooter>
           {/* eslint-disable-next-line @typescript-eslint/no-empty-function */}
-          <Button ml="auto" onClick={() => setIsOpen(false)}>
+          <Button onClick={() => setIsOpen(false)} sx={{ ml: 'auto' }}>
             Close
           </Button>
         </DialogFooter>
@@ -307,7 +307,7 @@ export function Animated() {
                   </Text>
                 </DialogContent>
                 <DialogFooter>
-                  <Button ml="auto" onClick={() => setIsOpen(false)}>
+                  <Button onClick={() => setIsOpen(false)} sx={{ ml: 'auto' }}>
                     Close
                   </Button>
                 </DialogFooter>
