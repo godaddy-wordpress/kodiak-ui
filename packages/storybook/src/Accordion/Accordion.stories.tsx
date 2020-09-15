@@ -12,7 +12,7 @@ import { variant } from 'kodiak-ui'
 
 export default { title: 'Accordion', component: Accordion }
 
-variant('accordions', { bg: 'primary', borderRadius: 'default' })
+variant('accordions', { accordionItem: { bg: 'red' } })
 
 function CaretFillDown({ ...props }) {
   return (
