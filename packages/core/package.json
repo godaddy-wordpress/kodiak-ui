@@ -11,8 +11,9 @@
   },
   "scripts": {},
   "dependencies": {
+    "@emotion/core": "^10.0.35",
     "@emotion/serialize": "^0.11.16",
-    "@emotion/styled": "^10.0.27",
+    "@emotion/styled": "^10.0.35",
     "@styled-system/should-forward-prop": "^5.1.4",
     "@theme-ui/css": "^0.3.1",
     "styled-system": "^5.1.4"

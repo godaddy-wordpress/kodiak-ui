@@ -1,3 +1,9 @@
+import * as React from 'react'
+import {
+  jsx as emotion,
+  ThemeContext as EmotionContext,
+  InterpolationWithTheme,
+} from '@emotion/core'
 import { SerializedStyles } from '@emotion/serialize'
 import styled from '@emotion/styled'
 import { css, Theme, ThemeUIStyleObject } from '@theme-ui/css'
@@ -43,9 +49,35 @@ export const get = (
   return obj === undef ? def : obj
 }
 
+const getCSS = props => {
+  if (!props.sx && !props.css) return undefined
+  return theme => {
+    const styles = css(props.sx)(theme)
+    const raw = typeof props.css === 'function' ? props.css(theme) : props.css
+    return [styles, raw]
+  }
+}
+
+const parseProps = props => {
+  if (!props) return null
+  const next: typeof props & { css?: InterpolationWithTheme<any> } = {}
+  for (const key in props) {
+    if (key === 'sx') continue
+    next[key] = props[key]
+  }
+  const css = getCSS(props)
+  if (css) next.css = css
+  return next
+}
+
+export const jsx: typeof React.createElement = (type, props, ...children) =>
+  emotion.apply(undefined, [type, parseProps(props), ...children])
+
 /**
  * propNames are typed as string[] | undefined. Undefined is not
  * an iterator so we have to cast propNames to only a string[]
+ *
+ * @deprecated
  */
 export const shouldForwardProp = createShouldForwardProp([
   ...(space.propNames as string[]),
@@ -60,6 +92,9 @@ export const shouldForwardProp = createShouldForwardProp([
   ...(shadow.propNames as string[]),
 ])
 
+/**
+ * @deprecated
+ */
 export type SystemProps = SpaceProps &
   ColorProps &
   TypographyProps &
@@ -71,6 +106,9 @@ export type SystemProps = SpaceProps &
   PositionProps &
   ShadowProps
 
+/**
+ * @deprecated
+ */
 export const systemProps = [
   space,
   color,
@@ -115,31 +153,23 @@ export function sx(props: any): SerializedStyles {
  * }
  */
 export interface VariantProps {
-  variant?: string
-  variantKey?: string
+  variant?: string // @deprecated
+  variantKey?: string // @deprecated
   variants?: string | string[]
 }
 
+/**
+ * Legacy method for getting variants from a theme
+ *
+ * Use getVariants instead which parses the `variants` prop.
+ *
+ * @deprecated
+ */
 export function variant({
   variant,
   theme,
   variantKey,
-  variants,
 }: { theme: Theme } & VariantProps) {
-  if (variants) {
-    if (Array.isArray(variants)) {
-      return css(
-        variants?.reduce((acc, curr) => {
-          return {
-            ...acc,
-            ...get(theme, curr),
-          }
-        }, {}),
-      )(theme)
-    }
-    return css(get(theme, variants as string))(theme)
-  }
-
   return css(
     get(
       theme,
@@ -149,10 +179,33 @@ export function variant({
   )(theme)
 }
 
-export function getComponentBase(base: string | string[]) {
-  return function (theme: Theme) {
-    if (Array.isArray(base)) {
-      return css(
+/**
+ * Get the appropriate CSS from the theme for the
+ * specified variants.
+ *
+ * @param variants string or array of variants
+ */
+export const getVariants = (variants: string | string[]) => (theme: Theme) =>
+  Array.isArray(variants)
+    ? css(
+        variants?.reduce((acc, curr) => {
+          return {
+            ...acc,
+            ...get(theme, curr),
+          }
+        }, {}),
+      )(theme)
+    : css(get(theme, variants as string))(theme)
+
+/**
+ * Get the appropriate CSS from the theme for the specified
+ * components.
+ *
+ * @param base string or array of base component defaults
+ */
+export const getComponentBase = (base: string | string[]) => (theme: Theme) =>
+  Array.isArray(base)
+    ? css(
         base?.reduce((acc, curr) => {
           return {
             ...acc,
@@ -160,11 +213,7 @@ export function getComponentBase(base: string | string[]) {
           }
         }, {}),
       )(theme)
-    }
-
-    return css(get(theme, base as string))(theme)
-  }
-}
+    : css(get(theme, base as string))(theme)
 
 export { css, styled }
 export type { Theme, SxStyleProp, SerializedStyles }
