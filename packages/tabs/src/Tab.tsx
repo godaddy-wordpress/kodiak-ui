@@ -6,8 +6,8 @@ import {
   css,
   SerializedStyles,
   styled,
-  SxStyleProp,
 } from '@kodiak-ui/core'
+import { SxStyleProp } from 'theme-ui'
 
 export type TabProps = {
   children: React.ReactNode
