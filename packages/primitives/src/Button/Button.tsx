@@ -5,10 +5,10 @@ import {
   systemProps,
   SystemProps,
   shouldForwardProp,
-  css,
   Theme,
   SerializedStyles,
   styled,
+  getComponentBase,
 } from '@kodiak-ui/core'
 import { base as baseProp, BaseProps } from '../Box'
 
@@ -20,18 +20,19 @@ import { base as baseProp, BaseProps } from '../Box'
  *
  * @param props
  */
-export function base({ theme }: { theme: Theme }): SerializedStyles {
-  return css({
-    px: 3,
-    py: 2,
-    color: 'white',
-    bg: 'primary',
-    border: 0,
-    borderRadius: 'default',
-    '&:hover': {
-      bg: 'secondary',
-    },
-  })(theme)
+export function base({ theme, base }: { theme: Theme; base: string }) {
+  // return css({
+  //   // px: 3,
+  //   // py: 2,
+  //   // color: 'white',
+  //   // bg: 'primary',
+  //   // border: 0,
+  //   // borderRadius: 'default',
+  //   // '&:hover': {
+  //   //   bg: 'secondary',
+  //   // },
+  // })(theme)
+  return getComponentBase(base ? base : 'button')(theme)
 }
 
 export const buttonVariant = ({

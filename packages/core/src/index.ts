@@ -133,5 +133,22 @@ export function variant({
   )(theme)
 }
 
+export function getComponentBase(base: string | string[]) {
+  return function (theme: Theme) {
+    if (Array.isArray(base)) {
+      return css(
+        base?.reduce((acc, curr) => {
+          return {
+            ...acc,
+            ...get(theme, curr),
+          }
+        }, {}),
+      )
+    }
+
+    return css(get(theme, base as string))
+  }
+}
+
 export { css, styled }
 export type { Theme, SxStyleProp, SerializedStyles }

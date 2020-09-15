@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import * as React from 'react'
 import { css, IntrinsicSxElements, Theme } from 'theme-ui'
 import type { SxStyleProp } from '@kodiak-ui/core'
 import { SerializedStyles } from '@emotion/serialize'
@@ -78,6 +79,7 @@ export function sx(props: {
 
 export type BaseProps = {
   __base?: SxStyleProp
+  base?: string | string[]
 }
 
 export function base(props: { theme: Theme } & BaseProps) {
