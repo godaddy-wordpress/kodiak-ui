@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { variant } from 'kodiak-ui'
 import { Button } from '@kodiak-ui/primitives'
 
 export default { title: 'Primitives/Button', component: Button }
@@ -7,18 +8,15 @@ export function initial() {
   return <Button>Default button</Button>
 }
 
-export function systemProps() {
-  return (
-    <Button bg="black" color="white">
-      Button with styled-system props
-    </Button>
-  )
-}
+variant('lg', { p: 4 })
+variant('danger', { bg: 'red' })
 
-export function variant() {
+export function Variant() {
   return (
     <>
-      <Button mr={2}>Default</Button>
+      <Button variants={['lg', 'danger']} sx={{ mr: 2 }}>
+        Default
+      </Button>
       <Button variant="secondary">Secondary button</Button>
     </>
   )

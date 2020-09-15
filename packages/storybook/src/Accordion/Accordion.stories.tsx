@@ -8,11 +8,8 @@ import {
   useAccordion,
 } from '@kodiak-ui/accordion'
 import { Flex, Text, SvgIcon, Button } from '@kodiak-ui/primitives'
-import { variant } from 'kodiak-ui'
 
 export default { title: 'Accordion', component: Accordion }
-
-variant('accordions', { accordionItem: { bg: 'red' } })
 
 function CaretFillDown({ ...props }) {
   return (

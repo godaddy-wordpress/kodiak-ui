@@ -101,13 +101,29 @@ export function sx(props: any): SerializedStyles {
 export interface VariantProps {
   variant?: string
   variantKey?: string
+  variants?: string | string[]
 }
 
 export function variant({
   variant,
   theme,
   variantKey,
+  variants,
 }: { theme: Theme } & VariantProps) {
+  if (variants) {
+    if (Array.isArray(variants)) {
+      return css(
+        variants?.reduce((acc, curr) => {
+          return {
+            ...acc,
+            ...get(theme, curr),
+          }
+        }, {}),
+      )
+    }
+    return css(get(theme, variants as string))
+  }
+
   return css(
     get(
       theme,

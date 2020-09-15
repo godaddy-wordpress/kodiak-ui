@@ -37,9 +37,11 @@ export function base({ theme }: { theme: Theme }): SerializedStyles {
 export const buttonVariant = ({
   variant: variantProp,
   variantKey = 'buttons',
+  variants,
   theme,
-}: { theme: Theme } & VariantProps) =>
-  variant({ variant: variantProp, theme, variantKey })
+}: { theme: Theme } & VariantProps) => {
+  return variant({ variant: variantProp, theme, variantKey, variants })
+}
 
 export type ButtonProps = React.DetailedHTMLProps<
   React.ButtonHTMLAttributes<HTMLButtonElement>,

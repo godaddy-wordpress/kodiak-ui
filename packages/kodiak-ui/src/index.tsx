@@ -15,23 +15,37 @@ type Variant = {
   [key: string]: ThemeUiStyleObject
 }
 
-type VariantsState = {
-  variants: Variant
-  variant: (key: string, styles: ThemeUiStyleObject) => void
+type Component = {
+  [key: string]: ThemeUiStyleObject
 }
 
-export const variantsStore = createVanilla<VariantsState>(set => ({
+type State = {
+  variants: Variant
+  components: Component
+  variant: (key: string, styles: ThemeUiStyleObject) => void
+  component: (key: string, styles: ThemeUiStyleObject) => void
+}
+
+export const Store = createVanilla<State>(set => ({
   variants: null,
+  components: null,
   variant: (key: string, styles: ThemeUiStyleObject) =>
-    set((state: VariantsState) => ({
+    set((state: State) => ({
       variants: { ...state.variants, [key]: styles },
+    })),
+  component: (key: string, styles: ThemeUiStyleObject) =>
+    set((state: State) => ({
+      components: { ...state.components, [key]: styles },
     })),
 }))
 
-const variantsSelector = (state: VariantsState) => state.variants
+const variantsSelector = (state: State) => state.variants
+const componentsSelector = (state: State) => state.components
 
-export const variant = variantsStore.getState().variant
-export const useVariants = create(variantsStore)
+export const variant = Store.getState().variant
+export const component = Store.getState().component
+
+export const useKodiakStore = create(Store)
 
 export type ScaleArray<T> = T[]
 export type ScaleObject<T> = { [K: string]: T | Scale<T>; [I: number]: T }
@@ -129,13 +143,16 @@ interface ProviderProps {
   children?: React.ReactNode
 }
 
-export function Provider({ theme: baseTheme, children }: ProviderProps) {
-  const variants = useVariants(variantsSelector)
-  const global = baseTheme?.global
+export function Provider({ theme: base, children }: ProviderProps) {
+  const variants = useKodiakStore(variantsSelector)
+  const components = useKodiakStore(componentsSelector)
+
+  const global = base?.global
 
   const theme = {
-    ...baseTheme,
+    ...base,
     ...variants,
+    ...components,
   }
 
   return jsx(ThemeProvider, { theme }, jsx(GlobalStyles, { global }), children)
