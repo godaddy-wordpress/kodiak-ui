@@ -31,6 +31,11 @@ module.exports = {
           label: 'GitHub',
           position: 'right',
         },
+        {
+          href: 'https://storybook.kodiak-ui.com',
+          label: 'Storybook',
+          position: 'right',
+        },
       ],
     },
     footer: {

@@ -1,10 +1,10 @@
 ---
 id: variants
-title: Variants
-sidebar_label: Variants
+title: Variants API
+sidebar_label: Variants API
 ---
 
-Variants with Kodiak are a powerful feature and provide the ability to compose your component styles in a miriad of ways. Variants are first-class citizens in Kodiak UI and can and should be used often when composing your UI. The variants API was heavily inspired by the [Recoil](https://recoiljs.org/) and [Jotai](https://jotai.surge.sh/) APIs for state management.
+Variants with Kodiak UI are a powerful feature and provide the ability to compose your component styles in a miriad of ways. Variants are first-class citizens in Kodiak UI and can and should be used often when composing your UI. The variants API was heavily inspired by the [Recoil](https://recoiljs.org/) and [Jotai](https://jotai.surge.sh/) APIs for state management.
 
 For those of you coming from a Sass or CSS pre-processor background, it might be helpful to think of variants as mixins. They are a grouping of styles that can be applied to any Kodiak UI component to modify and augment the current styling of a component.
 
@@ -74,6 +74,8 @@ variant('key', { bg: 'primary', px: 4 })
 | key      | string | The name of the variant and how you will reference the variant in the component prop |
 | styles   | object | Theme scoped style object. The styles that will be applied to the component          |
 
+💡**Tip**: See the alternate way to define variants [below](#defining-variants-globally).
+
 ### variants prop
 
 All Kodiak UI components accept a `variants` prop which will take a string or array of strings as a value. The variant(s) passed into the `variants` prop will apply the appropriate styling to the component.
@@ -106,3 +108,18 @@ The `useVariants` hook will return all currently defined variants in the theme.
 ```ts
 const variants = useVariants()
 ```
+
+## Defining variants globally
+
+If you would prefer to define your variants in the theme in one single place, you can pass them into the optional `variants` object when intializing Kodiak UI.
+
+```ts
+const { theme } = createDesignSystem({
+  variants: {
+    secondary: { // styles },
+    lg: { // styles },
+  }
+})
+```
+
+Both `secondary` and `lg` variants will be available to all components and can be passed into the `variants` prop for any Kodiak UI component.

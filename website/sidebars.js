@@ -5,6 +5,7 @@ module.exports = {
     'themeing',
     'sx-prop',
     'variants',
+    'components',
     {
       type: 'category',
       label: 'Primitives',
