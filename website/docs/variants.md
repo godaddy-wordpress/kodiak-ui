@@ -59,7 +59,7 @@ function Parent() {
 
 ## API
 
-Kodiak UI has three main entry points to working with variants.
+Kodiak UI's main ways of working with variants.
 
 ### variant
 
@@ -88,6 +88,10 @@ All Kodiak UI components accept a `variants` prop which will take a string or ar
 ### useVariant
 
 The `useVariant` hook allows you to get the styles for a specified variant outside of the normal parent -> child hierarchy. The hook accepts a variant as the only argument and will return the styles from the theme that can be passed into the `sx` prop in any of Kodiak UI's components.
+
+| Argument | Type                            | Description |
+| -------- | ------------------------------- | ----------- |
+| variant  | { key: string, styles: object } |             |
 
 ```ts
 import { secondary } from './some-other-file'
