@@ -1,110 +1,71 @@
-import * as CSS from 'csstype'
-import { Global } from '@emotion/core'
+import * as React from 'react'
+import { jsx as emotion, Global, InterpolationWithTheme } from '@emotion/core'
 import { ThemeProvider } from '@kodiak-ui/core'
-import { jsx, ColorMode, Theme as ThemeUiTheme } from '@theme-ui/core'
-import { css, ThemeUiStyleObject } from '@theme-ui/css'
+import { css, ThemeUiStyleObject as StyleObject } from '@theme-ui/css'
 import create from 'zustand'
 import createVanilla from 'zustand/vanilla'
 import themeDefault from './theme-default'
+import {
+  CreateDesignSystemOptions,
+  GlobalStyles,
+  KodiakState,
+  Theme,
+} from './types'
+import './react-jsx'
 
-type Variant = {
-  [key: string]: ThemeUiStyleObject
-}
-
-type Component = {
-  [key: string]: ThemeUiStyleObject
-}
-
-type State = {
-  variants: Variant
-  components: Component
-  variant: (key: string, styles: ThemeUiStyleObject) => void
-  component: (key: string, styles: ThemeUiStyleObject) => void
-}
-
-export const Store = createVanilla<State>(set => ({
+export const Store = createVanilla<KodiakState>(set => ({
   variants: null,
   components: null,
-  variant: (key: string, styles: ThemeUiStyleObject) =>
-    set((state: State) => ({
+  variant: (key: string, styles: StyleObject) =>
+    set((state: KodiakState) => ({
       variants: { ...state.variants, [key]: styles },
     })),
-  component: (key: string, styles: ThemeUiStyleObject) =>
-    set((state: State) => ({
+  component: (key: string, styles: StyleObject) =>
+    set((state: KodiakState) => ({
       components: { ...state.components, [key]: styles },
     })),
 }))
 
-const variantsSelector = (state: State) => state.variants
-const componentsSelector = (state: State) => state.components
+const variantsSelector = (state: KodiakState) => state.variants
+const componentsSelector = (state: KodiakState) => state.components
 
 export const variant = Store.getState().variant
 export const component = Store.getState().component
 
 export const useKodiakStore = create(Store)
 
-export type ScaleArray<T> = T[]
-export type ScaleObject<T> = { [K: string]: T | Scale<T>; [I: number]: T }
-export type Scale<T> = ScaleArray<T> | ScaleObject<T>
-export type TLength = string | 0 | number
+export function useVariant() {}
 
-export type ScaleColorMode = ColorMode & {
-  /**
-   * Nested color modes can provide overrides when used in conjunction with
-   * `Theme.initialColorModeName and `useColorMode()`
-   */
-  modes?: {
-    [k: string]: ColorMode
+const getCSS = props => {
+  if (!props.sx && !props.css) return undefined
+  return theme => {
+    const styles = css(props.sx)(theme)
+    const raw = typeof props.css === 'function' ? props.css(theme) : props.css
+    return [styles, raw]
   }
 }
 
-/**
- * Kodiak UI enforces certain scale types for specific system types.
- * While technically any scale will accept arrays or objects, we feel like
- * there are cases where providing both options are confusing and not helpful to
- * the developer.
- *
- */
-export type System = {
-  borders?: Scale<CSS.Property.Border<string>>
-  borderStyles?: Scale<CSS.Property.Border<string>>
-  borderWidths?: Scale<CSS.Property.BorderWidth<TLength>>
-  breakpoints?: ScaleArray<CSS.Property.Width<string>>
-  colors?: ScaleColorMode
-  fonts?: ScaleObject<CSS.Property.FontFamily>
-  fontSizes?: Scale<CSS.Property.FontSize<number>>
-  fontWeights?: ScaleObject<CSS.Property.FontWeight>
-  letterSpacings?: ScaleObject<CSS.Property.LetterSpacing<TLength>>
-  lineHeights?: ScaleObject<CSS.Property.LineHeight<TLength>>
-  mediaQueries?: { [size: string]: string }
-  radii?: ScaleObject<CSS.Property.BorderRadius<TLength>>
-  space?: Scale<CSS.Property.Margin<number | string>>
-  sizes?: ScaleObject<CSS.Property.Height<string> | CSS.Property.Width<string>>
-  shadows?: ScaleObject<CSS.Property.BoxShadow>
-  transitions?: ScaleObject<CSS.Property.Transition>
-  zIndices?: ScaleObject<CSS.Property.ZIndex>
+const parseProps = props => {
+  if (!props) return null
+  const next: typeof props & { css?: InterpolationWithTheme<any> } = {}
+  for (const key in props) {
+    if (key === 'sx') continue
+    next[key] = props[key]
+  }
+  const css = getCSS(props)
+  if (css) next.css = css
+  return next
 }
 
-type GlobalStyles = { [k: string]: ThemeUiStyleObject }
-
-type CreateDesignSystemOptions = {
-  system: System
-  useCustomProperties?: boolean
-  useBodyStyles?: boolean
-  initialColorModeName?: string
-  useColorSchemeMediaQuery?: boolean
-  useBorderBox?: boolean
-  useLocalStorage?: boolean
-  global?: GlobalStyles
+export function jsx(type: any, props: any, ...children: React.ReactNode[]) {
+  return emotion.apply(undefined, [type, parseProps(props), ...children])
 }
-
-type Theme = ThemeUiTheme & { global: GlobalStyles }
 
 export function createDesignSystem({
   system,
   global,
   ...rest
-}: CreateDesignSystemOptions): { theme: any } {
+}: CreateDesignSystemOptions): { theme: Theme } {
   const theme = {
     ...rest,
     ...themeDefault,
@@ -122,8 +83,8 @@ export function createDesignSystem({
 
 const GlobalStyles = ({ global }) =>
   jsx(Global, {
-    styles: emotionTheme => {
-      const theme = emotionTheme as ThemeUiTheme
+    styles: (emotionTheme: Theme) => {
+      const theme = emotionTheme as Theme
 
       return css({
         '*': {
@@ -135,7 +96,7 @@ const GlobalStyles = ({ global }) =>
   })
 
 interface ProviderProps {
-  theme: ThemeUiTheme & { global: GlobalStyles }
+  theme: Theme & { global: GlobalStyles }
   children?: React.ReactNode
 }
 
