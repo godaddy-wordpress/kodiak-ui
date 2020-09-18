@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Global, ThemeContext as EmotionContext } from '@emotion/core'
-import { css } from 'theme-ui'
+import { css } from '@theme-ui/css'
 import { jsx, useKodiakStore } from '.'
 import { KodiakState, Theme } from './types'
 

@@ -2,7 +2,7 @@ import * as React from 'react'
 import styled from '@emotion/styled'
 import { Theme, css } from 'theme-ui'
 import { SerializedStyles } from '@emotion/serialize'
-import { variant, VariantProps, sx } from '@kodiak-ui/core'
+import { _variant, VariantProps, sx } from '@kodiak-ui/core'
 import { Flex } from '../Flex'
 import { SvgIcon } from '../Svg'
 
@@ -39,7 +39,7 @@ export const SelectStyled = styled<'select', SelectProps>('select')(
   },
   baseStyles,
   ({ variant: variantProp = 'select', variantKey = 'forms', theme }) =>
-    variant({ variant: variantProp, theme, variantKey }),
+    _variant({ variant: variantProp, theme, variantKey }),
   sx,
 )
 

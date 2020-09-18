@@ -12,11 +12,7 @@ export const parameters = {
   },
 }
 
-const { theme } = createDesignSystem({
-  system: {
-    space: [0, 4, 8, 12, 16, 24, 32, 40],
-  },
-})
+const { theme } = createDesignSystem({})
 
 export const decorators = [
   Story => (

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import {
-  variant,
+  _variant,
   VariantProps,
   styled,
   css,
@@ -33,7 +33,7 @@ const TagStyle = styled('div')<TagProps>(
   },
   base,
   ({ variant: variantProp = 'default', variantKey = 'tags', theme }) =>
-    variant({ variant: variantProp, theme, variantKey }),
+    _variant({ variant: variantProp, theme, variantKey }),
   sx,
 )
 

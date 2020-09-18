@@ -1,6 +1,6 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
-import { sx, variant, VariantProps } from '@kodiak-ui/core'
+import { sx, _variant, VariantProps } from '@kodiak-ui/core'
 import { useWrappedEventHandler } from '@kodiak-ui/hooks/use-event-logger'
 import { base, BaseProps } from '../Box'
 
@@ -16,7 +16,7 @@ export const StyledLink = styled('a')<LinkProps>(
   },
   base,
   ({ variant: variantProp = 'a', variantKey = 'links', theme }) =>
-    variant({ variant: variantProp, variantKey, theme }),
+    _variant({ variant: variantProp, variantKey, theme }),
   sx,
 )
 

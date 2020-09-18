@@ -1,5 +1,5 @@
 import {
-  variant as getVariantStyles,
+  _variant as getVariantStyles,
   VariantProps,
   sx,
   Theme,

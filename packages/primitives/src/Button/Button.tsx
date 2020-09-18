@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { getVariants } from '@kodiak-ui/core'
 import {
-  variant,
+  _variant,
   sx,
   VariantProps,
   shouldForwardProp,
@@ -48,7 +48,7 @@ export const buttonVariant = ({
     return getVariants(variants)(theme)
   }
 
-  return variant({ variant: variantProp, theme, variantKey, variants })
+  return _variant({ variant: variantProp, theme, variantKey, variants })
 }
 
 export type ButtonProps = React.DetailedHTMLProps<

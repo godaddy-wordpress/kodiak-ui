@@ -4,6 +4,9 @@ import {
   Theme as ThemeUiTheme,
 } from '@theme-ui/css'
 
+export type { SerializedStyles } from '@emotion/serialize'
+export type { SxStyleProp } from '@theme-ui/css'
+
 export type StyleObject = ThemeUIStyleObject
 
 export type SxProps = {

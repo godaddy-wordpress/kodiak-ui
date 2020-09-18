@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { UseSelectGetMenuPropsOptions } from 'downshift'
 import {
-  variant as getVariantStyles,
+  _variant as getVariantStyles,
   VariantProps,
   sx,
   Theme,

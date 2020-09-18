@@ -1,5 +1,5 @@
 import {
-  variant,
+  _variant,
   VariantProps,
   sx,
   Theme,
@@ -31,6 +31,6 @@ export const Tab = styled('button')<TabProps>(
   },
   base,
   ({ variant: variantProp = 'tab', variantKey = 'tabs', theme }) =>
-    variant({ variant: variantProp, theme, variantKey }),
+    _variant({ variant: variantProp, theme, variantKey }),
   sx,
 )

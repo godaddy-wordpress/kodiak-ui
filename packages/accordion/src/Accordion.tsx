@@ -1,6 +1,6 @@
 import * as React from 'react'
 import {
-  variant,
+  variant as _variant,
   VariantProps,
   sx,
   Theme,
@@ -27,6 +27,6 @@ export const Accordion = styled('div')<AccordionProps>(
   },
   base,
   ({ variant: variantProp = '', variantKey = 'accordions', theme }) =>
-    variant({ variant: variantProp, theme, variantKey }),
+    _variant({ variant: variantProp, theme, variantKey }),
   sx,
 )

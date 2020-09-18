@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { Theme, css, SxStyleProp } from 'theme-ui'
 import { SerializedStyles } from '@emotion/serialize'
-import { variant, VariantProps, sx } from '@kodiak-ui/core'
+import { _variant, VariantProps, sx } from '@kodiak-ui/core'
 
 /**
  * base
@@ -32,6 +32,6 @@ export const Svg = styled('svg')<SvgProps>(
   },
   baseStyles,
   ({ variant: variantProp, theme, variantKey = 'svg' }) =>
-    variant({ variant: variantProp, theme, variantKey }),
+    _variant({ variant: variantProp, theme, variantKey }),
   sx,
 )

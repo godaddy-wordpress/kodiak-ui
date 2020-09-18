@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { keyframes } from '@emotion/core'
 import {
-  variant,
+  _variant,
   VariantProps,
   styled,
   css,
@@ -67,7 +67,7 @@ const LoadingIndicatorStyle = styled('div')<DotLoadingIndicatorProps>(
     variant: variantProp = 'default',
     variantKey = 'loadingIndicators',
     theme,
-  }) => variant({ variant: variantProp, theme, variantKey }),
+  }) => _variant({ variant: variantProp, theme, variantKey }),
   sx,
 )
 

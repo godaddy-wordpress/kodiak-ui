@@ -10,13 +10,18 @@
     "access": "public"
   },
   "scripts": {},
+  "peerDependencies": {
+    "react": "^16.13.1",
+    "react-dom": "16.13.1"
+  },
   "dependencies": {
     "@emotion/core": "^10.0.35",
     "@emotion/serialize": "^0.11.16",
     "@emotion/styled": "^10.0.17",
     "@styled-system/should-forward-prop": "^5.1.4",
     "@theme-ui/css": "^0.3.1",
-    "styled-system": "^5.1.4"
+    "styled-system": "^5.1.4",
+    "zustand": "3.1.2"
   },
   "gitHead": "fe05dc108a105dcf18b4a7210d9f3d0ff5197bd3"
 }

@@ -7,7 +7,7 @@ import {
   DialogOverlay as ReachDialogOverlay,
   DialogContent as ReachDialogContent,
 } from '@reach/dialog'
-import { variant, VariantProps, sx } from '@kodiak-ui/core'
+import { _variant, VariantProps, sx } from '@kodiak-ui/core'
 import { DialogHeader } from './DialogHeader'
 
 type DialogProps = {
@@ -62,7 +62,7 @@ export const DialogOverlay = styled(ReachDialogOverlay)<DialogProps>(
   },
   overlayStyles,
   ({ variant: variantProp = 'overlay', variantKey = 'dialogs', theme }) =>
-    variant({ variant: variantProp, theme, variantKey }),
+    _variant({ variant: variantProp, theme, variantKey }),
   sx,
 )
 
@@ -74,7 +74,7 @@ export const DialogContainer = styled(ReachDialogContent)<DialogProps>(
   },
   containerStyles,
   ({ variant: variantProp, variantKey = 'dialogs', theme }) =>
-    variant({ variant: variantProp, theme, variantKey }),
+    _variant({ variant: variantProp, theme, variantKey }),
   sx,
 )
 

@@ -2,7 +2,7 @@ import * as React from 'react'
 import styled from '@emotion/styled'
 import { css, Theme } from 'theme-ui'
 import { SerializedStyles } from '@emotion/serialize'
-import { variant, VariantProps, sx } from '@kodiak-ui/core'
+import { _variant, VariantProps, sx } from '@kodiak-ui/core'
 import { VisuallyHidden, SvgIcon } from '@kodiak-ui/primitives'
 
 type DialogHeaderProps = {
@@ -29,7 +29,7 @@ const StyledDialogHeader = styled('header')<DialogHeaderProps>(
   },
   baseStyles,
   ({ variant: variantProp, variantKey, theme }) =>
-    variant({ variant: variantProp, theme, variantKey }),
+    _variant({ variant: variantProp, theme, variantKey }),
   sx,
 )
 

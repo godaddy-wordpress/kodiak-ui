@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { css, Theme } from 'theme-ui'
 import { SerializedStyles } from '@emotion/serialize'
-import { variant, VariantProps, sx, shouldForwardProp } from '@kodiak-ui/core'
+import { _variant, VariantProps, sx, shouldForwardProp } from '@kodiak-ui/core'
 
 type DialogContentProps = {
   children: React.ReactNode
@@ -23,6 +23,6 @@ export const DialogContent = styled('div', {
   },
   baseStyles,
   ({ variant: variantProp = 'dialogContent', variantKey = 'dialogs', theme }) =>
-    variant({ variant: variantProp, theme, variantKey }),
+    _variant({ variant: variantProp, theme, variantKey }),
   sx,
 )

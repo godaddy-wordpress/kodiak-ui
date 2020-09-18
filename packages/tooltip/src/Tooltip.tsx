@@ -1,6 +1,6 @@
 import * as React from 'react'
 import {
-  variant,
+  _variant,
   VariantProps,
   sx,
   Theme,
@@ -67,7 +67,7 @@ const TooltipStyle = styled('div')<TooltipProps>(
   },
   base,
   ({ variant: variantProp, variantKey = 'tooltips', theme }) =>
-    variant({ variant: variantProp, theme, variantKey }),
+    _variant({ variant: variantProp, theme, variantKey }),
   sx,
 )
 

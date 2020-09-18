@@ -1,6 +1,6 @@
 import * as React from 'react'
 import {
-  variant,
+  _variant,
   VariantProps,
   sx,
   Theme,
@@ -30,6 +30,6 @@ export const AccordionFooter = styled('div')<AccordionFooterProps>(
     variant: variantProp = 'accordionFooter',
     variantKey = 'accordions',
     theme,
-  }) => variant({ variant: variantProp, theme, variantKey }),
+  }) => _variant({ variant: variantProp, theme, variantKey }),
   sx,
 )

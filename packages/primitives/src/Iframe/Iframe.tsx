@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { variant, VariantProps, sx } from '../Box'
+import { _variant, VariantProps, sx } from '../Box'
 
 type IframeProps = VariantProps
 
@@ -15,6 +15,6 @@ export const Iframe = styled('iframe')<IframeProps>(
     minWidth: 0,
   },
   ({ variant: variantProp, theme }) =>
-    variant({ variant: variantProp, theme, variantKey: 'iframes' }),
+    _variant({ variant: variantProp, theme, variantKey: 'iframes' }),
   sx,
 )

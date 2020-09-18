@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { variant, VariantProps, sx } from '@kodiak-ui/core'
+import { _variant, VariantProps, sx } from '@kodiak-ui/core'
 import { SxProps } from 'theme-ui'
 
 type LabelProps = VariantProps & SxProps
@@ -12,6 +12,6 @@ export const Label = styled<'label', LabelProps>('label')(
     minWidth: 0,
   },
   ({ variant: variantProp, variantKey = 'labels', theme }) =>
-    variant({ variant: variantProp, variantKey, theme }),
+    _variant({ variant: variantProp, variantKey, theme }),
   sx,
 )

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import {
-  variant,
+  _variant,
   VariantProps,
   styled,
   css,
@@ -41,7 +41,7 @@ const TagDismissStyle = styled('button')<
   },
   base,
   ({ variant: variantProp = 'tagDismiss', variantKey = 'tags', theme }) =>
-    variant({ variant: variantProp, theme, variantKey }),
+    _variant({ variant: variantProp, theme, variantKey }),
   sx,
 )
 

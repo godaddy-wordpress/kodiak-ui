@@ -4,7 +4,7 @@ import {
   styled,
   css,
   sx,
-  variant as getVariantStyles,
+  _variant as getVariantStyles,
   Theme,
   SerializedStyles,
   VariantProps,

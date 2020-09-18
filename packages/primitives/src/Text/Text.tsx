@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { variant, VariantProps, sx } from '@kodiak-ui/core'
+import { _variant, VariantProps, sx } from '@kodiak-ui/core'
 
 type TextProps = {
   as?: React.ElementType
@@ -12,6 +12,6 @@ export const Text = styled<'p', TextProps>('p')(
     minWidth: 0,
   },
   ({ variant: variantProp, variantKey = 'text', theme }) =>
-    variant({ variant: variantProp, theme, variantKey }),
+    _variant({ variant: variantProp, theme, variantKey }),
   sx,
 )

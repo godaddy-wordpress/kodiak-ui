@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { SxStyleProp, Theme, css } from 'theme-ui'
 import { SerializedStyles } from '@emotion/serialize'
-import { variant, sx, VariantProps } from '@kodiak-ui/core'
+import { _variant, sx, VariantProps } from '@kodiak-ui/core'
 
 /**
  * base
@@ -43,6 +43,6 @@ export const Input = styled('input')<InputProps>(
   },
   baseStyles,
   ({ variant: variantProp, variantKey = 'inputs', theme }) =>
-    variant({ variant: variantProp, theme, variantKey }),
+    _variant({ variant: variantProp, theme, variantKey }),
   sx,
 )

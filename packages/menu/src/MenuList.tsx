@@ -1,5 +1,5 @@
 import {
-  variant,
+  _variant,
   VariantProps,
   sx,
   Theme,
@@ -37,6 +37,6 @@ export const MenuList = styled('ul')<MenuListProps>(
   },
   base,
   ({ variant: variantProp = 'menuList', variantKey = 'menus', theme }) =>
-    variant({ variant: variantProp, theme, variantKey }),
+    _variant({ variant: variantProp, theme, variantKey }),
   sx,
 )
