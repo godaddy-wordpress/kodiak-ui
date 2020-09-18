@@ -1,32 +1,56 @@
 import * as React from 'react'
-import {
-  jsx as emotion,
-  ThemeContext as EmotionContext,
-  InterpolationWithTheme,
-} from '@emotion/core'
+import { jsx as emotion, InterpolationWithTheme } from '@emotion/core'
 import { SerializedStyles } from '@emotion/serialize'
 import styled from '@emotion/styled'
-import { css, Theme, ThemeUIStyleObject } from '@theme-ui/css'
-
-type SxStyleProp = ThemeUIStyleObject
-
+import { css } from '@theme-ui/css'
 import { createShouldForwardProp } from '@styled-system/should-forward-prop'
+import create from 'zustand'
+import createVanilla from 'zustand/vanilla'
+import themeDefault from './theme-default'
+import {
+  CreateDesignSystemOptions,
+  KodiakState,
+  Theme,
+  Variant,
+  Component,
+  StyleObject,
+} from './types'
 
-export const shouldForwardProp = createShouldForwardProp([])
+import './react-jsx'
 
-// based on https://github.com/developit/dlv
-export const get = (
-  obj: Record<string, unknown>,
-  key: any,
-  def?: any,
-  p?: any,
-  undef?: any,
-) => {
-  key = key && key.split ? key.split('.') : [key]
-  for (p = 0; p < key.length; p++) {
-    obj = obj ? obj[key[p]] : undef
-  }
-  return obj === undef ? def : obj
+export * from './types'
+export * from './provider'
+
+export const Store = createVanilla<KodiakState>(set => ({
+  variants: null,
+  components: null,
+  variant: (key: string, styles: StyleObject) => {
+    set((state: KodiakState) => ({
+      variants: { ...state.variants, [key]: styles },
+    }))
+    return { key, styles }
+  },
+  component: (key: string, styles: StyleObject) => {
+    set((state: KodiakState) => ({
+      components: { ...state.components, [key]: styles },
+    }))
+    return { key, styles }
+  },
+}))
+
+export const variant = Store.getState().variant
+export const component = Store.getState().component
+
+export const useKodiakStore = create(Store)
+
+export function useVariant(variant: Variant): StyleObject {
+  const variants = Store.getState().variants
+  return variants?.[variant?.key] || null
+}
+
+export function useComponent(component: Component) {
+  const components = Store.getState().components
+  return components?.[component?.key] || null
 }
 
 const getCSS = props => {
@@ -50,8 +74,46 @@ const parseProps = props => {
   return next
 }
 
-export const jsx: typeof React.createElement = (type, props, ...children) =>
-  emotion.apply(undefined, [type, parseProps(props), ...children])
+export function jsx(type: any, props: any, ...children: React.ReactNode[]) {
+  return emotion.apply(undefined, [type, parseProps(props), ...children])
+}
+
+export function createDesignSystem({
+  system,
+  global,
+  options,
+}: CreateDesignSystemOptions): { theme: Theme } {
+  const theme = {
+    ...options,
+    ...themeDefault,
+    ...system,
+    global: {
+      ...themeDefault?.global,
+      ...global,
+    },
+  }
+
+  return {
+    theme,
+  }
+}
+
+export const shouldForwardProp = createShouldForwardProp([])
+
+// based on https://github.com/developit/dlv
+export const get = (
+  obj: Record<string, unknown>,
+  key: any,
+  def?: any,
+  p?: any,
+  undef?: any,
+) => {
+  key = key && key.split ? key.split('.') : [key]
+  for (p = 0; p < key.length; p++) {
+    obj = obj ? obj[key[p]] : undef
+  }
+  return obj === undef ? def : obj
+}
 
 /**
  * sx function to pass the sx prop and theme
@@ -96,7 +158,7 @@ export interface VariantProps {
  *
  * @deprecated
  */
-export function variant({
+export function _variant({
   variant,
   theme,
   variantKey,
@@ -116,17 +178,20 @@ export function variant({
  *
  * @param variants string or array of variants
  */
-export const getVariants = (variants: string | string[]) => (theme: Theme) =>
-  Array.isArray(variants)
-    ? css(
-        variants?.reduce((acc, curr) => {
-          return {
-            ...acc,
-            ...get(theme, curr),
-          }
-        }, {}),
-      )(theme)
-    : css(get(theme, variants as string))(theme)
+export const getVariants = (variants: string | string[]) => (theme: Theme) => {
+  const variantsToArray = Array.isArray(variants)
+    ? variants
+    : variants?.split(' ')
+
+  return css(
+    variantsToArray?.reduce((acc, curr) => {
+      return {
+        ...acc,
+        ...get(theme, curr),
+      }
+    }, {}),
+  )(theme)
+}
 
 /**
  * Get the appropriate CSS from the theme for the specified
@@ -134,43 +199,17 @@ export const getVariants = (variants: string | string[]) => (theme: Theme) =>
  *
  * @param base string or array of base component defaults
  */
-export const getComponentBase = (base: string | string[]) => (theme: Theme) =>
-  Array.isArray(base)
-    ? css(
-        base?.reduce((acc, curr) => {
-          return {
-            ...acc,
-            ...get(theme, curr),
-          }
-        }, {}),
-      )(theme)
-    : css(get(theme, base as string))(theme)
+export const getComponentBase = (base: string | string[]) => (theme: Theme) => {
+  const baseToArray = Array.isArray(base) ? base : base?.split(' ')
 
-export interface ContextValue {
-  theme: Theme
-}
-
-export const Context = React.createContext<ContextValue>({
-  theme: {},
-})
-
-export const useKodiakUi = () => React.useContext(Context)
-
-interface ProviderProps {
-  theme: Theme
-  children: React.ReactNode
-}
-
-export function ThemeProvider({ theme, children }: ProviderProps) {
-  return jsx(
-    EmotionContext.Provider,
-    { value: theme },
-    jsx(Context.Provider, {
-      value: theme,
-      children,
-    }),
-  )
+  return css(
+    baseToArray?.reduce((acc, curr) => {
+      return {
+        ...acc,
+        ...get(theme, curr),
+      }
+    }, {}),
+  )(theme)
 }
 
 export { css, styled }
-export type { Theme, SxStyleProp, SerializedStyles }

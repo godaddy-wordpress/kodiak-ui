@@ -1,8 +1,8 @@
-import { Theme } from 'theme-ui'
+import { Theme } from 'kodiak-ui/src/types'
 
 const breakpoints = ['40em', '56em', '64em']
 
-export const theme: Theme & { global: any } = {
+export const theme: Theme = {
   breakpoints,
   colors: {
     text: '#000',

@@ -1,4 +1,4 @@
-import { SxProps } from './types'
+import { SxProps } from 'kodiak-ui/src/types'
 
 declare module 'react' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
