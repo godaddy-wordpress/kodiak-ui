@@ -51,10 +51,13 @@ export function Provider({ theme: base, children }: ProviderProps) {
   return jsx(
     EmotionContext.Provider,
     { value: theme },
-    jsx(GlobalStyles, { global }),
-    jsx(Context.Provider, {
-      value: theme,
+    jsx(
+      Context.Provider,
+      {
+        value: theme,
+      },
+      jsx(GlobalStyles, { global }),
       children,
-    }),
+    ),
   )
 }
