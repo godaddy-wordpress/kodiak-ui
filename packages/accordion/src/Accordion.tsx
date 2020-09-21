@@ -1,6 +1,6 @@
 import * as React from 'react'
 import {
-  variant as _variant,
+  _variant,
   VariantProps,
   sx,
   Theme,
