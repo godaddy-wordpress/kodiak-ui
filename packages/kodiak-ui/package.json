@@ -16,6 +16,6 @@
     "@emotion/styled": "^10.0.17",
     "@styled-system/should-forward-prop": "^5.1.4",
     "@theme-ui/css": "^0.3.1",
-    "zustand": "3.1.2"
+    "zustand": "^3.1.2"
   }
 }

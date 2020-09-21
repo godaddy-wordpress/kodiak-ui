@@ -2105,6 +2105,11 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
+"@kodiak-ui/utils@^0.0.9":
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/@kodiak-ui/utils/-/utils-0.0.9.tgz#8b4a3f6c3075d36f6e6c8b23b7be5b643a14a9df"
+  integrity sha512-CUwkg05eJvkPSSsZaHebYD+PY9yjXdXdTr9SPjhvbRHXCcJ2ah098u1izbwV3L2/B9KlL5sPlph2eY01GXS/0g==
+
 "@lerna/add@3.21.0":
   version "3.21.0"
   resolved "https://registry.yarnpkg.com/@lerna/add/-/add-3.21.0.tgz#27007bde71cc7b0a2969ab3c2f0ae41578b4577b"
