@@ -8,7 +8,7 @@ import {
   Theme,
   SerializedStyles,
   VariantProps,
-} from '@kodiak-ui/core'
+} from 'kodiak-ui'
 
 export interface ComboboxMenuProps
   extends UseComboboxGetMenuPropsOptions,

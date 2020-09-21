@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import { InterpolationWithTheme } from '@emotion/core'
 import { css, Theme } from 'theme-ui'
 import { SerializedStyles } from '@emotion/serialize'
-import { _variant, VariantProps, sx, shouldForwardProp } from '@kodiak-ui/core'
+import { _variant, VariantProps, sx, shouldForwardProp } from 'kodiak-ui'
 
 type DialogFooterProps = {
   children: React.ReactNode

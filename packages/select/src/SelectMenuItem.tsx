@@ -8,7 +8,7 @@ import {
   Theme,
   css,
   SerializedStyles,
-} from '@kodiak-ui/core'
+} from 'kodiak-ui'
 
 export type SelectMenuItemProps = {
   ref: React.Ref<HTMLLIElement>

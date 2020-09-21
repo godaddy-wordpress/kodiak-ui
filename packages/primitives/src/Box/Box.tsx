@@ -1,9 +1,9 @@
 import styled from '@emotion/styled'
 import * as React from 'react'
 import { css, IntrinsicSxElements, Theme } from 'theme-ui'
-import type { SxStyleProp } from '@kodiak-ui/core'
+import type { SxStyleProp } from 'kodiak-ui'
 import { SerializedStyles } from '@emotion/serialize'
-import { get } from '@kodiak-ui/core'
+import { get } from 'kodiak-ui'
 
 /**
  * sx function to pass the sx prop and theme

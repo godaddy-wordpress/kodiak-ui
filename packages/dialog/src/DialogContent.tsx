@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { css, Theme } from 'theme-ui'
 import { SerializedStyles } from '@emotion/serialize'
-import { _variant, VariantProps, sx, shouldForwardProp } from '@kodiak-ui/core'
+import { _variant, VariantProps, sx, shouldForwardProp } from 'kodiak-ui'
 
 type DialogContentProps = {
   children: React.ReactNode

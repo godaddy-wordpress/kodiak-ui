@@ -8,7 +8,7 @@ import {
   sx,
   Theme,
   SerializedStyles,
-} from '@kodiak-ui/core'
+} from 'kodiak-ui'
 import { Box } from '../Box'
 
 const loadingDotAnimations = keyframes`

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Box } from '@kodiak-ui/primitives/box'
-import { SxStyleProp } from '@kodiak-ui/core'
+import { SxStyleProp } from 'kodiak-ui'
 
 type ProgressProps = {
   value: number

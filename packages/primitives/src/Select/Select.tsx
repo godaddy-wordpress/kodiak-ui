@@ -2,7 +2,7 @@ import * as React from 'react'
 import styled from '@emotion/styled'
 import { Theme, css } from 'theme-ui'
 import { SerializedStyles } from '@emotion/serialize'
-import { _variant, VariantProps, sx } from '@kodiak-ui/core'
+import { _variant, VariantProps, sx } from 'kodiak-ui'
 import { Flex } from '../Flex'
 import { SvgIcon } from '../Svg'
 

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { UseComboboxGetToggleButtonPropsOptions } from 'downshift'
-import { VariantProps, SxStyleProp } from '@kodiak-ui/core'
+import { VariantProps, SxStyleProp } from 'kodiak-ui'
 import { Button } from '@kodiak-ui/primitives'
 
 export interface ComboboxButtonProps

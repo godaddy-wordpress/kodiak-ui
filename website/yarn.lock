@@ -1600,9 +1600,9 @@
   dependencies:
     "@hapi/hoek" "^9.0.0"
 
-"@kodiak-ui/core@^0.1.14":
+"kodiak-ui@^0.1.14":
   version "0.1.16"
-  resolved "https://registry.yarnpkg.com/@kodiak-ui/core/-/core-0.1.16.tgz#1b0ad8be60b7ac7c0c39d8b435ad162644f2ea5b"
+  resolved "https://registry.yarnpkg.com/kodiak-ui/-/core-0.1.16.tgz#1b0ad8be60b7ac7c0c39d8b435ad162644f2ea5b"
   integrity sha512-NdP+RdD4qbyD2wnho/PeCHnsdRw6PzOvbwY1n2ZSKJcBsnLN0uI82+o/tp5RRLfvMnkR3KK/XDUvNPp9BjzgXA==
   dependencies:
     "@emotion/serialize" "^0.11.16"
@@ -1617,7 +1617,6 @@
   integrity sha512-b0zEXbYMf2s9kFCZj+Ee1RNy7pxBdWKZ2oNKPN7rG7dKHfmo1QC7LLahHN5TTcjtf336cb1Vciv7EVXqx12xvg==
   dependencies:
     "@emotion/styled" "^10.0.27"
-    "@kodiak-ui/core" "^0.1.14"
     "@styled-system/should-forward-prop" "^5.1.4"
     "@styled-system/space" "^5.1.2"
     "@theme-ui/css" "^0.3.1"

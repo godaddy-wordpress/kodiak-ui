@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { SxStyleProp, Theme, css } from 'theme-ui'
 import { SerializedStyles } from '@emotion/serialize'
-import { _variant, sx, VariantProps } from '@kodiak-ui/core'
+import { _variant, sx, VariantProps } from 'kodiak-ui'
 
 /**
  * base

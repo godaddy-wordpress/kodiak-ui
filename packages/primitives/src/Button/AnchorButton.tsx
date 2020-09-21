@@ -1,7 +1,7 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
 import { base, buttonVariant } from './Button'
-import { shouldForwardProp, sx, VariantProps } from '@kodiak-ui/core'
+import { shouldForwardProp, sx, VariantProps } from 'kodiak-ui'
 import { addHrefToPayload } from '../Link/Link'
 import { useWrappedEventHandler } from '@kodiak-ui/hooks/use-event-logger'
 

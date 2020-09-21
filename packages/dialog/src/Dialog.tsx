@@ -7,7 +7,7 @@ import {
   DialogOverlay as ReachDialogOverlay,
   DialogContent as ReachDialogContent,
 } from '@reach/dialog'
-import { _variant, VariantProps, sx } from '@kodiak-ui/core'
+import { _variant, VariantProps, sx } from 'kodiak-ui'
 import { DialogHeader } from './DialogHeader'
 
 type DialogProps = {

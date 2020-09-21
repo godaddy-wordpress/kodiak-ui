@@ -20,7 +20,6 @@
     "react-dom": "^16.13.0"
   },
   "dependencies": {
-    "@kodiak-ui/core": "^0.1.16",
     "@kodiak-ui/primitives": "^0.17.11",
     "downshift": "^5.4.5"
   },

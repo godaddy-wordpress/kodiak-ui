@@ -7,7 +7,7 @@ import {
   css,
   SerializedStyles,
   styled,
-} from '@kodiak-ui/core'
+} from 'kodiak-ui'
 import { tableRoot } from './Table'
 
 export type TableHeaderProps = React.HTMLAttributes<

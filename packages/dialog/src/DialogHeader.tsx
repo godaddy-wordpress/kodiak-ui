@@ -2,7 +2,7 @@ import * as React from 'react'
 import styled from '@emotion/styled'
 import { css, Theme } from 'theme-ui'
 import { SerializedStyles } from '@emotion/serialize'
-import { _variant, VariantProps, sx } from '@kodiak-ui/core'
+import { _variant, VariantProps, sx } from 'kodiak-ui'
 import { VisuallyHidden, SvgIcon } from '@kodiak-ui/primitives'
 
 type DialogHeaderProps = {

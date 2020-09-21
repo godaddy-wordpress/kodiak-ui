@@ -1,6 +1,6 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
-import { sx, _variant, VariantProps } from '@kodiak-ui/core'
+import { sx, _variant, VariantProps } from 'kodiak-ui'
 import { useWrappedEventHandler } from '@kodiak-ui/hooks/use-event-logger'
 import { base, BaseProps } from '../Box'
 

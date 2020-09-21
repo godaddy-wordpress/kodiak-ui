@@ -7,7 +7,7 @@ import {
   sx,
   Theme,
   SerializedStyles,
-} from '@kodiak-ui/core'
+} from 'kodiak-ui'
 
 export type TagLabelProps = { children: React.ReactNode } & VariantProps
 

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { UseSelectGetLabelPropsOptions } from 'downshift'
-import { VariantProps } from '@kodiak-ui/core'
+import { VariantProps } from 'kodiak-ui'
 import { Label } from '@kodiak-ui/primitives/label'
 
 export interface SelectLabelProps

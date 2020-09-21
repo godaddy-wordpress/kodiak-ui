@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Box } from '@kodiak-ui/primitives'
-import { VariantProps, SxStyleProp } from '@kodiak-ui/core'
+import { VariantProps, SxStyleProp } from 'kodiak-ui'
 
 export type TabListProps = {
   children: React.ReactNode

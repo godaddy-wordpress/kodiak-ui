@@ -6,7 +6,7 @@ import {
   css,
   SerializedStyles,
   styled,
-} from '@kodiak-ui/core'
+} from 'kodiak-ui'
 import { SxStyleProp } from 'theme-ui'
 
 export type TabProps = {

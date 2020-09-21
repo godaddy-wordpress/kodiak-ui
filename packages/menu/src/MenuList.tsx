@@ -7,7 +7,7 @@ import {
   SerializedStyles,
   styled,
   SxStyleProp,
-} from '@kodiak-ui/core'
+} from 'kodiak-ui'
 
 export type MenuListProps = {
   children: React.ReactNode

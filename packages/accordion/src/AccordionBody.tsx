@@ -8,7 +8,7 @@ import {
   SerializedStyles,
   styled,
   SxStyleProp,
-} from '@kodiak-ui/core'
+} from 'kodiak-ui'
 
 export type AccordionBodyProps = {
   children: React.ReactNode

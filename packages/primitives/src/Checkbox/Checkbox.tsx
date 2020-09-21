@@ -4,7 +4,7 @@ import { SvgIcon } from '../Svg'
 import { Input } from '../Input'
 import { useCheckbox } from './useCheckbox'
 import { Label } from '../Label'
-import type { SxStyleProp } from '@kodiak-ui/core'
+import type { SxStyleProp } from 'kodiak-ui'
 
 type InputProps = {
   sx?: SxStyleProp

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { UseComboboxGetLabelPropsOptions } from 'downshift'
-import { VariantProps } from '@kodiak-ui/core'
+import { VariantProps } from 'kodiak-ui'
 import { Label } from '@kodiak-ui/primitives'
 
 export interface ComboboxLabelProps

@@ -6,43 +6,43 @@ patch:
   SNYK-JS-LODASH-567746:
     - '@emotion/styled > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
         patched: '2020-04-30T21:11:24.431Z'
-    - '@kodiak-ui/core > @emotion/styled > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
+    - 'kodiak-ui > @emotion/styled > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
         patched: '2020-04-30T21:11:24.431Z'
-    - '@kodiak-ui/core > theme-ui > @theme-ui/mdx > @emotion/styled > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
+    - 'kodiak-ui > theme-ui > @theme-ui/mdx > @emotion/styled > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
         patched: '2020-04-30T21:11:24.431Z'
-    - '@kodiak-ui/core > theme-ui > @theme-ui/theme-provider > @emotion/core > @emotion/css > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
+    - 'kodiak-ui > theme-ui > @theme-ui/theme-provider > @emotion/core > @emotion/css > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
         patched: '2020-04-30T21:11:24.431Z'
-    - '@kodiak-ui/core > theme-ui > @theme-ui/theme-provider > @theme-ui/mdx > @emotion/core > @emotion/css > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
+    - 'kodiak-ui > theme-ui > @theme-ui/theme-provider > @theme-ui/mdx > @emotion/core > @emotion/css > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
         patched: '2020-04-30T21:11:24.431Z'
-    - '@kodiak-ui/core > theme-ui > @theme-ui/theme-provider > @theme-ui/color-modes > @theme-ui/core > @emotion/core > @emotion/css > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
+    - 'kodiak-ui > theme-ui > @theme-ui/theme-provider > @theme-ui/color-modes > @theme-ui/core > @emotion/core > @emotion/css > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
         patched: '2020-04-30T21:11:24.431Z'
     - '@emotion/styled > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
         patched: '2020-05-05T18:19:15.338Z'
-    - '@kodiak-ui/core > @emotion/styled > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
+    - 'kodiak-ui > @emotion/styled > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
         patched: '2020-05-05T18:19:15.338Z'
-    - '@kodiak-ui/core > theme-ui > @theme-ui/components > @emotion/styled > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
+    - 'kodiak-ui > theme-ui > @theme-ui/components > @emotion/styled > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
         patched: '2020-05-05T18:19:15.338Z'
-    - '@kodiak-ui/core > theme-ui > @theme-ui/mdx > @emotion/styled > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
+    - 'kodiak-ui > theme-ui > @theme-ui/mdx > @emotion/styled > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
         patched: '2020-05-05T18:19:15.338Z'
-    - '@kodiak-ui/core > theme-ui > @theme-ui/theme-provider > @theme-ui/mdx > @emotion/styled > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
+    - 'kodiak-ui > theme-ui > @theme-ui/theme-provider > @theme-ui/mdx > @emotion/styled > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
         patched: '2020-05-05T18:19:15.338Z'
-    - '@kodiak-ui/core > theme-ui > @theme-ui/core > @emotion/core > @emotion/css > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
+    - 'kodiak-ui > theme-ui > @theme-ui/core > @emotion/core > @emotion/css > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
         patched: '2020-05-05T18:19:15.338Z'
-    - '@kodiak-ui/core > theme-ui > @theme-ui/color-modes > @emotion/core > @emotion/css > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
+    - 'kodiak-ui > theme-ui > @theme-ui/color-modes > @emotion/core > @emotion/css > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
         patched: '2020-05-05T18:19:15.338Z'
-    - '@kodiak-ui/core > theme-ui > @theme-ui/components > @emotion/core > @emotion/css > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
+    - 'kodiak-ui > theme-ui > @theme-ui/components > @emotion/core > @emotion/css > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
         patched: '2020-05-05T18:19:15.338Z'
-    - '@kodiak-ui/core > theme-ui > @theme-ui/mdx > @emotion/core > @emotion/css > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
+    - 'kodiak-ui > theme-ui > @theme-ui/mdx > @emotion/core > @emotion/css > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
         patched: '2020-05-05T18:19:15.338Z'
-    - '@kodiak-ui/core > theme-ui > @theme-ui/theme-provider > @emotion/core > @emotion/css > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
+    - 'kodiak-ui > theme-ui > @theme-ui/theme-provider > @emotion/core > @emotion/css > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
         patched: '2020-05-05T18:19:15.338Z'
-    - '@kodiak-ui/core > theme-ui > @theme-ui/color-modes > @theme-ui/core > @emotion/core > @emotion/css > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
+    - 'kodiak-ui > theme-ui > @theme-ui/color-modes > @theme-ui/core > @emotion/core > @emotion/css > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
         patched: '2020-05-05T18:19:15.338Z'
-    - '@kodiak-ui/core > theme-ui > @theme-ui/theme-provider > @theme-ui/core > @emotion/core > @emotion/css > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
+    - 'kodiak-ui > theme-ui > @theme-ui/theme-provider > @theme-ui/core > @emotion/core > @emotion/css > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
         patched: '2020-05-05T18:19:15.338Z'
-    - '@kodiak-ui/core > theme-ui > @theme-ui/theme-provider > @theme-ui/color-modes > @emotion/core > @emotion/css > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
+    - 'kodiak-ui > theme-ui > @theme-ui/theme-provider > @theme-ui/color-modes > @emotion/core > @emotion/css > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
         patched: '2020-05-05T18:19:15.338Z'
-    - '@kodiak-ui/core > theme-ui > @theme-ui/theme-provider > @theme-ui/mdx > @emotion/core > @emotion/css > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
+    - 'kodiak-ui > theme-ui > @theme-ui/theme-provider > @theme-ui/mdx > @emotion/core > @emotion/css > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
         patched: '2020-05-05T18:19:15.338Z'
-    - '@kodiak-ui/core > theme-ui > @theme-ui/theme-provider > @theme-ui/color-modes > @theme-ui/core > @emotion/core > @emotion/css > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
+    - 'kodiak-ui > theme-ui > @theme-ui/theme-provider > @theme-ui/color-modes > @theme-ui/core > @emotion/core > @emotion/css > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
         patched: '2020-05-05T18:19:15.338Z'

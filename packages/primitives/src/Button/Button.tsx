@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { getVariants } from '@kodiak-ui/core'
+import { getVariants } from 'kodiak-ui'
 import {
   _variant,
   sx,
@@ -8,7 +8,7 @@ import {
   styled,
   getComponentBase,
   css,
-} from '@kodiak-ui/core'
+} from 'kodiak-ui'
 import { useWrappedEventHandler } from '@kodiak-ui/hooks/use-event-logger'
 import { base as baseProp, BaseProps } from '../Box'
 

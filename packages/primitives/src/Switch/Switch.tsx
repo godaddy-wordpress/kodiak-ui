@@ -2,7 +2,7 @@ import * as React from 'react'
 import { SxStyleProp } from 'theme-ui'
 import { Input } from '../Input'
 import { Box } from '../Box/Box'
-import { VariantProps } from '@kodiak-ui/core'
+import { VariantProps } from 'kodiak-ui'
 
 type SwitchProps = {
   indicatorVariant?: string

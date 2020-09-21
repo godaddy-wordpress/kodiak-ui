@@ -8,7 +8,7 @@ import {
   css,
   SerializedStyles,
   styled,
-} from '@kodiak-ui/core'
+} from 'kodiak-ui'
 import { Box } from '@kodiak-ui/primitives/box'
 
 export type SelectMenuProps = {

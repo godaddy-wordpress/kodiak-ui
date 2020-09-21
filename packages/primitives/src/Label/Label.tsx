@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { _variant, VariantProps, sx } from '@kodiak-ui/core'
+import { _variant, VariantProps, sx } from 'kodiak-ui'
 import { SxProps } from 'theme-ui'
 
 type LabelProps = VariantProps & SxProps

@@ -6,7 +6,7 @@ import {
   css,
   SerializedStyles,
   styled,
-} from '@kodiak-ui/core'
+} from 'kodiak-ui'
 import { tableRoot } from './Table'
 
 export type TableFootProps = React.HTMLAttributes<HTMLElement> & VariantProps
