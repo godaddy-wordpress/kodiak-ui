@@ -55,7 +55,9 @@ describe('Box', () => {
   it('should style the element with styled-system props', () => {
     expect(
       renderer
-        .create(<Flex alignItems="center">Rendering div element</Flex>)
+        .create(
+          <Flex sx={{ alignItems: 'center' }}>Rendering div element</Flex>,
+        )
         .toJSON(),
     ).toMatchInlineSnapshot(`
       .emotion-0 {

@@ -13,12 +13,14 @@ describe('SvgIcon', () => {
           <SvgIcon
             preserveAspectRatio="none"
             viewBox="0 0 100 100"
-            height="32"
-            width="32"
-            px="1px"
-            py={1}
             title="Sample poly"
             desc="Sample description of the poly"
+            sx={{
+              px: 1,
+              py: 1,
+              height: '32px',
+              width: '32px',
+            }}
           >
             <polygon points="50,0 100,0 50,100 0,100"></polygon>
           </SvgIcon>,

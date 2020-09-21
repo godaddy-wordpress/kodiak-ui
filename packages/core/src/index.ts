@@ -3,6 +3,7 @@ import { jsx as emotion, InterpolationWithTheme } from '@emotion/core'
 import { SerializedStyles } from '@emotion/serialize'
 import styled from '@emotion/styled'
 import { css } from '@theme-ui/css'
+import type { SxStyleProp } from 'theme-ui'
 import { createShouldForwardProp } from '@styled-system/should-forward-prop'
 import create from 'zustand'
 import createVanilla from 'zustand/vanilla'
@@ -18,13 +19,26 @@ import {
 
 import './react-jsx'
 
-export * from './types'
+// re-exports
+export type {
+  Component,
+  CreateDesignSystemOptions,
+  GlobalStylesObject,
+  KodiakState,
+  StyleObject,
+  SxProps,
+  Theme,
+  Variant,
+} from './types'
+
+export type { SxStyleProp, SerializedStyles }
+
 export * from './provider'
 
 export const Store = createVanilla<KodiakState>(set => ({
   variants: null,
   components: null,
-  variant: (key: string, styles: StyleObject) => {
+  variant: ({ key, styles }: { key: string; styles: StyleObject }) => {
     set((state: KodiakState) => ({
       variants: { ...state.variants, [key]: styles },
     }))
