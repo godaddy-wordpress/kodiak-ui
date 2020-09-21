@@ -57,6 +57,10 @@ export function useComponent(component: Component) {
   return components?.[component?.key] || null
 }
 
+export function useComponents() {
+  return Store.getState().components
+}
+
 const getCSS = props => {
   if (!props.sx && !props.css) return undefined
   return theme => {
@@ -86,7 +90,7 @@ export function createDesignSystem({
   system,
   global,
   options,
-}: CreateDesignSystemOptions): { theme: Theme } {
+}: CreateDesignSystemOptions = {}): { theme: Theme } {
   const theme = {
     ...options,
     ...themeDefault,

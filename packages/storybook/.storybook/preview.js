@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { createDesignSystem, Provider as ThemeProvider } from 'kodiak-ui'
+import { createDesignSystem, Provider as ThemeProvider } from '@kodiak-ui/core'
 // import { ThemeProvider } from 'theme-ui'
 // import { theme } from '../src/theme'
 
@@ -12,7 +12,7 @@ export const parameters = {
   },
 }
 
-const { theme } = createDesignSystem({})
+const { theme } = createDesignSystem()
 
 export const decorators = [
   Story => (

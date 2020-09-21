@@ -95,7 +95,7 @@ export function useAccordion({
     ref: AccordionRef
     options: RegisterOptions<KeyType>
   }) {
-    if (options.role === 'accordionHeader' || ref.tagName === 'HEADER') {
+    if (options.role === 'accordionHeader' || ref?.tagName === 'HEADER') {
       const accordionHead = ref
       elementRefDictionary.current.accordionHeaders[options.key] = ref
 
@@ -119,7 +119,7 @@ export function useAccordion({
     ref: AccordionRef
     options: RegisterOptions<KeyType>
   }) {
-    if (options.role === 'accordionBody' || ref.tagName === 'SECTION') {
+    if (options.role === 'accordionBody' || ref?.tagName === 'SECTION') {
       const accordionBody = ref
       elementRefDictionary.current.accordionBodies[options.key] = ref
 

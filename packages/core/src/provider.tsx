@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { Global, ThemeContext as EmotionContext } from '@emotion/core'
 import { css } from '@theme-ui/css'
-import { jsx, useVariants } from '.'
-import { KodiakState, Theme } from './types'
+import { Theme } from './types'
+import { jsx, useComponents, useVariants } from '.'
 
 const GlobalStyles = ({ global }) =>
   jsx(Global, {
@@ -33,29 +33,16 @@ export const Context = React.createContext<ContextValue>({
 
 export const useKodiakUi = () => React.useContext(Context)
 
-interface BaseProviderProps {
-  context: ContextValue
-}
-const BaseProvider: React.FC<BaseProviderProps> = ({ context, children }) =>
-  jsx(
-    EmotionContext.Provider,
-    { value: context.theme },
-    jsx(Context.Provider, {
-      value: context,
-      children,
-    }),
-  )
-
 export function Provider({ theme: base, children }: ProviderProps) {
   const variants = useVariants()
-  // const components = useKodiakStore(componentsSelector)
+  const components = useComponents()
 
-  // const global = base?.global
+  const global = base?.global
 
   const theme = {
     ...base,
     ...variants,
-    // ...components,
+    ...components,
   }
 
   return jsx(

@@ -66,8 +66,8 @@ type ConfigurationOptions = Pick<
 >
 
 export type CreateDesignSystemOptions = {
-  system: System
-  global?: GlobalStyles
+  system?: System
+  global?: { [key: string]: StyleObject }
   options?: ConfigurationOptions
 }
 

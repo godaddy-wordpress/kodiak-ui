@@ -1,4 +1,4 @@
-import { Theme } from 'kodiak-ui/src/types'
+import { Theme } from './types'
 
 const breakpoints = ['40em', '56em', '64em']
 
