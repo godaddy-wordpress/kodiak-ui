@@ -26,6 +26,7 @@
     "@emotion/core": "^10.0.28",
     "@emotion/serialize": "^0.11.16",
     "@emotion/styled": "^10.0.27",
+    "@emotion/styled-base": "^10.0.31",
     "@kodiak-ui/core": "^0.1.16",
     "@kodiak-ui/primitives": "^0.17.11",
     "@reach/dialog": "^0.8.2",
