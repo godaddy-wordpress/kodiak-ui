@@ -75,7 +75,9 @@ describe('AnchorButton', () => {
   it('should style the element with styled-system props', () => {
     expect(
       renderer
-        .create(<AnchorButton mr={1}>Default AnchorButton</AnchorButton>)
+        .create(
+          <AnchorButton sx={{ mr: 1 }}>Default AnchorButton</AnchorButton>,
+        )
         .toJSON(),
     ).toMatchInlineSnapshot(`
       .emotion-0 {

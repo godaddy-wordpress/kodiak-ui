@@ -24,7 +24,7 @@ export type Component = {
 export type KodiakState = {
   variants: Variant
   components: Component
-  variant: (key: string, styles: StyleObject) => Variant
+  variant: ({ key: string, styles: StyleObject }) => Variant
   component: (key: string, styles: StyleObject) => Component
 }
 

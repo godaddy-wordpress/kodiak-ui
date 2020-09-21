@@ -28,7 +28,12 @@ describe('Box', () => {
     expect(
       renderer
         .create(
-          <Grid gridGap={3} gridTemplateColumns={['auto', '1fr 256px']}>
+          <Grid
+            sx={{
+              gap: 3,
+              gridTemplateColumns: ['auto', '1fr 256px'],
+            }}
+          >
             <div></div>
             <div></div>
           </Grid>,
