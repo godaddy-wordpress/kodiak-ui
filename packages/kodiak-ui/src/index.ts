@@ -2,26 +2,92 @@ import * as React from 'react'
 import { jsx as emotion, InterpolationWithTheme } from '@emotion/core'
 import { SerializedStyles } from '@emotion/serialize'
 import styled from '@emotion/styled'
-import { css } from '@theme-ui/css'
-import type { SxStyleProp } from 'theme-ui'
+import {
+  css,
+  ThemeUIStyleObject,
+  ColorMode,
+  Theme as ThemeUiTheme,
+} from '@theme-ui/css'
 import { createShouldForwardProp } from '@styled-system/should-forward-prop'
 import create from 'zustand'
 import createVanilla from 'zustand/vanilla'
 import themeDefault from './theme-default'
-import {
-  CreateDesignSystemOptions,
-  KodiakState,
-  Theme,
-  Variant,
-  Component,
-  StyleObject,
-} from './types'
+import {} from '@theme-ui/css'
 
 import './react-jsx'
 
-export type { SxStyleProp, SerializedStyles }
+export type { SerializedStyles } from '@emotion/serialize'
+export type { SxStyleProp } from '@theme-ui/css'
 
-export * from './provider'
+export type StyleObject = ThemeUIStyleObject
+
+export type SxProps = {
+  sx?: StyleObject
+}
+
+export type Variant = {
+  [key: string]: StyleObject
+}
+
+export type Component = {
+  [key: string]: StyleObject
+}
+
+export type KodiakState = {
+  variants: Variant
+  components: Component
+  variant: (key: string, styles: StyleObject) => Variant
+  component: (key: string, styles: StyleObject) => Component
+}
+
+export type ScaleArray<T> = T[]
+export type ScaleObject<T> = { [K: string]: T | Scale<T>; [I: number]: T }
+export type Scale<T> = ScaleArray<T> | ScaleObject<T>
+export type TLength = string | 0 | number
+
+export type ScaleColorMode = ColorMode & {
+  /**
+   * Nested color modes can provide overrides when used in conjunction with
+   * `Theme.initialColorModeName and `useColorMode()`
+   */
+  modes?: {
+    [k: string]: ColorMode
+  }
+}
+
+export type GlobalStylesObject = { [k: string]: StyleObject }
+
+type System = Omit<
+  ThemeUiTheme,
+  | 'initialColorModeName'
+  | 'useBodyStyles'
+  | 'useBorderBox'
+  | 'useCustomProperties'
+  | 'useColorSchemeMediaQuery'
+  | 'useLocalStorage'
+>
+
+type ConfigurationOptions = Pick<
+  ThemeUiTheme,
+  | 'initialColorModeName'
+  | 'useBodyStyles'
+  | 'useBorderBox'
+  | 'useCustomProperties'
+  | 'useColorSchemeMediaQuery'
+  | 'useLocalStorage'
+>
+
+export type CreateDesignSystemOptions = {
+  system?: System
+  global?: { [key: string]: StyleObject }
+  options?: ConfigurationOptions
+}
+
+export type GlobalStyleObject = {
+  [key: string]: StyleObject
+}
+
+export type Theme = ThemeUiTheme & { global?: GlobalStyleObject }
 
 export const Store = createVanilla<KodiakState>(set => ({
   variants: null,
