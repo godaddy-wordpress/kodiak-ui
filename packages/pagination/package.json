@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/pagination",
-  "version": "0.1.8",
+  "version": "0.1.10",
   "description": "Kodiak UI's pagination components for GraphQL cursor based pagination",
   "keywords": [
     "pagination",

@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/tooltip",
-  "version": "0.1.43",
+  "version": "0.1.45",
   "description": "Tooltip component and hook for displaying small messages on hover",
   "main": "dist/tooltip.cjs.js",
   "module": "dist/tooltip.esm.js",

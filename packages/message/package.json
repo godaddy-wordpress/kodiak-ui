@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/message",
-  "version": "0.2.34",
+  "version": "0.2.36",
   "description": "Component to display messages to users (i.e. alerts, notifications)",
   "main": "dist/message.cjs.js",
   "module": "dist/message.esm.js",
