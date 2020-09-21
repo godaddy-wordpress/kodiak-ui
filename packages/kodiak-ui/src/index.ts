@@ -19,18 +19,6 @@ import {
 
 import './react-jsx'
 
-// re-exports
-export type {
-  Component,
-  CreateDesignSystemOptions,
-  GlobalStylesObject,
-  KodiakState,
-  StyleObject,
-  SxProps,
-  Theme,
-  Variant,
-} from './types'
-
 export type { SxStyleProp, SerializedStyles }
 
 export * from './provider'
