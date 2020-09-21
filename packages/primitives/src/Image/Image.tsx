@@ -3,7 +3,9 @@ import { _variant, VariantProps, sx } from 'kodiak-ui'
 
 import { SxProps } from 'theme-ui'
 
-export type ImageProps = VariantProps & SxProps
+export type ImageProps = React.HTMLProps<HTMLImageElement> &
+  VariantProps &
+  SxProps
 
 export const Image = styled<'img', ImageProps>('img')(
   {

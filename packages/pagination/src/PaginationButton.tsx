@@ -6,7 +6,8 @@ export type PaginationButtonProps = {
   disabled?: boolean
   children: React.ReactNode
   ref?: React.MutableRefObject<any>
-} & VariantProps
+} & VariantProps &
+  React.HTMLProps<HTMLButtonElement>
 
 export function PaginationButton({
   children,

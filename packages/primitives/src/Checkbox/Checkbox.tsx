@@ -7,14 +7,13 @@ import { Label } from '../Label'
 import type { SxStyleProp } from 'kodiak-ui'
 
 type CheckboxProps = {
-  id?: string | number | React.ReactText
-  checked?: boolean
   children?: React.ReactNode
-  label?: string | React.ReactNode
+  label?: any // TODO: Fix this type
   indeterminate?: boolean
   sx?: SxStyleProp
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
-} & VariantProps
+} & VariantProps &
+  React.HTMLProps<HTMLInputElement>
 
 type CheckboxIcon = React.ComponentProps<typeof SvgIcon>
 
