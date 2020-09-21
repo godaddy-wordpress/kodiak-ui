@@ -48,6 +48,10 @@ export function useVariant(variant: Variant): StyleObject {
   return variants?.[variant?.key] || null
 }
 
+export function useVariants() {
+  return Store.getState().variants
+}
+
 export function useComponent(component: Component) {
   const components = Store.getState().components
   return components?.[component?.key] || null

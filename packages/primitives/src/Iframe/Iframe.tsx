@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { _variant, VariantProps, sx } from '../Box'
+import { _variant, VariantProps, sx } from '@kodiak-ui/core'
 
 type IframeProps = VariantProps
 

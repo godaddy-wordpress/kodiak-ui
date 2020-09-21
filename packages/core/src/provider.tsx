@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Global, ThemeContext as EmotionContext } from '@emotion/core'
 import { css } from '@theme-ui/css'
-import { jsx, useKodiakStore } from '.'
+import { jsx, useVariants } from '.'
 import { KodiakState, Theme } from './types'
 
 const GlobalStyles = ({ global }) =>
@@ -23,9 +23,6 @@ interface ProviderProps {
   children?: React.ReactNode
 }
 
-const variantsSelector = (state: KodiakState) => state.variants
-const componentsSelector = (state: KodiakState) => state.components
-
 export interface ContextValue {
   theme: Theme
 }
@@ -36,25 +33,35 @@ export const Context = React.createContext<ContextValue>({
 
 export const useKodiakUi = () => React.useContext(Context)
 
-export function Provider({ theme: base, children }: ProviderProps) {
-  const variants = useKodiakStore(variantsSelector)
-  const components = useKodiakStore(componentsSelector)
+interface BaseProviderProps {
+  context: ContextValue
+}
+const BaseProvider: React.FC<BaseProviderProps> = ({ context, children }) =>
+  jsx(
+    EmotionContext.Provider,
+    { value: context.theme },
+    jsx(Context.Provider, {
+      value: context,
+      children,
+    }),
+  )
 
-  const global = base?.global
+export function Provider({ theme: base, children }: ProviderProps) {
+  const variants = useVariants()
+  // const components = useKodiakStore(componentsSelector)
+  console.log(variants)
+
+  // const global = base?.global
 
   const theme = {
     ...base,
     ...variants,
-    ...components,
+    // ...components,
   }
 
   return jsx(
     EmotionContext.Provider,
     { value: theme },
-    jsx(GlobalStyles, { global }),
-    jsx(Context.Provider, {
-      value: theme,
-      children,
-    }),
+    jsx(Context.Provider, { value: theme }, children),
   )
 }
