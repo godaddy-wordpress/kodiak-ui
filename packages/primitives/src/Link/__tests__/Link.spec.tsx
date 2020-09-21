@@ -59,7 +59,6 @@ describe('Link', () => {
         box-sizing: border-box;
         margin: 0;
         min-width: 0;
-        color: red;
       }
 
       <a

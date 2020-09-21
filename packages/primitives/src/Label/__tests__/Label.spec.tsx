@@ -41,12 +41,12 @@ describe('Label', () => {
         display: inline-block;
         margin: 0;
         min-width: 0;
-        font-weight: bold;
         color: white;
       }
 
       <label
         className="emotion-0"
+        fontWeight="bold"
         htmlFor="myinput"
       >
         Rendering bold

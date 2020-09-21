@@ -34,12 +34,12 @@ describe('SvgIcon', () => {
         fill: currentColor;
         color: black;
         display: block;
-        padding-left: 1px;
-        padding-right: 1px;
+        padding-left: 4px;
+        padding-right: 4px;
         padding-top: 4px;
         padding-bottom: 4px;
-        height: 32;
-        width: 32;
+        height: 32px;
+        width: 32px;
       }
 
       <svg

@@ -110,11 +110,11 @@ describe('Message', () => {
         display: block;
         margin-right: 32px;
         color: blue.3;
-        width: 24px;
-        height: 24px;
         -webkit-flex-shrink: 0;
         -ms-flex-negative: 0;
         flex-shrink: 0;
+        height: 24px;
+        width: 24px;
       }
 
       .emotion-1 {
@@ -160,8 +160,6 @@ describe('Message', () => {
         fill: currentColor;
         color: black;
         display: block;
-        height: 16px;
-        width: 16px;
         color: currentColor;
       }
 
@@ -201,7 +199,9 @@ describe('Message', () => {
           </span>
           <svg
             className="emotion-4"
+            height="16px"
             viewBox="0 0 16 16"
+            width="16px"
           >
             <title />
             <desc />

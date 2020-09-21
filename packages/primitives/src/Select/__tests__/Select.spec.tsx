@@ -53,13 +53,13 @@ describe('Select', () => {
         fill: currentColor;
         color: black;
         display: block;
+        -webkit-align-self: center;
+        -ms-flex-item-align: center;
+        align-self: center;
         margin-left: -28px;
         color: text;
         height: 16px;
         width: 16px;
-        -webkit-align-self: center;
-        -ms-flex-item-align: center;
-        align-self: center;
       }
 
       <div

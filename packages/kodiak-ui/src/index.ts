@@ -38,7 +38,7 @@ export * from './provider'
 export const Store = createVanilla<KodiakState>(set => ({
   variants: null,
   components: null,
-  variant: ({ key, styles }: { key: string; styles: StyleObject }) => {
+  variant: (key: string, styles: StyleObject) => {
     set((state: KodiakState) => ({
       variants: { ...state.variants, [key]: styles },
     }))

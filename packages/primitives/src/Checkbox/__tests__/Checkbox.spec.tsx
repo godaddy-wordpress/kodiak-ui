@@ -23,14 +23,6 @@ describe('Checkbox', () => {
         display: inline-block;
         margin: 0;
         min-width: 0;
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-align-items: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
       }
 
       .emotion-2 {
@@ -72,8 +64,6 @@ describe('Checkbox', () => {
         display: block;
         height: 16px;
         width: 16px;
-        height: 16px;
-        width: 16px;
         color: defaultGray;
         display: block;
       }
@@ -86,6 +76,7 @@ describe('Checkbox', () => {
 
       <label
         className="emotion-3"
+        display="flex"
       >
         <div
           className="emotion-2"
@@ -100,7 +91,9 @@ describe('Checkbox', () => {
           <svg
             aria-hidden={true}
             className="emotion-1"
+            height={16}
             viewBox="0 0 16 16"
+            width={16}
           >
             <title>
               Checkbox input unchecked
@@ -139,14 +132,6 @@ describe('Checkbox', () => {
         display: inline-block;
         margin: 0;
         min-width: 0;
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-align-items: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
       }
 
       .emotion-2 {
@@ -188,8 +173,6 @@ describe('Checkbox', () => {
         display: block;
         height: 16px;
         width: 16px;
-        height: 16px;
-        width: 16px;
         color: defaultGray;
         display: block;
       }
@@ -202,6 +185,7 @@ describe('Checkbox', () => {
 
       <label
         className="emotion-3"
+        display="flex"
       >
         <div
           className="emotion-2"
@@ -216,7 +200,9 @@ describe('Checkbox', () => {
           <svg
             aria-hidden={true}
             className="emotion-1"
+            height={16}
             viewBox="0 0 16 16"
+            width={16}
           >
             <title>
               Checkbox input unchecked

@@ -72,11 +72,11 @@ describe('Text', () => {
         box-sizing: border-box;
         margin: 0;
         min-width: 0;
-        font-weight: bold;
       }
 
       <p
         className="emotion-0"
+        fontWeight="bold"
       >
         Rendering bold p tag
       </p>
