@@ -49,7 +49,6 @@ const BaseProvider: React.FC<BaseProviderProps> = ({ context, children }) =>
 export function Provider({ theme: base, children }: ProviderProps) {
   const variants = useVariants()
   // const components = useKodiakStore(componentsSelector)
-  console.log(variants)
 
   // const global = base?.global
 
@@ -62,6 +61,13 @@ export function Provider({ theme: base, children }: ProviderProps) {
   return jsx(
     EmotionContext.Provider,
     { value: theme },
-    jsx(Context.Provider, { value: theme }, children),
+    jsx(
+      Context.Provider,
+      {
+        value: theme,
+      },
+      jsx(GlobalStyles, { global }),
+      children,
+    ),
   )
 }
