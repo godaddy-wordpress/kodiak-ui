@@ -1,4 +1,4 @@
-import { Theme } from './types'
+import { Theme } from '.'
 
 const breakpoints = ['40em', '56em', '64em']
 
