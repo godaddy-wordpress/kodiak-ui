@@ -15,7 +15,7 @@
   },
   "scripts": {},
   "peerDependencies": {
-    "@kodiak-ui/primitives": "^0.16.5",
+    "kodiak-ui": "^0.0.9",
     "react": "^16.13.0",
     "react-dom": "^16.13.0"
   },

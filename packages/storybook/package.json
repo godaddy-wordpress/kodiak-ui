@@ -37,7 +37,7 @@
     "@types/theme-ui": "^0.3.6",
     "babel-loader": "^8.0.6",
     "fork-ts-checker-webpack-plugin": "^4.0.3",
-    "kodiak-ui": "^0.0.5",
+    "kodiak-ui": "^0.0.9",
     "polished": "^3.4.4",
     "react-hook-form": "^5.6.1",
     "react-is": "^16.12.0",
