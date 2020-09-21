@@ -5,11 +5,7 @@ import { shouldForwardProp, sx, VariantProps } from 'kodiak-ui'
 import { addHrefToPayload } from '../Link/Link'
 import { useWrappedEventHandler } from '@kodiak-ui/hooks/use-event-logger'
 
-export type AnchorButtonProps = React.DetailedHTMLProps<
-  React.AnchorHTMLAttributes<HTMLAnchorElement>,
-  HTMLAnchorElement
-> &
-  VariantProps
+export type AnchorButtonProps = VariantProps
 
 /**
  * AnchorButton primitive component

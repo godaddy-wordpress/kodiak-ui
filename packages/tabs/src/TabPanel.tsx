@@ -5,8 +5,7 @@ import { VariantProps, SxStyleProp } from 'kodiak-ui'
 export type TabPanelProps = {
   children?: React.ReactNode
   sx?: SxStyleProp
-} & VariantProps &
-  React.HTMLAttributes<HTMLDivElement>
+} & VariantProps
 
 export const TabPanel = React.forwardRef<HTMLDivElement, TabPanelProps>(
   function TabPanel(

@@ -10,8 +10,7 @@ import {
 } from 'kodiak-ui'
 import { tableRoot } from './Table'
 
-export type TableDataProps = React.HTMLAttributes<HTMLTableDataCellElement> &
-  VariantProps
+export type TableDataProps = VariantProps
 
 export function base({ theme }: { theme: Theme }): SerializedStyles {
   return css({

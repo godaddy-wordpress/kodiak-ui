@@ -13,8 +13,7 @@ type MessageProps = {
   type?: MessageType
   dismissLabel?: string
   onDismiss?: () => void
-} & React.HTMLAttributes<HTMLDivElement> &
-  VariantProps
+} & VariantProps
 
 export const Message = React.forwardRef<HTMLDivElement, MessageProps>(
   function Message(

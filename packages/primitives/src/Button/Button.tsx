@@ -51,12 +51,7 @@ export const buttonVariant = ({
   return _variant({ variant: variantProp, theme, variantKey, variants })
 }
 
-export type ButtonProps = React.DetailedHTMLProps<
-  React.ButtonHTMLAttributes<HTMLButtonElement>,
-  HTMLButtonElement
-> &
-  VariantProps &
-  BaseProps
+export type ButtonProps = VariantProps & BaseProps
 
 /**
  * Button primitive component

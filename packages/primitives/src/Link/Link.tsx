@@ -4,9 +4,7 @@ import { sx, _variant, VariantProps } from 'kodiak-ui'
 import { useWrappedEventHandler } from '@kodiak-ui/hooks/use-event-logger'
 import { base, BaseProps } from '../Box'
 
-type LinkProps = VariantProps &
-  BaseProps &
-  React.HTMLAttributes<HTMLAnchorElement>
+type LinkProps = VariantProps & BaseProps
 
 export const StyledLink = styled('a')<LinkProps>(
   {
