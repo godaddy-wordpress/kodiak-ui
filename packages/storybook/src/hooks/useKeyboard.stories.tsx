@@ -8,8 +8,8 @@ export function FocusEvent() {
   const [events, setEvents] = React.useState<string[]>([])
 
   const { getKeyboardProps } = useKeyboard({
-    onKeyUp: e => setEvents(events => [`key down: ${e.key}`, ...events]),
-    onKeyDown: e => setEvents(events => [`key up: ${e.key}`, ...events]),
+    onKeyUp: e => setEvents(events => [`key up: ${e.key}`, ...events]),
+    onKeyDown: e => setEvents(events => [`key down: ${e.key}`, ...events]),
   })
 
   return (
