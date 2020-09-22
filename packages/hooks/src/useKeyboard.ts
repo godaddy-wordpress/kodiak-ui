@@ -5,6 +5,10 @@ type BaseEvent<T extends React.SyntheticEvent> = T & {
 }
 
 /**
+ * Wraps React's synthetic events so that all events
+ * stopPropagation by default. This helps with issues like accessing
+ * the event and React attempts to access the cached events.
+ *
  * Taken from `@react-aria`, Adobe's accessibility
  * library
  *
