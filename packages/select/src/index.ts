@@ -1,4 +1,5 @@
-export { useSelect } from 'downshift'
+// export { useSelect } from 'downshift'
+export { useSelect } from './useSelect'
 
 export type {
   UseSelectProps,

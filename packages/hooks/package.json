@@ -34,13 +34,15 @@
       "use-id",
       "use-is-mounted",
       "use-key",
+      "use-keyboard",
       "use-measure",
       "use-media-query",
       "use-on-click-outside",
       "use-portal",
       "use-previous",
       "use-subscribe",
-      "use-translation"
+      "use-translation",
+      "use-overlay"
     ]
   }
 }
