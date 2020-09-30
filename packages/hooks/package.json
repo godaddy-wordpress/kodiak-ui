@@ -11,7 +11,7 @@
   },
   "scripts": {},
   "peerDependencies": {
-    "react": "^16.13.`",
+    "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "resize-observer-polyfill": "^1.5.1",
     "zustand": "^3.1.1"
