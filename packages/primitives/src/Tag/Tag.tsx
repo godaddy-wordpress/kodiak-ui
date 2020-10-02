@@ -1,13 +1,13 @@
 import * as React from 'react'
 import {
-  variant,
+  _variant,
   VariantProps,
   styled,
   css,
   sx,
   Theme,
   SerializedStyles,
-} from '@kodiak-ui/core'
+} from 'kodiak-ui'
 
 export type TagProps = { children: React.ReactNode } & VariantProps
 
@@ -33,7 +33,7 @@ const TagStyle = styled('div')<TagProps>(
   },
   base,
   ({ variant: variantProp = 'default', variantKey = 'tags', theme }) =>
-    variant({ variant: variantProp, theme, variantKey }),
+    _variant({ variant: variantProp, theme, variantKey }),
   sx,
 )
 

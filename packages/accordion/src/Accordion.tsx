@@ -1,6 +1,6 @@
 import * as React from 'react'
 import {
-  variant,
+  _variant,
   VariantProps,
   sx,
   Theme,
@@ -8,7 +8,7 @@ import {
   SerializedStyles,
   styled,
   SxStyleProp,
-} from '@kodiak-ui/core'
+} from 'kodiak-ui'
 
 export type AccordionProps = {
   children: React.ReactNode
@@ -27,6 +27,6 @@ export const Accordion = styled('div')<AccordionProps>(
   },
   base,
   ({ variant: variantProp = '', variantKey = 'accordions', theme }) =>
-    variant({ variant: variantProp, theme, variantKey }),
+    _variant({ variant: variantProp, theme, variantKey }),
   sx,
 )

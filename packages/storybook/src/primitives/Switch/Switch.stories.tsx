@@ -7,27 +7,27 @@ export function Initial() {
   const [checked, setChecked] = React.useState(false)
 
   return (
-    <Flex flexDirection="column">
+    <Flex sx={{ flexDirection: 'column' }}>
       <Label display="flex" alignItems="center">
         <Switch
-          mr={2}
           checked={checked}
           onChange={() => setChecked(!checked)}
+          sx={{ mr: 2 }}
         />
         Toggle this switch
       </Label>
 
       <Label>
-        <Switch mr={2} checked={true} onChange={() => null} />
+        <Switch sx={{ mr: 2 }} checked={true} onChange={() => null} />
         Always checked
       </Label>
 
       <Label>
         <Switch
-          mr={2}
           checked={checked}
           disabled={true}
           onChange={() => null}
+          sx={{ mr: 2 }}
         />
         Disabled
       </Label>
@@ -39,13 +39,13 @@ export function Variant() {
   const [checked, setChecked] = React.useState(false)
 
   return (
-    <Flex flexDirection="column">
-      <Label display="flex" alignItems="center">
+    <Flex sx={{ flexDirection: 'column' }}>
+      <Label sx={{ display: 'flex', alignItems: 'center' }}>
         <Switch
-          mr={2}
           checked={checked}
           onChange={() => setChecked(!checked)}
           variant="alternateSwitch"
+          sx={{ mr: 2 }}
         />
         Toggle this switch
       </Label>

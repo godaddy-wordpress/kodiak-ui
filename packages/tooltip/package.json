@@ -15,14 +15,14 @@
   },
   "scripts": {},
   "peerDependencies": {
+    "kodiak-ui": "^0.0.9",
     "react": "^16.13.0",
     "react-dom": "^16.13.0"
   },
   "dependencies": {
-    "@kodiak-ui/core": "^0.1.17",
-    "@kodiak-ui/hooks": "^0.10.10",
-    "@kodiak-ui/primitives": "^0.17.13",
-    "@kodiak-ui/utils": "^0.0.10",
+    "@kodiak-ui/hooks": "^0.10.8",
+    "@kodiak-ui/primitives": "^0.17.11",
+    "@kodiak-ui/utils": "^0.0.9",
     "@popperjs/core": "^2.4.0"
   },
   "gitHead": "fe05dc108a105dcf18b4a7210d9f3d0ff5197bd3"

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { UseComboboxGetInputPropsOptions } from 'downshift'
 import { Input } from '@kodiak-ui/primitives'
-import { VariantProps } from '@kodiak-ui/core'
+import { VariantProps } from 'kodiak-ui'
 
 export interface ComboboxInputProps
   extends UseComboboxGetInputPropsOptions,

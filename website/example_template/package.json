@@ -10,7 +10,7 @@
   "main": "src/index.tsx",
   "dependencies": {
     "@kodiak-ui/combobox": "latest",
-    "@kodiak-ui/core": "latest",
+    "kodiak-ui": "latest",
     "@kodiak-ui/data-visualization": "latest",
     "@kodiak-ui/dialog": "latest",
     "@kodiak-ui/hooks": "latest",

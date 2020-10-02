@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { keyframes } from '@emotion/core'
-import { VariantProps } from '@kodiak-ui/core'
+import { VariantProps } from 'kodiak-ui'
 import { Box } from '../Box'
 
 const clipAnimation = keyframes`

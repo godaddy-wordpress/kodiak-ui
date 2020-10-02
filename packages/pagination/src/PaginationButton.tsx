@@ -1,14 +1,13 @@
 import * as React from 'react'
-import { VariantProps } from '@kodiak-ui/core'
+import { VariantProps } from 'kodiak-ui'
 import { Button } from '@kodiak-ui/primitives/button'
 
 export type PaginationButtonProps = {
   disabled?: boolean
-} & React.DetailedHTMLProps<
-  React.ButtonHTMLAttributes<HTMLButtonElement>,
-  HTMLButtonElement
-> &
-  VariantProps
+  children: React.ReactNode
+  ref?: React.MutableRefObject<any>
+} & VariantProps &
+  React.HTMLProps<HTMLButtonElement>
 
 export function PaginationButton({
   children,

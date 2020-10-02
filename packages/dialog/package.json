@@ -18,14 +18,16 @@
     "@types/reach__dialog": "^0.1.0"
   },
   "peerDependencies": {
-    "react": "^16.12.0"
+    "kodiak-ui": "^0.0.9",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   },
   "dependencies": {
     "@emotion/core": "^10.0.28",
     "@emotion/serialize": "^0.11.16",
     "@emotion/styled": "^10.0.27",
-    "@kodiak-ui/core": "^0.1.17",
-    "@kodiak-ui/primitives": "^0.17.13",
+    "@emotion/styled-base": "^10.0.31",
+    "@kodiak-ui/primitives": "^0.17.11",
     "@reach/dialog": "^0.8.2",
     "theme-ui": "^0.3.1"
   },

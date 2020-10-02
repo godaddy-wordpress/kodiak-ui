@@ -11,15 +11,14 @@
   },
   "scripts": {},
   "peerDependencies": {
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "resize-observer-polyfill": "^1.5.1",
     "zustand": "^3.1.1"
   },
   "gitHead": "fe05dc108a105dcf18b4a7210d9f3d0ff5197bd3",
   "devDependencies": {
-    "resize-observer-polyfill": "^1.5.1",
-    "zustand": "^3.1.1"
+    "resize-observer-polyfill": "^1.5.1"
   },
   "preconstruct": {
     "entrypoints": [

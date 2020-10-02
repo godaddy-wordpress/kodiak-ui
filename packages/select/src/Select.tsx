@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Box } from '@kodiak-ui/primitives/box'
-import { VariantProps } from '@kodiak-ui/core'
+import { VariantProps } from 'kodiak-ui'
 
 export interface SelectProps extends VariantProps {
   children: React.ReactNode

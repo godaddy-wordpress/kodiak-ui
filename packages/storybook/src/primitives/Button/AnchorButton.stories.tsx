@@ -3,22 +3,14 @@ import { AnchorButton } from '@kodiak-ui/primitives'
 
 export default { title: 'Primitives/AnchorButton', component: AnchorButton }
 
-export function initial() {
+export function Initial() {
   return <AnchorButton href="#">Default AnchorButton</AnchorButton>
 }
 
-export function systemProps() {
-  return (
-    <AnchorButton href="#" bg="black" color="white">
-      AnchorButton with styled-system props
-    </AnchorButton>
-  )
-}
-
-export function variant() {
+export function Variant() {
   return (
     <>
-      <AnchorButton mr={2}>Default Anchorbutton</AnchorButton>
+      <AnchorButton sx={{ mr: 2 }}>Default Anchorbutton</AnchorButton>
       <AnchorButton href="#" variant="secondary">
         Secondary AnchorButton
       </AnchorButton>

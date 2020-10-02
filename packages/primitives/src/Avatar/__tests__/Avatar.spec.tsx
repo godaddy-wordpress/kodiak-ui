@@ -44,12 +44,6 @@ describe('Avatar', () => {
         box-sizing: border-box;
         margin: 0;
         min-width: 0;
-        width: 100%;
-        height: 100%;
-        text-align: center;
-        object-fit: cover;
-        color: transparent;
-        text-indent: 10000px;
       }
 
       <div

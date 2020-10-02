@@ -1,6 +1,6 @@
 import * as React from 'react'
 import {
-  variant as getVariantStyles,
+  _variant as getVariantStyles,
   sx,
   Theme,
   css,
@@ -8,9 +8,9 @@ import {
   styled,
   VariantProps,
   SxStyleProp,
-} from '@kodiak-ui/core'
+} from 'kodiak-ui'
 
-export type { VariantProps, SxStyleProp } from '@kodiak-ui/core'
+export type { VariantProps, SxStyleProp } from 'kodiak-ui'
 import { Box } from '@kodiak-ui/primitives'
 
 export function tableRoot({ theme }: { theme: Theme }): SerializedStyles {

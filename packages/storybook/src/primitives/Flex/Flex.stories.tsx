@@ -9,13 +9,18 @@ export function initial() {
 
 export function alignItems() {
   return (
-    <Flex alignItems="center" m={3} border="1px solid" borderColor="black">
-      <Box flex="1 1 auto" bg="primary" height={100} width={100}>
+    <Flex
+      sx={{
+        alignItems: 'center',
+        m: 3,
+        border: '1px solid',
+        borderColor: 'black',
+      }}
+    >
+      <Box sx={{ flex: '1 1 auto', bg: 'primary', height: 100, width: 100 }}>
         Item
       </Box>
-      <Box bg="secondary" height={50} width={100}>
-        Item 2
-      </Box>
+      <Box sx={{ bg: 'secondary', height: 50, width: 50 }}>Item 2</Box>
     </Flex>
   )
 }

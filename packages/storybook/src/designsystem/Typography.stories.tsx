@@ -23,16 +23,16 @@ export function FontFamily() {
   }
 
   return (
-    <Flex flexDirection="column">
-      <Box color="gray.7">
+    <Flex sx={{ flexDirection: 'column' }}>
+      <Box sx={{ color: 'gray.7' }}>
         {Object.keys(theme?.fonts).map((fontsKey, index) => {
           const fontFamily =
             theme.fonts?.[fontsKey as keyof typeof theme['fonts']]
 
           return (
-            <Text key={index} fontFamily={fontFamily as any}>
+            <Text key={index} sx={{ fontFamily: fontFamily as any }}>
               {fontsKey}{' '}
-              <Text as="span" color="gray.5">
+              <Text as="span" sx={{ color: 'gray.5 ' }}>
                 ({fontFamily})
               </Text>
             </Text>
@@ -51,8 +51,8 @@ export function FontWeight() {
   }
 
   return (
-    <Flex flexDirection="column">
-      <Box color="gray.7">
+    <Flex sx={{ flexDirection: 'column' }}>
+      <Box sx={{ color: 'gray.7' }}>
         {Object.keys(theme.fontWeights).map((fontWeightKey, index) => {
           const fontWeight =
             theme.fontWeights?.[
@@ -60,9 +60,9 @@ export function FontWeight() {
             ]
 
           return (
-            <Text key={index} fontWeight={fontWeight as any}>
+            <Text key={index} sx={{ fontWeight: fontWeight as any }}>
               {fontWeightKey}{' '}
-              <Text as="span" color="gray.5">
+              <Text as="span" sx={{ color: 'gray.5' }}>
                 ({fontWeight})
               </Text>
             </Text>
@@ -80,17 +80,15 @@ type TypographyExampleProps = React.PropsWithChildren<{
 function TypographyExample({ size, children }: TypographyExampleProps) {
   return (
     <Flex
-      mt={4}
       sx={{
+        alignItems: 'baseline',
+        flexDirection: 'column',
+        mt: 4,
         whiteSpace: 'nowrap',
       }}
-      flexDirection="column"
-      alignItems="baseline"
     >
-      <Text fontSize={1} color="gray.5">
-        {size}
-      </Text>
-      <Text fontSize={size}>{children}</Text>
+      <Text sx={{ fontSize: 1, color: 'gray.5' }}>{size}</Text>
+      <Text sx={{ fontSize: size }}>{children}</Text>
     </Flex>
   )
 }
@@ -103,7 +101,7 @@ export function Sizing() {
   }
 
   return (
-    <Flex flexDirection="column">
+    <Flex sx={{ flexDirection: 'column' }}>
       <Box>
         {theme.fontSizes?.map((fontSize, index) => (
           <TypographyExample size={fontSize} key={index}>

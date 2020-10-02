@@ -1,14 +1,14 @@
 import * as React from 'react'
 import { UseSelectGetItemPropsOptions } from 'downshift'
 import {
-  variant as getVariantStyles,
+  _variant as getVariantStyles,
   VariantProps,
   sx,
   styled,
   Theme,
   css,
   SerializedStyles,
-} from '@kodiak-ui/core'
+} from 'kodiak-ui'
 
 export type SelectMenuItemProps = {
   ref: React.Ref<HTMLLIElement>

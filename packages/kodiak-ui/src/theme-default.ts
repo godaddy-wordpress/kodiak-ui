@@ -1,8 +1,8 @@
-import { Theme } from 'theme-ui'
+import { Theme } from '.'
 
 const breakpoints = ['40em', '56em', '64em']
 
-export const theme: Theme & { global: any } = {
+export const theme: Theme = {
   breakpoints,
   colors: {
     text: '#000',
@@ -37,37 +37,68 @@ export const theme: Theme & { global: any } = {
     heading: 1.5,
   },
   mediaQueries: {
-    small: `@media screen and (min-width: ${breakpoints[0]})`,
-    medium: `@media screen and (min-width: ${breakpoints[1]})`,
-    large: `@media screen and (min-width: ${breakpoints[2]})`,
+    sm: `@media screen and (min-width: ${breakpoints[0]})`,
+    md: `@media screen and (min-width: ${breakpoints[1]})`,
+    lg: `@media screen and (min-width: ${breakpoints[2]})`,
   },
   space: [0, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80],
+  radii: {
+    default: '4px',
+    sm: '2px',
+    md: '4px',
+    lg: '6px',
+  },
   text: {
     heading: {
       fontFamily: 'heading',
       fontWeight: 'heading',
       lineHeight: 'heading',
-      m: 0,
+    },
+    body: {
+      fontFamily: 'body',
+      fontWeight: 'body',
+      lineHeight: 'body',
     },
   },
   global: {
-    html: {
+    body: {
       fontFamily: 'body',
       fontSize: '100%',
       fontWeight: 'body',
       lineHeight: 'body',
-    },
-    body: {
       margin: 0,
       padding: 0,
     },
     h1: {
       variant: 'text.heading',
-      fontSize: 'clamp(1.5rem, 1.5rem + 2vw, 2rem)', // min of 20px on small screens and max of 32 px on large screens
+      fontSize: 5,
     },
     h2: {
       variant: 'text.heading',
-      fontSize: 'clamp(1.25rem, 1.25rem + 2vw, 1.5rem)',
+      fontSize: 4,
+    },
+    h3: {
+      variant: 'text.heading',
+      fontSize: 3,
+    },
+    h4: {
+      variant: 'text.heading',
+      fontSize: 2,
+    },
+    h5: {
+      variant: 'text.heading',
+      fontSize: 1,
+    },
+    h6: {
+      variant: 'text.heading',
+      fontSize: 0,
+    },
+    p: {
+      variant: 'text.body',
+    },
+    a: {
+      variant: 'text.body',
+      color: 'primary',
     },
   },
 }

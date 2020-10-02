@@ -1,5 +1,5 @@
 import {
-  variant,
+  _variant,
   VariantProps,
   sx,
   Theme,
@@ -7,7 +7,7 @@ import {
   SerializedStyles,
   styled,
   SxStyleProp,
-} from '@kodiak-ui/core'
+} from 'kodiak-ui'
 
 export type MenuListProps = {
   children: React.ReactNode
@@ -37,6 +37,6 @@ export const MenuList = styled('ul')<MenuListProps>(
   },
   base,
   ({ variant: variantProp = 'menuList', variantKey = 'menus', theme }) =>
-    variant({ variant: variantProp, theme, variantKey }),
+    _variant({ variant: variantProp, theme, variantKey }),
   sx,
 )

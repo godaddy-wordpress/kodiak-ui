@@ -23,14 +23,6 @@ describe('Radio', () => {
         display: inline-block;
         margin: 0;
         min-width: 0;
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-align-items: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
       }
 
       .emotion-3 {
@@ -70,8 +62,6 @@ describe('Radio', () => {
         fill: currentColor;
         color: black;
         display: block;
-        height: 16px;
-        width: 16px;
         display: none;
       }
 
@@ -93,8 +83,6 @@ describe('Radio', () => {
         fill: currentColor;
         color: black;
         display: block;
-        height: 16px;
-        width: 16px;
         color: defaultGray;
         display: block;
       }
@@ -111,6 +99,7 @@ describe('Radio', () => {
 
       <label
         className="emotion-4"
+        display="flex"
       >
         <div
           className="emotion-3"
@@ -124,7 +113,9 @@ describe('Radio', () => {
           />
           <svg
             className="emotion-1"
+            height={16}
             viewBox="0 0 16 16"
+            width={16}
           >
             <title>
               Radio input checked
@@ -136,7 +127,9 @@ describe('Radio', () => {
           </svg>
           <svg
             className="emotion-2"
+            height={16}
             viewBox="0 0 16 16"
+            width={16}
           >
             <title>
               Radio input unchecked
@@ -168,14 +161,6 @@ describe('Radio', () => {
         display: inline-block;
         margin: 0;
         min-width: 0;
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-align-items: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
       }
 
       .emotion-3 {
@@ -215,8 +200,6 @@ describe('Radio', () => {
         fill: currentColor;
         color: black;
         display: block;
-        height: 16px;
-        width: 16px;
         display: none;
       }
 
@@ -238,8 +221,6 @@ describe('Radio', () => {
         fill: currentColor;
         color: black;
         display: block;
-        height: 16px;
-        width: 16px;
         color: defaultGray;
         display: block;
       }
@@ -256,6 +237,7 @@ describe('Radio', () => {
 
       <label
         className="emotion-4"
+        display="flex"
       >
         <div
           className="emotion-3"
@@ -268,7 +250,9 @@ describe('Radio', () => {
           />
           <svg
             className="emotion-1"
+            height={16}
             viewBox="0 0 16 16"
+            width={16}
           >
             <title>
               Radio input checked
@@ -280,7 +264,9 @@ describe('Radio', () => {
           </svg>
           <svg
             className="emotion-2"
+            height={16}
             viewBox="0 0 16 16"
+            width={16}
           >
             <title>
               Radio input unchecked

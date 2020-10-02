@@ -55,9 +55,9 @@ function DialogExample({
         <DialogFooter>
           {/* eslint-disable-next-line @typescript-eslint/no-empty-function */}
           <Button
-            ml="auto"
             onClick={() => setIsOpen(false)}
             data-testid="closeButton"
+            sx={{ ml: 'auto' }}
           >
             Close button
           </Button>

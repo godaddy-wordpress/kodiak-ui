@@ -2,20 +2,12 @@ import styled from '@emotion/styled'
 import { InterpolationWithTheme } from '@emotion/core'
 import { css, Theme } from 'theme-ui'
 import { SerializedStyles } from '@emotion/serialize'
-import {
-  systemProps,
-  SystemProps,
-  variant,
-  VariantProps,
-  sx,
-  shouldForwardProp,
-} from '@kodiak-ui/core'
+import { _variant, VariantProps, sx, shouldForwardProp } from 'kodiak-ui'
 
 type DialogFooterProps = {
   children: React.ReactNode
   css?: InterpolationWithTheme<any> // TODO: this type shouldn't be required
-} & SystemProps &
-  VariantProps
+} & VariantProps
 
 const baseStyles = ({ theme }: { theme: Theme }): SerializedStyles =>
   css({
@@ -39,7 +31,6 @@ export const DialogFooter = styled<'footer', DialogFooterProps>('footer', {
   },
   baseStyles,
   ({ variant: variantProp = 'dialogFooter', variantKey = 'dialogs', theme }) =>
-    variant({ variant: variantProp, theme, variantKey }),
-  ...systemProps,
+    _variant({ variant: variantProp, theme, variantKey }),
   sx,
 )

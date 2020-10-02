@@ -3,7 +3,7 @@ import { Box } from '../Box'
 import { Label } from '../Label'
 import { Input } from '../Input'
 import { Text } from '../Text'
-import { SxStyleProp } from '@kodiak-ui/core'
+import { SxStyleProp } from 'kodiak-ui'
 
 interface FieldProps extends React.HTMLAttributes<HTMLInputElement> {
   children?: React.ReactNode

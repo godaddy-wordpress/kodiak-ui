@@ -1,13 +1,13 @@
 import * as React from 'react'
 import { SxStyleProp } from 'theme-ui'
 import { Input } from '../Input'
-import { Box, SystemProps, VariantProps } from '../Box/Box'
+import { Box } from '../Box/Box'
+import { VariantProps } from 'kodiak-ui'
 
 type SwitchProps = {
   indicatorVariant?: string
   sx?: SxStyleProp
 } & React.InputHTMLAttributes<HTMLInputElement> &
-  SystemProps &
   VariantProps
 
 type SwitchIndicatorProps = SwitchProps

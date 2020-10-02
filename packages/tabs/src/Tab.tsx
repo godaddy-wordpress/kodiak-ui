@@ -1,18 +1,19 @@
 import {
-  variant,
+  _variant,
   VariantProps,
   sx,
   Theme,
   css,
   SerializedStyles,
   styled,
-  SxStyleProp,
-} from '@kodiak-ui/core'
+} from 'kodiak-ui'
+import { SxStyleProp } from 'theme-ui'
 
 export type TabProps = {
   children: React.ReactNode
   sx?: SxStyleProp
-} & VariantProps
+} & VariantProps &
+  React.HTMLProps<HTMLButtonElement>
 
 export function base({ theme }: { theme: Theme }): SerializedStyles {
   return css({
@@ -23,7 +24,7 @@ export function base({ theme }: { theme: Theme }): SerializedStyles {
   })(theme)
 }
 
-export const Tab = styled('button')<TabProps>(
+export const Tab = styled('button')(
   {
     boxSizing: 'border-box',
     margin: 0,
@@ -31,6 +32,6 @@ export const Tab = styled('button')<TabProps>(
   },
   base,
   ({ variant: variantProp = 'tab', variantKey = 'tabs', theme }) =>
-    variant({ variant: variantProp, theme, variantKey }),
+    _variant({ variant: variantProp, theme, variantKey }),
   sx,
 )

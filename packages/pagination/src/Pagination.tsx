@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { VariantProps } from '@kodiak-ui/core'
+import { VariantProps } from 'kodiak-ui'
 import { Box } from '@kodiak-ui/primitives/box'
 
 type PaginationProps = {

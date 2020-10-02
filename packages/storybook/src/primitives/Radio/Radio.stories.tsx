@@ -12,7 +12,7 @@ export default {
 export function Initial() {
   return (
     <>
-      <Label display="flex" alignItems="center">
+      <Label sx={{ display: 'flex', alignItems: 'center' }}>
         <Radio
           variant="radio"
           name="dark-mode"
@@ -21,7 +21,7 @@ export function Initial() {
         />
         Dark Mode
       </Label>
-      <Label display="flex" alignItems="center">
+      <Label sx={{ display: 'flex', alignItems: 'center' }}>
         <Radio name="dark-mode" value="false" />
         Light Mode
       </Label>

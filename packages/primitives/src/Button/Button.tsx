@@ -1,16 +1,14 @@
 import * as React from 'react'
+import { getVariants } from 'kodiak-ui'
 import {
-  variant,
+  _variant,
   sx,
   VariantProps,
-  systemProps,
-  SystemProps,
   shouldForwardProp,
-  css,
-  Theme,
-  SerializedStyles,
   styled,
-} from '@kodiak-ui/core'
+  getComponentBase,
+  css,
+} from 'kodiak-ui'
 import { useWrappedEventHandler } from '@kodiak-ui/hooks/use-event-logger'
 import { base as baseProp, BaseProps } from '../Box'
 
@@ -22,41 +20,47 @@ import { base as baseProp, BaseProps } from '../Box'
  *
  * @param props
  */
-export function base({ theme }: { theme: Theme }): SerializedStyles {
-  return css({
-    px: 3,
-    py: 2,
-    color: 'white',
-    bg: 'primary',
-    border: 0,
-    borderRadius: 'default',
-    '&:hover': {
-      bg: 'secondary',
-    },
-  })(theme)
+export function base({ theme, base }) {
+  const styles = getComponentBase(base ? base : 'button')(theme)
+  if (!styles) {
+    return css({
+      px: 3,
+      py: 2,
+      color: 'white',
+      bg: 'primary',
+      border: 0,
+      borderRadius: 'default',
+      '&:hover': {
+        bg: 'secondary',
+      },
+    })(theme)
+  }
+  return styles
 }
 
 export const buttonVariant = ({
   variant: variantProp,
   variantKey = 'buttons',
+  variants,
   theme,
-}: { theme: Theme } & VariantProps) =>
-  variant({ variant: variantProp, theme, variantKey })
+}) => {
+  if (variants) {
+    return getVariants(variants)(theme)
+  }
 
-export type ButtonProps = React.DetailedHTMLProps<
-  React.ButtonHTMLAttributes<HTMLButtonElement>,
-  HTMLButtonElement
-> &
+  return _variant({ variant: variantProp, theme, variantKey, variants })
+}
+
+export type ButtonProps = React.HTMLProps<HTMLButtonElement> &
   VariantProps &
-  SystemProps &
-  BaseProps
+  BaseProps & { type: string }
 
 /**
  * Button primitive component
  */
 export const StyledButton = styled('button', {
   shouldForwardProp,
-})<ButtonProps>(
+})(
   {
     appearance: 'none',
     cursor: 'pointer',
@@ -70,7 +74,6 @@ export const StyledButton = styled('button', {
   base,
   baseProp,
   buttonVariant,
-  ...systemProps,
   sx,
 )
 

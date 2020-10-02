@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Box } from '@kodiak-ui/primitives/box'
 import { Flex } from '@kodiak-ui/primitives/flex'
 import { Progress, ProgressThumb } from '@kodiak-ui/progress'
-import { SxStyleProp } from '@kodiak-ui/core'
+import { SxStyleProp } from 'kodiak-ui'
 
 type StatProgressProps = {
   label?: React.ReactNode

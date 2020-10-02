@@ -26,18 +26,6 @@ describe('Button', () => {
         text-decoration: none;
         -webkit-transition: all 0.2s ease-in-out;
         transition: all 0.2s ease-in-out;
-        padding-left: 16px;
-        padding-right: 16px;
-        padding-top: 8px;
-        padding-bottom: 8px;
-        color: white;
-        background-color: primary;
-        border: 0;
-        border-radius: default;
-      }
-
-      .emotion-0:hover {
-        background-color: secondary;
       }
 
       <button
@@ -70,20 +58,8 @@ describe('Button', () => {
         text-decoration: none;
         -webkit-transition: all 0.2s ease-in-out;
         transition: all 0.2s ease-in-out;
-        padding-left: 16px;
-        padding-right: 16px;
-        padding-top: 8px;
-        padding-bottom: 8px;
-        color: white;
-        background-color: primary;
-        border: 0;
-        border-radius: default;
         background-color: black;
         color: white;
-      }
-
-      .emotion-0:hover {
-        background-color: secondary;
       }
 
       <button
@@ -96,8 +72,9 @@ describe('Button', () => {
   })
 
   it('should style the element with styled-system props', () => {
-    expect(renderer.create(<Button mr={1}>Default button</Button>).toJSON())
-      .toMatchInlineSnapshot(`
+    expect(
+      renderer.create(<Button sx={{ mr: 1 }}>Default button</Button>).toJSON(),
+    ).toMatchInlineSnapshot(`
       .emotion-0 {
         -webkit-appearance: none;
         -moz-appearance: none;
@@ -111,19 +88,7 @@ describe('Button', () => {
         text-decoration: none;
         -webkit-transition: all 0.2s ease-in-out;
         transition: all 0.2s ease-in-out;
-        padding-left: 16px;
-        padding-right: 16px;
-        padding-top: 8px;
-        padding-bottom: 8px;
-        color: white;
-        background-color: primary;
-        border: 0;
-        border-radius: default;
         margin-right: 4px;
-      }
-
-      .emotion-0:hover {
-        background-color: secondary;
       }
 
       <button

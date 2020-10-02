@@ -1,6 +1,6 @@
 import * as React from 'react'
 import {
-  variant,
+  _variant,
   VariantProps,
   sx,
   Theme,
@@ -8,7 +8,7 @@ import {
   SerializedStyles,
   styled,
   SxStyleProp,
-} from '@kodiak-ui/core'
+} from 'kodiak-ui'
 
 export type TooltipProps = {
   children: React.ReactNode
@@ -67,7 +67,7 @@ const TooltipStyle = styled('div')<TooltipProps>(
   },
   base,
   ({ variant: variantProp, variantKey = 'tooltips', theme }) =>
-    variant({ variant: variantProp, theme, variantKey }),
+    _variant({ variant: variantProp, theme, variantKey }),
   sx,
 )
 

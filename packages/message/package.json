@@ -15,16 +15,12 @@
   },
   "scripts": {},
   "peerDependencies": {
+    "kodiak-ui": "^0.0.9",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
   "dependencies": {
-    "@emotion/core": "^10.0.28",
-    "@emotion/serialize": "^0.11.16",
-    "@emotion/styled": "^10.0.27",
-    "@kodiak-ui/core": "^0.1.17",
-    "@kodiak-ui/primitives": "^0.17.13",
-    "theme-ui": "^0.3.1"
+    "@kodiak-ui/primitives": "^0.17.11"
   },
   "gitHead": "fe05dc108a105dcf18b4a7210d9f3d0ff5197bd3"
 }

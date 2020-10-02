@@ -31,11 +31,3 @@ export function asProp() {
     </Box>
   )
 }
-
-export function styledSystemProps() {
-  return (
-    <Box m={3} p={5} bg="primary" color="white">
-      Renders the Box and styles it with styled-system props
-    </Box>
-  )
-}

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { VariantProps, SxStyleProp } from '@kodiak-ui/core'
+import { VariantProps, SxStyleProp } from 'kodiak-ui'
 import { Box } from '../Box'
 import { SvgIcon } from '../Svg'
 import { Input } from '../Input'

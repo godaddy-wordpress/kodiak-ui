@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { VariantProps } from '@kodiak-ui/core'
+import { VariantProps } from 'kodiak-ui'
 import { Tag } from './Tag'
 import { TagLabel } from './TagLabel'
 import { Button } from '../Button'

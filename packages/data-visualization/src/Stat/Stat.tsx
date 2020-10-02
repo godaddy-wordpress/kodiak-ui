@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { SxStyleProp } from '@kodiak-ui/core'
+import { SxStyleProp } from 'kodiak-ui'
 import { Box } from '@kodiak-ui/primitives/box'
 import { Flex } from '@kodiak-ui/primitives/flex'
 import { Grid } from '@kodiak-ui/primitives/grid'

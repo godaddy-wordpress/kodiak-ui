@@ -1,6 +1,6 @@
 import * as React from 'react'
 import {
-  variant,
+  _variant,
   VariantProps,
   sx,
   Theme,
@@ -8,7 +8,7 @@ import {
   SerializedStyles,
   styled,
   SxStyleProp,
-} from '@kodiak-ui/core'
+} from 'kodiak-ui'
 
 export type AccordionHeaderProps = {
   children: React.ReactNode
@@ -30,6 +30,6 @@ export const AccordionHeader = styled('header')<AccordionHeaderProps>(
     variant: variantProp = 'accordionHeader',
     variantKey = 'accordions',
     theme,
-  }) => variant({ variant: variantProp, theme, variantKey }),
+  }) => _variant({ variant: variantProp, theme, variantKey }),
   sx,
 )

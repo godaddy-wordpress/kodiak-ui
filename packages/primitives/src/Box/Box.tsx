@@ -1,61 +1,9 @@
 import styled from '@emotion/styled'
+import * as React from 'react'
 import { css, IntrinsicSxElements, Theme } from 'theme-ui'
-import type { SxStyleProp } from '@kodiak-ui/core'
+import type { SxStyleProp } from 'kodiak-ui'
 import { SerializedStyles } from '@emotion/serialize'
-import { createShouldForwardProp } from '@styled-system/should-forward-prop'
-import {
-  space,
-  SpaceProps,
-  color,
-  ColorProps,
-  typography,
-  TypographyProps,
-  layout,
-  LayoutProps,
-  flexbox,
-  FlexboxProps,
-  grid,
-  GridProps,
-  background,
-  BackgroundProps,
-  border,
-  BorderProps,
-  position,
-  PositionProps,
-  shadow,
-  ShadowProps,
-  get,
-} from 'styled-system'
-
-/**
- * propNames are typed as string[] | undefined. Undefined is not
- * an iterator so we have to cast propNames to only a string[]
- */
-export const shouldForwardProp = createShouldForwardProp([
-  ...(space.propNames as string[]),
-  ...(color.propNames as string[]),
-  ...(typography.propNames as string[]),
-  ...(layout.propNames as string[]),
-  ...(flexbox.propNames as string[]),
-  ...(grid.propNames as string[]),
-  ...(background.propNames as string[]),
-  ...(border.propNames as string[]),
-  ...(position.propNames as string[]),
-  ...(shadow.propNames as string[]),
-])
-
-export const systemProps = [
-  space,
-  color,
-  typography,
-  layout,
-  flexbox,
-  grid,
-  background,
-  border,
-  position,
-  shadow,
-]
+import { get } from 'kodiak-ui'
 
 /**
  * sx function to pass the sx prop and theme
@@ -78,6 +26,7 @@ export function sx(props: {
 
 export type BaseProps = {
   __base?: SxStyleProp
+  base?: string | string[]
 }
 
 export function base(props: { theme: Theme } & BaseProps) {
@@ -112,7 +61,7 @@ export function variant({
   variant,
   theme,
   variantKey,
-}: { theme: Theme } & VariantProps) {
+}: { theme: any } & VariantProps) {
   return css(
     get(
       theme,
@@ -121,17 +70,6 @@ export function variant({
     ),
   )(theme)
 }
-
-export type SystemProps = SpaceProps &
-  ColorProps &
-  TypographyProps &
-  LayoutProps &
-  FlexboxProps &
-  GridProps &
-  BackgroundProps &
-  BorderProps &
-  PositionProps &
-  ShadowProps
 
 type IntrinicElements = Omit<IntrinsicSxElements['div'], 'color'>
 
@@ -142,17 +80,13 @@ export interface BaseProp {
 export type BoxProps = {
   as?: React.ElementType
 } & BaseProp &
-  VariantProps &
-  SystemProps &
-  IntrinicElements
+  VariantProps
 
 /**
  * Box primitive component which is the base component for
  * all components in Kodiak
  */
-export const Box = styled<'div', BoxProps>('div', {
-  shouldForwardProp,
-})(
+export const Box = styled('div')<BoxProps>(
   {
     boxSizing: 'border-box',
     margin: 0,
@@ -160,6 +94,5 @@ export const Box = styled<'div', BoxProps>('div', {
   },
   base,
   variant,
-  ...systemProps,
   sx,
 )

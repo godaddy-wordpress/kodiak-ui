@@ -28,7 +28,12 @@ describe('Box', () => {
     expect(
       renderer
         .create(
-          <Grid gridGap={3} gridTemplateColumns={['auto', '1fr 256px']}>
+          <Grid
+            sx={{
+              gap: 3,
+              gridTemplateColumns: ['auto', '1fr 256px'],
+            }}
+          >
             <div></div>
             <div></div>
           </Grid>,
@@ -39,7 +44,7 @@ describe('Box', () => {
         box-sizing: border-box;
         margin: 0;
         min-width: 0;
-        grid-gap: 16px;
+        gap: 16px;
         grid-template-columns: auto;
         display: grid;
       }

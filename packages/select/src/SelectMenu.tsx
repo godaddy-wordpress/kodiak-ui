@@ -1,14 +1,14 @@
 import * as React from 'react'
 import { UseSelectGetMenuPropsOptions } from 'downshift'
 import {
-  variant as getVariantStyles,
+  _variant as getVariantStyles,
   VariantProps,
   sx,
   Theme,
   css,
   SerializedStyles,
   styled,
-} from '@kodiak-ui/core'
+} from 'kodiak-ui'
 import { Box } from '@kodiak-ui/primitives/box'
 
 export type SelectMenuProps = {

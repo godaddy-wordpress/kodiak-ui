@@ -1,12 +1,12 @@
 import {
-  variant as getVariantStyles,
+  _variant as getVariantStyles,
   VariantProps,
   sx,
   Theme,
   css,
   SerializedStyles,
   styled,
-} from '@kodiak-ui/core'
+} from 'kodiak-ui'
 import { tableRoot } from './Table'
 
 export type TableBodyProps = React.HTMLAttributes<HTMLElement> & VariantProps

@@ -53,11 +53,6 @@ describe('Switch', () => {
         box-sizing: border-box;
         margin: 0;
         min-width: 0;
-        display: -webkit-inline-box;
-        display: -webkit-inline-flex;
-        display: -ms-inline-flexbox;
-        display: inline-flex;
-        position: relative;
         cursor: pointer;
       }
 
@@ -77,12 +72,6 @@ describe('Switch', () => {
         border-radius: default;
         color: inherit;
         background-color: transparent;
-        opacity: 0;
-        height: 1px;
-        width: 100%;
-        position: absolute;
-        left: 0;
-        top: 0;
       }
 
       .emotion-2 {
@@ -152,12 +141,16 @@ describe('Switch', () => {
 
       <div
         className="emotion-3"
+        display="inline-flex"
       >
         <input
           checked={true}
           className="emotion-0"
+          height={1}
           onChange={[Function]}
+          opacity={0}
           type="checkbox"
+          width={1}
         />
         <div
           className="emotion-2"

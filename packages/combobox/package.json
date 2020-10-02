@@ -15,13 +15,12 @@
   },
   "scripts": {},
   "peerDependencies": {
-    "@kodiak-ui/primitives": "^0.16.5",
+    "kodiak-ui": "^0.0.9",
     "react": "^16.13.0",
     "react-dom": "^16.13.0"
   },
   "dependencies": {
-    "@kodiak-ui/core": "^0.1.17",
-    "@kodiak-ui/primitives": "^0.17.13",
+    "@kodiak-ui/primitives": "^0.17.11",
     "downshift": "^5.4.5"
   },
   "gitHead": "fe05dc108a105dcf18b4a7210d9f3d0ff5197bd3"

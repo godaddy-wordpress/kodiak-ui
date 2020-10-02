@@ -38,12 +38,6 @@ export function SampleStyledNav() {
         const isCurrent = selectedIndex === index
         return (
           <NavItem
-            borderLeftWidth="4px"
-            borderLeftStyle="solid"
-            borderLeftColor={isCurrent ? 'blue.4' : 'transparent'}
-            backgroundColor={isCurrent ? 'sky.1' : 'transparent'}
-            pl={7}
-            py={4}
             key={menuItem.description}
             onClick={() => setSelectedIndex(index)}
             onKeyDown={(event: any) => {
@@ -52,6 +46,12 @@ export function SampleStyledNav() {
               }
             }}
             sx={{
+              borderLeftWidth: '4px',
+              borderLeftStyle: 'solid',
+              borderLeftColor: isCurrent ? 'blue.4' : 'transparent',
+              bg: isCurrent ? 'sky.1' : 'transparent',
+              pl: 7,
+              py: 4,
               cursor: 'pointer',
               pointerEvents: menuItem.isDisabled ? 'none' : 'auto',
               color: 'ink.2',
@@ -96,14 +96,12 @@ export function SimplePillNavWithTabNavigation() {
   return (
     <Nav
       aria-label="Simple styled menu"
-      maxWidth="30ch"
-      display="flex"
-      flexDirection="column"
+      sx={{ maxWidth: '30ch', display: 'flex', flexDirection: 'column' }}
     >
       {menuItems.map((menuItem, index) => {
         const isCurrent = selectedIndex === index
         return (
-          <NavItem key={menuItem.description} display="flex">
+          <NavItem key={menuItem.description} sx={{ display: 'flex' }}>
             <Link
               onClick={() => setSelectedIndex(index)}
               onKeyDown={event => {
@@ -141,10 +139,10 @@ function IconHamburger() {
     <SvgIcon
       title="menu"
       sx={{
+        height: '24px',
+        width: '24px',
         color: 'gray.6',
       }}
-      height={24}
-      width={24}
       viewBox="0 0 24 24"
     >
       <path d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z" />
@@ -158,9 +156,9 @@ function IconClose() {
       title="menu"
       sx={{
         color: 'gray.6',
+        height: '24px',
+        width: '24px',
       }}
-      height={24}
-      width={24}
       viewBox="0 0 24 24"
     >
       <path
@@ -220,42 +218,42 @@ export function ResponsiveHorizontalNav() {
   ]
 
   return (
-    <Flex justifyContent="flex-end">
+    <Flex sx={{ justifyContent: 'flex-end' }}>
       {/* Mobile */}
       {!isNavOpen && (
         <Link
-          display={['inline-flex', 'none']}
-          m={4}
-          p={1}
+          sx={{
+            display: ['inline-flex', 'none'],
+            m: 4,
+            p: 1,
+            cursor: 'pointer',
+          }}
           onClick={() => setIsNavOpen(!isNavOpen)}
-          sx={{ cursor: 'pointer' }}
         >
           <IconHamburger />
         </Link>
       )}
 
       {isNavOpen && (
-        <Box display={['block', 'none']} boxShadow="md">
-          <Flex justifyContent="flex-end">
+        <Box sx={{ display: ['block', 'none'], boxShadow: 'md' }}>
+          <Flex sx={{ justifyContent: 'flex-end' }}>
             <Link
-              m={4}
-              p={1}
+              sx={{ m: 4, p: 1, cursor: 'pointer' }}
               onClick={() => setIsNavOpen(!isNavOpen)}
-              sx={{ cursor: 'pointer' }}
             >
               <IconClose />
             </Link>
           </Flex>
-          <Box width="99vw">
-            <Nav aria-label="Mobile menu" pb={4}>
+          <Box sx={{ width: '99vw' }}>
+            <Nav aria-label="Mobile menu" sx={{ pb: 4 }}>
               {menuItems.map((menuItem, index) => {
                 return (
                   <NavItem
                     key={index}
-                    pl={5}
-                    py={3}
                     onClick={() => setSelectedIndex(index)}
                     sx={{
+                      p: 5,
+                      py: 3,
                       cursor: 'pointer',
                       color: menuItem.isPrimary ? 'primary' : 'ink.2',
                       fontWeight: 'medium',
@@ -276,12 +274,12 @@ export function ResponsiveHorizontalNav() {
       {/* Full screen */}
       <Nav
         aria-label="Simple styled menu"
-        display={[false ? 'flex' : 'none', 'flex']}
         sx={{
+          display: [false ? 'flex' : 'none', 'flex'],
           flexDirection: [isNavOpen && 'column', 'row'],
+          justifyContent: 'flex-end',
+          alignItems: 'center',
         }}
-        justifyContent="flex-end"
-        alignItems="center"
       >
         {menuItems.map((menuItem, index) => {
           const isCurrent = selectedIndex === index

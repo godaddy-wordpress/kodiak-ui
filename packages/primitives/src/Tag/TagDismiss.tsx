@@ -1,13 +1,13 @@
 import * as React from 'react'
 import {
-  variant,
+  _variant,
   VariantProps,
   styled,
   css,
   sx,
   Theme,
   SerializedStyles,
-} from '@kodiak-ui/core'
+} from 'kodiak-ui'
 import { Tag } from './Tag'
 import { TagLabel } from './TagLabel'
 
@@ -41,7 +41,7 @@ const TagDismissStyle = styled('button')<
   },
   base,
   ({ variant: variantProp = 'tagDismiss', variantKey = 'tags', theme }) =>
-    variant({ variant: variantProp, theme, variantKey }),
+    _variant({ variant: variantProp, theme, variantKey }),
   sx,
 )
 

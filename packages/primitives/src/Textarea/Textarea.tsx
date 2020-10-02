@@ -1,14 +1,7 @@
 import styled from '@emotion/styled'
 import { Theme, css } from 'theme-ui'
 import { SerializedStyles } from '@emotion/serialize'
-import {
-  variant,
-  VariantProps,
-  sx,
-  shouldForwardProp,
-  systemProps,
-  SystemProps,
-} from '../Box'
+import { _variant, VariantProps, sx } from 'kodiak-ui'
 
 /**
  * base
@@ -32,15 +25,13 @@ export const baseStyles = ({ theme }: { theme: Theme }): SerializedStyles =>
     bg: 'transparent',
   })(theme)
 
-type TextareaProps = VariantProps & SystemProps
+type TextareaProps = VariantProps
 
 /**
  * Box primitive component which is the base component for
  * all components in Kodiak
  */
-export const Textarea = styled<'textarea', TextareaProps>('textarea', {
-  shouldForwardProp,
-})(
+export const Textarea = styled<'textarea', TextareaProps>('textarea')(
   {
     boxSizing: 'border-box',
     margin: 0,
@@ -48,7 +39,6 @@ export const Textarea = styled<'textarea', TextareaProps>('textarea', {
   },
   baseStyles,
   ({ variant: variantProp, theme }) =>
-    variant({ variant: variantProp, theme, variantKey: 'textarea' }),
-  ...systemProps,
+    _variant({ variant: variantProp, theme, variantKey: 'textarea' }),
   sx,
 )

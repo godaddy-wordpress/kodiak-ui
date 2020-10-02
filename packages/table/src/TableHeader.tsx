@@ -1,19 +1,16 @@
 import * as React from 'react'
 import {
-  variant as getVariantStyles,
+  _variant as getVariantStyles,
   VariantProps,
   sx,
   Theme,
   css,
   SerializedStyles,
   styled,
-} from '@kodiak-ui/core'
+} from 'kodiak-ui'
 import { tableRoot } from './Table'
 
-export type TableHeaderProps = React.HTMLAttributes<
-  HTMLTableHeaderCellElement
-> &
-  VariantProps
+export type TableHeaderProps = VariantProps
 
 export function base({ theme }: { theme: Theme }): SerializedStyles {
   return css({
