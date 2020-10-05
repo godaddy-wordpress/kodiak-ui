@@ -1,14 +1,17 @@
+import { VariantProps } from 'kodiak-ui'
 import * as React from 'react'
 import { Box } from '../Box'
 import { Image as KodiakImage } from '../Image'
 
-type AvatarProps = React.PropsWithChildren<{
-  src?: string
-  srcSet?: React.ImgHTMLAttributes<HTMLImageElement>['srcSet']
-  imgProps?: React.ImgHTMLAttributes<HTMLImageElement>
-  alt?: React.ImgHTMLAttributes<HTMLImageElement>['alt']
-  sizes?: React.ImgHTMLAttributes<HTMLImageElement>['sizes']
-}>
+type AvatarProps = React.PropsWithChildren<
+  {
+    src?: string
+    srcSet?: React.ImgHTMLAttributes<HTMLImageElement>['srcSet']
+    imgProps?: React.ImgHTMLAttributes<HTMLImageElement>
+    alt?: React.ImgHTMLAttributes<HTMLImageElement>['alt']
+    sizes?: React.ImgHTMLAttributes<HTMLImageElement>['sizes']
+  } & VariantProps
+>
 
 enum ImageState {
   initial,
