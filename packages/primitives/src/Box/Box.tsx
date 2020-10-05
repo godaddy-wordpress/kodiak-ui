@@ -1,9 +1,8 @@
 import styled from '@emotion/styled'
 import * as React from 'react'
-import { css, IntrinsicSxElements, Theme } from 'theme-ui'
-import type { SxStyleProp } from 'kodiak-ui'
+import { css, Theme } from 'theme-ui'
+import { getVariants, SxStyleProp, VariantProps, _variant } from 'kodiak-ui'
 import { SerializedStyles } from '@emotion/serialize'
-import { get } from 'kodiak-ui'
 
 /**
  * sx function to pass the sx prop and theme
@@ -33,45 +32,18 @@ export function base(props: { theme: Theme } & BaseProps) {
   return css(props.__base as any)(props.theme)
 }
 
-/**
- * variant
- *
- * Returns a function that accept's the components
- * props. The variant and theme props are passed into `css`
- * to generate the Emotion css that will be applied to the
- * component
- *
- * Variants are defined in the theme with a key and then variant.
- *
- * {
- *   buttons: {
- *     primary: {
- *       bg: 'primary',
- *       color: 'white',
- *     }
- *   }
- * }
- */
-export type VariantProps = {
-  variant?: string
-  variantKey?: string
-}
-
-export function variant({
-  variant,
-  theme,
+export const boxVariant = ({
+  variant: variantProp,
   variantKey,
-}: { theme: any } & VariantProps) {
-  return css(
-    get(
-      theme,
-      variantKey ? `${variantKey}.${variant}` : (variant as string | number),
-      get(theme, variantKey as string | number),
-    ),
-  )(theme)
-}
+  variants,
+  theme,
+}) => {
+  if (variants) {
+    return getVariants(variants)(theme)
+  }
 
-type IntrinicElements = Omit<IntrinsicSxElements['div'], 'color'>
+  return _variant({ variant: variantProp, theme, variantKey, variants })
+}
 
 export interface BaseProp {
   __base?: SxStyleProp
@@ -93,6 +65,6 @@ export const Box = styled('div')<BoxProps>(
     minWidth: 0,
   },
   base,
-  variant,
+  boxVariant,
   sx,
 )
