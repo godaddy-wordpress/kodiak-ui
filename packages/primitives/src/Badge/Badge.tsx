@@ -71,6 +71,7 @@ export const Badge = React.forwardRef(function Badge(
     showZero = false,
     variant,
     variantKey = 'badges',
+    variants,
     children,
   }: BadgeProps,
   ref: React.Ref<any>,
@@ -89,6 +90,7 @@ export const Badge = React.forwardRef(function Badge(
 
   return (
     <Box
+      variants={variants}
       sx={{
         display: 'inline-flex',
         flexShrink: 0,
