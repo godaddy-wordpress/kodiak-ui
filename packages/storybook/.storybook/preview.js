@@ -1,7 +1,7 @@
 import * as React from 'react'
-// import { createDesignSystem, Provider as ThemeProvider } from 'kodiak-ui'
-import { ThemeProvider } from 'theme-ui'
-import { theme } from '../src/theme'
+import { createDesignSystem, Provider as ThemeProvider } from 'kodiak-ui'
+// import { ThemeProvider } from 'theme-ui'
+// import { theme } from '../src/theme'
 
 export const parameters = {
   options: {
@@ -12,7 +12,7 @@ export const parameters = {
   },
 }
 
-// const { theme } = createDesignSystem()
+const { theme } = createDesignSystem()
 
 export const decorators = [
   Story => (

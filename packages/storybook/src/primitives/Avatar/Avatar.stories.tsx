@@ -1,5 +1,13 @@
 import * as React from 'react'
+import { component, variant } from 'kodiak-ui'
 import { Box, Image, SvgIcon, Avatar } from '@kodiak-ui/primitives'
+
+component('avatar', {
+  borderRadius: 'full',
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+})
 
 export default { title: 'Primitives/Avatar', component: Avatar }
 
@@ -149,7 +157,7 @@ export function AvatarWithSvgIcon() {
 export function ImageAvatarVariant() {
   return (
     <Image
-      variant="avatar"
+      base="avatar"
       src={'https://api.adorable.io/avatars/400/abott@adorable.io.png'}
       sx={{ width: '64px', height: '64px' }}
     />
@@ -159,7 +167,7 @@ export function ImageAvatarVariant() {
 export function BoxVariantWithoutImage() {
   return (
     <Box
-      variant="avatar"
+      base="avatar"
       sx={{
         bg: 'gray.5',
         color: 'white',
