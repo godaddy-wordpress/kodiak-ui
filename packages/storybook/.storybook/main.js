@@ -3,21 +3,21 @@ module.exports = {
   typescript: {
     check: true,
     checkOptions: {},
-    reactDocgen: false,
-    // reactDocgenTypescriptOptions: {
-    //   shouldExtractLiteralValuesFromEnum: true,
-    //   propFilter: prop => {
-    //     if (/node_modules/.test(prop && prop.parent && prop.parent.fileName)) {
-    //       return false
-    //     }
-    //     return true
-    //   },
-    // },
+    reactDocgen: true,
+    reactDocgenTypescriptOptions: {
+      shouldExtractLiteralValuesFromEnum: true,
+      propFilter: prop => {
+        if (/node_modules/.test(prop && prop.parent && prop.parent.fileName)) {
+          return false
+        }
+        return true
+      },
+    },
   },
-  // addons: [
-  //   '@storybook/addon-a11y',
-  //   {
-  //     name: '@storybook/addon-docs',
-  //   },
-  // ],
+  addons: [
+    '@storybook/addon-a11y',
+    {
+      name: '@storybook/addon-docs',
+    },
+  ],
 }
