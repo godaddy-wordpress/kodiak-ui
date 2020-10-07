@@ -1,6 +1,6 @@
-import styled from '@emotion/styled'
+import * as React from 'react'
 import { Box, BoxProps } from '../Box'
 
-export const Flex = styled(Box)({
-  display: 'flex',
-})
+export function Flex(props: BoxProps) {
+  return <Box __base={{ display: 'flex' }} {...props} />
+}
