@@ -3,7 +3,7 @@ import { Image } from '@kodiak-ui/primitives'
 
 export default { title: 'Primitives/Image', component: Image }
 
-export function initial() {
+export function Initial() {
   return (
     <Image
       src="https://api.adorable.io/avatars/400/abott@adorable.io.png"
@@ -15,9 +15,8 @@ export function initial() {
 export function Avatar() {
   return (
     <Image
-      variant="avatar"
+      variants="avatar"
       src="https://api.adorable.io/avatars/400/abott@adorable.io.png"
-      sx={{ width: '64px', height: '64px' }}
     />
   )
 }

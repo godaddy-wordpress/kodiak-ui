@@ -22,6 +22,9 @@ describe('Image', () => {
         box-sizing: border-box;
         margin: 0;
         min-width: 0;
+        box-sizing: border-box;
+        margin: 0;
+        min-width: 0;
         width: 28px;
         height: 28px;
       }

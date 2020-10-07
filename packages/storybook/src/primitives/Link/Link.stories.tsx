@@ -1,9 +1,17 @@
 import * as React from 'react'
 import { Link } from '@kodiak-ui/primitives'
+import { variant } from 'kodiak-ui'
 
 export default { title: 'Primitives/Link', component: Link }
 
-export function initial() {
+variant('orangeHover', {
+  transition: 'all 0.2s ease-in-out',
+  '&:hover': {
+    color: 'orange',
+  },
+})
+
+export function Initial() {
   return (
     <Link href="https://jilt.com" target="_blank" rel="noreferrer">
       jilt.com
@@ -11,13 +19,13 @@ export function initial() {
   )
 }
 
-export function withHover() {
+export function WithHover() {
   return (
     <Link
       href="https://jilt.com"
-      sx={{ color: 'red', '&:hover': { color: 'blue' } }}
       target="_blank"
       rel="noreferrer"
+      variants="orangeHover"
     >
       jilt.com
     </Link>

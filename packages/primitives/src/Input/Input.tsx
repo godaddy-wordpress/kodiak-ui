@@ -1,7 +1,15 @@
 import styled from '@emotion/styled'
-import { SxStyleProp, Theme, css } from 'theme-ui'
+import { Theme, css } from 'theme-ui'
 import { SerializedStyles } from '@emotion/serialize'
-import { _variant, sx, VariantProps } from 'kodiak-ui'
+import {
+  _variant,
+  sx,
+  VariantProps,
+  getVariants,
+  BaseProp,
+  SxStyleProp,
+  getComponentBase,
+} from 'kodiak-ui'
 
 /**
  * base
@@ -25,11 +33,31 @@ export const baseStyles = ({ theme }: { theme: Theme }): SerializedStyles =>
     bg: 'transparent',
   })(theme)
 
-type InputProps = React.DetailedHTMLProps<
-  React.InputHTMLAttributes<HTMLInputElement>,
-  HTMLInputElement
-> &
-  VariantProps & { sx?: SxStyleProp }
+function base({ theme, __base, base }) {
+  const styles = getComponentBase(base ? base : 'input')(theme)
+  if (Object.keys(styles)?.length === 0) {
+    return css(__base)(theme)
+  }
+  return styles
+}
+
+const inputVariant = ({
+  variant: variantProp,
+  variantKey,
+  variants,
+  theme,
+}) => {
+  if (variants) {
+    return getVariants(variants)(theme)
+  }
+
+  return _variant({ variant: variantProp, theme, variantKey, variants })
+}
+
+export type InputProps = BaseProp &
+  VariantProps &
+  SxStyleProp &
+  React.HTMLProps<HTMLInputElement>
 
 /**
  * Box primitive component which is the base component for
@@ -42,7 +70,7 @@ export const Input = styled('input')<InputProps>(
     minWidth: 0,
   },
   baseStyles,
-  ({ variant: variantProp, variantKey = 'inputs', theme }) =>
-    _variant({ variant: variantProp, theme, variantKey }),
+  base,
+  inputVariant,
   sx,
 )
