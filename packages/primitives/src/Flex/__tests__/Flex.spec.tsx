@@ -37,11 +37,11 @@ describe('Box', () => {
         box-sizing: border-box;
         margin: 0;
         min-width: 0;
-        color: white;
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
         display: flex;
+        color: white;
       }
 
       <div
@@ -64,14 +64,14 @@ describe('Box', () => {
         box-sizing: border-box;
         margin: 0;
         min-width: 0;
-        -webkit-align-items: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
         display: flex;
+        -webkit-align-items: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
       }
 
       <div

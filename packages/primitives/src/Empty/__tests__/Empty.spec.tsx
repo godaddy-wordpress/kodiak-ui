@@ -16,6 +16,10 @@ describe('Empty', () => {
         box-sizing: border-box;
         margin: 0;
         min-width: 0;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
         -webkit-align-items: center;
         -webkit-box-align: center;
         -ms-flex-align: center;
@@ -23,10 +27,6 @@ describe('Empty', () => {
         -webkit-flex-direction: column;
         -ms-flex-direction: column;
         flex-direction: column;
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
       }
 
       .emotion-0 {

@@ -1,6 +1,6 @@
-import styled from '@emotion/styled'
-import { Box } from '../Box'
+import * as React from 'react'
+import { Box, BoxProps } from '../Box'
 
-export const Grid = styled(Box)({
-  display: 'grid',
-})
+export function Grid(props: BoxProps) {
+  return <Box __base={{ display: 'grid' }} {...props} />
+}

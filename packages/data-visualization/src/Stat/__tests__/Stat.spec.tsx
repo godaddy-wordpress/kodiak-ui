@@ -27,7 +27,6 @@ describe('Stat', () => {
         line-height: 16px;
         gap: 32px;
         padding: 32px;
-        display: grid;
       }
 
       .emotion-0 {
@@ -40,13 +39,13 @@ describe('Stat', () => {
         box-sizing: border-box;
         margin: 0;
         min-width: 0;
-        -webkit-flex-direction: column;
-        -ms-flex-direction: column;
-        flex-direction: column;
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
         display: flex;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
       }
 
       .emotion-1 {

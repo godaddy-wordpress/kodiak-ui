@@ -26,10 +26,12 @@ const boxVariant = ({ variant: variantProp, variantKey, variants, theme }) => {
   return _variant({ variant: variantProp, theme, variantKey, variants })
 }
 
-export type BoxProps = {
-  as?: React.ElementType
-} & BaseProp &
-  VariantProps
+export type BoxProps = React.PropsWithChildren<
+  {
+    as?: React.ElementType
+  } & BaseProp &
+    VariantProps
+>
 
 /**
  * Box primitive component which is the base component for
