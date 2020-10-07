@@ -54,24 +54,6 @@ describe('Text', () => {
         text-decoration: none;
         -webkit-transition: all 0.2s ease-in-out;
         transition: all 0.2s ease-in-out;
-        -webkit-align-items: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        background-color: inherit;
-        border: 1px solid;
-        border-color: muted;
-        color: text;
-        display: -webkit-inline-box;
-        display: -webkit-inline-flex;
-        display: -ms-inline-flexbox;
-        display: inline-flex;
-        -webkit-box-pack: justify;
-        -webkit-justify-content: space-between;
-        -ms-flex-pack: justify;
-        justify-content: space-between;
-        min-width: 184px;
-        text-align: left;
       }
 
       .emotion-1 {

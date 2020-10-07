@@ -3,7 +3,7 @@ module.exports = {
   typescript: {
     check: true,
     checkOptions: {},
-    reactDocgen: 'react-docgen-typescript',
+    reactDocgen: true,
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
       propFilter: prop => {

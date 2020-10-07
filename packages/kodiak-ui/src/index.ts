@@ -7,14 +7,16 @@ import {
   ThemeUIStyleObject,
   ColorMode,
   Theme as ThemeUiTheme,
+  SxStyleProp,
 } from '@theme-ui/css'
 import { createShouldForwardProp } from '@styled-system/should-forward-prop'
 import create from 'zustand'
 import createVanilla from 'zustand/vanilla'
 import themeDefault from './theme-default'
-import {} from '@theme-ui/css'
 
 import './react-jsx'
+
+export * from './provider'
 
 export type { SerializedStyles } from '@emotion/serialize'
 export type { SxStyleProp } from '@theme-ui/css'
@@ -226,6 +228,8 @@ export interface VariantProps {
   variantKey?: string // @deprecated
   variants?: string | string[]
 }
+
+export type BaseProp = { base?: string | string[]; __base?: SxStyleProp }
 
 /**
  * Legacy method for getting variants from a theme

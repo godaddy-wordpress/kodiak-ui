@@ -1,10 +1,10 @@
 import * as React from 'react'
-import { Box, VariantProps } from '../Box'
+import { Box } from '../Box'
 import { SvgIcon } from '../Svg'
 import { Input } from '../Input'
 import { useCheckbox } from './useCheckbox'
 import { Label } from '../Label'
-import type { SxStyleProp } from 'kodiak-ui'
+import type { SxStyleProp, VariantProps } from 'kodiak-ui'
 
 type CheckboxProps = {
   children?: React.ReactNode

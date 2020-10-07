@@ -27,29 +27,6 @@ describe('PaginationButton', () => {
         text-decoration: none;
         -webkit-transition: all 0.2s ease-in-out;
         transition: all 0.2s ease-in-out;
-        background-color: white;
-        border-right: 1px solid;
-        border-color: gray.3;
-        border-radius: none;
-        box-shadow: 0px 1px 2px rgba(0,0,0,0.15);
-        color: text;
-        font-size: 16px;
-        line-height: 16px;
-        padding-top: 8px;
-        padding-bottom: 8px;
-        padding-left: 16px;
-        padding-right: 16px;
-      }
-
-      .emotion-0:first-of-type {
-        border-top-left-radius: default;
-        border-bottom-left-radius: default;
-      }
-
-      .emotion-0:last-of-type {
-        border-top-right-radius: default;
-        border-bottom-right-radius: default;
-        border-right: none;
       }
 
       <button

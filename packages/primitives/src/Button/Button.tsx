@@ -3,6 +3,7 @@ import { getVariants } from 'kodiak-ui'
 import {
   _variant,
   sx,
+  BaseProp,
   VariantProps,
   shouldForwardProp,
   styled,
@@ -10,7 +11,6 @@ import {
   css,
 } from 'kodiak-ui'
 import { useWrappedEventHandler } from '@kodiak-ui/hooks/use-event-logger'
-import { base as baseProp, BaseProps } from '../Box'
 
 /**
  * base
@@ -53,7 +53,7 @@ export const buttonVariant = ({
 
 export type ButtonProps = React.HTMLProps<HTMLButtonElement> &
   VariantProps &
-  BaseProps & { type: string }
+  BaseProp & { type: string }
 
 /**
  * Button primitive component
@@ -72,7 +72,6 @@ export const StyledButton = styled('button', {
     transition: 'all 0.2s ease-in-out',
   },
   base,
-  baseProp,
   buttonVariant,
   sx,
 )

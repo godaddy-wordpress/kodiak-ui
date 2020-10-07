@@ -1,14 +1,18 @@
+import { BaseProp, VariantProps } from 'kodiak-ui'
 import * as React from 'react'
 import { Box } from '../Box'
 import { Image as KodiakImage } from '../Image'
 
-type AvatarProps = React.PropsWithChildren<{
-  src?: string
-  srcSet?: React.ImgHTMLAttributes<HTMLImageElement>['srcSet']
-  imgProps?: React.ImgHTMLAttributes<HTMLImageElement>
-  alt?: React.ImgHTMLAttributes<HTMLImageElement>['alt']
-  sizes?: React.ImgHTMLAttributes<HTMLImageElement>['sizes']
-}>
+type AvatarProps = React.PropsWithChildren<
+  {
+    src?: string
+    srcSet?: React.ImgHTMLAttributes<HTMLImageElement>['srcSet']
+    imgProps?: React.ImgHTMLAttributes<HTMLImageElement>
+    alt?: React.ImgHTMLAttributes<HTMLImageElement>['alt']
+    sizes?: React.ImgHTMLAttributes<HTMLImageElement>['sizes']
+  } & VariantProps &
+    BaseProp
+>
 
 enum ImageState {
   initial,
@@ -75,6 +79,7 @@ export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
       alt,
       sizes,
       imgProps,
+      base = 'avatar',
       ...props
     }: AvatarProps,
     ref,
@@ -120,6 +125,7 @@ export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
       <Box
         ref={ref}
         variantKey="avatar"
+        base={base}
         __base={{
           alignItems: 'center',
           borderRadius: 'full',
