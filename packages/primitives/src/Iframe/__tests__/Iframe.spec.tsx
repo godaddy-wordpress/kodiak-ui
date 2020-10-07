@@ -10,6 +10,9 @@ describe('Iframe', () => {
     expect(renderer.create(<Iframe />).toJSON()).toMatchInlineSnapshot(`
       .emotion-0 {
         box-sizing: border-box;
+        margin: 0;
+        min-width: 0;
+        box-sizing: border-box;
         display: block;
         margin: 0;
         min-width: 0;

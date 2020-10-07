@@ -44,9 +44,9 @@ describe('Box', () => {
         box-sizing: border-box;
         margin: 0;
         min-width: 0;
+        display: grid;
         gap: 16px;
         grid-template-columns: auto;
-        display: grid;
       }
 
       @media screen and (min-width:40em) {

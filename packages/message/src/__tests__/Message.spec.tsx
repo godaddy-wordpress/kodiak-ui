@@ -87,6 +87,10 @@ describe('Message', () => {
         box-sizing: border-box;
         margin: 0;
         min-width: 0;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
         -webkit-align-items: center;
         -webkit-box-align: center;
         -ms-flex-align: center;
@@ -95,10 +99,6 @@ describe('Message', () => {
         -webkit-flex-grow: 1;
         -ms-flex-positive: 1;
         flex-grow: 1;
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
       }
 
       .emotion-0 {
