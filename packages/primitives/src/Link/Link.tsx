@@ -6,6 +6,7 @@ import {
   VariantProps,
   BaseProp,
   getComponentBase,
+  getVariants,
 } from 'kodiak-ui'
 import { useWrappedEventHandler } from '@kodiak-ui/hooks/use-event-logger'
 import { css } from 'theme-ui'
@@ -14,10 +15,20 @@ type LinkProps = VariantProps & BaseProp
 
 function base({ theme, __base, base }) {
   const styles = getComponentBase(base ? base : 'link')(theme)
-  if (!styles) {
-    return css(__base as any)(theme)
+
+  if (Object.keys(styles)?.length === 0) {
+    return css(__base)(theme)
   }
+
   return styles
+}
+
+const linkVariant = ({ variant: variantProp, variantKey, variants, theme }) => {
+  if (variants) {
+    return getVariants(variants)(theme)
+  }
+
+  return _variant({ variant: variantProp, theme, variantKey, variants })
 }
 
 export const StyledLink = styled('a')<LinkProps>(
@@ -27,8 +38,7 @@ export const StyledLink = styled('a')<LinkProps>(
     minWidth: 0,
   },
   base,
-  ({ variant: variantProp = 'a', variantKey = 'links', theme }) =>
-    _variant({ variant: variantProp, variantKey, theme }),
+  linkVariant,
   sx,
 )
 

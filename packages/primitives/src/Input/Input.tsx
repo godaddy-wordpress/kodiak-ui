@@ -7,7 +7,8 @@ import {
   VariantProps,
   getVariants,
   BaseProp,
-  SxStyleProp,, getComponentBase
+  SxStyleProp,
+  getComponentBase,
 } from 'kodiak-ui'
 
 /**
