@@ -1,3 +1,3 @@
-export { Box, variant, sx, base } from './Box'
+export { Box } from './Box'
 
-export type { BoxProps, VariantProps, BaseProps } from './Box'
+export type { BoxProps } from './Box'

@@ -1,52 +1,29 @@
 import styled from '@emotion/styled'
 import * as React from 'react'
-import { css, Theme } from 'theme-ui'
-import { getVariants, SxStyleProp, VariantProps, _variant } from 'kodiak-ui'
-import { SerializedStyles } from '@emotion/serialize'
+import { css } from 'theme-ui'
+import {
+  BaseProp,
+  getComponentBase,
+  getVariants,
+  sx,
+  VariantProps,
+  _variant,
+} from 'kodiak-ui'
 
-/**
- * sx function to pass the sx prop and theme
- * into Theme UI's css function with parses the values in the
- * prop and serializing them with the theme values
- *
- * @param props any
- */
-export function sx(props: {
-  theme: Theme
-  sx?: SxStyleProp
-}): SerializedStyles {
-  return css(props.sx as any)(props.theme)
+function base({ theme, __base, base }) {
+  const styles = base ? getComponentBase(base ? base : 'box')(theme) : null
+  if (!styles) {
+    return css(__base as any)(theme)
+  }
+  return styles
 }
 
-/**
- * base function allow the __base property to set default values
- * that are read from the theme but can still be overridden by theme variants
- */
-
-export type BaseProps = {
-  __base?: SxStyleProp
-  base?: string | string[]
-}
-
-export function base(props: { theme: Theme } & BaseProps) {
-  return css(props.__base as any)(props.theme)
-}
-
-export const boxVariant = ({
-  variant: variantProp,
-  variantKey,
-  variants,
-  theme,
-}) => {
+const boxVariant = ({ variant: variantProp, variantKey, variants, theme }) => {
   if (variants) {
     return getVariants(variants)(theme)
   }
 
   return _variant({ variant: variantProp, theme, variantKey, variants })
-}
-
-export interface BaseProp {
-  __base?: SxStyleProp
 }
 
 export type BoxProps = {
