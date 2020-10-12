@@ -15,3 +15,5 @@ package-lock.json
 .docz*
 
 storybook-static
+
+.env

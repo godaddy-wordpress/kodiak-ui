@@ -11,7 +11,7 @@ module.exports = {
   projectName: 'kodiak-ui',
   themeConfig: {
     algolia: {
-      apiKey: '704c4830b1c72946dd20fe251945d2e6',
+      apiKey: process.env.ALGOLIA_API_TOKEN,
       indexName: 'kodiak-ui',
     },
     navbar: {
