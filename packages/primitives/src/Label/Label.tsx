@@ -31,7 +31,7 @@ function base({ theme, __base, base }) {
 
 const labelVariant = ({
   variant: variantProp,
-  variantKey,
+  variantKey = 'labels',
   variants,
   theme,
 }) => {

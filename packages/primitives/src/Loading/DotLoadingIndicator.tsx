@@ -59,7 +59,7 @@ function base({ theme }: { theme: Theme }): SerializedStyles {
 
 export const loadingVariant = ({
   variant: variantProp,
-  variantKey,
+  variantKey = 'loadingIndicators',
   variants,
   theme,
 }) => {

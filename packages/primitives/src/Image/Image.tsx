@@ -3,7 +3,7 @@ import { Box, BoxProps } from '../Box'
 
 export type ImageProps = BoxProps & React.HTMLProps<HTMLImageElement>
 
-export function Image(props) {
+export function Image({ variantKey = 'images', ...props }: ImageProps) {
   return (
     <Box
       __base={{
@@ -12,6 +12,7 @@ export function Image(props) {
         minWidth: 0,
       }}
       as="img"
+      variantKey={variantKey}
       {...props}
     />
   )
