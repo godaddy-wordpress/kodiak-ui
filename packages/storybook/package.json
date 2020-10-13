@@ -6,8 +6,7 @@
   "private": true,
   "scripts": {
     "storybook": "start-storybook -p 9009",
-    "build-storybook": "build-storybook -c .storybook -o ../../storybook-static",
-    "chromatic": "chromatic --project-token=shho9ajjlwp"
+    "build-storybook": "build-storybook -c .storybook -o ../../storybook-static"
   },
   "peerDependencies": {
     "react": "^16.13.1",
