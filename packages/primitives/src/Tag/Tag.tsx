@@ -7,6 +7,7 @@ import {
   sx,
   Theme,
   SerializedStyles,
+  getVariants,
 } from 'kodiak-ui'
 
 export type TagProps = { children: React.ReactNode } & VariantProps
@@ -25,6 +26,19 @@ function base({ theme }: { theme: Theme }): SerializedStyles {
   })(theme)
 }
 
+const tagVariant = ({
+  variant: variantProp = 'default',
+  variantKey = 'tags',
+  variants,
+  theme,
+}: VariantProps & { theme: Theme }) => {
+  if (variants) {
+    return getVariants(variants)(theme)
+  }
+
+  return _variant({ variant: variantProp, theme, variantKey, variants })
+}
+
 const TagStyle = styled('div')<TagProps>(
   {
     boxSizing: 'border-box',
@@ -32,8 +46,7 @@ const TagStyle = styled('div')<TagProps>(
     minWidth: 0,
   },
   base,
-  ({ variant: variantProp = 'default', variantKey = 'tags', theme }) =>
-    _variant({ variant: variantProp, theme, variantKey }),
+  tagVariant,
   sx,
 )
 

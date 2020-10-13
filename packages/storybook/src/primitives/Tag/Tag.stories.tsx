@@ -1,7 +1,17 @@
 import * as React from 'react'
 import { Tag, TagDismiss, TagWithButton, SvgIcon } from '@kodiak-ui/primitives'
+import { variant } from 'kodiak-ui'
 
 export default { title: 'Primitives/Tag', component: Tag }
+
+variant('pill', {
+  bg: 'white',
+  border: '1px solid',
+  borderColor: 'gray.4',
+  borderRadius: '15px',
+  color: 'gray.5',
+  fontWeight: 'semiBold',
+})
 
 function Icon() {
   return (
@@ -18,7 +28,7 @@ export function Initial() {
 }
 
 export function Pill() {
-  return <Tag variant="pill">Pill Label</Tag>
+  return <Tag variants="pill">Pill Label</Tag>
 }
 
 export function Dismiss() {
