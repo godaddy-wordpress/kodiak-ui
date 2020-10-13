@@ -8,6 +8,7 @@ import {
   sx,
   Theme,
   SerializedStyles,
+  getVariants,
 } from 'kodiak-ui'
 import { Box } from '../Box'
 
@@ -56,6 +57,19 @@ function base({ theme }: { theme: Theme }): SerializedStyles {
   })(theme)
 }
 
+export const loadingVariant = ({
+  variant: variantProp,
+  variantKey,
+  variants,
+  theme,
+}) => {
+  if (variants) {
+    return getVariants(variants)(theme)
+  }
+
+  return _variant({ variant: variantProp, theme, variantKey, variants })
+}
+
 const LoadingIndicatorStyle = styled('div')<DotLoadingIndicatorProps>(
   {
     boxSizing: 'border-box',
@@ -63,11 +77,7 @@ const LoadingIndicatorStyle = styled('div')<DotLoadingIndicatorProps>(
     minWidth: 0,
   },
   base,
-  ({
-    variant: variantProp = 'default',
-    variantKey = 'loadingIndicators',
-    theme,
-  }) => _variant({ variant: variantProp, theme, variantKey }),
+  loadingVariant,
   sx,
 )
 
