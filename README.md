@@ -1,6 +1,6 @@
 <p align="center">
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
   <a href="https://skyverge.com">
     <img src="https://user-images.githubusercontent.com/1162694/74063113-c6bad100-49bd-11ea-982d-3c4b17df80ab.png" alt="SkyVerge" />
@@ -78,6 +78,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://github.com/TAYTS"><img src="https://avatars0.githubusercontent.com/u/29126748?v=4" width="100px;" alt=""/><br /><sub><b>TAY TS</b></sub></a><br /><a href="https://github.com/skyverge/kodiak-ui/commits?author=TAYTS" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://twitter.com/alexandermchan"><img src="https://avatars2.githubusercontent.com/u/1864372?v=4" width="100px;" alt=""/><br /><sub><b>Alex Chan</b></sub></a><br /><a href="https://github.com/skyverge/kodiak-ui/commits?author=alexanderchan" title="Code">💻</a> <a href="#ideas-alexanderchan" title="Ideas, Planning, & Feedback">🤔</a></td>
   </tr>
 </table>
 
