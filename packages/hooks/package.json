@@ -4,7 +4,7 @@
   "main": "dist/hooks.cjs.js",
   "module": "dist/hooks.esm.js",
   "source": "src/index.ts",
-  "author": "Wesley Cole <wes@skyverge.com>",
+  "author": "Wesley Cole <wes@skyverge.com>, Alex Chan <alex@skyverge.com>",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
