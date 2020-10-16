@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/skeleton",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "description": "Skeleton for loading",
   "keywords": [
     "skeleton",
@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@emotion/core": "^10.0.28",
-    "@kodiak-ui/primitives": "^0.18.2"
+    "@kodiak-ui/primitives": "^0.18.3"
   },
   "repository": {
     "type": "git",
