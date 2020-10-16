@@ -16,7 +16,7 @@
     "resize-observer-polyfill": "^1.5.1",
     "zustand": "^3.1.1"
   },
-  "gitHead": "fe05dc108a105dcf18b4a7210d9f3d0ff5197bd3",
+  "gitHead": "398a487a06080e4c96d809d94675c246c6938536",
   "devDependencies": {
     "resize-observer-polyfill": "^1.5.1"
   },
