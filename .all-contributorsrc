@@ -1,10 +1,36 @@
 {
-  "files": ["README.md"],
+  "files": [
+    "README.md"
+  ],
   "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "alexanderchan",
+      "name": "Alex Chan",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/1864372?v=4",
+      "profile": "https://twitter.com/alexandermchan",
+      "contributions": [
+        "code",
+        "ideas",
+        "maintenance",
+        "review"
+      ]
+    },
+    {
+      "login": "TAYTS",
+      "name": "TAY TS",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/29126748?v=4",
+      "profile": "https://github.com/TAYTS",
+      "contributions": [
+        "test"
+      ]
+    }
+  ],
   "contributorsPerLine": 7,
-  "contributorsSortAlphabetically": false,
-  "badgeTemplate": "[![All Contributors](https://img.shields.io/badge/all_contributors-<%= contributors.length %>-orange.svg?style=flat-square)](#contributors)",
-  "contributorTemplate": "<a href=\"<%= contributor.profile %>\"><img src=\"<%= contributor.avatar_url %>\" width=\"<%= options.imageSize %>px;\" alt=\"\"/><br /><sub><b><%= contributor.name %></b></sub></a>",
-  "skipCi": "true",
-  "contributors": []
+  "projectName": "kodiak-ui",
+  "projectOwner": "skyverge",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
 }
