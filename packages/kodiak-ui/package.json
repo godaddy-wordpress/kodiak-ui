@@ -17,5 +17,6 @@
     "@styled-system/should-forward-prop": "^5.1.4",
     "@theme-ui/css": "^0.3.1",
     "zustand": "^3.1.2"
-  }
+  },
+  "gitHead": "db343cc5f688d3491c37c6f51da940949e1e7e89"
 }

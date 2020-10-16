@@ -30,7 +30,7 @@
   "devDependencies": {
     "@types/theme-ui": "^0.3.1"
   },
-  "gitHead": "2695674321ecea6a332a8579ad71c3d0ca370269",
+  "gitHead": "db343cc5f688d3491c37c6f51da940949e1e7e89",
   "snyk": true,
   "preconstruct": {
     "entrypoints": [
