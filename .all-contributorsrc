@@ -5,6 +5,18 @@
   "imageSize": 100,
   "commit": false,
   "contributors": [
+   {
+      "login": "alexanderchan",
+      "name": "Alex Chan",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/1864372?v=4",
+      "profile": "https://twitter.com/alexandermchan",
+      "contributions": [
+        "code",
+        "ideas",
+        "maintenance",
+        "review"
+      ]
+    },
     {
       "login": "TAYTS",
       "name": "TAY TS",
@@ -14,16 +26,6 @@
         "test"
       ]
     },
-    {
-      "login": "alexanderchan",
-      "name": "Alex Chan",
-      "avatar_url": "https://avatars2.githubusercontent.com/u/1864372?v=4",
-      "profile": "https://twitter.com/alexandermchan",
-      "contributions": [
-        "code",
-        "ideas"
-      ]
-    }
   ],
   "contributorsPerLine": 7,
   "projectName": "kodiak-ui",
