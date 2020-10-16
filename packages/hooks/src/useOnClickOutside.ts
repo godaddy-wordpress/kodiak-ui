@@ -21,13 +21,13 @@ export const useOnClickOutside = ({
       // Do nothing if clicking ref's element or descendent elements
       if (
         !ref.current ||
-        ref.current.contains(event.target) ||
-        (refException && refException.current.contains(event.target))
+        ref?.current?.contains?.(event.target) ||
+        refException?.current?.contains?.(event.target)
       ) {
         return
       }
 
-      savedHandler && savedHandler.current && savedHandler.current(event)
+      savedHandler?.current?.(event)
     }
 
     document.addEventListener('mousedown', listener)
