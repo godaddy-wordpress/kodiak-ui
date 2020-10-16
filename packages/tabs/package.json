@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/tabs",
-  "version": "0.1.21",
+  "version": "0.1.22",
   "description": "Tabs hook and components",
   "keywords": [
     "tabs"
@@ -27,8 +27,8 @@
     "react-dom": "^16.13.0"
   },
   "dependencies": {
-    "@kodiak-ui/hooks": "^0.13.0",
-    "@kodiak-ui/primitives": "^0.18.0",
+    "@kodiak-ui/hooks": "^0.13.1",
+    "@kodiak-ui/primitives": "^0.18.1",
     "@kodiak-ui/utils": "^0.0.9"
   },
   "repository": {
