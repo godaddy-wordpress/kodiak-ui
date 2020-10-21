@@ -1,17 +1,9 @@
 import * as React from 'react'
-import {
-  _variant,
-  VariantProps,
-  styled,
-  css,
-  sx,
-  Theme,
-  SerializedStyles,
-} from 'kodiak-ui'
+import { _variant, VariantProps, styled, css, sx, Theme } from 'kodiak-ui'
 
 export type TagProps = { children: React.ReactNode } & VariantProps
 
-function base({ theme }: { theme: Theme }): SerializedStyles {
+function base({ theme }: { theme: Theme }) {
   return css({
     alignItems: 'center',
     bg: 'muted',

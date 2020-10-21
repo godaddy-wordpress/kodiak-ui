@@ -71,7 +71,7 @@ export function FullyControlled() {
             alignItems: 'center',
           }}
         >
-          <Text fontWeight="bold" fontSize={3} mb={0}>
+          <Text sx={{ fontWeight: 'bold', fontSize: 3, mb: 0 }}>
             Accordion header - toggle me
           </Text>
           <CaretFillDown
@@ -141,7 +141,7 @@ export function FullyControlled() {
             alignItems: 'center',
           }}
         >
-          <Text fontWeight="bold" fontSize={3} mb={0}>
+          <Text sx={{ fontWeight: 'bold', fontSize: 3, mb: 0 }}>
             Accordion header - toggle me
           </Text>
           <CaretFillDown
@@ -204,7 +204,7 @@ export function AccordionHookSingle() {
             ref={node => register(node, { key: 'first' })}
             {...getHeaderProps({ key: 'first' })}
           >
-            <Text fontWeight="bold" fontSize={3} mb={0}>
+            <Text sx={{ fontWeight: 'bold', fontSize: 3, mb: 0 }}>
               Accordion header - toggle me
             </Text>
             <CaretFillDown
@@ -234,7 +234,7 @@ export function AccordionHookSingle() {
             ref={node => register(node, { key: 'second' })}
             {...getHeaderProps({ key: 'second' })}
           >
-            <Text fontWeight="bold" fontSize={3} mb={0}>
+            <Text sx={{ fontWeight: 'bold', fontSize: 3, mb: 0 }}>
               Accordion header - toggle me
             </Text>
             <CaretFillDown
@@ -297,7 +297,7 @@ export function AccordionHookMultiple() {
               }
             }}
           >
-            <Text fontWeight="bold" fontSize={3} mb={0}>
+            <Text sx={{ fontWeight: 'bold', fontSize: 3, mb: 0 }}>
               Accordion header - toggle me
             </Text>
             <CaretFillDown
@@ -337,7 +337,7 @@ export function AccordionHookMultiple() {
               }
             }}
           >
-            <Text fontWeight="bold" fontSize={3} mb={0}>
+            <Text sx={{ fontWeight: 'bold', fontSize: 3, mb: 0 }}>
               Accordion header - toggle me
             </Text>
             <CaretFillDown
@@ -407,7 +407,7 @@ export function AccordionHookControlled() {
               }
             }}
           >
-            <Text fontWeight="bold" fontSize={3} mb={0}>
+            <Text sx={{ fontWeight: 'bold', fontSize: 3, mb: 0 }}>
               Accordion header - toggle me
             </Text>
             <CaretFillDown
@@ -447,7 +447,7 @@ export function AccordionHookControlled() {
               }
             }}
           >
-            <Text fontWeight="bold" fontSize={3} mb={0}>
+            <Text sx={{ fontWeight: 'bold', fontSize: 3, mb: 0 }}>
               Accordion header - toggle me
             </Text>
             <CaretFillDown

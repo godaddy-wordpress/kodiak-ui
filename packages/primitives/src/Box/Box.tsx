@@ -5,6 +5,7 @@ import {
   BaseProp,
   getComponentBase,
   getVariants,
+  KodiakUIProps,
   sx,
   VariantProps,
   _variant,
@@ -26,12 +27,7 @@ const boxVariant = ({ variant: variantProp, variantKey, variants, theme }) => {
   return _variant({ variant: variantProp, theme, variantKey, variants })
 }
 
-export type BoxProps = React.PropsWithChildren<
-  {
-    as?: React.ElementType
-  } & BaseProp &
-    VariantProps
->
+export type BoxProps = React.PropsWithChildren<KodiakUIProps & { as?: string }>
 
 /**
  * Box primitive component which is the base component for

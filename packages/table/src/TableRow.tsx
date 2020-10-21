@@ -1,18 +1,16 @@
-import * as React from 'react'
 import {
   _variant as getVariantStyles,
   VariantProps,
   sx,
   Theme,
   css,
-  SerializedStyles,
   styled,
 } from 'kodiak-ui'
 import { tableRoot } from './Table'
 
 export type TableRowProps = VariantProps
 
-export function base({ theme }: { theme: Theme }): SerializedStyles {
+export function base({ theme }: { theme: Theme }) {
   return css({
     color: 'inherit',
     display: 'table-row',
@@ -25,7 +23,7 @@ function variant({
   variant: variantProp = 'tableRow',
   variantKey = 'tables',
   theme,
-}: { theme: Theme } & VariantProps): SerializedStyles {
+}: { theme: Theme } & VariantProps) {
   return getVariantStyles({ variant: variantProp, theme, variantKey })
 }
 

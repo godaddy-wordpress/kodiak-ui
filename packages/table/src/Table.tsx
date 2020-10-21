@@ -4,30 +4,25 @@ import {
   sx,
   Theme,
   css,
-  SerializedStyles,
   styled,
   VariantProps,
   SxStyleProp,
+  KodiakUIProps,
 } from 'kodiak-ui'
 
 export type { VariantProps, SxStyleProp } from 'kodiak-ui'
 import { Box } from '@kodiak-ui/primitives'
 
-export function tableRoot({ theme }: { theme: Theme }): SerializedStyles {
+export function tableRoot({ theme }: { theme: Theme }) {
   return css({
     borderCollapse: 'collapse',
     borderSpacing: 0,
   })(theme)
 }
 
-export type TableProps = {
-  children?: React.ReactNode // Type error if this isn't optional
-  ref?: (node: HTMLTableElement) => void
-  sx?: SxStyleProp
-  wrapperSx?: SxStyleProp
-} & VariantProps
+export type TableProps = KodiakUIProps & { wrapperSx?: SxStyleProp }
 
-export function base({ theme }: { theme: Theme }): SerializedStyles {
+export function base({ theme }: { theme: Theme }) {
   return css({
     display: 'table',
     minWidth: '650px',
@@ -39,7 +34,7 @@ function variant({
   variant: variantProp,
   variantKey = 'tables',
   theme,
-}: { theme: Theme } & VariantProps): SerializedStyles {
+}: { theme: Theme } & VariantProps) {
   return getVariantStyles({ variant: variantProp, theme, variantKey })
 }
 

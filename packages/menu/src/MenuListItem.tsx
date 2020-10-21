@@ -4,7 +4,6 @@ import {
   sx,
   Theme,
   css,
-  SerializedStyles,
   styled,
   SxStyleProp,
 } from 'kodiak-ui'
@@ -14,7 +13,7 @@ export type MenuListItemProps = {
   sx?: SxStyleProp
 } & VariantProps
 
-export function base({ theme }: { theme: Theme }): SerializedStyles {
+export function base({ theme }: { theme: Theme }) {
   return css({
     cursor: 'pointer',
     lineHeight: 1,

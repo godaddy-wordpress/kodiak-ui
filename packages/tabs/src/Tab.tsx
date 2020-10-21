@@ -1,21 +1,8 @@
-import {
-  _variant,
-  VariantProps,
-  sx,
-  Theme,
-  css,
-  SerializedStyles,
-  styled,
-} from 'kodiak-ui'
-import { SxStyleProp } from 'theme-ui'
+import { _variant, sx, Theme, css, styled, KodiakUIProps } from 'kodiak-ui'
 
-export type TabProps = {
-  children: React.ReactNode
-  sx?: SxStyleProp
-} & VariantProps &
-  React.HTMLProps<HTMLButtonElement>
+export type TabProps = KodiakUIProps
 
-export function base({ theme }: { theme: Theme }): SerializedStyles {
+export function base({ theme }: { theme: Theme }) {
   return css({
     bg: 'transparent',
     border: 'none',
@@ -24,7 +11,7 @@ export function base({ theme }: { theme: Theme }): SerializedStyles {
   })(theme)
 }
 
-export const Tab = styled('button')(
+export const Tab = styled('button')<TabProps>(
   {
     boxSizing: 'border-box',
     margin: 0,

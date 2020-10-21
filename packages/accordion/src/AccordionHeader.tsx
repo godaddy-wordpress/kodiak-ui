@@ -5,9 +5,9 @@ import {
   sx,
   Theme,
   css,
-  SerializedStyles,
   styled,
   SxStyleProp,
+  CSSObject,
 } from 'kodiak-ui'
 
 export type AccordionHeaderProps = {
@@ -15,7 +15,7 @@ export type AccordionHeaderProps = {
   sx?: SxStyleProp
 } & VariantProps
 
-export function base({ theme }: { theme: Theme }): SerializedStyles {
+export function base({ theme }: { theme: Theme }): CSSObject {
   return css({})(theme)
 }
 

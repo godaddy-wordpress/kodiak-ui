@@ -1,11 +1,9 @@
 import styled from '@emotion/styled'
-import { _variant, VariantProps, sx } from 'kodiak-ui'
+import { _variant, sx, KodiakUIProps } from 'kodiak-ui'
 
-type TextProps = {
-  as?: React.ElementType
-} & VariantProps
+type TextProps = React.PropsWithChildren<{ as?: string }> & KodiakUIProps
 
-export const Text = styled<'p', TextProps>('p')(
+export const Text = styled('p')<TextProps>(
   {
     boxSizing: 'border-box',
     margin: 0,

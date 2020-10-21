@@ -8,7 +8,7 @@ export function Initial() {
 
   return (
     <Flex sx={{ flexDirection: 'column' }}>
-      <Label display="flex" alignItems="center">
+      <Label sx={{ display: 'flex', alignItems: 'center' }}>
         <Switch
           checked={checked}
           onChange={() => setChecked(!checked)}

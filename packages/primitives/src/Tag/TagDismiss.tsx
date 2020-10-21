@@ -1,13 +1,5 @@
 import * as React from 'react'
-import {
-  _variant,
-  VariantProps,
-  styled,
-  css,
-  sx,
-  Theme,
-  SerializedStyles,
-} from 'kodiak-ui'
+import { _variant, VariantProps, styled, css, sx, Theme } from 'kodiak-ui'
 import { Tag } from './Tag'
 import { TagLabel } from './TagLabel'
 
@@ -17,7 +9,7 @@ export type TagDismissProps = {
   onDismiss: () => void
 } & VariantProps
 
-function base({ theme }: { theme: Theme }): SerializedStyles {
+function base({ theme }: { theme: Theme }) {
   return css({
     appearance: 'none',
     border: 'none',

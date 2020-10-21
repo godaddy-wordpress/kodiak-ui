@@ -4,14 +4,14 @@ import {
   sx,
   Theme,
   css,
-  SerializedStyles,
   styled,
+  CSSObject,
 } from 'kodiak-ui'
 import { tableRoot } from './Table'
 
 export type TableHeadProps = React.HTMLAttributes<HTMLElement> & VariantProps
 
-export function base({ theme }: { theme: Theme }): SerializedStyles {
+export function base({ theme }: { theme: Theme }): CSSObject {
   return css({
     display: 'table-header-group',
   })(theme)
@@ -21,7 +21,7 @@ function variant({
   variant: variantProp = 'tableHead',
   variantKey = 'tables',
   theme,
-}: { theme: Theme } & VariantProps): SerializedStyles {
+}: { theme: Theme } & VariantProps): CSSObject {
   return getVariantStyles({ variant: variantProp, theme, variantKey })
 }
 
