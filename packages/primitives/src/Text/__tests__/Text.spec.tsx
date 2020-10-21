@@ -65,18 +65,18 @@ describe('Text', () => {
   it('should style the element with styled-system props', () => {
     expect(
       renderer
-        .create(<Text fontWeight="bold">Rendering bold p tag</Text>)
+        .create(<Text sx={{ fontWeight: 'bold' }}>Rendering bold p tag</Text>)
         .toJSON(),
     ).toMatchInlineSnapshot(`
       .emotion-0 {
         box-sizing: border-box;
         margin: 0;
         min-width: 0;
+        font-weight: bold;
       }
 
       <p
         className="emotion-0"
-        fontWeight="bold"
       >
         Rendering bold p tag
       </p>

@@ -11,7 +11,7 @@ describe('Checkbox', () => {
     expect(
       renderer
         .create(
-          <Label display="flex" alignItems="center">
+          <Label sx={{ display: 'flex', alignItems: 'center' }}>
             <Checkbox name="dark-mode" defaultChecked={true} />
             Dark Mode
           </Label>,
@@ -23,6 +23,14 @@ describe('Checkbox', () => {
         display: inline-block;
         margin: 0;
         min-width: 0;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-align-items: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
       }
 
       .emotion-2 {
@@ -32,7 +40,6 @@ describe('Checkbox', () => {
       }
 
       .emotion-0 {
-        box-sizing: border-box;
         margin: 0;
         min-width: 0;
         display: block;
@@ -76,7 +83,6 @@ describe('Checkbox', () => {
 
       <label
         className="emotion-3"
-        display="flex"
       >
         <div
           className="emotion-2"
@@ -120,7 +126,7 @@ describe('Checkbox', () => {
     expect(
       renderer
         .create(
-          <Label display="flex" alignItems="center">
+          <Label sx={{ display: 'flex', alignItems: 'center' }}>
             <Checkbox name="dark-mode" />
             Light Mode
           </Label>,
@@ -132,6 +138,14 @@ describe('Checkbox', () => {
         display: inline-block;
         margin: 0;
         min-width: 0;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-align-items: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
       }
 
       .emotion-2 {
@@ -141,7 +155,6 @@ describe('Checkbox', () => {
       }
 
       .emotion-0 {
-        box-sizing: border-box;
         margin: 0;
         min-width: 0;
         display: block;
@@ -185,7 +198,6 @@ describe('Checkbox', () => {
 
       <label
         className="emotion-3"
-        display="flex"
       >
         <div
           className="emotion-2"

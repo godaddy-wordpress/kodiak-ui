@@ -11,7 +11,7 @@ describe('Radio', () => {
     expect(
       renderer
         .create(
-          <Label display="flex" alignItems="center">
+          <Label sx={{ display: 'flex', alignItems: 'center' }}>
             <Radio name="dark-mode" value="true" defaultChecked={true} />
             Dark Mode
           </Label>,
@@ -23,6 +23,14 @@ describe('Radio', () => {
         display: inline-block;
         margin: 0;
         min-width: 0;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-align-items: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
       }
 
       .emotion-3 {
@@ -32,7 +40,6 @@ describe('Radio', () => {
       }
 
       .emotion-0 {
-        box-sizing: border-box;
         margin: 0;
         min-width: 0;
         display: block;
@@ -99,7 +106,6 @@ describe('Radio', () => {
 
       <label
         className="emotion-4"
-        display="flex"
       >
         <div
           className="emotion-3"
@@ -149,7 +155,7 @@ describe('Radio', () => {
     expect(
       renderer
         .create(
-          <Label display="flex" alignItems="center">
+          <Label sx={{ display: 'flex', alignItems: 'center' }}>
             <Radio name="dark-mode" value="false" />
             Light Mode
           </Label>,
@@ -161,6 +167,14 @@ describe('Radio', () => {
         display: inline-block;
         margin: 0;
         min-width: 0;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-align-items: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
       }
 
       .emotion-3 {
@@ -170,7 +184,6 @@ describe('Radio', () => {
       }
 
       .emotion-0 {
-        box-sizing: border-box;
         margin: 0;
         min-width: 0;
         display: block;
@@ -237,7 +250,6 @@ describe('Radio', () => {
 
       <label
         className="emotion-4"
-        display="flex"
       >
         <div
           className="emotion-3"

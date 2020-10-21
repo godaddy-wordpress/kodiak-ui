@@ -26,7 +26,6 @@ describe('Field', () => {
       }
 
       .emotion-1 {
-        box-sizing: border-box;
         margin: 0;
         min-width: 0;
         display: block;
@@ -69,20 +68,20 @@ describe('FieldErro', () => {
         .create(<FieldError id="error">Error message</FieldError>)
         .toJSON(),
     ).toMatchInlineSnapshot(`
-.emotion-0 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  color: danger;
-}
+      .emotion-0 {
+        box-sizing: border-box;
+        margin: 0;
+        min-width: 0;
+        color: danger;
+      }
 
-<span
-  className="emotion-0"
-  id="error"
-  role="alert"
->
-  Error message
-</span>
-`)
+      <span
+        className="emotion-0"
+        id="error"
+        role="alert"
+      >
+        Error message
+      </span>
+    `)
   })
 })

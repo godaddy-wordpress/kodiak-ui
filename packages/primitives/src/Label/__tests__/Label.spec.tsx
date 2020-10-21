@@ -29,7 +29,7 @@ describe('Label', () => {
     expect(
       renderer
         .create(
-          <Label htmlFor="myinput" fontWeight="bold" sx={{ color: 'white' }}>
+          <Label htmlFor="myinput" sx={{ color: 'white', fontWeight: 'bold' }}>
             Rendering bold
             <input id="myinput" />
           </Label>,
@@ -42,11 +42,11 @@ describe('Label', () => {
         margin: 0;
         min-width: 0;
         color: white;
+        font-weight: bold;
       }
 
       <label
         className="emotion-0"
-        fontWeight="bold"
         htmlFor="myinput"
       >
         Rendering bold

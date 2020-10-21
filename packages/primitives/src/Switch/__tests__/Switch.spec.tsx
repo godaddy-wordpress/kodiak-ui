@@ -57,7 +57,6 @@ describe('Switch', () => {
       }
 
       .emotion-0 {
-        box-sizing: border-box;
         margin: 0;
         min-width: 0;
         display: block;
