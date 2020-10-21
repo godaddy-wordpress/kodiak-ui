@@ -7,7 +7,6 @@ import {
   css,
   styled,
   SxStyleProp,
-  CSSObject,
 } from 'kodiak-ui'
 
 export type AccordionHeaderProps = {
@@ -15,7 +14,7 @@ export type AccordionHeaderProps = {
   sx?: SxStyleProp
 } & VariantProps
 
-export function base({ theme }: { theme: Theme }): CSSObject {
+export function base({ theme }: { theme: Theme }) {
   return css({})(theme)
 }
 
