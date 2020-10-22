@@ -136,7 +136,19 @@ describe('Message', () => {
         text-decoration: none;
         -webkit-transition: all 0.2s ease-in-out;
         transition: all 0.2s ease-in-out;
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        color: white;
+        background-color: primary;
+        border: 0;
+        border-radius: default;
         color: currentColor;
+      }
+
+      .emotion-5:hover {
+        background-color: secondary;
       }
 
       .emotion-3 {

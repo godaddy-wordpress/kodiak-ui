@@ -25,6 +25,18 @@ describe('AnchorButton', () => {
         text-decoration: none;
         -webkit-transition: all 0.2s ease-in-out;
         transition: all 0.2s ease-in-out;
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        color: white;
+        background-color: primary;
+        border: 0;
+        border-radius: default;
+      }
+
+      .emotion-0:hover {
+        background-color: secondary;
       }
 
       <a
@@ -59,8 +71,20 @@ describe('AnchorButton', () => {
         text-decoration: none;
         -webkit-transition: all 0.2s ease-in-out;
         transition: all 0.2s ease-in-out;
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        color: white;
+        background-color: primary;
+        border: 0;
+        border-radius: default;
         background-color: black;
         color: white;
+      }
+
+      .emotion-0:hover {
+        background-color: secondary;
       }
 
       <a
@@ -93,7 +117,19 @@ describe('AnchorButton', () => {
         text-decoration: none;
         -webkit-transition: all 0.2s ease-in-out;
         transition: all 0.2s ease-in-out;
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        color: white;
+        background-color: primary;
+        border: 0;
+        border-radius: default;
         margin-right: 4px;
+      }
+
+      .emotion-0:hover {
+        background-color: secondary;
       }
 
       <a
