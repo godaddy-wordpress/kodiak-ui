@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/tabs",
-  "version": "0.1.28",
+  "version": "0.1.29",
   "description": "Tabs hook and components",
   "keywords": [
     "tabs"
@@ -27,13 +27,13 @@
     "react-dom": "^16.13.0"
   },
   "dependencies": {
-    "@kodiak-ui/hooks": "^0.14.3",
-    "@kodiak-ui/primitives": "^0.18.7",
+    "@kodiak-ui/hooks": "^0.14.4",
+    "@kodiak-ui/primitives": "^0.18.8",
     "@kodiak-ui/utils": "^0.0.9"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/skyverge/kodiak-ui.git"
   },
-  "gitHead": "4930402ca69d23039bc3a2994b6449bb0c1d9adb"
+  "gitHead": "4fb1193622825ebe7c45ee5d2c2dbb7e636c4f50"
 }
