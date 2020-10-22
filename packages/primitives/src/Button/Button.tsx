@@ -13,7 +13,7 @@ import { useWrappedEventHandler } from '@kodiak-ui/hooks/use-event-logger'
  */
 export function base({ theme, base }) {
   const styles = getComponentBase(base ? base : 'button')(theme)
-  if (!styles) {
+  if (!styles || Object.keys(styles)?.length === 0) {
     return css({
       px: 3,
       py: 2,

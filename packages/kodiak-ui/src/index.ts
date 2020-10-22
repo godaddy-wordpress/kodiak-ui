@@ -257,7 +257,7 @@ export const getVariants = (variants: string | string[]) => (theme: Theme) => {
     ? variants
     : variants?.split(' ')
 
-  const styles = css(
+  return css(
     variantsToArray?.reduce((acc, curr) => {
       return {
         ...acc,
@@ -265,8 +265,6 @@ export const getVariants = (variants: string | string[]) => (theme: Theme) => {
       }
     }, {}),
   )(theme)
-
-  return Object.keys(styles)?.length > 0 ? styles : null
 }
 
 /**
@@ -277,7 +275,8 @@ export const getVariants = (variants: string | string[]) => (theme: Theme) => {
  */
 export const getComponentBase = (base: string | string[]) => (theme: Theme) => {
   const baseToArray = Array.isArray(base) ? base : base?.split(' ')
-  const styles = css(
+
+  return css(
     baseToArray?.reduce((acc, curr) => {
       return {
         ...acc,
@@ -285,8 +284,6 @@ export const getComponentBase = (base: string | string[]) => (theme: Theme) => {
       }
     }, {}),
   )(theme)
-
-  return Object.keys(styles)?.length > 0 ? styles : null
 }
 
 export { css, styled }
