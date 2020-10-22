@@ -42,7 +42,11 @@ export const buttonVariant = ({
   return _variant({ variant: variantProp, theme, variantKey, variants })
 }
 
-export type ButtonProps = KodiakUIProps
+export type ButtonProps = KodiakUIProps &
+  React.DetailedHTMLProps<
+    React.HTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  >
 
 /**
  * Button primitive component
