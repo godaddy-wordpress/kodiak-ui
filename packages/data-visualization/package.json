@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/data-visualization",
-  "version": "0.1.30",
+  "version": "0.1.31",
   "description": "Kodiak UI's data visualization components",
   "keywords": [
     "data-visualization",
@@ -25,13 +25,13 @@
     "react-dom": "^16.13.0"
   },
   "dependencies": {
-    "@kodiak-ui/hooks": "^0.14.0",
-    "@kodiak-ui/primitives": "^0.18.4",
-    "@kodiak-ui/progress": "^0.1.26"
+    "@kodiak-ui/hooks": "^0.14.1",
+    "@kodiak-ui/primitives": "^0.18.5",
+    "@kodiak-ui/progress": "^0.1.27"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/skyverge/kodiak-ui.git"
   },
-  "gitHead": "db343cc5f688d3491c37c6f51da940949e1e7e89"
+  "gitHead": "4930402ca69d23039bc3a2994b6449bb0c1d9adb"
 }
