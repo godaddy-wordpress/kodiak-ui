@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { Global, ThemeContext as EmotionContext } from '@emotion/core'
-import { css } from '@theme-ui/css'
-import { jsx, useComponents, useVariants, Theme } from '.'
+import { jsx, css, useComponents, useVariants, Theme } from '.'
 
 const GlobalStyles = ({ global }) =>
   jsx(Global, {

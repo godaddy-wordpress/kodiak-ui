@@ -9,15 +9,10 @@ import { ColorMode, ThemeUIStyleObject, Theme as ThemeUITheme } from './types'
 import { css } from './css'
 
 import './react-jsx'
+import { SxProps } from '../dist/kodiak-ui.cjs'
 
 export * from './provider'
 export * from './types'
-
-export type SxProps = {
-  sx?: ThemeUIStyleObject
-}
-
-export type SxStyleProp = ThemeUIStyleObject
 
 export type Variant = {
   [key: string]: ThemeUIStyleObject

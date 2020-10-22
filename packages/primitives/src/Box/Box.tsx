@@ -27,7 +27,10 @@ const boxVariant = ({ variant: variantProp, variantKey, variants, theme }) => {
   return _variant({ variant: variantProp, theme, variantKey, variants })
 }
 
-export type BoxProps = React.PropsWithChildren<KodiakUIProps & { as?: string }>
+export type BoxProps = React.PropsWithChildren<
+  KodiakUIProps & { as?: string }
+> &
+  React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>
 
 /**
  * Box primitive component which is the base component for
