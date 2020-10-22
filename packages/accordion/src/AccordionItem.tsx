@@ -1,23 +1,9 @@
 import * as React from 'react'
-import {
-  _variant,
-  VariantProps,
-  sx,
-  Theme,
-  css,
-  SerializedStyles,
-  styled,
-  SxStyleProp,
-} from 'kodiak-ui'
+import { _variant, sx, styled, KodiakUIProps } from 'kodiak-ui'
 
 export type AccordionItemProps = {
   children: React.ReactNode
-  sx?: SxStyleProp
-} & VariantProps
-
-export function base({ theme }: { theme: Theme }): SerializedStyles {
-  return css({})(theme)
-}
+} & KodiakUIProps
 
 export const AccordionItem = styled('div')<AccordionItemProps>(
   {
@@ -25,7 +11,6 @@ export const AccordionItem = styled('div')<AccordionItemProps>(
     margin: 0,
     minWidth: 0,
   },
-  base,
   ({
     variant: variantProp = 'accordionItem',
     variantKey = 'accordions',

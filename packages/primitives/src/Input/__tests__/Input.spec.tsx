@@ -10,7 +10,6 @@ describe('Input', () => {
     expect(renderer.create(<Input>Rendering input element</Input>).toJSON())
       .toMatchInlineSnapshot(`
       .emotion-0 {
-        box-sizing: border-box;
         margin: 0;
         min-width: 0;
         display: block;

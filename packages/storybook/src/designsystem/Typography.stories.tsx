@@ -8,7 +8,7 @@ export default {
 
 export function Intro() {
   return (
-    <Text p={4}>
+    <Text sx={{ p: 4 }}>
       Typography is the art and technique of arranging type to make written
       language legible, readable, and appealing when displayed.
     </Text>

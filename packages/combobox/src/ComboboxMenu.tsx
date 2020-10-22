@@ -6,7 +6,6 @@ import {
   sx,
   _variant as getVariantStyles,
   Theme,
-  SerializedStyles,
   VariantProps,
 } from 'kodiak-ui'
 
@@ -17,7 +16,7 @@ export interface ComboboxMenuProps
   children: React.ReactNode
 }
 
-export function base({ theme }: { theme: Theme }): SerializedStyles {
+export function base({ theme }: { theme: Theme }) {
   return css({
     borderRadius: 'default',
     boxShadow: '0px 2px 6px rgba(28, 56, 78, 0.25)',
@@ -38,7 +37,7 @@ function variant({
   variant: variantProp,
   variantKey,
   theme,
-}: { theme: Theme } & VariantProps): SerializedStyles {
+}: { theme: Theme } & VariantProps) {
   return getVariantStyles({ variant: variantProp, theme, variantKey })
 }
 

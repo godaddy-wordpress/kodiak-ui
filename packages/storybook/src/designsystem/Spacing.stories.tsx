@@ -8,7 +8,7 @@ export default {
 }
 
 export function Intro() {
-  return <Text p={4}>Spacing as defined for padding and margins.</Text>
+  return <Text sx={{ p: 4 }}>Spacing as defined for padding and margins.</Text>
 }
 
 export function Spacing() {

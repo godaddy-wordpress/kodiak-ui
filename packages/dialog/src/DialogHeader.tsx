@@ -1,8 +1,6 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
-import { css, Theme } from 'theme-ui'
-import { SerializedStyles } from '@emotion/serialize'
-import { _variant, VariantProps, sx } from 'kodiak-ui'
+import { _variant, VariantProps, sx, Theme, css } from 'kodiak-ui'
 import { VisuallyHidden, SvgIcon } from '@kodiak-ui/primitives'
 
 type DialogHeaderProps = {
@@ -10,7 +8,7 @@ type DialogHeaderProps = {
   onDismiss?: () => void | undefined
 } & VariantProps
 
-const baseStyles = ({ theme }: { theme: Theme }): SerializedStyles =>
+const baseStyles = ({ theme }: { theme: Theme }) =>
   css({
     alignItems: 'flex-start',
     background: 'white',
@@ -33,13 +31,12 @@ const StyledDialogHeader = styled('header')<DialogHeaderProps>(
   sx,
 )
 
-const StyledCloseButton = styled('button')(
-  ({ theme }: { theme: Theme }): SerializedStyles =>
-    css({
-      background: 'none',
-      border: 'none',
-      padding: 0,
-    })(theme),
+const StyledCloseButton = styled('button')(({ theme }: { theme: Theme }) =>
+  css({
+    background: 'none',
+    border: 'none',
+    padding: 0,
+  })(theme),
 )
 
 export function DialogHeader({

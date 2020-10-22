@@ -1,13 +1,18 @@
 import styled from '@emotion/styled'
-import { css, Theme } from 'theme-ui'
-import { SerializedStyles } from '@emotion/serialize'
-import { _variant, VariantProps, sx, shouldForwardProp } from 'kodiak-ui'
+import {
+  _variant,
+  VariantProps,
+  sx,
+  shouldForwardProp,
+  css,
+  Theme,
+} from 'kodiak-ui'
 
 type DialogContentProps = {
   children: React.ReactNode
 } & VariantProps
 
-const baseStyles = ({ theme }: { theme: Theme }): SerializedStyles =>
+const baseStyles = ({ theme }: { theme: Theme }) =>
   css({
     background: 'white',
     padding: 4,

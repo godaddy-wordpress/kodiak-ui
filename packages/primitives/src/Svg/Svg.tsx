@@ -1,7 +1,5 @@
 import styled from '@emotion/styled'
-import { Theme, css, SxStyleProp } from 'theme-ui'
-import { SerializedStyles } from '@emotion/serialize'
-import { _variant, VariantProps, sx } from 'kodiak-ui'
+import { _variant, VariantProps, sx, css, SxProps, Theme } from 'kodiak-ui'
 
 /**
  * base
@@ -10,15 +8,14 @@ import { _variant, VariantProps, sx } from 'kodiak-ui'
  *
  * @param props
  */
-export const baseStyles = ({ theme }: { theme: Theme }): SerializedStyles =>
+export const baseStyles = ({ theme }: { theme: Theme }) =>
   css({
     fill: 'currentColor',
     color: 'black',
     display: 'block',
   })(theme)
 
-type SvgProps = React.SVGProps<SVGSVGElement> &
-  VariantProps & { sx?: SxStyleProp }
+type SvgProps = React.SVGProps<SVGSVGElement> & VariantProps & SxProps
 
 /**
  * Box primitive component which is the base component for

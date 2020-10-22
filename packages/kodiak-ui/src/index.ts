@@ -1,45 +1,43 @@
 import * as React from 'react'
 import { jsx as emotion, InterpolationWithTheme } from '@emotion/core'
-import { SerializedStyles } from '@emotion/serialize'
 import styled from '@emotion/styled'
-import {
-  css,
-  ThemeUIStyleObject,
-  ColorMode,
-  Theme as ThemeUiTheme,
-  SxStyleProp,
-} from '@theme-ui/css'
 import { createShouldForwardProp } from '@styled-system/should-forward-prop'
 import create from 'zustand'
 import createVanilla from 'zustand/vanilla'
 import themeDefault from './theme-default'
+import { ColorMode, ThemeUIStyleObject, Theme as ThemeUITheme } from './types'
+import { css } from './css'
 
 import './react-jsx'
 
 export * from './provider'
-
-export type { SerializedStyles } from '@emotion/serialize'
-export type { SxStyleProp } from '@theme-ui/css'
-
-export type StyleObject = ThemeUIStyleObject
+export * from './types'
 
 export type SxProps = {
-  sx?: StyleObject
+  sx?: ThemeUIStyleObject
 }
 
+export type SxStyleProp = ThemeUIStyleObject
+
 export type Variant = {
-  [key: string]: StyleObject
+  [key: string]: ThemeUIStyleObject
 }
 
 export type Component = {
-  [key: string]: StyleObject
+  [key: string]: ThemeUIStyleObject
 }
 
 export type KodiakState = {
   variants: Variant
   components: Component
-  variant: (key: string, styles: StyleObject) => Variant
-  component: (key: string, styles: StyleObject) => Component
+  variant: (
+    key: string,
+    styles: ThemeUIStyleObject,
+  ) => { key: string; styles: ThemeUIStyleObject }
+  component: (
+    key: string,
+    styles: ThemeUIStyleObject,
+  ) => { key: string; styles: ThemeUIStyleObject }
 }
 
 export type ScaleArray<T> = T[]
@@ -57,10 +55,10 @@ export type ScaleColorMode = ColorMode & {
   }
 }
 
-export type GlobalStylesObject = { [k: string]: StyleObject }
+export type GlobalStylesObject = { [k: string]: ThemeUIStyleObject }
 
 type System = Omit<
-  ThemeUiTheme,
+  Theme,
   | 'initialColorModeName'
   | 'useBodyStyles'
   | 'useBorderBox'
@@ -70,7 +68,7 @@ type System = Omit<
 >
 
 type ConfigurationOptions = Pick<
-  ThemeUiTheme,
+  ThemeUITheme,
   | 'initialColorModeName'
   | 'useBodyStyles'
   | 'useBorderBox'
@@ -81,26 +79,26 @@ type ConfigurationOptions = Pick<
 
 export type CreateDesignSystemOptions = {
   system?: System
-  global?: { [key: string]: StyleObject }
+  global?: { [key: string]: ThemeUIStyleObject }
   options?: ConfigurationOptions
 }
 
 export type GlobalStyleObject = {
-  [key: string]: StyleObject
+  [key: string]: ThemeUIStyleObject
 }
 
-export type Theme = ThemeUiTheme & { global?: GlobalStyleObject }
+export type Theme = ThemeUITheme & { global?: GlobalStyleObject }
 
 export const Store = createVanilla<KodiakState>(set => ({
   variants: null,
   components: null,
-  variant: (key: string, styles: StyleObject) => {
+  variant: (key: string, styles: ThemeUIStyleObject) => {
     set((state: KodiakState) => ({
       variants: { ...state.variants, [key]: styles },
     }))
     return { key, styles }
   },
-  component: (key: string, styles: StyleObject) => {
+  component: (key: string, styles: ThemeUIStyleObject) => {
     set((state: KodiakState) => ({
       components: { ...state.components, [key]: styles },
     }))
@@ -113,9 +111,9 @@ export const component = Store.getState().component
 
 export const useKodiakStore = create(Store)
 
-export function useVariant(variant: Variant): StyleObject {
+export function useVariant(variant: Variant): ThemeUIStyleObject {
   const variants = Store.getState().variants
-  return variants?.[variant?.key] || null
+  return variants?.[(variant?.key as unknown) as string] || null
 }
 
 export function useVariants() {
@@ -124,7 +122,7 @@ export function useVariants() {
 
 export function useComponent(component: Component) {
   const components = Store.getState().components
-  return components?.[component?.key] || null
+  return components?.[(component?.key as unknown) as string] || null
 }
 
 export function useComponents() {
@@ -179,13 +177,7 @@ export function createDesignSystem({
 export const shouldForwardProp = createShouldForwardProp([])
 
 // based on https://github.com/developit/dlv
-export const get = (
-  obj: Record<string, unknown>,
-  key: any,
-  def?: any,
-  p?: any,
-  undef?: any,
-) => {
+export const get = (obj: Theme, key: any, def?: any, p?: any, undef?: any) => {
   key = key && key.split ? key.split('.') : [key]
   for (p = 0; p < key.length; p++) {
     obj = obj ? obj[key[p]] : undef
@@ -200,8 +192,8 @@ export const get = (
  *
  * @param props any
  */
-export function sx(props: any): SerializedStyles {
-  return css(props.sx)(props.theme)
+export function sx({ sx, theme }: { sx?: any; theme: any }): any {
+  return css(sx)(theme)
 }
 
 /**
@@ -229,7 +221,9 @@ export interface VariantProps {
   variants?: string | string[]
 }
 
-export type BaseProp = { base?: string | string[]; __base?: SxStyleProp }
+export type BaseProp = { base?: string | string[]; __base?: ThemeUIStyleObject }
+
+export type KodiakUIProps = BaseProp & VariantProps & SxProps
 
 /**
  * Legacy method for getting variants from a theme

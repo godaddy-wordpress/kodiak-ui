@@ -1,8 +1,13 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
-import { Theme, css } from 'theme-ui'
-import { SerializedStyles } from '@emotion/serialize'
-import { _variant, VariantProps, sx } from 'kodiak-ui'
+import {
+  _variant,
+  VariantProps,
+  sx,
+  Theme,
+  css,
+  KodiakUIProps,
+} from 'kodiak-ui'
 import { Flex } from '../Flex'
 import { SvgIcon } from '../Svg'
 
@@ -14,7 +19,7 @@ import { SvgIcon } from '../Svg'
  *
  * @param props
  */
-export const baseStyles = ({ theme }: { theme: Theme }): SerializedStyles =>
+export const baseStyles = ({ theme }: { theme: Theme }) =>
   css({
     width: '100%',
     p: 2,
@@ -27,11 +32,9 @@ export const baseStyles = ({ theme }: { theme: Theme }): SerializedStyles =>
     bg: 'transparent',
   })(theme)
 
-type SelectProps = {
-  children: React.ReactNodeArray
-} & VariantProps
+type SelectProps = React.PropsWithChildren<KodiakUIProps>
 
-export const SelectStyled = styled<'select', SelectProps>('select')(
+export const SelectStyled = styled('select')<SelectProps>(
   {
     boxSizing: 'border-box',
     margin: 0,

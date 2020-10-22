@@ -1,15 +1,6 @@
 import * as React from 'react'
-import { getVariants } from 'kodiak-ui'
-import {
-  _variant,
-  sx,
-  BaseProp,
-  VariantProps,
-  shouldForwardProp,
-  styled,
-  getComponentBase,
-  css,
-} from 'kodiak-ui'
+import { getVariants, KodiakUIProps } from 'kodiak-ui'
+import { _variant, sx, styled, getComponentBase, css } from 'kodiak-ui'
 import { useWrappedEventHandler } from '@kodiak-ui/hooks/use-event-logger'
 
 /**
@@ -22,7 +13,7 @@ import { useWrappedEventHandler } from '@kodiak-ui/hooks/use-event-logger'
  */
 export function base({ theme, base }) {
   const styles = getComponentBase(base ? base : 'button')(theme)
-  if (!styles) {
+  if (!styles || Object.keys(styles)?.length === 0) {
     return css({
       px: 3,
       py: 2,
@@ -51,16 +42,12 @@ export const buttonVariant = ({
   return _variant({ variant: variantProp, theme, variantKey, variants })
 }
 
-export type ButtonProps = React.HTMLProps<HTMLButtonElement> &
-  VariantProps &
-  BaseProp & { type: string }
+export type ButtonProps = KodiakUIProps
 
 /**
  * Button primitive component
  */
-export const StyledButton = styled('button', {
-  shouldForwardProp,
-})(
+export const StyledButton = styled('button')<ButtonProps>(
   {
     appearance: 'none',
     cursor: 'pointer',

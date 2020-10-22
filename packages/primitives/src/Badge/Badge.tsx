@@ -1,6 +1,5 @@
 import * as React from 'react'
-import { SxStyleProp } from 'theme-ui'
-import { VariantProps } from 'kodiak-ui'
+import { KodiakUIProps, ThemeUIStyleObject } from 'kodiak-ui'
 import { Box } from '../Box'
 import { Text } from '../Text'
 
@@ -14,7 +13,7 @@ function getPositionStyles({
   count: number
   position: Position
   showZero: boolean
-}): SxStyleProp {
+}): ThemeUIStyleObject {
   const scale = (count === 0 && showZero) || count > 0 ? 'scale(1)' : 'scale(0)'
 
   switch (position) {
@@ -55,13 +54,13 @@ function getPositionStyles({
   }
 }
 
-export type BadgeProps = {
+export type BadgeProps = KodiakUIProps & {
   count: number
   max?: number
   position?: Position
   showZero?: boolean
-  children: React.ReactNode
-} & VariantProps
+  children?: React.ReactNode
+}
 
 export const Badge = React.forwardRef(function Badge(
   {

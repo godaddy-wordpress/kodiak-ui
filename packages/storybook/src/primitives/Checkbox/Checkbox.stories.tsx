@@ -12,11 +12,11 @@ export default {
 export function Initial() {
   return (
     <>
-      <Label display="flex" alignItems="center">
+      <Label sx={{ display: 'flex', alignItems: 'center' }}>
         <Checkbox variant="checkbox" name="dark-mode" defaultChecked={true} />
         Dark Mode
       </Label>
-      <Label display="flex" alignItems="center">
+      <Label sx={{ display: 'flex', alignItems: 'center' }}>
         <Checkbox name="dark-mode" />
         Light Mode
       </Label>

@@ -1,8 +1,8 @@
 import * as React from 'react'
-import { SxStyleProp } from 'theme-ui'
 import { useId } from '@kodiak-ui/hooks'
 import { hasKey } from './utils'
 import { useRowSelect, createRowState, SelectedRowsState } from './useRowSelect'
+import { SxProps } from 'kodiak-ui'
 
 export type ID = string | number
 export type Scope = 'col' | 'row'
@@ -51,9 +51,8 @@ export interface UseTableProps<T> {
 
 export type GetTableProps = {
   id: string
-  sx: SxStyleProp
   'aria-describedby'?: string
-}
+} & SxProps
 
 export interface UseTableReturnValue {
   headers: Header[]

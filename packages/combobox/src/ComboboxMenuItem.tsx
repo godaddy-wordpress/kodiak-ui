@@ -7,7 +7,6 @@ import {
   styled,
   Theme,
   css,
-  SerializedStyles,
 } from 'kodiak-ui'
 
 export type ComboboxMenuItemProps = {
@@ -24,7 +23,7 @@ export type ComboboxMenuItemProps = {
  *
  * @param props
  */
-export function base({ theme }: { theme: Theme }): SerializedStyles {
+export function base({ theme }: { theme: Theme }) {
   return css({
     color: 'text',
     cursor: 'pointer',
@@ -38,7 +37,7 @@ function variant({
   variant: variantProp,
   variantKey,
   theme,
-}: { theme: Theme } & VariantProps): SerializedStyles {
+}: { theme: Theme } & VariantProps) {
   return getVariantStyles({ variant: variantProp, theme, variantKey })
 }
 

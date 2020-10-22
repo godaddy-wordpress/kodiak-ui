@@ -6,15 +6,15 @@ import {
   sx,
   Theme,
   css,
-  SerializedStyles,
   styled,
+  KodiakUIProps,
 } from 'kodiak-ui'
 import { Box } from '@kodiak-ui/primitives/box'
 
 export type SelectMenuProps = {
   ref: React.Ref<HTMLUListElement>
   children: React.ReactNode
-} & VariantProps &
+} & KodiakUIProps &
   UseSelectGetMenuPropsOptions
 
 /**
@@ -25,7 +25,7 @@ export type SelectMenuProps = {
  *
  * @param props
  */
-export function base({ theme }: { theme: Theme }): SerializedStyles {
+export function base({ theme }: { theme: Theme }) {
   return css({
     borderTop: 0,
     background: 'white',
@@ -50,7 +50,7 @@ function variant({
   variant: variantProp,
   variantKey,
   theme,
-}: { theme: Theme } & VariantProps): SerializedStyles {
+}: { theme: Theme } & VariantProps) {
   return getVariantStyles({ variant: variantProp, theme, variantKey })
 }
 

@@ -1,14 +1,6 @@
 import * as React from 'react'
 import { keyframes } from '@emotion/core'
-import {
-  _variant,
-  VariantProps,
-  styled,
-  css,
-  sx,
-  Theme,
-  SerializedStyles,
-} from 'kodiak-ui'
+import { _variant, VariantProps, styled, css, sx, Theme } from 'kodiak-ui'
 import { Box } from '../Box'
 
 const loadingDotAnimations = keyframes`
@@ -44,7 +36,7 @@ export type DotLoadingIndicatorProps = {
   delay?: number
 } & VariantProps
 
-function base({ theme }: { theme: Theme }): SerializedStyles {
+function base({ theme }: { theme: Theme }) {
   return css({
     label: 'loadingIndicator',
     display: 'flex',

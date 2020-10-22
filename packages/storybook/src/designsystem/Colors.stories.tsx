@@ -12,7 +12,9 @@ export default {
 }
 
 export function Intro() {
-  return <Text p={4}>The color palette shows the availble color system</Text>
+  return (
+    <Text sx={{ p: 4 }}>The color palette shows the availble color system</Text>
+  )
 }
 
 type ColorSwatchProps = {
@@ -70,9 +72,8 @@ function ColorSwatches({ colorsArray, colorName }: ColorSwatchesProps) {
     <Flex sx={{ flexDirection: 'column', width: '100%' }} key={colorName}>
       <Box sx={{ borderLeft: '2px solid', borderLeftColor, mt: 8 }}>
         <Text
-          ml={3}
           variant="text.heading"
-          sx={{ textTransform: 'capitalize' }}
+          sx={{ ml: 3, textTransform: 'capitalize' }}
         >
           {colorName}
         </Text>

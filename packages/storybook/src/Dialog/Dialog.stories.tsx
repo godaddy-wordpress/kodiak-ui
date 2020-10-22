@@ -21,10 +21,10 @@ export function Initial() {
         isOpen={isOpen}
         title={
           <div>
-            <Text as="h3" mb={2}>
+            <Text as="h3" sx={{ mb: 2 }}>
               Testing
             </Text>
-            <Text mb={0}>Testing some text</Text>
+            <Text sx={{ mb: 0 }}>Testing some text</Text>
           </div>
         }
         // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -88,7 +88,7 @@ export function Expanding() {
           </Button>
           {displayMoreContent && (
             <>
-              <Text as="p" mt={2} mb={2}>
+              <Text as="p" sx={{ my: 2 }}>
                 Contrary to popular belief, Lorem Ipsum is not simply random
                 text. It has roots in a piece of classical Latin literature from
                 45 BC, making it over 2000 years old. Richard McClintock, a
@@ -108,7 +108,7 @@ export function Expanding() {
                 exact original form, accompanied by English versions from the
                 1914 translation by H. Rackham.
               </Text>
-              <Text as="p" mt={2} mb={2}>
+              <Text as="p" sx={{ my: 2 }}>
                 Contrary to popular belief, Lorem Ipsum is not simply random
                 text. It has roots in a piece of classical Latin literature from
                 45 BC, making it over 2000 years old. Richard McClintock, a
@@ -128,7 +128,7 @@ export function Expanding() {
                 exact original form, accompanied by English versions from the
                 1914 translation by H. Rackham.
               </Text>
-              <Text as="p" mt={2} mb={2}>
+              <Text as="p" sx={{ my: 2 }}>
                 Contrary to popular belief, Lorem Ipsum is not simply random
                 text. It has roots in a piece of classical Latin literature from
                 45 BC, making it over 2000 years old. Richard McClintock, a
@@ -214,10 +214,10 @@ export function BlockDismiss() {
         isOpen={isOpen}
         title={
           <div>
-            <Text as="h3" mb={2}>
+            <Text as="h3" sx={{ mb: 2 }}>
               Testing
             </Text>
-            <Text mb={0}>Testing some text</Text>
+            <Text sx={{ mb: 0 }}>Testing some text</Text>
           </div>
         }
         onOverlayDismiss={() => alert('blocked from overlay and ESC closing')}

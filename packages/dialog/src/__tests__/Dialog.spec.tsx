@@ -21,10 +21,10 @@ function DialogExample({
         onOverlayDismiss={onOverlayDismiss}
         title={
           <div>
-            <Text as="h3" mb={2}>
+            <Text as="h3" sx={{ mb: 2 }}>
               Testing
             </Text>
-            <Text mb={0}>Testing some text</Text>
+            <Text sx={{ mb: 0 }}>Testing some text</Text>
           </div>
         }
         // eslint-disable-next-line @typescript-eslint/no-empty-function

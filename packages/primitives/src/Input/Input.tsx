@@ -1,6 +1,4 @@
 import styled from '@emotion/styled'
-import { Theme, css } from 'theme-ui'
-import { SerializedStyles } from '@emotion/serialize'
 import {
   _variant,
   sx,
@@ -9,6 +7,10 @@ import {
   BaseProp,
   SxStyleProp,
   getComponentBase,
+  ThemeUIStyleObject,
+  Theme,
+  css,
+  KodiakUIProps,
 } from 'kodiak-ui'
 
 /**
@@ -19,7 +21,7 @@ import {
  *
  * @param props
  */
-export const baseStyles = ({ theme }: { theme: Theme }): SerializedStyles =>
+export const baseStyles = ({ theme }: { theme: Theme }) =>
   css({
     display: 'block',
     width: '100%',
@@ -33,7 +35,15 @@ export const baseStyles = ({ theme }: { theme: Theme }): SerializedStyles =>
     bg: 'transparent',
   })(theme)
 
-function base({ theme, __base, base }) {
+function base({
+  theme,
+  __base,
+  base,
+}: {
+  theme: Theme
+  __base?: ThemeUIStyleObject
+  base: string | string[]
+}) {
   const styles = getComponentBase(base ? base : 'input')(theme)
   if (Object.keys(styles)?.length === 0) {
     return css(__base)(theme)
@@ -54,10 +64,7 @@ const inputVariant = ({
   return _variant({ variant: variantProp, theme, variantKey, variants })
 }
 
-export type InputProps = BaseProp &
-  VariantProps &
-  SxStyleProp &
-  React.HTMLProps<HTMLInputElement>
+export type InputProps = KodiakUIProps
 
 /**
  * Box primitive component which is the base component for
@@ -65,7 +72,6 @@ export type InputProps = BaseProp &
  */
 export const Input = styled('input')<InputProps>(
   {
-    boxSizing: 'border-box',
     margin: 0,
     minWidth: 0,
   },

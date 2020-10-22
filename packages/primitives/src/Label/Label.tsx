@@ -1,12 +1,10 @@
 import styled from '@emotion/styled'
 import {
   _variant,
-  VariantProps,
   sx,
-  SxStyleProp,
-  BaseProp,
   getComponentBase,
   getVariants,
+  KodiakUIProps,
 } from 'kodiak-ui'
 import { css } from 'theme-ui'
 
@@ -16,10 +14,7 @@ import { css } from 'theme-ui'
  * all of the HTML Label Props
  */
 
-export type LabelProps = BaseProp &
-  VariantProps &
-  SxStyleProp &
-  React.HTMLProps<HTMLLabelElement>
+export type LabelProps = KodiakUIProps
 
 function base({ theme, __base, base }) {
   const styles = getComponentBase(base ? base : 'label')(theme)
@@ -42,7 +37,7 @@ const labelVariant = ({
   return _variant({ variant: variantProp, theme, variantKey, variants })
 }
 
-export const Label = styled<'label', LabelProps>('label')(
+export const Label = styled('label')<LabelProps>(
   {
     boxSizing: 'border-box',
     display: 'inline-block',

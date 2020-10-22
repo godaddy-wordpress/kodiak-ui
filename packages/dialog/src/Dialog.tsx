@@ -1,13 +1,11 @@
 import * as React from 'react'
-import { css, Theme } from 'theme-ui'
 import { Global } from '@emotion/core'
 import styled from '@emotion/styled'
-import { SerializedStyles } from '@emotion/serialize'
 import {
   DialogOverlay as ReachDialogOverlay,
   DialogContent as ReachDialogContent,
 } from '@reach/dialog'
-import { _variant, VariantProps, sx } from 'kodiak-ui'
+import { _variant, VariantProps, css, Theme, sx } from 'kodiak-ui'
 import { DialogHeader } from './DialogHeader'
 
 type DialogProps = {
@@ -21,14 +19,14 @@ type DialogProps = {
   >['onDismiss']
 } & VariantProps
 
-const globalStyles = ({ theme }: { theme: Theme }): SerializedStyles =>
+const globalStyles = ({ theme }: { theme: Theme }) =>
   css({
     ':root': {
       '--reach-dialog': 1,
     },
   })(theme)
 
-const overlayStyles = ({ theme }: { theme: Theme }): SerializedStyles =>
+const overlayStyles = ({ theme }: { theme: Theme }) =>
   css({
     background: 'hsla(0, 0%, 0%, 0.33)',
     bottom: 0,
@@ -40,7 +38,7 @@ const overlayStyles = ({ theme }: { theme: Theme }): SerializedStyles =>
     zIndex: 1000002,
   })(theme)
 
-const containerStyles = ({ theme }: { theme: Theme }): SerializedStyles =>
+const containerStyles = ({ theme }: { theme: Theme }) =>
   css({
     background: 'white',
     borderRadius: 'default',
