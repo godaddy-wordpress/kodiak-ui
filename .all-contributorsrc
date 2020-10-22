@@ -37,6 +37,15 @@
       "contributions": [
         "test"
       ]
+    },
+    {
+      "login": "lukasslivko",
+      "name": "lukasslivko",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/72021800?v=4",
+      "profile": "https://github.com/lukasslivko",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
