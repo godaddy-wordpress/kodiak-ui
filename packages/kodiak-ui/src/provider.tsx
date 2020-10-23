@@ -16,11 +16,6 @@ const GlobalStyles = ({ global }) =>
     },
   })
 
-interface ProviderProps {
-  theme: Theme
-  children?: React.ReactNode
-}
-
 export interface ContextValue {
   theme: Theme
 }
@@ -31,7 +26,7 @@ export const Context = React.createContext<ContextValue>({
 
 export const useKodiakUi = () => React.useContext(Context)
 
-export function Provider({ theme: base, children }: ProviderProps) {
+export function Provider({ theme: base, children }) {
   const variants = useVariants()
   const components = useComponents()
 

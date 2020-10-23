@@ -1,6 +1,13 @@
 import * as React from 'react'
-import { getVariants, KodiakUIProps } from 'kodiak-ui'
-import { _variant, sx, styled, getComponentBase, css } from 'kodiak-ui'
+import {
+  _variant,
+  sx,
+  styled,
+  getComponentBase,
+  getVariants,
+  css,
+  KodiakUIProps,
+} from 'kodiak-ui'
 import { useWrappedEventHandler } from '@kodiak-ui/hooks/use-event-logger'
 
 /**
