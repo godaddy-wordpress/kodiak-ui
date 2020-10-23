@@ -1,18 +1,23 @@
-import * as React from 'react'
-import { jsx as emotion, InterpolationWithTheme } from '@emotion/core'
+// import { jsx as emotion, InterpolationWithTheme } from '@emotion/core'
 import styled from '@emotion/styled'
 import { createShouldForwardProp } from '@styled-system/should-forward-prop'
 import create from 'zustand'
 import createVanilla from 'zustand/vanilla'
 import themeDefault from './theme-default'
-import { ColorMode, ThemeUIStyleObject, Theme as ThemeUITheme } from './types'
-import { css } from './css'
+import { SxProps } from '@theme-ui/core'
+import { css, ThemeUIStyleObject, Theme as ThemeUITheme } from '@theme-ui/css'
+// import { ColorMode, ThemeUIStyleObject, Theme as ThemeUITheme } from './types'
+// import { css } from './css'
 
-import './react-jsx'
-import { SxProps } from '../dist/kodiak-ui.cjs'
+// import './react-jsx'
+
+// export * from '@theme-ui/core'
+export { jsx } from '@theme-ui/core'
+export type { SxProps, SxStyleProp } from '@theme-ui/core'
+export * from '@theme-ui/css'
 
 export * from './provider'
-export * from './types'
+// export * from './types'
 
 export type Variant = {
   [key: string]: ThemeUIStyleObject
@@ -35,32 +40,32 @@ export type KodiakState = {
   ) => { key: string; styles: ThemeUIStyleObject }
 }
 
-export type ScaleArray<T> = T[]
-export type ScaleObject<T> = { [K: string]: T | Scale<T>; [I: number]: T }
-export type Scale<T> = ScaleArray<T> | ScaleObject<T>
-export type TLength = string | 0 | number
+// export type ScaleArray<T> = T[]
+// export type ScaleObject<T> = { [K: string]: T | Scale<T>; [I: number]: T }
+// export type Scale<T> = ScaleArray<T> | ScaleObject<T>
+// export type TLength = string | 0 | number
 
-export type ScaleColorMode = ColorMode & {
-  /**
-   * Nested color modes can provide overrides when used in conjunction with
-   * `Theme.initialColorModeName and `useColorMode()`
-   */
-  modes?: {
-    [k: string]: ColorMode
-  }
-}
+// export type ScaleColorMode = ColorMode & {
+//   /**
+//    * Nested color modes can provide overrides when used in conjunction with
+//    * `Theme.initialColorModeName and `useColorMode()`
+//    */
+//   modes?: {
+//     [k: string]: ColorMode
+//   }
+// }
 
-export type GlobalStylesObject = { [k: string]: ThemeUIStyleObject }
+// export type GlobalStylesObject = { [k: string]: ThemeUIStyleObject }
 
-type System = Omit<
-  Theme,
-  | 'initialColorModeName'
-  | 'useBodyStyles'
-  | 'useBorderBox'
-  | 'useCustomProperties'
-  | 'useColorSchemeMediaQuery'
-  | 'useLocalStorage'
->
+// type System = Omit<
+//   Theme,
+//   | 'initialColorModeName'
+//   | 'useBodyStyles'
+//   | 'useBorderBox'
+//   | 'useCustomProperties'
+//   | 'useColorSchemeMediaQuery'
+//   | 'useLocalStorage'
+// >
 
 type ConfigurationOptions = Pick<
   ThemeUITheme,
@@ -124,30 +129,30 @@ export function useComponents() {
   return Store.getState().components
 }
 
-const getCSS = props => {
-  if (!props.sx && !props.css) return undefined
-  return theme => {
-    const styles = css(props.sx)(theme)
-    const raw = typeof props.css === 'function' ? props.css(theme) : props.css
-    return [styles, raw]
-  }
-}
+// const getCSS = props => {
+//   if (!props.sx && !props.css) return undefined
+//   return theme => {
+//     const styles = css(props.sx)(theme)
+//     const raw = typeof props.css === 'function' ? props.css(theme) : props.css
+//     return [styles, raw]
+//   }
+// }
 
-const parseProps = props => {
-  if (!props) return null
-  const next: typeof props & { css?: InterpolationWithTheme<any> } = {}
-  for (const key in props) {
-    if (key === 'sx') continue
-    next[key] = props[key]
-  }
-  const css = getCSS(props)
-  if (css) next.css = css
-  return next
-}
+// const parseProps = props => {
+//   if (!props) return null
+//   const next: typeof props & { css?: InterpolationWithTheme<any> } = {}
+//   for (const key in props) {
+//     if (key === 'sx') continue
+//     next[key] = props[key]
+//   }
+//   const css = getCSS(props)
+//   if (css) next.css = css
+//   return next
+// }
 
-export function jsx(type: any, props: any, ...children: React.ReactNode[]) {
-  return emotion.apply(undefined, [type, parseProps(props), ...children])
-}
+// export function jsx(type: any, props: any, ...children: React.ReactNode[]) {
+//   return emotion.apply(undefined, [type, parseProps(props), ...children])
+// }
 
 export function createDesignSystem({
   system,

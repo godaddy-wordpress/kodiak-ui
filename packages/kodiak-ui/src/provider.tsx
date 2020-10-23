@@ -1,6 +1,8 @@
 import * as React from 'react'
 import { Global, ThemeContext as EmotionContext } from '@emotion/core'
-import { jsx, css, useComponents, useVariants, Theme } from '.'
+import { jsx } from '@theme-ui/core'
+import { css, Theme } from '@theme-ui/css'
+import { useComponents, useVariants } from '.'
 
 const GlobalStyles = ({ global }) =>
   jsx(Global, {
@@ -16,11 +18,11 @@ const GlobalStyles = ({ global }) =>
     },
   })
 
-export interface ContextValue {
+interface ContextValue {
   theme: Theme
 }
 
-export const Context = React.createContext<ContextValue>({
+const Context = React.createContext<ContextValue>({
   theme: {},
 })
 
@@ -41,13 +43,9 @@ export function Provider({ theme: base, children }) {
   return jsx(
     EmotionContext.Provider,
     { value: theme },
-    jsx(
-      Context.Provider,
-      {
-        value: theme,
-      },
-      jsx(GlobalStyles, { global }),
+    jsx(Context.Provider, {
+      value: theme,
       children,
-    ),
+    }),
   )
 }

@@ -12,7 +12,7 @@ component('button', {
   border: 0,
   borderRadius: 'default',
   '&:hover': {
-    bg: 'secondary',
+    bg: 'black',
   },
 })
 
@@ -21,7 +21,7 @@ component('link', {
 })
 
 variant('lg', { p: 4 })
-variant('danger', { bg: 'red' })
+variant('danger', { bg: 'danger' })
 variant('secondary', {
   bg: 'transparent',
   border: '1px solid',

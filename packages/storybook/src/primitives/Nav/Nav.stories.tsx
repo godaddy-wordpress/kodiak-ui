@@ -276,7 +276,7 @@ export function ResponsiveHorizontalNav() {
         aria-label="Simple styled menu"
         sx={{
           display: [false ? 'flex' : 'none', 'flex'],
-          flexDirection: [isNavOpen && 'column', 'row'],
+          flexDirection: [isNavOpen ? 'column' : 'row', 'row'],
           justifyContent: 'flex-end',
           alignItems: 'center',
         }}

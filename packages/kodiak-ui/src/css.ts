@@ -272,6 +272,7 @@ export const css = (args: ThemeUIStyleObject = {}) => (
     ...defaultTheme,
     ...('theme' in props ? props.theme : props),
   }
+  console.log(theme)
   let result: CSSObject = {}
   const obj = typeof args === 'function' ? args(theme) : args
   const styles = responsive(obj)(theme)

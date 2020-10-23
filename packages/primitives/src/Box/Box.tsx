@@ -2,12 +2,10 @@ import styled from '@emotion/styled'
 import * as React from 'react'
 import { css } from 'theme-ui'
 import {
-  BaseProp,
   getComponentBase,
   getVariants,
   KodiakUIProps,
   sx,
-  VariantProps,
   _variant,
 } from 'kodiak-ui'
 

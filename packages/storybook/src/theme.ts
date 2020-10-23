@@ -232,22 +232,6 @@ const bannerMessages = {
   },
 }
 
-const buttons = {
-  secondary: {
-    bg: 'transparent',
-    border: '1px solid',
-    borderColor: baseColors.ink[4],
-    color: baseColors.ink[1],
-  },
-  shadow: {
-    bg: 'transparent',
-    borderColor: 'none',
-    color: baseColors.ink[1],
-    padding: '0',
-    border: 'none',
-  },
-}
-
 const stats = {
   borderColor: 'gray.2',
   border: '1px solid',
@@ -627,7 +611,6 @@ export const theme = {
   dialogs,
   messages,
   bannerMessages,
-  buttons,
   selects,
   skeletons,
   accordions,
