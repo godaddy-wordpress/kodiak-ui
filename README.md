@@ -1,6 +1,6 @@
 <p align="center">
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
   <a href="https://skyverge.com">
     <img src="https://user-images.githubusercontent.com/1162694/74063113-c6bad100-49bd-11ea-982d-3c4b17df80ab.png" alt="SkyVerge" />
@@ -81,6 +81,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://jilt.com"><img src="https://avatars0.githubusercontent.com/u/1162694?v=4" width="100px;" alt=""/><br /><sub><b>Wesley Cole</b></sub></a><br /><a href="https://github.com/skyverge/kodiak-ui/commits?author=wesleycole" title="Code">💻</a> <a href="#ideas-wesleycole" title="Ideas, Planning, & Feedback">🤔</a> <a href="#maintenance-wesleycole" title="Maintenance">🚧</a> <a href="https://github.com/skyverge/kodiak-ui/pulls?q=is%3Apr+reviewed-by%3Awesleycole" title="Reviewed Pull Requests">👀</a></td>
     <td align="center"><a href="https://github.com/TAYTS"><img src="https://avatars0.githubusercontent.com/u/29126748?v=4" width="100px;" alt=""/><br /><sub><b>TAY TS</b></sub></a><br /><a href="https://github.com/skyverge/kodiak-ui/commits?author=TAYTS" title="Tests">⚠️</a></td>
     <td align="center"><a href="https://github.com/lukasslivko"><img src="https://avatars1.githubusercontent.com/u/72021800?v=4" width="100px;" alt=""/><br /><sub><b>lukasslivko</b></sub></a><br /><a href="https://github.com/skyverge/kodiak-ui/commits?author=lukasslivko" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/binkpitch"><img src="https://avatars0.githubusercontent.com/u/20456165?v=4" width="100px;" alt=""/><br /><sub><b>Bink</b></sub></a><br /><a href="https://github.com/skyverge/kodiak-ui/commits?author=binkpitch" title="Tests">⚠️</a></td>
   </tr>
 </table>
 
