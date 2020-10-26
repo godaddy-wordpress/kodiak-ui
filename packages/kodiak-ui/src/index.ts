@@ -10,7 +10,7 @@ import {
   Theme as ThemeUITheme,
   SxProps,
 } from './types'
-import { css } from './css'
+import { get, css } from './css'
 
 import './react-jsx'
 
@@ -170,15 +170,6 @@ export function createDesignSystem({
   return {
     theme,
   }
-}
-
-// based on https://github.com/developit/dlv
-export const get = (obj: Theme, key: any, def?: any, p?: any, undef?: any) => {
-  key = key && key.split ? key.split('.') : [key]
-  for (p = 0; p < key.length; p++) {
-    obj = obj ? obj[key[p]] : undef
-  }
-  return obj === undef ? def : obj
 }
 
 /**
