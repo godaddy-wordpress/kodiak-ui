@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import * as React from 'react'
-import { css } from 'theme-ui'
 import {
+  css,
   getComponentBase,
   getVariants,
   KodiakUIProps,

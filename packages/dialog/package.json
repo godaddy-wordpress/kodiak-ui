@@ -24,12 +24,10 @@
   },
   "dependencies": {
     "@emotion/core": "^10.0.28",
-    "@emotion/serialize": "^0.11.16",
     "@emotion/styled": "^10.0.27",
     "@emotion/styled-base": "^10.0.31",
     "@kodiak-ui/primitives": "^0.18.14",
-    "@reach/dialog": "^0.8.2",
-    "theme-ui": "^0.3.1"
+    "@reach/dialog": "^0.8.2"
   },
   "gitHead": "4fb1193622825ebe7c45ee5d2c2dbb7e636c4f50"
 }

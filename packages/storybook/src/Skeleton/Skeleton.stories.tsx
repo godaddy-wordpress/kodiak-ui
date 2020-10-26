@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { Box, Flex, Button } from '@kodiak-ui/primitives'
 import { Skeleton, Repeat } from '@kodiak-ui/skeleton'
-import { Styled } from 'theme-ui'
 
 export default { title: 'Skeleton', component: Skeleton }
 
@@ -10,7 +9,7 @@ export function LoadingSkeleton() {
 
   return (
     <Box sx={{ margin: 4 }}>
-      <Styled.h1>{isLoading ? <Skeleton /> : 'Loaded text'}</Styled.h1>
+      <h1>{isLoading ? <Skeleton /> : 'Loaded text'}</h1>
       <Box>
         <Flex>
           {isLoading ? (

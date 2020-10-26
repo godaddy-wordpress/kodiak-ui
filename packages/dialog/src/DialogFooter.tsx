@@ -1,12 +1,5 @@
 import styled from '@emotion/styled'
-import {
-  _variant,
-  sx,
-  shouldForwardProp,
-  Theme,
-  css,
-  KodiakUIProps,
-} from 'kodiak-ui'
+import { _variant, sx, Theme, css, KodiakUIProps } from 'kodiak-ui'
 
 type DialogFooterProps = KodiakUIProps
 
@@ -22,9 +15,7 @@ const baseStyles = ({ theme }: { theme: Theme }) =>
     padding: 4,
   })(theme)
 
-export const DialogFooter = styled('footer', {
-  shouldForwardProp,
-})<DialogFooterProps>(
+export const DialogFooter = styled('footer')<DialogFooterProps>(
   {
     boxSizing: 'border-box',
     margin: 0,

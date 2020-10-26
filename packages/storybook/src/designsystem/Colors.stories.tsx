@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Text, Flex, Grid, Box } from '@kodiak-ui/primitives'
-import { useThemeUI, Theme } from 'theme-ui'
+import { useKodiakUi, Theme } from 'kodiak-ui'
 import { useForm } from 'react-hook-form'
 import { parseToRgb, parseToHsl } from 'polished'
 import { RgbColor, RgbaColor } from 'polished/lib/types/color'
@@ -159,7 +159,7 @@ function flattenThemeColors({ theme }: { theme: Theme }) {
       }
 
       try {
-        const rgbColor = parseToRgb(value)
+        const rgbColor = parseToRgb(value as string)
 
         flattenedThemeColors.push({
           colorKey: colorKey,
@@ -210,7 +210,7 @@ function findNearestThemeColors({
 }
 export function NearestThemeColor() {
   const { register, watch } = useForm<ColorData>()
-  const { theme } = useThemeUI()
+  const { theme } = useKodiakUi()
   const color = watch('color')
 
   if (theme.colors === undefined) {
@@ -263,7 +263,7 @@ export function NearestThemeColor() {
 }
 
 export function Palette() {
-  const { theme } = useThemeUI()
+  const { theme } = useKodiakUi()
 
   if (theme.colors === undefined) {
     return null

@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { Text, Flex, Box } from '@kodiak-ui/primitives'
-import { Styled } from 'theme-ui'
-import { useThemeUI } from 'theme-ui'
+import { useKodiakUi } from 'kodiak-ui'
 
 export default {
   title: 'Design System/Spacing',
@@ -12,7 +11,7 @@ export function Intro() {
 }
 
 export function Spacing() {
-  const { theme } = useThemeUI()
+  const { theme } = useKodiakUi()
 
   if (!Array.isArray(theme.space)) {
     return null
@@ -20,28 +19,28 @@ export function Spacing() {
 
   return (
     <Flex sx={{ flexDirection: 'column' }}>
-      <Styled.table>
+      <table>
         <thead>
-          <Styled.tr>
-            <Styled.th>Index</Styled.th>
-            <Styled.th>Spacing</Styled.th>
-            <Styled.th>Sample</Styled.th>
-          </Styled.tr>
+          <tr>
+            <th>Index</th>
+            <th>Spacing</th>
+            <th>Sample</th>
+          </tr>
         </thead>
         {theme.space?.map((spacing, index) => {
           return (
             <tr key={index}>
-              <Styled.td>{index}</Styled.td>
-              <Styled.td>{spacing}</Styled.td>
-              <Styled.td>
+              <td>{index}</td>
+              <td>{spacing}</td>
+              <td>
                 <Box
                   sx={{ bg: 'primary', height: 12, my: 2, width: spacing }}
                 />
-              </Styled.td>
+              </td>
             </tr>
           )
         })}
-      </Styled.table>
+      </table>
     </Flex>
   )
 }

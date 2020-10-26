@@ -1,12 +1,5 @@
 import styled from '@emotion/styled'
-import {
-  _variant,
-  VariantProps,
-  sx,
-  shouldForwardProp,
-  css,
-  Theme,
-} from 'kodiak-ui'
+import { _variant, VariantProps, sx, css, Theme } from 'kodiak-ui'
 
 type DialogContentProps = {
   children: React.ReactNode
@@ -18,9 +11,7 @@ const baseStyles = ({ theme }: { theme: Theme }) =>
     padding: 4,
   })(theme)
 
-export const DialogContent = styled('div', {
-  shouldForwardProp,
-})<DialogContentProps>(
+export const DialogContent = styled('div')<DialogContentProps>(
   {
     boxSizing: 'border-box',
     margin: 0,

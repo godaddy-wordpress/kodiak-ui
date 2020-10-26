@@ -1,12 +1,12 @@
 import styled from '@emotion/styled'
 import {
+  css,
   _variant,
   sx,
   getComponentBase,
   getVariants,
   KodiakUIProps,
 } from 'kodiak-ui'
-import { css } from 'theme-ui'
 
 /**
  * We use the styled API instead of passing `label` to the as prop

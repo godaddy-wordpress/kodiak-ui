@@ -1,6 +1,6 @@
 import * as React from 'react'
+import { useKodiakUi } from 'kodiak-ui'
 import { Box, Text, Flex } from '@kodiak-ui/primitives'
-import { useThemeUI } from 'theme-ui'
 
 export default {
   title: 'Design System/Typography',
@@ -16,7 +16,7 @@ export function Intro() {
 }
 
 export function FontFamily() {
-  const { theme } = useThemeUI()
+  const { theme } = useKodiakUi()
 
   if (!theme.fonts) {
     return null
@@ -44,7 +44,7 @@ export function FontFamily() {
 }
 
 export function FontWeight() {
-  const { theme } = useThemeUI()
+  const { theme } = useKodiakUi()
 
   if (!theme.fontWeights) {
     return null
@@ -94,7 +94,7 @@ function TypographyExample({ size, children }: TypographyExampleProps) {
 }
 
 export function Sizing() {
-  const { theme } = useThemeUI()
+  const { theme } = useKodiakUi()
 
   if (!Array.isArray(theme.fontSizes)) {
     return

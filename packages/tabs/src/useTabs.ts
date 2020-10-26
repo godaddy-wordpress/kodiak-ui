@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { SxStyleProp } from 'theme-ui'
+import { SxStyleProp } from 'kodiak-ui'
 import { getNextIndex } from '@kodiak-ui/utils'
 import { useId } from '@kodiak-ui/hooks'
 

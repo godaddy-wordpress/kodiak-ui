@@ -23,12 +23,10 @@
     "@kodiak-ui/table": "latest",
     "@kodiak-ui/tabs": "latest",
     "@kodiak-ui/theme": "latest",
-    "@types/theme-ui": "^0.3.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.3",
-    "resize-observer-polyfill": "^1.5.1",
-    "theme-ui": "^0.3.1"
+    "resize-observer-polyfill": "^1.5.1"
   },
   "devDependencies": {
     "@types/react": "16.9.46",

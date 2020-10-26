@@ -1,6 +1,7 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
 import {
+  css,
   sx,
   _variant,
   VariantProps,
@@ -9,7 +10,6 @@ import {
   getVariants,
 } from 'kodiak-ui'
 import { useWrappedEventHandler } from '@kodiak-ui/hooks/use-event-logger'
-import { css } from 'theme-ui'
 
 type LinkProps = VariantProps & BaseProp
 

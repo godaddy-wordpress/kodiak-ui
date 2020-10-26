@@ -1,8 +1,6 @@
 import * as React from 'react'
 import { Global, ThemeContext as EmotionContext } from '@emotion/core'
-import { jsx } from '@theme-ui/core'
-import { css, Theme } from '@theme-ui/css'
-import { useComponents, useVariants } from '.'
+import { jsx, css, Theme, useComponents, useVariants } from '.'
 
 const GlobalStyles = ({ global }) =>
   jsx(Global, {
@@ -43,15 +41,8 @@ export function BaseProvider({
 }
 
 export function ThemeProvider({ theme, children }) {
-  const variants = useVariants()
-  const components = useComponents()
-
   const context = {
-    theme: {
-      ...theme,
-      ...variants,
-      ...components,
-    },
+    theme,
   }
 
   return jsx(BaseProvider, { context }, children)

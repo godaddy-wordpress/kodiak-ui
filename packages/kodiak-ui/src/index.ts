@@ -1,22 +1,22 @@
-// import { jsx as emotion, InterpolationWithTheme } from '@emotion/core'
+import * as React from 'react'
+import { jsx as emotion, InterpolationWithTheme } from '@emotion/core'
 import styled from '@emotion/styled'
-import { createShouldForwardProp } from '@styled-system/should-forward-prop'
 import create from 'zustand'
 import createVanilla from 'zustand/vanilla'
-import { SxProps } from '@theme-ui/core'
-import { css, ThemeUIStyleObject, Theme as ThemeUITheme } from '@theme-ui/css'
 import themeDefault from './theme-default'
-// import { ColorMode, ThemeUIStyleObject, Theme as ThemeUITheme } from './types'
-// import { css } from './css'
+import {
+  ColorMode,
+  ThemeUIStyleObject,
+  Theme as ThemeUITheme,
+  SxProps,
+} from './types'
+import { css } from './css'
 
 import './react-jsx'
 
-export { jsx } from '@theme-ui/core'
-export type { SxProps, SxStyleProp } from '@theme-ui/core'
-export * from '@theme-ui/css'
-
 export * from './provider'
-// export * from './types'
+export * from './types'
+export * from './css'
 
 export type Variant = {
   [key: string]: ThemeUIStyleObject
@@ -39,20 +39,20 @@ export type KodiakState = {
   ) => { key: string; styles: ThemeUIStyleObject }
 }
 
-// export type ScaleArray<T> = T[]
-// export type ScaleObject<T> = { [K: string]: T | Scale<T>; [I: number]: T }
-// export type Scale<T> = ScaleArray<T> | ScaleObject<T>
-// export type TLength = string | 0 | number
+export type ScaleArray<T> = T[]
+export type ScaleObject<T> = { [K: string]: T | Scale<T>; [I: number]: T }
+export type Scale<T> = ScaleArray<T> | ScaleObject<T>
+export type TLength = string | 0 | number
 
-// export type ScaleColorMode = ColorMode & {
-//   /**
-//    * Nested color modes can provide overrides when used in conjunction with
-//    * `Theme.initialColorModeName and `useColorMode()`
-//    */
-//   modes?: {
-//     [k: string]: ColorMode
-//   }
-// }
+export type ScaleColorMode = ColorMode & {
+  /**
+   * Nested color modes can provide overrides when used in conjunction with
+   * `Theme.initialColorModeName and `useColorMode()`
+   */
+  modes?: {
+    [k: string]: ColorMode
+  }
+}
 
 // export type GlobalStylesObject = { [k: string]: ThemeUIStyleObject }
 
@@ -128,30 +128,29 @@ export function useComponents() {
   return Store.getState().components
 }
 
-// const getCSS = props => {
-//   if (!props.sx && !props.css) return undefined
-//   return theme => {
-//     const styles = css(props.sx)(theme)
-//     const raw = typeof props.css === 'function' ? props.css(theme) : props.css
-//     return [styles, raw]
-//   }
-// }
+const getCSS = props => {
+  if (!props.sx && !props.css) return undefined
+  return theme => {
+    const styles = css(props.sx)(theme)
+    const raw = typeof props.css === 'function' ? props.css(theme) : props.css
+    return [styles, raw]
+  }
+}
 
-// const parseProps = props => {
-//   if (!props) return null
-//   const next: typeof props & { css?: InterpolationWithTheme<any> } = {}
-//   for (const key in props) {
-//     if (key === 'sx') continue
-//     next[key] = props[key]
-//   }
-//   const css = getCSS(props)
-//   if (css) next.css = css
-//   return next
-// }
+const parseProps = props => {
+  if (!props) return null
+  const next: typeof props & { css?: InterpolationWithTheme<any> } = {}
+  for (const key in props) {
+    if (key === 'sx') continue
+    next[key] = props[key]
+  }
+  const css = getCSS(props)
+  if (css) next.css = css
+  return next
+}
 
-// export function jsx(type: any, props: any, ...children: React.ReactNode[]) {
-//   return emotion.apply(undefined, [type, parseProps(props), ...children])
-// }
+export const jsx: typeof React.createElement = (type, props, ...children) =>
+  emotion.apply(undefined, [type, parseProps(props), ...children])
 
 export function createDesignSystem({
   system,
@@ -172,8 +171,6 @@ export function createDesignSystem({
     theme,
   }
 }
-
-export const shouldForwardProp = createShouldForwardProp([])
 
 // based on https://github.com/developit/dlv
 export const get = (obj: Theme, key: any, def?: any, p?: any, undef?: any) => {
@@ -285,4 +282,4 @@ export const getComponentBase = (base: string | string[]) => (theme: Theme) => {
   )(theme)
 }
 
-export { css, styled }
+export { styled }

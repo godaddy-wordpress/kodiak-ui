@@ -1,9 +1,10 @@
 import * as React from 'react'
 import { render } from 'react-dom'
-import { ThemeProvider } from 'theme-ui'
-import { theme } from '@kodiak-ui/theme'
+import { createDesignSystem, ThemeProvider } from 'kodiak-ui'
 
 import App from './App'
+
+const { theme } = createDesignSystme()
 
 const rootElement = document.getElementById('root')
 render(

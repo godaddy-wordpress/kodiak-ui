@@ -24,11 +24,7 @@
     "@emotion/styled": "^10.0.27",
     "@emotion/styled-base": "^10.0.31",
     "@kodiak-ui/hooks": "^0.14.7",
-    "@kodiak-ui/utils": "^0.0.15",
-    "theme-ui": "^0.3.1"
-  },
-  "devDependencies": {
-    "@types/theme-ui": "^0.3.1"
+    "@kodiak-ui/utils": "^0.0.15"
   },
   "gitHead": "4fb1193622825ebe7c45ee5d2c2dbb7e636c4f50",
   "snyk": true,
