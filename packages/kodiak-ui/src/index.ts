@@ -9,9 +9,8 @@ import themeDefault from './theme-default'
 // import { ColorMode, ThemeUIStyleObject, Theme as ThemeUITheme } from './types'
 // import { css } from './css'
 
-// import './react-jsx'
+import './react-jsx'
 
-// export * from '@theme-ui/core'
 export { jsx } from '@theme-ui/core'
 export type { SxProps, SxStyleProp } from '@theme-ui/core'
 export * from '@theme-ui/css'
