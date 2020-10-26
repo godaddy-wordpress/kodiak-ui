@@ -28,24 +28,31 @@ const Context = React.createContext<ContextValue>({
 
 export const useKodiakUi = () => React.useContext(Context)
 
-export function Provider({ theme: base, children }) {
-  const variants = useVariants()
-  const components = useComponents()
-
-  const global = base?.global
-
-  const theme = {
-    ...base,
-    ...variants,
-    ...components,
-  }
-
+export function BaseProvider({
+  context,
+  children,
+}: React.PropsWithChildren<{ context: ContextValue }>) {
   return jsx(
     EmotionContext.Provider,
-    { value: theme },
+    { value: context.theme },
     jsx(Context.Provider, {
-      value: theme,
+      value: context,
       children,
     }),
   )
+}
+
+export function ThemeProvider({ theme, children }) {
+  const variants = useVariants()
+  const components = useComponents()
+
+  const context = {
+    theme: {
+      ...theme,
+      ...variants,
+      ...components,
+    },
+  }
+
+  return jsx(BaseProvider, { context }, children)
 }

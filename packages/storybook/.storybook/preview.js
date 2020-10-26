@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { createDesignSystem, Provider as ThemeProvider } from 'kodiak-ui'
+import { createDesignSystem, ThemeProvider } from 'kodiak-ui'
 // import { ThemeProvider } from 'theme-ui'
 import { theme as system } from '../src/theme'
 
