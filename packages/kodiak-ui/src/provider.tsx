@@ -41,8 +41,15 @@ export function BaseProvider({
 }
 
 export function ThemeProvider({ theme, children }) {
+  const variants = useVariants()
+  const components = useComponents()
+
   const context = {
-    theme,
+    theme: {
+      ...theme,
+      ...components,
+      ...variants,
+    },
   }
 
   return jsx(BaseProvider, { context }, children)
