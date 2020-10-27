@@ -55,6 +55,7 @@ export function Repeat({
 export const Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(
   function Skeleton(
     {
+      __base,
       variantKey = 'skeletons',
       variant,
       duration = '1.2s',
@@ -67,6 +68,7 @@ export const Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(
       <Box as="span">
         <Box
           __base={{
+            ...__base,
             ...skeletonBaseStyles,
             animation: `${skeletonKeyframes} ${duration} ease-in-out infinite`,
           }}

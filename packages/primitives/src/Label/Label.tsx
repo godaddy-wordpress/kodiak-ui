@@ -14,13 +14,15 @@ import {
  * all of the HTML Label Props
  */
 
-export type LabelProps = KodiakUIProps
+export type LabelProps = KodiakUIProps & { children?: React.ReactNode }
 
 function base({ theme, __base, base }) {
   const styles = getComponentBase(base ? base : 'label')(theme)
-  if (Object.keys(styles)?.length === 0) {
+
+  if (!styles || Object.keys(styles)?.length === 0) {
     return css(__base)(theme)
   }
+
   return styles
 }
 

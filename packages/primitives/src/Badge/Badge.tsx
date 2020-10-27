@@ -72,6 +72,7 @@ export const Badge = React.forwardRef(function Badge(
     variantKey = 'badges',
     variants,
     children,
+    __base,
   }: BadgeProps,
   ref: React.Ref<any>,
 ) {
@@ -104,6 +105,7 @@ export const Badge = React.forwardRef(function Badge(
         variant={variant}
         variantKey={variantKey}
         __base={{
+          ...__base,
           alignContent: 'center',
           alignItems: 'center',
           bg: 'primary',

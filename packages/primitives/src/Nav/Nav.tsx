@@ -9,7 +9,7 @@ type NavProps = {
 } & React.ComponentProps<typeof Box>
 
 export const Nav = React.forwardRef<HTMLUListElement, NavProps>(function Menu(
-  { children, variantKey = 'navs', variant, ...props },
+  { children, variantKey = 'navs', variant, __base, ...props },
   forwardedRef,
 ) {
   return (
@@ -19,6 +19,7 @@ export const Nav = React.forwardRef<HTMLUListElement, NavProps>(function Menu(
           listStyle: 'none',
           margin: 0,
           padding: 0,
+          ...__base,
         }}
         ref={forwardedRef as any}
         as="ul"

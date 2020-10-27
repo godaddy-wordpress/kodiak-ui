@@ -2,10 +2,7 @@ import styled from '@emotion/styled'
 import {
   _variant,
   sx,
-  VariantProps,
   getVariants,
-  BaseProp,
-  SxStyleProp,
   getComponentBase,
   ThemeUIStyleObject,
   Theme,
@@ -45,9 +42,11 @@ function base({
   base: string | string[]
 }) {
   const styles = getComponentBase(base ? base : 'input')(theme)
-  if (Object.keys(styles)?.length === 0) {
+
+  if (!styles || Object.keys(styles)?.length === 0) {
     return css(__base)(theme)
   }
+
   return styles
 }
 

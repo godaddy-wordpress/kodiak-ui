@@ -11,9 +11,11 @@ import {
 
 function base({ theme, __base, base }) {
   const styles = base ? getComponentBase(base ? base : 'box')(theme) : null
-  if (!styles) {
+
+  if (!styles || Object.keys(styles)?.length === 0) {
     return css(__base as any)(theme)
   }
+
   return styles
 }
 
@@ -26,9 +28,11 @@ const boxVariant = ({ variant: variantProp, variantKey, variants, theme }) => {
 }
 
 export type BoxProps = React.PropsWithChildren<
-  KodiakUIProps & { as?: string }
-> &
-  React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>
+  KodiakUIProps & {
+    ref?: React.Ref<any>
+    as?: string
+  } & React.AllHTMLAttributes<HTMLElement>
+>
 
 /**
  * Box primitive component which is the base component for

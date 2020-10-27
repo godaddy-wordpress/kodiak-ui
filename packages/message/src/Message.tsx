@@ -24,6 +24,7 @@ export const Message = React.forwardRef<HTMLDivElement, MessageProps>(
       dismissLabel,
       onDismiss,
       variantKey = 'messages',
+      __base,
       ...props
     },
     forwardedRef,
@@ -43,6 +44,7 @@ export const Message = React.forwardRef<HTMLDivElement, MessageProps>(
           minWidth: 370,
           minHeight: 64,
           padding: 4,
+          ...__base,
         }}
         ref={forwardedRef}
         role={type === 'assertive' ? 'alert' : 'status'}
