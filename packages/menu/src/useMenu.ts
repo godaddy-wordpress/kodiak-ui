@@ -294,7 +294,7 @@ export function useMenu({
     target: menuRef.current,
     handler: () => {
       const handler = itemHandlersRef.current[activeItem] as () => void
-      handler()
+      handler?.()
     },
   })
 
