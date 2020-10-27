@@ -14,7 +14,7 @@ export function StatSample() {
             <AudienceIcon />
           </Box>
         }
-        label="Audience"
+        label={<span>Audience</span>}
       >
         739 Contacts
       </Stat>

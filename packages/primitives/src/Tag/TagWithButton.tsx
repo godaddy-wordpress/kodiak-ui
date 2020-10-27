@@ -11,7 +11,7 @@ export type TagWithButtonProps = {
 } & VariantProps
 
 export const TagWithButton = React.forwardRef(function TagWithButton(
-  { __base, children, icon, onClick }: TagWithButtonProps,
+  { children, icon, onClick }: TagWithButtonProps,
   ref: React.MutableRefObject<any>,
 ) {
   return (
@@ -25,7 +25,6 @@ export const TagWithButton = React.forwardRef(function TagWithButton(
         variant="tagButton" // TODO: These variants aren't working for some reason
         onClick={onClick}
         __base={{
-          ...__base,
           alignItems: 'center',
           border: 'none',
           bg: 'gray.1',

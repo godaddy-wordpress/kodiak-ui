@@ -12,7 +12,6 @@ type SwitchProps = {
 type SwitchIndicatorProps = SwitchProps
 
 function SwitchIndicator({
-  __base,
   sx,
   variant,
   variantKey,
@@ -24,7 +23,6 @@ function SwitchIndicator({
       variant={variant}
       variantKey={variantKey}
       __base={{
-        ...__base,
         opacity: disabled ? 0.5 : 1,
         transition: 'background-color 0.1s cubic-bezier(0.4, 1, 0.75, 0.9)',
         width: 28,

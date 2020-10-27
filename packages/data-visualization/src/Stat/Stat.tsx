@@ -12,7 +12,7 @@ type Props = {
   barVariant?: string
   sx?: SxStyleProp
   children?: React.ReactNode
-} & React.ComponentPropsWithRef<typeof Box>
+}
 
 export function Stat({ label, children, icon, ...props }: Props) {
   return (

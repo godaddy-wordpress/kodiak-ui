@@ -12,7 +12,6 @@ const clipAnimation = keyframes`
 export type ClipLoadingIndicatorProps = VariantProps
 
 export function ClipLoadingIndicator({
-  __base,
   variant = 'clip',
   variantKey = 'loadingIndicators',
   ...props
@@ -30,7 +29,6 @@ export function ClipLoadingIndicator({
         display: 'inline-block',
         animation: `${clipAnimation} 0.75s 0s infinite linear`,
         animationFillMode: 'both',
-        ...__base,
       }}
       variant={variant}
       variantKey={variantKey}

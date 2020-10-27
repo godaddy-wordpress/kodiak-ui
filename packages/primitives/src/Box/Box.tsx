@@ -29,7 +29,7 @@ const boxVariant = ({ variant: variantProp, variantKey, variants, theme }) => {
 
 export type BoxProps = React.PropsWithChildren<
   KodiakUIProps & {
-    ref?: React.Ref<any>
+    ref?: any
     as?: string
   } & React.AllHTMLAttributes<HTMLElement>
 >
