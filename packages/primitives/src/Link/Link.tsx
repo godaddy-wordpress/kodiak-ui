@@ -23,7 +23,12 @@ function base({ theme, __base, base }) {
   return styles
 }
 
-const linkVariant = ({ variant: variantProp, variantKey, variants, theme }) => {
+const linkVariant = ({
+  variant: variantProp,
+  variantKey = 'links',
+  variants,
+  theme,
+}) => {
   if (variants) {
     return getVariants(variants)(theme)
   }

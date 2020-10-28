@@ -18,7 +18,7 @@ import { useWrappedEventHandler } from '@kodiak-ui/hooks/use-event-logger'
  *
  * @param props
  */
-export function base({ theme, base }) {
+export function base({ theme, base, __base }) {
   const styles = getComponentBase(base ? base : 'button')(theme)
   if (!styles || Object.keys(styles)?.length === 0) {
     return css({
@@ -33,7 +33,7 @@ export function base({ theme, base }) {
       },
     })(theme)
   }
-  return styles
+  return { ...styles, ...__base }
 }
 
 export const buttonVariant = ({

@@ -5,6 +5,14 @@ import { Button } from '@kodiak-ui/primitives'
 export default { title: 'Primitives/Button', component: Button }
 
 component('button', {
+  appearance: 'none',
+  cursor: 'pointer',
+  display: 'inline-block',
+  fontSize: 'inherit',
+  lineHeight: 'inherit',
+  textAlign: 'center',
+  textDecoration: 'none',
+  transition: 'all 0.2s ease-in-out',
   px: 3,
   py: 2,
   color: 'white',

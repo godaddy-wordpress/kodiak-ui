@@ -52,7 +52,7 @@ function base({
 
 const inputVariant = ({
   variant: variantProp,
-  variantKey,
+  variantKey = 'inputs',
   variants,
   theme,
 }) => {
