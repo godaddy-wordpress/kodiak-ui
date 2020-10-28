@@ -11,7 +11,6 @@ import { _variant, VariantProps, sx, css, SxProps, Theme } from 'kodiak-ui'
 export const baseStyles = ({ theme }: { theme: Theme }) =>
   css({
     fill: 'currentColor',
-    color: 'black',
     display: 'block',
   })(theme)
 
