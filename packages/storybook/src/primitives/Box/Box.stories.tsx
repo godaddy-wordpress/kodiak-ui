@@ -17,6 +17,15 @@ export function initial() {
   )
 }
 
+function CustomComponent({
+  customMessage,
+  ...props
+}: {
+  customMessage: string
+}) {
+  return <div {...props}>{customMessage}</div>
+}
+
 export function AsProp() {
   const aRef = React.useRef<HTMLAnchorElement>(null)
   return (
@@ -30,8 +39,6 @@ export function AsProp() {
         }}
       >
         Renders the Box as a Main HTML element
-        <Box>test</Box>
-        <Box>test</Box>
       </Box>
       <Box
         as="a"
@@ -41,6 +48,11 @@ export function AsProp() {
       >
         This is a Box as an anchor tag and a Ref
       </Box>
+      <Box
+        as={CustomComponent}
+        sx={{ color: 'primary', p: 5 }}
+        customMessage={'Custom components can be wrapped and styled as a box'}
+      />
     </Box>
   )
 }
