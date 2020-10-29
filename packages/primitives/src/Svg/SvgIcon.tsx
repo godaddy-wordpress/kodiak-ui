@@ -6,11 +6,12 @@ type SvgIconProps = {
   desc?: string
 } & React.ComponentProps<typeof Svg>
 
-/* Adds accesibility to the Svg element */
-export const SvgIcon = ({ title, desc, ...props }: SvgIconProps) => (
-  <Svg {...props}>
-    <title>{title}</title>
-    <desc>{desc}</desc>
-    {props.children}
-  </Svg>
+export const SvgIcon = React.forwardRef(
+  ({ title, desc, ...props }: SvgIconProps, ref: any) => (
+    <Svg ref={ref} {...props}>
+      <title>{title}</title>
+      <desc>{desc}</desc>
+      {props.children}
+    </Svg>
+  ),
 )

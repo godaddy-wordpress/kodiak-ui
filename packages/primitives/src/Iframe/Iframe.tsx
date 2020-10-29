@@ -3,9 +3,10 @@ import { Box, BoxProps } from '../Box'
 
 type IframeProps = BoxProps & React.HTMLProps<HTMLIFrameElement>
 
-export function Iframe({ __base, ...props }: IframeProps) {
-  return (
+export const Iframe = React.forwardRef(
+  ({ __base, ...props }: IframeProps, ref: any) => (
     <Box
+      ref={ref}
       __base={{
         boxSizing: 'border-box',
         display: 'block',
@@ -16,5 +17,5 @@ export function Iframe({ __base, ...props }: IframeProps) {
       as="iframe"
       {...props}
     />
-  )
-}
+  ),
+)

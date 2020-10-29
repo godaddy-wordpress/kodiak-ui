@@ -4,9 +4,10 @@ import { Box, BoxProps } from '../Box'
 export type ImageProps = BoxProps &
   React.HTMLProps<HTMLImageElement> & { loading?: string }
 
-export function Image({ __base, ...props }: ImageProps) {
-  return (
+export const Image = React.forwardRef(
+  ({ __base, ...props }: ImageProps, ref: any) => (
     <Box
+      ref={ref}
       __base={{
         boxSizing: 'border-box',
         margin: 0,
@@ -16,5 +17,6 @@ export function Image({ __base, ...props }: ImageProps) {
       as="img"
       {...props}
     />
-  )
-}
+  ),
+)
+d

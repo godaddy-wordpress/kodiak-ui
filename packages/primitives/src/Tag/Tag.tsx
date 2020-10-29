@@ -29,6 +29,6 @@ const TagStyle = styled('div')<TagProps>(
   sx,
 )
 
-export function Tag(props: TagProps) {
-  return <TagStyle {...props} />
-}
+export const Tag = React.forwardRef((props: TagProps, ref: any) => (
+  <TagStyle ref={ref} {...props} />
+))

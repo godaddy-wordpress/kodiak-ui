@@ -37,13 +37,13 @@ const TagDismissStyle = styled('button')<
   sx,
 )
 
-export function TagDismiss({ children, icon, onDismiss }: TagDismissProps) {
-  return (
-    <Tag sx={{ p: 0 }}>
+export const TagDismiss = React.forwardRef(
+  ({ children, icon, onDismiss }: TagDismissProps, ref: any) => (
+    <Tag ref={ref} sx={{ p: 0 }}>
       <TagLabel sx={{ borderRight: '1px solid', borderColor: 'muted' }}>
         {children}
       </TagLabel>
       <TagDismissStyle onClick={onDismiss}>{icon}</TagDismissStyle>
     </Tag>
-  )
-}
+  ),
+)
