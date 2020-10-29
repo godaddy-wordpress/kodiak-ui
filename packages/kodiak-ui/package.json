@@ -1,6 +1,6 @@
 {
   "name": "kodiak-ui",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "Core functionality for creating a design system for building complex and performant applications",
   "main": "dist/kodiak-ui.cjs.js",
   "module": "dist/kodiak-ui.esm.js",
