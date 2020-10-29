@@ -1,8 +1,6 @@
-import * as React from 'react'
-import { Box, BoxProps } from '../Box'
+import { Box } from '../Box'
+import styled from '@emotion/styled'
 
-export const Grid = React.forwardRef(
-  ({ __base, ...props }: BoxProps, ref: any) => (
-    <Box ref={ref} __base={{ display: 'grid', ...__base }} {...props} />
-  ),
-)
+export const Grid = styled(Box)({
+  display: 'grid',
+})

@@ -41,14 +41,14 @@ export interface BoxTypeMap<P = unknown, D extends React.ElementType = 'div'> {
   defaultComponent: D
 }
 
-type BoxProps<
+export type BoxProps<
   D extends React.ElementType = BoxTypeMap['defaultComponent'],
   P = unknown
 > = OverrideProps<BoxTypeMap<P, D>, D>
 
-type BoxComponent = OverridableComponent<BoxTypeMap>
+// export type BoxComponent = OverridableComponent<BoxTypeMap>
 
-export const Box: BoxComponent = styled('div')<BoxProps>(
+export const Box: OverridableComponent<BoxTypeMap> = styled('div')<BoxProps>(
   {
     boxSizing: 'border-box',
     margin: 0,
