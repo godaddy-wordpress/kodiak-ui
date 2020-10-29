@@ -1,6 +1,14 @@
 import * as React from 'react'
 import { keyframes } from '@emotion/core'
-import { _variant, VariantProps, styled, css, sx, Theme } from 'kodiak-ui'
+import {
+  _variant,
+  VariantProps,
+  styled,
+  css,
+  sx,
+  Theme,
+  getVariants,
+} from 'kodiak-ui'
 import { Box } from '../Box'
 
 const loadingDotAnimations = keyframes`
@@ -48,6 +56,19 @@ function base({ theme }: { theme: Theme }) {
   })(theme)
 }
 
+const variants = ({
+  variant: variantProp = 'default',
+  variantKey = 'loadingIndicators',
+  variants,
+  theme,
+}) => {
+  if (variants) {
+    return getVariants(variants)(theme)
+  }
+
+  return _variant({ variant: variantProp, theme, variantKey, variants })
+}
+
 const LoadingIndicatorStyle = styled('div')<DotLoadingIndicatorProps>(
   {
     boxSizing: 'border-box',
@@ -55,11 +76,7 @@ const LoadingIndicatorStyle = styled('div')<DotLoadingIndicatorProps>(
     minWidth: 0,
   },
   base,
-  ({
-    variant: variantProp = 'default',
-    variantKey = 'loadingIndicators',
-    theme,
-  }) => _variant({ variant: variantProp, theme, variantKey }),
+  variants,
   sx,
 )
 
