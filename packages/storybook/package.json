@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/storybook",
-  "version": "0.1.126",
+  "version": "0.1.127",
   "main": "dist/storybook.cjs.js",
   "module": "dist/storybook.esm.js",
   "private": true,
@@ -34,7 +34,7 @@
     "@storybook/react": "^6.0.12",
     "babel-loader": "^8.0.6",
     "fork-ts-checker-webpack-plugin": "^4.0.3",
-    "kodiak-ui": "^0.3.0",
+    "kodiak-ui": "^0.3.1",
     "polished": "^3.4.4",
     "react-hook-form": "^5.6.1",
     "react-is": "^16.12.0",
