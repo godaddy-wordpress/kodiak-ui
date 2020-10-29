@@ -1,5 +1,14 @@
 import * as React from 'react'
-import { _variant, VariantProps, styled, css, sx, Theme } from 'kodiak-ui'
+import {
+  _variant,
+  VariantProps,
+  styled,
+  css,
+  sx,
+  Theme,
+  getVariants,
+  KodiakUIProps,
+} from 'kodiak-ui'
 import { Tag } from './Tag'
 import { TagLabel } from './TagLabel'
 
@@ -23,8 +32,21 @@ function base({ theme }: { theme: Theme }) {
   })(theme)
 }
 
+const variants = ({
+  variant: variantProp = 'tagDismiss',
+  variantKey = 'tags',
+  variants,
+  theme,
+}) => {
+  if (variants) {
+    return getVariants(variants)(theme)
+  }
+
+  return _variant({ variant: variantProp, theme, variantKey, variants })
+}
+
 const TagDismissStyle = styled('button')<
-  TagDismissProps['icon'] & VariantProps
+  TagDismissProps['icon'] & KodiakUIProps
 >(
   {
     boxSizing: 'border-box',
@@ -32,8 +54,7 @@ const TagDismissStyle = styled('button')<
     minWidth: 0,
   },
   base,
-  ({ variant: variantProp = 'tagDismiss', variantKey = 'tags', theme }) =>
-    _variant({ variant: variantProp, theme, variantKey }),
+  variants,
   sx,
 )
 

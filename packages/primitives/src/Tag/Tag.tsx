@@ -1,7 +1,15 @@
 import * as React from 'react'
-import { _variant, VariantProps, styled, css, sx, Theme } from 'kodiak-ui'
+import {
+  _variant,
+  styled,
+  css,
+  sx,
+  Theme,
+  getVariants,
+  KodiakUIProps,
+} from 'kodiak-ui'
 
-export type TagProps = { children: React.ReactNode } & VariantProps
+export type TagProps = KodiakUIProps & { children: React.ReactNode }
 
 function base({ theme }: { theme: Theme }) {
   return css({
@@ -17,6 +25,19 @@ function base({ theme }: { theme: Theme }) {
   })(theme)
 }
 
+const variants = ({
+  variant: variantProp = 'default',
+  variantKey = 'tags',
+  variants,
+  theme,
+}: KodiakUIProps & { theme: Theme }) => {
+  if (variants) {
+    return getVariants(variants)(theme)
+  }
+
+  return _variant({ variant: variantProp, theme, variantKey, variants })
+}
+
 const TagStyle = styled('div')<TagProps>(
   {
     boxSizing: 'border-box',
@@ -24,8 +45,7 @@ const TagStyle = styled('div')<TagProps>(
     minWidth: 0,
   },
   base,
-  ({ variant: variantProp = 'default', variantKey = 'tags', theme }) =>
-    _variant({ variant: variantProp, theme, variantKey }),
+  variants,
   sx,
 )
 

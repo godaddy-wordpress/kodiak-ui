@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { VariantProps } from 'kodiak-ui'
+import { KodiakUIProps } from 'kodiak-ui'
 import { Tag } from './Tag'
 import { TagLabel } from './TagLabel'
 import { Button } from '../Button'
@@ -8,7 +8,7 @@ export type TagWithButtonProps = {
   children: React.ReactNode
   icon: React.ReactNode
   onClick: () => void
-} & VariantProps
+} & KodiakUIProps
 
 export const TagWithButton = React.forwardRef(function TagWithButton(
   { children, icon, onClick }: TagWithButtonProps,

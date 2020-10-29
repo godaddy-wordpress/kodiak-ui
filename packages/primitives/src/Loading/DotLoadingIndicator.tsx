@@ -10,6 +10,7 @@ import {
   getVariants,
 } from 'kodiak-ui'
 import { Box } from '../Box'
+import { KodiakUIProps } from 'kodiak-ui/src'
 
 const loadingDotAnimations = keyframes`
   0%, 80%, 100% { opacity: 0; }
@@ -42,7 +43,7 @@ function LoadingDot({ delay, size, offset }: LoadingDotProps) {
 export type DotLoadingIndicatorProps = {
   size?: number
   delay?: number
-} & VariantProps
+} & KodiakUIProps
 
 function base({ theme }: { theme: Theme }) {
   return css({
