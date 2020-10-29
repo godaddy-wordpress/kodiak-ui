@@ -11,7 +11,9 @@ export const parameters = {
   },
 }
 
-const { theme } = createDesignSystem({ system })
+const { theme } = createDesignSystem({
+  system,
+})
 
 export const decorators = [
   Story => (
