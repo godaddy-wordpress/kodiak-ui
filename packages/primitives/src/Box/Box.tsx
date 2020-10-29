@@ -8,6 +8,10 @@ import {
   sx,
   _variant,
 } from 'kodiak-ui'
+import type {
+  OverridableComponent,
+  OverrideProps,
+} from '../types/OverridableComponent'
 
 function base({ theme, __base, base }) {
   const styles = base ? getComponentBase(base ? base : 'box')(theme) : null
@@ -27,18 +31,24 @@ const boxVariant = ({ variant: variantProp, variantKey, variants, theme }) => {
   return _variant({ variant: variantProp, theme, variantKey, variants })
 }
 
-export type BoxProps = React.PropsWithChildren<
-  KodiakUIProps & {
-    ref?: any
-    as?: string
-  } & React.AllHTMLAttributes<HTMLElement>
->
-
 /**
  * Box primitive component which is the base component for
  * all components in Kodiak
  */
-export const Box = styled('div')<BoxProps>(
+
+export interface BoxTypeMap<P = unknown, D extends React.ElementType = 'div'> {
+  props: P & React.PropsWithChildren<KodiakUIProps>
+  defaultComponent: D
+}
+
+type BoxProps<
+  D extends React.ElementType = BoxTypeMap['defaultComponent'],
+  P = unknown
+> = OverrideProps<BoxTypeMap<P, D>, D>
+
+type BoxComponent = OverridableComponent<BoxTypeMap>
+
+export const Box: BoxComponent = styled('div')<BoxProps>(
   {
     boxSizing: 'border-box',
     margin: 0,
