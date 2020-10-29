@@ -33,10 +33,14 @@ export function BaseProvider({
   return jsx(
     EmotionContext.Provider,
     { value: context.theme },
-    jsx(Context.Provider, {
-      value: context,
+    jsx(
+      Context.Provider,
+      {
+        value: context,
+      },
+      jsx(GlobalStyles),
       children,
-    }),
+    ),
   )
 }
 
