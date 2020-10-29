@@ -1,16 +1,19 @@
 import * as React from 'react'
 import { Global, ThemeContext as EmotionContext } from '@emotion/core'
 import { jsx, css, Theme, useComponents, useVariants } from '.'
+import { toCustomProperties, createColorStyles } from './custom-properties'
 
 const GlobalStyles = ({ global }) =>
   jsx(Global, {
     styles: (emotionTheme: Theme) => {
       const theme = emotionTheme as Theme
+      const colorStyles = createColorStyles(theme)
 
       return css({
         '*': {
           boxSizing: 'border-box',
         },
+        ...colorStyles,
         ...global,
       })(theme)
     },
@@ -30,6 +33,9 @@ export function BaseProvider({
   context,
   children,
 }: React.PropsWithChildren<{ context: ContextValue }>) {
+  const { theme } = context
+  theme.colors = toCustomProperties(theme.colors, 'colors')
+
   return jsx(
     EmotionContext.Provider,
     { value: context.theme },
