@@ -19,4 +19,3 @@ export const Image = React.forwardRef(
     />
   ),
 )
-d
