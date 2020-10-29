@@ -1,12 +1,15 @@
 import * as React from 'react'
-import { Box } from '../Box'
+import { Box, BoxProps } from '../Box'
 
-type NavProps = {
-  children: React.ReactNode
-  'aria-label'?: string
-  dismissLabel?: string
-  onDismiss?: () => void
-} & React.ComponentProps<typeof Box>
+type NavProps = BoxProps<
+  'ul',
+  {
+    children?: React.ReactNode
+    'aria-label'?: string
+    dismissLabel?: string
+    onDismiss?: () => void
+  }
+>
 
 export const Nav = React.forwardRef<HTMLUListElement, NavProps>(function Menu(
   { children, variantKey = 'navs', variant, __base, ...props },
@@ -21,8 +24,8 @@ export const Nav = React.forwardRef<HTMLUListElement, NavProps>(function Menu(
           padding: 0,
           ...__base,
         }}
-        ref={forwardedRef as any}
         as="ul"
+        ref={forwardedRef}
         variantKey={variantKey}
         variant={variant}
         {...props}

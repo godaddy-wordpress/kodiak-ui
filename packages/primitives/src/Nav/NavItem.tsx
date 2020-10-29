@@ -1,27 +1,19 @@
 import * as React from 'react'
-import { Box } from '../Box'
+import { Box, BoxProps } from '../Box'
 
-type NavItemProps = {
-  children: React.ReactNode
-} & React.ComponentProps<typeof Box>
+type NavItemProps = BoxProps<'li', unknown>
 
 export const NavItem = React.forwardRef<HTMLLIElement, NavItemProps>(
   function NavItem(
-    {
-      children,
-      variantKey = 'navs',
-      variant = 'navItem',
-      as: renderAs = 'li',
-      ...props
-    },
+    { children, variantKey = 'navs', variant = 'navItem', ...props },
     forwardedRef,
   ) {
     return (
       <Box
         variantKey={variantKey}
         variant={variant}
-        as={renderAs}
-        ref={forwardedRef as any}
+        as="li"
+        ref={forwardedRef}
         sx={{ cursor: 'pointer', transition: 'all 0.2s ease-in-out' }}
         {...props}
       >

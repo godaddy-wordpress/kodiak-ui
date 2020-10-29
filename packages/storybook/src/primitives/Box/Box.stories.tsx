@@ -30,6 +30,8 @@ export function AsProp() {
         }}
       >
         Renders the Box as a Main HTML element
+        <Box>test</Box>
+        <Box>test</Box>
       </Box>
       <Box
         as="a"
