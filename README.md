@@ -1,7 +1,4 @@
 <p align="center">
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
   <a href="https://skyverge.com">
     <img src="https://user-images.githubusercontent.com/1162694/74063113-c6bad100-49bd-11ea-982d-3c4b17df80ab.png" alt="SkyVerge" />
   </a>
@@ -13,6 +10,9 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/skyverge/kodiak/badge.svg)](https://snyk.io/test/github/skyverge/kodiak)
 [![Coverage Status](https://coveralls.io/repos/github/skyverge/kodiak-ui/badge.svg?branch=master)](https://coveralls.io/github/skyverge/kodiak-ui?branch=master)
 [![CodeFactor](https://www.codefactor.io/repository/github/skyverge/kodiak-ui/badge)](https://www.codefactor.io/repository/github/skyverge/kodiak-ui)
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## Intro
 
