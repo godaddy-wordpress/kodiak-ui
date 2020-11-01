@@ -1,11 +1,17 @@
 import * as React from 'react'
+import { useSSR } from './useSSR'
 
 export const useMediaQuery = (query: string, defaultState = false) => {
+  const { isServer } = useSSR()
   const [state, setState] = React.useState(
     () => window.matchMedia(query).matches,
   )
 
   React.useEffect(() => {
+    if (isServer) {
+      return
+    }
+
     let mounted = true
     const mql = window.matchMedia(query)
     const onChange = () => {
@@ -22,7 +28,7 @@ export const useMediaQuery = (query: string, defaultState = false) => {
       mounted = false
       mql.removeListener(onChange)
     }
-  }, [query])
+  }, [isServer, query])
 
   return state
 }

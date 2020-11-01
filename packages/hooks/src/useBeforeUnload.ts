@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { useSSR } from './useSSR'
 
 // Unload
 function preventUnload(event: BeforeUnloadEvent) {
@@ -14,7 +15,13 @@ function preventUnload(event: BeforeUnloadEvent) {
  */
 
 export function useBeforeUnload({ enabled = true }: { enabled: boolean }) {
+  const { isServer } = useSSR()
+
   React.useEffect(() => {
+    if (isServer) {
+      return
+    }
+
     const handleBeforeUnload = (event: BeforeUnloadEvent) => {
       preventUnload(event)
     }
@@ -26,5 +33,5 @@ export function useBeforeUnload({ enabled = true }: { enabled: boolean }) {
     }
 
     return () => window.removeEventListener('beforeunload', handleBeforeUnload)
-  }, [enabled])
+  }, [enabled, isServer])
 }

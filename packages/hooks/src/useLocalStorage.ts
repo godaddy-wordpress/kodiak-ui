@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { useSSR } from './useSSR'
 import { useSubscribe, publish } from './useSubscribe'
 // based on https://usehooks.com/useLocalStorage/
 // with added updates when the key changes and event listener
@@ -34,6 +35,7 @@ export function useLocalStorage<T>(
   initialValue: T,
   options: UseLocalStorageOptions = { addWindowStorageListener: false },
 ): [T, (value: T) => void] {
+  const { isServer } = useSSR()
   // State to store our value
   // Pass initial state function to useState so logic is only executed once
   const [storedValue, setStoredValue] = React.useState<T>(initialValue)
@@ -66,6 +68,10 @@ export function useLocalStorage<T>(
 
   // Cross browser tab 'storage' event listener
   React.useEffect(() => {
+    if (isServer) {
+      return
+    }
+
     const handler = (event: StorageEvent) => onStorageRef.current(event)
     if (options.addWindowStorageListener) {
       window.addEventListener('storage', handler)
@@ -75,7 +81,7 @@ export function useLocalStorage<T>(
         window.removeEventListener('storage', handler)
       }
     }
-  }, [onStorage, options.addWindowStorageListener])
+  }, [isServer, onStorage, options.addWindowStorageListener])
 
   // Within window simulated 'storage' event
   useSubscribe(
@@ -92,6 +98,10 @@ export function useLocalStorage<T>(
   // ... persists the new value to localStorage.
   const setValue = React.useCallback(
     function setValue(value: T) {
+      if (isServer) {
+        return
+      }
+
       try {
         // Allow value to be a function so we have same API as useState
         const valueToStore =
@@ -106,7 +116,7 @@ export function useLocalStorage<T>(
         throw error
       }
     },
-    [key, storedValue],
+    [isServer, key, storedValue],
   )
 
   return [storedValue, setValue]

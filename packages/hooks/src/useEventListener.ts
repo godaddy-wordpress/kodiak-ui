@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { useSSR } from './useSSR'
 
 export type AddRemoveListenerType = {
   addEventListener(
@@ -19,8 +20,6 @@ export interface OnOffListenerType {
 }
 
 export type UseEventListenerTarget = AddRemoveListenerType | OnOffListenerType
-
-const defaultTarget = window
 
 function isAddRemoveListenerType(target: any): target is AddRemoveListenerType {
   return !!target.addEventListener
@@ -46,11 +45,19 @@ interface UseEventListenerOptions<T> {
 export function useEventListener<T extends UseEventListenerTarget>({
   name,
   handler,
-  target = defaultTarget,
+  target: targetProp,
   options,
 }: UseEventListenerOptions<T>) {
+  const { isServer } = useSSR()
+
   React.useEffect(
     function attachEventListeners() {
+      if (isServer) {
+        return
+      }
+
+      const target = targetProp ? targetProp : window
+
       if (!handler || !target) {
         return
       }
@@ -69,6 +76,6 @@ export function useEventListener<T extends UseEventListenerTarget>({
         }
       }
     },
-    [name, handler, target, options],
+    [name, handler, options, isServer, targetProp],
   )
 }
