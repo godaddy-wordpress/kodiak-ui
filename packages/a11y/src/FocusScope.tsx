@@ -2,7 +2,9 @@ import * as React from 'react'
 import { useLayoutEffect, useRef, RefObject } from 'react'
 // import create from 'zustand'
 import { FocusScopeOptions, FocusScopeProps } from './types'
+import { useFocusAuto } from './useFocusAuto'
 import { useFocusContain } from './useFocusContain'
+import { useFocusRestore } from './useFocusRestore'
 
 // const useFocusScopeStore = create(() => ({
 //   focusNext(options: FocusScopeOptions) {
@@ -45,9 +47,10 @@ const focusableElements = [
   '[contenteditable]',
 ]
 
-const FOCUSABLE_ELEMENT_SELECTOR = focusableElements.join(',') + ',[tabindex]'
+export const FOCUSABLE_ELEMENT_SELECTOR =
+  focusableElements.join(',') + ',[tabindex]'
 focusableElements.push('[tabindex]:not([tabindex="-1"])')
-const TABBABLE_ELEMENT_SELECTOR = focusableElements.join(
+export const TABBABLE_ELEMENT_SELECTOR = focusableElements.join(
   ':not([tabindex="-1"]),',
 )
 
@@ -74,7 +77,7 @@ export function FocusScope({
   children,
   contain = true,
   restore = true,
-  autoFocus = true,
+  auto = true,
 }: FocusScopeProps) {
   const startRef = useRef<HTMLSpanElement>()
   const endRef = useRef<HTMLSpanElement>()
@@ -96,9 +99,9 @@ export function FocusScope({
     }
   }, [children])
 
-  useFocusContain(scopeRef, {
-    contain,
-  })
+  useFocusContain(scopeRef, { contain })
+  useFocusRestore(scopeRef, { contain, restore })
+  useFocusAuto(scopeRef, { auto })
 
   return (
     <>

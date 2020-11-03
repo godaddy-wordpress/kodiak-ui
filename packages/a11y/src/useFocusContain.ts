@@ -6,7 +6,7 @@ export let activeScope: RefObject<HTMLElement[]> = null
 
 const TabKeys = ['Tab']
 
-function isInScope(element: Element, scope: HTMLElement[]) {
+export function isInScope(element: Element, scope: HTMLElement[]) {
   return scope.some(node => node.contains(element))
 }
 
@@ -19,7 +19,7 @@ function isInAnyScope(element: Element, scopes: Set<RefObject<HTMLElement[]>>) {
   return false
 }
 
-function isNotTabKey(event: KeyboardEvent) {
+export function isNotTabKey(event: KeyboardEvent) {
   return (
     !TabKeys.includes(event?.key) ||
     event.altKey ||
@@ -28,7 +28,7 @@ function isNotTabKey(event: KeyboardEvent) {
   )
 }
 
-function focusElement(element: HTMLElement | null) {
+export function focusElement(element: HTMLElement | null) {
   if (element != null) {
     try {
       element.focus()
@@ -38,7 +38,7 @@ function focusElement(element: HTMLElement | null) {
   }
 }
 
-function focusFirstInScope(scope: HTMLElement[]) {
+export function focusFirstInScope(scope: HTMLElement[]) {
   const elements = getFocusableElementsInScope(scope, { tabbable: true })
   focusElement(elements[0])
 }
