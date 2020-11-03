@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
-import { useFocusWithin } from '..'
+import { useFocusWithin } from '../useFocusWithin'
 
 function Test({
   onFocus,

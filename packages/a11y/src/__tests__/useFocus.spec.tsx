@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
-import { useFocus } from '..'
+import { useFocus } from '../useFocus'
 
 function Test({
   onFocus,

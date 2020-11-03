@@ -1,7 +1,0 @@
-{
-  "main": "dist/hooks.cjs.js",
-  "module": "dist/hooks.esm.js",
-  "preconstruct": {
-    "source": "../src/useFocusWithin"
-  }
-}
