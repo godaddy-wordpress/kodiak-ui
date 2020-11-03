@@ -1,0 +1,25 @@
+{
+  "name": "@kodiak-ui/a11y",
+  "version": "0.0.0",
+  "description": "Accessibility components and hooks",
+  "main": "dist/a11y.cjs.js",
+  "module": "dist/a11y.esm.js",
+  "source": "src/index.ts",
+  "files": [
+    "dist"
+  ],
+  "author": "Wesley Cole <wes@skyverge.com>",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {},
+  "peerDependencies": {
+    "kodiak-ui": "^0.0.9",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "dependencies": {
+    "zustand": "^3.1.3"
+  }
+}
