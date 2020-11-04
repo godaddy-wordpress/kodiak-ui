@@ -51,7 +51,7 @@ export function FocusScope({
   children,
   contain = true,
   restore = true,
-  auto = true,
+  auto = false,
 }: FocusScopeProps) {
   const startRef = useRef<HTMLSpanElement>()
   const endRef = useRef<HTMLSpanElement>()

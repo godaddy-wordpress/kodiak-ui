@@ -7,10 +7,19 @@ export function useDialog() {
   const handleOpenDialog = useCallback(() => setIsOpen(true), [])
   const handleToggleDialog = useCallback(() => setIsOpen(state => !state), [])
 
+  const getDialogProps = useCallback(
+    () => ({
+      isOpen,
+      onDismiss: handleCloseDialog,
+    }),
+    [handleCloseDialog, isOpen],
+  )
+
   return {
     isOpen,
     handleCloseDialog,
     handleOpenDialog,
     handleToggleDialog,
+    getDialogProps,
   }
 }
