@@ -21,6 +21,7 @@ interface UseTooltipReturn {
 interface UseTooltipProps {
   placement?: Placement
   offset?: [number, number]
+  closeTimeout?: number
 }
 
 type TooltipRef = HTMLElement | null
@@ -44,6 +45,7 @@ export const fromEntries = (entries: any) =>
 export function useTooltip({
   placement = 'top',
   offset = [0, 10],
+  closeTimeout = 0,
 }: UseTooltipProps = {}): UseTooltipReturn {
   const triggerRef = React.useRef<HTMLElement | null>(null)
   const tooltipRef = React.useRef<HTMLElement | null>(null)
@@ -55,10 +57,23 @@ export function useTooltip({
   const {
     isOpen: isVisible,
     handleOpenPortal,
-    handleClosePortal,
+    handleClosePortal: closePortal,
     Portal,
     portalRef,
   } = usePortal()
+
+  const handleClosePortal = React.useCallback(
+    function handleClosePortal(event) {
+      if (closeTimeout === 0) {
+        closePortal(event)
+      } else {
+        setTimeout(() => {
+          return closePortal(event)
+        }, closeTimeout)
+      }
+    },
+    [closePortal, closeTimeout],
+  )
 
   React.useLayoutEffect(
     function initializePopper() {
