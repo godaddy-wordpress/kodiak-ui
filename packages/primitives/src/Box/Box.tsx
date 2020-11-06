@@ -6,7 +6,9 @@ import {
   getVariants,
   KodiakUIProps,
   sx,
+  shared,
   _variant,
+  useSharedSx,
 } from 'kodiak-ui'
 
 function base({ theme, __base, base }) {
@@ -29,8 +31,9 @@ const boxVariant = ({ variant: variantProp, variantKey, variants, theme }) => {
 
 export type BoxProps = React.PropsWithChildren<
   KodiakUIProps & {
-    ref?: any
+    ref?: React.MutableRefObject<any>
     as?: string
+    __shared?: any
   } & React.AllHTMLAttributes<HTMLElement>
 >
 
@@ -38,13 +41,21 @@ export type BoxProps = React.PropsWithChildren<
  * Box primitive component which is the base component for
  * all components in Kodiak
  */
-export const Box = styled('div')<BoxProps>(
+const BoxStyle = styled('div')<BoxProps>(
   {
     boxSizing: 'border-box',
     margin: 0,
     minWidth: 0,
   },
   base,
+  shared,
   boxVariant,
   sx,
+)
+
+export const Box = React.forwardRef(
+  (props: BoxProps, ref: React.MutableRefObject<any>) => {
+    const shared = useSharedSx()
+    return <BoxStyle ref={ref} {...shared} {...props} />
+  },
 )

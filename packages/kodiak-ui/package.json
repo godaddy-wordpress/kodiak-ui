@@ -10,6 +10,9 @@
     "react": "^16.13.1",
     "react-dom": "16.13.1"
   },
+  "devDependencies": {
+    "csstype": "^2.5.7"
+  },
   "dependencies": {
     "@emotion/core": "^10.0.35",
     "@emotion/styled": "^10.0.17",

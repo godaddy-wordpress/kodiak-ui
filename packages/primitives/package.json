@@ -19,12 +19,16 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   },
+  "devDependencies": {
+    "@types/react-transition-group": "^4.4.0"
+  },
   "dependencies": {
     "@emotion/core": "^10.0.35",
     "@emotion/styled": "^10.0.27",
     "@emotion/styled-base": "^10.0.31",
     "@kodiak-ui/hooks": "^0.14.13",
-    "@kodiak-ui/utils": "^0.0.19"
+    "@kodiak-ui/utils": "^0.0.19",
+    "@kodiak-ui/transitions": "^0.0.0"
   },
   "gitHead": "211a2ccd74c644b5321b014eb3daa216c9fbf42d",
   "snyk": true,

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useFocus } from '@kodiak-ui/hooks'
+import { useFocus } from '@kodiak-ui/a11y'
 import { Box, Input } from '@kodiak-ui/primitives'
 
 export default { title: 'Hooks/useFocus' }

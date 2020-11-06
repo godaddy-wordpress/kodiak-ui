@@ -1,11 +1,15 @@
+import { KodiakUIProps } from 'kodiak-ui/src'
 import React from 'react'
 import { Box } from '../Box'
 
-export function Underlay() {
+export function Underlay({
+  isOpen,
+  ...rest
+}: { isOpen?: boolean } & KodiakUIProps) {
   return (
     <Box
       __base={{
-        opacity: '.9999',
+        bg: 'rgba(0,0,0,0.4)',
         transitionDelay: '0ms',
         pointerEvents: 'auto',
         position: 'fixed',
@@ -13,9 +17,13 @@ export function Underlay() {
         right: 0,
         bottom: 0,
         left: 0,
-        zIndex: 1,
+        zIndex: 100,
+        opacity: isOpen ? 1 : 0,
         overflow: 'hidden',
+        transition: 'opacity 0.13s cubic-bezier(0, 0, 0.4, 1)',
+        visibility: isOpen ? 'visible' : 'hidden',
       }}
+      {...rest}
     />
   )
 }

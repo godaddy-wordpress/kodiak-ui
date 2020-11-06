@@ -1,116 +1,85 @@
 import * as React from 'react'
-import { Global } from '@emotion/core'
-import styled from '@emotion/styled'
-import {
-  DialogOverlay as ReachDialogOverlay,
-  DialogContent as ReachDialogContent,
-} from '@reach/dialog'
-import { _variant, VariantProps, css, Theme, sx } from 'kodiak-ui'
-import { DialogHeader } from './DialogHeader'
-import { Overlay, Underlay } from '@kodiak-ui/primitives'
+import { KodiakUIProps } from 'kodiak-ui'
+import { Box, Button, Overlay, Underlay } from '@kodiak-ui/primitives'
+import { useOpenTransition } from '@kodiak-ui/transitions'
+import { FocusScope } from '@kodiak-ui/a11y'
+import { useOverlay } from '@kodiak-ui/primitives/src/Overlay/useOverlay'
 
-// type DialogProps = {
-//   isOpen?: boolean
-//   children?: React.ReactNode
-//   allowPinchZoom?: boolean
-//   style?: React.CSSProperties
-//   onDismiss?: React.ComponentProps<typeof DialogHeader>['onDismiss']
-//   onOverlayDismiss?: React.ComponentProps<
-//     typeof ReachDialogOverlay
-//   >['onDismiss']
-// } & VariantProps
+const DialogWrapper = React.forwardRef(
+  (
+    {
+      isOpen,
+      onDismiss,
+      children,
+      ...rest
+    }: {
+      isOpen?: boolean
+      onDismiss?: () => void
+      children: React.ReactNode
+    } & KodiakUIProps,
+    ref: React.MutableRefObject<any>,
+  ) => {
+    const { getOpenTransitionStyles } = useOpenTransition({ isOpen })
+    const { getOverlayProps } = useOverlay({ onDismiss })
 
-// const globalStyles = ({ theme }: { theme: Theme }) =>
-//   css({
-//     ':root': {
-//       '--reach-dialog': 1,
-//     },
-//   })(theme)
+    return (
+      <FocusScope contain refocus>
+        <Box
+          sx={{
+            alignItems: 'center',
+            justifyContent: 'center',
+            display: 'flex',
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            height: '100vh',
+            pointerEvents: 'none',
+            width: '100%',
+            visibility: isOpen ? 'visible' : 'hidden',
+            zIndex: 150,
+          }}
+        >
+          <Box
+            {...getOverlayProps()}
+            ref={ref}
+            __base={{
+              bg: 'bg',
+              borderRadius: 'default',
+              maxWidth: '90vw',
+              outline: 'none',
+              pointerEvents: 'auto',
+              position: 'relative',
+              width: '600px',
+              zIndex: 150,
+              ...getOpenTransitionStyles(),
+            }}
+          >
+            {children}
+          </Box>
+        </Box>
+      </FocusScope>
+    )
+  },
+)
 
-// const overlayStyles = ({ theme }: { theme: Theme }) =>
-//   css({
-//     background: 'hsla(0, 0%, 0%, 0.33)',
-//     bottom: 0,
-//     left: 0,
-//     overflow: 'auto',
-//     position: 'fixed',
-//     right: 0,
-//     top: 0,
-//     zIndex: 1000002,
-//   })(theme)
+export type DialogProps = React.PropsWithChildren<{
+  isOpen: boolean
+  onDismiss: () => void
+}> &
+  KodiakUIProps
 
-// const containerStyles = ({ theme }: { theme: Theme }) =>
-//   css({
-//     background: 'white',
-//     borderRadius: 'default',
-//     display: 'flex',
-//     flexDirection: 'column',
-//     margin: '10vh auto',
-//     maxHeight: '70vh',
-//     outline: 'none',
-//     overflow: 'auto',
-//     padding: '0',
-//     width: '50vw',
-//   })(theme)
-
-// export const DialogOverlay = styled(ReachDialogOverlay)<DialogProps>(
-//   {
-//     boxSizing: 'border-box',
-//     margin: 0,
-//     minWidth: 0,
-//   },
-//   overlayStyles,
-//   ({ variant: variantProp = 'overlay', variantKey = 'dialogs', theme }) =>
-//     _variant({ variant: variantProp, theme, variantKey }),
-//   sx,
-// )
-
-// export const DialogContainer = styled(ReachDialogContent)<DialogProps>(
-//   {
-//     boxSizing: 'border-box',
-//     margin: 0,
-//     minWidth: 0,
-//   },
-//   containerStyles,
-//   ({ variant: variantProp, variantKey = 'dialogs', theme }) =>
-//     _variant({ variant: variantProp, theme, variantKey }),
-//   sx,
-// )
-
-// export function Dialog({
-//   isOpen,
-//   onDismiss,
-//   onOverlayDismiss,
-//   title,
-//   children,
-//   variant,
-//   ...props
-// }: DialogProps & { title?: string | React.ReactNode }) {
-//   return (
-//     <>
-//       <DialogOverlay
-//         isOpen={isOpen}
-//         onDismiss={onOverlayDismiss || onDismiss}
-//         {...props}
-//       >
-//         <DialogContainer
-//           {...props}
-//           variant={variant}
-//           aria-label={props?.['aria-label'] || title}
-//         >
-//           <DialogHeader onDismiss={onDismiss}>{title}</DialogHeader>
-//           {children}
-//         </DialogContainer>
-//       </DialogOverlay>
-//       <Global styles={globalStyles} />
-//     </>
-//   )
-// }
-
-export function Dialog({ isOpen, onDismiss }) {
-  return (
-    <Overlay>
-      <Underlay />
-    </Overlay>
-  )
-}
+export const Dialog = React.forwardRef(
+  (
+    { children, isOpen, ...rest }: DialogProps,
+    ref: React.MutableRefObject<any>,
+  ) => {
+    return (
+      <Overlay isOpen={isOpen}>
+        <Underlay />
+        <DialogWrapper ref={ref} {...rest}>
+          {children}
+        </DialogWrapper>
+      </Overlay>
+    )
+  },
+)

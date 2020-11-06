@@ -42,6 +42,7 @@ export const colors = {
   danger: baseColors.red[2],
   muted: baseColors.gray[3],
   highlight: baseColors.blue[2],
+  bg: 'white',
 }
 
 const commonInputStyles = {
