@@ -58,23 +58,23 @@ export function useTooltip({
   const {
     isOpen: isVisible,
     handleOpenPortal,
-    handleClosePortal: closePortal,
+    handleClosePortal: instantlyClosePortal,
     Portal,
     portalRef,
   } = usePortal()
 
-  const handleClosePortal = React.useCallback(
-    function handleClosePortal(event) {
+  const delayedClosePortal = React.useCallback(
+    function delayedClosePortal(event) {
       clearTimeout(timeoutIdRef.current)
       if (closeTimeout === 0) {
-        closePortal(event)
+        instantlyClosePortal(event)
       } else {
         timeoutIdRef.current = setTimeout(() => {
-          return closePortal(event)
+          return instantlyClosePortal(event)
         }, closeTimeout)
       }
     },
-    [closePortal, closeTimeout],
+    [instantlyClosePortal, closeTimeout],
   )
 
   React.useLayoutEffect(
@@ -114,7 +114,7 @@ export function useTooltip({
     ref: portalRef as React.MutableRefObject<Element>,
     refException: triggerRef as React.MutableRefObject<Element>,
     handler: () => {
-      handleClosePortal({})
+      instantlyClosePortal({})
     },
   })
 
@@ -123,7 +123,7 @@ export function useTooltip({
     target: triggerRef.current,
     handler: () => {
       if (isVisible) {
-        handleClosePortal({})
+        instantlyClosePortal({})
       }
     },
   })
@@ -185,12 +185,12 @@ export function useTooltip({
     function getTriggerProps() {
       return {
         onFocus: handleOpenPortal,
-        onBlur: handleClosePortal,
+        onBlur: delayedClosePortal,
         onMouseEnter: handleOpenPortal,
-        onMouseLeave: handleClosePortal,
+        onMouseLeave: delayedClosePortal,
       }
     },
-    [handleOpenPortal, handleClosePortal],
+    [handleOpenPortal, delayedClosePortal],
   )
 
   return {
