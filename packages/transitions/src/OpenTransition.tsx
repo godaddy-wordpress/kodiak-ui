@@ -1,4 +1,3 @@
-import { ThemeUIStyleObject } from 'kodiak-ui'
 import React, { useMemo } from 'react'
 import Transition from 'react-transition-group/Transition'
 
@@ -9,7 +8,7 @@ const StateMap = {
 
 export function useOpenTransition({ isOpen }: { isOpen: boolean }) {
   const styles = useMemo(
-    (): ThemeUIStyleObject => ({
+    (): any => ({
       transition:
         'opacity 0.2s cubic-bezier(0, 0, 0.4, 1) 0.1s, transform 0.2s cubic-bezier(0, 0, 0.4, 1) 0.1s',
       opacity: isOpen ? 1 : 0,

@@ -79,7 +79,7 @@ export const Dialog = React.forwardRef(
     }
 
     return (
-      <VisuallyHidden isOpen={isOpen}>
+      <VisuallyHidden isVisible={isOpen}>
         <Overlay>
           <OpenTransition
             in={isOpen}
