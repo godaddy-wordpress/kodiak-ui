@@ -1,26 +1,20 @@
 import * as React from 'react'
+import { RefObject } from 'react'
 import { KodiakUIProps } from 'kodiak-ui'
 import { Box, Button, Overlay, Underlay } from '@kodiak-ui/primitives'
 import { useOpenTransition } from '@kodiak-ui/transitions'
 import { FocusScope } from '@kodiak-ui/a11y'
 import { useOverlay } from '@kodiak-ui/primitives/src/Overlay/useOverlay'
 
+export type DialogProps = any & KodiakUIProps
+
 const DialogWrapper = React.forwardRef(
   (
-    {
-      isOpen,
-      onDismiss,
-      children,
-      ...rest
-    }: {
-      isOpen?: boolean
-      onDismiss?: () => void
-      children: React.ReactNode
-    } & KodiakUIProps,
-    ref: React.MutableRefObject<any>,
+    { isOpen, onDismiss, children, ...rest }: DialogProps,
+    ref: RefObject<any>,
   ) => {
     const { getOpenTransitionStyles } = useOpenTransition({ isOpen })
-    const { getOverlayProps } = useOverlay({ onDismiss })
+    const { getOverlayProps } = useOverlay({ onDismiss }, ref)
 
     return (
       <FocusScope contain refocus>
@@ -40,6 +34,7 @@ const DialogWrapper = React.forwardRef(
           }}
         >
           <Box
+            {...rest}
             {...getOverlayProps()}
             ref={ref}
             __base={{
@@ -61,12 +56,6 @@ const DialogWrapper = React.forwardRef(
     )
   },
 )
-
-export type DialogProps = React.PropsWithChildren<{
-  isOpen: boolean
-  onDismiss: () => void
-}> &
-  KodiakUIProps
 
 export const Dialog = React.forwardRef(
   (

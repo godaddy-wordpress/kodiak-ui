@@ -1,6 +1,7 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useRef } from 'react'
 
 export function useDialog() {
+  const ref = useRef<HTMLElement>()
   const [isOpen, setIsOpen] = useState(false)
 
   const handleCloseDialog = useCallback(() => setIsOpen(false), [])
@@ -9,14 +10,16 @@ export function useDialog() {
 
   const getDialogProps = useCallback(
     () => ({
+      ref,
       isOpen,
+      tabIndex: -1,
+      role: 'dialog',
       onDismiss: handleCloseDialog,
     }),
     [handleCloseDialog, isOpen],
   )
 
   return {
-    isOpen,
     handleCloseDialog,
     handleOpenDialog,
     handleToggleDialog,

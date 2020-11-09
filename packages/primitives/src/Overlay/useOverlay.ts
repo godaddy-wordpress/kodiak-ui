@@ -1,4 +1,4 @@
-import { useCallback } from 'react'
+import { RefObject, useCallback, useEffect } from 'react'
 
 export type UseOverlayProps = {
   isKeyboardDismissDisabled?: boolean
@@ -9,7 +9,17 @@ export function useOverlay(
   { isKeyboardDismissDisabled, onDismiss }: UseOverlayProps = {
     isKeyboardDismissDisabled: false,
   },
+  ref: RefObject<any>,
 ) {
+  useEffect(
+    function focusOnDialogOnMount() {
+      if (ref?.current && !ref?.current.contains(document.activeElement)) {
+        ref?.current?.focus()
+      }
+    },
+    [ref],
+  )
+
   // Handle the escape key
   const onKeyDown = useCallback(
     e => {

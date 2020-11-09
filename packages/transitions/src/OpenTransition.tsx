@@ -1,6 +1,6 @@
+import { ThemeUIStyleObject } from 'kodiak-ui'
 import React, { useCallback } from 'react'
 import Transition from 'react-transition-group/Transition'
-import { ThemeUIStyleObject } from 'kodiak-ui'
 
 const StateMap = {
   entering: false,
