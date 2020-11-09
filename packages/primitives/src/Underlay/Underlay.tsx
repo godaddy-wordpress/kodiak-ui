@@ -21,7 +21,6 @@ export function Underlay({
         opacity: isOpen ? 1 : 0,
         overflow: 'hidden',
         transition: 'opacity 0.13s cubic-bezier(0, 0, 0.4, 1)',
-        visibility: isOpen ? 'visible' : 'hidden',
       }}
       {...rest}
     />

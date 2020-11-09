@@ -1,8 +1,11 @@
 import * as React from 'react'
-import { RefObject } from 'react'
 import { KodiakUIProps } from 'kodiak-ui'
-import { Box, Button, Overlay, Underlay } from '@kodiak-ui/primitives'
-import { useOpenTransition } from '@kodiak-ui/transitions'
+import { Box, Overlay, Underlay, VisuallyHidden } from '@kodiak-ui/primitives'
+import {
+  OpenTransition,
+  useOpenTransition,
+  useTransition,
+} from '@kodiak-ui/transitions'
 import { FocusScope } from '@kodiak-ui/a11y'
 import { useOverlay } from '@kodiak-ui/primitives/src/Overlay/useOverlay'
 
@@ -10,14 +13,20 @@ export type DialogProps = any & KodiakUIProps
 
 const DialogWrapper = React.forwardRef(
   (
-    { isOpen, onDismiss, children, ...rest }: DialogProps,
-    ref: RefObject<any>,
+    { isOpen, onDismiss, children }: DialogProps,
+    ref: React.RefObject<HTMLElement>,
   ) => {
-    const { getOpenTransitionStyles } = useOpenTransition({ isOpen })
-    const { getOverlayProps } = useOverlay({ onDismiss }, ref)
+    const { styles } = useOpenTransition({ isOpen })
+    const { getOverlayProps } = useOverlay({ onDismiss })
+
+    React.useEffect(() => {
+      if (ref?.current) {
+        ref?.current?.focus()
+      }
+    }, [ref])
 
     return (
-      <FocusScope contain refocus>
+      <FocusScope contain restore>
         <Box
           sx={{
             alignItems: 'center',
@@ -29,14 +38,12 @@ const DialogWrapper = React.forwardRef(
             height: '100vh',
             pointerEvents: 'none',
             width: '100%',
-            visibility: isOpen ? 'visible' : 'hidden',
             zIndex: 150,
           }}
         >
           <Box
-            {...rest}
-            {...getOverlayProps()}
             ref={ref}
+            tabIndex={-1}
             __base={{
               bg: 'bg',
               borderRadius: 'default',
@@ -46,8 +53,9 @@ const DialogWrapper = React.forwardRef(
               position: 'relative',
               width: '600px',
               zIndex: 150,
-              ...getOpenTransitionStyles(),
+              ...styles,
             }}
+            {...getOverlayProps()}
           >
             {children}
           </Box>
@@ -60,15 +68,32 @@ const DialogWrapper = React.forwardRef(
 export const Dialog = React.forwardRef(
   (
     { children, isOpen, ...rest }: DialogProps,
-    ref: React.MutableRefObject<any>,
+    ref: React.RefObject<HTMLElement>,
   ) => {
+    const { shouldMountElement, handleEntered, handleExited } = useTransition({
+      isOpen,
+    })
+
+    if (!shouldMountElement) {
+      return null
+    }
+
     return (
-      <Overlay isOpen={isOpen}>
-        <Underlay />
-        <DialogWrapper ref={ref} {...rest}>
-          {children}
-        </DialogWrapper>
-      </Overlay>
+      <VisuallyHidden isOpen={isOpen}>
+        <Overlay>
+          <OpenTransition
+            in={isOpen}
+            appear
+            onExited={handleExited}
+            onEntered={handleEntered}
+          >
+            <Underlay />
+            <DialogWrapper ref={ref} {...rest}>
+              {children}
+            </DialogWrapper>
+          </OpenTransition>
+        </Overlay>
+      </VisuallyHidden>
     )
   },
 )
