@@ -51,6 +51,7 @@ export function useTooltip({
   const tooltipRef = React.useRef<HTMLElement | null>(null)
   const arrowRef = React.useRef<HTMLElement | null>(null)
   const popperInstanceRef = React.useRef<any>(null)
+  const timeoutIdRef = React.useRef<any>(null)
 
   const id = useId()
 
@@ -64,10 +65,11 @@ export function useTooltip({
 
   const handleClosePortal = React.useCallback(
     function handleClosePortal(event) {
+      clearTimeout(timeoutIdRef.current)
       if (closeTimeout === 0) {
         closePortal(event)
       } else {
-        setTimeout(() => {
+        timeoutIdRef.current = setTimeout(() => {
           return closePortal(event)
         }, closeTimeout)
       }
