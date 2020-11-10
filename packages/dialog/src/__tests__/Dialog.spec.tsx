@@ -1,31 +1,27 @@
 import * as React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import { Dialog, DialogContent, DialogFooter } from '../'
-import { Text, Button } from '@kodiak-ui/primitives'
+import { Text, Button, Header } from '@kodiak-ui/primitives'
+import { useDialog } from '../useDialog'
 
 function DialogExample() {
-  const [isOpen, setIsOpen] = React.useState(false)
+  const { getDialogProps, handleOpenDialog, handleCloseDialog } = useDialog()
 
   return (
     <>
       <div data-testid="outside">
         Some content outside to click on to close the modal
       </div>
-      <Button onClick={() => setIsOpen(true)}>Show default example</Button>
-      <Dialog
-        isOpen={isOpen}
-        title={
+      <Button onClick={handleOpenDialog}>Show default example</Button>
+      <Dialog {...getDialogProps()}>
+        <Header>
           <div>
             <Text as="h3" sx={{ mb: 2 }}>
               Testing
             </Text>
             <Text sx={{ mb: 0 }}>Testing some text</Text>
           </div>
-        }
-        // eslint-disable-next-line @typescript-eslint/no-empty-function
-        onDismiss={() => setIsOpen(false)}
-        aria-label="Warning about next steps"
-      >
+        </Header>
         <DialogContent>
           <Text as="p">
             Contrary to popular belief, Lorem Ipsum is not simply random text.
@@ -50,7 +46,7 @@ function DialogExample() {
         <DialogFooter>
           {/* eslint-disable-next-line @typescript-eslint/no-empty-function */}
           <Button
-            onClick={() => setIsOpen(false)}
+            onClick={handleCloseDialog}
             data-testid="closeButton"
             sx={{ ml: 'auto' }}
           >

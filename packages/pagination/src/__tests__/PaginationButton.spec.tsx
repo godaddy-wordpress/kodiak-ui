@@ -25,8 +25,8 @@ describe('PaginationButton', () => {
         text-align: center;
         -webkit-text-decoration: none;
         text-decoration: none;
-        -webkit-transition: all 0.2s ease-in-out;
-        transition: all 0.2s ease-in-out;
+        -webkit-transition: background 0.2s ease-in-out,border 0.2s ease-in-out;
+        transition: background 0.2s ease-in-out,border 0.2s ease-in-out;
         padding-left: 16px;
         padding-right: 16px;
         padding-top: 8px;

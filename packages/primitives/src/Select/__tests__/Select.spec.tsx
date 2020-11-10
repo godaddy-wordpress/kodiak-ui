@@ -51,7 +51,6 @@ describe('Select', () => {
         margin: 0;
         min-width: 0;
         fill: currentColor;
-        color: black;
         display: block;
         -webkit-align-self: center;
         -ms-flex-item-align: center;

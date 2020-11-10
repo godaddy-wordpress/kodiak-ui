@@ -71,6 +71,12 @@ describe('Switch', () => {
         border-radius: default;
         color: inherit;
         background-color: transparent;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 1px;
+        width: 1px;
+        opacity: 0;
       }
 
       .emotion-2 {
@@ -145,11 +151,8 @@ describe('Switch', () => {
         <input
           checked={true}
           className="emotion-0"
-          height={1}
           onChange={[Function]}
-          opacity={0}
           type="checkbox"
-          width={1}
         />
         <div
           className="emotion-2"
