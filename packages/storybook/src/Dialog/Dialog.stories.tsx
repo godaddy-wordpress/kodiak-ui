@@ -333,6 +333,23 @@ variant('dialog-full', {
   height: '100vh',
 })
 
+variant('dialog-header', {
+  borderBottom: '1px solid',
+  borderColor: 'gray.2',
+})
+
+variant('dialog-footer', {
+  bg: 'gray.1',
+  borderTop: '1px solid',
+  borderColor: 'gray.2',
+  display: 'flex',
+  justifyContent: 'flex-end',
+
+  '> *': {
+    ml: 2,
+  },
+})
+
 export function Default() {
   const { getDialogProps, handleOpenDialog, handleCloseDialog } = useDialog()
 
@@ -341,12 +358,12 @@ export function Default() {
       <Button onClick={handleOpenDialog}>Trigger</Button>
 
       <Dialog {...getDialogProps()}>
-        <SharedSx sx={{ p: 4 }}>
-          <Header>Header</Header>
+        <SharedSx sx={{ px: 5, py: 4 }}>
+          <Header variants="dialog-header">Header</Header>
           <Content>
             <input type="text" placeholder="Email" />
           </Content>
-          <Footer>
+          <Footer variants="dialog-footer">
             <Button variants="secondary" onClick={handleCloseDialog}>
               Cancel
             </Button>

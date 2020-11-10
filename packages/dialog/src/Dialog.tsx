@@ -26,6 +26,7 @@ export const Dialog = memo(
       ref: RefObject<HTMLElement>,
     ) => {
       const domRef = useRef<HTMLElement>((ref as unknown) as HTMLElement)
+
       const { getOverlayProps } = useOverlay(
         { isOpen, hideRootElements: true, onDismiss },
         domRef,
@@ -58,6 +59,7 @@ export const Dialog = memo(
                   borderRadius: 'default',
                   maxWidth: '90vw',
                   outline: 'none',
+                  overflow: 'hidden',
                   pointerEvents: 'auto',
                   position: 'relative',
                   width: '600px',
