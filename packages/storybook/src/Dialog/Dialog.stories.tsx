@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { SharedSx } from 'kodiak-ui'
+import { SharedSx, variant } from 'kodiak-ui'
 import {
   Dialog,
   useDialog,
@@ -321,6 +321,17 @@ export default { title: 'Dialog', component: Dialog }
 //     </div>
 //   )
 // }
+
+variant('dialog-lg', {
+  width: '900px',
+})
+
+variant('dialog-full', {
+  borderRadius: 'none',
+  maxWidth: '100%',
+  width: '100vw',
+  height: '100vh',
+})
 
 export function Default() {
   const { getDialogProps, handleOpenDialog, handleCloseDialog } = useDialog()

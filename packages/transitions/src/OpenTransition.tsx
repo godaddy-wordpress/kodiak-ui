@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react'
 import Transition from 'react-transition-group/Transition'
+import { useTransition } from './useTransition'
 
 const StateMap = {
   entering: false,
@@ -34,8 +35,22 @@ export function useOpenTransition({ isOpen }: { isOpen: boolean }) {
  */
 
 export function OpenTransition(props) {
+  const { shouldMountElement, handleEntered, handleExited } = useTransition({
+    isOpen: props?.in,
+  })
+
+  if (!shouldMountElement) {
+    return null
+  }
+
   return (
-    <Transition timeout={{ enter: 0, exit: 350 }} {...props}>
+    <Transition
+      appear
+      in={props?.in}
+      timeout={{ enter: 0, exit: 350 }}
+      onExited={handleExited}
+      onEntered={handleEntered}
+    >
       {state =>
         React.Children.map(
           props.children,

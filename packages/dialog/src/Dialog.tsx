@@ -1,99 +1,72 @@
 import * as React from 'react'
-import { KodiakUIProps } from 'kodiak-ui'
-import { Box, Overlay, Underlay, VisuallyHidden } from '@kodiak-ui/primitives'
 import {
-  OpenTransition,
-  useOpenTransition,
-  useTransition,
-} from '@kodiak-ui/transitions'
+  ReactNode,
+  memo,
+  forwardRef,
+  RefObject,
+  HTMLAttributes,
+  useRef,
+} from 'react'
+import { KodiakUIProps } from 'kodiak-ui'
+import { Box, Overlay, Underlay } from '@kodiak-ui/primitives'
 import { FocusScope } from '@kodiak-ui/a11y'
 import { useOverlay } from '@kodiak-ui/primitives/src/Overlay/useOverlay'
 
-export type DialogProps = any & KodiakUIProps
+export type DialogProps = {
+  children: ReactNode
+  isOpen: boolean
+  onDismiss: () => void
+} & KodiakUIProps &
+  HTMLAttributes<HTMLDivElement>
 
-const DialogWrapper = React.forwardRef(
-  (
-    { isOpen, onDismiss, children }: DialogProps,
-    ref: React.RefObject<HTMLElement>,
-  ) => {
-    const { styles } = useOpenTransition({ isOpen })
-    const { getOverlayProps } = useOverlay({ onDismiss })
+export const Dialog = memo(
+  forwardRef(
+    (
+      { children, isOpen, onDismiss, ...rest }: DialogProps,
+      ref: RefObject<HTMLElement>,
+    ) => {
+      const domRef = useRef<HTMLElement>((ref as unknown) as HTMLElement)
+      const { getOverlayProps } = useOverlay({ onDismiss }, domRef)
 
-    React.useEffect(() => {
-      if (ref?.current) {
-        ref?.current?.focus()
-      }
-    }, [ref])
-
-    return (
-      <FocusScope contain restore>
-        <Box
-          sx={{
-            alignItems: 'center',
-            justifyContent: 'center',
-            display: 'flex',
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            height: '100vh',
-            pointerEvents: 'none',
-            width: '100%',
-            zIndex: 150,
-          }}
-        >
-          <Box
-            ref={ref}
-            tabIndex={-1}
-            __base={{
-              bg: 'bg',
-              borderRadius: 'default',
-              maxWidth: '90vw',
-              outline: 'none',
-              pointerEvents: 'auto',
-              position: 'relative',
-              width: '600px',
-              zIndex: 150,
-              ...styles,
-            }}
-            {...getOverlayProps()}
-          >
-            {children}
-          </Box>
-        </Box>
-      </FocusScope>
-    )
-  },
-)
-
-export const Dialog = React.forwardRef(
-  (
-    { children, isOpen, ...rest }: DialogProps,
-    ref: React.RefObject<HTMLElement>,
-  ) => {
-    const { shouldMountElement, handleEntered, handleExited } = useTransition({
-      isOpen,
-    })
-
-    if (!shouldMountElement) {
-      return null
-    }
-
-    return (
-      <VisuallyHidden isVisible={isOpen}>
+      return isOpen ? (
         <Overlay>
-          <OpenTransition
-            in={isOpen}
-            appear
-            onExited={handleExited}
-            onEntered={handleEntered}
-          >
-            <Underlay />
-            <DialogWrapper ref={ref} {...rest}>
-              {children}
-            </DialogWrapper>
-          </OpenTransition>
+          <Underlay isOpen={isOpen} />
+          <FocusScope contain restore>
+            <Box
+              sx={{
+                alignItems: 'center',
+                justifyContent: 'center',
+                display: 'flex',
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                height: '100vh',
+                pointerEvents: 'none',
+                width: '100%',
+                zIndex: 150,
+              }}
+            >
+              <Box
+                {...getOverlayProps()}
+                ref={domRef}
+                __base={{
+                  bg: 'bg',
+                  borderRadius: 'default',
+                  maxWidth: '90vw',
+                  outline: 'none',
+                  pointerEvents: 'auto',
+                  position: 'relative',
+                  width: '600px',
+                  zIndex: 150,
+                }}
+                {...rest}
+              >
+                {children}
+              </Box>
+            </Box>
+          </FocusScope>
         </Overlay>
-      </VisuallyHidden>
-    )
-  },
+      ) : null
+    },
+  ),
 )

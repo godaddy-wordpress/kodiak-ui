@@ -119,5 +119,5 @@ export function useFocusRestore(
         })
       }
     }
-  }, [contain, nodeToRestore, onKeyDown, restore, scopeRef])
+  }, [scopeRef, restore, contain, onKeyDown, nodeToRestore])
 }
