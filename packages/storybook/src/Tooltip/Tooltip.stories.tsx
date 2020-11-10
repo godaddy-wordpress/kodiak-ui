@@ -30,3 +30,31 @@ export function Initial() {
     </Box>
   )
 }
+
+export function WithCloseTimeout() {
+  const { isVisible, register, getTriggerProps, Portal } = useTooltip({
+    placement: 'right',
+    closeTimeout: 5000,
+  })
+
+  return (
+    <Box sx={{ margin: '25%' }}>
+      <Button
+        ref={node => register(node, { trigger: true })}
+        {...getTriggerProps()}
+      >
+        Hover over me
+      </Button>
+      {isVisible && (
+        <Portal>
+          <Tooltip ref={register}>
+            This domain has failed verification. Please contact support.
+            <TooltipArrow
+              ref={(node: HTMLElement) => register(node, { arrow: true })}
+            />
+          </Tooltip>
+        </Portal>
+      )}
+    </Box>
+  )
+}
