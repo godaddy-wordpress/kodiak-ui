@@ -21,6 +21,7 @@ interface UseTooltipReturn {
 interface UseTooltipProps {
   placement?: Placement
   offset?: [number, number]
+  closeTimeout?: number
 }
 
 type TooltipRef = HTMLElement | null
@@ -44,21 +45,37 @@ export const fromEntries = (entries: any) =>
 export function useTooltip({
   placement = 'top',
   offset = [0, 10],
+  closeTimeout = 0,
 }: UseTooltipProps = {}): UseTooltipReturn {
   const triggerRef = React.useRef<HTMLElement | null>(null)
   const tooltipRef = React.useRef<HTMLElement | null>(null)
   const arrowRef = React.useRef<HTMLElement | null>(null)
   const popperInstanceRef = React.useRef<any>(null)
+  const timeoutIdRef = React.useRef<any>(null)
 
   const id = useId()
 
   const {
     isOpen: isVisible,
     handleOpenPortal,
-    handleClosePortal,
+    handleClosePortal: instantlyClosePortal,
     Portal,
     portalRef,
   } = usePortal()
+
+  const delayedClosePortal = React.useCallback(
+    function delayedClosePortal(event) {
+      clearTimeout(timeoutIdRef.current)
+      if (closeTimeout === 0) {
+        instantlyClosePortal(event)
+      } else {
+        timeoutIdRef.current = setTimeout(() => {
+          return instantlyClosePortal(event)
+        }, closeTimeout)
+      }
+    },
+    [instantlyClosePortal, closeTimeout],
+  )
 
   React.useLayoutEffect(
     function initializePopper() {
@@ -97,7 +114,7 @@ export function useTooltip({
     ref: portalRef as React.MutableRefObject<Element>,
     refException: triggerRef as React.MutableRefObject<Element>,
     handler: () => {
-      handleClosePortal({})
+      instantlyClosePortal({})
     },
   })
 
@@ -106,7 +123,7 @@ export function useTooltip({
     target: triggerRef.current,
     handler: () => {
       if (isVisible) {
-        handleClosePortal({})
+        instantlyClosePortal({})
       }
     },
   })
@@ -168,12 +185,12 @@ export function useTooltip({
     function getTriggerProps() {
       return {
         onFocus: handleOpenPortal,
-        onBlur: handleClosePortal,
+        onBlur: delayedClosePortal,
         onMouseEnter: handleOpenPortal,
-        onMouseLeave: handleClosePortal,
+        onMouseLeave: delayedClosePortal,
       }
     },
-    [handleOpenPortal, handleClosePortal],
+    [handleOpenPortal, delayedClosePortal],
   )
 
   return {
