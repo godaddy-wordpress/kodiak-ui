@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/utils",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "description": "Common utility functions to use when building Kodiak UI hooks and components",
   "main": "dist/utils.cjs.js",
   "module": "dist/utils.esm.js",
@@ -14,5 +14,5 @@
     "access": "public"
   },
   "scripts": {},
-  "gitHead": "211a2ccd74c644b5321b014eb3daa216c9fbf42d"
+  "gitHead": "3b66833063904e565cc40ba900f78e4a9200949b"
 }

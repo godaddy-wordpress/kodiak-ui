@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/skeleton",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Skeleton for loading",
   "keywords": [
     "skeleton",
@@ -26,11 +26,11 @@
   },
   "dependencies": {
     "@emotion/core": "^10.0.28",
-    "@kodiak-ui/primitives": "^0.19.3"
+    "@kodiak-ui/primitives": "^0.19.4"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/skyverge/kodiak-ui.git"
   },
-  "gitHead": "211a2ccd74c644b5321b014eb3daa216c9fbf42d"
+  "gitHead": "3b66833063904e565cc40ba900f78e4a9200949b"
 }

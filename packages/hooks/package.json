@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/hooks",
-  "version": "0.14.14",
+  "version": "0.14.15",
   "main": "dist/hooks.cjs.js",
   "module": "dist/hooks.esm.js",
   "source": "src/index.ts",
@@ -16,7 +16,7 @@
     "resize-observer-polyfill": "^1.5.1",
     "zustand": "^3.1.1"
   },
-  "gitHead": "211a2ccd74c644b5321b014eb3daa216c9fbf42d",
+  "gitHead": "3b66833063904e565cc40ba900f78e4a9200949b",
   "dependencies": {
     "resize-observer-polyfill": "^1.5.1"
   },
