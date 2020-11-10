@@ -1,7 +1,18 @@
 import { useState, useCallback } from 'react'
 
-export function useDialog() {
+export type DialogAriaProps = {
+  titleId?: string
+  role?: 'dialog' | 'alertdialog'
+  'aria-labelledby'?: string
+  'aria-describedby'?: string
+}
+
+export type UseDialogProps = DialogAriaProps
+
+export function useDialog({ titleId, role, ...rest }: UseDialogProps = {}) {
   const [isOpen, setIsOpen] = useState(false)
+
+  const ariaLabeledBy = rest['aria-labelledby']
 
   const handleCloseDialog = useCallback(() => setIsOpen(false), [])
   const handleOpenDialog = useCallback(() => setIsOpen(true), [])
@@ -11,10 +22,12 @@ export function useDialog() {
     () => ({
       isOpen,
       tabIndex: -1,
-      role: 'dialog',
+      role: role ? role : 'dialog',
+      'aria-modal': true,
+      'aria-labelledby': ariaLabeledBy || titleId,
       onDismiss: handleCloseDialog,
     }),
-    [handleCloseDialog, isOpen],
+    [ariaLabeledBy, handleCloseDialog, isOpen, role, titleId],
   )
 
   return {

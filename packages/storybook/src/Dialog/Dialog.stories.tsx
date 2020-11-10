@@ -339,6 +339,7 @@ export function Default() {
   return (
     <>
       <Button onClick={handleOpenDialog}>Trigger</Button>
+
       <Dialog {...getDialogProps()}>
         <SharedSx sx={{ p: 4 }}>
           <Header>Header</Header>
