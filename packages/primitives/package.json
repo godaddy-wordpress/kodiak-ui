@@ -19,9 +19,7 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   },
-  "devDependencies": {
-    "@types/react-transition-group": "^4.4.0"
-  },
+  "devDependencies": {},
   "dependencies": {
     "@emotion/core": "^10.0.35",
     "@emotion/styled": "^10.0.27",
