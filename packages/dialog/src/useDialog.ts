@@ -1,4 +1,3 @@
-import { useScrollPrevent } from '@kodiak-ui/a11y'
 import { useState, useCallback } from 'react'
 
 export type DialogAriaProps = {
@@ -12,8 +11,6 @@ export type UseDialogProps = DialogAriaProps
 
 export function useDialog({ titleId, role, ...rest }: UseDialogProps = {}) {
   const [isOpen, setIsOpen] = useState(false)
-
-  useScrollPrevent({ isDisabled: !isOpen })
 
   const ariaLabeledBy = rest['aria-labelledby']
 

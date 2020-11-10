@@ -29,7 +29,11 @@ export const Dialog = memo(
       const domRef = useRef<HTMLElement>((ref as unknown) as HTMLElement)
 
       const { getOverlayProps } = useOverlay(
-        { isOpen, hideRootElements: true, onDismiss },
+        {
+          isOpen,
+          hideRootElements: true,
+          onDismiss,
+        },
         domRef,
       )
 

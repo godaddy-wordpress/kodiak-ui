@@ -1,8 +1,10 @@
+import { useScrollPrevent } from '@kodiak-ui/a11y'
 import { MutableRefObject, RefObject, useCallback, useEffect } from 'react'
 import { __DEV__ } from '../../../utils/src'
 
 export type UseOverlayProps = {
   isKeyboardDismissDisabled?: boolean
+  isScrollPreventDisabled?: boolean
   isOpen?: boolean
   hideRootElements?: boolean
   onDismiss?: () => void
@@ -11,15 +13,19 @@ export type UseOverlayProps = {
 export function useOverlay(
   {
     isKeyboardDismissDisabled,
+    isScrollPreventDisabled,
     isOpen,
     hideRootElements,
     onDismiss,
   }: UseOverlayProps = {
     isKeyboardDismissDisabled: false,
+    isScrollPreventDisabled: false,
     hideRootElements: false,
   },
   ref: RefObject<HTMLElement> | MutableRefObject<HTMLElement>,
 ) {
+  useScrollPrevent({ isDisabled: !isOpen || isScrollPreventDisabled })
+
   useEffect(
     function focusOnOverlayWhenOpen() {
       if (!isOpen) {
