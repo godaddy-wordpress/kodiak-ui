@@ -4,12 +4,19 @@ import { __DEV__ } from '../../../utils/src'
 export type UseOverlayProps = {
   isKeyboardDismissDisabled?: boolean
   isOpen?: boolean
+  hideRootElements?: boolean
   onDismiss?: () => void
 }
 
 export function useOverlay(
-  { isKeyboardDismissDisabled, isOpen, onDismiss }: UseOverlayProps = {
+  {
+    isKeyboardDismissDisabled,
+    isOpen,
+    hideRootElements,
+    onDismiss,
+  }: UseOverlayProps = {
     isKeyboardDismissDisabled: false,
+    hideRootElements: false,
   },
   ref: RefObject<HTMLElement> | MutableRefObject<HTMLElement>,
 ) {
@@ -38,10 +45,10 @@ export function useOverlay(
     function addAriaHiddenToOutsideElementsWhenOpen() {
       const dialogNode = ref?.current
       const ownerDocument = document
-      const rootNodes = []
+      const rootNodes: HTMLElement[] = []
       const originalValues = []
 
-      if (!isOpen) {
+      if (!isOpen || !hideRootElements) {
         return
       }
 
@@ -84,7 +91,7 @@ export function useOverlay(
         })
       }
     },
-    [isOpen, ref],
+    [hideRootElements, isOpen, ref],
   )
 
   // Handle the escape key
