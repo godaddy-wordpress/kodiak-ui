@@ -1,5 +1,5 @@
 export { Dialog } from './Dialog'
 export * from './useDialog'
-// export { DialogHeader } from './DialogHeader'
-// export { DialogContent } from './DialogContent'
-// export { DialogFooter } from './DialogFooter'
+export { DialogHeader } from './DialogHeader'
+export { DialogContent } from './DialogContent'
+export { DialogFooter } from './DialogFooter'

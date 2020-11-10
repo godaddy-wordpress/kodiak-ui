@@ -15,6 +15,7 @@ import { useOverlay } from '@kodiak-ui/primitives/src/Overlay/useOverlay'
 export type DialogProps = {
   children: ReactNode
   isOpen: boolean
+  title?: any // @deprecated
   onDismiss: () => void
 } & KodiakUIProps &
   HTMLAttributes<HTMLDivElement>
@@ -22,7 +23,7 @@ export type DialogProps = {
 export const Dialog = memo(
   forwardRef(
     (
-      { children, isOpen, onDismiss, ...rest }: DialogProps,
+      { children, isOpen, title, onDismiss, ...rest }: DialogProps,
       ref: RefObject<HTMLElement>,
     ) => {
       const domRef = useRef<HTMLElement>((ref as unknown) as HTMLElement)
@@ -68,6 +69,7 @@ export const Dialog = memo(
                   zIndex: 150,
                 }}
               >
+                {title ? title : null}
                 {children}
               </Box>
             </Box>

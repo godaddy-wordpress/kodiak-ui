@@ -3,11 +3,7 @@ import { render, fireEvent } from '@testing-library/react'
 import { Dialog, DialogContent, DialogFooter } from '../'
 import { Text, Button } from '@kodiak-ui/primitives'
 
-function DialogExample({
-  onOverlayDismiss,
-}: {
-  onOverlayDismiss?: () => void
-}) {
+function DialogExample() {
   const [isOpen, setIsOpen] = React.useState(false)
 
   return (
@@ -18,7 +14,6 @@ function DialogExample({
       <Button onClick={() => setIsOpen(true)}>Show default example</Button>
       <Dialog
         isOpen={isOpen}
-        onOverlayDismiss={onOverlayDismiss}
         title={
           <div>
             <Text as="h3" sx={{ mb: 2 }}>
@@ -103,27 +98,5 @@ describe('Dialog', () => {
 
     expect(queryByText('Testing')).toBeNull()
     expect(queryByTestId('closeButton')).toBeNull()
-  })
-
-  it('should block closing the modal modal', () => {
-    const handleDismiss = jest.fn()
-    const { getByText, queryByTestId } = render(
-      <DialogExample onOverlayDismiss={handleDismiss} />,
-    )
-
-    const trigger = getByText('Show default example')
-
-    expect(trigger).toBeTruthy()
-    expect(queryByTestId('closeButton')).toBeNull()
-
-    fireEvent.click(trigger)
-
-    expect(getByText('Testing')).toBeTruthy()
-
-    fireEvent.keyDown(getByText('Testing'), { key: 'Escape', code: 27 })
-
-    expect(handleDismiss).toBeCalledTimes(1)
-
-    expect(getByText('Show default example')).toBeTruthy()
   })
 })

@@ -2,16 +2,6 @@ import * as React from 'react'
 import { ReactNode } from 'react'
 import { ThemeUIStyleObject } from './types'
 
-type ContextValue = {
-  __shared: ThemeUIStyleObject
-}
-
-const Context = React.createContext<ContextValue>({
-  __shared: {},
-})
-
-export const useSharedSx = () => React.useContext(Context)
-
 export function SharedSx({
   sx,
   children,
@@ -20,6 +10,12 @@ export function SharedSx({
   children: ReactNode
 }) {
   return (
-    <Context.Provider value={{ __shared: sx }}>{children}</Context.Provider>
+    <>
+      {React.Children.map(children, child =>
+        React.cloneElement(child as any, {
+          __shared: sx,
+        }),
+      )}
+    </>
   )
 }

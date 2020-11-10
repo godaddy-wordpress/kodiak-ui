@@ -8,7 +8,7 @@ import {
   sx,
   shared,
   _variant,
-  useSharedSx,
+  ThemeUIStyleObject,
 } from 'kodiak-ui'
 
 function base({ theme, __base, base }) {
@@ -33,7 +33,7 @@ export type BoxProps = React.PropsWithChildren<
   KodiakUIProps & {
     ref?: React.MutableRefObject<any>
     as?: string
-    __shared?: any
+    __shared?: ThemeUIStyleObject
   } & React.AllHTMLAttributes<HTMLElement>
 >
 
@@ -55,7 +55,6 @@ const BoxStyle = styled('div')<BoxProps>(
 
 export const Box = React.forwardRef(
   (props: BoxProps, ref: React.MutableRefObject<any>) => {
-    const shared = useSharedSx()
-    return <BoxStyle ref={ref} {...shared} {...props} />
+    return <BoxStyle ref={ref} {...props} />
   },
 )
