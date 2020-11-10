@@ -1,22 +1,26 @@
-import { RefObject, useCallback, useEffect } from 'react'
+import { MutableRefObject, RefObject, useCallback, useEffect } from 'react'
 
 export type UseOverlayProps = {
   isKeyboardDismissDisabled?: boolean
+  isOpen?: boolean
   onDismiss?: () => void
 }
 
 export function useOverlay(
-  { isKeyboardDismissDisabled, onDismiss }: UseOverlayProps = {
+  { isKeyboardDismissDisabled, isOpen, onDismiss }: UseOverlayProps = {
     isKeyboardDismissDisabled: false,
   },
-  ref: RefObject<HTMLElement>,
+  ref: RefObject<HTMLElement> | MutableRefObject<HTMLElement>,
 ) {
-  console.log(ref)
   useEffect(() => {
-    if (ref?.current && !ref.current.contains(document.activeElement)) {
+    if (
+      isOpen &&
+      ref?.current &&
+      !ref.current.contains(document.activeElement)
+    ) {
       ref?.current?.focus()
     }
-  }, [ref])
+  }, [isOpen, ref])
 
   // Handle the escape key
   const onKeyDown = useCallback(

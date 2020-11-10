@@ -19,54 +19,52 @@ export type DialogProps = {
 } & KodiakUIProps &
   HTMLAttributes<HTMLDivElement>
 
-export const Dialog = memo(
-  forwardRef(
-    (
-      { children, isOpen, onDismiss, ...rest }: DialogProps,
-      ref: RefObject<HTMLElement>,
-    ) => {
-      const domRef = useRef<HTMLElement>((ref as unknown) as HTMLElement)
-      const { getOverlayProps } = useOverlay({ onDismiss }, domRef)
+export const Dialog = forwardRef(
+  (
+    { children, isOpen, onDismiss, ...rest }: DialogProps,
+    ref: RefObject<HTMLElement>,
+  ) => {
+    const domRef = useRef<HTMLElement>((ref as unknown) as HTMLElement)
+    const { getOverlayProps } = useOverlay({ isOpen, onDismiss }, domRef)
 
-      return isOpen ? (
-        <Overlay>
-          <Underlay isOpen={isOpen} />
-          <FocusScope contain restore>
+    return isOpen ? (
+      <Overlay>
+        <Underlay isOpen={isOpen} />
+        <FocusScope contain restore>
+          <Box
+            sx={{
+              alignItems: 'center',
+              justifyContent: 'center',
+              display: 'flex',
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              height: '100vh',
+              pointerEvents: 'none',
+              width: '100%',
+              zIndex: 150,
+            }}
+          >
             <Box
-              sx={{
-                alignItems: 'center',
-                justifyContent: 'center',
-                display: 'flex',
-                position: 'fixed',
-                top: 0,
-                left: 0,
-                height: '100vh',
-                pointerEvents: 'none',
-                width: '100%',
+              ref={domRef}
+              {...getOverlayProps()}
+              {...rest}
+              __base={{
+                bg: 'bg',
+                borderRadius: 'default',
+                maxWidth: '90vw',
+                outline: 'none',
+                pointerEvents: 'auto',
+                position: 'relative',
+                width: '600px',
                 zIndex: 150,
               }}
             >
-              <Box
-                {...getOverlayProps()}
-                ref={domRef}
-                __base={{
-                  bg: 'bg',
-                  borderRadius: 'default',
-                  maxWidth: '90vw',
-                  outline: 'none',
-                  pointerEvents: 'auto',
-                  position: 'relative',
-                  width: '600px',
-                  zIndex: 150,
-                }}
-                {...rest}
-              >
-                {children}
-              </Box>
+              {children}
             </Box>
-          </FocusScope>
-        </Overlay>
-      ) : null
-    },
-  ),
+          </Box>
+        </FocusScope>
+      </Overlay>
+    ) : null
+  },
 )
