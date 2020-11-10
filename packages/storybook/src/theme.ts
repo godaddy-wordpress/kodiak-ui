@@ -39,7 +39,7 @@ export const colors = {
   primary: baseColors.blue[3],
   success: baseColors.green[2],
   warning: baseColors.yellow[2],
-  danger: baseColors.red[2],
+  danger: baseColors.red[3],
   muted: baseColors.gray[3],
   highlight: baseColors.blue[2],
   bg: 'white',
@@ -478,6 +478,7 @@ export const theme = {
     bold: 700,
   },
   lineHeights: {
+    input: 1.25,
     body: 1.5,
     heading: 1.125,
   },

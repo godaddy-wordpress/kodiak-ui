@@ -57,12 +57,14 @@ export const Dialog = memo(
                 __base={{
                   bg: 'bg',
                   borderRadius: 'default',
+                  boxShadow:
+                    '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
                   maxWidth: '90vw',
                   outline: 'none',
                   overflow: 'hidden',
                   pointerEvents: 'auto',
                   position: 'relative',
-                  width: '600px',
+                  width: '512px',
                   zIndex: 150,
                 }}
               >
