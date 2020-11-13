@@ -4,51 +4,121 @@ title: Dialog
 sidebar_label: Dialog
 ---
 
+Dialogs are windows that appear on top of the user interface and will block interaction from the UI until
+the dialog is closed or interacted with.
+
+- Source: https://github.com/skyverge/kodiak-ui/tree/master/packages/dialog
+- NPM: https://www.npmjs.com/package/@kodiak-ui/dialog
+
+### Install and usage
+
+```sh
+yarn add @kodiak-ui/dialog
+```
+
 ```tsx
-const [isOpen, setIsOpen] = React.useState(false)
-return (
-  <>
-    <Button onClick={() => setIsOpen(true)}>Show default example</Button>
-    <Dialog
-      isOpen={isOpen}
-      title={
-        <div>
-          <Text as="h3" mb={2}>
-            Testing
-          </Text>
-          <Text mb={0}>Testing some text</Text>
-        </div>
-      }
-      onDismiss={() => setIsOpen(false)}
-      aria-label="Warning about next steps"
-    >
-      <DialogContent>
-        <Text as="p">
-          Contrary to popular belief, Lorem Ipsum is not simply random text. It
-          has roots in a piece of classical Latin literature from 45 BC, making
-          it over 2000 years old. Richard McClintock, a Latin professor at
-          Hampden-Sydney College in Virginia, looked up one of the more obscure
-          Latin words, consectetur, from a Lorem Ipsum passage, and going
-          through the cites of the word in classical literature, discovered the
-          undoubtable source. Lorem Ipsum comes from sections 1.10.32 and
-          1.10.33 of &quot;de Finibus Bonorum et Malorum&quot; (The Extremes of
-          Good and Evil) by Cicero, written in 45 BC. This book is a treatise on
-          the theory of ethics, very popular during the Renaissance. The first
-          line of Lorem Ipsum, &quot;Lorem ipsum dolor sit amet..&quot;, comes
-          from a line in section 1.10.32. The standard chunk of Lorem Ipsum used
-          since the 1500s is reproduced below for those interested. Sections
-          1.10.32 and 1.10.33 from &quot;de Finibus Bonorum et Malorum&quot; by
-          Cicero are also reproduced in their exact original form, accompanied
-          by English versions from the 1914 translation by H. Rackham.
-        </Text>
-      </DialogContent>
-      <DialogFooter>
-        {}
-        <Button ml="auto" onClick={() => setIsOpen(false)}>
-          Close
-        </Button>
-      </DialogFooter>
-    </Dialog>
-  </>
-)
+import { useDialog, Dialog } from '@kodiak-ui/dialog'
+```
+
+#### Example
+
+```tsx
+import { SharedSx } from 'kodiak-ui'
+import { Dialog, useDialog } from '@kodiak-ui/dialog'
+import { Button, Content, Footer, Header } from '@kodiak-ui/primitives'
+
+const { getDialogProps, handleOpenDialog, handleCloseDialog } = useDialog()
+
+<Button onClick={handleOpenDialog}>Trigger</Button>
+
+<Dialog {...getDialogProps()}>
+  <SharedSx sx={{ px: 5, py: 4 }}>
+    <Header variants="dialog-header">Header</Header>
+    <Content>
+      <Text as="p">
+        Contrary to popular belief, Lorem Ipsum is not simply random text.
+        It has roots in a piece of classical Latin literature from 45 BC,
+        making it over 2000 years old.
+      </Text>
+    </Content>
+    <Footer variants="dialog-footer">
+      <Button variants="secondary" onClick={handleCloseDialog}>
+        Cancel
+      </Button>
+      <Button variants="danger">Proceed</Button>
+    </Footer>
+  </SharedSx>
+</Dialog>
+```
+
+### Props
+
+These props are returned by the `useDialog` hook but can be passed in manually to control the Dialog state.
+
+| Name            | Type                      | Default  | Description                                                                         |
+| --------------- | ------------------------- | -------- | ----------------------------------------------------------------------------------- |
+| children\*      | ReactNode                 | -        | The content of the dialog                                                           |
+| title           | string                    | -        | The title of the dialog, used for a11y and optional                                 |
+| isOpen          | boolean                   | false    | Determines whether the dialog is open or not                                        |
+| onDismiss       | () => void                | -        | Handler that is called when the cancel or "X" button is clicked                     |
+| variants        | string or array           | -        | The variant names to apply to the dialog, must be defined with the `variant` method |
+| role            | 'dialog' or 'alertdialog' | 'dialog' | Accessibility role value of the dialog                                              |
+| id              | string                    | -        | The Dialog's unique ID                                                              |
+| aria-label      | string                    | -        | String value that labels the current dialog element                                 |
+| aria-labelledby | string                    | -        | The ID of the element(s) that label/define the dialog element                       |
+| aria-modal      | boolean                   | true     | Adds accessibility support to hide all other elements from screen readers           |
+
+### Demo
+
+```tsx codesandbox=kodiak
+import * as React from 'react'
+import { SharedSx, variant } from 'kodiak-ui'
+import { Dialog, useDialog } from '@kodiak-ui/dialog'
+import { Button, Content, Header, Footer, Text } from '@kodiak-ui/primitives'
+
+variant('dialog-header', {
+  borderBottom: '1px solid',
+  borderColor: 'gray.2',
+})
+
+variant('dialog-footer', {
+  bg: 'gray.1',
+  borderTop: '1px solid',
+  borderColor: 'gray.2',
+  display: 'flex',
+  justifyContent: 'flex-end',
+
+  '> *': {
+    ml: 2,
+  },
+})
+
+function Example() {
+  const { getDialogProps, handleOpenDialog, handleCloseDialog } = useDialog()
+
+  return (
+    <>
+      <Button onClick={handleOpenDialog}>Trigger</Button>
+
+      <Dialog {...getDialogProps()}>
+        <SharedSx sx={{ px: 5, py: 4 }}>
+          <Header variants="dialog-header">Header</Header>
+          <Content>
+            <Text as="p">
+              Contrary to popular belief, Lorem Ipsum is not simply random text.
+              It has roots in a piece of classical Latin literature from 45 BC,
+              making it over 2000 years old.
+            </Text>
+          </Content>
+          <Footer variants="dialog-footer">
+            <Button variants="secondary" onClick={handleCloseDialog}>
+              Cancel
+            </Button>
+            <Button variants="danger">Proceed</Button>
+          </Footer>
+        </SharedSx>
+      </Dialog>
+    </>
+  )
+}
 ```

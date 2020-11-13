@@ -10,10 +10,10 @@ module.exports = {
   organizationName: 'skyverge',
   projectName: 'kodiak-ui',
   themeConfig: {
-    algolia: {
-      apiKey: process.env.ALGOLIA_API_TOKEN,
-      indexName: 'kodiak-ui',
-    },
+    // algolia: {
+    //   apiKey: process.env.ALGOLIA_API_TOKEN,
+    //   indexName: 'kodiak-ui',
+    // },
     navbar: {
       title: 'Kodiak UI',
       logo: {
