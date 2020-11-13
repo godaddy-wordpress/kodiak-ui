@@ -1,4 +1,5 @@
 import { useScrollPrevent } from '@kodiak-ui/a11y'
+import { useOnClickOutside } from '@kodiak-ui/hooks'
 import { MutableRefObject, RefObject, useCallback, useEffect } from 'react'
 import { __DEV__ } from '../../../utils/src'
 
@@ -25,6 +26,8 @@ export function useOverlay(
   ref: RefObject<HTMLElement> | MutableRefObject<HTMLElement>,
 ) {
   useScrollPrevent({ isDisabled: !isOpen || isScrollPreventDisabled })
+
+  useOnClickOutside({ ref: ref as any, handler: onDismiss })
 
   useEffect(
     function focusOnOverlayWhenOpen() {

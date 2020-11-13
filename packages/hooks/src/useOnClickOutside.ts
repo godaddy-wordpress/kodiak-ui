@@ -6,7 +6,7 @@ export const useOnClickOutside = ({
   handler,
 }: {
   ref: React.MutableRefObject<Element>
-  refException: React.MutableRefObject<Element>
+  refException?: React.MutableRefObject<Element>
   handler: (event: any) => void
 }) => {
   const savedHandler = React.useRef<(event: any) => void>()
