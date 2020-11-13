@@ -8,9 +8,9 @@ import {
   useRef,
 } from 'react'
 import { KodiakUIProps } from 'kodiak-ui'
-import { Box, Overlay, Underlay } from '@kodiak-ui/primitives'
+import { Box, Underlay } from '@kodiak-ui/primitives'
 import { FocusScope } from '@kodiak-ui/a11y'
-import { useOverlay } from '@kodiak-ui/primitives/src/Overlay/useOverlay'
+import { useOverlay, Overlay } from '@kodiak-ui/primitives/overlay'
 
 export type DialogProps = {
   children: ReactNode
