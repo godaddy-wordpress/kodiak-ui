@@ -16,7 +16,15 @@ const StyledSpan = styled('span')({
   wordWrap: 'normal',
 })
 
+export type VisuallyHiddenProps = {
+  children: React.ReactNode
+} & React.HTMLAttributes<HTMLSpanElement>
+
 export const VisuallyHidden = React.forwardRef<
   HTMLSpanElement,
-  React.HTMLAttributes<HTMLSpanElement>
->((props, ref) => <StyledSpan ref={ref} {...(props as any)} />)
+  VisuallyHiddenProps
+>(({ children, ...props }, ref) => (
+  <StyledSpan ref={ref} {...props}>
+    {children}
+  </StyledSpan>
+))

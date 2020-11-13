@@ -1,3 +1,4 @@
+import { ThemeUIStyleObject } from '../dist/kodiak-ui.cjs'
 import { css, Theme } from './css'
 
 const toVarName = (key: string) => `--theme-ui-${key}`

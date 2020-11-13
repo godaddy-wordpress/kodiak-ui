@@ -16,7 +16,7 @@ type MessageProps = {
 } & VariantProps &
   React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>
 
-export const Message = React.forwardRef<any, MessageProps>(function Message(
+export const Message = React.forwardRef(function Message(
   {
     children,
     type = 'polite',
@@ -24,8 +24,8 @@ export const Message = React.forwardRef<any, MessageProps>(function Message(
     onDismiss,
     variantKey = 'messages',
     ...props
-  },
-  forwardedRef,
+  }: MessageProps,
+  forwardedRef: any,
 ) {
   return (
     <Box

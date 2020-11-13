@@ -1,4 +1,5 @@
-export { Dialog, DialogOverlay, DialogContainer } from './Dialog'
+export * from './Dialog'
+export * from './useDialog'
 export { DialogHeader } from './DialogHeader'
 export { DialogContent } from './DialogContent'
 export { DialogFooter } from './DialogFooter'

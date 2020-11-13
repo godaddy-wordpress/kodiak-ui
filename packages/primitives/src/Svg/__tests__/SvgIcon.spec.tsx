@@ -32,7 +32,6 @@ describe('SvgIcon', () => {
         margin: 0;
         min-width: 0;
         fill: currentColor;
-        color: black;
         display: block;
         padding-left: 4px;
         padding-right: 4px;

@@ -16,6 +16,7 @@ describe('Stat', () => {
         box-sizing: border-box;
         margin: 0;
         min-width: 0;
+        display: grid;
         border-radius: default;
         border: 1px solid;
         border-color: gray.2;

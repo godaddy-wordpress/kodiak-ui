@@ -21,7 +21,6 @@ describe('Svg', () => {
         margin: 0;
         min-width: 0;
         fill: currentColor;
-        color: black;
         display: block;
       }
 

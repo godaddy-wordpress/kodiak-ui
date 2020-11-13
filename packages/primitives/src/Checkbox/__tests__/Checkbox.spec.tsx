@@ -67,7 +67,6 @@ describe('Checkbox', () => {
         margin: 0;
         min-width: 0;
         fill: currentColor;
-        color: black;
         display: block;
         height: 16px;
         width: 16px;
@@ -182,7 +181,6 @@ describe('Checkbox', () => {
         margin: 0;
         min-width: 0;
         fill: currentColor;
-        color: black;
         display: block;
         height: 16px;
         width: 16px;

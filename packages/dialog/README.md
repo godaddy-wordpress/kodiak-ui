@@ -1,0 +1,65 @@
+# Dialog
+
+Dialogs are windows that appear on top of the user interface and will block interaction from the UI until
+the dialog is closed or interacted with.
+
+- Source: https://github.com/skyverge/kodiak-ui/tree/master/packages/dialog
+- NPM: https://www.npmjs.com/package/@kodiak-ui/dialog
+
+### Install and usage
+
+```sh
+yarn add @kodiak-ui/dialog
+```
+
+```tsx
+import { useDialog, Dialog } from '@kodiak-ui/dialog'
+```
+
+#### Example
+
+```tsx
+import { SharedSx } from 'kodiak-ui'
+import { Dialog, useDialog } from '@kodiak-ui/dialog'
+import { Button, Content, Footer, Header } from '@kodiak-ui/primitives'
+
+const { getDialogProps, handleOpenDialog, handleCloseDialog } = useDialog()
+
+<Button onClick={handleOpenDialog}>Trigger</Button>
+
+<Dialog {...getDialogProps()}>
+  <SharedSx sx={{ px: 5, py: 4 }}>
+    <Header variants="dialog-header">Header</Header>
+    <Content>
+      <Text as="p">
+        Contrary to popular belief, Lorem Ipsum is not simply random text.
+        It has roots in a piece of classical Latin literature from 45 BC,
+        making it over 2000 years old.
+      </Text>
+    </Content>
+    <Footer variants="dialog-footer">
+      <Button variants="secondary" onClick={handleCloseDialog}>
+        Cancel
+      </Button>
+      <Button variants="danger">Proceed</Button>
+    </Footer>
+  </SharedSx>
+</Dialog>
+```
+
+### Props
+
+These props are returned by the `useDialog` hook but can be passed in manually to control the Dialog state.
+
+| Name            | Type                      | Default  | Description                                                                         |
+| --------------- | ------------------------- | -------- | ----------------------------------------------------------------------------------- |
+| children\*      | ReactNode                 | -        | The content of the dialog                                                           |
+| title           | string                    | -        | The title of the dialog, used for a11y and optional                                 |
+| isOpen          | boolean                   | false    | Determines whether the dialog is open or not                                        |
+| onDismiss       | () => void                | -        | Handler that is called when the cancel or "X" button is clicked                     |
+| variants        | string or array           | -        | The variant names to apply to the dialog, must be defined with the `variant` method |
+| role            | 'dialog' or 'alertdialog' | 'dialog' | Accessibility role value of the dialog                                              |
+| id              | string                    | -        | The Dialog's unique ID                                                              |
+| aria-label      | string                    | -        | String value that labels the current dialog element                                 |
+| aria-labelledby | string                    | -        | The ID of the element(s) that label/define the dialog element                       |
+| aria-modal      | boolean                   | true     | Adds accessibility support to hide all other elements from screen readers           |

@@ -39,9 +39,10 @@ export const colors = {
   primary: baseColors.blue[3],
   success: baseColors.green[2],
   warning: baseColors.yellow[2],
-  danger: baseColors.red[2],
+  danger: baseColors.red[3],
   muted: baseColors.gray[3],
   highlight: baseColors.blue[2],
+  bg: 'white',
 }
 
 const commonInputStyles = {
@@ -166,26 +167,26 @@ const forms = {
   },
 }
 
-const dialogs = {
-  borderRadius: 'default',
-  bg: 'white',
-  dialogHeader: {},
-  dialogHeaderCloseIcon: { color: 'gray.5' },
-  dialogContent: {},
-  dialogFooter: {},
-  fullWidth: {
-    margin: '5vh',
-    width: 'calc(100% - 10vh)',
-    height: 'calc(100% - 10vh)',
-  },
-  overlay: {
-    background: 'hsla(0, 0%, 0%, 0.5)',
-  },
-  blurred: {
-    backdropFilter: 'blur(2px)',
-    background: 'rgba(0,0,0,0.6)',
-  },
-}
+// const dialogs = {
+//   borderRadius: 'default',
+//   bg: 'white',
+//   dialogHeader: {},
+//   dialogHeaderCloseIcon: { color: 'gray.5' },
+//   dialogContent: {},
+//   dialogFooter: {},
+//   fullWidth: {
+//     margin: '5vh',
+//     width: 'calc(100% - 10vh)',
+//     height: 'calc(100% - 10vh)',
+//   },
+//   overlay: {
+//     background: 'hsla(0, 0%, 0%, 0.5)',
+//   },
+//   blurred: {
+//     backdropFilter: 'blur(2px)',
+//     background: 'rgba(0,0,0,0.6)',
+//   },
+// }
 
 const baseMessageStyles = {
   bg: 'gray.8',
@@ -477,6 +478,7 @@ export const theme = {
     bold: 700,
   },
   lineHeights: {
+    input: 1.25,
     body: 1.5,
     heading: 1.125,
   },
@@ -608,7 +610,6 @@ export const theme = {
   inputs,
   shadows,
   forms,
-  dialogs,
   messages,
   bannerMessages,
   selects,

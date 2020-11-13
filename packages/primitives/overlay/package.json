@@ -1,0 +1,7 @@
+{
+  "main": "dist/primitives.cjs.js",
+  "module": "dist/primitives.esm.js",
+  "preconstruct": {
+    "source": "../src/Overlay"
+  }
+}

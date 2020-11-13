@@ -4,7 +4,7 @@ import { createDesignSystem, ThemeProvider } from 'kodiak-ui'
 
 import App from './App'
 
-const { theme } = createDesignSystme()
+const { theme } = createDesignSystem()
 
 const rootElement = document.getElementById('root')
 render(

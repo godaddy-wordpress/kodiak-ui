@@ -15,6 +15,7 @@ import { get, css } from './css'
 import './react-jsx'
 
 export * from './provider'
+export * from './shared-provider'
 export * from './types'
 export * from './css'
 
@@ -271,6 +272,14 @@ export const getComponentBase = (base: string | string[]) => (theme: Theme) => {
       }
     }, {}),
   )(theme)
+}
+
+export const shared = ({ __shared, theme }) => {
+  if (__shared && Object.keys(__shared)?.length > 0) {
+    return css(__shared)(theme)
+  }
+
+  return null
 }
 
 export { styled }

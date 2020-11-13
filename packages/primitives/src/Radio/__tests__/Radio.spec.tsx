@@ -67,7 +67,6 @@ describe('Radio', () => {
         margin: 0;
         min-width: 0;
         fill: currentColor;
-        color: black;
         display: block;
         display: none;
       }
@@ -88,7 +87,6 @@ describe('Radio', () => {
         margin: 0;
         min-width: 0;
         fill: currentColor;
-        color: black;
         display: block;
         color: defaultGray;
         display: block;
@@ -211,7 +209,6 @@ describe('Radio', () => {
         margin: 0;
         min-width: 0;
         fill: currentColor;
-        color: black;
         display: block;
         display: none;
       }
@@ -232,7 +229,6 @@ describe('Radio', () => {
         margin: 0;
         min-width: 0;
         fill: currentColor;
-        color: black;
         display: block;
         color: defaultGray;
         display: block;

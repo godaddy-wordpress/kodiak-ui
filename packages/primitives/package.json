@@ -19,10 +19,12 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   },
+  "devDependencies": {},
   "dependencies": {
     "@emotion/core": "^10.0.35",
     "@emotion/styled": "^10.0.27",
     "@emotion/styled-base": "^10.0.31",
+    "@kodiak-ui/a11y": "^0.0.0",
     "@kodiak-ui/hooks": "^0.14.15",
     "@kodiak-ui/utils": "^0.0.21"
   },
@@ -43,6 +45,7 @@
       "link",
       "loading",
       "nav",
+      "overlay",
       "svg",
       "tag",
       "text",

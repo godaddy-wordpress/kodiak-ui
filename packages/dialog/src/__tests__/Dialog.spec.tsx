@@ -1,36 +1,26 @@
 import * as React from 'react'
 import { render, fireEvent } from '@testing-library/react'
-import { Dialog, DialogContent, DialogFooter } from '../'
-import { Text, Button } from '@kodiak-ui/primitives'
+import { Text, Button, Header } from '@kodiak-ui/primitives'
+import { Dialog, DialogContent, DialogFooter, useDialog } from '../'
 
-function DialogExample({
-  onOverlayDismiss,
-}: {
-  onOverlayDismiss?: () => void
-}) {
-  const [isOpen, setIsOpen] = React.useState(false)
+function DialogExample() {
+  const { getDialogProps, handleOpenDialog, handleCloseDialog } = useDialog()
 
   return (
     <>
       <div data-testid="outside">
         Some content outside to click on to close the modal
       </div>
-      <Button onClick={() => setIsOpen(true)}>Show default example</Button>
-      <Dialog
-        isOpen={isOpen}
-        onOverlayDismiss={onOverlayDismiss}
-        title={
+      <Button onClick={handleOpenDialog}>Show default example</Button>
+      <Dialog {...getDialogProps()}>
+        <Header>
           <div>
             <Text as="h3" sx={{ mb: 2 }}>
               Testing
             </Text>
             <Text sx={{ mb: 0 }}>Testing some text</Text>
           </div>
-        }
-        // eslint-disable-next-line @typescript-eslint/no-empty-function
-        onDismiss={() => setIsOpen(false)}
-        aria-label="Warning about next steps"
-      >
+        </Header>
         <DialogContent>
           <Text as="p">
             Contrary to popular belief, Lorem Ipsum is not simply random text.
@@ -55,7 +45,7 @@ function DialogExample({
         <DialogFooter>
           {/* eslint-disable-next-line @typescript-eslint/no-empty-function */}
           <Button
-            onClick={() => setIsOpen(false)}
+            onClick={handleCloseDialog}
             data-testid="closeButton"
             sx={{ ml: 'auto' }}
           >
@@ -103,27 +93,5 @@ describe('Dialog', () => {
 
     expect(queryByText('Testing')).toBeNull()
     expect(queryByTestId('closeButton')).toBeNull()
-  })
-
-  it('should block closing the modal modal', () => {
-    const handleDismiss = jest.fn()
-    const { getByText, queryByTestId } = render(
-      <DialogExample onOverlayDismiss={handleDismiss} />,
-    )
-
-    const trigger = getByText('Show default example')
-
-    expect(trigger).toBeTruthy()
-    expect(queryByTestId('closeButton')).toBeNull()
-
-    fireEvent.click(trigger)
-
-    expect(getByText('Testing')).toBeTruthy()
-
-    fireEvent.keyDown(getByText('Testing'), { key: 'Escape', code: 27 })
-
-    expect(handleDismiss).toBeCalledTimes(1)
-
-    expect(getByText('Show default example')).toBeTruthy()
   })
 })

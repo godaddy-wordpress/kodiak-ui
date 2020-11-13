@@ -67,7 +67,7 @@ export const StyledButton = styled('button')<ButtonProps>(
     lineHeight: 'inherit',
     textAlign: 'center',
     textDecoration: 'none',
-    transition: 'all 0.2s ease-in-out',
+    transition: 'background 0.2s ease-in-out, border 0.2s ease-in-out',
   },
   base,
   buttonVariant,

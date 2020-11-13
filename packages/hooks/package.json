@@ -29,8 +29,6 @@
       "use-event-listener",
       "use-event-log-route",
       "use-event-logger",
-      "use-focus",
-      "use-focuswithin",
       "use-id",
       "use-is-mounted",
       "use-key",
