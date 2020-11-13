@@ -6,7 +6,9 @@ import { Box } from '../Box'
 export type FooterProps = { children: ReactNode } & KodiakUIProps
 
 export const Footer = forwardRef(
-  (props: FooterProps, ref: MutableRefObject<any>) => {
-    return <Box ref={ref} as="footer" {...props} />
+  ({ base, ...props }: FooterProps, ref: MutableRefObject<any>) => {
+    return (
+      <Box ref={ref} as="footer" base={base ? base : 'footer'} {...props} />
+    )
   },
 )

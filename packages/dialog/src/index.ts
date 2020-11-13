@@ -1,4 +1,4 @@
-export { Dialog } from './Dialog'
+export * from './Dialog'
 export * from './useDialog'
 export { DialogHeader } from './DialogHeader'
 export { DialogContent } from './DialogContent'

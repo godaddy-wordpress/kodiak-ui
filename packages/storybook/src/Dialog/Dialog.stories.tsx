@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { SharedSx, variant } from 'kodiak-ui'
+import { component, SharedSx, variant } from 'kodiak-ui'
 import { Dialog, useDialog } from '@kodiak-ui/dialog'
 import { Button, Content, Header, Footer, Text } from '@kodiak-ui/primitives'
 

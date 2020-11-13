@@ -167,26 +167,26 @@ const forms = {
   },
 }
 
-const dialogs = {
-  borderRadius: 'default',
-  bg: 'white',
-  dialogHeader: {},
-  dialogHeaderCloseIcon: { color: 'gray.5' },
-  dialogContent: {},
-  dialogFooter: {},
-  fullWidth: {
-    margin: '5vh',
-    width: 'calc(100% - 10vh)',
-    height: 'calc(100% - 10vh)',
-  },
-  overlay: {
-    background: 'hsla(0, 0%, 0%, 0.5)',
-  },
-  blurred: {
-    backdropFilter: 'blur(2px)',
-    background: 'rgba(0,0,0,0.6)',
-  },
-}
+// const dialogs = {
+//   borderRadius: 'default',
+//   bg: 'white',
+//   dialogHeader: {},
+//   dialogHeaderCloseIcon: { color: 'gray.5' },
+//   dialogContent: {},
+//   dialogFooter: {},
+//   fullWidth: {
+//     margin: '5vh',
+//     width: 'calc(100% - 10vh)',
+//     height: 'calc(100% - 10vh)',
+//   },
+//   overlay: {
+//     background: 'hsla(0, 0%, 0%, 0.5)',
+//   },
+//   blurred: {
+//     backdropFilter: 'blur(2px)',
+//     background: 'rgba(0,0,0,0.6)',
+//   },
+// }
 
 const baseMessageStyles = {
   bg: 'gray.8',
@@ -610,7 +610,6 @@ export const theme = {
   inputs,
   shadows,
   forms,
-  dialogs,
   messages,
   bannerMessages,
   selects,

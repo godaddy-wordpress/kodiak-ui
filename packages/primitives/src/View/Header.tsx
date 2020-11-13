@@ -9,7 +9,9 @@ export type HeaderProps = {
 } & KodiakUIProps
 
 export const Header = forwardRef(
-  (props: HeaderProps, ref: MutableRefObject<any>) => {
-    return <Box ref={ref} as="header" {...props} />
+  ({ base, ...props }: HeaderProps, ref: MutableRefObject<any>) => {
+    return (
+      <Box ref={ref} as="header" base={base ? base : 'header'} {...props} />
+    )
   },
 )

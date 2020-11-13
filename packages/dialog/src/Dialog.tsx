@@ -23,7 +23,7 @@ export type DialogProps = {
 export const Dialog = memo(
   forwardRef(
     (
-      { children, isOpen, title, onDismiss, ...rest }: DialogProps,
+      { children, isOpen, title, base, onDismiss, ...rest }: DialogProps,
       ref: RefObject<HTMLElement>,
     ) => {
       const domRef = useRef<HTMLElement>((ref as unknown) as HTMLElement)
@@ -58,6 +58,7 @@ export const Dialog = memo(
               <Box
                 {...getOverlayProps()}
                 {...rest}
+                base={base ? base : 'dialog'}
                 ref={domRef}
                 __base={{
                   bg: 'bg',

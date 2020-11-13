@@ -5,7 +5,7 @@
   ],
   "scripts": {
     "lint": "eslint './packages/**/*.{js,jsx,ts,tsx}'",
-    "test": "jest --coverage",
+    "test": "jest",
     "storybook": "yarn workspace @kodiak-ui/storybook storybook",
     "build-storybook": "yarn workspace @kodiak-ui/storybook build-storybook",
     "typecheck": "yarn run tsc --noEmit",

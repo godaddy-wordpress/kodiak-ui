@@ -4,7 +4,8 @@ import { Box } from '../Box'
 
 export function Underlay({
   isOpen,
-  ...rest
+  base,
+  ...props
 }: { isOpen?: boolean } & KodiakUIProps) {
   return (
     <Box
@@ -22,7 +23,8 @@ export function Underlay({
         overflow: 'hidden',
         transition: 'opacity 0.13s cubic-bezier(0, 0, 0.4, 1)',
       }}
-      {...rest}
+      base={base ? base : 'underlay'}
+      {...props}
     />
   )
 }

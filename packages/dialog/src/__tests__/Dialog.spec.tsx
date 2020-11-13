@@ -1,8 +1,7 @@
 import * as React from 'react'
 import { render, fireEvent } from '@testing-library/react'
-import { Dialog, DialogContent, DialogFooter } from '../'
 import { Text, Button, Header } from '@kodiak-ui/primitives'
-import { useDialog } from '../useDialog'
+import { Dialog, DialogContent, DialogFooter, useDialog } from '../'
 
 function DialogExample() {
   const { getDialogProps, handleOpenDialog, handleCloseDialog } = useDialog()

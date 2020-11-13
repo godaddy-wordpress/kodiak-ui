@@ -1,7 +1,7 @@
+import { MutableRefObject, RefObject, useCallback, useEffect } from 'react'
 import { useScrollPrevent } from '@kodiak-ui/a11y'
 import { useOnClickOutside } from '@kodiak-ui/hooks'
-import { MutableRefObject, RefObject, useCallback, useEffect } from 'react'
-import { __DEV__ } from '../../../utils/src'
+import { __DEV__ } from '@kodiak-ui/utils'
 
 export type UseOverlayProps = {
   isKeyboardDismissDisabled?: boolean
