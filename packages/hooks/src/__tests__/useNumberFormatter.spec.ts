@@ -29,7 +29,7 @@ describe('useNumberFormatter', () => {
         currency: 'EUR',
       }),
     )
-    expect(format2.result.current(225.25)).toBe('225,25 €')
+    expect(format2.result.current(225.25)).toBe('225,25 €')
   })
 
   it('should return the proper digits', () => {
