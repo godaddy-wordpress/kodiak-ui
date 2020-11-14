@@ -1,4 +1,5 @@
 import {
+  ChangeEvent,
   FocusEvent,
   KeyboardEvent,
   MouseEvent,
@@ -23,7 +24,10 @@ export type UseAutocompleteProps = {
   onCloseChange?: (event: KeyboardEvent | MouseEvent | FocusEvent) => void
   onOpenChange?: (event: KeyboardEvent | MouseEvent | FocusEvent) => void
   onValueChange?: () => void
-  onInputValueChange?: () => void
+  onInputValueChange?: (
+    event: ChangeEvent<HTMLInputElement>,
+    value: string,
+  ) => void
 
   // overwritable getters
   getOptionSelected?: <T>(option: T, value: T) => boolean
@@ -33,7 +37,7 @@ export type UseAutocompleteProps = {
 export function useAutocomplete({
   componentName = 'useAutocomplete',
   isMulti = false,
-  isOpen: isOpenProp = false,
+  isOpen: isOpenProp,
   value: valueProp,
   inputValue: inputValueProp,
   defaultValue = null,
@@ -96,18 +100,63 @@ export function useAutocomplete({
     [isOpen, onOpenChange, setIsOpen],
   )
 
-  function handleOnClose(event) {
-    if (!isOpen) {
-      return
-    }
+  const handleOnClose = useCallback(
+    event => {
+      if (!isOpen) {
+        return
+      }
 
-    setIsOpen(false)
-    onCloseChange?.(event)
-  }
+      setIsOpen(false)
+      onCloseChange?.(event)
+    },
+    [isOpen, onCloseChange, setIsOpen],
+  )
+
+  const handleToggle = useCallback(
+    event => {
+      if (isOpen) {
+        handleOnClose(event)
+      } else {
+        handleOnOpen(event)
+      }
+    },
+    [handleOnClose, handleOnOpen, isOpen],
+  )
+
+  const handleOnKeyDown = useCallback(
+    (event: KeyboardEvent) => {
+      switch (event.key) {
+        case 'ArrowDown':
+          event.preventDefault()
+          handleOnOpen(event)
+          break
+        case 'ArrowUp':
+          event.preventDefault()
+          handleOnOpen(event)
+          break
+        case 'Escape':
+          if (isOpen) {
+            event.preventDefault()
+            event.stopPropagation()
+
+            handleOnClose(event)
+          }
+          break
+        default:
+      }
+    },
+    [handleOnClose, handleOnOpen, isOpen],
+  )
 
   function handleOnClick() {
     // Always automatically focus on input when opening
     inputRef?.current?.focus()
+  }
+
+  function handleOptionOnClick(event) {
+    const index = Number(event.currentTarget.getAttribute('data-option-index'))
+
+    // Do the actual selection of the item
   }
 
   const handleOnFocus = useCallback(
@@ -121,15 +170,69 @@ export function useAutocomplete({
     [handleOnOpen, openOnFocus],
   )
 
+  const handleOnBlur = useCallback(
+    event => {
+      setIsFocused(false)
+      handleOnClose(event)
+    },
+    [handleOnClose],
+  )
+
+  const handleOnMouseDown = useCallback(
+    event => {
+      if (event?.target?.getAttribute('id') !== id) {
+        event.preventDefault()
+      }
+    },
+    [id],
+  )
+
+  const handleInputOnMouseDown = useCallback(
+    event => {
+      if (inputValue === '' || !isOpen) {
+        handleToggle(event)
+      }
+    },
+    [handleToggle, inputValue, isOpen],
+  )
+
+  function handleListboxOnMouseDown(event) {
+    event.preventDefault()
+  }
+
+  function handleOptionOnMouseOver(event) {
+    // Set the highlighted index
+  }
+
+  const handleInputOnChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      const newValue = event?.target?.value
+
+      if (inputValue !== newValue) {
+        setInputValue(newValue)
+        onInputValueChange?.(event, newValue)
+      }
+
+      if (newValue === '') {
+        // handle clear
+      } else {
+        handleOnOpen(event)
+      }
+    },
+    [handleOnOpen, inputValue, onInputValueChange, setInputValue],
+  )
+
   const getRootProps = useCallback(
     () => ({
       role: 'combobox',
       onClick: handleOnClick,
+      onKeyDown: handleOnKeyDown,
+      onMouseDown: handleOnMouseDown,
 
       'aria-owns': isListboxAvailable ? `${id}-listbox` : null,
       'aria-expanded': isListboxAvailable,
     }),
-    [id, isListboxAvailable],
+    [handleOnKeyDown, handleOnMouseDown, id, isListboxAvailable],
   )
 
   const getLabelProps = useCallback(
@@ -149,12 +252,24 @@ export function useAutocomplete({
       autoCapitalize: 'none',
       spellCheck: false,
       onFocus: handleOnFocus,
+      onBlur: handleOnBlur,
+      onChange: handleInputOnChange,
+      onMouseDown: handleInputOnMouseDown,
 
       'aria-controls': isListboxAvailable ? `${id}-listbox` : null,
-      'aria-autocomplete': 'list',
+      'aria-autocomplete': 'list' as 'list' | 'both',
       'aria-activedescendant': isOpen ? '' : null,
     }),
-    [handleOnFocus, id, inputValue, isListboxAvailable, isOpen],
+    [
+      handleOnBlur,
+      handleOnFocus,
+      handleInputOnChange,
+      handleInputOnMouseDown,
+      id,
+      inputValue,
+      isListboxAvailable,
+      isOpen,
+    ],
   )
 
   const getListboxProps = useCallback(
@@ -162,6 +277,7 @@ export function useAutocomplete({
       id: `${id}-listbox`,
       ref: listboxRef as any,
       role: 'listbox',
+      onMouseDown: handleListboxOnMouseDown,
 
       'aria-labelledby': `${id}-label`,
     }),
@@ -180,6 +296,8 @@ export function useAutocomplete({
         id: `${id}-option-${index}`,
         role: 'option',
         tabIndex: -1,
+        onClick: handleOptionOnClick,
+        onMouseOver: handleOptionOnMouseOver,
 
         'data-option-index': index,
         'aria-disabled': disabled,

@@ -7,6 +7,7 @@ export function SingleValue() {
   const {
     isOpen,
     getRootProps,
+    getLabelProps,
     getInputProps,
     getListboxProps,
   } = useAutocomplete({
@@ -16,6 +17,7 @@ export function SingleValue() {
   return (
     <>
       <div {...getRootProps()}>
+        <label {...getLabelProps()}>Autocomplete</label>
         <input type="text" {...getInputProps()} />
       </div>
       {isOpen ? <div {...getListboxProps()}>Listbox</div> : null}
