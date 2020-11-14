@@ -9,6 +9,7 @@ import {
   useState,
 } from 'react'
 import { useControlled, useId } from '@kodiak-ui/hooks'
+import { useHighlightIndex } from './useHighlightIndex'
 
 export type UseAutocompleteProps = {
   componentName?: string
@@ -18,6 +19,7 @@ export type UseAutocompleteProps = {
   inputValue?: string
   defaultValue?: string[]
   openOnFocus?: boolean
+  autoHighlightFirstOption?: boolean
   options: string[]
 
   // handlers
@@ -28,6 +30,7 @@ export type UseAutocompleteProps = {
     event: ChangeEvent<HTMLInputElement>,
     value: string,
   ) => void
+  onHighlightedIndexChange?: (event, option: string) => void
 
   // overwritable getters
   getOptionSelected?: <T>(option: T, value: T) => boolean
@@ -42,12 +45,14 @@ export function useAutocomplete({
   inputValue: inputValueProp,
   defaultValue = null,
   openOnFocus = true,
+  autoHighlightFirstOption,
   options,
 
   onCloseChange,
   onOpenChange,
   onValueChange,
   onInputValueChange,
+  onHighlightedIndexChange,
 
   getOptionSelected = (option, value) => option === value,
   getOptionDisabled,
@@ -85,7 +90,12 @@ export function useAutocomplete({
     options,
   ])
 
-  const isListboxAvailable = isOpen && filteredOptions?.length > 0
+  const {} = useHighlightIndex(
+    { isOpen, autoHighlightFirstOption, onHighlightedIndexChange },
+    inputRef,
+  )
+
+  const isAvailable = isOpen && filteredOptions?.length > 0
   const isDirty = inputValue?.length > 0
 
   const handleOnOpen = useCallback(
@@ -229,10 +239,10 @@ export function useAutocomplete({
       onKeyDown: handleOnKeyDown,
       onMouseDown: handleOnMouseDown,
 
-      'aria-owns': isListboxAvailable ? `${id}-listbox` : null,
-      'aria-expanded': isListboxAvailable,
+      'aria-owns': isAvailable ? `${id}-listbox` : null,
+      'aria-expanded': isAvailable,
     }),
-    [handleOnKeyDown, handleOnMouseDown, id, isListboxAvailable],
+    [handleOnKeyDown, handleOnMouseDown, id, isAvailable],
   )
 
   const getLabelProps = useCallback(
@@ -256,7 +266,7 @@ export function useAutocomplete({
       onChange: handleInputOnChange,
       onMouseDown: handleInputOnMouseDown,
 
-      'aria-controls': isListboxAvailable ? `${id}-listbox` : null,
+      'aria-controls': isAvailable ? `${id}-listbox` : null,
       'aria-autocomplete': 'list' as 'list' | 'both',
       'aria-activedescendant': isOpen ? '' : null,
     }),
@@ -267,7 +277,7 @@ export function useAutocomplete({
       handleInputOnMouseDown,
       id,
       inputValue,
-      isListboxAvailable,
+      isAvailable,
       isOpen,
     ],
   )
@@ -309,8 +319,9 @@ export function useAutocomplete({
 
   return {
     isOpen,
-    isListboxAvailable,
+    isAvailable,
     isDirty,
+    isFocused,
     value,
     getRootProps,
     getLabelProps,
