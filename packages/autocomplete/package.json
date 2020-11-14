@@ -1,0 +1,7 @@
+{
+  "name": "@kodiak-ui/autocomplete",
+  "version": "0.0.0",
+  "main": "dist/autocomplete.cjs.js",
+  "module": "dist/autocomplete.esm.js",
+  "license": "MIT"
+}
