@@ -1860,6 +1860,11 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
+"@kodiak-ui/hooks@^0.10.10":
+  version "0.10.10"
+  resolved "https://registry.yarnpkg.com/@kodiak-ui/hooks/-/hooks-0.10.10.tgz#24f22ee4cfdae97f112c8295f6d3df2f8973ac86"
+  integrity sha512-rvewevXz3Rr7yeJtCQMOuExpoB2oCs7qBW48Xt/JwKJZ7Q3TD/AuOKxaFjklk70r3gSaT1a36WDIFE7XqITErQ==
+
 "@kodiak-ui/utils@^0.0.9":
   version "0.0.9"
   resolved "https://registry.yarnpkg.com/@kodiak-ui/utils/-/utils-0.0.9.tgz#8b4a3f6c3075d36f6e6c8b23b7be5b643a14a9df"

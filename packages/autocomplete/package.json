@@ -3,5 +3,13 @@
   "version": "0.0.0",
   "main": "dist/autocomplete.cjs.js",
   "module": "dist/autocomplete.esm.js",
-  "license": "MIT"
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "kodiak-ui": "^0.0.9"
+  },
+  "dependencies": {
+    "@kodiak-ui/hooks": "^0.10.10"
+  }
 }
