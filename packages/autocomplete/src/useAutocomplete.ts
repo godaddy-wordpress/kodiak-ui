@@ -1,4 +1,12 @@
-import { useCallback, useMemo } from 'react'
+import {
+  FocusEvent,
+  KeyboardEvent,
+  MouseEvent,
+  useCallback,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import { useControlled, useId } from '@kodiak-ui/hooks'
 
 export type UseAutocompleteProps = {
@@ -8,29 +16,41 @@ export type UseAutocompleteProps = {
   value?: string[]
   inputValue?: string
   defaultValue?: string[]
+  openOnFocus?: boolean
   options: string[]
 
   // handlers
-  onOpenChange: () => void
-  onValueChange: () => void
-  onInputValueChange: () => void
+  onCloseChange?: (event: KeyboardEvent | MouseEvent | FocusEvent) => void
+  onOpenChange?: (event: KeyboardEvent | MouseEvent | FocusEvent) => void
+  onValueChange?: () => void
+  onInputValueChange?: () => void
 
   // overwritable getters
-  getOptionSelected: <T>(option: T, value: T) => boolean
-  getOptionDisabled: <T>(option: T) => boolean
+  getOptionSelected?: <T>(option: T, value: T) => boolean
+  getOptionDisabled?: <T>(option: T) => boolean
 }
 
 export function useAutocomplete({
   componentName = 'useAutocomplete',
-  isOpen: isOpenProp = false,
   isMulti = false,
+  isOpen: isOpenProp = false,
   value: valueProp,
   inputValue: inputValueProp,
   defaultValue = null,
+  openOnFocus = true,
   options,
+
+  onCloseChange,
+  onOpenChange,
+  onValueChange,
+  onInputValueChange,
+
   getOptionSelected = (option, value) => option === value,
   getOptionDisabled,
 }: UseAutocompleteProps) {
+  const inputRef = useRef<HTMLInputElement>(null)
+  const listboxRef = useRef<HTMLElement>(null)
+
   const uid = useId()
   const id = `kodiak-autocomplete-${uid}`
 
@@ -55,6 +75,8 @@ export function useAutocomplete({
     state: 'inputValue',
   })
 
+  const [isFocused, setIsFocused] = useState(false)
+
   const filteredOptions = useMemo(() => options?.filter(option => option), [
     options,
   ])
@@ -62,9 +84,47 @@ export function useAutocomplete({
   const isListboxAvailable = isOpen && filteredOptions?.length > 0
   const isDirty = inputValue?.length > 0
 
+  const handleOnOpen = useCallback(
+    event => {
+      if (isOpen) {
+        return
+      }
+
+      setIsOpen(true)
+      onOpenChange?.(event)
+    },
+    [isOpen, onOpenChange, setIsOpen],
+  )
+
+  function handleOnClose(event) {
+    if (!isOpen) {
+      return
+    }
+
+    setIsOpen(false)
+    onCloseChange?.(event)
+  }
+
+  function handleOnClick() {
+    // Always automatically focus on input when opening
+    inputRef?.current?.focus()
+  }
+
+  const handleOnFocus = useCallback(
+    event => {
+      setIsFocused(true)
+
+      if (openOnFocus) {
+        handleOnOpen(event)
+      }
+    },
+    [handleOnOpen, openOnFocus],
+  )
+
   const getRootProps = useCallback(
     () => ({
       role: 'combobox',
+      onClick: handleOnClick,
 
       'aria-owns': isListboxAvailable ? `${id}-listbox` : null,
       'aria-expanded': isListboxAvailable,
@@ -83,22 +143,24 @@ export function useAutocomplete({
   const getInputProps = useCallback(
     () => ({
       id,
+      ref: inputRef,
       value: inputValue,
-
-      autoComplete: 'nope',
+      autoComplete: 'none',
       autoCapitalize: 'none',
-      spellCheck: 'false',
+      spellCheck: false,
+      onFocus: handleOnFocus,
 
       'aria-controls': isListboxAvailable ? `${id}-listbox` : null,
       'aria-autocomplete': 'list',
       'aria-activedescendant': isOpen ? '' : null,
     }),
-    [id, inputValue, isListboxAvailable, isOpen],
+    [handleOnFocus, id, inputValue, isListboxAvailable, isOpen],
   )
 
   const getListboxProps = useCallback(
     () => ({
       id: `${id}-listbox`,
+      ref: listboxRef as any,
       role: 'listbox',
 
       'aria-labelledby': `${id}-label`,
