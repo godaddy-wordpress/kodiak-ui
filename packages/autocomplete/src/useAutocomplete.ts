@@ -91,8 +91,14 @@ export function useAutocomplete({
   ])
 
   const {} = useHighlightIndex(
-    { isOpen, autoHighlightFirstOption, onHighlightedIndexChange },
+    {
+      isOpen,
+      options: filteredOptions,
+      autoHighlightFirstOption,
+      onHighlightedIndexChange,
+    },
     inputRef,
+    listboxRef,
   )
 
   const isAvailable = isOpen && filteredOptions?.length > 0
