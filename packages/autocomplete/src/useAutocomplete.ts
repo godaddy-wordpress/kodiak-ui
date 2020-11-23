@@ -20,6 +20,7 @@ export type UseAutocompleteProps = {
   defaultValue?: string[]
   openOnFocus?: boolean
   autoHighlightFirstOption?: boolean
+  pageSize?: number
   options: string[]
 
   // handlers
@@ -30,7 +31,7 @@ export type UseAutocompleteProps = {
     event: ChangeEvent<HTMLInputElement>,
     value: string,
   ) => void
-  onHighlightedIndexChange?: (event, option: string) => void
+  onHighlightedIndexChange?: (option: string) => void
 
   // overwritable getters
   getOptionSelected?: <T>(option: T, value: T) => boolean
@@ -46,6 +47,7 @@ export function useAutocomplete({
   defaultValue = null,
   openOnFocus = true,
   autoHighlightFirstOption,
+  pageSize = 5,
   options,
 
   onCloseChange,
@@ -90,8 +92,9 @@ export function useAutocomplete({
     options,
   ])
 
-  const {} = useHighlightIndex(
+  const { setHighlightedIndex } = useHighlightIndex(
     {
+      id,
       isOpen,
       options: filteredOptions,
       autoHighlightFirstOption,
@@ -142,12 +145,24 @@ export function useAutocomplete({
   const handleOnKeyDown = useCallback(
     (event: KeyboardEvent) => {
       switch (event.key) {
+        case 'PageUp':
+          event.preventDefault()
+          setHighlightedIndex({ diff: -pageSize, direction: 'previous' })
+          handleOnOpen(event)
+          break
+        case 'PageDown':
+          event.preventDefault()
+          setHighlightedIndex({ diff: pageSize, direction: 'next' })
+          handleOnOpen(event)
+          break
         case 'ArrowDown':
           event.preventDefault()
+          setHighlightedIndex({ diff: 1, direction: 'next' })
           handleOnOpen(event)
           break
         case 'ArrowUp':
           event.preventDefault()
+          setHighlightedIndex({ diff: -1, direction: 'previous' })
           handleOnOpen(event)
           break
         case 'Escape':
@@ -161,7 +176,7 @@ export function useAutocomplete({
         default:
       }
     },
-    [handleOnClose, handleOnOpen, isOpen],
+    [handleOnClose, handleOnOpen, isOpen, pageSize, setHighlightedIndex],
   )
 
   function handleOnClick() {
