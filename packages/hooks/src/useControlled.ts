@@ -4,7 +4,7 @@ export type UseControlledProps<T> = {
   controlled: T
   default: T
   name: string
-  state: string
+  state?: string
 }
 
 export function useControlled<T>({
@@ -14,9 +14,11 @@ export function useControlled<T>({
   state = 'value',
 }: UseControlledProps<T>): [T, (newValue: T) => void] {
   const { current: isControlled } = React.useRef(controlled !== undefined)
-  const [valueState, setValue] = React.useState<T>(defaultProp)
-  const value = isControlled ? controlled : valueState
   const { current: defaultValue } = React.useRef<T>(defaultProp)
+
+  const [valueState, setValue] = React.useState<T>(defaultProp)
+
+  const value = isControlled ? controlled : valueState
 
   React.useEffect(
     function warnWhenSwitchUncontrolledToControlled() {
