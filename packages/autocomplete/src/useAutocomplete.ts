@@ -20,7 +20,6 @@ type InteractionEvent<T = HTMLInputElement> =
 export type UseAutocompleteProps = {
   componentName?: string
   isOpen?: boolean
-  isMulti?: boolean
   value?: string[]
   inputValue?: string
   defaultValue?: string[]
@@ -42,11 +41,10 @@ export type UseAutocompleteProps = {
 }
 
 export function useAutocomplete({
-  componentName = 'useAutocomplete',
-  isMulti = false,
   isOpen: isOpenProp,
   value: valueProp,
   inputValue: inputValueProp,
+  componentName = 'useAutocomplete',
   defaultValue = null,
   openOnFocus = true,
   pageSize = 5,
@@ -91,11 +89,15 @@ export function useAutocomplete({
   })
 
   const [isFocused, setIsFocused] = useState(false)
+  const [isPristine, setIsPristine] = useState(false)
 
   const filteredOptions = useFilterOptions({
     isOpen,
     options,
-    inputValue,
+    inputValue:
+      value !== null && value.includes(inputValue) && isPristine
+        ? ''
+        : inputValue,
   })
 
   const setHighlightedIndex = useHighlightIndex(
@@ -136,6 +138,7 @@ export function useAutocomplete({
       }
 
       setIsOpen(true)
+      setIsPristine(true)
       onOpenChange?.(event)
     },
     [isOpen, onOpenChange, setIsOpen],
@@ -183,6 +186,16 @@ export function useAutocomplete({
       onValueChange,
       setValue,
     ],
+  )
+
+  const handleOnClear = useCallback(
+    (event: InteractionEvent) => {
+      setInputValue('')
+      onInputValueChange?.(event, '')
+
+      handleSetValue(event, null)
+    },
+    [handleSetValue, onInputValueChange, setInputValue],
   )
 
   const handleOnKeyDown = useCallback(
@@ -313,6 +326,7 @@ export function useAutocomplete({
 
       if (inputValue !== newValue) {
         setInputValue(newValue)
+        setIsPristine(false)
         onInputValueChange?.(event, newValue)
       }
 
@@ -418,6 +432,22 @@ export function useAutocomplete({
     ],
   )
 
+  const getClearButtonProps = useCallback(
+    () => ({
+      tabIndex: -1,
+      onClick: handleOnClear,
+    }),
+    [handleOnClear],
+  )
+
+  const getPopoverButtonProps = useCallback(
+    () => ({
+      tabIndex: -1,
+      onClick: handleToggle,
+    }),
+    [handleToggle],
+  )
+
   return {
     isOpen,
     isAvailable,
@@ -430,5 +460,7 @@ export function useAutocomplete({
     getInputProps,
     getListboxProps,
     getOptionProps,
+    getClearButtonProps,
+    getPopoverButtonProps,
   }
 }

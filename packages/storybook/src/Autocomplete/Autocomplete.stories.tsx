@@ -23,6 +23,8 @@ export function SingleValue() {
     getInputProps,
     getListboxProps,
     getOptionProps,
+    getClearButtonProps,
+    getPopoverButtonProps,
   } = useAutocomplete({
     options: defaultOptions,
   })
@@ -30,6 +32,8 @@ export function SingleValue() {
   return (
     <>
       <div {...getRootProps()}>
+        <button {...getClearButtonProps()}>Clear</button>
+        <button {...getPopoverButtonProps()}>Popover</button>
         <Label {...getLabelProps()}>Autocomplete</Label>
         <Input type="text" {...getInputProps()} />
       </div>
