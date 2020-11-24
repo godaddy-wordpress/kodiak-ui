@@ -20,9 +20,9 @@ type InteractionEvent<T = HTMLInputElement> =
 export type UseAutocompleteProps = {
   componentName?: string
   isOpen?: boolean
-  value?: string[]
+  value?: string
   inputValue?: string
-  defaultValue?: string[]
+  defaultValue?: string
   openOnFocus?: boolean
   pageSize?: number
   blurOnSelect?: boolean
@@ -74,7 +74,7 @@ export function useAutocomplete({
     state: 'open',
   })
 
-  const [value, setValue] = useControlled<string[]>({
+  const [value, setValue] = useControlled<string>({
     controlled: valueProp,
     default: defaultValue,
     name: componentName,
@@ -95,9 +95,7 @@ export function useAutocomplete({
     isOpen,
     options,
     inputValue:
-      value !== null && value.includes(inputValue) && isPristine
-        ? ''
-        : inputValue,
+      value !== null && value === inputValue && isPristine ? '' : inputValue,
   })
 
   const setHighlightedIndex = useHighlightIndex(
@@ -169,7 +167,7 @@ export function useAutocomplete({
 
   const handleSetValue = useCallback(
     (event: InteractionEvent, option: string) => {
-      setValue([option])
+      setValue(option)
       onValueChange?.(event, option)
       handleResetInputValue(event, option)
 
@@ -403,9 +401,8 @@ export function useAutocomplete({
 
   const getOptionProps = useCallback(
     ({ index, option }) => {
-      const selected = value?.find(
-        x => x !== null && getOptionSelected<string>(option, x),
-      )
+      const selected =
+        value !== null && getOptionSelected<string>(option, value)
       const disabled = getOptionDisabled?.(option)
 
       return {

@@ -1,6 +1,12 @@
 import * as React from 'react'
 import { useAutocomplete } from '@kodiak-ui/autocomplete'
-import { Input, Label, ListboxItem } from '@kodiak-ui/primitives'
+import {
+  Input,
+  InputGroup,
+  Label,
+  Listbox,
+  ListboxItem,
+} from '@kodiak-ui/primitives'
 
 export default { title: 'Autocomplete' }
 
@@ -17,6 +23,7 @@ const defaultOptions = [
 export function SingleValue() {
   const {
     isOpen,
+    value,
     options,
     getRootProps,
     getLabelProps,
@@ -32,13 +39,15 @@ export function SingleValue() {
   return (
     <>
       <div {...getRootProps()}>
-        <button {...getClearButtonProps()}>Clear</button>
-        <button {...getPopoverButtonProps()}>Popover</button>
         <Label {...getLabelProps()}>Autocomplete</Label>
-        <Input type="text" {...getInputProps()} />
+        <InputGroup>
+          <Input type="text" variant="shadow" {...getInputProps()} />
+          {value ? <button {...getClearButtonProps()}>Clear</button> : null}
+          <button {...getPopoverButtonProps()}>Popover</button>
+        </InputGroup>
       </div>
       {isOpen ? (
-        <ul {...getListboxProps()}>
+        <Listbox {...getListboxProps()}>
           {options?.map((option, index) => (
             <ListboxItem
               key={index}
@@ -55,7 +64,7 @@ export function SingleValue() {
               {option}
             </ListboxItem>
           ))}
-        </ul>
+        </Listbox>
       ) : null}
     </>
   )
