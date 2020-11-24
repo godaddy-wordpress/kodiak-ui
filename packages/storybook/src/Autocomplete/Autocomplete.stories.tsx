@@ -47,17 +47,22 @@ export function SingleValue() {
         </InputGroup>
       </div>
       {isOpen ? (
-        <Listbox {...getListboxProps()}>
+        <Listbox
+          {...getListboxProps()}
+          sx={{ border: '1px solid', borderColor: 'red' }}
+        >
           {options?.map((option, index) => (
             <ListboxItem
               key={index}
               {...getOptionProps({ index, option })}
               sx={{
-                '&[data-option-selected]': {
+                '&[data-option-selected="true"]': {
                   bg: 'primary',
+                  color: 'white',
                 },
-                '&[data-option-highlighted]': {
+                '&[data-option-highlighted="true"]': {
                   bg: 'muted',
+                  color: 'text',
                 },
               }}
             >

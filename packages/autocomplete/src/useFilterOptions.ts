@@ -62,5 +62,5 @@ export function useFilterOptions({
     isOpen,
   ])
 
-  return filteredOptions
+  return filteredOptions || []
 }
