@@ -4,18 +4,27 @@ import { Input, Label, ListboxItem } from '@kodiak-ui/primitives'
 
 export default { title: 'Autocomplete' }
 
-const options = ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5']
+const defaultOptions = [
+  'Afghanistan',
+  'Bhutan',
+  'Colombia',
+  'Dominica',
+  'Luxembourg',
+  'Nauru',
+  'Samoa',
+]
 
 export function SingleValue() {
   const {
     isOpen,
+    options,
     getRootProps,
     getLabelProps,
     getInputProps,
     getListboxProps,
     getOptionProps,
   } = useAutocomplete({
-    options,
+    options: defaultOptions,
   })
 
   return (
@@ -31,6 +40,9 @@ export function SingleValue() {
               key={index}
               {...getOptionProps({ index, option })}
               sx={{
+                '&[data-option-selected]': {
+                  bg: 'primary',
+                },
                 '&[data-option-highlighted]': {
                   bg: 'muted',
                 },

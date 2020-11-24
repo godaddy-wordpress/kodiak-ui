@@ -1,4 +1,4 @@
-import { useCallback, useRef } from 'react'
+import { useCallback } from 'react'
 
 export type UseHighlightIndexProps = {
   id: string
@@ -15,8 +15,8 @@ export type SetHighlightedIndexProps = {
 
 export function useHighlightIndex(
   { id, isOpen, options, onHighlightedIndexChange }: UseHighlightIndexProps,
-  inputRef: any,
-  listboxRef: any,
+  inputRef,
+  listboxRef,
   highlightedIndexRef,
 ) {
   const getNextIndex = useCallback(
@@ -119,5 +119,5 @@ export function useHighlightIndex(
     onHighlightedIndexChange?.(nextIndex === -1 ? null : options?.[nextIndex])
   }
 
-  return { setHighlightedIndex }
+  return setHighlightedIndex
 }

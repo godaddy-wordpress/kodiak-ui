@@ -4,12 +4,18 @@ import {
   KeyboardEvent,
   MouseEvent,
   useCallback,
-  useMemo,
   useRef,
   useState,
 } from 'react'
 import { useControlled, useId } from '@kodiak-ui/hooks'
 import { useHighlightIndex } from './useHighlightIndex'
+import { useFilterOptions } from './useFilterOptions'
+
+type InteractionEvent<T = HTMLInputElement> =
+  | KeyboardEvent
+  | MouseEvent
+  | FocusEvent
+  | ChangeEvent<T>
 
 export type UseAutocompleteProps = {
   componentName?: string
@@ -24,13 +30,10 @@ export type UseAutocompleteProps = {
   options: string[]
 
   // handlers
-  onCloseChange?: (event: KeyboardEvent | MouseEvent | FocusEvent) => void
-  onOpenChange?: (event: KeyboardEvent | MouseEvent | FocusEvent) => void
-  onValueChange?: () => void
-  onInputValueChange?: (
-    event: ChangeEvent<HTMLInputElement>,
-    value: string,
-  ) => void
+  onCloseChange?: (event: InteractionEvent) => void
+  onOpenChange?: (event: InteractionEvent) => void
+  onValueChange?: (event: InteractionEvent, value: string) => void
+  onInputValueChange?: (event: InteractionEvent, value: string) => void
   onHighlightedIndexChange?: (option: string) => void
 
   // overwritable getters
@@ -89,11 +92,13 @@ export function useAutocomplete({
 
   const [isFocused, setIsFocused] = useState(false)
 
-  const filteredOptions = useMemo(() => options?.filter(option => option), [
+  const filteredOptions = useFilterOptions({
+    isOpen,
     options,
-  ])
+    inputValue,
+  })
 
-  const { setHighlightedIndex } = useHighlightIndex(
+  const setHighlightedIndex = useHighlightIndex(
     {
       id,
       isOpen,
@@ -109,7 +114,7 @@ export function useAutocomplete({
   const isDirty = inputValue?.length > 0
 
   const handleResetInputValue = useCallback(
-    (event: any, newValue?: string) => {
+    (event: InteractionEvent, newValue?: string) => {
       let newInputValue: string
 
       if (newValue === null) {
@@ -160,8 +165,9 @@ export function useAutocomplete({
   )
 
   const handleSetValue = useCallback(
-    (event: any, option: string) => {
+    (event: InteractionEvent, option: string) => {
       setValue([option])
+      onValueChange?.(event, option)
       handleResetInputValue(event, option)
 
       handleOnClose(event)
@@ -170,7 +176,13 @@ export function useAutocomplete({
         inputRef?.current?.blur()
       }
     },
-    [blurOnSelect, handleOnClose, handleResetInputValue, setValue],
+    [
+      blurOnSelect,
+      handleOnClose,
+      handleResetInputValue,
+      onValueChange,
+      setValue,
+    ],
   )
 
   const handleOnKeyDown = useCallback(
@@ -234,14 +246,19 @@ export function useAutocomplete({
     inputRef?.current?.focus()
   }
 
-  function handleOptionOnClick(event) {
-    const index = Number(event.currentTarget.getAttribute('data-option-index'))
+  const handleOptionOnClick = useCallback(
+    (event: MouseEvent) => {
+      const index = Number(
+        event.currentTarget.getAttribute('data-option-index'),
+      )
 
-    handleSetValue(event, filteredOptions[index])
-  }
+      handleSetValue(event, filteredOptions[index])
+    },
+    [filteredOptions, handleSetValue],
+  )
 
   const handleOnFocus = useCallback(
-    event => {
+    (event: FocusEvent) => {
       setIsFocused(true)
 
       if (openOnFocus) {
@@ -252,7 +269,7 @@ export function useAutocomplete({
   )
 
   const handleOnBlur = useCallback(
-    event => {
+    (event: FocusEvent) => {
       setIsFocused(false)
       handleOnClose(event)
     },
@@ -260,8 +277,8 @@ export function useAutocomplete({
   )
 
   const handleOnMouseDown = useCallback(
-    event => {
-      if (event?.target?.getAttribute('id') !== id) {
+    (event: MouseEvent) => {
+      if (event?.currentTarget?.getAttribute('id') !== id) {
         event.preventDefault()
       }
     },
@@ -269,7 +286,7 @@ export function useAutocomplete({
   )
 
   const handleInputOnMouseDown = useCallback(
-    event => {
+    (event: MouseEvent) => {
       if (inputValue === '' || !isOpen) {
         handleToggle(event)
       }
@@ -281,11 +298,14 @@ export function useAutocomplete({
     event.preventDefault()
   }
 
-  function handleOptionOnMouseOver(event) {
-    setHighlightedIndex({
-      index: Number(event?.currentTarget?.getAttribute('data-option-index')),
-    })
-  }
+  const handleOptionOnMouseOver = useCallback(
+    (event: MouseEvent) => {
+      setHighlightedIndex({
+        index: Number(event?.currentTarget?.getAttribute('data-option-index')),
+      })
+    },
+    [setHighlightedIndex],
+  )
 
   const handleInputOnChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
@@ -369,7 +389,7 @@ export function useAutocomplete({
 
   const getOptionProps = useCallback(
     ({ index, option }) => {
-      const selected = (isMulti ? value : [value]).some(
+      const selected = value?.find(
         x => x !== null && getOptionSelected<string>(option, x),
       )
       const disabled = getOptionDisabled?.(option)
@@ -383,6 +403,7 @@ export function useAutocomplete({
         onMouseOver: handleOptionOnMouseOver,
 
         'data-option-index': index,
+        'data-option-selected': selected,
         'aria-disabled': disabled,
         'aria-selected': selected,
       }
@@ -393,7 +414,6 @@ export function useAutocomplete({
       handleOptionOnClick,
       handleOptionOnMouseOver,
       id,
-      isMulti,
       value,
     ],
   )
@@ -404,6 +424,7 @@ export function useAutocomplete({
     isDirty,
     isFocused,
     value,
+    options: filteredOptions,
     getRootProps,
     getLabelProps,
     getInputProps,
