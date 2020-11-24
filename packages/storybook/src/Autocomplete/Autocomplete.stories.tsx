@@ -1,9 +1,10 @@
 import * as React from 'react'
 import { useAutocomplete } from '@kodiak-ui/autocomplete'
+import { Input, Label, ListboxItem } from '@kodiak-ui/primitives'
 
 export default { title: 'Autocomplete' }
 
-const options = ['Option 1', 'Option 2']
+const options = ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5']
 
 export function SingleValue() {
   const {
@@ -20,15 +21,23 @@ export function SingleValue() {
   return (
     <>
       <div {...getRootProps()}>
-        <label {...getLabelProps()}>Autocomplete</label>
-        <input type="text" {...getInputProps()} />
+        <Label {...getLabelProps()}>Autocomplete</Label>
+        <Input type="text" {...getInputProps()} />
       </div>
       {isOpen ? (
         <ul {...getListboxProps()}>
           {options?.map((option, index) => (
-            <li key={index} {...getOptionProps({ index, option })}>
+            <ListboxItem
+              key={index}
+              {...getOptionProps({ index, option })}
+              sx={{
+                '&[data-option-highlighted]': {
+                  bg: 'muted',
+                },
+              }}
+            >
               {option}
-            </li>
+            </ListboxItem>
           ))}
         </ul>
       ) : null}

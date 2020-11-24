@@ -19,8 +19,8 @@ export type UseAutocompleteProps = {
   inputValue?: string
   defaultValue?: string[]
   openOnFocus?: boolean
-  autoHighlightFirstOption?: boolean
   pageSize?: number
+  blurOnSelect?: boolean
   options: string[]
 
   // handlers
@@ -46,8 +46,8 @@ export function useAutocomplete({
   inputValue: inputValueProp,
   defaultValue = null,
   openOnFocus = true,
-  autoHighlightFirstOption,
   pageSize = 5,
+  blurOnSelect = false,
   options,
 
   onCloseChange,
@@ -61,6 +61,7 @@ export function useAutocomplete({
 }: UseAutocompleteProps) {
   const inputRef = useRef<HTMLInputElement>(null)
   const listboxRef = useRef<HTMLElement>(null)
+  const highlightedIndexRef = useRef<number>(-1)
 
   const uid = useId()
   const id = `kodiak-autocomplete-${uid}`
@@ -97,15 +98,31 @@ export function useAutocomplete({
       id,
       isOpen,
       options: filteredOptions,
-      autoHighlightFirstOption,
       onHighlightedIndexChange,
     },
     inputRef,
     listboxRef,
+    highlightedIndexRef,
   )
 
   const isAvailable = isOpen && filteredOptions?.length > 0
   const isDirty = inputValue?.length > 0
+
+  const handleResetInputValue = useCallback(
+    (event: any, newValue?: string) => {
+      let newInputValue: string
+
+      if (newValue === null) {
+        newInputValue = ''
+      } else {
+        newInputValue = newValue
+      }
+
+      setInputValue(newInputValue)
+      onInputValueChange?.(event, newInputValue)
+    },
+    [onInputValueChange, setInputValue],
+  )
 
   const handleOnOpen = useCallback(
     event => {
@@ -142,6 +159,20 @@ export function useAutocomplete({
     [handleOnClose, handleOnOpen, isOpen],
   )
 
+  const handleSetValue = useCallback(
+    (event: any, option: string) => {
+      setValue([option])
+      handleResetInputValue(event, option)
+
+      handleOnClose(event)
+
+      if (blurOnSelect) {
+        inputRef?.current?.blur()
+      }
+    },
+    [blurOnSelect, handleOnClose, handleResetInputValue, setValue],
+  )
+
   const handleOnKeyDown = useCallback(
     (event: KeyboardEvent) => {
       switch (event.key) {
@@ -173,10 +204,29 @@ export function useAutocomplete({
             handleOnClose(event)
           }
           break
+        case 'Enter':
+          if (event.which === 229) {
+            break
+          }
+
+          if (highlightedIndexRef?.current !== -1 && isOpen) {
+            event.preventDefault()
+            const option = filteredOptions?.[highlightedIndexRef?.current]
+            handleSetValue(event, option)
+          }
+          break
         default:
       }
     },
-    [handleOnClose, handleOnOpen, isOpen, pageSize, setHighlightedIndex],
+    [
+      filteredOptions,
+      handleOnClose,
+      handleOnOpen,
+      handleSetValue,
+      isOpen,
+      pageSize,
+      setHighlightedIndex,
+    ],
   )
 
   function handleOnClick() {
@@ -187,7 +237,7 @@ export function useAutocomplete({
   function handleOptionOnClick(event) {
     const index = Number(event.currentTarget.getAttribute('data-option-index'))
 
-    // Do the actual selection of the item
+    handleSetValue(event, filteredOptions[index])
   }
 
   const handleOnFocus = useCallback(
@@ -232,7 +282,9 @@ export function useAutocomplete({
   }
 
   function handleOptionOnMouseOver(event) {
-    // Set the highlighted index
+    setHighlightedIndex({
+      index: Number(event?.currentTarget?.getAttribute('data-option-index')),
+    })
   }
 
   const handleInputOnChange = useCallback(
@@ -335,7 +387,15 @@ export function useAutocomplete({
         'aria-selected': selected,
       }
     },
-    [getOptionDisabled, getOptionSelected, id, isMulti, value],
+    [
+      getOptionDisabled,
+      getOptionSelected,
+      handleOptionOnClick,
+      handleOptionOnMouseOver,
+      id,
+      isMulti,
+      value,
+    ],
   )
 
   return {

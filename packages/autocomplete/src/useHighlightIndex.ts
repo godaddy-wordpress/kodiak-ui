@@ -4,36 +4,27 @@ export type UseHighlightIndexProps = {
   id: string
   isOpen: boolean
   options: string[]
-  autoHighlightFirstOption?: boolean
   onHighlightedIndexChange?: (option: string) => void
 }
 
 export type SetHighlightedIndexProps = {
-  diff: 'reset' | 'start' | 'end' | number
-  direction: 'next' | 'previous'
-  reason?: 'auto'
+  diff?: 'reset' | 'start' | 'end' | number
+  index?: number
+  direction?: 'next' | 'previous'
 }
 
 export function useHighlightIndex(
-  {
-    id,
-    isOpen,
-    options,
-    autoHighlightFirstOption,
-    onHighlightedIndexChange,
-  }: UseHighlightIndexProps,
+  { id, isOpen, options, onHighlightedIndexChange }: UseHighlightIndexProps,
   inputRef: any,
   listboxRef: any,
+  highlightedIndexRef,
 ) {
-  const defaultHighlightedIndex = autoHighlightFirstOption ? 0 : -1
-  const highlightedIndexRef = useRef<number>(defaultHighlightedIndex)
-
   const getNextIndex = useCallback(
     (diff: SetHighlightedIndexProps['diff']) => {
       const maxIndex = options?.length - 1
 
       if (diff === 'reset') {
-        return defaultHighlightedIndex
+        return -1
       }
 
       if (diff === 'start') {
@@ -56,7 +47,7 @@ export function useHighlightIndex(
 
       return newIndex
     },
-    [defaultHighlightedIndex, options?.length],
+    [highlightedIndexRef, options?.length],
   )
 
   const validateIndex = useCallback(
@@ -85,13 +76,17 @@ export function useHighlightIndex(
 
   const setHighlightedIndex = ({
     diff,
+    index,
     direction = 'next',
   }: SetHighlightedIndexProps) => {
     if (!isOpen || !listboxRef?.current) {
       return
     }
 
-    const nextIndex = validateIndex(getNextIndex(diff), direction)
+    const nextIndex = validateIndex(
+      index || index === 0 ? index : getNextIndex(diff),
+      direction,
+    )
     highlightedIndexRef.current = nextIndex
 
     // Set appropriate aria attributes on the input
@@ -107,6 +102,7 @@ export function useHighlightIndex(
     const previousHilightedIndex = listboxRef?.current?.querySelector(
       '[data-option-highlighted]',
     )
+
     if (previousHilightedIndex) {
       previousHilightedIndex.removeAttribute('data-option-highlighted')
     }
