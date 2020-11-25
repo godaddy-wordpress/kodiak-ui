@@ -7,6 +7,7 @@ import {
   Label,
   Listbox,
   ListboxItem,
+  Overlay,
 } from '@kodiak-ui/primitives'
 
 export default { title: 'Autocomplete' }
@@ -48,29 +49,31 @@ export function SingleValue() {
         </InputGroup>
       </div>
       {isOpen ? (
-        <Listbox
-          {...getListboxProps()}
-          sx={{ border: '1px solid', borderColor: 'red' }}
-        >
-          {options?.map((option, index) => (
-            <ListboxItem
-              key={index}
-              {...getOptionProps({ index, option })}
-              sx={{
-                '&[data-option-selected]': {
-                  bg: 'primary',
-                  color: 'white',
-                },
-                '&[data-option-highlighted]': {
-                  bg: 'muted',
-                  color: 'text',
-                },
-              }}
-            >
-              {option}
-            </ListboxItem>
-          ))}
-        </Listbox>
+        <Overlay>
+          <Listbox
+            {...getListboxProps()}
+            sx={{ border: '1px solid', borderColor: 'red' }}
+          >
+            {options?.map((option, index) => (
+              <ListboxItem
+                key={index}
+                {...getOptionProps({ index, option })}
+                sx={{
+                  '&[data-option-selected]': {
+                    bg: 'primary',
+                    color: 'white',
+                  },
+                  '&[data-option-highlighted]': {
+                    bg: 'muted',
+                    color: 'text',
+                  },
+                }}
+              >
+                {option}
+              </ListboxItem>
+            ))}
+          </Listbox>
+        </Overlay>
       ) : null}
     </>
   )
