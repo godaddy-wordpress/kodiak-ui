@@ -6,7 +6,7 @@ export default function (babel) {
       JSXAttribute(path, state) {
         const attributesToHoist = state?.opts?.attributesToHoist || [
           'sx',
-          'variant',
+          'variants',
         ]
         if (attributesToHoist.includes(path.node.name.name)) {
           const expressionPath = path.get('value.expression')
