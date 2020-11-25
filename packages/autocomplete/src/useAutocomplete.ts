@@ -414,9 +414,9 @@ export function useAutocomplete({
         onMouseOver: handleOptionOnMouseOver,
 
         'data-option-index': index,
-        'data-option-selected': selected,
         'aria-disabled': disabled,
         'aria-selected': selected,
+        ...(selected ? { 'data-option-selected': true } : null),
       }
     },
     [

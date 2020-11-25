@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { useAutocomplete } from '@kodiak-ui/autocomplete'
 import {
+  Button,
   Input,
   InputGroup,
   Label,
@@ -42,8 +43,8 @@ export function SingleValue() {
         <Label {...getLabelProps()}>Autocomplete</Label>
         <InputGroup>
           <Input type="text" variant="shadow" {...getInputProps()} />
-          {value ? <button {...getClearButtonProps()}>Clear</button> : null}
-          <button {...getPopoverButtonProps()}>Popover</button>
+          {value ? <Button {...getClearButtonProps()}>Clear</Button> : null}
+          <Button {...getPopoverButtonProps()}>Popover</Button>
         </InputGroup>
       </div>
       {isOpen ? (
@@ -56,11 +57,11 @@ export function SingleValue() {
               key={index}
               {...getOptionProps({ index, option })}
               sx={{
-                '&[data-option-selected="true"]': {
+                '&[data-option-selected]': {
                   bg: 'primary',
                   color: 'white',
                 },
-                '&[data-option-highlighted="true"]': {
+                '&[data-option-highlighted]': {
                   bg: 'muted',
                   color: 'text',
                 },
