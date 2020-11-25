@@ -3,8 +3,6 @@ import serializer from '@emotion/jest'
 import renderer from 'react-test-renderer'
 import { AnchorButton } from '../AnchorButton'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('AnchorButton', () => {
   it('should render the AnchorButton as a div element', () => {
     expect(

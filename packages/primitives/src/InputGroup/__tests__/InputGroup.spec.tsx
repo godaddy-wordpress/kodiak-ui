@@ -3,8 +3,6 @@ import serializer from '@emotion/jest'
 import renderer from 'react-test-renderer'
 import { InputGroup } from '../InputGroup'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('InputGroup', () => {
   it('should render the div to wrap input elements', () => {
     expect(

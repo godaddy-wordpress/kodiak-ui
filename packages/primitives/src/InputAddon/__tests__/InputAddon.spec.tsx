@@ -3,8 +3,6 @@ import serializer from '@emotion/jest'
 import renderer from 'react-test-renderer'
 import { InputAddon } from '../InputAddon'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('InputAddon', () => {
   it('should render the div to render input addons', () => {
     expect(

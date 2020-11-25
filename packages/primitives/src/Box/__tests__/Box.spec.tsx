@@ -3,8 +3,6 @@ import serializer from '@emotion/jest'
 import renderer from 'react-test-renderer'
 import { Box } from '../Box'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('Box', () => {
   it('should render the Box as a div element', () => {
     expect(renderer.create(<Box>Rendering div element</Box>).toJSON())

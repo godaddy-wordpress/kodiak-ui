@@ -7,8 +7,6 @@ import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 import { useEventLoggerReducers } from '@kodiak-ui/hooks/use-event-logger'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('Button', () => {
   it('should render the Button as a button element', () => {
     expect(renderer.create(<Button>Rendering button</Button>).toJSON())

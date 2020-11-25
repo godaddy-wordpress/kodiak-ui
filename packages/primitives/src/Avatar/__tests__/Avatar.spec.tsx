@@ -3,8 +3,6 @@ import serializer from '@emotion/jest'
 import renderer from 'react-test-renderer'
 import { Avatar } from '../Avatar'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('Avatar', () => {
   it('should render the Avatar with an Image', () => {
     expect(renderer.create(<Avatar src="./logo.svg" alt="logo" />).toJSON())

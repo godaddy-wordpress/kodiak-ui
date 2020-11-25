@@ -3,8 +3,6 @@ import serializer from '@emotion/jest'
 import renderer from 'react-test-renderer'
 import { TableHeader } from '../'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('TableHeader', () => {
   it('should render as th', () => {
     expect(renderer.create(<TableHeader>Header</TableHeader>).toJSON())

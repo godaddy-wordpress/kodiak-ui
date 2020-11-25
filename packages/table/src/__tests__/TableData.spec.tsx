@@ -3,8 +3,6 @@ import serializer from '@emotion/jest'
 import renderer from 'react-test-renderer'
 import { TableData } from '../'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('TableData', () => {
   it('should render as td', () => {
     expect(renderer.create(<TableData>Cell content</TableData>).toJSON())

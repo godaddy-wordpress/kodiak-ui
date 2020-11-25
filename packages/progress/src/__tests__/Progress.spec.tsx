@@ -3,8 +3,6 @@ import serializer from '@emotion/jest'
 import renderer from 'react-test-renderer'
 import { Progress, ProgressThumb } from '../'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('Progress', () => {
   it('should render the Progress bar', () => {
     expect(

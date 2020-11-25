@@ -9,8 +9,6 @@ import {
   AccordionFooter,
 } from '../'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('Accordion', () => {
   it('should render the Accordion', () => {
     expect(

@@ -3,8 +3,6 @@ import serializer from '@emotion/jest'
 import renderer from 'react-test-renderer'
 import { Table } from '../Table'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('Table', () => {
   it('should render the Table as a div and table element', () => {
     expect(

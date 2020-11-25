@@ -4,8 +4,6 @@ import renderer from 'react-test-renderer'
 import { Label } from '../../Label'
 import { Radio } from '../'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('Radio', () => {
   it('should render the checked radio input', () => {
     expect(

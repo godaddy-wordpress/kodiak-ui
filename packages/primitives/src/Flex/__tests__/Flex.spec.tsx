@@ -3,8 +3,6 @@ import serializer from '@emotion/jest'
 import renderer from 'react-test-renderer'
 import { Flex } from '../Flex'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('Box', () => {
   it('should render the Flex as a div element', () => {
     expect(renderer.create(<Flex>Rendering Flex element</Flex>).toJSON())

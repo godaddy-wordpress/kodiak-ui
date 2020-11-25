@@ -3,8 +3,6 @@ import serializer from '@emotion/jest'
 import renderer from 'react-test-renderer'
 import { StatProgress } from '../'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('StatProgress', () => {
   it('should render the StatProgress', () => {
     expect(

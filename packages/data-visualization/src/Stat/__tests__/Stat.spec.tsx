@@ -3,8 +3,6 @@ import serializer from '@emotion/jest'
 import renderer from 'react-test-renderer'
 import { Stat } from '../..'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('Stat', () => {
   it('should render the Stat bar', () => {
     expect(

@@ -3,8 +3,6 @@ import serializer from '@emotion/jest'
 import renderer from 'react-test-renderer'
 import { PaginationButton } from '../PaginationButton'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('PaginationButton', () => {
   it('should render the PaginationButton as a button element', () => {
     expect(

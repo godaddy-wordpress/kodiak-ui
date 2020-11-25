@@ -3,8 +3,6 @@ import serializer from '@emotion/jest'
 import renderer from 'react-test-renderer'
 import { Svg } from '..'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('Svg', () => {
   it('should render the as an svg element', () => {
     expect(

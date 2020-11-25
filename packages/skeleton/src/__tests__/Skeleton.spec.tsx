@@ -3,8 +3,6 @@ import serializer from '@emotion/jest'
 import renderer from 'react-test-renderer'
 import { Skeleton, Repeat } from '../Skeleton'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('Accordion', () => {
   it('should render the Skeleton', () => {
     expect(renderer.create(<Skeleton />).toJSON()).toMatchInlineSnapshot(`

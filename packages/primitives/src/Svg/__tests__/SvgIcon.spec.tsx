@@ -3,8 +3,6 @@ import serializer from '@emotion/jest'
 import renderer from 'react-test-renderer'
 import { SvgIcon } from '..'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('SvgIcon', () => {
   it('should render the svg with title and desc', () => {
     expect(

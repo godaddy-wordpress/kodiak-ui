@@ -3,8 +3,6 @@ import serializer from '@emotion/jest'
 import renderer from 'react-test-renderer'
 import { DialogHeader } from '../DialogHeader'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('DialogHeader', () => {
   it('should render the DialogHeader component with the appropriate default styles', () => {
     expect(
