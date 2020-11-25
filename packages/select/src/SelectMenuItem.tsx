@@ -12,6 +12,7 @@ import {
 export type SelectMenuItemProps = {
   ref: React.Ref<HTMLLIElement>
   children: React.ReactNode
+  as?: any
 } & VariantProps &
   UseSelectGetItemPropsOptions<any>
 

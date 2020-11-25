@@ -14,6 +14,7 @@ import { Box } from '@kodiak-ui/primitives/box'
 export type SelectMenuProps = {
   ref: React.Ref<HTMLUListElement>
   children: React.ReactNode
+  as?: any
 } & KodiakUIProps &
   UseSelectGetMenuPropsOptions
 

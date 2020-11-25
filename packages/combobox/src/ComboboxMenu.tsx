@@ -14,6 +14,7 @@ export interface ComboboxMenuProps
     VariantProps {
   ref: React.Ref<HTMLUListElement>
   children: React.ReactNode
+  as?: any
 }
 
 export function base({ theme }: { theme: Theme }) {

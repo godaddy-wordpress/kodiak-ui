@@ -8,6 +8,7 @@ export interface ComboboxButtonProps
     VariantProps {
   children?: React.ReactNode
   type?: 'button' | 'reset' | 'submit' | undefined
+  as?: any
 }
 
 export const ComboboxButton = React.forwardRef(function ComboboxButton(

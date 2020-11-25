@@ -7,6 +7,7 @@ export interface ComboboxLabelProps
   extends VariantProps,
     UseComboboxGetLabelPropsOptions {
   children: React.ReactNode
+  as?: any
 }
 
 export const ComboboxLabel = React.forwardRef(function ComboboxLabel(
