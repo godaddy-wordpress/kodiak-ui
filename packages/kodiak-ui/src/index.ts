@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { jsx as emotion, InterpolationWithTheme } from '@emotion/react'
+import { jsx as emotion, Interpolation } from '@emotion/react'
 import styled from '@emotion/styled'
 import create from 'zustand'
 import createVanilla from 'zustand/vanilla'
@@ -140,7 +140,7 @@ const getCSS = props => {
 
 const parseProps = props => {
   if (!props) return null
-  const next: typeof props & { css?: InterpolationWithTheme<any> } = {}
+  const next: typeof props & { css?: Interpolation<any> } = {}
   for (const key in props) {
     if (key === 'sx') continue
     next[key] = props[key]
