@@ -10,6 +10,7 @@ export interface SelectButtonProps
   children: React.ReactNode
   isOpen: boolean
   type?: 'button' | 'reset' | 'submit' | undefined
+  as?: any
 }
 
 export const SelectButton = React.forwardRef<

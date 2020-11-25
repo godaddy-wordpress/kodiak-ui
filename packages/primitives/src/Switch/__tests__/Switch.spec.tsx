@@ -1,5 +1,5 @@
 import * as React from 'react'
-import serializer from 'jest-emotion'
+import serializer from '@emotion/jest'
 import renderer from 'react-test-renderer'
 import { render, fireEvent } from '@testing-library/react'
 import { Label } from '../../'
