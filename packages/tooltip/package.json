@@ -16,8 +16,8 @@
   "scripts": {},
   "peerDependencies": {
     "kodiak-ui": "^0.0.9",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0"
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
   },
   "dependencies": {
     "@kodiak-ui/hooks": "^0.14.18",
