@@ -72,6 +72,7 @@
   },
   "jest": {
     "testPathIgnorePatterns": [
+      "__fixtures__",
       "/storybook",
       "/node_modules",
       "/dist"
