@@ -3,8 +3,6 @@ import serializer from '@emotion/jest'
 import renderer from 'react-test-renderer'
 import { Field, FieldError } from '../Field'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('Field', () => {
   it('should render the label and input element in the Field', () => {
     expect(

@@ -5,7 +5,7 @@ import { Nav } from '../Nav'
 import { NavItem } from '../NavItem'
 import { VisuallyHidden } from '../../VisuallyHidden'
 
-expect.addSnapshotSerializer(serializer)
+
 
 describe('Nav', () => {
   it('should render the Nav', () => {

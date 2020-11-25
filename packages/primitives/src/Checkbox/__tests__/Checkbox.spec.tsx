@@ -4,8 +4,6 @@ import renderer from 'react-test-renderer'
 import { Label } from '../../Label'
 import { Checkbox } from '../Checkbox'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('Checkbox', () => {
   it('should render the checked checkbox input', () => {
     expect(

@@ -3,8 +3,6 @@ import serializer from '@emotion/jest'
 import renderer from 'react-test-renderer'
 import { TableBody } from '../'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('TableBody', () => {
   it('should render the TableBody as tbody', () => {
     expect(renderer.create(<TableBody />).toJSON()).toMatchInlineSnapshot(`

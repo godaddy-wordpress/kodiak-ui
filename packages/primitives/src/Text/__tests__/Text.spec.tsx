@@ -3,8 +3,6 @@ import serializer from '@emotion/jest'
 import renderer from 'react-test-renderer'
 import { Text } from '../Text'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('Text', () => {
   it('should render the Text as a p element', () => {
     expect(renderer.create(<Text>Rendering p element</Text>).toJSON())

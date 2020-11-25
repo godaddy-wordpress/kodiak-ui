@@ -3,8 +3,6 @@ import serializer from '@emotion/jest'
 import renderer from 'react-test-renderer'
 import { Label } from '../'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('Label', () => {
   it('should render the Label as a label element', () => {
     expect(

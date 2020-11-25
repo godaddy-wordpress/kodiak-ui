@@ -3,8 +3,6 @@ import serializer from '@emotion/jest'
 import renderer from 'react-test-renderer'
 import { DotLoadingIndicator } from '../DotLoadingIndicator'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('DotLoadingIndicator', () => {
   it('should render the DotLoadingIndicator as a div element', () => {
     expect(renderer.create(<DotLoadingIndicator />).toJSON())

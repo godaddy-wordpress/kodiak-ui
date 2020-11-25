@@ -5,8 +5,6 @@ import { render, fireEvent } from '@testing-library/react'
 import { Label } from '../../'
 import { Switch } from '../'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('Switch', () => {
   it('should toggle when clicking', () => {
     const handleChange = jest.fn()

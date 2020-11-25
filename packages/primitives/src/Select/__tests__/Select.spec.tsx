@@ -3,8 +3,6 @@ import serializer from '@emotion/jest'
 import renderer from 'react-test-renderer'
 import { Select } from '../Select'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('Select', () => {
   it('should render the Select component as a select element', () => {
     expect(

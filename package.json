@@ -98,7 +98,10 @@
       "\\.(ts|tsx)$": [
         "ts-jest"
       ]
-    }
+    },
+    "snapshotSerializers": [
+      "@emotion/jest/serializer"
+    ]
   },
   "preconstruct": {
     "packages": [

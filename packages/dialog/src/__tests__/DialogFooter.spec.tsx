@@ -3,8 +3,6 @@ import serializer from '@emotion/jest'
 import renderer from 'react-test-renderer'
 import { DialogFooter } from '../DialogFooter'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('DialogFooter', () => {
   it('should render the DialogContent component with the appropriate default styles', () => {
     expect(

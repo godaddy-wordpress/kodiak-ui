@@ -1,7 +1,8 @@
 import styled from '@emotion/styled'
 import { _variant, sx, KodiakUIProps, getVariants } from 'kodiak-ui'
 
-type TextProps = React.PropsWithChildren<{ as?: string }> & KodiakUIProps
+type TextProps = React.PropsWithChildren<{ as?: React.ElementType<any> }> &
+  KodiakUIProps
 
 const textVariant = ({
   variant: variantProp,

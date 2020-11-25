@@ -3,8 +3,6 @@ import serializer from '@emotion/jest'
 import renderer from 'react-test-renderer'
 import { MenuListItem } from '../MenuListItem'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('MenuListItem', () => {
   it('should render MenuListItem with string as children', () => {
     const component = renderer

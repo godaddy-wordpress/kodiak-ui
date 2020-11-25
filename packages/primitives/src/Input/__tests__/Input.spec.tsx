@@ -3,8 +3,6 @@ import serializer from '@emotion/jest'
 import renderer from 'react-test-renderer'
 import { Input } from '../Input'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('Input', () => {
   it('should render the input as an input element', () => {
     expect(renderer.create(<Input>Rendering input element</Input>).toJSON())

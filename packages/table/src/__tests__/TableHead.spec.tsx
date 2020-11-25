@@ -3,8 +3,6 @@ import serializer from '@emotion/jest'
 import renderer from 'react-test-renderer'
 import { TableHead } from '../'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('TableHead', () => {
   it('should render as thead', () => {
     expect(

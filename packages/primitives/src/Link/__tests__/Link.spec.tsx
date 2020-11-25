@@ -3,8 +3,6 @@ import serializer from '@emotion/jest'
 import renderer from 'react-test-renderer'
 import { Link } from '../Link'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('Link', () => {
   it('should render the Link as an a element', () => {
     expect(renderer.create(<Link href="#">Rendering a element</Link>).toJSON())

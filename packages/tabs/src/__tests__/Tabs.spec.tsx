@@ -3,8 +3,6 @@ import serializer from '@emotion/jest'
 import renderer from 'react-test-renderer'
 import { Tabs, TabList, Tab, TabPanel, useTabs } from '../'
 
-expect.addSnapshotSerializer(serializer)
-
 function TabsExample() {
   const tabsData = React.useMemo(function generateTabs() {
     return [

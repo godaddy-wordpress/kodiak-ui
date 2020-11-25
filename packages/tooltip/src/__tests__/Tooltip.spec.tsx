@@ -3,8 +3,6 @@ import serializer from '@emotion/jest'
 import renderer from 'react-test-renderer'
 import { Tooltip } from '../Tooltip'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('Tooltip', () => {
   it('should render the Tooltip as a div element', () => {
     expect(renderer.create(<Tooltip>Tooltip message</Tooltip>).toJSON())

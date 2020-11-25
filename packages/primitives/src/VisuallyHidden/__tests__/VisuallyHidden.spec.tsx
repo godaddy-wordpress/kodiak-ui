@@ -3,8 +3,6 @@ import serializer from '@emotion/jest'
 import renderer from 'react-test-renderer'
 import { VisuallyHidden } from '../VisuallyHidden'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('VisuallyHidden', () => {
   it('should render the VisuallyHidden component with the appropriate styling to hide the text', () => {
     expect(

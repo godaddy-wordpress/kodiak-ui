@@ -3,8 +3,6 @@ import serializer from '@emotion/jest'
 import renderer from 'react-test-renderer'
 import { Empty } from '../Empty'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('Empty', () => {
   it('should render the Empty with an Image', () => {
     expect(

@@ -5,8 +5,6 @@ import { render, fireEvent } from '@testing-library/react'
 import { Text, SvgIcon } from '@kodiak-ui/primitives'
 import { Message } from '../Message'
 
-expect.addSnapshotSerializer(serializer)
-
 function MessageExample() {
   function handleDismiss() {
     alert('Dismissing')

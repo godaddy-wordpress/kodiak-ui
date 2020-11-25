@@ -3,8 +3,6 @@ import serializer from '@emotion/jest'
 import renderer from 'react-test-renderer'
 import { Textarea } from '../Textarea'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('Textarea', () => {
   it('should render the Textarea component as a textarea element', () => {
     expect(

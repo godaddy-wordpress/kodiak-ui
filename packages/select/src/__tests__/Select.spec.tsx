@@ -9,8 +9,6 @@ import {
   SelectMenuItem,
 } from '../'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('Text', () => {
   it('should render the Select as a div element', () => {
     expect(

@@ -3,8 +3,6 @@ import serializer from '@emotion/jest'
 import renderer from 'react-test-renderer'
 import { Pagination } from '../Pagination'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('Pagination', () => {
   it('should render the Pagination as a nav element', () => {
     expect(

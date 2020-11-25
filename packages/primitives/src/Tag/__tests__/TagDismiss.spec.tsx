@@ -3,8 +3,6 @@ import serializer from '@emotion/jest'
 import renderer from 'react-test-renderer'
 import { TagDismiss } from '..'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('TagDismiss', () => {
   it('should render the TagDismiss component as a span', () => {
     expect(

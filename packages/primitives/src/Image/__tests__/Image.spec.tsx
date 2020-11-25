@@ -3,8 +3,6 @@ import serializer from '@emotion/jest'
 import renderer from 'react-test-renderer'
 import { Image } from '../Image'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('Image', () => {
   it('should render the Image as an img element', () => {
     expect(

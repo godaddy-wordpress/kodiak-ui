@@ -3,8 +3,6 @@ import serializer from '@emotion/jest'
 import renderer from 'react-test-renderer'
 import { Iframe } from '../Iframe'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('Iframe', () => {
   it('should render the Iframe component as an iframe element', () => {
     expect(renderer.create(<Iframe />).toJSON()).toMatchInlineSnapshot(`

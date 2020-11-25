@@ -3,8 +3,6 @@ import serializer from '@emotion/jest'
 import renderer from 'react-test-renderer'
 import { TableFoot } from '../'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('TableFoot', () => {
   it('should render as tfoot', () => {
     expect(renderer.create(<TableFoot />).toJSON()).toMatchInlineSnapshot(`

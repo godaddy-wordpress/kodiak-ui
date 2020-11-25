@@ -3,8 +3,6 @@ import serializer from '@emotion/jest'
 import renderer from 'react-test-renderer'
 import { TagLabel } from '..'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('TagLabel', () => {
   it('should render the TagLabel component as a span', () => {
     expect(renderer.create(<TagLabel>Label</TagLabel>).toJSON())

@@ -3,8 +3,6 @@ import serializer from '@emotion/jest'
 import renderer from 'react-test-renderer'
 import { Grid } from '../Grid'
 
-expect.addSnapshotSerializer(serializer)
-
 describe('Box', () => {
   it('should render the Grid as a div element', () => {
     expect(renderer.create(<Grid>Rendering Grid element</Grid>).toJSON())
