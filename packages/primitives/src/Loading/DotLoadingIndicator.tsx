@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { keyframes } from '@emotion/core'
+import { keyframes } from '@emotion/react'
 import { _variant, VariantProps, styled, css, sx, Theme } from 'kodiak-ui'
 import { Box } from '../Box'
 

@@ -53,7 +53,7 @@
     "eslint-plugin-react-hooks": "^4.1.2",
     "husky": "^4.3.0",
     "jest": "^26.1.0",
-    "jest-emotion": "^11.0.0",
+    "@emotion/jest": "^11.0.0",
     "lerna": "^3.21.0",
     "lint-staged": "^10.0.3",
     "prettier": "^2.0.4",
