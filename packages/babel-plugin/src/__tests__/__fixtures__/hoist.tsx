@@ -1,7 +1,15 @@
 import * as React from 'react'
 import { Box } from '@kodiak-ui/primitives'
+
+function sxGenerator() {
+  return {
+    bg: 'green',
+  }
+}
+
 function App() {
   const isTrue = true
+
   return (
     <div
       sx={{
@@ -28,6 +36,7 @@ function App() {
       >
         A box
       </Box>
+      <Box sx={sxGenerator()}>Pure functions are also hoisted</Box>
     </div>
   )
 }
