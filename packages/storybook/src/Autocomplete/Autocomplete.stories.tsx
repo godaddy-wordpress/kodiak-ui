@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { useRef } from 'react'
 import { useAutocomplete } from '@kodiak-ui/autocomplete'
 import {
   Button,
@@ -8,6 +9,7 @@ import {
   Listbox,
   ListboxItem,
   Overlay,
+  useOverlayPosition,
 } from '@kodiak-ui/primitives'
 
 export default { title: 'Autocomplete' }
@@ -23,6 +25,9 @@ const defaultOptions = [
 ]
 
 export function SingleValue() {
+  const triggerRef = useRef()
+  const overlayRef = useRef()
+
   const {
     isOpen,
     value,
@@ -38,9 +43,11 @@ export function SingleValue() {
     options: defaultOptions,
   })
 
+  useOverlayPosition({ isVisible: isOpen }, triggerRef, overlayRef)
+
   return (
     <>
-      <div {...getRootProps()}>
+      <div ref={triggerRef} {...getRootProps()}>
         <Label {...getLabelProps()}>Autocomplete</Label>
         <InputGroup>
           <Input type="text" variant="shadow" {...getInputProps()} />
@@ -49,7 +56,7 @@ export function SingleValue() {
         </InputGroup>
       </div>
       {isOpen ? (
-        <Overlay>
+        <Overlay ref={overlayRef}>
           <Listbox
             {...getListboxProps()}
             sx={{ border: '1px solid', borderColor: 'red' }}
