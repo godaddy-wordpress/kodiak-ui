@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/primitives",
-  "version": "0.20.1",
+  "version": "0.20.2",
   "description": "Kodiak's primitive components for building applications and complex components",
   "main": "dist/primitives.cjs.js",
   "module": "dist/primitives.esm.js",
@@ -23,7 +23,7 @@
     "@emotion/styled": "^10.0.27",
     "@emotion/styled-base": "^10.0.31",
     "@kodiak-ui/a11y": "^0.1.0",
-    "@kodiak-ui/hooks": "^0.14.17",
+    "@kodiak-ui/hooks": "^0.14.18",
     "@kodiak-ui/utils": "^0.0.21"
   },
   "gitHead": "952275b2482fe05621f9d8b8e036865af870e87c",
