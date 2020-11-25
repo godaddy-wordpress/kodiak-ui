@@ -14,8 +14,8 @@
     "csstype": "^2.5.7"
   },
   "dependencies": {
-    "@emotion/core": "^10.0.35",
-    "@emotion/styled": "^10.0.17",
+    "@emotion/react": "^11.0.0",
+    "@emotion/styled": "^11.0.0",
     "zustand": "^3.1.2"
   },
   "gitHead": "3b66833063904e565cc40ba900f78e4a9200949b"
