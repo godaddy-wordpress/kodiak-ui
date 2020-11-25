@@ -19,7 +19,7 @@
   },
   "scripts": {},
   "devDependencies": {
-    "@emotion/core": "^10.0.27"
+    "@emotion/react": "^11.0.0"
   },
   "peerDependencies": {
     "kodiak-ui": "^0.0.9",

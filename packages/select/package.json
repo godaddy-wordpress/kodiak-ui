@@ -20,7 +20,7 @@
     "react-dom": "^16.13.0"
   },
   "dependencies": {
-    "@emotion/styled": "^10.0.27",
+    "@emotion/styled": "^11.0.0",
     "@kodiak-ui/primitives": "^0.20.2",
     "downshift": "^5.4.5"
   },
