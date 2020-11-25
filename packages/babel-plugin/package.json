@@ -10,5 +10,8 @@
     "@babel/plugin-syntax-jsx": "^7.12.1",
     "babel-check-duplicated-nodes": "^1.0.0",
     "jest-in-case": "^1.0.2"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
