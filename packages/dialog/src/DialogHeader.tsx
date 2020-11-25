@@ -31,7 +31,7 @@ const StyledDialogHeader = styled('header')<DialogHeaderProps>(
   sx,
 )
 
-const StyledCloseButton = styled('button')(({ theme }: { theme: Theme }) =>
+const StyledCloseButton = styled('button')(({ theme }: { theme?: Theme }) =>
   css({
     background: 'none',
     border: 'none',
