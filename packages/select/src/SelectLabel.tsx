@@ -7,6 +7,7 @@ export interface SelectLabelProps
   extends VariantProps,
     UseSelectGetLabelPropsOptions {
   children: React.ReactNode
+  as?: any
 }
 
 export const SelectLabel = React.forwardRef(function SelectLabel(

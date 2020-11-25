@@ -12,6 +12,7 @@ import {
 export type ComboboxMenuItemProps = {
   ref: React.Ref<HTMLLIElement>
   children: React.ReactNode
+  as?: any
 } & VariantProps &
   UseComboboxGetItemPropsOptions<any>
 

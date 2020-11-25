@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { jsx as emotion, InterpolationWithTheme } from '@emotion/core'
+import { jsx as emotion, InterpolationWithTheme } from '@emotion/react'
 import styled from '@emotion/styled'
 import create from 'zustand'
 import createVanilla from 'zustand/vanilla'

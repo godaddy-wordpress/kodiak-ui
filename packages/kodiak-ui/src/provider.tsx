@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Global, ThemeContext as EmotionContext } from '@emotion/core'
+import { Global, ThemeContext as EmotionContext } from '@emotion/react'
 import { jsx, css, Theme, useComponents, useVariants } from '.'
 import { toCustomProperties, createColorStyles } from './custom-properties'
 
