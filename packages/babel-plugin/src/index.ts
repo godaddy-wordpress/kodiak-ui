@@ -8,7 +8,7 @@ export default function (babel) {
           'sx',
           'variants',
         ]
-        if (attributesToHoist.includes(path.node.name.name)) {
+        if (attributesToHoist.includes(path?.node?.name?.name)) {
           const expressionPath = path.get('value.expression')
           expressionPath.hoist()
         }
