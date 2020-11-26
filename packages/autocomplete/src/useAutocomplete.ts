@@ -4,6 +4,7 @@ import {
   KeyboardEvent,
   MouseEvent,
   useCallback,
+  useEffect,
   useRef,
   useState,
 } from 'react'
@@ -26,6 +27,7 @@ export type UseAutocompleteProps = {
   openOnFocus?: boolean
   pageSize?: number
   blurOnSelect?: boolean
+  clearOnBlur?: boolean
   options: string[]
 
   // handlers
@@ -49,6 +51,7 @@ export function useAutocomplete({
   openOnFocus = true,
   pageSize = 5,
   blurOnSelect = false,
+  clearOnBlur = false,
   options,
 
   onCloseChange,
@@ -112,6 +115,28 @@ export function useAutocomplete({
 
   const isAvailable = isOpen && filteredOptions?.length > 0
   const isDirty = inputValue?.length > 0
+
+  const handleSyncHighlightedAndSelectedOption = useCallback(() => {
+    if (!isOpen || !listboxRef?.current) {
+      return
+    }
+
+    if (value) {
+      const valueIndex = filteredOptions?.findIndex(option =>
+        getOptionSelected(option, value),
+      )
+
+      if (valueIndex === -1) {
+        setHighlightedIndex({ diff: 'reset' })
+      } else {
+        setHighlightedIndex({ index: valueIndex })
+      }
+    }
+  }, [filteredOptions, getOptionSelected, isOpen, setHighlightedIndex, value])
+
+  useEffect(() => {
+    handleSyncHighlightedAndSelectedOption()
+  }, [handleSyncHighlightedAndSelectedOption])
 
   const handleResetInputValue = useCallback(
     (event: InteractionEvent, newValue?: string) => {
@@ -282,9 +307,14 @@ export function useAutocomplete({
   const handleOnBlur = useCallback(
     (event: FocusEvent) => {
       setIsFocused(false)
+
+      if (clearOnBlur) {
+        handleResetInputValue(event, null)
+      }
+
       handleOnClose(event)
     },
-    [handleOnClose],
+    [clearOnBlur, handleOnClose, handleResetInputValue],
   )
 
   const handleOnMouseDown = useCallback(
@@ -329,12 +359,18 @@ export function useAutocomplete({
       }
 
       if (newValue === '') {
-        // handle clear
+        handleSetValue(event, null)
       } else {
         handleOnOpen(event)
       }
     },
-    [handleOnOpen, inputValue, onInputValueChange, setInputValue],
+    [
+      handleOnOpen,
+      handleSetValue,
+      inputValue,
+      onInputValueChange,
+      setInputValue,
+    ],
   )
 
   const getRootProps = useCallback(

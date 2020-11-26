@@ -1,4 +1,5 @@
 import { useCallback } from 'react'
+import scrollIntoView from 'scroll-into-view-if-needed'
 
 export type UseHighlightIndexProps = {
   id: string
@@ -118,25 +119,11 @@ export function useHighlightIndex(
     option.setAttribute('data-option-highlighted', 'true')
     onHighlightedIndexChange?.(nextIndex === -1 ? null : options?.[nextIndex])
 
-    const listboxNode: HTMLElement = listboxRef?.current?.parentElement.querySelector(
-      '[role="listbox"]',
-    )
-
-    if (listboxNode?.scrollHeight > listboxNode?.clientHeight) {
-      const element = option as HTMLElement
-
-      const scrollBottom = listboxNode?.clientHeight + listboxNode?.scrollTop
-      const elementBottom = element.offsetTop + element.offsetHeight
-
-      if (elementBottom > scrollBottom) {
-        listboxNode.scrollTop = elementBottom - listboxNode?.clientHeight
-      } else if (
-        element?.offsetTop - element?.offsetHeight <
-        listboxNode?.offsetTop
-      ) {
-        listboxNode.scrollTop = element?.offsetTop - element?.offsetHeight
-      }
-    }
+    scrollIntoView(option, {
+      scrollMode: 'if-needed',
+      block: 'nearest',
+      inline: 'nearest',
+    })
   }
 
   return setHighlightedIndex

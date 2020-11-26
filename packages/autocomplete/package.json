@@ -10,6 +10,7 @@
     "kodiak-ui": "^0.0.9"
   },
   "dependencies": {
-    "@kodiak-ui/hooks": "^0.10.10"
+    "@kodiak-ui/hooks": "^0.10.10",
+    "scroll-into-view-if-needed": "^2.2.26"
   }
 }
