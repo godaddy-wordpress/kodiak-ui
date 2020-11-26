@@ -1,20 +1,9 @@
 import * as React from 'react'
-import { useRef } from 'react'
-import { useAutocomplete } from '@kodiak-ui/autocomplete'
-import {
-  Button,
-  Input,
-  InputGroup,
-  Label,
-  Listbox,
-  ListboxItem,
-  Overlay,
-  useOverlayPosition,
-} from '@kodiak-ui/primitives'
+import { Autocomplete } from '@kodiak-ui/autocomplete'
 
 export default { title: 'Autocomplete' }
 
-const defaultOptions = [
+const options = [
   'Afghanistan',
   'Albania',
   'Algeria',
@@ -223,70 +212,16 @@ const defaultOptions = [
 ]
 
 export function SingleValue() {
-  const triggerRef = useRef()
-  const overlayRef = useRef()
-
-  const {
-    isOpen,
-    value,
-    options,
-    getRootProps,
-    getLabelProps,
-    getInputProps,
-    getListboxProps,
-    getOptionProps,
-    getClearButtonProps,
-    getPopoverButtonProps,
-  } = useAutocomplete({
-    isClearable: false,
-    options: defaultOptions,
-  })
-
-  useOverlayPosition({ isVisible: isOpen }, triggerRef, overlayRef)
-
   return (
     <>
-      <div ref={triggerRef} {...getRootProps()}>
-        <Label {...getLabelProps()}>Autocomplete</Label>
-        <InputGroup>
-          <Input type="text" variant="shadow" {...getInputProps()} />
-          {value ? <Button {...getClearButtonProps()}>Clear</Button> : null}
-          <Button {...getPopoverButtonProps()}>Popover</Button>
-        </InputGroup>
-      </div>
-      {isOpen ? (
-        <Overlay ref={overlayRef}>
-          <Listbox
-            {...getListboxProps()}
-            sx={{
-              border: '1px solid',
-              borderColor: 'red',
-              maxHeight: '300px',
-              minWidth: '250px',
-              overflow: 'scroll',
-            }}
-          >
-            {options?.map((option, index) => (
-              <ListboxItem
-                key={index}
-                {...getOptionProps({ index, option })}
-                sx={{
-                  '&[data-option-selected]': {
-                    bg: 'primary',
-                    color: 'white',
-                  },
-                  '&[data-option-highlighted]': {
-                    bg: 'muted',
-                    color: 'text',
-                  },
-                }}
-              >
-                {option}
-              </ListboxItem>
-            ))}
-          </Listbox>
-        </Overlay>
-      ) : null}
+      <Autocomplete
+        options={options}
+        renderOption={(props, option, index) => (
+          <li key={index} {...props}>
+            🎉 {option}
+          </li>
+        )}
+      />
     </>
   )
 }
