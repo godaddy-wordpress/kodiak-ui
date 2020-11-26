@@ -238,6 +238,7 @@ export function SingleValue() {
     getClearButtonProps,
     getPopoverButtonProps,
   } = useAutocomplete({
+    isClearable: false,
     options: defaultOptions,
   })
 

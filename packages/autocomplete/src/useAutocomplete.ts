@@ -21,6 +21,7 @@ type InteractionEvent<T = HTMLInputElement> =
 export type UseAutocompleteProps = {
   componentName?: string
   isOpen?: boolean
+  isClearable?: boolean
   value?: string
   inputValue?: string
   defaultValue?: string
@@ -29,6 +30,7 @@ export type UseAutocompleteProps = {
   blurOnSelect?: boolean
   clearOnBlur?: boolean
   clearOnEscape?: boolean
+  closeOnSelect?: boolean
   options: string[]
 
   // handlers
@@ -45,6 +47,7 @@ export type UseAutocompleteProps = {
 
 export function useAutocomplete({
   isOpen: isOpenProp,
+  isClearable = true,
   value: valueProp,
   inputValue: inputValueProp,
   componentName = 'useAutocomplete',
@@ -54,6 +57,7 @@ export function useAutocomplete({
   blurOnSelect = false,
   clearOnBlur = false,
   clearOnEscape = false,
+  closeOnSelect = true,
   options,
 
   onCloseChange,
@@ -198,7 +202,9 @@ export function useAutocomplete({
       onValueChange?.(event, option)
       handleResetInputValue(event, option)
 
-      handleOnClose(event)
+      if (closeOnSelect) {
+        handleOnClose(event)
+      }
 
       if (blurOnSelect) {
         inputRef?.current?.blur()
@@ -206,6 +212,7 @@ export function useAutocomplete({
     },
     [
       blurOnSelect,
+      closeOnSelect,
       handleOnClose,
       handleResetInputValue,
       onValueChange,
@@ -215,12 +222,14 @@ export function useAutocomplete({
 
   const handleOnClear = useCallback(
     (event: InteractionEvent) => {
-      setInputValue('')
-      onInputValueChange?.(event, '')
+      if (isClearable) {
+        setInputValue('')
+        onInputValueChange?.(event, '')
 
-      handleSetValue(event, null)
+        handleSetValue(event, null)
+      }
     },
-    [handleSetValue, onInputValueChange, setInputValue],
+    [handleSetValue, isClearable, onInputValueChange, setInputValue],
   )
 
   const handleOnKeyDown = useCallback(
@@ -365,7 +374,9 @@ export function useAutocomplete({
       }
 
       if (newValue === '') {
-        handleSetValue(event, null)
+        if (isClearable) {
+          handleSetValue(event, null)
+        }
       } else {
         handleOnOpen(event)
       }
@@ -374,6 +385,7 @@ export function useAutocomplete({
       handleOnOpen,
       handleSetValue,
       inputValue,
+      isClearable,
       onInputValueChange,
       setInputValue,
     ],
