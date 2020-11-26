@@ -11,39 +11,16 @@ import {
 import { useControlled, useId } from '@kodiak-ui/hooks'
 import { useHighlightIndex } from './useHighlightIndex'
 import { useFilterOptions } from './useFilterOptions'
-
-type InteractionEvent<T = HTMLInputElement> =
-  | KeyboardEvent
-  | MouseEvent
-  | FocusEvent
-  | ChangeEvent<T>
-
-export type UseAutocompleteProps = {
-  componentName?: string
-  isOpen?: boolean
-  isClearable?: boolean
-  value?: string
-  inputValue?: string
-  defaultValue?: string
-  openOnFocus?: boolean
-  pageSize?: number
-  blurOnSelect?: boolean
-  clearOnBlur?: boolean
-  clearOnEscape?: boolean
-  closeOnSelect?: boolean
-  options: string[]
-
-  // handlers
-  onCloseChange?: (event: InteractionEvent) => void
-  onOpenChange?: (event: InteractionEvent) => void
-  onValueChange?: (event: InteractionEvent, value: string) => void
-  onInputValueChange?: (event: InteractionEvent, value: string) => void
-  onHighlightedIndexChange?: (option: string) => void
-
-  // overwritable getters
-  getOptionSelected?: <T>(option: T, value: T) => boolean
-  getOptionDisabled?: <T>(option: T) => boolean
-}
+import {
+  AutocompleteInputButtonProps,
+  AutocompleteInputProps,
+  AutocompleteLabelProps,
+  AutocompleteListboxProps,
+  AutocompleteOptionProps,
+  AutocompleteRootProps,
+  UseAutocompleteProps,
+  InteractionEvent,
+} from './types'
 
 export function useAutocomplete({
   isOpen: isOpenProp,
@@ -282,13 +259,17 @@ export function useAutocomplete({
       }
     },
     [
+      clearOnEscape,
       filteredOptions,
+      handleOnClear,
       handleOnClose,
       handleOnOpen,
       handleSetValue,
+      inputValue,
       isOpen,
       pageSize,
       setHighlightedIndex,
+      value,
     ],
   )
 
@@ -392,7 +373,7 @@ export function useAutocomplete({
   )
 
   const getRootProps = useCallback(
-    () => ({
+    (): AutocompleteRootProps => ({
       role: 'combobox',
       onClick: handleOnClick,
       onKeyDown: handleOnKeyDown,
@@ -405,7 +386,7 @@ export function useAutocomplete({
   )
 
   const getLabelProps = useCallback(
-    () => ({
+    (): AutocompleteLabelProps => ({
       id: `${id}-label`,
       htmlFor: id,
     }),
@@ -413,7 +394,7 @@ export function useAutocomplete({
   )
 
   const getInputProps = useCallback(
-    () => ({
+    (): AutocompleteInputProps => ({
       id,
       ref: inputRef,
       value: inputValue,
@@ -442,7 +423,7 @@ export function useAutocomplete({
   )
 
   const getListboxProps = useCallback(
-    () => ({
+    (): AutocompleteListboxProps => ({
       id: `${id}-listbox`,
       ref: listboxRef as any,
       role: 'listbox',
@@ -454,7 +435,7 @@ export function useAutocomplete({
   )
 
   const getOptionProps = useCallback(
-    ({ index, option }) => {
+    ({ index, option }): AutocompleteOptionProps => {
       const selected =
         value !== null && getOptionSelected<string>(option, value)
       const disabled = getOptionDisabled?.(option)
@@ -484,7 +465,7 @@ export function useAutocomplete({
   )
 
   const getClearButtonProps = useCallback(
-    () => ({
+    (): AutocompleteInputButtonProps => ({
       tabIndex: -1,
       onClick: handleOnClear,
     }),
@@ -492,7 +473,7 @@ export function useAutocomplete({
   )
 
   const getPopoverButtonProps = useCallback(
-    () => ({
+    (): AutocompleteInputButtonProps => ({
       tabIndex: -1,
       onClick: handleToggle,
     }),

@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { forwardRef, useRef, ReactNode } from 'react'
-import { useAutocomplete, UseAutocompleteProps } from './useAutocomplete'
+import { forwardRef, useRef } from 'react'
 import {
+  Box,
   Button,
   Input,
   InputGroup,
@@ -11,24 +11,66 @@ import {
   Overlay,
   useOverlayPosition,
 } from '@kodiak-ui/primitives'
-
-export type AutocompleteProps = {
-  renderInput?: () => ReactNode
-  renderOption?: (props, option, index) => ReactNode
-} & UseAutocompleteProps
+import {
+  AutocompleteInputButtonProps,
+  AutocompleteInputProps,
+  AutocompleteOptionProps,
+  AutocompleteProps,
+} from './types'
+import { useAutocomplete } from './useAutocomplete'
 
 export const Autocomplete = forwardRef(function Autocomplete(
   {
+    isDisabled = false,
+    placement,
+    offset,
     renderInput: renderInputProp,
     renderOption: renderOptionProp,
+    renderClearButton: renderClearButtonProp,
+    renderPopoverButton: renderPopoverButtonProp,
     ...props
   }: AutocompleteProps,
   ref,
 ) {
-  const triggerRef = useRef()
-  const overlayRef = useRef()
+  const triggerRef = useRef<HTMLElement>()
+  const overlayRef = useRef<HTMLDivElement>()
 
-  const defaultRenderOption = (props, option, index) => (
+  const {
+    isOpen,
+    value,
+    options,
+    getRootProps,
+    getLabelProps,
+    getInputProps,
+    getListboxProps,
+    getOptionProps,
+    getClearButtonProps,
+    getPopoverButtonProps,
+  } = useAutocomplete({
+    ...props,
+  })
+
+  useOverlayPosition(
+    { isVisible: isOpen, placement, offset },
+    triggerRef,
+    overlayRef,
+  )
+
+  const defaultRenderInput = (props: AutocompleteInputProps) => (
+    <Input type="text" variant="shadow" {...props} />
+  )
+
+  function renderInput() {
+    const inputProps = getInputProps()
+
+    return renderInputProp?.(inputProps) || defaultRenderInput(inputProps)
+  }
+
+  const defaultRenderOption = (
+    props: AutocompleteOptionProps,
+    option: string,
+    index: number,
+  ) => (
     <ListboxItem
       key={index}
       {...props}
@@ -47,47 +89,60 @@ export const Autocomplete = forwardRef(function Autocomplete(
     </ListboxItem>
   )
 
-  const renderOption = (option, index) => {
+  function renderOption(option: string, index: number) {
     const optionProps = getOptionProps({ index, option })
 
     return (
-      renderOptionProp(optionProps, option, index) ||
+      renderOptionProp?.(optionProps, option, index) ||
       defaultRenderOption(optionProps, option, index)
     )
   }
 
-  const {
-    isOpen,
-    value,
-    options,
-    getRootProps,
-    getLabelProps,
-    getInputProps,
-    getListboxProps,
-    getOptionProps,
-    getClearButtonProps,
-    getPopoverButtonProps,
-  } = useAutocomplete({
-    ...props,
-  })
+  const defaultRenderClearButton = (props: AutocompleteInputButtonProps) => (
+    <Button {...props}>Clear</Button>
+  )
 
-  useOverlayPosition({ isVisible: isOpen }, triggerRef, overlayRef)
+  function renderClearButton() {
+    if (!value) {
+      return
+    }
+
+    const clearButtonProps = getClearButtonProps()
+
+    return (
+      renderClearButtonProp?.(clearButtonProps) ||
+      defaultRenderClearButton(clearButtonProps)
+    )
+  }
+
+  const defaultRenderPopoverButton = (props: AutocompleteInputButtonProps) => (
+    <Button {...props}>Popover</Button>
+  )
+
+  function renderPopoverButton() {
+    const popoverButtonProps = getPopoverButtonProps()
+
+    return (
+      renderPopoverButtonProp?.(popoverButtonProps) ||
+      defaultRenderPopoverButton(popoverButtonProps)
+    )
+  }
 
   return (
     <>
-      <div ref={triggerRef} {...getRootProps()}>
+      <Box ref={ref} {...getRootProps()}>
         <Label {...getLabelProps()}>Autocomplete</Label>
-        <InputGroup>
-          <Input type="text" variant="shadow" {...getInputProps()} />
-          {value ? <Button {...getClearButtonProps()}>Clear</Button> : null}
-          <Button {...getPopoverButtonProps()}>Popover</Button>
+        <InputGroup ref={triggerRef}>
+          {renderInput()}
+          {renderClearButton()}
+          {renderPopoverButton()}
         </InputGroup>
-      </div>
+      </Box>
       {isOpen ? (
         <Overlay ref={overlayRef}>
           <Listbox
             {...getListboxProps()}
-            sx={{
+            __base={{
               border: '1px solid',
               borderColor: 'red',
               maxHeight: '300px',

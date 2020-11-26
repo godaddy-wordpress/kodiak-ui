@@ -212,16 +212,5 @@ const options = [
 ]
 
 export function SingleValue() {
-  return (
-    <>
-      <Autocomplete
-        options={options}
-        renderOption={(props, option, index) => (
-          <li key={index} {...props}>
-            🎉 {option}
-          </li>
-        )}
-      />
-    </>
-  )
+  return <Autocomplete options={options} />
 }
