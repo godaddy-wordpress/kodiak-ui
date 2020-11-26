@@ -17,7 +17,7 @@
   "peerDependencies": {
     "kodiak-ui": "^0.0.9",
     "react": "^16.14.0",
-    "react-dom": "^16.13.0"
+    "react-dom": "^16.14.0"
   },
   "dependencies": {
     "@emotion/styled": "^10.0.27",

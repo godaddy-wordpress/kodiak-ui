@@ -24,7 +24,7 @@
     "@kodiak-ui/tabs": "latest",
     "@kodiak-ui/theme": "latest",
     "react": "^16.14.0",
-    "react-dom": "^16.13.1",
+    "react-dom": "^16.14.0",
     "react-scripts": "3.4.3",
     "resize-observer-polyfill": "^1.5.1"
   },
