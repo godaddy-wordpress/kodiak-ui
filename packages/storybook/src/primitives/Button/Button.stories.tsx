@@ -12,6 +12,7 @@ export default {
         type: 'text',
       },
     },
+    onClick: { action: 'clicked' },
   },
 } as Meta
 
