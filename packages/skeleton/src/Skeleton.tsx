@@ -1,5 +1,4 @@
-/** @jsx jsx */
-import { keyframes, jsx } from '@emotion/core'
+import { keyframes } from '@emotion/core'
 import * as React from 'react'
 import { Box } from '@kodiak-ui/primitives/box'
 
