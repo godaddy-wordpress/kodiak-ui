@@ -1,8 +1,19 @@
 import * as React from 'react'
 import { component, variant } from 'kodiak-ui'
 import { Button } from '@kodiak-ui/primitives'
+import { Story, Meta } from '@storybook/react/types-6-0'
 
-export default { title: 'Primitives/Button', component: Button }
+export default {
+  title: 'Primitives/Button',
+  component: Button,
+  argTypes: {
+    label: {
+      control: {
+        type: 'text',
+      },
+    },
+  },
+} as Meta
 
 component('button', {
   appearance: 'none',
@@ -41,21 +52,23 @@ variant('secondary', {
   },
 })
 
-export function initial() {
+export function initial({ label, ...props }) {
   return (
-    <Button base={['button', 'link']}>
-      Button styled with text underlined like a link
+    <Button base={['button', 'link']} {...props}>
+      {label ? label : 'Button styled with text underlined like a link'}
     </Button>
   )
 }
 
-export function Variant() {
+export function Variant({ label, ...props }) {
   return (
     <>
       <Button variants={['lg', 'danger']} sx={{ mr: 2 }}>
         Default
       </Button>
-      <Button variants="secondary">Secondary button</Button>
+      <Button variants="secondary" {...props}>
+        {label ? label : 'Secondary button'}
+      </Button>
     </>
   )
 }

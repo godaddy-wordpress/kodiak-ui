@@ -41,9 +41,13 @@
     "react-is": "^16.12.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
-    "react-spring": "^8.0.27"
+    "react-spring": "^8.0.27",
+    "theme-ui": "^0.3.4"
   },
   "devDependencies": {
+    "@storybook/addon-controls": "^6.1.7",
+    "@storybook/addon-essentials": "^6.1.7",
+    "@storybook/addon-links": "^6.1.7",
     "@types/react": "^16.9.49",
     "@types/react-dom": "^16.9.8",
     "regenerator-runtime": "^0.13.5",
