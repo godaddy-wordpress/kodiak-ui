@@ -28,6 +28,7 @@ export type UseAutocompleteProps = {
   pageSize?: number
   blurOnSelect?: boolean
   clearOnBlur?: boolean
+  clearOnEscape?: boolean
   options: string[]
 
   // handlers
@@ -52,6 +53,7 @@ export function useAutocomplete({
   pageSize = 5,
   blurOnSelect = false,
   clearOnBlur = false,
+  clearOnEscape = false,
   options,
 
   onCloseChange,
@@ -248,6 +250,10 @@ export function useAutocomplete({
           if (isOpen) {
             event.preventDefault()
             event.stopPropagation()
+
+            if (clearOnEscape && (inputValue || value)) {
+              handleOnClear(event)
+            }
 
             handleOnClose(event)
           }
