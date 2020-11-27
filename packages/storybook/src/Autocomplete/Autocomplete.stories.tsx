@@ -216,6 +216,16 @@ export function SingleValue() {
     label: {
       fontWeight: 'normal',
     },
+    listbox: {
+      boxShadow: 'default',
+      border: '1px solid',
+      borderColor: 'gray.2',
+      borderRadius: 'default',
+    },
+    listboxItem: {
+      px: 4,
+      py: 2,
+    },
   })
 
   return (

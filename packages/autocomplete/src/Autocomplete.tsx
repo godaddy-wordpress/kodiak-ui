@@ -155,8 +155,6 @@ export const Autocomplete = forwardRef(function Autocomplete(
           <Listbox
             {...getListboxProps()}
             sx={{
-              border: '1px solid',
-              borderColor: 'red',
               maxHeight: '300px',
               minWidth: '250px',
               overflow: 'scroll',
