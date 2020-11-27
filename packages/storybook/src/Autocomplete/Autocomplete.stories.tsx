@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Autocomplete } from '@kodiak-ui/autocomplete'
+import { Autocomplete, useAutocompleteStyles } from '@kodiak-ui/autocomplete'
 
 export default { title: 'Autocomplete' }
 
@@ -212,9 +212,16 @@ const options = [
 ]
 
 export function SingleValue() {
+  const styles = useAutocompleteStyles({
+    label: {
+      fontWeight: 'normal',
+    },
+  })
+
   return (
     <Autocomplete
       options={options}
+      styles={styles}
       onValueChange={(event, value) => console.log(value)}
     />
   )

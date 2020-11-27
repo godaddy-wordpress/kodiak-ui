@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { forwardRef, useRef } from 'react'
-import { SharedSx } from 'kodiak-ui'
+import { SharedSx, ThemeUIStyleObject } from 'kodiak-ui'
 import {
   Box,
   Button,
@@ -16,12 +16,19 @@ import {
   VisuallyHidden,
 } from '@kodiak-ui/primitives'
 import {
+  AutocompleteComponents,
   AutocompleteInputButtonProps,
   AutocompleteInputProps,
   AutocompleteOptionProps,
   AutocompleteProps,
 } from './types'
 import { useAutocomplete } from './useAutocomplete'
+
+export function useAutocompleteStyles(
+  styles: { [K in AutocompleteComponents]?: ThemeUIStyleObject },
+) {
+  return styles
+}
 
 export const Autocomplete = forwardRef(function Autocomplete(
   {
@@ -30,6 +37,7 @@ export const Autocomplete = forwardRef(function Autocomplete(
     offset,
     renderInput: renderInputProp,
     renderOption: renderOptionProp,
+    styles,
     ...props
   }: AutocompleteProps,
   ref,
@@ -63,11 +71,13 @@ export const Autocomplete = forwardRef(function Autocomplete(
     clearButtonProps: AutocompleteInputButtonProps,
     popoverButtonProps: AutocompleteInputButtonProps,
   ) => (
-    <InputGroup sx={{ alignItems: 'center', pr: 2 }}>
-      <Input type="text" variant="shadow" {...inputProps} />
+    <InputGroup sx={{ alignItems: 'center', pr: 2, ...styles?.inputGroup }}>
+      <Input type="text" variant="shadow" {...inputProps} sx={styles?.input} />
       <SharedSx sx={{ p: 1 }}>
         {value ? (
-          <CloseButton {...clearButtonProps}>Clear selection</CloseButton>
+          <CloseButton {...clearButtonProps} sx={styles?.button}>
+            Clear selection
+          </CloseButton>
         ) : null}
         <Button
           variants="shadow"
@@ -75,6 +85,7 @@ export const Autocomplete = forwardRef(function Autocomplete(
           sx={{
             transition: 'transform 0.2s ease-in-out',
             transform: isOpen ? 'rotate(-0.5turn)' : null,
+            ...styles?.button,
           }}
         >
           <SvgIcon height="20" viewBox="0 0 24 24" width="20">
@@ -115,6 +126,7 @@ export const Autocomplete = forwardRef(function Autocomplete(
           bg: 'muted',
           color: 'text',
         },
+        ...styles?.listboxItem,
       }}
     >
       {option}
@@ -132,20 +144,23 @@ export const Autocomplete = forwardRef(function Autocomplete(
 
   return (
     <>
-      <Box ref={ref} {...getRootProps()}>
-        <Label {...getLabelProps()}>Autocomplete</Label>
+      <Box ref={ref} {...getRootProps()} sx={styles?.root}>
+        <Label {...getLabelProps()} sx={styles?.label}>
+          Autocomplete
+        </Label>
         <Box ref={triggerRef}>{renderInput()}</Box>
       </Box>
       {isOpen ? (
         <Overlay ref={overlayRef}>
           <Listbox
             {...getListboxProps()}
-            __base={{
+            sx={{
               border: '1px solid',
               borderColor: 'red',
               maxHeight: '300px',
               minWidth: '250px',
               overflow: 'scroll',
+              ...styles?.listbox,
             }}
           >
             {options?.map((option, index) => {

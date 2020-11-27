@@ -7,6 +7,7 @@ import {
   ReactNode,
 } from 'react'
 import { Placement } from '@popperjs/core'
+import { ThemeUIStyleObject } from 'kodiak-ui'
 
 export type PropsWithRef<T> = { ref: any } & T
 
@@ -65,6 +66,21 @@ export type AutocompleteInputButtonProps = {
   type?: 'reset' | 'button' | 'submit'
 } & AllHTMLAttributes<HTMLButtonElement>
 
+export type AutocompleteComponents =
+  | 'root'
+  | 'label'
+  | 'inputGroup'
+  | 'input'
+  | 'button'
+  | 'listbox'
+  | 'listboxItem'
+
+export type AutocompleteSxProps = {
+  styles?: {
+    [K in AutocompleteComponents]?: ThemeUIStyleObject
+  }
+}
+
 export type AutocompleteProps = {
   isDisabled?: boolean
   placement?: Placement
@@ -73,4 +89,5 @@ export type AutocompleteProps = {
   renderOption?: (props, option, index) => ReactNode
   renderClearButton?: (props) => ReactNode
   renderPopoverButton?: (props) => ReactNode
-} & UseAutocompleteProps
+} & AutocompleteSxProps &
+  UseAutocompleteProps
