@@ -44,7 +44,7 @@ export function BaseProvider({
       {
         value: context,
       },
-      jsx(GlobalStyles, { global: theme.global }),
+      // jsx(GlobalStyles, { global: theme.global }),
       children,
     ),
   )
@@ -62,5 +62,5 @@ export function ThemeProvider({ theme, children }) {
     },
   }
 
-  return jsx(BaseProvider, { context }, children)
+  return jsx(EmotionContext.Provider, { value: context.theme }, children)
 }

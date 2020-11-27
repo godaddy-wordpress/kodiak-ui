@@ -5,4 +5,11 @@ module.exports = {
     '@storybook/addon-essentials',
     '@storybook/addon-controls',
   ],
+  babel: async options => {
+    console.log(options)
+    return {
+      ...options,
+      // any extra options you want to set
+    }
+  },
 }

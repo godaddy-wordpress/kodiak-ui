@@ -1,5 +1,7 @@
 import * as React from 'react'
-import { jsx as emotion, Interpolation } from '@emotion/react'
+import { jsx as emotion } from '@emotion/react'
+import { parseProps } from './parse-props'
+
 import styled from '@emotion/styled'
 import create from 'zustand'
 import createVanilla from 'zustand/vanilla'
@@ -18,6 +20,7 @@ export * from './provider'
 export * from './shared-provider'
 export * from './types'
 export * from './css'
+// export { jsx } from './jsx'
 
 export type Variant = {
   [key: string]: ThemeUIStyleObject
@@ -128,30 +131,6 @@ export function useComponent(component: Component) {
 export function useComponents() {
   return Store.getState().components
 }
-
-const getCSS = props => {
-  if (!props.sx && !props.css) return undefined
-  return theme => {
-    const styles = css(props.sx)(theme)
-    const raw = typeof props.css === 'function' ? props.css(theme) : props.css
-    return [styles, raw]
-  }
-}
-
-const parseProps = props => {
-  if (!props) return null
-  const next: typeof props & { css?: Interpolation<any> } = {}
-  for (const key in props) {
-    if (key === 'sx') continue
-    next[key] = props[key]
-  }
-  const css = getCSS(props)
-  if (css) next.css = css
-  return next
-}
-
-export const jsx: typeof React.createElement = (type, props, ...children) =>
-  emotion.apply(undefined, [type, parseProps(props), ...children])
 
 export function createDesignSystem({
   system,
@@ -283,3 +262,6 @@ export const shared = ({ __shared, theme }) => {
 }
 
 export { styled }
+
+export const jsx: typeof React.createElement = (type, props, ...children) =>
+  emotion.apply(undefined, [type, parseProps(props), ...children])
