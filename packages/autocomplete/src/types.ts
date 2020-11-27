@@ -69,7 +69,7 @@ export type AutocompleteProps = {
   isDisabled?: boolean
   placement?: Placement
   offset?: [number, number]
-  renderInput?: (props) => ReactNode
+  renderInput?: (inputProps, clearButtonProps, popoverButtonProps) => ReactNode
   renderOption?: (props, option, index) => ReactNode
   renderClearButton?: (props) => ReactNode
   renderPopoverButton?: (props) => ReactNode

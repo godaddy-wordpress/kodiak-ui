@@ -1,15 +1,19 @@
 import * as React from 'react'
 import { forwardRef, useRef } from 'react'
+import { SharedSx } from 'kodiak-ui'
 import {
   Box,
   Button,
+  CloseButton,
   Input,
   InputGroup,
   Label,
   Listbox,
   ListboxItem,
   Overlay,
+  SvgIcon,
   useOverlayPosition,
+  VisuallyHidden,
 } from '@kodiak-ui/primitives'
 import {
   AutocompleteInputButtonProps,
@@ -26,8 +30,6 @@ export const Autocomplete = forwardRef(function Autocomplete(
     offset,
     renderInput: renderInputProp,
     renderOption: renderOptionProp,
-    renderClearButton: renderClearButtonProp,
-    renderPopoverButton: renderPopoverButtonProp,
     ...props
   }: AutocompleteProps,
   ref,
@@ -56,14 +58,44 @@ export const Autocomplete = forwardRef(function Autocomplete(
     overlayRef,
   )
 
-  const defaultRenderInput = (props: AutocompleteInputProps) => (
-    <Input type="text" variant="shadow" {...props} />
+  const defaultRenderInput = (
+    inputProps: AutocompleteInputProps,
+    clearButtonProps: AutocompleteInputButtonProps,
+    popoverButtonProps: AutocompleteInputButtonProps,
+  ) => (
+    <InputGroup sx={{ alignItems: 'center', pr: 2 }}>
+      <Input type="text" variant="shadow" {...inputProps} />
+      <SharedSx sx={{ p: 1 }}>
+        {value ? (
+          <CloseButton {...clearButtonProps}>Clear selection</CloseButton>
+        ) : null}
+        <Button
+          variants="shadow"
+          {...popoverButtonProps}
+          sx={{
+            transition: 'transform 0.2s ease-in-out',
+            transform: isOpen ? 'rotate(-0.5turn)' : null,
+          }}
+        >
+          <SvgIcon height="20" viewBox="0 0 24 24" width="20">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M7 10l5 5 5-5z" fill="currentColor" />
+          </SvgIcon>
+          <VisuallyHidden>Toggle the list of options</VisuallyHidden>
+        </Button>
+      </SharedSx>
+    </InputGroup>
   )
 
   function renderInput() {
     const inputProps = getInputProps()
+    const clearButtonProps = getClearButtonProps()
+    const popoverButtonProps = getPopoverButtonProps()
 
-    return renderInputProp?.(inputProps) || defaultRenderInput(inputProps)
+    return (
+      renderInputProp?.(inputProps, clearButtonProps, popoverButtonProps) ||
+      defaultRenderInput(inputProps, clearButtonProps, popoverButtonProps)
+    )
   }
 
   const defaultRenderOption = (
@@ -98,45 +130,11 @@ export const Autocomplete = forwardRef(function Autocomplete(
     )
   }
 
-  const defaultRenderClearButton = (props: AutocompleteInputButtonProps) => (
-    <Button {...props}>Clear</Button>
-  )
-
-  function renderClearButton() {
-    if (!value) {
-      return
-    }
-
-    const clearButtonProps = getClearButtonProps()
-
-    return (
-      renderClearButtonProp?.(clearButtonProps) ||
-      defaultRenderClearButton(clearButtonProps)
-    )
-  }
-
-  const defaultRenderPopoverButton = (props: AutocompleteInputButtonProps) => (
-    <Button {...props}>Popover</Button>
-  )
-
-  function renderPopoverButton() {
-    const popoverButtonProps = getPopoverButtonProps()
-
-    return (
-      renderPopoverButtonProp?.(popoverButtonProps) ||
-      defaultRenderPopoverButton(popoverButtonProps)
-    )
-  }
-
   return (
     <>
       <Box ref={ref} {...getRootProps()}>
         <Label {...getLabelProps()}>Autocomplete</Label>
-        <InputGroup ref={triggerRef}>
-          {renderInput()}
-          {renderClearButton()}
-          {renderPopoverButton()}
-        </InputGroup>
+        <Box ref={triggerRef}>{renderInput()}</Box>
       </Box>
       {isOpen ? (
         <Overlay ref={overlayRef}>

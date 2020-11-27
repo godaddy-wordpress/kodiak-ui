@@ -13,6 +13,20 @@ export const parameters = {
 
 const { theme } = createDesignSystem({
   system,
+  variants: {
+    shadow: {
+      bg: 'transparent',
+      color: 'text',
+      border: 'none',
+      boxShadow: 'none',
+      p: 0,
+      m: 0,
+      '&:hover': {
+        bg: 'transparent',
+        color: 'text',
+      }
+    },
+  },
 })
 
 export const decorators = [

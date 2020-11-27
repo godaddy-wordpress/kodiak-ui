@@ -24,11 +24,11 @@ export const InputGroup = React.forwardRef(function InputGroup(
       variant={variant}
       variantKey={variantKey}
       sx={{
-        ...sx,
         display: 'flex',
         p: 0,
         position: 'relative',
         width: '100%',
+        ...sx,
       }}
     >
       {children}

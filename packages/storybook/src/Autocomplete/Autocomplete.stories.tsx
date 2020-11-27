@@ -212,5 +212,10 @@ const options = [
 ]
 
 export function SingleValue() {
-  return <Autocomplete options={options} />
+  return (
+    <Autocomplete
+      options={options}
+      onValueChange={(event, value) => console.log(value)}
+    />
+  )
 }

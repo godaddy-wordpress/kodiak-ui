@@ -7,6 +7,7 @@ import {
   getVariants,
   css,
   KodiakUIProps,
+  shared,
 } from 'kodiak-ui'
 import { useWrappedEventHandler } from '@kodiak-ui/hooks/use-event-logger'
 
@@ -33,7 +34,8 @@ export function base({ theme, base, __base }) {
       },
     })(theme)
   }
-  return { ...styles, ...__base }
+
+  return { ...__base, ...styles }
 }
 
 export const buttonVariant = ({
@@ -67,10 +69,13 @@ export const StyledButton = styled('button')<ButtonProps>(
     lineHeight: 'inherit',
     textAlign: 'center',
     textDecoration: 'none',
-    transition: 'background 0.2s ease-in-out, border 0.2s ease-in-out',
+    transitionProperty: 'background, border, transform',
+    transitionDuration: '0.2s',
+    transitionTimingFunction: 'ease-in-out',
   },
   base,
   buttonVariant,
+  shared,
   sx,
 )
 
@@ -87,7 +92,8 @@ export const Button = React.forwardRef<
   { eventLog?: boolean } & Omit<
     React.ComponentProps<typeof StyledButton>,
     'ref'
-  >
+  > &
+    KodiakUIProps
 >(({ eventLog = true, ...props }, ref) => {
   const wrappedOnClick = useWrappedEventHandler({
     name: 'BUTTON_CLICK',
