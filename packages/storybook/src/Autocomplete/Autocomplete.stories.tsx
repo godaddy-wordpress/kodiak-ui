@@ -228,11 +228,5 @@ export function SingleValue() {
     },
   })
 
-  return (
-    <Autocomplete
-      options={options}
-      styles={styles}
-      onValueChange={(event, value) => console.log(value)}
-    />
-  )
+  return <Autocomplete options={options} styles={styles} />
 }
