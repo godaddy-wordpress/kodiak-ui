@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { ThemeProvider } from 'theme-ui'
-import { theme } from '../src/theme'
+import { createDesignSystem, ThemeProvider } from 'kodiak-ui'
+import { theme as system } from '../src/theme'
 
 export const parameters = {
   options: {
@@ -9,8 +9,11 @@ export const parameters = {
         ? 0
         : a[1].id.localeCompare(b[1].id, undefined, { numeric: true }),
   },
-  actions: { argTypesRegex: '^on[A-Z].*' },
 }
+
+const { theme } = createDesignSystem({
+  system,
+})
 
 export const decorators = [
   Story => (
