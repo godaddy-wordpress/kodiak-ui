@@ -228,5 +228,9 @@ export function SingleValue() {
     },
   })
 
-  return <Autocomplete options={options} styles={styles} />
+  return (
+    <>
+      <Autocomplete options={options} styles={styles} />
+    </>
+  )
 }

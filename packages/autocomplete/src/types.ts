@@ -21,6 +21,7 @@ export type UseAutocompleteProps = {
   componentName?: string
   isOpen?: boolean
   isClearable?: boolean
+  isDisabled?: boolean
   value?: string
   inputValue?: string
   defaultValue?: string

@@ -32,7 +32,6 @@ export function useAutocompleteStyles(
 
 export const Autocomplete = forwardRef(function Autocomplete(
   {
-    isDisabled = false,
     placement,
     offset,
     renderInput: renderInputProp,
@@ -155,9 +154,11 @@ export const Autocomplete = forwardRef(function Autocomplete(
           <Listbox
             {...getListboxProps()}
             sx={{
+              bg: 'background',
               maxHeight: '300px',
               minWidth: '250px',
               overflow: 'scroll',
+              zIndex: 100,
               ...styles?.listbox,
             }}
           >

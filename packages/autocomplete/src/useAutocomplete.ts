@@ -25,6 +25,7 @@ import {
 export function useAutocomplete({
   isOpen: isOpenProp,
   isClearable = true,
+  isDisabled = false,
   value: valueProp,
   inputValue: inputValueProp,
   componentName = 'useAutocomplete',
@@ -401,6 +402,7 @@ export function useAutocomplete({
       autoComplete: 'none',
       autoCapitalize: 'none',
       spellCheck: false,
+      disabled: isDisabled,
       onFocus: handleOnFocus,
       onBlur: handleOnBlur,
       onChange: handleInputOnChange,
@@ -411,12 +413,13 @@ export function useAutocomplete({
       'aria-activedescendant': isOpen ? '' : null,
     }),
     [
-      handleOnBlur,
-      handleOnFocus,
-      handleInputOnChange,
-      handleInputOnMouseDown,
       id,
       inputValue,
+      isDisabled,
+      handleOnFocus,
+      handleOnBlur,
+      handleInputOnChange,
+      handleInputOnMouseDown,
       isAvailable,
       isOpen,
     ],
@@ -475,9 +478,10 @@ export function useAutocomplete({
   const getPopoverButtonProps = useCallback(
     (): AutocompleteInputButtonProps => ({
       tabIndex: -1,
+      disabled: isDisabled,
       onClick: handleToggle,
     }),
-    [handleToggle],
+    [handleToggle, isDisabled],
   )
 
   return {
