@@ -26,6 +26,7 @@ export function useAutocomplete({
   isOpen: isOpenProp,
   isClearable = true,
   isDisabled = false,
+  isMulti = false,
   value: valueProp,
   inputValue: inputValueProp,
   componentName = 'useAutocomplete',
@@ -61,7 +62,7 @@ export function useAutocomplete({
     state: 'open',
   })
 
-  const [value, setValue] = useControlled<string>({
+  const [value, setValue] = useControlled<string | string[]>({
     controlled: valueProp,
     default: defaultValue,
     name: componentName,
@@ -82,7 +83,9 @@ export function useAutocomplete({
     isOpen,
     options,
     inputValue:
-      value !== null && value === inputValue && isPristine ? '' : inputValue,
+      !isMulti && value !== null && value === inputValue && isPristine
+        ? ''
+        : inputValue,
   })
 
   const setHighlightedIndex = useHighlightIndex(
@@ -98,16 +101,24 @@ export function useAutocomplete({
   )
 
   const isAvailable = isOpen && filteredOptions?.length > 0
-  const isDirty = inputValue?.length > 0
+  const isDirty =
+    inputValue?.length > 0 || isMulti ? value?.length > 0 : value !== null
+  const hasValue = isMulti ? value?.length > 0 : value
 
   const handleSyncHighlightedAndSelectedOption = useCallback(() => {
     if (!isOpen || !listboxRef?.current) {
       return
     }
 
-    if (value) {
+    const valueItem = isMulti ? value?.[0] : value
+
+    if (valueItem) {
+      if (isMulti) {
+        return
+      }
+
       const valueIndex = filteredOptions?.findIndex(option =>
-        getOptionSelected(option, value),
+        getOptionSelected(option, valueItem),
       )
 
       if (valueIndex === -1) {
@@ -116,7 +127,16 @@ export function useAutocomplete({
         setHighlightedIndex({ index: valueIndex })
       }
     }
-  }, [filteredOptions, getOptionSelected, isOpen, setHighlightedIndex, value])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    filteredOptions,
+    getOptionSelected,
+    isMulti,
+    isOpen,
+    setHighlightedIndex,
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    isMulti ? false : value,
+  ])
 
   useEffect(() => {
     handleSyncHighlightedAndSelectedOption()
@@ -126,7 +146,7 @@ export function useAutocomplete({
     (event: InteractionEvent, newValue?: string) => {
       let newInputValue: string
 
-      if (newValue === null) {
+      if (isMulti || newValue === null) {
         newInputValue = ''
       } else {
         newInputValue = newValue
@@ -135,7 +155,7 @@ export function useAutocomplete({
       setInputValue(newInputValue)
       onInputValueChange?.(event, newInputValue)
     },
-    [onInputValueChange, setInputValue],
+    [isMulti, onInputValueChange, setInputValue],
   )
 
   const handleOnOpen = useCallback(
@@ -175,10 +195,36 @@ export function useAutocomplete({
   )
 
   const handleSetValue = useCallback(
+    (event, newValue) => {
+      if (value === newValue) {
+        return
+      }
+
+      onValueChange?.(event, newValue)
+
+      setValue(newValue)
+    },
+    [onValueChange, setValue, value],
+  )
+
+  const handleSetNewValue = useCallback(
     (event: InteractionEvent, option: string) => {
-      setValue(option)
-      onValueChange?.(event, option)
-      handleResetInputValue(event, option)
+      let newValue: string | string[] = option
+
+      if (isMulti) {
+        newValue = Array.isArray(value) ? value.slice() : []
+
+        const index = newValue?.findIndex(valueItem =>
+          getOptionSelected(valueItem, option),
+        )
+
+        if (index === -1) {
+          newValue.push(option as string)
+        }
+      }
+
+      handleSetValue(event, newValue)
+      handleResetInputValue(event, option as string)
 
       if (closeOnSelect) {
         handleOnClose(event)
@@ -191,10 +237,12 @@ export function useAutocomplete({
     [
       blurOnSelect,
       closeOnSelect,
+      getOptionSelected,
       handleOnClose,
       handleResetInputValue,
-      onValueChange,
-      setValue,
+      handleSetValue,
+      isMulti,
+      value,
     ],
   )
 
@@ -204,10 +252,10 @@ export function useAutocomplete({
         setInputValue('')
         onInputValueChange?.(event, '')
 
-        handleSetValue(event, null)
+        handleSetValue(event, isMulti ? [] : null)
       }
     },
-    [handleSetValue, isClearable, onInputValueChange, setInputValue],
+    [handleSetValue, isClearable, isMulti, onInputValueChange, setInputValue],
   )
 
   const handleOnKeyDown = useCallback(
@@ -238,7 +286,7 @@ export function useAutocomplete({
             event.preventDefault()
             event.stopPropagation()
 
-            if (clearOnEscape && (inputValue || value)) {
+            if (clearOnEscape && (inputValue || hasValue)) {
               handleOnClear(event)
             }
 
@@ -253,7 +301,7 @@ export function useAutocomplete({
           if (highlightedIndexRef?.current !== -1 && isOpen) {
             event.preventDefault()
             const option = filteredOptions?.[highlightedIndexRef?.current]
-            handleSetValue(event, option)
+            handleSetNewValue(event, option)
           }
           break
         default:
@@ -265,12 +313,12 @@ export function useAutocomplete({
       handleOnClear,
       handleOnClose,
       handleOnOpen,
-      handleSetValue,
+      handleSetNewValue,
+      hasValue,
       inputValue,
       isOpen,
       pageSize,
       setHighlightedIndex,
-      value,
     ],
   )
 
@@ -285,9 +333,9 @@ export function useAutocomplete({
         event.currentTarget.getAttribute('data-option-index'),
       )
 
-      handleSetValue(event, filteredOptions[index])
+      handleSetNewValue(event, filteredOptions[index])
     },
-    [filteredOptions, handleSetValue],
+    [filteredOptions, handleSetNewValue],
   )
 
   const handleOnFocus = useCallback(
@@ -356,7 +404,7 @@ export function useAutocomplete({
       }
 
       if (newValue === '') {
-        if (isClearable) {
+        if (isClearable && !isMulti) {
           handleSetValue(event, null)
         }
       } else {
@@ -368,6 +416,7 @@ export function useAutocomplete({
       handleSetValue,
       inputValue,
       isClearable,
+      isMulti,
       onInputValueChange,
       setInputValue,
     ],

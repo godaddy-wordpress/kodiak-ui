@@ -231,6 +231,7 @@ export function SingleValue() {
   return (
     <>
       <Autocomplete options={options} styles={styles} />
+      <Autocomplete isMulti options={options} styles={styles} />
     </>
   )
 }

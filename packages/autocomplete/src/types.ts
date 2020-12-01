@@ -22,9 +22,10 @@ export type UseAutocompleteProps = {
   isOpen?: boolean
   isClearable?: boolean
   isDisabled?: boolean
-  value?: string
+  isMulti?: boolean
+  value?: string | string[]
   inputValue?: string
-  defaultValue?: string
+  defaultValue?: string | string[]
   openOnFocus?: boolean
   pageSize?: number
   blurOnSelect?: boolean
@@ -36,7 +37,7 @@ export type UseAutocompleteProps = {
   // handlers
   onCloseChange?: (event: InteractionEvent) => void
   onOpenChange?: (event: InteractionEvent) => void
-  onValueChange?: (event: InteractionEvent, value: string) => void
+  onValueChange?: (event: InteractionEvent, value: string | string[]) => void
   onInputValueChange?: (event: InteractionEvent, value: string) => void
   onHighlightedIndexChange?: (option: string) => void
 

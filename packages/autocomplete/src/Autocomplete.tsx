@@ -59,6 +59,8 @@ export const Autocomplete = forwardRef(function Autocomplete(
     ...props,
   })
 
+  console.log(value)
+
   useOverlayPosition(
     { isVisible: isOpen, placement, offset },
     triggerRef,
