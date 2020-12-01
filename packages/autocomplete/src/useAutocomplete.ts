@@ -304,6 +304,16 @@ export function useAutocomplete({
             handleSetNewValue(event, option)
           }
           break
+        case 'Backspace':
+          if (isMulti && inputValue === '' && hasValue) {
+            const index = value?.length - 1
+            const newValue: string[] = (value as string[])?.slice()
+
+            newValue.splice(index, 1)
+
+            handleSetValue(event, newValue)
+          }
+          break
         default:
       }
     },
@@ -314,11 +324,14 @@ export function useAutocomplete({
       handleOnClose,
       handleOnOpen,
       handleSetNewValue,
+      handleSetValue,
       hasValue,
       inputValue,
+      isMulti,
       isOpen,
       pageSize,
       setHighlightedIndex,
+      value,
     ],
   )
 

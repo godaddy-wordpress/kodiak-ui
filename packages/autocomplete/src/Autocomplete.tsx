@@ -12,6 +12,7 @@ import {
   ListboxItem,
   Overlay,
   SvgIcon,
+  Tag,
   useOverlayPosition,
   VisuallyHidden,
 } from '@kodiak-ui/primitives'
@@ -44,6 +45,8 @@ export const Autocomplete = forwardRef(function Autocomplete(
   const triggerRef = useRef<HTMLElement>()
   const overlayRef = useRef<HTMLDivElement>()
 
+  const { isMulti } = props
+
   const {
     isOpen,
     value,
@@ -59,43 +62,88 @@ export const Autocomplete = forwardRef(function Autocomplete(
     ...props,
   })
 
-  console.log(value)
-
   useOverlayPosition(
     { isVisible: isOpen, placement, offset },
     triggerRef,
     overlayRef,
   )
 
+  const hasValue = isMulti ? value?.length > 0 : value
+
+  const defaultRenderTags = () =>
+    isMulti && value?.length > 0
+      ? (value as string[])?.map(item => (
+          <Tag key={item} sx={{ minWidth: 'auto', m: '2px' }}>
+            {item}
+          </Tag>
+        ))
+      : null
+
   const defaultRenderInput = (
     inputProps: AutocompleteInputProps,
     clearButtonProps: AutocompleteInputButtonProps,
     popoverButtonProps: AutocompleteInputButtonProps,
   ) => (
-    <InputGroup sx={{ alignItems: 'center', pr: 2, ...styles?.inputGroup }}>
-      <Input type="text" variant="shadow" {...inputProps} sx={styles?.input} />
-      <SharedSx sx={{ p: 1 }}>
-        {value ? (
-          <CloseButton {...clearButtonProps} sx={styles?.button}>
-            Clear selection
-          </CloseButton>
-        ) : null}
-        <Button
-          variants="shadow"
-          {...popoverButtonProps}
+    <InputGroup
+      sx={{
+        alignItems: 'center',
+        flexWrap: 'wrap',
+        position: 'relative',
+        pl: '2px',
+        pr: '56px',
+        ...styles?.inputGroup,
+      }}
+    >
+      {defaultRenderTags()}
+      <Input
+        type="text"
+        variant="shadow"
+        {...inputProps}
+        sx={{
+          px: 1,
+          py: '2px',
+          width: 0,
+          minWidth: '30px',
+          flexGrow: 1,
+          textOverflow: 'ellipsis',
+          ...styles?.input,
+        }}
+      />
+      <Box
+        sx={{
+          position: 'absolute',
+          right: 0,
+          top: '50%',
+          transform: 'translateY(-50%)',
+        }}
+      >
+        <SharedSx
           sx={{
-            transition: 'transform 0.2s ease-in-out',
-            transform: isOpen ? 'rotate(-0.5turn)' : null,
-            ...styles?.button,
+            p: 1,
           }}
         >
-          <SvgIcon height="20" viewBox="0 0 24 24" width="20">
-            <path d="M0 0h24v24H0z" fill="none" />
-            <path d="M7 10l5 5 5-5z" fill="currentColor" />
-          </SvgIcon>
-          <VisuallyHidden>Toggle the list of options</VisuallyHidden>
-        </Button>
-      </SharedSx>
+          {hasValue ? (
+            <CloseButton {...clearButtonProps} sx={styles?.button}>
+              Clear selection
+            </CloseButton>
+          ) : null}
+          <Button
+            variants="shadow"
+            {...popoverButtonProps}
+            sx={{
+              transition: 'transform 0.2s ease-in-out',
+              transform: isOpen ? 'rotate(-0.5turn)' : null,
+              ...styles?.button,
+            }}
+          >
+            <SvgIcon height="20" viewBox="0 0 24 24" width="20">
+              <path d="M0 0h24v24H0z" fill="none" />
+              <path d="M7 10l5 5 5-5z" fill="currentColor" />
+            </SvgIcon>
+            <VisuallyHidden>Toggle the list of options</VisuallyHidden>
+          </Button>
+        </SharedSx>
+      </Box>
     </InputGroup>
   )
 

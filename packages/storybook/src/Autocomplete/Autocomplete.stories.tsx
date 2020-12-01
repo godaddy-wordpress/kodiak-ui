@@ -213,6 +213,9 @@ const options = [
 
 export function SingleValue() {
   const styles = useAutocompleteStyles({
+    root: {
+      width: '300px',
+    },
     label: {
       fontWeight: 'normal',
     },
