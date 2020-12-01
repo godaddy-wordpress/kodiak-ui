@@ -1,0 +1,18 @@
+{
+  "name": "@kodiak-ui/babel-plugin",
+  "version": "1.0.2",
+  "main": "dist/babel-plugin.cjs.js",
+  "module": "dist/babel-plugin.esm.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@babel/helper-plugin-test-runner": "^7.10.4",
+    "@babel/plugin-syntax-jsx": "^7.12.1",
+    "babel-check-duplicated-nodes": "^1.0.0",
+    "jest-in-case": "^1.0.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "952275b2482fe05621f9d8b8e036865af870e87c"
+}
