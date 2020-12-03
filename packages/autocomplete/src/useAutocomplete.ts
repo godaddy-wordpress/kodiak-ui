@@ -20,6 +20,7 @@ import {
   AutocompleteRootProps,
   UseAutocompleteProps,
   InteractionEvent,
+  AutocompleteTagProps,
 } from './types'
 
 export function useAutocomplete({
@@ -138,9 +139,9 @@ export function useAutocomplete({
     isMulti ? false : value,
   ])
 
-  useEffect(() => {
-    handleSyncHighlightedAndSelectedOption()
-  }, [handleSyncHighlightedAndSelectedOption])
+  // useEffect(() => {
+  //   handleSyncHighlightedAndSelectedOption()
+  // }, [handleSyncHighlightedAndSelectedOption])
 
   const handleResetInputValue = useCallback(
     (event: InteractionEvent, newValue?: string) => {
@@ -209,6 +210,7 @@ export function useAutocomplete({
 
   const handleSetNewValue = useCallback(
     (event: InteractionEvent, option: string) => {
+      highlightedIndexRef.current = -1
       let newValue: string | string[] = option
 
       if (isMulti) {
@@ -220,6 +222,8 @@ export function useAutocomplete({
 
         if (index === -1) {
           newValue.push(option as string)
+        } else {
+          newValue.splice(index, 1)
         }
       }
 
@@ -299,7 +303,9 @@ export function useAutocomplete({
           }
 
           if (highlightedIndexRef?.current !== -1 && isOpen) {
+            console.log(highlightedIndexRef?.current)
             event.preventDefault()
+
             const option = filteredOptions?.[highlightedIndexRef?.current]
             handleSetNewValue(event, option)
           }
@@ -365,6 +371,7 @@ export function useAutocomplete({
   const handleOnBlur = useCallback(
     (event: FocusEvent) => {
       setIsFocused(false)
+      highlightedIndexRef.current = -1
 
       if (clearOnBlur) {
         handleResetInputValue(event, null)
@@ -435,6 +442,16 @@ export function useAutocomplete({
     ],
   )
 
+  const handleTagOnDismiss = useCallback(
+    (index: number) => event => {
+      const newValue = value?.slice() as string[]
+      newValue.splice(index, 1)
+
+      handleSetValue(event, newValue)
+    },
+    [handleSetValue, value],
+  )
+
   const getRootProps = useCallback(
     (): AutocompleteRootProps => ({
       role: 'combobox',
@@ -501,8 +518,12 @@ export function useAutocomplete({
 
   const getOptionProps = useCallback(
     ({ index, option }): AutocompleteOptionProps => {
+      const valueArray = isMulti ? value : [value]
       const selected =
-        value !== null && getOptionSelected<string>(option, value)
+        valueArray?.length > 0 &&
+        !!(valueArray as string[])?.find(valueItem =>
+          getOptionSelected<string>(option, valueItem),
+        )
       const disabled = getOptionDisabled?.(option)
 
       return {
@@ -525,6 +546,7 @@ export function useAutocomplete({
       handleOptionOnClick,
       handleOptionOnMouseOver,
       id,
+      isMulti,
       value,
     ],
   )
@@ -546,6 +568,14 @@ export function useAutocomplete({
     [handleToggle, isDisabled],
   )
 
+  const getTagProps = useCallback(
+    ({ index }: { index: number }): AutocompleteTagProps => ({
+      onDismiss: handleTagOnDismiss(index),
+      'data-tag-index': index,
+    }),
+    [handleTagOnDismiss],
+  )
+
   return {
     isOpen,
     isAvailable,
@@ -560,5 +590,6 @@ export function useAutocomplete({
     getOptionProps,
     getClearButtonProps,
     getPopoverButtonProps,
+    getTagProps,
   }
 }

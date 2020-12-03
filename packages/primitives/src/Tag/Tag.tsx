@@ -1,5 +1,10 @@
 import * as React from 'react'
-import { forwardRef, ReactNode } from 'react'
+import {
+  forwardRef,
+  DetailedHTMLProps,
+  AllHTMLAttributes,
+  ReactNode,
+} from 'react'
 import { KodiakUIProps, ThemeUIStyleObject } from 'kodiak-ui'
 import { Box } from '../Box'
 import { CloseButton } from '../Button'
@@ -20,10 +25,11 @@ export type TagProps = {
   children: ReactNode
   isDismissible?: boolean
   styles?: TagStyles
-  onDismiss?: (event) => void
+  onDismiss?: (event: any) => void
 
   renderButton?: () => void
-} & KodiakUIProps
+} & DetailedHTMLProps<AllHTMLAttributes<HTMLElement>, HTMLElement> &
+  KodiakUIProps
 
 export const Tag = forwardRef<TagProps, any>(
   (

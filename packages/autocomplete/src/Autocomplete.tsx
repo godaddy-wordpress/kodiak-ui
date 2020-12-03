@@ -43,7 +43,10 @@ export const Autocomplete = forwardRef(function Autocomplete(
   }: AutocompleteProps,
   ref,
 ) {
-  const tagStyles = { root: styles?.tag, button: styles?.tagButton }
+  const tagStyles = {
+    root: { m: '2px', ...styles?.tag },
+    button: styles?.tagButton,
+  }
 
   const triggerRef = useRef<HTMLElement>()
   const overlayRef = useRef<HTMLDivElement>()
@@ -61,6 +64,7 @@ export const Autocomplete = forwardRef(function Autocomplete(
     getOptionProps,
     getClearButtonProps,
     getPopoverButtonProps,
+    getTagProps,
   } = useAutocomplete({
     ...props,
   })
@@ -75,8 +79,13 @@ export const Autocomplete = forwardRef(function Autocomplete(
 
   const defaultRenderTags = () =>
     isMulti && value?.length > 0
-      ? (value as string[])?.map(item => (
-          <Tag key={item} isDismissible styles={tagStyles}>
+      ? (value as string[])?.map((item, index) => (
+          <Tag
+            isDismissible
+            key={item}
+            styles={tagStyles}
+            {...getTagProps({ index })}
+          >
             {item}
           </Tag>
         ))

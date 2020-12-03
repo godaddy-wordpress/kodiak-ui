@@ -1,13 +1,16 @@
 import {
   AllHTMLAttributes,
   ChangeEvent,
+  DetailedHTMLProps,
   FocusEvent,
+  HTMLAttributes,
   KeyboardEvent,
   MouseEvent,
   ReactNode,
 } from 'react'
 import { Placement } from '@popperjs/core'
 import { ThemeUIStyleObject } from 'kodiak-ui'
+import { TagProps } from '@kodiak-ui/primitives'
 
 export type PropsWithRef<T> = { ref: any } & T
 
@@ -67,6 +70,10 @@ export type AutocompleteOptionProps = {
 export type AutocompleteInputButtonProps = {
   type?: 'reset' | 'button' | 'submit'
 } & AllHTMLAttributes<HTMLButtonElement>
+
+export type AutocompleteTagProps = {
+  'data-tag-index': number
+} & Pick<TagProps, 'onDismiss'>
 
 export type AutocompleteComponents =
   | 'root'
