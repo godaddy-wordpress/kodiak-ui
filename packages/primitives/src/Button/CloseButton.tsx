@@ -12,13 +12,18 @@ export type CloseButtonProps = { children?: ReactNode } & DetailedHTMLProps<
   KodiakUIProps
 
 export const CloseButton = forwardRef<CloseButtonProps, any>(
-  ({ children, ...props }, ref) => {
+  ({ children, sx, ...props }, ref) => {
     return (
-      <Button ref={ref} variants="shadow" {...props}>
+      <Button
+        ref={ref}
+        variants="shadow"
+        sx={{ height: '20px', width: '20px', p: 0, ...sx }}
+        {...props}
+      >
         <SvgIcon
           title="Close icon"
           viewBox="0 0 24 24"
-          __base={{ height: '20px', width: '20px' }}
+          sx={{ height: '100%', width: '100%' }}
         >
           <path d="M0 0h24v24H0z" fill="none" />
           <path

@@ -5,6 +5,7 @@ import {
   Box,
   Button,
   CloseButton,
+  Flex,
   Input,
   InputGroup,
   Label,
@@ -111,10 +112,12 @@ export const Autocomplete = forwardRef(function Autocomplete(
           ...styles?.input,
         }}
       />
-      <Box
+      <Flex
         sx={{
+          alignItems: 'center',
           position: 'absolute',
           right: 0,
+          pr: 1,
           top: '50%',
           transform: 'translateY(-50%)',
         }}
@@ -133,6 +136,8 @@ export const Autocomplete = forwardRef(function Autocomplete(
             variants="shadow"
             {...popoverButtonProps}
             sx={{
+              height: '20px',
+              p: 0,
               transition: 'transform 0.2s ease-in-out',
               transform: isOpen ? 'rotate(-0.5turn)' : null,
               ...styles?.button,
@@ -145,7 +150,7 @@ export const Autocomplete = forwardRef(function Autocomplete(
             <VisuallyHidden>Toggle the list of options</VisuallyHidden>
           </Button>
         </SharedSx>
-      </Box>
+      </Flex>
     </InputGroup>
   )
 

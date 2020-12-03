@@ -229,6 +229,14 @@ export function SingleValue() {
       px: 4,
       py: 2,
     },
+    tagButton: {
+      borderLeft: '1px solid',
+      borderColor: 'gray.3',
+      height: '16px',
+      width: '16px',
+      ml: 1,
+      pl: 1,
+    },
   })
 
   return (

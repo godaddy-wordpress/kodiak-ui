@@ -43,7 +43,7 @@ export const Tag = forwardRef<TagProps, any>(
       return isDismissible ? (
         <CloseButton
           onClick={event => onDismiss?.(event)}
-          sx={styles?.button}
+          sx={{ borderRadius: 0, ...styles?.button }}
         />
       ) : null
     }
