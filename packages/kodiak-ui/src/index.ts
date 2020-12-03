@@ -80,6 +80,7 @@ type ConfigurationOptions = Pick<
 export type CreateDesignSystemOptions = {
   system?: Theme
   global?: { [key: string]: ThemeUIStyleObject }
+  components?: { [key: string]: ThemeUIStyleObject }
   variants?: { [key: string]: ThemeUIStyleObject }
   options?: ConfigurationOptions
 }
@@ -158,12 +159,14 @@ export function createDesignSystem({
   system,
   global,
   variants,
+  components,
   options,
 }: CreateDesignSystemOptions = {}): { theme: Theme } {
   const theme = {
     ...options,
     ...themeDefault,
     ...system,
+    ...components,
     ...variants,
     global: {
       ...themeDefault?.global,

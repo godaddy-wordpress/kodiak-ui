@@ -76,6 +76,8 @@ export type AutocompleteComponents =
   | 'button'
   | 'listbox'
   | 'listboxItem'
+  | 'tag'
+  | 'tagButton'
 
 export type AutocompleteSxProps = {
   styles?: {

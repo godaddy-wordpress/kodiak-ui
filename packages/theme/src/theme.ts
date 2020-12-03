@@ -621,6 +621,13 @@ export const theme = {
     alignItems: 'center',
     justifyContent: 'center',
   },
+  tag: {
+    bg: 'gray.1',
+    border: '1px solid',
+    borderColor: 'gray.3',
+    color: 'gray.7',
+    fontWeight: 'semiBold',
+  },
   labels,
   images,
   inputs,
