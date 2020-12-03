@@ -93,6 +93,8 @@ export type AutocompleteSxProps = {
 }
 
 export type AutocompleteProps = {
+  label: string
+  placeholder?: string
   isDisabled?: boolean
   placement?: Placement
   offset?: [number, number]

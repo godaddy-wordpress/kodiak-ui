@@ -106,42 +106,32 @@ export function useAutocomplete({
     inputValue?.length > 0 || isMulti ? value?.length > 0 : value !== null
   const hasValue = isMulti ? value?.length > 0 : value
 
-  const handleSyncHighlightedAndSelectedOption = useCallback(() => {
-    if (!isOpen || !listboxRef?.current) {
-      return
-    }
+  useEffect(
+    function handleScrollSelectedOptionIntoView() {
+      const valueArray = isMulti ? value : [value]
 
-    const valueItem = isMulti ? value?.[0] : value
-
-    if (valueItem) {
-      if (isMulti) {
+      if (!isOpen || !listboxRef?.current || valueArray?.length === 0) {
         return
       }
 
+      const valueItem = valueArray?.[0]
       const valueIndex = filteredOptions?.findIndex(option =>
         getOptionSelected(option, valueItem),
       )
 
-      if (valueIndex === -1) {
-        setHighlightedIndex({ diff: 'reset' })
-      } else {
+      if (valueIndex !== -1) {
         setHighlightedIndex({ index: valueIndex })
       }
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [
-    filteredOptions,
-    getOptionSelected,
-    isMulti,
-    isOpen,
-    setHighlightedIndex,
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    isMulti ? false : value,
-  ])
-
-  // useEffect(() => {
-  //   handleSyncHighlightedAndSelectedOption()
-  // }, [handleSyncHighlightedAndSelectedOption])
+    },
+    [
+      filteredOptions,
+      getOptionSelected,
+      isMulti,
+      isOpen,
+      setHighlightedIndex,
+      value,
+    ],
+  )
 
   const handleResetInputValue = useCallback(
     (event: InteractionEvent, newValue?: string) => {
@@ -221,7 +211,9 @@ export function useAutocomplete({
         )
 
         if (index === -1) {
-          newValue.push(option as string)
+          if (option) {
+            newValue.push(option as string)
+          }
         } else {
           newValue.splice(index, 1)
         }
@@ -246,6 +238,7 @@ export function useAutocomplete({
       handleResetInputValue,
       handleSetValue,
       isMulti,
+      setHighlightedIndex,
       value,
     ],
   )
@@ -303,7 +296,6 @@ export function useAutocomplete({
           }
 
           if (highlightedIndexRef?.current !== -1 && isOpen) {
-            console.log(highlightedIndexRef?.current)
             event.preventDefault()
 
             const option = filteredOptions?.[highlightedIndexRef?.current]

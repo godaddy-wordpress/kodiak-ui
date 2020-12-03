@@ -34,6 +34,8 @@ export function useAutocompleteStyles(
 
 export const Autocomplete = forwardRef(function Autocomplete(
   {
+    label,
+    placeholder,
     placement,
     offset,
     renderInput: renderInputProp,
@@ -110,6 +112,7 @@ export const Autocomplete = forwardRef(function Autocomplete(
       <Input
         type="text"
         variant="shadow"
+        placeholder={placeholder}
         {...inputProps}
         sx={{
           px: 1,
@@ -207,11 +210,21 @@ export const Autocomplete = forwardRef(function Autocomplete(
     )
   }
 
+  function renderOptions() {
+    return options?.length > 0 ? (
+      options?.map((option, index) => {
+        return renderOption(option, index)
+      })
+    ) : (
+      <ListboxItem sx={styles?.listboxItem}>No results</ListboxItem>
+    )
+  }
+
   return (
     <>
       <Box ref={ref} {...getRootProps()} sx={styles?.root}>
         <Label {...getLabelProps()} sx={styles?.label}>
-          Autocomplete
+          {label}
         </Label>
         <Box ref={triggerRef}>{renderInput()}</Box>
       </Box>
@@ -228,9 +241,7 @@ export const Autocomplete = forwardRef(function Autocomplete(
               ...styles?.listbox,
             }}
           >
-            {options?.map((option, index) => {
-              return renderOption(option, index)
-            })}
+            {renderOptions()}
           </Listbox>
         </Overlay>
       ) : null}

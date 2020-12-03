@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Autocomplete, useAutocompleteStyles } from '@kodiak-ui/autocomplete'
+import { Grid } from '@kodiak-ui/primitives'
 
 export default { title: 'Autocomplete' }
 
@@ -240,9 +241,20 @@ export function SingleValue() {
   })
 
   return (
-    <>
-      <Autocomplete options={options} styles={styles} />
-      <Autocomplete isMulti options={options} styles={styles} />
-    </>
+    <Grid sx={{ gridTemplateColumns: 1, gap: 4 }}>
+      <Autocomplete
+        label="Single value"
+        placeholder="Start typing..."
+        options={options}
+        styles={styles}
+      />
+      <Autocomplete
+        isMulti
+        label="Multiple values"
+        placeholder="Start typing..."
+        options={options}
+        styles={styles}
+      />
+    </Grid>
   )
 }
