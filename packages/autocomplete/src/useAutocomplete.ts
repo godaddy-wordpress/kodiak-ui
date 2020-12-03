@@ -210,7 +210,7 @@ export function useAutocomplete({
 
   const handleSetNewValue = useCallback(
     (event: InteractionEvent, option: string) => {
-      highlightedIndexRef.current = -1
+      setHighlightedIndex({ diff: 'reset' })
       let newValue: string | string[] = option
 
       if (isMulti) {
@@ -371,7 +371,7 @@ export function useAutocomplete({
   const handleOnBlur = useCallback(
     (event: FocusEvent) => {
       setIsFocused(false)
-      highlightedIndexRef.current = -1
+      setHighlightedIndex({ diff: 'reset' })
 
       if (clearOnBlur) {
         handleResetInputValue(event, null)
@@ -379,7 +379,7 @@ export function useAutocomplete({
 
       handleOnClose(event)
     },
-    [clearOnBlur, handleOnClose, handleResetInputValue],
+    [clearOnBlur, handleOnClose, handleResetInputValue, setHighlightedIndex],
   )
 
   const handleOnMouseDown = useCallback(
