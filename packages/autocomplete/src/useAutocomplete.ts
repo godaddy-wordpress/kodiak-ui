@@ -88,6 +88,8 @@ export function useAutocomplete({
         ? ''
         : inputValue,
   })
+  const filteredOptionsRef = useRef(filteredOptions)
+  filteredOptionsRef.current = filteredOptions
 
   const setHighlightedIndex = useHighlightIndex(
     {
@@ -100,6 +102,8 @@ export function useAutocomplete({
     listboxRef,
     highlightedIndexRef,
   )
+  const setHighlightedIndexRef = useRef(setHighlightedIndex)
+  setHighlightedIndexRef.current = setHighlightedIndex
 
   const isAvailable = isOpen && filteredOptions?.length > 0
   const isDirty =
@@ -338,16 +342,14 @@ export function useAutocomplete({
     inputRef?.current?.focus()
   }
 
-  const handleOptionOnClick = useCallback(
-    (event: MouseEvent) => {
-      const index = Number(
-        event.currentTarget.getAttribute('data-option-index'),
-      )
+  const handleSetNewValueRef = useRef(handleSetNewValue)
+  handleSetNewValueRef.current = handleSetNewValue
 
-      handleSetNewValue(event, filteredOptions[index])
-    },
-    [filteredOptions, handleSetNewValue],
-  )
+  const handleOptionOnClick = useCallback((event: MouseEvent) => {
+    const index = Number(event.currentTarget.getAttribute('data-option-index'))
+
+    handleSetNewValueRef.current?.(event, filteredOptionsRef.current?.[index])
+  }, [])
 
   const handleOnFocus = useCallback(
     (event: FocusEvent) => {
@@ -388,6 +390,7 @@ export function useAutocomplete({
       if (inputValue === '' || !isOpen) {
         handleToggle(event)
       }
+      event.stopPropagation()
     },
     [handleToggle, inputValue, isOpen],
   )
@@ -396,14 +399,11 @@ export function useAutocomplete({
     event.preventDefault()
   }
 
-  const handleOptionOnMouseOver = useCallback(
-    (event: MouseEvent) => {
-      setHighlightedIndex({
-        index: Number(event?.currentTarget?.getAttribute('data-option-index')),
-      })
-    },
-    [setHighlightedIndex],
-  )
+  const handleOptionOnMouseOver = useCallback((event: MouseEvent) => {
+    setHighlightedIndexRef.current({
+      index: Number(event?.currentTarget?.getAttribute('data-option-index')),
+    })
+  }, [])
 
   const handleInputOnChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
