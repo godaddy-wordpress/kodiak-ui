@@ -177,26 +177,28 @@ export const Autocomplete = forwardRef(function Autocomplete(
     )
   }
 
+  const listBoxItemStyle = React.useMemo(
+    () => ({
+      '&[data-option-selected]': {
+        bg: 'primary',
+        color: 'white',
+      },
+      '&[data-option-highlighted]': {
+        bg: 'muted',
+        color: 'text',
+      },
+      ...styles?.listboxItem,
+    }),
+
+    [styles?.listboxItem],
+  )
+
   const defaultRenderOption = (
     props: AutocompleteOptionProps,
     option: string,
     index: number,
   ) => (
-    <ListboxItem
-      key={index}
-      {...props}
-      sx={{
-        '&[data-option-selected]': {
-          bg: 'primary',
-          color: 'white',
-        },
-        '&[data-option-highlighted]': {
-          bg: 'muted',
-          color: 'text',
-        },
-        ...styles?.listboxItem,
-      }}
-    >
+    <ListboxItem key={index} {...props} sx={listBoxItemStyle}>
       {option}
     </ListboxItem>
   )
