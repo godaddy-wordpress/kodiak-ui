@@ -18,6 +18,7 @@ export const CloseButton = forwardRef<CloseButtonProps, any>(
         ref={ref}
         variants="shadow"
         sx={{ height: '20px', width: '20px', p: 0, ...sx }}
+        data-testid="closeButton"
         {...props}
       >
         <SvgIcon

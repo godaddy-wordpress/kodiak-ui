@@ -20,8 +20,6 @@ describe('Svg', () => {
         box-sizing: border-box;
         margin: 0;
         min-width: 0;
-        fill: currentColor;
-        display: block;
       }
 
       <svg

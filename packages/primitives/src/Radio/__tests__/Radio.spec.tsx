@@ -66,8 +66,6 @@ describe('Radio', () => {
         box-sizing: border-box;
         margin: 0;
         min-width: 0;
-        fill: currentColor;
-        display: block;
         display: none;
       }
 
@@ -86,8 +84,6 @@ describe('Radio', () => {
         box-sizing: border-box;
         margin: 0;
         min-width: 0;
-        fill: currentColor;
-        display: block;
         color: defaultGray;
         display: block;
       }
@@ -208,8 +204,6 @@ describe('Radio', () => {
         box-sizing: border-box;
         margin: 0;
         min-width: 0;
-        fill: currentColor;
-        display: block;
         display: none;
       }
 
@@ -228,8 +222,6 @@ describe('Radio', () => {
         box-sizing: border-box;
         margin: 0;
         min-width: 0;
-        fill: currentColor;
-        display: block;
         color: defaultGray;
         display: block;
       }

@@ -86,6 +86,7 @@ export const Autocomplete = forwardRef(function Autocomplete(
             isDismissible
             key={item}
             styles={tagStyles}
+            data-testid={`autocomplete-tag-value-${index}`}
             {...getTagProps({ index })}
           >
             {item}

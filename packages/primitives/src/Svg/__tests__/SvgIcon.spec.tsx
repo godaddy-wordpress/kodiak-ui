@@ -31,8 +31,6 @@ describe('SvgIcon', () => {
         box-sizing: border-box;
         margin: 0;
         min-width: 0;
-        fill: currentColor;
-        display: block;
         padding-left: 4px;
         padding-right: 4px;
         padding-top: 4px;

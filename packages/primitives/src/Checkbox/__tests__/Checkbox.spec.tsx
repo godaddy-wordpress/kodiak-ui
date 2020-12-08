@@ -66,8 +66,6 @@ describe('Checkbox', () => {
         box-sizing: border-box;
         margin: 0;
         min-width: 0;
-        fill: currentColor;
-        display: block;
         height: 16px;
         width: 16px;
         color: defaultGray;
@@ -180,8 +178,6 @@ describe('Checkbox', () => {
         box-sizing: border-box;
         margin: 0;
         min-width: 0;
-        fill: currentColor;
-        display: block;
         height: 16px;
         width: 16px;
         color: defaultGray;
