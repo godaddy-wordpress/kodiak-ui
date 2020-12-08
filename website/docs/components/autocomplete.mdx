@@ -1,0 +1,75 @@
+---
+id: autocomplete
+title: Autocomplete
+sidebar_label: Autocomplete
+---
+
+Autocomplete is a text input that allows you to filter suggested options based on the entered text and select single or multiple values.
+They are often known as `Combobox` elements as well.
+
+### Installation
+
+```sh
+yarn add @kodiak-ui/autocomplete
+```
+
+### Usage
+
+```tsx
+import { Autocomplete } from '@kodiak-ui/autocomplete'
+```
+
+Autocomplete provides an accessible and well structured component for easily rendering the input and listbox elements. The
+`useAutocomplete` component will provide all logic necessary to render your own autocomplete component with any HTML elements and the
+Kodiak UI primitives. Each primary element to Autocomplete can be overwritten with a render prop to allow you to add or remove functionality
+from the default Autocomplete component.
+
+### Example
+
+```tsx
+const options = ['Option 1', 'Option 2']
+
+<Autocomplete label="Autocomplete label" options={options} />
+```
+
+## API
+
+Like mentioned above, all logic lives in `useAutocomplete` and all props can be passed into the `Autocomplete` component. There are a few additional props that
+`Autocomplete` accepts that `useAutocomplete` doesn't.
+
+### Autocomplete props
+
+Autocomplete accepts all `useAutocomplete` props as well.
+
+| Name                | Type                                                            | Default      | Description                                                                             |
+| ------------------- | --------------------------------------------------------------- | ------------ | --------------------------------------------------------------------------------------- |
+| label\*             | string                                                          | -            | The rendered label text for the input                                                   |
+| options\*           | string[]                                                        | []           | Available options to filter against when input changes                                  |
+| placeholder         | string                                                          | -            | Placeholder text to render in the input                                                 |
+| isDisabled          | boolean                                                         | false        | Determine whether the input should be disabled or not                                   |
+| placement           | Placement                                                       | bottom-start | Placement of the listbox                                                                |
+| offset              | [number, number]                                                | [0, 8]       | Manage the offet position of the listbox from the input                                 |
+| renderInput         | (inputProps, clearButtonProps, popoverButtonProps) => ReactNode | -            | Render prop to overwrite the default input                                              |
+| renderOption        | (props, option, index) => ReactNode                             | -            | Render prop to overwrite the default listbox option element                             |
+| renderClearButton   | (props) => ReactNode                                            | -            | Render prop to overwrite the default clear button                                       |
+| renderPopoverButton | (props) => ReactNode                                            | -            | Render prop to overwrite the default popover button to toggle visibility of the listbox |
+
+### useAutocomplete props
+
+| Name          | Type     | Default         | Description                                                                                                   |
+| ------------- | -------- | --------------- | ------------------------------------------------------------------------------------------------------------- |
+| options\*     | string[] | []              | Available options to suggest when input changes                                                               |
+| componentName | string   | useAutocomplete | Component name for dev tools                                                                                  |
+| isOpen        | boolean  | false           | Determines whether the listbox should be visible or not                                                       |
+| isClearable   | boolean  | true            | Allows the value to be cleared by selecting the close button for the input                                    |
+| isDisabled    | boolean  | false           | Allows the input to be disabled or not                                                                        |
+| isMulti       | boolean  | false           | Allows multiple options to be selected                                                                        |
+| value         | string   | string[]        | null                                                                                                          | Controll prop for the autocomplete value |
+| inputValue    | string   | ''              | Controll prop for the input value                                                                             |
+| defaultValue  | string   | string[]        | Default value for rendering an initial selected option                                                        |
+| openOnFocus   | boolean  | true            | Opens the listbox when the input gets focus                                                                   |
+| pageSize      | number   | 5               | The number of options to navigate over when using page down and page up keyboard keys to navigate the options |
+| blurOnSelect  | boolean  | false           | Blur the input when a value has been selected                                                                 |
+| clearOnBlur   | boolean  | false           | Clear the value when input blurs                                                                              |
+| clearOnEscape | boolean  | false           | Clear the value when the Escape key is pressed                                                                |
+| closeOnSelect | boolean  | true            | Close the listbox when a value has been selected                                                              |
