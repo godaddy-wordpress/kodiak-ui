@@ -386,6 +386,7 @@ export function useAutocomplete({
   const handleInputOnMouseDown = useCallback(
     (event: MouseEvent) => {
       if (inputValue === '' || !isOpen) {
+        event.stopPropagation()
         handleToggle(event)
       }
     },
