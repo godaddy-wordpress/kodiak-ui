@@ -40,6 +40,7 @@ module.exports = {
       label: 'Components',
       items: [
         'components/accordion',
+        'components/autocomplete',
         'components/combobox',
         {
           'Data Vizualization': [

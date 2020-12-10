@@ -4,7 +4,7 @@ export type UseControlledProps<T> = {
   controlled: T
   default: T
   name: string
-  state: string
+  state?: string
 }
 
 export function useControlled<T>({

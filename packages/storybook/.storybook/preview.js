@@ -13,6 +13,36 @@ export const parameters = {
 
 const { theme } = createDesignSystem({
   system,
+  components: {
+    tag: {
+      alignItems: 'center',
+      bg: 'gray.1',
+      border: '1px solid',
+      borderColor: 'gray.3',
+      borderRadius: 'default',
+      color: 'gray.7',
+      display: 'inline-flex',
+      fontSize: 1,
+      fontWeight: 'semiBold',
+      lineHeight: 'input',
+      p: 1,
+      py: '2px',
+    },
+  },
+  variants: {
+    shadow: {
+      bg: 'transparent',
+      color: 'text',
+      border: 'none',
+      boxShadow: 'none',
+      p: 0,
+      m: 0,
+      '&:hover': {
+        bg: 'transparent',
+        color: 'text',
+      },
+    },
+  },
 })
 
 export const decorators = [

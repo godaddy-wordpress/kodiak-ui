@@ -94,7 +94,7 @@ const inputs = {
     boxShadow: 'none',
     '&:focus': {
       outline: 'none',
-      boxShadow: 'outline',
+      boxShadow: 'none',
     },
   },
   inline: {

@@ -11,10 +11,13 @@ export function SharedSx({
 }) {
   return (
     <>
-      {React.Children.map(children, child =>
-        React.cloneElement(child as any, {
-          __shared: sx,
-        }),
+      {React.Children.map(
+        children,
+        child =>
+          child &&
+          React.cloneElement(child as any, {
+            __shared: sx,
+          }),
       )}
     </>
   )

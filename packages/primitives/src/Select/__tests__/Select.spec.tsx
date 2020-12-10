@@ -50,8 +50,6 @@ describe('Select', () => {
         box-sizing: border-box;
         margin: 0;
         min-width: 0;
-        fill: currentColor;
-        display: block;
         -webkit-align-self: center;
         -ms-flex-item-align: center;
         align-self: center;

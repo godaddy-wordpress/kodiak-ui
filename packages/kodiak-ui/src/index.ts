@@ -80,6 +80,8 @@ type ConfigurationOptions = Pick<
 export type CreateDesignSystemOptions = {
   system?: Theme
   global?: { [key: string]: ThemeUIStyleObject }
+  components?: { [key: string]: ThemeUIStyleObject }
+  variants?: { [key: string]: ThemeUIStyleObject }
   options?: ConfigurationOptions
 }
 
@@ -156,12 +158,16 @@ export const jsx: typeof React.createElement = (type, props, ...children) =>
 export function createDesignSystem({
   system,
   global,
+  variants,
+  components,
   options,
 }: CreateDesignSystemOptions = {}): { theme: Theme } {
   const theme = {
     ...options,
     ...themeDefault,
     ...system,
+    ...components,
+    ...variants,
     global: {
       ...themeDefault?.global,
       ...global,
@@ -211,7 +217,9 @@ export interface VariantProps {
 
 export type BaseProp = { base?: string | string[]; __base?: ThemeUIStyleObject }
 
-export type KodiakUIProps = BaseProp & VariantProps & SxProps
+export type SharedProp = { __shared?: ThemeUIStyleObject }
+
+export type KodiakUIProps = BaseProp & SharedProp & VariantProps & SxProps
 
 /**
  * Legacy method for getting variants from a theme

@@ -23,8 +23,9 @@
     "@emotion/styled": "^10.0.27",
     "@emotion/styled-base": "^10.0.31",
     "@kodiak-ui/a11y": "^0.1.0",
-    "@kodiak-ui/hooks": "^0.14.18",
-    "@kodiak-ui/utils": "^0.0.21"
+    "@kodiak-ui/hooks": "^0.14.16",
+    "@kodiak-ui/utils": "^0.0.21",
+    "@popperjs/core": "^2.5.2"
   },
   "gitHead": "952275b2482fe05621f9d8b8e036865af870e87c",
   "snyk": true,
