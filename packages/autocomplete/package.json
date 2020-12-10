@@ -1,17 +1,27 @@
 {
   "name": "@kodiak-ui/autocomplete",
   "version": "0.0.0",
+  "description": "Autocomplete hook and component for displaying suggested results based on input value",
   "main": "dist/autocomplete.cjs.js",
   "module": "dist/autocomplete.esm.js",
+  "source": "src/index.ts",
+  "files": [
+    "dist"
+  ],
+  "author": "Wesley Cole <wes@skyverge.com>",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {},
   "peerDependencies": {
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "kodiak-ui": "^0.0.9"
+    "kodiak-ui": "^0.0.9",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
   },
   "dependencies": {
     "@kodiak-ui/hooks": "^0.10.10",
-    "@kodiak-ui/primitives": "^0.17.13",
+    "@kodiak-ui/primitives": "^0.20.2",
     "scroll-into-view-if-needed": "^2.2.26"
   }
 }

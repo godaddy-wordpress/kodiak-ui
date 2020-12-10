@@ -2160,23 +2160,6 @@
   resolved "https://registry.yarnpkg.com/@kodiak-ui/hooks/-/hooks-0.10.10.tgz#24f22ee4cfdae97f112c8295f6d3df2f8973ac86"
   integrity sha512-rvewevXz3Rr7yeJtCQMOuExpoB2oCs7qBW48Xt/JwKJZ7Q3TD/AuOKxaFjklk70r3gSaT1a36WDIFE7XqITErQ==
 
-"@kodiak-ui/hooks@^0.11.0":
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/@kodiak-ui/hooks/-/hooks-0.11.0.tgz#3406da278dc5a693b3b32cc34b6d2b1c54d8e653"
-  integrity sha512-hHGar1FhfhHaXbdu8LkRHxgpm0CxlGkdnrtuDS8e5yZD5DAwvW66MnOuE6NRli2puSogQLdWyIpR8yoviPhP8Q==
-
-"@kodiak-ui/primitives@^0.17.13":
-  version "0.17.14"
-  resolved "https://registry.yarnpkg.com/@kodiak-ui/primitives/-/primitives-0.17.14.tgz#3f78de08e5d3c552f001f32a731659763be05497"
-  integrity sha512-33/kK/Nv7X3g8zyCXlyXvy4BrFKpTqDESKlgWX1INRMvnz4BubImnRiPi0Zkc7bk1ieUu+ObU3tHcmGuuSG6Ag==
-  dependencies:
-    "@emotion/core" "^10.0.35"
-    "@emotion/styled" "^10.0.27"
-    "@emotion/styled-base" "^10.0.31"
-    "@kodiak-ui/hooks" "^0.11.0"
-    "@kodiak-ui/utils" "^0.0.9"
-    theme-ui "^0.3.1"
-
 "@kodiak-ui/utils@^0.0.9":
   version "0.0.9"
   resolved "https://registry.yarnpkg.com/@kodiak-ui/utils/-/utils-0.0.9.tgz#8b4a3f6c3075d36f6e6c8b23b7be5b643a14a9df"
@@ -18097,7 +18080,7 @@ text-table@0.2.0, text-table@^0.2.0:
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
 
-theme-ui@^0.3.1, theme-ui@^0.3.4:
+theme-ui@^0.3.4:
   version "0.3.4"
   resolved "https://registry.yarnpkg.com/theme-ui/-/theme-ui-0.3.4.tgz#349f8d34ee3299c9a84fc0619377fc9f484951f2"
   integrity sha512-0poOudYi97CdPaVU4bALWgLWALSqGlAAE/xy0D4765JIbHbpGpLdZwuuZ8ZJZtZVFhS1Saw6GBFH1/Vv4TLgWw==
@@ -18509,7 +18492,7 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@^4.0.3:
+typescript@4.0.3:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.0.3.tgz#153bbd468ef07725c1df9c77e8b453f8d36abba5"
   integrity sha512-tEu6DGxGgRJPb/mVPIZ48e69xCn2yRmCgYmDugAVwmJ6o+0u1RI18eO7E7WBTLYLaEVVOhwQmcdhQHweux/WPg==
