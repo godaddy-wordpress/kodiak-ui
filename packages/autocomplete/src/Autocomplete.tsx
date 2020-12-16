@@ -32,6 +32,11 @@ export function useAutocompleteStyles(
   return styles
 }
 
+/**
+ * Autocomplete component for ease of development
+ *
+ * Component is built with primitives
+ */
 export const Autocomplete = forwardRef(function Autocomplete(
   {
     label,
