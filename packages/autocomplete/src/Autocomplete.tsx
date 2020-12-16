@@ -35,7 +35,7 @@ export function useAutocompleteStyles(
 /**
  * Autocomplete component for ease of development
  *
- * Component is built with primitives
+ * Component is built with primitives and the useAutocomplete hook
  */
 export const Autocomplete = forwardRef(function Autocomplete(
   {

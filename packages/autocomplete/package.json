@@ -23,5 +23,6 @@
     "@kodiak-ui/hooks": "^0.10.10",
     "@kodiak-ui/primitives": "^0.20.3",
     "scroll-into-view-if-needed": "^2.2.26"
-  }
+  },
+  "gitHead": "68135972acc3d78cae9c72fa1df1c4002e957db8"
 }
