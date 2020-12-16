@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/storybook",
-  "version": "0.2.12",
+  "version": "0.2.13",
   "main": "dist/storybook.cjs.js",
   "module": "dist/storybook.esm.js",
   "private": true,
@@ -15,7 +15,7 @@
   "dependencies": {
     "@babel/core": "^7.12.9",
     "@kodiak-ui/a11y": "^0.1.1",
-    "@kodiak-ui/autocomplete": "^0.1.1",
+    "@kodiak-ui/autocomplete": "^0.1.2",
     "@kodiak-ui/combobox": "^0.3.8",
     "@kodiak-ui/data-visualization": "^0.2.8",
     "@kodiak-ui/dialog": "^1.0.3",
