@@ -13,6 +13,13 @@ export const parameters = {
 
 const { theme } = createDesignSystem({
   system,
+  modes: {
+    dark: {
+      colors: {
+        text: 'purple',
+      },
+    },
+  },
   components: {
     tag: {
       alignItems: 'center',

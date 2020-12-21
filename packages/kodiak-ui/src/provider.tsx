@@ -1,7 +1,16 @@
 import * as React from 'react'
 import { Global, ThemeContext as EmotionContext } from '@emotion/core'
-import { jsx, css, Theme, useComponents, useVariants, useMode } from '.'
+import {
+  jsx,
+  css,
+  Theme,
+  useComponents,
+  useVariants,
+  useMode,
+  useKodiakStore,
+} from '.'
 import { toCustomProperties, createColorStyles } from './custom-properties'
+import { applyMode } from './color-mode'
 
 const GlobalStyles = ({ global }) =>
   jsx(Global, {
@@ -51,15 +60,13 @@ export function BaseProvider({
 }
 
 export function ThemeProvider({ theme, children }) {
-  const variants = useVariants()
-  const components = useComponents()
-  const [mode] = useMode()
+  const { mode, components, variants } = useKodiakStore()
 
-  console.log(mode)
+  const mergedTheme = applyMode(mode)(theme)
 
   const context = {
     theme: {
-      ...theme,
+      ...mergedTheme,
       ...components,
       ...variants,
     },

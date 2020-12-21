@@ -84,6 +84,7 @@ export type CreateDesignSystemOptions = {
   global?: { [key: string]: ThemeUIStyleObject }
   components?: { [key: string]: ThemeUIStyleObject }
   variants?: { [key: string]: ThemeUIStyleObject }
+  modes?: { [key: string]: any }
   options?: ConfigurationOptions
 }
 
@@ -112,7 +113,7 @@ export const Store = createVanilla<KodiakState>(set => ({
   setMode: (mode: string) => set({ mode }),
 }))
 
-export function useMode() {
+export function useModes(): [string, (mode: string) => void] {
   return [Store.getState().mode, Store.getState().setMode]
 }
 
@@ -168,6 +169,7 @@ export function createDesignSystem({
   global,
   variants,
   components,
+  modes,
   options,
 }: CreateDesignSystemOptions = {}): { theme: Theme } {
   const theme = {
@@ -176,6 +178,7 @@ export function createDesignSystem({
     ...system,
     ...components,
     ...variants,
+    modes,
     global: {
       ...themeDefault?.global,
       ...global,
