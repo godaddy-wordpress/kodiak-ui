@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Global, ThemeContext as EmotionContext } from '@emotion/core'
-import { jsx, css, Theme, useComponents, useVariants } from '.'
+import { jsx, css, Theme, useComponents, useVariants, useMode } from '.'
 import { toCustomProperties, createColorStyles } from './custom-properties'
 
 const GlobalStyles = ({ global }) =>
@@ -53,6 +53,9 @@ export function BaseProvider({
 export function ThemeProvider({ theme, children }) {
   const variants = useVariants()
   const components = useComponents()
+  const [mode] = useMode()
+
+  console.log(mode)
 
   const context = {
     theme: {
