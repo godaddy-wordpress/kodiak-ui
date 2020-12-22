@@ -9,8 +9,11 @@
 [![SkyVerge](https://circleci.com/gh/skyverge/kodiak-ui.svg?style=svg)](https://circleci.com/gh/skyverge/kodiak-ui)
 [![Known Vulnerabilities](https://snyk.io/test/github/skyverge/kodiak/badge.svg)](https://snyk.io/test/github/skyverge/kodiak)
 [![CodeFactor](https://www.codefactor.io/repository/github/skyverge/kodiak-ui/badge)](https://www.codefactor.io/repository/github/skyverge/kodiak-ui)
+
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## Intro
@@ -86,6 +89,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!

@@ -30,6 +30,7 @@ export type Component = {
 export type KodiakState = {
   variants: Variant
   components: Component
+  mode: string
   variant: (
     key: string,
     styles: ThemeUIStyleObject,
@@ -38,6 +39,7 @@ export type KodiakState = {
     key: string,
     styles: ThemeUIStyleObject,
   ) => { key: string; styles: ThemeUIStyleObject }
+  setMode: (mode: string) => void
 }
 
 export type ScaleArray<T> = T[]
@@ -82,6 +84,7 @@ export type CreateDesignSystemOptions = {
   global?: { [key: string]: ThemeUIStyleObject }
   components?: { [key: string]: ThemeUIStyleObject }
   variants?: { [key: string]: ThemeUIStyleObject }
+  modes?: { [key: string]: any }
   options?: ConfigurationOptions
 }
 
@@ -94,6 +97,7 @@ export type Theme = ThemeUITheme & { global?: GlobalStyleObject }
 export const Store = createVanilla<KodiakState>(set => ({
   variants: null,
   components: null,
+  mode: '',
   variant: (key: string, styles: ThemeUIStyleObject) => {
     set((state: KodiakState) => ({
       variants: { ...state.variants, [key]: styles },
@@ -106,7 +110,12 @@ export const Store = createVanilla<KodiakState>(set => ({
     }))
     return { key, styles }
   },
+  setMode: (mode: string) => set({ mode }),
 }))
+
+export function useModes(): [string, (mode: string) => void] {
+  return [Store.getState().mode, Store.getState().setMode]
+}
 
 export const variant = Store.getState().variant
 export const component = Store.getState().component
@@ -160,6 +169,7 @@ export function createDesignSystem({
   global,
   variants,
   components,
+  modes,
   options,
 }: CreateDesignSystemOptions = {}): { theme: Theme } {
   const theme = {
@@ -168,6 +178,7 @@ export function createDesignSystem({
     ...system,
     ...components,
     ...variants,
+    modes,
     global: {
       ...themeDefault?.global,
       ...global,

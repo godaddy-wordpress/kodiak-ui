@@ -1,3 +1,4 @@
+import deepmerge from 'deepmerge'
 import {
   CSSObject,
   ThemeUIStyleObject,
@@ -7,6 +8,38 @@ import {
 } from './types'
 
 export * from './types'
+
+const canUseSymbol = typeof Symbol === 'function' && Symbol.for
+
+const REACT_ELEMENT = canUseSymbol ? Symbol.for('react.element') : 0xeac7
+const FORWARD_REF = canUseSymbol ? Symbol.for('react.forward_ref') : 0xeac7
+
+const deepmergeOptions: deepmerge.Options = {
+  isMergeableObject: n => {
+    return (
+      !!n &&
+      typeof n === 'object' &&
+      (n as React.ExoticComponent).$$typeof !== REACT_ELEMENT &&
+      (n as React.ExoticComponent).$$typeof !== FORWARD_REF
+    )
+  },
+  arrayMerge: (_leftArray, rightArray) => rightArray,
+}
+
+/**
+ * Deeply merge themes
+ */
+export const merge = (a: Theme, b: Theme): Theme =>
+  deepmerge(a, b, deepmergeOptions)
+
+function mergeAll<A, B>(a: A, B: B): A & B
+function mergeAll<A, B, C>(a: A, B: B, c: C): A & B & C
+function mergeAll<A, B, C, D>(a: A, B: B, c: C, d: D): A & B & C & D
+function mergeAll<T = Theme>(...args: Partial<T>[]) {
+  return deepmerge.all<T>(args, deepmergeOptions)
+}
+
+merge.all = mergeAll
 
 export function get(
   obj: Theme,

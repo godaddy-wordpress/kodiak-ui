@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { component, variant } from 'kodiak-ui'
+import { component, useModes, variant } from 'kodiak-ui'
 import { Button } from '@kodiak-ui/primitives'
 import { Story, Meta } from '@storybook/react/types-6-0'
 
