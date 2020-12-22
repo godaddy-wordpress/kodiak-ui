@@ -479,40 +479,40 @@ export interface ColorMode {
   /**
    * Body background color
    */
-  background?: CSS.ColorProperty
+  background?: Property.Color
 
   /**
    * Body foreground color
    */
-  text?: CSS.ColorProperty
+  text?: Property.Color
 
   /**
    * Primary brand color for links, buttons, etc.
    */
-  primary?: CSS.ColorProperty
+  primary?: Property.Color
 
   /**
    * A secondary brand color for alternative styling
    */
-  secondary?: CSS.ColorProperty
+  secondary?: Property.Color
 
   /**
    * A contrast color for emphasizing UI
    */
-  accent?: CSS.ColorProperty
+  accent?: Property.Color
 
   /**
    * A background color for highlighting text
    */
-  highlight?: CSS.ColorProperty
+  highlight?: Property.Color
 
   /**
    * A faint color for backgrounds, borders, and accents that do not require
    * high contrast with the background color
    */
-  muted?: CSS.ColorProperty
+  muted?: Property.Color
 
-  [k: string]: CSS.ColorProperty | Scale<CSS.ColorProperty> | undefined
+  [k: string]: Property.Color | Scale<Property.Color> | undefined
 }
 
 export type ColorModesScale = ColorMode & {
@@ -561,25 +561,25 @@ export interface ThemeStyles {
 export interface Theme {
   breakpoints?: Array<string>
   mediaQueries?: { [size: string]: string }
-  space?: Scale<CSS.MarginProperty<number | string>>
-  fontSizes?: Scale<CSS.FontSizeProperty<number>>
-  fonts?: Scale<CSS.FontFamilyProperty>
-  fontWeights?: Scale<CSS.FontWeightProperty>
-  lineHeights?: Scale<CSS.LineHeightProperty<TLengthStyledSystem>>
-  letterSpacings?: Scale<CSS.LetterSpacingProperty<TLengthStyledSystem>>
+  space?: Scale<Property.Margin<number | string>>
+  fontSizes?: Scale<Property.FontSize<number>>
+  fonts?: Scale<Property.FontFamily>
+  fontWeights?: Scale<Property.FontWeight>
+  lineHeights?: Scale<Property.LineHeight<TLengthStyledSystem>>
+  letterSpacings?: Scale<Property.LetterSpacing<TLengthStyledSystem>>
   sizes?: Scale<
-    | CSS.HeightProperty<Record<string, unknown>>
-    | CSS.WidthProperty<Record<string, unknown>>
+    | Property.Height<Record<string, unknown>>
+    | Property.Width<Record<string, unknown>>
   >
-  borders?: Scale<CSS.BorderProperty<Record<string, unknown>>>
-  borderStyles?: Scale<CSS.BorderProperty<Record<string, unknown>>>
-  borderWidths?: Scale<CSS.BorderWidthProperty<TLengthStyledSystem>>
-  radii?: Scale<CSS.BorderRadiusProperty<TLengthStyledSystem>>
-  shadows?: Scale<CSS.BoxShadowProperty>
-  zIndices?: Scale<CSS.ZIndexProperty>
+  borders?: Scale<Property.Border<Record<string, unknown>>>
+  borderStyles?: Scale<Property.Border<Record<string, unknown>>>
+  borderWidths?: Scale<Property.BorderWidth<TLengthStyledSystem>>
+  radii?: Scale<Property.BorderRadius<TLengthStyledSystem>>
+  shadows?: Scale<Property.BoxShadow>
+  zIndices?: Scale<Property.ZIndex>
   colorStyles?: Scale<ThemeUICSSProperties>
   textStyles?: Scale<ThemeUICSSProperties>
-  opacities?: Scale<CSS.OpacityProperty>
+  opacities?: Scale<Property.Opacity>
 
   /**
    * Enable/disable custom CSS properties/variables if lower browser
