@@ -1,12 +1,12 @@
 import * as React from 'react'
 import { Global, ThemeContext as EmotionContext } from '@emotion/core'
-import { jsx, css, Theme, useComponents, useVariants, useKodiakStore } from '.'
+import { jsx, css, Theme, useKodiakStore } from '.'
 import { toCustomProperties, createColorStyles } from './custom-properties'
 import { applyMode } from './color-mode'
 
 const GlobalStyles = ({ global }) =>
   jsx(Global, {
-    styles: (emotionTheme: Theme) => {
+    styles: (emotionTheme: Theme): any => {
       const theme = emotionTheme as Theme
       const colorStyles = createColorStyles(theme)
 

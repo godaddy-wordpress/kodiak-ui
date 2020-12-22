@@ -1,4 +1,5 @@
 import * as CSS from 'csstype'
+import { Property } from 'csstype'
 
 type StandardCSSProperties = CSS.Properties<number | string>
 
@@ -314,7 +315,7 @@ interface OverwriteCSSProperties {
    *
    * @see https://developer.mozilla.org/docs/Web/CSS/box-shadow
    */
-  boxShadow?: CSS.BoxShadowProperty | number
+  boxShadow?: Property.BoxShadow | number
   /**
    * The **`font-weight`** CSS property specifies the weight (or boldness) of the font. The font weights available to you will depend on the `font-family` you are using. Some fonts are only
    * available in `normal` and `bold`.
@@ -327,7 +328,7 @@ interface OverwriteCSSProperties {
    *
    * @see https://developer.mozilla.org/docs/Web/CSS/font-weight
    */
-  fontWeight?: CSS.FontWeightProperty | string
+  fontWeight?: Property.FontWeight | string
 
   /**
    * The **`border-top-style`** CSS property sets the line style of an element's top `border`.
@@ -340,7 +341,7 @@ interface OverwriteCSSProperties {
    *
    * @see https://developer.mozilla.org/docs/Web/CSS/border-top-style
    */
-  borderTopStyle?: CSS.BorderTopStyleProperty | string
+  borderTopStyle?: Property.BorderTopStyle | string
   /**
    * The **`border-top-width`** CSS property sets the width of the top border of an element.
    *
@@ -352,7 +353,7 @@ interface OverwriteCSSProperties {
    *
    * @see https://developer.mozilla.org/docs/Web/CSS/border-top-width
    */
-  borderTopWidth?: CSS.BorderTopWidthProperty<never> | string
+  borderTopWidth?: Property.BorderTopWidth<never> | string
   /**
    * The **`border-bottom-style`** CSS property sets the line style of an element's bottom `border`.
    *
@@ -364,7 +365,7 @@ interface OverwriteCSSProperties {
    *
    * @see https://developer.mozilla.org/docs/Web/CSS/border-bottom-style
    */
-  borderBottomStyle?: CSS.BorderBottomStyleProperty | string
+  borderBottomStyle?: Property.BorderBottomStyle | string
   /**
    * The **`border-right-style`** CSS property sets the line style of an element's right `border`.
    *
@@ -376,7 +377,7 @@ interface OverwriteCSSProperties {
    *
    * @see https://developer.mozilla.org/docs/Web/CSS/border-right-style
    */
-  borderRightStyle?: CSS.BorderRightStyleProperty | string
+  borderRightStyle?: Property.BorderRightStyle | string
   /**
    * The **`border-left-style`** CSS property sets the line style of an element's left `border`.
    *
@@ -388,7 +389,7 @@ interface OverwriteCSSProperties {
    *
    * @see https://developer.mozilla.org/docs/Web/CSS/border-left-style
    */
-  borderLeftStyle?: CSS.BorderLeftStyleProperty | string
+  borderLeftStyle?: Property.BorderLeftStyle | string
   /**
    * The **`border-radius`** CSS property rounds the corners of an element's outer border edge. You can set a single radius to make circular corners, or two radii to make elliptical corners.
    *
@@ -399,7 +400,7 @@ interface OverwriteCSSProperties {
    *
    * @see https://developer.mozilla.org/docs/Web/CSS/border-radius
    */
-  borderRadius?: CSS.BorderRadiusProperty<string | number>
+  borderRadius?: Property.BorderRadius<string | number>
 
   /**
    * The **`z-index`** CSS property sets the z-order of a positioned element and its descendants or flex items. Overlapping elements with a larger z-index cover those with a smaller one.
@@ -412,11 +413,11 @@ interface OverwriteCSSProperties {
    *
    * @see https://developer.mozilla.org/docs/Web/CSS/z-index
    */
-  zIndex?: CSS.ZIndexProperty | string
+  zIndex?: Property.ZIndex | string
 
   flexDirection?: string
 
-  textTransform?: CSS.TextTransformProperty | string
+  textTransform?: Property.TextTransform | string
 }
 
 /**
