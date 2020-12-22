@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/message",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "description": "Component to display messages to users (i.e. alerts, notifications)",
   "main": "dist/message.cjs.js",
   "module": "dist/message.esm.js",
@@ -20,7 +20,7 @@
     "react-dom": "^16.14.0"
   },
   "dependencies": {
-    "@kodiak-ui/primitives": "^0.20.3"
+    "@kodiak-ui/primitives": "^0.20.4"
   },
   "gitHead": "952275b2482fe05621f9d8b8e036865af870e87c"
 }
