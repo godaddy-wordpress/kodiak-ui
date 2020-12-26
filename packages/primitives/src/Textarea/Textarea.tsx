@@ -1,5 +1,4 @@
-import styled from '@emotion/styled'
-import { css, _variant, sx, KodiakUIProps, Theme } from 'kodiak-ui'
+import { css, _variant, styled, sx, KodiakUIProps, Theme } from 'kodiak-ui'
 
 /**
  * base

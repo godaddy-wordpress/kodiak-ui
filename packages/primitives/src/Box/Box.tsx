@@ -1,10 +1,10 @@
-import styled from '@emotion/styled'
 import * as React from 'react'
 import {
   css,
   getComponentBase,
   getVariants,
   KodiakUIProps,
+  styled,
   sx,
   shared,
   _variant,
@@ -29,13 +29,11 @@ const boxVariant = ({ variant: variantProp, variantKey, variants, theme }) => {
   return _variant({ variant: variantProp, theme, variantKey, variants })
 }
 
-export type BoxProps = React.PropsWithChildren<
-  KodiakUIProps & {
-    ref?: React.MutableRefObject<any>
-    as?: string
-    __shared?: ThemeUIStyleObject
-  } & React.AllHTMLAttributes<HTMLElement>
->
+export type BoxProps = KodiakUIProps & {
+  as?: React.ElementType<any>
+  children?: React.ReactNode
+  __shared?: ThemeUIStyleObject
+} & React.AllHTMLAttributes<HTMLElement>
 
 /**
  * Box primitive component which is the base component for

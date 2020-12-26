@@ -1,6 +1,5 @@
 import * as React from 'react'
-import styled from '@emotion/styled'
-import { _variant, VariantProps, sx, Theme, css } from 'kodiak-ui'
+import { _variant, VariantProps, styled, sx, Theme, css } from 'kodiak-ui'
 import { VisuallyHidden, SvgIcon } from '@kodiak-ui/primitives'
 
 type DialogHeaderProps = {

@@ -1,5 +1,4 @@
-import styled from '@emotion/styled'
-import { _variant, sx, Theme, css, KodiakUIProps } from 'kodiak-ui'
+import { _variant, styled, sx, Theme, css, KodiakUIProps } from 'kodiak-ui'
 
 type DialogFooterProps = KodiakUIProps
 

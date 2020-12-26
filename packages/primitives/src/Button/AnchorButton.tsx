@@ -1,9 +1,8 @@
 import * as React from 'react'
-import styled from '@emotion/styled'
-import { base, buttonVariant } from './Button'
-import { sx, VariantProps } from 'kodiak-ui'
-import { addHrefToPayload } from '../Link/Link'
+import { styled, sx, VariantProps } from 'kodiak-ui'
 import { useWrappedEventHandler } from '@kodiak-ui/hooks/use-event-logger'
+import { base, buttonVariant } from './Button'
+import { addHrefToPayload } from '../Link/Link'
 
 export type AnchorButtonProps = VariantProps
 

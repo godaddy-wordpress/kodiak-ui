@@ -1,6 +1,6 @@
-import styled from '@emotion/styled'
 import {
   _variant,
+  styled,
   sx,
   getVariants,
   getComponentBase,

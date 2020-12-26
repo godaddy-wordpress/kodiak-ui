@@ -4,20 +4,27 @@ import styled from '@emotion/styled'
 import create from 'zustand'
 import createVanilla from 'zustand/vanilla'
 import themeDefault from './theme-default'
+// import { ColorMode, ThemeUIStyleObject, Theme as ThemeUITheme } from './types'
+// import { get, css } from './css'
 import {
+  css,
+  get,
   ColorMode,
-  ThemeUIStyleObject,
   Theme as ThemeUITheme,
-  SxProps,
-} from './types'
-import { get, css } from './css'
+  ThemeUIStyleObject,
+} from '@theme-ui/css'
 
-import './react-jsx'
+// import './react-jsx'
 
 export * from './provider'
 export * from './shared-provider'
-export * from './types'
-export * from './css'
+// export * from './types'
+// export * from './css'
+
+export { keyframes } from '@emotion/core'
+export type { ThemeUIStyleObject } from '@theme-ui/css'
+export { merge } from '@theme-ui/core'
+export { get, css } from '@theme-ui/css'
 
 export type Variant = {
   [key: string]: ThemeUIStyleObject
@@ -225,6 +232,10 @@ export interface VariantProps {
   variantKey?: string // @deprecated
   variants?: string | string[]
 }
+
+export type SxStyleProp = ThemeUIStyleObject
+
+export type SxProps = { sx?: ThemeUIStyleObject }
 
 export type BaseProp = { base?: string | string[]; __base?: ThemeUIStyleObject }
 
