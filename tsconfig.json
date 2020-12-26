@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "types": ["@emotion/react/types/css-prop"],
     "skipLibCheck": true,
     /* Basic Options */
     // "incremental": true,                   /* Enable incremental compilation */
@@ -62,22 +63,6 @@
     /* Experimental Options */
     // "experimentalDecorators": true,        /* Enables experimental support for ES7 decorators. */
     // "emitDecoratorMetadata": true,         /* Enables experimental support for emitting type metadata for decorators. */
-  }
+  },
 
-  // "compilerOptions": {
-  //   "allowSyntheticDefaultImports": true,
-  //   "declaration": true,
-  //   "esModuleInterop": true,
-  //   "forceConsistentCasingInFileNames": true,
-  //   "jsx": "react",
-  //   "module": "esnext",
-  //   "moduleResolution": "node",
-  //   "noEmit": true,
-  //   "outDir": "dist",
-  //   "resolveJsonModule": true,
-
-  //   "sourceMap": true,
-  //   "strict": true,
-  //   "target": "es5"
-  // },
 }
