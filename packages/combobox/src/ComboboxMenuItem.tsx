@@ -13,7 +13,7 @@ export type ComboboxMenuItemProps = {
   ref: React.Ref<HTMLLIElement>
   children: React.ReactNode
 } & VariantProps &
-  UseComboboxGetItemPropsOptions<any>
+  Omit<UseComboboxGetItemPropsOptions<any>, 'as'>
 
 /**
  * base

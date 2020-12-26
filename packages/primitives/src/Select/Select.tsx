@@ -1,8 +1,8 @@
 import * as React from 'react'
-import styled from '@emotion/styled'
 import {
   _variant,
   VariantProps,
+  styled,
   sx,
   Theme,
   css,

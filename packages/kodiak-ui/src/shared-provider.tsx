@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { ReactNode } from 'react'
-import { ThemeUIStyleObject } from './types'
+import { ThemeUIStyleObject } from '.'
 
 export function SharedSx({
   sx,

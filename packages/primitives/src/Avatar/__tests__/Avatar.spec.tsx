@@ -26,8 +26,8 @@ describe('Avatar', () => {
         -ms-flex-negative: 0;
         flex-shrink: 0;
         -webkit-box-pack: center;
-        -webkit-justify-content: center;
         -ms-flex-pack: center;
+        -webkit-justify-content: center;
         justify-content: center;
         line-height: 1;
         overflow: hidden;
@@ -86,8 +86,8 @@ describe('Avatar', () => {
         -ms-flex-negative: 0;
         flex-shrink: 0;
         -webkit-box-pack: center;
-        -webkit-justify-content: center;
         -ms-flex-pack: center;
+        -webkit-justify-content: center;
         justify-content: center;
         line-height: 1;
         overflow: hidden;

@@ -14,7 +14,6 @@ describe('VisuallyHidden', () => {
     ).toMatchInlineSnapshot(`
       .emotion-0 {
         border: 0;
-        -webkit-clip: rect(0 0 0 0);
         clip: rect(0 0 0 0);
         height: 1px;
         margin: -1px;

@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { Global, ThemeContext as EmotionContext } from '@emotion/core'
-import { jsx, css, Theme, useKodiakStore } from '.'
+import { Global, ThemeContext as EmotionContext } from '@emotion/react'
+import { css, jsx, useKodiakStore, Theme } from '.'
 import { toCustomProperties, createColorStyles } from './custom-properties'
 import { applyMode } from './color-mode'
 

@@ -49,7 +49,7 @@ describe('Box', () => {
         grid-template-columns: auto;
       }
 
-      @media screen and (min-width:40em) {
+      @media screen and (min-width: 40em) {
         .emotion-0 {
           grid-template-columns: 1fr 256px;
         }

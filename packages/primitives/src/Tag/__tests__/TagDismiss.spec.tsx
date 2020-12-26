@@ -45,6 +45,7 @@ describe('TagDismiss', () => {
         min-width: 0;
         -webkit-appearance: none;
         -moz-appearance: none;
+        -ms-appearance: none;
         appearance: none;
         border: none;
         border-radius: default;

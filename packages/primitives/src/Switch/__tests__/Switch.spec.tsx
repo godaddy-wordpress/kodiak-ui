@@ -64,6 +64,7 @@ describe('Switch', () => {
         padding: 8px;
         -webkit-appearance: none;
         -moz-appearance: none;
+        -ms-appearance: none;
         appearance: none;
         font-size: inherit;
         line-height: inherit;
@@ -84,8 +85,8 @@ describe('Switch', () => {
         margin: 0;
         min-width: 0;
         opacity: 1;
-        -webkit-transition: background-color 0.1s cubic-bezier(0.4,1,0.75,0.9);
-        transition: background-color 0.1s cubic-bezier(0.4,1,0.75,0.9);
+        -webkit-transition: background-color 0.1s cubic-bezier(0.4, 1, 0.75, 0.9);
+        transition: background-color 0.1s cubic-bezier(0.4, 1, 0.75, 0.9);
         width: 28px;
         height: 16px;
         border-radius: full;
@@ -101,31 +102,33 @@ describe('Switch', () => {
         align-items: center;
       }
 
-      input:focus ~ .emotion-2 {
+      input:focus~.emotion-2 {
         outline-width: 1px;
         outline-offset: 2px;
         outline-style: solid;
         outline-color: primary;
       }
 
-      input:checked ~ .emotion-2 {
+      input:checked~.emotion-2 {
         background-color: primary;
         border-color: primary;
       }
 
-      input:checked ~ .emotion-2 > div {
+      input:checked~.emotion-2>div {
         -webkit-transform: translateX(calc(100% - 1px));
+        -moz-transform: translateX(calc(100% - 1px));
         -ms-transform: translateX(calc(100% - 1px));
         transform: translateX(calc(100% - 1px));
       }
 
-      input:not(:checked) ~ .emotion-2 {
+      input:not(:checked)~.emotion-2 {
         background-color: muted;
         border-color: muted;
       }
 
-      input:not(:checked) ~ .emotion-2 > div {
+      input:not(:checked)~.emotion-2>div {
         -webkit-transform: translateX(0);
+        -moz-transform: translateX(0);
         -ms-transform: translateX(0);
         transform: translateX(0);
       }
@@ -139,9 +142,8 @@ describe('Switch', () => {
         height: 12px;
         margin-left: 1px;
         background-color: background;
-        -webkit-transition: -webkit-transform 0.1s cubic-bezier(0.4,1,0.75,0.9);
-        -webkit-transition: transform 0.1s cubic-bezier(0.4,1,0.75,0.9);
-        transition: transform 0.1s cubic-bezier(0.4,1,0.75,0.9);
+        -webkit-transition: -webkit-transform 0.1s cubic-bezier(0.4, 1, 0.75, 0.9);
+        transition: transform 0.1s cubic-bezier(0.4, 1, 0.75, 0.9);
       }
 
       <div

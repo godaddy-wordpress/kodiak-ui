@@ -15,7 +15,7 @@ export type SelectMenuProps = {
   ref: React.Ref<HTMLUListElement>
   children: React.ReactNode
 } & KodiakUIProps &
-  UseSelectGetMenuPropsOptions
+  Omit<UseSelectGetMenuPropsOptions, 'as'>
 
 /**
  * base

@@ -1,6 +1,13 @@
 import * as React from 'react'
-import { keyframes } from '@emotion/core'
-import { _variant, VariantProps, styled, css, sx, Theme } from 'kodiak-ui'
+import {
+  _variant,
+  VariantProps,
+  keyframes,
+  styled,
+  css,
+  sx,
+  Theme,
+} from 'kodiak-ui'
 import { Box } from '../Box'
 
 const loadingDotAnimations = keyframes`

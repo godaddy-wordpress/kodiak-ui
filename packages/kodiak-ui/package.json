@@ -14,11 +14,11 @@
     "@types/deepmerge": "^2.2.0"
   },
   "dependencies": {
-    "@emotion/core": "^11.0.0",
+    "@emotion/react": "^11.1.4",
     "@emotion/styled": "^11.0.0",
     "csstype": "^3.0.2",
     "deepmerge": "^4.2.2",
-    "zustand": "^3.1.2"
+    "zustand": "^3.2.0"
   },
   "gitHead": "3b66833063904e565cc40ba900f78e4a9200949b"
 }

@@ -41,7 +41,6 @@ describe('StatProgress', () => {
         margin-bottom: 8px;
         -webkit-box-pack: justify;
         -webkit-justify-content: space-between;
-        -ms-flex-pack: justify;
         justify-content: space-between;
       }
 

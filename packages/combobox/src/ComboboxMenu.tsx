@@ -7,10 +7,11 @@ import {
   _variant as getVariantStyles,
   Theme,
   VariantProps,
+  KodiakUIProps,
 } from 'kodiak-ui'
 
 export interface ComboboxMenuProps
-  extends UseComboboxGetMenuPropsOptions,
+  extends Omit<UseComboboxGetMenuPropsOptions, 'as'>,
     VariantProps {
   ref: React.Ref<HTMLUListElement>
   children: React.ReactNode
@@ -41,7 +42,7 @@ function variant({
   return getVariantStyles({ variant: variantProp, theme, variantKey })
 }
 
-const Ul = styled('ul')<ComboboxMenuProps>(
+const Ul = styled('ul')<KodiakUIProps>(
   {
     boxSizing: 'border-box',
     margin: 0,

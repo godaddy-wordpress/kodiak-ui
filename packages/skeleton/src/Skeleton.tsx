@@ -1,6 +1,6 @@
-import { keyframes } from '@emotion/core'
 import * as React from 'react'
-import { Box } from '@kodiak-ui/primitives/box'
+import { keyframes } from 'kodiak-ui'
+import { Box } from '@kodiak-ui/primitives'
 
 type SkeletonProps = { duration?: number } & React.ComponentProps<typeof Box>
 

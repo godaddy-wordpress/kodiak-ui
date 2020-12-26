@@ -1,5 +1,4 @@
-import styled from '@emotion/styled'
-import { _variant, VariantProps, sx, css, Theme } from 'kodiak-ui'
+import { _variant, VariantProps, styled, sx, css, Theme } from 'kodiak-ui'
 
 type DialogContentProps = {
   children: React.ReactNode

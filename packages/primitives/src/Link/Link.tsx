@@ -1,7 +1,7 @@
 import * as React from 'react'
-import styled from '@emotion/styled'
 import {
   css,
+  styled,
   sx,
   _variant,
   VariantProps,

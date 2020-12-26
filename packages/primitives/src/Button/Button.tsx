@@ -8,6 +8,7 @@ import {
   css,
   KodiakUIProps,
   shared,
+  AllHTMLAttributes,
 } from 'kodiak-ui'
 import { useWrappedEventHandler } from '@kodiak-ui/hooks/use-event-logger'
 
@@ -52,10 +53,11 @@ export const buttonVariant = ({
 }
 
 export type ButtonProps = KodiakUIProps &
-  React.DetailedHTMLProps<
-    React.HTMLAttributes<HTMLButtonElement>,
-    HTMLButtonElement
-  >
+  AllHTMLAttributes<HTMLButtonElement> & {
+    eventLog?: boolean
+    type?: 'button' | 'submit' | 'reset'
+    css?: any
+  }
 
 /**
  * Button primitive component
@@ -87,19 +89,14 @@ export type ButtonEvent = {
   }
 }
 
-export const Button = React.forwardRef<
-  HTMLButtonElement,
-  { eventLog?: boolean } & Omit<
-    React.ComponentProps<typeof StyledButton>,
-    'ref'
-  > &
-    KodiakUIProps
->(({ eventLog = true, ...props }, ref) => {
-  const wrappedOnClick = useWrappedEventHandler({
-    name: 'BUTTON_CLICK',
-    handler: props.onClick,
-    isLoggingEventsActive: eventLog,
-  })
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ eventLog = true, ...props }, ref) => {
+    const wrappedOnClick = useWrappedEventHandler({
+      name: 'BUTTON_CLICK',
+      handler: props.onClick,
+      isLoggingEventsActive: eventLog,
+    })
 
-  return <StyledButton {...props} ref={ref} onClick={wrappedOnClick} />
-})
+    return <StyledButton {...props} ref={ref} onClick={wrappedOnClick} />
+  },
+)
