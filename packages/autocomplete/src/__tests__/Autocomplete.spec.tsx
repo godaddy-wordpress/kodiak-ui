@@ -120,6 +120,7 @@ describe('Autocomplete', () => {
         -webkit-box-align: center;
         -ms-flex-align: center;
         align-items: center;
+        -webkit-box-flex-wrap: wrap;
         -webkit-flex-wrap: wrap;
         -ms-flex-wrap: wrap;
         flex-wrap: wrap;
@@ -135,6 +136,7 @@ describe('Autocomplete', () => {
         padding: 8px;
         -webkit-appearance: none;
         -moz-appearance: none;
+        -ms-appearance: none;
         appearance: none;
         font-size: inherit;
         line-height: inherit;
@@ -172,6 +174,7 @@ describe('Autocomplete', () => {
         padding-right: 4px;
         top: 50%;
         -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
         -ms-transform: translateY(-50%);
         transform: translateY(-50%);
       }
@@ -179,6 +182,7 @@ describe('Autocomplete', () => {
       .emotion-4 {
         -webkit-appearance: none;
         -moz-appearance: none;
+        -ms-appearance: none;
         appearance: none;
         cursor: pointer;
         display: inline-block;
@@ -187,12 +191,8 @@ describe('Autocomplete', () => {
         text-align: center;
         -webkit-text-decoration: none;
         text-decoration: none;
-        -webkit-transition-property: background,border,-webkit-transform;
-        -webkit-transition-property: background,border,transform;
         transition-property: background,border,transform;
-        -webkit-transition-duration: 0.2s;
         transition-duration: 0.2s;
-        -webkit-transition-timing-function: ease-in-out;
         transition-timing-function: ease-in-out;
         padding-left: 16px;
         padding-right: 16px;
@@ -206,7 +206,6 @@ describe('Autocomplete', () => {
         height: 20px;
         padding: 0;
         -webkit-transition: -webkit-transform 0.2s ease-in-out;
-        -webkit-transition: transform 0.2s ease-in-out;
         transition: transform 0.2s ease-in-out;
       }
 
@@ -216,7 +215,6 @@ describe('Autocomplete', () => {
 
       .emotion-3 {
         border: 0;
-        -webkit-clip: rect(0 0 0 0);
         clip: rect(0 0 0 0);
         height: 1px;
         margin: -1px;
@@ -347,6 +345,7 @@ describe('Autocomplete', () => {
         -webkit-box-align: center;
         -ms-flex-align: center;
         align-items: center;
+        -webkit-box-flex-wrap: wrap;
         -webkit-flex-wrap: wrap;
         -ms-flex-wrap: wrap;
         flex-wrap: wrap;
@@ -362,6 +361,7 @@ describe('Autocomplete', () => {
         padding: 8px;
         -webkit-appearance: none;
         -moz-appearance: none;
+        -ms-appearance: none;
         appearance: none;
         font-size: inherit;
         line-height: inherit;
@@ -399,6 +399,7 @@ describe('Autocomplete', () => {
         padding-right: 4px;
         top: 50%;
         -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
         -ms-transform: translateY(-50%);
         transform: translateY(-50%);
       }
@@ -406,6 +407,7 @@ describe('Autocomplete', () => {
       .emotion-4 {
         -webkit-appearance: none;
         -moz-appearance: none;
+        -ms-appearance: none;
         appearance: none;
         cursor: pointer;
         display: inline-block;
@@ -414,12 +416,8 @@ describe('Autocomplete', () => {
         text-align: center;
         -webkit-text-decoration: none;
         text-decoration: none;
-        -webkit-transition-property: background,border,-webkit-transform;
-        -webkit-transition-property: background,border,transform;
         transition-property: background,border,transform;
-        -webkit-transition-duration: 0.2s;
         transition-duration: 0.2s;
-        -webkit-transition-timing-function: ease-in-out;
         transition-timing-function: ease-in-out;
         padding-left: 16px;
         padding-right: 16px;
@@ -433,7 +431,6 @@ describe('Autocomplete', () => {
         height: 20px;
         padding: 0;
         -webkit-transition: -webkit-transform 0.2s ease-in-out;
-        -webkit-transition: transform 0.2s ease-in-out;
         transition: transform 0.2s ease-in-out;
       }
 
@@ -443,7 +440,6 @@ describe('Autocomplete', () => {
 
       .emotion-3 {
         border: 0;
-        -webkit-clip: rect(0 0 0 0);
         clip: rect(0 0 0 0);
         height: 1px;
         margin: -1px;

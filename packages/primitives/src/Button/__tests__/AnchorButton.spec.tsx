@@ -15,6 +15,7 @@ describe('AnchorButton', () => {
       .emotion-0 {
         -webkit-appearance: none;
         -moz-appearance: none;
+        -ms-appearance: none;
         appearance: none;
         cursor: pointer;
         display: inline-block;
@@ -61,6 +62,7 @@ describe('AnchorButton', () => {
       .emotion-0 {
         -webkit-appearance: none;
         -moz-appearance: none;
+        -ms-appearance: none;
         appearance: none;
         cursor: pointer;
         display: inline-block;
@@ -107,6 +109,7 @@ describe('AnchorButton', () => {
       .emotion-0 {
         -webkit-appearance: none;
         -moz-appearance: none;
+        -ms-appearance: none;
         appearance: none;
         cursor: pointer;
         display: inline-block;

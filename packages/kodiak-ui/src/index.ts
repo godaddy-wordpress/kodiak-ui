@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { jsx as emotion, InterpolationWithTheme } from '@emotion/core'
+import { jsx as emotion } from '@emotion/react'
 import styled from '@emotion/styled'
 import create from 'zustand'
 import createVanilla from 'zustand/vanilla'
@@ -15,7 +15,7 @@ export * from './shared-provider'
 export * from './types'
 export * from './css'
 
-export { keyframes } from '@emotion/core'
+export { keyframes } from '@emotion/react'
 
 export type Variant = {
   [key: string]: ThemeUIStyleObject
@@ -80,26 +80,31 @@ export type GlobalStyleObject = {
 
 export type Theme = ThemeUITheme & { global?: GlobalStyleObject }
 
-export const Store = createVanilla<KodiakState>(persist(set => ({
-  variants: null,
-  components: null,
-  mode: '',
-  variant: (key: string, styles: ThemeUIStyleObject) => {
-    set((state: KodiakState) => ({
-      variants: { ...state.variants, [key]: styles },
-    }))
-    return { key, styles }
-  },
-  component: (key: string, styles: ThemeUIStyleObject) => {
-    set((state: KodiakState) => ({
-      components: { ...state.components, [key]: styles },
-    }))
-    return { key, styles }
-  },
-  setMode: (mode: string) => set({ mode }),
-}), {
-  name: 'kodiak-ui-system'
-}))
+export const Store = createVanilla<KodiakState>(
+  persist(
+    set => ({
+      variants: null,
+      components: null,
+      mode: '',
+      variant: (key: string, styles: ThemeUIStyleObject) => {
+        set((state: KodiakState) => ({
+          variants: { ...state.variants, [key]: styles },
+        }))
+        return { key, styles }
+      },
+      component: (key: string, styles: ThemeUIStyleObject) => {
+        set((state: KodiakState) => ({
+          components: { ...state.components, [key]: styles },
+        }))
+        return { key, styles }
+      },
+      setMode: (mode: string) => set({ mode }),
+    }),
+    {
+      name: 'kodiak-ui-system',
+    },
+  ),
+)
 
 export function useModes(): [string, (mode: string) => void] {
   return [Store.getState().mode, Store.getState().setMode]
@@ -139,7 +144,7 @@ const getCSS = props => {
 
 const parseProps = props => {
   if (!props) return null
-  const next: typeof props & { css?: InterpolationWithTheme<any> } = {}
+  const next: typeof props & { css?: any } = {}
   for (const key in props) {
     if (key === 'sx') continue
     next[key] = props[key]

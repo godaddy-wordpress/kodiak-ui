@@ -22,41 +22,41 @@ describe('Tooltip', () => {
         z-index: 9999;
       }
 
-      .emotion-0[data-popper-placement^='top'] > #kodiak-ui-tooltip-arrow {
+      .emotion-0[data-popper-placement^='top']>#kodiak-ui-tooltip-arrow {
         bottom: -5px;
       }
 
-      .emotion-0[data-popper-placement^='bottom'] > #kodiak-ui-tooltip-arrow {
+      .emotion-0[data-popper-placement^='bottom']>#kodiak-ui-tooltip-arrow {
         top: -5px;
       }
 
-      .emotion-0[data-popper-placement^='left'] > #kodiak-ui-tooltip-arrow {
+      .emotion-0[data-popper-placement^='left']>#kodiak-ui-tooltip-arrow {
         right: -5px;
       }
 
-      .emotion-0[data-popper-placement^='right'] > #kodiak-ui-tooltip-arrow {
+      .emotion-0[data-popper-placement^='right']>#kodiak-ui-tooltip-arrow {
         left: -5px;
       }
 
-      .emotion-0[data-popper-placement^='top'] > #kodiak-ui-tooltip-arrow::before {
+      .emotion-0[data-popper-placement^='top']>#kodiak-ui-tooltip-arrow::before {
         border-right: 1px solid;
         border-bottom: 1px solid;
         border-color: muted;
       }
 
-      .emotion-0[data-popper-placement^='bottom'] > #kodiak-ui-tooltip-arrow::before {
+      .emotion-0[data-popper-placement^='bottom']>#kodiak-ui-tooltip-arrow::before {
         border-left: 1px solid;
         border-top: 1px solid;
         border-color: muted;
       }
 
-      .emotion-0[data-popper-placement^='left'] > #kodiak-ui-tooltip-arrow::before {
+      .emotion-0[data-popper-placement^='left']>#kodiak-ui-tooltip-arrow::before {
         border-right: 1px solid;
         border-top: 1px solid;
         border-color: muted;
       }
 
-      .emotion-0[data-popper-placement^='right'] > #kodiak-ui-tooltip-arrow::before {
+      .emotion-0[data-popper-placement^='right']>#kodiak-ui-tooltip-arrow::before {
         border-left: 1px solid;
         border-bottom: 1px solid;
         border-color: muted;
