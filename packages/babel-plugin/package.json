@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/babel-plugin",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "dist/babel-plugin.cjs.js",
   "module": "dist/babel-plugin.esm.js",
   "license": "MIT",
