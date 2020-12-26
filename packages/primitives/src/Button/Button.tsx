@@ -35,6 +35,17 @@ export function base({ theme, base, __base }) {
     })(theme)
   }
 
+    console.log(css({
+      px: 3,
+      py: 2,
+      color: 'white',
+      bg: 'primary',
+      border: 0,
+      borderRadius: 'default',
+      '&:hover': {
+        bg: 'secondary',
+      },
+    })(theme))
   return { ...__base, ...styles }
 }
 

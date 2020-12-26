@@ -3,28 +3,19 @@ import { jsx as emotion, InterpolationWithTheme } from '@emotion/core'
 import styled from '@emotion/styled'
 import create from 'zustand'
 import createVanilla from 'zustand/vanilla'
+import { persist } from 'zustand/middleware'
 import themeDefault from './theme-default'
-// import { ColorMode, ThemeUIStyleObject, Theme as ThemeUITheme } from './types'
-// import { get, css } from './css'
-import {
-  css,
-  get,
-  ColorMode,
-  Theme as ThemeUITheme,
-  ThemeUIStyleObject,
-} from '@theme-ui/css'
+import { ColorMode, ThemeUIStyleObject, Theme as ThemeUITheme } from './types'
+import { get, css } from './css'
 
-// import './react-jsx'
+import './react-jsx'
 
 export * from './provider'
 export * from './shared-provider'
-// export * from './types'
-// export * from './css'
+export * from './types'
+export * from './css'
 
 export { keyframes } from '@emotion/core'
-export type { ThemeUIStyleObject } from '@theme-ui/css'
-export { merge } from '@theme-ui/core'
-export { get, css } from '@theme-ui/css'
 
 export type Variant = {
   [key: string]: ThemeUIStyleObject
@@ -64,18 +55,6 @@ export type ScaleColorMode = ColorMode & {
   }
 }
 
-// export type GlobalStylesObject = { [k: string]: ThemeUIStyleObject }
-
-// type System = Omit<
-//   Theme,
-//   | 'initialColorModeName'
-//   | 'useBodyStyles'
-//   | 'useBorderBox'
-//   | 'useCustomProperties'
-//   | 'useColorSchemeMediaQuery'
-//   | 'useLocalStorage'
-// >
-
 type ConfigurationOptions = Pick<
   ThemeUITheme,
   | 'initialColorModeName'
@@ -101,7 +80,7 @@ export type GlobalStyleObject = {
 
 export type Theme = ThemeUITheme & { global?: GlobalStyleObject }
 
-export const Store = createVanilla<KodiakState>(set => ({
+export const Store = createVanilla<KodiakState>(persist(set => ({
   variants: null,
   components: null,
   mode: '',
@@ -118,6 +97,8 @@ export const Store = createVanilla<KodiakState>(set => ({
     return { key, styles }
   },
   setMode: (mode: string) => set({ mode }),
+}), {
+  name: 'kodiak-ui-system'
 }))
 
 export function useModes(): [string, (mode: string) => void] {

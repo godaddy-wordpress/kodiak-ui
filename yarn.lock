@@ -1670,7 +1670,7 @@
   resolved "https://registry.yarnpkg.com/@emotion/memoize/-/memoize-0.7.5.tgz#2c40f81449a4e554e9fc6396910ed4843ec2be50"
   integrity sha512-igX9a37DR2ZPGYtV6suZ6whr8pTFtyHL3K/oLUotxpSVO2ASaprmAe2Dkq7tBo7CRY7MMDrAa9nuQP9/YG8FxQ==
 
-"@emotion/react@^11.1.1":
+"@emotion/react@^11.1.4":
   version "11.1.4"
   resolved "https://registry.yarnpkg.com/@emotion/react/-/react-11.1.4.tgz#ddee4247627ff7dd7d0c6ae52f1cfd6b420357d2"
   integrity sha512-9gkhrW8UjV4IGRnEe4/aGPkUxoGS23aD9Vu6JCGfEDyBYL+nGkkRBoMFGAzCT9qFdyUvQp4UUtErbKWxq/JS4A==
@@ -4193,16 +4193,6 @@
     "@styled-system/space" "^5.1.2"
     "@theme-ui/css" "^0.3.4"
 
-"@theme-ui/core@0.6.0-alpha.4":
-  version "0.6.0-alpha.4"
-  resolved "https://registry.yarnpkg.com/@theme-ui/core/-/core-0.6.0-alpha.4.tgz#2fe0bfe2a452befd496f64dd18a3a9c9de12e410"
-  integrity sha512-qvaZGwt2c7517EZXxuG0LFn6ZhuEu9oCWIts4v/pTSMNt4FlFvElkBH2RlDhRunxIUuDUlr8ZIZd9UDLujCYUQ==
-  dependencies:
-    "@emotion/react" "^11.1.1"
-    "@theme-ui/css" "0.6.0-alpha.4"
-    "@theme-ui/parse-props" "0.6.0-alpha.4"
-    deepmerge "^4.2.2"
-
 "@theme-ui/core@^0.3.4":
   version "0.3.4"
   resolved "https://registry.yarnpkg.com/@theme-ui/core/-/core-0.3.4.tgz#0fffadfcaaa13e20d5fdf5ff55bcf79dd3afeea0"
@@ -4211,14 +4201,6 @@
     "@emotion/core" "^10.0.0"
     "@theme-ui/css" "^0.3.4"
     deepmerge "^4.2.2"
-
-"@theme-ui/css@0.6.0-alpha.4":
-  version "0.6.0-alpha.4"
-  resolved "https://registry.yarnpkg.com/@theme-ui/css/-/css-0.6.0-alpha.4.tgz#1207af2f4968528931580be650fa492d28dee397"
-  integrity sha512-o0PMWOCno/V9TZGAywz9k9jdSbwLpzt+omLpY9S5wpisyhu6LXmBpOB02Kv9Wy/79Je4igmKkl9dWxR7g3ccjw==
-  dependencies:
-    "@emotion/react" "^11.1.1"
-    csstype "^3.0.5"
 
 "@theme-ui/css@^0.3.4":
   version "0.3.4"
@@ -4233,14 +4215,6 @@
     "@emotion/core" "^10.0.0"
     "@emotion/styled" "^10.0.0"
     "@mdx-js/react" "^1.0.0"
-
-"@theme-ui/parse-props@0.6.0-alpha.4":
-  version "0.6.0-alpha.4"
-  resolved "https://registry.yarnpkg.com/@theme-ui/parse-props/-/parse-props-0.6.0-alpha.4.tgz#819147c2d7897a3580c6eea978b5c284e6e8a83f"
-  integrity sha512-3bjy/N7crYACBaGQCaBVaYtxr7qz5plEldMv4slUDEzI0tdcboLI2mKxTvKXSq23mnkYN6T5PyVjyNhHbxw3wQ==
-  dependencies:
-    "@emotion/react" "^11.1.1"
-    "@theme-ui/css" "0.6.0-alpha.4"
 
 "@theme-ui/theme-provider@^0.3.4":
   version "0.3.4"
@@ -7847,11 +7821,6 @@ csstype@^3.0.2:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.0.4.tgz#b156d7be03b84ff425c9a0a4b1e5f4da9c5ca888"
   integrity sha512-xc8DUsCLmjvCfoD7LTGE0ou2MIWLx0K9RCZwSHMOdynqRsP4MtUcLeqh1HcQ2dInwDTqn+3CE0/FZh1et+p4jA==
-
-csstype@^3.0.5:
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.0.5.tgz#7fdec6a28a67ae18647c51668a9ff95bb2fa7bb8"
-  integrity sha512-uVDi8LpBUKQj6sdxNaTetL6FpeCqTjOvAQuQUa/qAqq8oOd4ivkbhgnqayl0dnPal8Tb/yB1tF+gOvCBiicaiQ==
 
 currently-unhandled@^0.4.1:
   version "0.4.1"
@@ -19817,10 +19786,15 @@ yargs@^15.4.1:
     y18n "^4.0.0"
     yargs-parser "^18.1.2"
 
-zustand@^3.1.2, zustand@^3.1.3:
+zustand@^3.1.3:
   version "3.1.3"
   resolved "https://registry.yarnpkg.com/zustand/-/zustand-3.1.3.tgz#33df7f56ec11b3003458b60606addc94225b282c"
   integrity sha512-Otuzh3r0GsatvsUWeXEwdYjZEw1TItWcAXwDGEHdXE4/k6WbAdVDxC21t/Poq4ZMB+2VaQNKICWu7eCBUJ65tQ==
+
+zustand@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/zustand/-/zustand-3.2.0.tgz#a718a964440796d44edda3073b69e78b95f4c8f5"
+  integrity sha512-MBYFrnUdgFVi38tdQNSzVN9cPpRDf7w2HhdHGDSgBRHN7vIbUGUR3aBdVQykelXzSFR7iVj3YNBuq7B9ceMI5w==
 
 zwitch@^1.0.0:
   version "1.0.5"
