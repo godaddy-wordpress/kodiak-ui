@@ -56,7 +56,7 @@
     "lint-staged": "^10.0.3",
     "prettier": "^2.0.4",
     "react-test-renderer": "^16.12.0",
-    "ts-jest": "^26.4.1",
+    "ts-jest": "^26.4.4",
     "typescript": "^4.1.3"
   },
   "husky": {
