@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "types": ["@emotion/react/types/css-prop"],
     "skipLibCheck": true,
     /* Basic Options */
     // "incremental": true,                   /* Enable incremental compilation */
