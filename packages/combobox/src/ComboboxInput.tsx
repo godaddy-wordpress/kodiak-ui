@@ -4,7 +4,7 @@ import { Input } from '@kodiak-ui/primitives'
 import { VariantProps } from 'kodiak-ui'
 
 export interface ComboboxInputProps
-  extends UseComboboxGetInputPropsOptions,
+  extends Omit<UseComboboxGetInputPropsOptions, 'as'>,
     VariantProps {}
 
 export const ComboboxInput = React.forwardRef(function ComboboxInput(

@@ -5,7 +5,7 @@ import { Label } from '@kodiak-ui/primitives'
 
 export interface ComboboxLabelProps
   extends VariantProps,
-    UseComboboxGetLabelPropsOptions {
+    Omit<UseComboboxGetLabelPropsOptions, 'as'> {
   children: React.ReactNode
 }
 

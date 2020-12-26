@@ -5,7 +5,7 @@ import { Label } from '@kodiak-ui/primitives/label'
 
 export interface SelectLabelProps
   extends VariantProps,
-    UseSelectGetLabelPropsOptions {
+    Omit<UseSelectGetLabelPropsOptions, 'as'> {
   children: React.ReactNode
 }
 
