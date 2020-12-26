@@ -4,7 +4,7 @@ import { VariantProps, SxStyleProp } from 'kodiak-ui'
 import { Button } from '@kodiak-ui/primitives'
 
 export interface ComboboxButtonProps
-  extends UseComboboxGetToggleButtonPropsOptions,
+  extends Omit<UseComboboxGetToggleButtonPropsOptions, 'as'>,
     VariantProps {
   children?: React.ReactNode
   type?: 'button' | 'reset' | 'submit' | undefined

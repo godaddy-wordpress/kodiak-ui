@@ -6,7 +6,7 @@ import { SvgIcon } from '@kodiak-ui/primitives/svg'
 
 export interface SelectButtonProps
   extends VariantProps,
-    UseSelectGetToggleButtonPropsOptions {
+    Omit<UseSelectGetToggleButtonPropsOptions, 'as'> {
   children: React.ReactNode
   isOpen: boolean
   type?: 'button' | 'reset' | 'submit' | undefined

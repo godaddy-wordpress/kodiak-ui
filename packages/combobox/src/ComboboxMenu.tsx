@@ -11,7 +11,7 @@ import {
 } from 'kodiak-ui'
 
 export interface ComboboxMenuProps
-  extends UseComboboxGetMenuPropsOptions,
+  extends Omit<UseComboboxGetMenuPropsOptions, 'as'>,
     VariantProps {
   ref: React.Ref<HTMLUListElement>
   children: React.ReactNode

@@ -810,3 +810,5 @@ export interface Theme {
    */
   messages?: Record<string, ThemeUIStyleObject>
 }
+
+export type AllHTMLAttributes<T> = Omit<React.AllHTMLAttributes<T>, 'as'>

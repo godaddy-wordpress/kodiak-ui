@@ -1,9 +1,6 @@
 import {
-  AllHTMLAttributes,
   ChangeEvent,
-  DetailedHTMLProps,
   FocusEvent,
-  HTMLAttributes,
   KeyboardEvent,
   MouseEvent,
   ReactNode,
@@ -11,6 +8,7 @@ import {
 import { Placement } from '@popperjs/core'
 import { ThemeUIStyleObject } from 'kodiak-ui'
 import { TagProps } from '@kodiak-ui/primitives'
+import { AllHTMLAttributes } from 'kodiak-ui/src/css'
 
 export type PropsWithRef<T> = { ref: any } & T
 

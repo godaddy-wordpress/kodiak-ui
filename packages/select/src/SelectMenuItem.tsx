@@ -13,7 +13,7 @@ export type SelectMenuItemProps = {
   ref: React.Ref<HTMLLIElement>
   children: React.ReactNode
 } & VariantProps &
-  UseSelectGetItemPropsOptions<any>
+  Omit<UseSelectGetItemPropsOptions<any>, 'as'>
 
 /**
  * base
