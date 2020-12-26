@@ -4,15 +4,15 @@ import { SvgIcon } from '../Svg'
 import { Input } from '../Input'
 import { useCheckbox } from './useCheckbox'
 import { Label } from '../Label'
-import type { SxStyleProp, VariantProps } from 'kodiak-ui'
+import type { KodiakUIProps } from 'kodiak-ui'
 
 type CheckboxProps = {
   children?: React.ReactNode
   label?: any // TODO: Fix this type
   indeterminate?: boolean
-  sx?: SxStyleProp
+  css?: any
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
-} & VariantProps &
+} & KodiakUIProps &
   React.HTMLProps<HTMLInputElement>
 
 type CheckboxIcon = React.ComponentProps<typeof SvgIcon>
