@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/select",
-  "version": "0.3.11",
+  "version": "0.3.12",
   "description": "Component to display custom select elements that behave like native HTML select elements",
   "main": "dist/select.cjs.js",
   "module": "dist/select.esm.js",
@@ -20,7 +20,7 @@
     "react-dom": "^16.14.0"
   },
   "dependencies": {
-    "@kodiak-ui/primitives": "^0.20.6",
+    "@kodiak-ui/primitives": "^0.20.7",
     "downshift": "^5.4.5"
   },
   "gitHead": "952275b2482fe05621f9d8b8e036865af870e87c"
