@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { jsx as emotion } from '@emotion/react'
+import { jsx as emotionJsx } from '@emotion/react'
 import styled from '@emotion/styled'
 import create from 'zustand'
 import createVanilla from 'zustand/vanilla'
@@ -154,8 +154,13 @@ const parseProps = props => {
   return next
 }
 
-export const jsx: typeof React.createElement = (type, props, ...children) =>
-  emotion.apply(undefined, [type, parseProps(props), ...children])
+export const jsx: typeof React.createElement = <
+  P extends Record<string, unknown>
+>(
+  type: React.FunctionComponent<P> | React.ComponentClass<P> | string,
+  props: React.Attributes & P,
+  ...children: React.ReactNode[]
+): any => emotionJsx(type, parseProps(props), ...children)
 
 export function createDesignSystem({
   system,
