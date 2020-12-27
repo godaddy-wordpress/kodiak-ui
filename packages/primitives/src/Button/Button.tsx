@@ -54,6 +54,7 @@ export const buttonVariant = ({
 
 export type ButtonProps = KodiakUIProps &
   AllHTMLAttributes<HTMLButtonElement> & {
+    children?: React.ReactNode
     eventLog?: boolean
     type?: 'button' | 'submit' | 'reset'
     css?: any
