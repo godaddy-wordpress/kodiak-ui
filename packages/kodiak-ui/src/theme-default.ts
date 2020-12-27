@@ -33,8 +33,12 @@ export const theme: Theme = {
     bold: 700,
   },
   lineHeights: {
-    body: 1.25,
-    heading: 1.5,
+    none: 1,
+    tight: 1.25,
+    snug: 1.375,
+    normal: 1.5,
+    relaxed: 1.625,
+    loose: 2,
   },
   mediaQueries: {
     sm: `@media screen and (min-width: ${breakpoints[0]})`,
