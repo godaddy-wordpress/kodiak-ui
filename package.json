@@ -20,12 +20,8 @@
     "postinstall": "preconstruct dev"
   },
   "peerDependencies": {
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0"
-  },
-  "dependencies": {
-    "react": "16.14.0",
-    "react-dom": "16.14.0"
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
@@ -103,5 +99,9 @@
       "!packages/example_template",
       "!packages/storybook"
     ]
+  },
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   }
 }
