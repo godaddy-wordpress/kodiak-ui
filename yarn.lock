@@ -4458,13 +4458,6 @@
   resolved "https://registry.yarnpkg.com/@types/qs/-/qs-6.9.5.tgz#434711bdd49eb5ee69d90c1d67c354a9a8ecb18b"
   integrity sha512-/JHkVHtx/REVG0VVToGRGH2+23hsYLHdyG+GrvoUGlGAd0ErauXDyvHtRI/7H7mzLm+tBCKA7pfcpkQ1lf58iQ==
 
-"@types/reach__dialog@^0.1.0":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@types/reach__dialog/-/reach__dialog-0.1.1.tgz#5f262d68cf5aa9580f576c7409ea30ac8f6d7017"
-  integrity sha512-hTHF+EvkpV1cyycWzhYMJ/FUnaK7Vroa+BrNLJrrOGHnmzh6EKTYyVDsjOPWZIv3FN9tO9v8u9I6AvjY0XoXGw==
-  dependencies:
-    "@types/react" "*"
-
 "@types/reach__router@^1.3.5":
   version "1.3.6"
   resolved "https://registry.yarnpkg.com/@types/reach__router/-/reach__router-1.3.6.tgz#413417ce74caab331c70ce6a03a4c825188e4709"
@@ -19745,11 +19738,6 @@ yargs@^15.4.1:
     which-module "^2.0.0"
     y18n "^4.0.0"
     yargs-parser "^18.1.2"
-
-zustand@^3.1.3:
-  version "3.1.3"
-  resolved "https://registry.yarnpkg.com/zustand/-/zustand-3.1.3.tgz#33df7f56ec11b3003458b60606addc94225b282c"
-  integrity sha512-Otuzh3r0GsatvsUWeXEwdYjZEw1TItWcAXwDGEHdXE4/k6WbAdVDxC21t/Poq4ZMB+2VaQNKICWu7eCBUJ65tQ==
 
 zustand@^3.2.0:
   version "3.2.0"

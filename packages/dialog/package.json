@@ -14,17 +14,15 @@
     "access": "public"
   },
   "scripts": {},
-  "devDependencies": {
-    "@types/reach__dialog": "^0.1.0"
-  },
   "peerDependencies": {
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0"
+    "kodiak-ui": "^0.5.9",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   },
+  "devDependencies": {},
   "dependencies": {
     "@kodiak-ui/a11y": "^0.1.4",
-    "@kodiak-ui/primitives": "^0.20.8",
-    "kodiak-ui": "^0.5.9"
+    "@kodiak-ui/primitives": "^0.20.8"
   },
   "gitHead": "952275b2482fe05621f9d8b8e036865af870e87c"
 }

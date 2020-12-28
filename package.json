@@ -24,7 +24,6 @@
     "react-dom": "^16.14.0"
   },
   "dependencies": {
-    "@emotion/react": "^11.1.4",
     "react": "16.14.0",
     "react-dom": "16.14.0"
   },

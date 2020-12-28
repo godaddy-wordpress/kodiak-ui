@@ -11,10 +11,8 @@
   },
   "scripts": {},
   "peerDependencies": {
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
-    "resize-observer-polyfill": "^1.5.1",
-    "zustand": "^3.1.1"
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   },
   "gitHead": "952275b2482fe05621f9d8b8e036865af870e87c",
   "dependencies": {
