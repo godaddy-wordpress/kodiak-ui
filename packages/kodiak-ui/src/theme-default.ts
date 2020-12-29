@@ -12,9 +12,9 @@ export const theme: Theme = {
     muted: '#f6f6f6',
   },
   fonts: {
-    body:
+    sans:
       'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
-    heading: 'inherit',
+    serif: 'inherit',
     monospace: 'Menlo, monospace',
   },
   fontSizes: [
@@ -28,8 +28,8 @@ export const theme: Theme = {
     '3rem', // 7 => 48px
   ],
   fontWeights: {
-    body: 400,
-    heading: 700,
+    light: 300,
+    medium: 500,
     bold: 700,
   },
   lineHeights: {
@@ -53,18 +53,6 @@ export const theme: Theme = {
     lg: '6px',
     full: '9999px',
   },
-  text: {
-    heading: {
-      fontFamily: 'heading',
-      fontWeight: 'heading',
-      lineHeight: 'heading',
-    },
-    body: {
-      fontFamily: 'body',
-      fontWeight: 'body',
-      lineHeight: 'body',
-    },
-  },
   global: {
     body: {
       fontFamily: 'body',
@@ -73,37 +61,6 @@ export const theme: Theme = {
       lineHeight: 'body',
       margin: 0,
       padding: 0,
-    },
-    h1: {
-      variant: 'text.heading',
-      fontSize: 5,
-    },
-    h2: {
-      variant: 'text.heading',
-      fontSize: 4,
-    },
-    h3: {
-      variant: 'text.heading',
-      fontSize: 3,
-    },
-    h4: {
-      variant: 'text.heading',
-      fontSize: 2,
-    },
-    h5: {
-      variant: 'text.heading',
-      fontSize: 1,
-    },
-    h6: {
-      variant: 'text.heading',
-      fontSize: 0,
-    },
-    p: {
-      variant: 'text.body',
-    },
-    a: {
-      variant: 'text.body',
-      color: 'primary',
     },
   },
 }

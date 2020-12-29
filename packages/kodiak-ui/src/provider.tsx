@@ -4,18 +4,29 @@ import { css, merge, jsx, useKodiakStore, Theme } from '.'
 import { toCustomProperties, createColorStyles } from './custom-properties'
 import { applyMode } from './color-mode'
 
-const GlobalStyles = ({ global }) =>
+const GlobalStyles = ({ scope, global }) =>
   jsx(Global, {
     styles: (emotionTheme: Theme): any => {
       const theme = emotionTheme as Theme
       const colorStyles = createColorStyles(theme)
+
+      const globalStyles = scope
+        ? Object.keys(global)?.reduce((acc, curr) => {
+            const scopeKey =
+              curr === '*' || curr === 'body' ? scope : `${scope} ${curr}`
+            return {
+              ...acc,
+              [scopeKey]: global?.[curr],
+            }
+          }, {})
+        : global
 
       return css({
         '*': {
           boxSizing: 'border-box',
         },
         ...colorStyles,
-        ...global,
+        ...globalStyles,
       })(theme)
     },
   })
@@ -38,8 +49,6 @@ export function BaseProvider({
   const { scope, theme } = context
   theme.colors = toCustomProperties(theme.colors, 'colors')
 
-  console.log(scope)
-
   return jsx(
     EmotionContext.Provider,
     { value: context.theme },
@@ -48,13 +57,21 @@ export function BaseProvider({
       {
         value: context,
       },
-      jsx(GlobalStyles, { global: theme.global }),
+      jsx(GlobalStyles, { scope, global: theme.global }),
       children,
     ),
   )
 }
 
-export function ThemeProvider({ scope, theme, children }) {
+export function ThemeProvider({
+  scope,
+  theme,
+  children,
+}: {
+  scope?: string
+  theme: Theme
+  children: React.ReactNode
+}) {
   const { mode, components, variants } = useKodiakStore()
 
   const themeWithMode = applyMode(mode)(theme)
