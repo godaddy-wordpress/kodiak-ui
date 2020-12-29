@@ -16,7 +16,8 @@
   },
   "gitHead": "952275b2482fe05621f9d8b8e036865af870e87c",
   "dependencies": {
-    "resize-observer-polyfill": "^1.5.1"
+    "resize-observer-polyfill": "^1.5.1",
+    "zustand": "^3.2.0"
   },
   "preconstruct": {
     "entrypoints": [
