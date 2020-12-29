@@ -21,6 +21,7 @@ const GlobalStyles = ({ global }) =>
   })
 
 interface ContextValue {
+  scope?: string
   theme: Theme
 }
 
@@ -34,8 +35,10 @@ export function BaseProvider({
   context,
   children,
 }: React.PropsWithChildren<{ context: ContextValue }>) {
-  const { theme } = context
+  const { scope, theme } = context
   theme.colors = toCustomProperties(theme.colors, 'colors')
+
+  console.log(scope)
 
   return jsx(
     EmotionContext.Provider,
@@ -51,13 +54,19 @@ export function BaseProvider({
   )
 }
 
-export function ThemeProvider({ theme, children }) {
+export function ThemeProvider({ scope, theme, children }) {
   const { mode, components, variants } = useKodiakStore()
 
   const themeWithMode = applyMode(mode)(theme)
-  const mergedTheme = merge.all(themeWithMode, components, variants)
+  const componentsAndVariants = {
+    ...(components ? components : {}),
+    ...(variants ? variants : {}),
+  }
+
+  const mergedTheme = merge.all(themeWithMode, componentsAndVariants)
 
   const context = {
+    scope,
     theme: mergedTheme,
   }
 
