@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react-hooks'
 import useNumberFormatter from '../useNumberFormatter'
 
-describe('useNumberFormatter', () => {
+describe.skip('useNumberFormatter', () => {
   it.skip('should return formatted number', () => {
     const format = renderHook(() =>
       useNumberFormatter(undefined, {
