@@ -33,6 +33,7 @@ describe('DialogFooter', () => {
         display: flex;
         -webkit-box-pack: justify;
         -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
         justify-content: space-between;
         margin-top: auto;
         padding: 32px;

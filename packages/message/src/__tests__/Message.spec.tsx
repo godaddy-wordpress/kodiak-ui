@@ -75,6 +75,7 @@ describe('Message', () => {
         display: inline-flex;
         -webkit-box-pack: justify;
         -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
         justify-content: space-between;
         max-width: 636px;
         min-width: 370px;
@@ -122,7 +123,6 @@ describe('Message', () => {
       .emotion-5 {
         -webkit-appearance: none;
         -moz-appearance: none;
-        -ms-appearance: none;
         appearance: none;
         cursor: pointer;
         display: inline-block;
@@ -131,8 +131,12 @@ describe('Message', () => {
         text-align: center;
         -webkit-text-decoration: none;
         text-decoration: none;
+        -webkit-transition-property: background,border,-webkit-transform;
+        -webkit-transition-property: background,border,transform;
         transition-property: background,border,transform;
+        -webkit-transition-duration: 0.2s;
         transition-duration: 0.2s;
+        -webkit-transition-timing-function: ease-in-out;
         transition-timing-function: ease-in-out;
         padding-left: 16px;
         padding-right: 16px;
@@ -151,6 +155,7 @@ describe('Message', () => {
 
       .emotion-3 {
         border: 0;
+        -webkit-clip: rect(0 0 0 0);
         clip: rect(0 0 0 0);
         height: 1px;
         margin: -1px;

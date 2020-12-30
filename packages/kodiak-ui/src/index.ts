@@ -1,8 +1,7 @@
 import * as React from 'react'
-import { jsx as emotionJsx } from '@emotion/react'
+import { jsx as emotionJsx } from '@emotion/core'
 import styled from '@emotion/styled'
 import create from 'zustand'
-import createVanilla from 'zustand/vanilla'
 import { persist } from 'zustand/middleware'
 import themeDefault from './theme-default'
 import { ColorMode, ThemeUIStyleObject, Theme as ThemeUITheme } from './types'
@@ -15,7 +14,7 @@ export * from './shared-provider'
 export * from './types'
 export * from './css'
 
-export { keyframes } from '@emotion/react'
+export { keyframes } from '@emotion/core'
 
 export type Variant = {
   [key: string]: ThemeUIStyleObject

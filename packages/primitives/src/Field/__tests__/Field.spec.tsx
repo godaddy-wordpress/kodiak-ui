@@ -33,12 +33,10 @@ describe('Field', () => {
         padding: 8px;
         -webkit-appearance: none;
         -moz-appearance: none;
-        -ms-appearance: none;
         appearance: none;
         font-size: inherit;
         line-height: inherit;
         border: 1px solid;
-        border-radius: default;
         color: inherit;
         background-color: transparent;
       }

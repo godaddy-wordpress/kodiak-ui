@@ -47,12 +47,10 @@ describe('Radio', () => {
         padding: 8px;
         -webkit-appearance: none;
         -moz-appearance: none;
-        -ms-appearance: none;
         appearance: none;
         font-size: inherit;
         line-height: inherit;
         border: 1px solid;
-        border-radius: default;
         color: inherit;
         background-color: transparent;
         height: 1px;
@@ -70,13 +68,13 @@ describe('Radio', () => {
         display: none;
       }
 
-      input:focus~.emotion-1 {
+      input:focus ~ .emotion-1 {
         outline: 1px auto;
         outline-offset: 1px;
         outline-color: primary;
       }
 
-      input:checked~.emotion-1 {
+      input:checked ~ .emotion-1 {
         display: block;
         color: primary;
       }
@@ -89,13 +87,13 @@ describe('Radio', () => {
         display: block;
       }
 
-      input:focus~.emotion-2 {
+      input:focus ~ .emotion-2 {
         outline: 1px auto;
         outline-offset: 1px;
         outline-color: primary;
       }
 
-      input:checked~.emotion-2 {
+      input:checked ~ .emotion-2 {
         display: none;
       }
 
@@ -186,12 +184,10 @@ describe('Radio', () => {
         padding: 8px;
         -webkit-appearance: none;
         -moz-appearance: none;
-        -ms-appearance: none;
         appearance: none;
         font-size: inherit;
         line-height: inherit;
         border: 1px solid;
-        border-radius: default;
         color: inherit;
         background-color: transparent;
         height: 1px;
@@ -209,13 +205,13 @@ describe('Radio', () => {
         display: none;
       }
 
-      input:focus~.emotion-1 {
+      input:focus ~ .emotion-1 {
         outline: 1px auto;
         outline-offset: 1px;
         outline-color: primary;
       }
 
-      input:checked~.emotion-1 {
+      input:checked ~ .emotion-1 {
         display: block;
         color: primary;
       }
@@ -228,13 +224,13 @@ describe('Radio', () => {
         display: block;
       }
 
-      input:focus~.emotion-2 {
+      input:focus ~ .emotion-2 {
         outline: 1px auto;
         outline-offset: 1px;
         outline-color: primary;
       }
 
-      input:checked~.emotion-2 {
+      input:checked ~ .emotion-2 {
         display: none;
       }
 

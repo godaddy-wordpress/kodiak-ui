@@ -16,7 +16,7 @@ import {
 
 export type LabelProps = KodiakUIProps & { children?: React.ReactNode }
 
-function base({ theme, __base, base }) {
+function base({ theme, __base, base }: { theme: any; __base: any; base: any }) {
   const styles = getComponentBase(base ? base : 'label')(theme)
 
   if (!styles || Object.keys(styles)?.length === 0) {

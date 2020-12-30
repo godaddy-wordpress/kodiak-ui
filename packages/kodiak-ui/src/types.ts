@@ -32,7 +32,9 @@ export type CSSPseudoSelectorProps = { [K in CSS.Pseudos]?: ThemeUIStyleObject }
 export interface CSSObject
   extends CSSPropertiesWithMultiValues,
     CSSPseudosForCSSObject,
-    CSSOthersObjectForCSSObject {}
+    CSSOthersObjectForCSSObject {
+  boxSizing?: CSS.Property.BoxSizing
+}
 
 type CSSPropertiesWithMultiValues = {
   [K in keyof CSSProperties]: CSSProperties[K]

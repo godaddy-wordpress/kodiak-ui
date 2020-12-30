@@ -17,7 +17,6 @@ describe('PaginationButton', () => {
       .emotion-0 {
         -webkit-appearance: none;
         -moz-appearance: none;
-        -ms-appearance: none;
         appearance: none;
         cursor: pointer;
         display: inline-block;
@@ -26,8 +25,12 @@ describe('PaginationButton', () => {
         text-align: center;
         -webkit-text-decoration: none;
         text-decoration: none;
+        -webkit-transition-property: background,border,-webkit-transform;
+        -webkit-transition-property: background,border,transform;
         transition-property: background,border,transform;
+        -webkit-transition-duration: 0.2s;
         transition-duration: 0.2s;
+        -webkit-transition-timing-function: ease-in-out;
         transition-timing-function: ease-in-out;
         padding-left: 16px;
         padding-right: 16px;

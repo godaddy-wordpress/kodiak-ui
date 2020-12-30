@@ -22,7 +22,6 @@ describe('Tooltip', () => {
         background-color: white;
         content: '';
         -webkit-transform: rotate(45deg);
-        -moz-transform: rotate(45deg);
         -ms-transform: rotate(45deg);
         transform: rotate(45deg);
         position: absolute;
