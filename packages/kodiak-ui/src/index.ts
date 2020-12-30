@@ -80,7 +80,7 @@ export type GlobalStyleObject = {
 
 export type Theme = ThemeUITheme & { global?: GlobalStyleObject }
 
-export const Store = createVanilla<KodiakState>(
+export const useStore = create<KodiakState>(
   persist(
     set => ({
       variants: null,
@@ -107,30 +107,33 @@ export const Store = createVanilla<KodiakState>(
 )
 
 export function useModes(): [string, (mode: string) => void] {
-  return [Store.getState().mode, Store.getState().setMode]
+  const mode = useStore(state => state.mode)
+  const setMode = useStore(state => state.setMode)
+
+  return [mode, setMode]
 }
 
-export const variant = Store.getState().variant
-export const component = Store.getState().component
-
-export const useKodiakStore = create(Store)
+export const variant = useStore.getState().variant
+export const component = useStore.getState().component
 
 export function useVariant(variant: Variant): ThemeUIStyleObject {
-  const variants = Store.getState().variants
+  const variants = useStore(state => state.variants)
   return variants?.[(variant?.key as unknown) as string] || null
 }
 
 export function useVariants() {
-  return Store.getState().variants
+  const variants = useStore(state => state.variants)
+  return variants
 }
 
 export function useComponent(component: Component) {
-  const components = Store.getState().components
+  const components = useStore(state => state.components)
   return components?.[(component?.key as unknown) as string] || null
 }
 
 export function useComponents() {
-  return Store.getState().components
+  const components = useStore(state => state.components)
+  return components
 }
 
 const getCSS = props => {
