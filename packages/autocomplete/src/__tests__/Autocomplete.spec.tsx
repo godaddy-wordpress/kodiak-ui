@@ -14,8 +14,8 @@ expect.addSnapshotSerializer(serializer)
 
 const options = ['Option 1', 'Option 2', 'Option 3']
 
-describe('Autocomplete', () => {
-  it.skip('should allow a single selection from the options', () => {
+describe.skip('Autocomplete', () => {
+  it('should allow a single selection from the options', () => {
     const { getByLabelText, getByText, queryByText } = render(
       <Autocomplete label="Single value autocomplete" options={options} />,
     )
@@ -48,7 +48,7 @@ describe('Autocomplete', () => {
     ).toEqual('true')
   })
 
-  it.skip('should allow multiple selection from the options', () => {
+  it('should allow multiple selection from the options', () => {
     const { getByLabelText, getByText, queryByText, getByTestId } = render(
       <Autocomplete
         isMulti
