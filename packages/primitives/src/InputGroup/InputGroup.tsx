@@ -1,16 +1,16 @@
 import * as React from 'react'
-import { VariantProps, SxStyleProp } from 'kodiak-ui'
+import { KodiakUIProps } from 'kodiak-ui'
 import { Box } from '../Box'
 
 export type InputGroupProps = {
   children: React.ReactNode
-  sx?: SxStyleProp
-} & VariantProps
+} & KodiakUIProps
 
 export const InputGroup = React.forwardRef(function InputGroup(
   {
     variant = 'group',
     variantKey = 'inputs',
+    base,
     sx,
     children,
     ...props
@@ -21,11 +21,11 @@ export const InputGroup = React.forwardRef(function InputGroup(
     <Box
       {...props}
       ref={ref}
+      base={base}
       variant={variant}
       variantKey={variantKey}
       sx={{
         display: 'flex',
-        p: 0,
         position: 'relative',
         width: '100%',
         ...sx,

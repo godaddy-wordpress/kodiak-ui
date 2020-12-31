@@ -2,7 +2,6 @@ import * as React from 'react'
 import { jsx as emotionJsx } from '@emotion/core'
 import styled from '@emotion/styled'
 import create from 'zustand'
-import { persist } from 'zustand/middleware'
 import themeDefault from './theme-default'
 import { ColorMode, ThemeUIStyleObject, Theme as ThemeUITheme } from './types'
 import { get, css } from './css'
@@ -79,31 +78,24 @@ export type GlobalStyleObject = {
 
 export type Theme = ThemeUITheme & { global?: GlobalStyleObject }
 
-export const useStore = create<KodiakState>(
-  persist(
-    set => ({
-      variants: null,
-      components: null,
-      mode: '',
-      variant: (key: string, styles: ThemeUIStyleObject) => {
-        set((state: KodiakState) => ({
-          variants: { ...state.variants, [key]: styles },
-        }))
-        return { key, styles }
-      },
-      component: (key: string, styles: ThemeUIStyleObject) => {
-        set((state: KodiakState) => ({
-          components: { ...state.components, [key]: styles },
-        }))
-        return { key, styles }
-      },
-      setMode: (mode: string) => set({ mode }),
-    }),
-    {
-      name: 'kodiak-ui-system',
-    },
-  ),
-)
+export const useStore = create<KodiakState>(set => ({
+  variants: null,
+  components: null,
+  mode: '',
+  variant: (key: string, styles: ThemeUIStyleObject) => {
+    set((state: KodiakState) => ({
+      variants: { ...state.variants, [key]: styles },
+    }))
+    return { key, styles }
+  },
+  component: (key: string, styles: ThemeUIStyleObject) => {
+    set((state: KodiakState) => ({
+      components: { ...state.components, [key]: styles },
+    }))
+    return { key, styles }
+  },
+  setMode: (mode: string) => set({ mode }),
+}))
 
 export function useModes(): [string, (mode: string) => void] {
   const mode = useStore(state => state.mode)
