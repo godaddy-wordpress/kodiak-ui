@@ -18,7 +18,6 @@ describe('InputGroup', () => {
         display: -webkit-flex;
         display: -ms-flexbox;
         display: flex;
-        padding: 0;
         position: relative;
         width: 100%;
       }
