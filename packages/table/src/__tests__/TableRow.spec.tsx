@@ -15,7 +15,6 @@ describe('TableRow', () => {
         border-collapse: collapse;
         border-spacing: 0;
         color: inherit;
-        -webkit-display: table-row;
         display: table-row;
         outline: 0;
         vertical-align: middle;

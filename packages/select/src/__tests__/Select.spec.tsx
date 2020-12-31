@@ -44,7 +44,6 @@ describe('Text', () => {
       .emotion-2 {
         -webkit-appearance: none;
         -moz-appearance: none;
-        -ms-appearance: none;
         appearance: none;
         cursor: pointer;
         display: inline-block;
@@ -53,8 +52,12 @@ describe('Text', () => {
         text-align: center;
         -webkit-text-decoration: none;
         text-decoration: none;
+        -webkit-transition-property: background,border,-webkit-transform;
+        -webkit-transition-property: background,border,transform;
         transition-property: background,border,transform;
+        -webkit-transition-duration: 0.2s;
         transition-duration: 0.2s;
+        -webkit-transition-timing-function: ease-in-out;
         transition-timing-function: ease-in-out;
         padding-left: 16px;
         padding-right: 16px;
@@ -77,10 +80,10 @@ describe('Text', () => {
         color: text;
         height: 16px;
         -webkit-transform: rotate(-0.5turn);
-        -moz-transform: rotate(-0.5turn);
         -ms-transform: rotate(-0.5turn);
         transform: rotate(-0.5turn);
         -webkit-transition: -webkit-transform 0.2s ease-in-out;
+        -webkit-transition: transform 0.2s ease-in-out;
         transition: transform 0.2s ease-in-out;
         width: 16px;
       }

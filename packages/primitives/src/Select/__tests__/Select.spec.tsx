@@ -37,7 +37,6 @@ describe('Select', () => {
         padding: 8px;
         -webkit-appearance: none;
         -moz-appearance: none;
-        -ms-appearance: none;
         appearance: none;
         font-size: inherit;
         line-height: inherit;

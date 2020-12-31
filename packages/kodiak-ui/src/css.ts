@@ -300,7 +300,8 @@ type CssPropsArgument = { theme: Theme } | Theme
 
 export const css = (args: ThemeUIStyleObject = {}) => (
   props: CssPropsArgument = {},
-): CSSObject => {
+): any => {
+  // TODO: There is a type issue with this. We can update to CSSObject with Emotion 11
   const theme: Theme = {
     ...defaultTheme,
     ...('theme' in props ? props.theme : props),

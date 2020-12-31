@@ -14,8 +14,8 @@
     "@types/deepmerge": "^2.2.0"
   },
   "dependencies": {
-    "@emotion/react": "^11.1.4",
-    "@emotion/styled": "^11.0.0",
+    "@emotion/core": "^10.0.27",
+    "@emotion/styled": "^10.0.27",
     "csstype": "^3.0.2",
     "deepmerge": "^4.2.2",
     "zustand": "^3.2.0"

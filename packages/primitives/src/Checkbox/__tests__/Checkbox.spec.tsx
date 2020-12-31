@@ -47,12 +47,10 @@ describe('Checkbox', () => {
         padding: 8px;
         -webkit-appearance: none;
         -moz-appearance: none;
-        -ms-appearance: none;
         appearance: none;
         font-size: inherit;
         line-height: inherit;
         border: 1px solid;
-        border-radius: default;
         color: inherit;
         background-color: transparent;
         height: 1px;
@@ -73,7 +71,7 @@ describe('Checkbox', () => {
         display: block;
       }
 
-      input:focus~.emotion-1 {
+      input:focus ~ .emotion-1 {
         outline: 1px auto;
         outline-offset: 1px;
         outline-color: primary;
@@ -160,12 +158,10 @@ describe('Checkbox', () => {
         padding: 8px;
         -webkit-appearance: none;
         -moz-appearance: none;
-        -ms-appearance: none;
         appearance: none;
         font-size: inherit;
         line-height: inherit;
         border: 1px solid;
-        border-radius: default;
         color: inherit;
         background-color: transparent;
         height: 1px;
@@ -186,7 +182,7 @@ describe('Checkbox', () => {
         display: block;
       }
 
-      input:focus~.emotion-1 {
+      input:focus ~ .emotion-1 {
         outline: 1px auto;
         outline-offset: 1px;
         outline-color: primary;

@@ -27,7 +27,6 @@ export const baseStyles = ({ theme }: { theme: Theme }) =>
     fontSize: 'inherit',
     lineHeight: 'inherit',
     border: '1px solid',
-    borderRadius: 'default',
     color: 'inherit',
     bg: 'transparent',
   })(theme)

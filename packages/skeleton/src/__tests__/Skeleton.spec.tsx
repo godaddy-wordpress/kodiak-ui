@@ -10,12 +10,10 @@ describe('Accordion', () => {
     expect(renderer.create(<Skeleton />).toJSON()).toMatchInlineSnapshot(`
       @keyframes animation-0 {
         0% {
-          -webkit-background-position: -200px 0;
           background-position: -200px 0;
         }
 
         100% {
-          -webkit-background-position: calc(200px + 100%) 0;
           background-position: calc(200px + 100%) 0;
         }
       }
@@ -31,13 +29,7 @@ describe('Accordion', () => {
         margin: 0;
         min-width: 0;
         background-color: #eee;
-        background-image: linear-gradient(
-            90deg,
-            #eee,
-            #f5f5f5,
-            #eee
-          );
-        -webkit-background-size: 200px 100%;
+        background-image: linear-gradient( 90deg, #eee, #f5f5f5, #eee );
         background-size: 200px 100%;
         background-repeat: no-repeat;
         border-radius: default;
@@ -73,12 +65,10 @@ describe('Accordion', () => {
       Array [
         @keyframes animation-0 {
         0% {
-          -webkit-background-position: -200px 0;
           background-position: -200px 0;
         }
 
         100% {
-          -webkit-background-position: calc(200px + 100%) 0;
           background-position: calc(200px + 100%) 0;
         }
       }
@@ -94,13 +84,7 @@ describe('Accordion', () => {
         margin: 0;
         min-width: 0;
         background-color: #eee;
-        background-image: linear-gradient(
-            90deg,
-            #eee,
-            #f5f5f5,
-            #eee
-          );
-        -webkit-background-size: 200px 100%;
+        background-image: linear-gradient( 90deg, #eee, #f5f5f5, #eee );
         background-size: 200px 100%;
         background-repeat: no-repeat;
         border-radius: default;
@@ -122,12 +106,10 @@ describe('Accordion', () => {
         </span>,
         @keyframes animation-0 {
         0% {
-          -webkit-background-position: -200px 0;
           background-position: -200px 0;
         }
 
         100% {
-          -webkit-background-position: calc(200px + 100%) 0;
           background-position: calc(200px + 100%) 0;
         }
       }
@@ -143,13 +125,7 @@ describe('Accordion', () => {
         margin: 0;
         min-width: 0;
         background-color: #eee;
-        background-image: linear-gradient(
-            90deg,
-            #eee,
-            #f5f5f5,
-            #eee
-          );
-        -webkit-background-size: 200px 100%;
+        background-image: linear-gradient( 90deg, #eee, #f5f5f5, #eee );
         background-size: 200px 100%;
         background-repeat: no-repeat;
         border-radius: default;

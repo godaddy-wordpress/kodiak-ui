@@ -33,6 +33,7 @@ describe('DialogHeader', () => {
         display: flex;
         -webkit-box-pack: justify;
         -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
         justify-content: space-between;
         padding: 32px;
       }
