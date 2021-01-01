@@ -1,4 +1,13 @@
-import { css, _variant, styled, sx, KodiakUIProps, Theme } from 'kodiak-ui'
+import {
+  css,
+  _variant,
+  styled,
+  sx,
+  KodiakUIProps,
+  Theme,
+  ThemeUIStyleObject,
+  getComponentBase,
+} from 'kodiak-ui'
 
 /**
  * base
@@ -22,6 +31,24 @@ export const baseStyles = ({ theme }: { theme: Theme }) =>
     bg: 'transparent',
   })(theme)
 
+function base({
+  theme,
+  __base,
+  base,
+}: {
+  theme: Theme
+  __base?: ThemeUIStyleObject
+  base: string | string[]
+}) {
+  const styles = getComponentBase(base ? base : 'textarea')(theme)
+
+  if (!styles || Object.keys(styles)?.length === 0) {
+    return css(__base)(theme)
+  }
+
+  return styles
+}
+
 type TextAreaProps = KodiakUIProps
 
 /**
@@ -35,6 +62,7 @@ export const Textarea = styled('textarea')<TextAreaProps>(
     minWidth: 0,
   },
   baseStyles,
+  base,
   ({ variant: variantProp, theme }) =>
     _variant({ variant: variantProp, theme, variantKey: 'textarea' }),
   sx,
