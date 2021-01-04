@@ -36,8 +36,8 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-yarn-
 
-    - run: yarn install --frozen-lockfile      
+    - run: yarn install --frozen-lockfile
     - run: yarn run typecheck
-    - run: yarn build      
+    - run: yarn build
     - run: yarn lint
     - run: yarn test -w 2
