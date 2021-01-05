@@ -1,81 +1,37 @@
 import * as React from 'react'
-import { Flex, Checkbox, Label } from '@kodiak-ui/primitives'
-
-import { withA11y } from '@storybook/addon-a11y'
+import { Checkbox, CheckboxProps } from '@kodiak-ui/primitives'
 
 export default {
   title: 'Forms/Checkbox',
-  decorators: [withA11y],
   component: Checkbox,
 }
 
-export function Initial() {
-  return (
-    <>
-      <Label sx={{ display: 'flex', alignItems: 'center' }}>
-        <Checkbox variant="checkbox" name="dark-mode" defaultChecked={true} />
-        Dark Mode
-      </Label>
-      <Label sx={{ display: 'flex', alignItems: 'center' }}>
-        <Checkbox name="dark-mode" />
-        Light Mode
-      </Label>
-    </>
-  )
+const Template = (args: CheckboxProps) => (
+  <Checkbox name="checkbox" {...args}>
+    Unsubscribe
+  </Checkbox>
+)
+
+export const Base = Template.bind({})
+Base.args = {}
+
+export const Checked = Template.bind({})
+Checked.args = {
+  checked: true,
 }
 
-export function Indeterminate() {
-  const [checkedItems, setCheckedItems] = React.useState<{
-    [key: string]: boolean
-  }>({
-    option1: false,
-    option2: false,
-  })
+export const Indeterminate = Template.bind({})
+Indeterminate.args = {
+  indeterminate: true,
+}
 
-  const allChecked = Object.keys(checkedItems)
-    ?.map(key => checkedItems[key] === true)
-    ?.every(Boolean)
-  const someChecked = Object.keys(checkedItems)
-    ?.map(key => checkedItems[key] === true)
-    ?.some(Boolean)
+export const Error = Template.bind({})
+Error.args = {
+  error: 'Testing some error',
+}
 
-  return (
-    <>
-      <Checkbox
-        label="Select all"
-        checked={allChecked}
-        indeterminate={someChecked && !allChecked}
-        onChange={e =>
-          setCheckedItems({
-            option1: e.target.checked,
-            option2: e.target.checked,
-          })
-        }
-      />
-      <Flex sx={{ flexDirection: 'column', pl: 6 }}>
-        <Checkbox
-          label="Option 1"
-          name="option1"
-          checked={checkedItems?.option1}
-          onChange={e =>
-            setCheckedItems({
-              ...checkedItems,
-              option1: e.target.checked,
-            })
-          }
-        />
-        <Checkbox
-          label="Option 2"
-          name="option2"
-          checked={checkedItems?.option2}
-          onChange={e =>
-            setCheckedItems({
-              ...checkedItems,
-              option2: e.target.checked,
-            })
-          }
-        />
-      </Flex>
-    </>
-  )
+export const Disabled = Template.bind({})
+Disabled.args = {
+  disabled: true,
+  checked: true,
 }
