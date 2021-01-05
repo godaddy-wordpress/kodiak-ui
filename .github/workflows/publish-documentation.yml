@@ -24,4 +24,4 @@ jobs:
           git config user.email github-actions@github.com
           git add documentation/build -f
           git commit -m "Documentation Updated"
-          git push origin `git subtree split --prefix documentation/build main`:documentation --force
+          git push origin `git subtree split --prefix documentation/build master`:documentation --force
