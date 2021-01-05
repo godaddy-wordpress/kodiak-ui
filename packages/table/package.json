@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/table",
-  "version": "0.3.20",
+  "version": "0.3.21",
   "description": "Components and hook to display accessible and performant HTML tables",
   "main": "dist/table.cjs.js",
   "module": "dist/table.esm.js",
@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@kodiak-ui/hooks": "^0.14.26",
-    "@kodiak-ui/primitives": "^0.20.15"
+    "@kodiak-ui/primitives": "^0.21.0"
   },
   "gitHead": "8a4c5885aed834555e64441966e8f8b860cda441"
 }
