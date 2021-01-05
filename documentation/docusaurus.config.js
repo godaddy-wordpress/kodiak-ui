@@ -7,7 +7,7 @@ module.exports = {
   title: 'Kodiak UI',
   tagline: 'A performant and accessible hook and component library for React',
   url: 'https://skyverge.github.io/kodiak-ui/', // Your website URL
-  baseUrl: '/',
+  baseUrl: '/kodiak-ui/',
   onBrokenLinks: 'throw',
   favicon: 'img/favicon.ico',
   organizationName: 'skyverge', // Usually your GitHub org/user name.
