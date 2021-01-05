@@ -6,7 +6,7 @@ const remarkAdmonitions = require('remark-admonitions')
 module.exports = {
   title: 'Kodiak UI',
   tagline: 'A performant and accessible hook and component library for React',
-  url: 'https://skyverge.github.io/kodiak-ui/', // Your website URL
+  url: 'https://skyverge.github.io/kodiak-ui', // Your website URL
   baseUrl: '/kodiak-ui/',
   onBrokenLinks: 'throw',
   favicon: 'img/favicon.ico',
