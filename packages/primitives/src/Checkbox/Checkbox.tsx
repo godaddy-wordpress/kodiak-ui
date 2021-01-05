@@ -1,221 +1,117 @@
 import * as React from 'react'
-import { Box } from '../Box'
-import { SvgIcon } from '../Svg'
-import { Input } from '../Input'
+import { KodiakUIProps, ThemeUIStyleObject } from 'kodiak-ui'
 import { useCheckbox } from './useCheckbox'
+import { Box } from '../Box'
 import { Label } from '../Label'
-import type { KodiakUIProps } from 'kodiak-ui'
+import { Text } from '../Text'
+import { VisuallyHidden } from '../VisuallyHidden'
+import { MarkCheck } from './MarkCheck'
+import { MarkIndeterminate } from './MarkIndeterminate'
 
-type CheckboxProps = {
+export type CheckboxStyles = {
+  label: ThemeUIStyleObject
+  icon: ThemeUIStyleObject
+}
+
+export type CheckboxProps = {
   children?: React.ReactNode
-  label?: any // TODO: Fix this type
   indeterminate?: boolean
-  css?: any
+  error?: string
+  styles?: CheckboxStyles
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
+  renderIcon?: (props) => React.ReactNode
 } & KodiakUIProps &
-  React.HTMLProps<HTMLInputElement>
+  React.HTMLAttributes<HTMLInputElement>
 
-type CheckboxIcon = React.ComponentProps<typeof SvgIcon>
+export const useCheckboxStyles = (styles: CheckboxStyles) => styles
 
-function CheckboxUnchecked({ sx, ...props }: CheckboxIcon) {
-  return (
-    <SvgIcon
-      title="Checkbox input unchecked"
-      height={16}
-      width={16}
-      viewBox="0 0 16 16"
-      sx={{
-        height: '16px',
-        width: '16px',
-        ...sx,
-      }}
-      {...(props as any)}
-    >
-      <path
-        d="M0 3a3 3 0 013-3h10a3 3 0 013 3v10a3 3 0 01-3 3H3a3 3 0 01-3-3V3z"
-        fill="#fff"
-      />
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M13 1H3a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V3a2 2 0 00-2-2zM3 0a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V3a3 3 0 00-3-3H3z"
-        fill="currentColor"
-      />
-    </SvgIcon>
-  )
-}
-
-function CheckboxChecked({ sx, ...props }: CheckboxIcon) {
-  return (
-    <SvgIcon
-      title="Checkbox input checked"
-      viewBox="0 0 16 16"
-      sx={{
-        height: '16px',
-        width: '16px',
-        ...sx,
-      }}
-      {...(props as any)}
-    >
-      <path
-        d="M0 3a3 3 0 013-3h10a3 3 0 013 3v10a3 3 0 01-3 3H3a3 3 0 01-3-3V3z"
-        fill="#0076D1"
-      />
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M13 1H3a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V3a2 2 0 00-2-2zM3 0a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V3a3 3 0 00-3-3H3z"
-        fill="currentColor"
-      />
-      <path
-        d="M12.937 5.062L11.7 3.815a.222.222 0 00-.313 0L6.165 9.068a.221.221 0 01-.314 0L4.615 7.822a.221.221 0 00-.314 0L3.065 9.068a.223.223 0 000 .315l2.786 2.802a.222.222 0 00.314 0l6.772-6.812a.223.223 0 000-.311z"
-        fill="#fff"
-      />
-    </SvgIcon>
-  )
-}
-
-function CheckboxIndeterminate(props: CheckboxIcon) {
-  return (
-    <SvgIcon
-      title="Checkbox input checked"
-      height={16}
-      width={16}
-      viewBox="0 0 16 16"
-      {...props}
-    >
-      <path
-        d="M0 3a3 3 0 013-3h10a3 3 0 013 3v10a3 3 0 01-3 3H3a3 3 0 01-3-3V3z"
-        fill="#0076D1"
-      />
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M13 1H3a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V3a2 2 0 00-2-2zM3 0a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V3a3 3 0 00-3-3H3z"
-        fill="currentColor"
-      />
-      <path
-        d="M11.478 6.75H4.522A.529.529 0 004 7.286v1.428c0 .296.234.536.522.536h6.956c.288 0 .522-.24.522-.536V7.286a.529.529 0 00-.522-.536z"
-        fill="#fff"
-      />
-    </SvgIcon>
-  )
-}
-
-function CheckboxIcon({ checked, indeterminate, sx, ...props }: CheckboxProps) {
-  if (checked) {
-    return (
-      <CheckboxChecked
-        {...(props as any)}
-        sx={{
-          ...sx,
-          color: 'primary',
-          display: 'block',
-        }}
-      />
-    )
-  }
-
-  if (indeterminate) {
-    return (
-      <CheckboxIndeterminate
-        {...(props as any)}
-        sx={{
-          ...sx,
-          color: 'primary',
-          display: 'block',
-        }}
-      />
-    )
-  }
-
-  return (
-    <CheckboxUnchecked
-      {...(props as any)}
-      sx={{
-        ...sx,
-        color: 'defaultGray',
-        display: 'block',
-      }}
-    />
-  )
-}
-
-function CheckboxWrapper({
-  id,
-  label,
-  children,
-  ...props
-}: {
-  id?: string
-  label?: string | React.ReactNode
-  children: React.ReactNode
-}) {
-  return label ? (
-    <Label
-      {...props}
-      htmlFor={id}
-      sx={{
-        alignItems: 'center',
-        display: 'flex',
-        position: 'relative',
-        mb: 0,
-      }}
-    >
-      {children} {label}
-    </Label>
-  ) : (
-    <>{children}</>
-  )
-}
-
-export const Checkbox = React.forwardRef(
-  (
-    {
-      id,
-      label,
-      checked = false,
-      variant = 'checkbox',
-      variantKey = 'forms',
-      ...props
-    }: CheckboxProps,
-    ref: React.Ref<HTMLInputElement>,
-  ) => {
+export const Checkbox = React.forwardRef<any, CheckboxProps>(
+  ({ children, styles, renderIcon: renderIconProp, base, ...props }, ref) => {
     const { getLabelProps, getInputProps, getIconProps } = useCheckbox({
-      id,
-      checked,
       ...props,
     })
 
-    return (
-      <CheckboxWrapper id={id} label={label} {...getLabelProps()}>
-        <Box>
-          <Input
-            {...getInputProps()}
-            ref={ref}
+    const defaultIcon = ({ isIndeterminate, isChecked, ...props }) => (
+      <Box
+        as="span"
+        __base={{
+          bg: 'transparent',
+          border: '1px solid',
+          borderColor: 'muted',
+          height: '16px',
+          lineHeight: 1,
+          position: 'relative',
+          width: '16px',
+          mr: 2,
+          '&[data-checkbox-checked=true]': {
+            bg: 'primary',
+            borderColor: 'primary',
+          },
+          '&[data-checkbox-indeterminate=true]': {
+            bg: 'primary',
+            borderColor: 'primary',
+          },
+          '&[data-checkbox-error=true]': {
+            bg: 'transparent',
+            borderColor: 'danger',
+          },
+        }}
+        base={base ? base : 'checkbox'}
+        sx={styles?.icon}
+        {...props}
+      >
+        {isChecked ? (
+          <MarkCheck
             sx={{
-              height: 1,
               position: 'absolute',
-              opacity: 0,
-              overflow: 'hidden',
-              width: 1,
-              zIndex: -1,
+              top: '50%',
+              transform: 'translateY(-50%)',
+              left: 0,
+              right: 0,
+              width: '100%',
             }}
           />
-          <CheckboxIcon
-            {...getIconProps()}
-            variant={variant}
-            variantKey={variantKey}
+        ) : null}
+        {isIndeterminate ? (
+          <MarkIndeterminate
             sx={{
-              'input:focus ~ &': {
-                outline: '1px auto',
-                outlineOffset: '1px',
-                outlineColor: 'primary',
-              },
+              position: 'absolute',
+              top: '50%',
+              transform: 'translateY(-50%)',
+              left: 0,
+              right: 0,
+              width: '100%',
             }}
           />
-        </Box>
-      </CheckboxWrapper>
+        ) : null}
+      </Box>
+    )
+
+    function renderIcon() {
+      const iconProps = getIconProps()
+      return renderIconProp?.(iconProps) || defaultIcon(iconProps)
+    }
+
+    return (
+      <Label
+        {...getLabelProps()}
+        sx={{
+          alignItems: 'center',
+          display: 'flex',
+          fontWeight: 'normal',
+          lineHeight: 1,
+          '&[data-checkbox-disabled=true]': {
+            opacity: 0.4,
+          },
+          ...styles?.label,
+        }}
+      >
+        <VisuallyHidden>
+          <input ref={ref} {...getInputProps()} />
+        </VisuallyHidden>
+        {renderIcon()}
+        {children ? <Text as="span">{children}</Text> : null}
+      </Label>
     )
   },
 )

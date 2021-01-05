@@ -3,11 +3,13 @@ import { useControlled } from '@kodiak-ui/hooks'
 
 export type UseCheckboxProps = {
   indeterminate?: boolean
+  error?: string
 } & React.InputHTMLAttributes<HTMLInputElement>
 
 export function useCheckbox({
   id,
   indeterminate,
+  error,
   checked: checkedProp,
   defaultChecked,
   readOnly,
@@ -44,9 +46,10 @@ export function useCheckbox({
     function getLabelProps() {
       return {
         htmlFor: id,
+        'data-checkbox-disabled': disabled,
       }
     },
-    [id],
+    [disabled, id],
   )
 
   const getInputProps = React.useCallback(
@@ -68,12 +71,15 @@ export function useCheckbox({
   const getIconProps = React.useCallback(
     function getIconProps() {
       return {
-        checked: isChecked,
-        indeterminate,
+        isChecked,
+        isIndeterminate: indeterminate,
         'aria-hidden': true,
+        'data-checkbox-checked': isChecked,
+        'data-checkbox-indeterminate': indeterminate,
+        'data-checkbox-error': !!error,
       }
     },
-    [indeterminate, isChecked],
+    [error, indeterminate, isChecked],
   )
 
   return {
