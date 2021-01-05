@@ -1,0 +1,27 @@
+name: Build and Deploy Documentation
+on:
+  workflow_dispatch:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2.3.1
+
+      - name: Install and Build 🔧
+        run: |
+          cd documentation
+          npm install
+          npm run build
+      - name: Deploy 🚀
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add documentation/build -f
+          git commit -m "Documentation Updated"
+          git push origin `git subtree split --prefix documentation/build main`:documentation --force

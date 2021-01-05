@@ -1,75 +1,35 @@
 const remarkCodesandbox = require('remark-codesandbox')
 const path = require('path')
 
+const remarkAdmonitions = require('remark-admonitions')
+
 module.exports = {
   title: 'Kodiak UI',
   tagline: 'A performant and accessible hook and component library for React',
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://github.io/kodiak-ui', // Your website URL
   baseUrl: '/',
+  onBrokenLinks: 'throw',
   favicon: 'img/favicon.ico',
-  organizationName: 'skyverge',
-  projectName: 'kodiak-ui',
+  organizationName: 'skyverge', // Usually your GitHub org/user name.
+  projectName: 'skyverge.github.io', // Usually your repo name.
   themeConfig: {
-    // algolia: {
-    //   apiKey: process.env.ALGOLIA_API_TOKEN,
-    //   indexName: 'kodiak-ui',
-    // },
+    hideableSidebar: true,
     navbar: {
       title: 'Kodiak UI',
       logo: {
-        alt: 'SkyVerge Logo',
+        alt: 'My Site Logo',
         src: 'img/logo.svg',
       },
       items: [
-        {
-          to: '/introduction',
-          label: 'Documentation',
-          position: 'right',
-        },
         {
           href: 'https://github.com/skyverge/kodiak-ui',
           label: 'GitHub',
           position: 'right',
         },
-        {
-          href: 'https://storybook.kodiak-ui.com',
-          label: 'Storybook',
-          position: 'right',
-        },
       ],
     },
     footer: {
-      style: 'dark',
-      links: [
-        {
-          title: 'Docs',
-          items: [
-            {
-              label: 'Docs',
-              to: '/introduction',
-            },
-          ],
-        },
-        {
-          title: 'Community',
-          items: [
-            {
-              label: 'Twitter',
-              href: 'https://twitter.com/skyverge',
-            },
-          ],
-        },
-        {
-          title: 'More',
-          items: [
-            {
-              label: 'GitHub',
-              href: 'https://github.com/skyverge/kodiak-ui',
-            },
-          ],
-        },
-      ],
-      copyright: `Copyright © ${new Date().getFullYear()} SkyVerge Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()}`,
     },
     prism: {
       theme: require('prism-react-renderer/themes/dracula'),
@@ -81,9 +41,11 @@ module.exports = {
       '@docusaurus/preset-classic',
       {
         docs: {
-          path: 'docs',
+          // Please change this to your repo.
+          editUrl:
+            'https://github.com/skyverge/kodiak-ui/tree/master/documentation',
+          remarkPlugins: [remarkAdmonitions],
           routeBasePath: '/',
-          include: ['**/*.md', '**/*.mdx'],
           sidebarPath: require.resolve('./sidebars.js'),
           remarkPlugins: [
             [
@@ -114,7 +76,6 @@ module.exports = {
               },
             ],
           ],
-          editUrl: 'https://github.com/skyverge/kodiak-ui/edit/master/website/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
