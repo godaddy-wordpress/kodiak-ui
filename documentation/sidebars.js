@@ -1,6 +1,9 @@
 module.exports = {
   docs: [
-    'introduction',
+    {
+      type: 'doc',
+      id: 'introduction',
+    },
     'getting-started',
     'themeing',
     'sx-prop',
