@@ -431,6 +431,8 @@ interface OverwriteCSSProperties {
    * @see https://developer.mozilla.org/docs/Web/CSS/z-index
    */
   zIndex?: CSS.Property.ZIndex | string
+
+  position?: CSS.Property.Position | string
 }
 
 /**
