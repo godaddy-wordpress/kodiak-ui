@@ -73,6 +73,7 @@ export const Badge = React.forwardRef(function Badge(
     variants,
     children,
     __base,
+    base = 'badge',
   }: BadgeProps,
   ref: React.Ref<any>,
 ) {
