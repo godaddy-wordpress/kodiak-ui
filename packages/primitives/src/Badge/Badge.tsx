@@ -74,6 +74,7 @@ export const Badge = React.forwardRef(function Badge(
     children,
     __base,
     base = 'badge',
+    sx,
   }: BadgeProps,
   ref: React.Ref<any>,
 ) {
@@ -126,6 +127,8 @@ export const Badge = React.forwardRef(function Badge(
             ? getPositionStyles({ count: userCount, position, showZero })
             : null),
         }}
+        base={base}
+        sx={sx}
       >
         {content}
       </Box>

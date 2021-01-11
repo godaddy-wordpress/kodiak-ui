@@ -1,3 +1,3 @@
-export { useTooltip } from './useTooltip'
-export { Tooltip } from './Tooltip'
-export { TooltipArrow } from './TooltipArrow'
+export * from './useTooltip'
+export * from './Tooltip'
+export * from './TooltipArrow'
