@@ -25,6 +25,6 @@ export const Overlay = forwardRef(
       </Box>
     )
 
-    return ReactDOM.createPortal(element, container || document.body)
+    return ReactDOM.createPortal(element, container || document?.body)
   },
 )

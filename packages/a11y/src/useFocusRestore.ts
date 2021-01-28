@@ -53,7 +53,7 @@ export function useFocusRestore(
     contain: FocusScopeProps['contain']
   },
 ) {
-  const nodeToRestore = document.activeElement as HTMLElement
+  const nodeToRestore = document?.activeElement as HTMLElement
 
   const onKeyDown = useCallback(
     (event: KeyboardEvent) => {

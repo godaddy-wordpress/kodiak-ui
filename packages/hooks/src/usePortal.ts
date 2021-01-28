@@ -54,7 +54,7 @@ export function usePortal({
 
   const targetRef = React.useRef() as React.MutableRefObject<HTMLElement>
   const portalRef = React.useRef(
-    document.createElement('div'),
+    document?.createElement('div'),
   ) as React.MutableRefObject<HTMLElement>
 
   React.useEffect(() => {
@@ -62,7 +62,7 @@ export function usePortal({
   }, [portalRef])
 
   const elToMountTo = React.useMemo(() => {
-    return document.body
+    return document?.body
   }, [])
 
   const createEvent = React.useCallback(
