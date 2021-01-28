@@ -127,3 +127,19 @@ const { theme } = createDesignSystem({
 ```
 
 Both `secondary` and `lg` variants will be available to all components and can be passed into the `variants` prop for any Kodiak UI component.
+
+## Global definitions
+
+If there are global css to be defined:
+
+```ts
+const { theme } = createDesignSystem({
+  // defaults to body, but could any css selector such as #id or .className
+  globalScope: 'body',
+  global: {
+    p: {
+      fontFamily: 'sans'
+    }
+  }
+})
+```
