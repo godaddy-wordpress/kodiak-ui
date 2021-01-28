@@ -52,13 +52,11 @@ export function usePortal({
 }: UsePortalOptions = {}): UsePortalReturn {
   const [isOpen, setIsOpen] = React.useState(defaultIsOpen)
 
-  const targetRef = React.useRef() as React.MutableRefObject<HTMLElement>
-  const portalRef = React.useRef(
-    document?.createElement('div'),
-  ) as React.MutableRefObject<HTMLElement>
+  const targetRef = React.useRef<HTMLElement>()
+  const portalRef = React.useRef<HTMLElement>()
 
   React.useEffect(() => {
-    if (!portalRef.current) portalRef.current = document?.createElement('div')
+    if (!portalRef.current) portalRef.current = document.createElement('div')
   }, [portalRef])
 
   const elToMountTo = React.useMemo(() => {
