@@ -98,11 +98,12 @@ export function useRowSelect<Data>({
               key: 'selectAll',
               children: (
                 <Checkbox
-                  label={<VisuallyHidden>Select all rows</VisuallyHidden>}
                   checked={allSelected}
                   indeterminate={someSelected}
                   onChange={onSelectAll}
-                />
+                >
+                  <VisuallyHidden>Select all rows</VisuallyHidden>
+                </Checkbox>
               ),
               width: '48px',
             },
@@ -120,10 +121,11 @@ export function useRowSelect<Data>({
           children: (
             <Checkbox
               id={`row-${id}`}
-              label={<VisuallyHidden>Select row {id}</VisuallyHidden>}
               checked={allRecordsSelected || selectedRows?.[id] || false}
               onChange={e => onSelect(e, id)}
-            />
+            >
+              <VisuallyHidden>Select row {id}</VisuallyHidden>
+            </Checkbox>
           ),
           width: '48px',
         },
