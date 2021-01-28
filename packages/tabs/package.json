@@ -9,8 +9,8 @@
   "homepage": "https://kodiak-ui.com",
   "license": "MIT",
   "source": "src/index.ts",
-  "main": "dist/tabs.cjs.js",
-  "module": "dist/tabs.esm.js",
+  "main": "dist/kodiak-ui-tabs.cjs.js",
+  "module": "dist/kodiak-ui-tabs.esm.js",
   "files": [
     "dist"
   ],

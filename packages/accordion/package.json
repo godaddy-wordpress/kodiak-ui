@@ -10,8 +10,8 @@
   "homepage": "https://github.com/skyverge/kodiak-ui#readme",
   "license": "MIT",
   "source": "src/index.ts",
-  "main": "dist/accordion.cjs.js",
-  "module": "dist/accordion.esm.js",
+  "main": "dist/kodiak-ui-accordion.cjs.js",
+  "module": "dist/kodiak-ui-accordion.esm.js",
   "files": [
     "dist"
   ],

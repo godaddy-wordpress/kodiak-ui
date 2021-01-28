@@ -2,8 +2,8 @@
   "name": "@kodiak-ui/combobox",
   "version": "0.3.23",
   "description": "Component to display custom combobox elements with typeahead capabilities",
-  "main": "dist/combobox.cjs.js",
-  "module": "dist/combobox.esm.js",
+  "main": "dist/kodiak-ui-combobox.cjs.js",
+  "module": "dist/kodiak-ui-combobox.esm.js",
   "source": "src/index.ts",
   "files": [
     "dist"

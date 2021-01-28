@@ -10,8 +10,8 @@
   "homepage": "https://github.com/skyverge/kodiak-ui#readme",
   "license": "MIT",
   "source": "src/index.ts",
-  "main": "dist/progress.cjs.js",
-  "module": "dist/progress.esm.js",
+  "main": "dist/kodiak-ui-progress.cjs.js",
+  "module": "dist/kodiak-ui-progress.esm.js",
   "files": [
     "dist"
   ],

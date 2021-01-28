@@ -2,8 +2,8 @@
   "name": "@kodiak-ui/menu",
   "version": "0.1.64",
   "description": "Component to display custom, accessible, and performant dropdown menus",
-  "main": "dist/menu.cjs.js",
-  "module": "dist/menu.esm.js",
+  "main": "dist/kodiak-ui-menu.cjs.js",
+  "module": "dist/kodiak-ui-menu.esm.js",
   "source": "src/index.ts",
   "files": [
     "dist"

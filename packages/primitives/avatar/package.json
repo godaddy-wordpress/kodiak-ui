@@ -1,7 +1,4 @@
 {
-  "main": "dist/primitives.cjs.js",
-  "module": "dist/primitives.esm.js",
-  "preconstruct": {
-    "source": "../src/Avatar"
-  }
+  "main": "dist/kodiak-ui-primitives-avatar.cjs.js",
+  "module": "dist/kodiak-ui-primitives-avatar.esm.js"
 }

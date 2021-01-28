@@ -10,8 +10,8 @@
   "homepage": "https://github.com/skyverge/kodiak-ui#readme",
   "license": "MIT",
   "source": "src/index.ts",
-  "main": "dist/data-visualization.cjs.js",
-  "module": "dist/data-visualization.esm.js",
+  "main": "dist/kodiak-ui-data-visualization.cjs.js",
+  "module": "dist/kodiak-ui-data-visualization.esm.js",
   "files": [
     "dist"
   ],

@@ -11,8 +11,8 @@
   "homepage": "https://github.com/skyverge/kodiak-ui#readme",
   "license": "MIT",
   "source": "src/index.ts",
-  "main": "dist/pagination.cjs.js",
-  "module": "dist/pagination.esm.js",
+  "main": "dist/kodiak-ui-pagination.cjs.js",
+  "module": "dist/kodiak-ui-pagination.esm.js",
   "files": [
     "dist"
   ],

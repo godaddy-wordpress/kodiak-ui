@@ -1,8 +1,8 @@
 {
   "name": "@kodiak-ui/hooks",
   "version": "0.14.26",
-  "main": "dist/hooks.cjs.js",
-  "module": "dist/hooks.esm.js",
+  "main": "dist/kodiak-ui-hooks.cjs.js",
+  "module": "dist/kodiak-ui-hooks.esm.js",
   "source": "src/index.ts",
   "author": "Wesley Cole <wes@skyverge.com>, Alex Chan <alex@skyverge.com>",
   "license": "MIT",
@@ -18,27 +18,5 @@
   "dependencies": {
     "resize-observer-polyfill": "^1.5.1",
     "zustand": "^3.2.0"
-  },
-  "preconstruct": {
-    "entrypoints": [
-      ".",
-      "use-before-unload",
-      "use-controlled",
-      "use-debounce",
-      "use-event-listener",
-      "use-event-log-route",
-      "use-event-logger",
-      "use-id",
-      "use-is-mounted",
-      "use-key",
-      "use-keyboard",
-      "use-measure",
-      "use-media-query",
-      "use-on-click-outside",
-      "use-portal",
-      "use-previous",
-      "use-subscribe",
-      "use-translation"
-    ]
   }
 }

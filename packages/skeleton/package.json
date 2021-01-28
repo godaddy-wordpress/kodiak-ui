@@ -10,8 +10,8 @@
   "homepage": "https://github.com/skyverge/kodiak-ui#readme",
   "license": "MIT",
   "source": "src/index.ts",
-  "main": "dist/skeleton.cjs.js",
-  "module": "dist/skeleton.esm.js",
+  "main": "dist/kodiak-ui-skeleton.cjs.js",
+  "module": "dist/kodiak-ui-skeleton.esm.js",
   "files": [
     "dist"
   ],

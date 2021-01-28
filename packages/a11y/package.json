@@ -2,8 +2,8 @@
   "name": "@kodiak-ui/a11y",
   "version": "0.1.8",
   "description": "Accessibility components and hooks",
-  "main": "dist/a11y.cjs.js",
-  "module": "dist/a11y.esm.js",
+  "main": "dist/kodiak-ui-a11y.cjs.js",
+  "module": "dist/kodiak-ui-a11y.esm.js",
   "source": "src/index.ts",
   "files": [
     "dist"

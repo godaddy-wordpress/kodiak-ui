@@ -2,8 +2,8 @@
   "name": "@kodiak-ui/utils",
   "version": "0.0.27",
   "description": "Common utility functions to use when building Kodiak UI hooks and components",
-  "main": "dist/utils.cjs.js",
-  "module": "dist/utils.esm.js",
+  "main": "dist/kodiak-ui-utils.cjs.js",
+  "module": "dist/kodiak-ui-utils.esm.js",
   "source": "src/index.ts",
   "files": [
     "dist"

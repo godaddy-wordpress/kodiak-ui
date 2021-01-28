@@ -1,8 +1,8 @@
 {
   "name": "@kodiak-ui/babel-plugin",
   "version": "1.0.8",
-  "main": "dist/babel-plugin.cjs.js",
-  "module": "dist/babel-plugin.esm.js",
+  "main": "dist/kodiak-ui-babel-plugin.cjs.js",
+  "module": "dist/kodiak-ui-babel-plugin.esm.js",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.12.9",

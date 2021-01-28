@@ -5,8 +5,8 @@
   "files": [
     "dist"
   ],
-  "main": "dist/theme.cjs.js",
-  "module": "dist/theme.esm.js",
+  "main": "dist/kodiak-ui-theme.cjs.js",
+  "module": "dist/kodiak-ui-theme.esm.js",
   "author": "Alex Chan <alex@skyverge.com>",
   "license": "MIT",
   "gitHead": "3b66833063904e565cc40ba900f78e4a9200949b",

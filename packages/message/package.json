@@ -2,8 +2,8 @@
   "name": "@kodiak-ui/message",
   "version": "0.3.23",
   "description": "Component to display messages to users (i.e. alerts, notifications)",
-  "main": "dist/message.cjs.js",
-  "module": "dist/message.esm.js",
+  "main": "dist/kodiak-ui-message.cjs.js",
+  "module": "dist/kodiak-ui-message.esm.js",
   "source": "src/index.ts",
   "files": [
     "dist"
