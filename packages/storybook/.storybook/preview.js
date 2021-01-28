@@ -13,6 +13,12 @@ export const parameters = {
 
 const { theme } = createDesignSystem({
   system,
+  globalScope: 'body',
+  global: {
+    p: {
+      fontFamily: 'body',
+    },
+  },
   modes: {
     dark: {
       colors: {
