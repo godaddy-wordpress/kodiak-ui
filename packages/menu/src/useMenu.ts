@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { createPopper, VirtualElement, Placement } from '@popperjs/core'
 import { usePortal, useKey, useOnClickOutside } from '@kodiak-ui/hooks'
-import { hasKey } from './utils'
+import { hasKey, useIsomorphicLayoutEffect } from './utils'
 
 /**
  * Create all of the HTML attributes for an element
@@ -203,7 +203,7 @@ export function useMenu({
     Portal,
   } = usePortal()
 
-  React.useLayoutEffect(
+  useIsomorphicLayoutEffect(
     function initializePopper() {
       if (!isExpanded && (!buttonRef.current || !menuRef.current)) {
         return
