@@ -126,10 +126,6 @@ export function usePortal({
 
   const Portal = React.useCallback(
     ({ children }: { children: React.ReactNode }) => {
-      if (!window) {
-        return null
-      }
-
       if (portalRef.current != null) {
         return createPortal(children, portalRef.current)
       }
