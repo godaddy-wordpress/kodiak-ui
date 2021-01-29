@@ -1,7 +1,12 @@
 import * as React from 'react'
 import { createPopper, VirtualElement, Placement } from '@popperjs/core'
-import { usePortal, useKey, useOnClickOutside } from '@kodiak-ui/hooks'
-import { hasKey, useIsomorphicLayoutEffect } from './utils'
+import {
+  usePortal,
+  useKey,
+  useOnClickOutside,
+  useIsomorphicLayoutEffect,
+} from '@kodiak-ui/hooks'
+import { hasKey } from './utils'
 
 /**
  * Create all of the HTML attributes for an element

@@ -4,6 +4,7 @@ import {
   TABBABLE_ELEMENT_SELECTOR,
   FOCUSABLE_ELEMENT_SELECTOR,
 } from './FocusScope'
+import { useSSR } from '@kodiak-ui/hooks'
 import { isNotTabKey, isInScope, focusElement } from './useFocusContain'
 
 export function getFocusableTreeWalker(
@@ -53,7 +54,10 @@ export function useFocusRestore(
     contain: FocusScopeProps['contain']
   },
 ) {
-  const nodeToRestore = document?.activeElement as HTMLElement
+  const { isBrowser } = useSSR()
+  const nodeToRestore = isBrowser
+    ? (document.activeElement as HTMLElement)
+    : null
 
   const onKeyDown = useCallback(
     (event: KeyboardEvent) => {
