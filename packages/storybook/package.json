@@ -23,7 +23,6 @@
     "@kodiak-ui/menu": "^0.1.64",
     "@kodiak-ui/message": "^0.3.23",
     "@kodiak-ui/pagination": "^0.2.23",
-    "@kodiak-ui/primitives": "^0.21.2",
     "@kodiak-ui/progress": "^0.2.23",
     "@kodiak-ui/select": "^0.3.23",
     "@kodiak-ui/table": "^0.3.23",
@@ -46,11 +45,13 @@
     "theme-ui": "^0.3.4"
   },
   "devDependencies": {
+    "@kodiak-ui/primitives": "^0.21.2",
     "@storybook/addon-controls": "^6.1.11",
     "@storybook/addon-essentials": "^6.1.11",
     "@storybook/addon-links": "^6.1.11",
-    "@types/react": "^16.9.49",
+    "@types/react": "^17.0.0",
     "@types/react-dom": "^16.9.8",
+    "kodiak-ui": "^0.5.15",
     "regenerator-runtime": "^0.13.5",
     "thread-loader": "^2.1.3",
     "ts-jest": "^26.4.4",
