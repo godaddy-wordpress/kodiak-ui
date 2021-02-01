@@ -45,7 +45,7 @@
     "theme-ui": "^0.3.4"
   },
   "devDependencies": {
-    "@kodiak-ui/primitives": "^0.21.2",
+    "@kodiak-ui/primitives": "^0.21.3-alpha.4+2fc0e31",
     "@storybook/addon-controls": "^6.1.11",
     "@storybook/addon-essentials": "^6.1.11",
     "@storybook/addon-links": "^6.1.11",
