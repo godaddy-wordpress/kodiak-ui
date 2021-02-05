@@ -55,10 +55,10 @@ export const theme: Theme = {
   },
   global: {
     body: {
-      fontFamily: 'body',
+      fontFamily: 'sans',
       fontSize: '100%',
-      fontWeight: 'body',
-      lineHeight: 'body',
+      fontWeight: 'medium',
+      lineHeight: 'normal',
       margin: 0,
       padding: 0,
     },

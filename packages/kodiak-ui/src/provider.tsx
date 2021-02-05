@@ -4,35 +4,23 @@ import { css, merge, jsx, useStore, Theme } from '.'
 import { toCustomProperties, createColorStyles } from './custom-properties'
 import { applyMode } from './color-mode'
 
-const GlobalStyles = ({ scope, global }) =>
+const GlobalStyles = ({ global }) =>
   jsx(Global, {
     styles: (emotionTheme: Theme): any => {
       const theme = emotionTheme as Theme
       const colorStyles = createColorStyles(theme)
-
-      const globalStyles = scope
-        ? Object.keys(global)?.reduce((acc, curr) => {
-            const scopeKey =
-              curr === '*' || curr === 'body' ? scope : `${scope} ${curr}`
-            return {
-              ...acc,
-              [scopeKey]: global?.[curr],
-            }
-          }, {})
-        : global
 
       return css({
         '*': {
           boxSizing: 'border-box',
         },
         ...colorStyles,
-        ...globalStyles,
+        ...global,
       })(theme)
     },
   })
 
 interface ContextValue {
-  scope?: string
   theme: Theme
 }
 
@@ -46,7 +34,7 @@ export function BaseProvider({
   context,
   children,
 }: React.PropsWithChildren<{ context: ContextValue }>) {
-  const { scope, theme } = context
+  const { theme } = context
   theme.colors = toCustomProperties(theme.colors, 'colors')
 
   return jsx(
@@ -57,18 +45,16 @@ export function BaseProvider({
       {
         value: context,
       },
-      jsx(GlobalStyles, { scope, global: theme.global }),
+      jsx(GlobalStyles, { global: theme.global }),
       children,
     ),
   )
 }
 
 export function ThemeProvider({
-  scope,
   theme,
   children,
 }: {
-  scope?: string
   theme: Theme
   children: React.ReactNode
 }) {
@@ -85,7 +71,6 @@ export function ThemeProvider({
   const mergedTheme = merge.all(themeWithMode, componentsAndVariants)
 
   const context = {
-    scope,
     theme: mergedTheme,
   }
 
