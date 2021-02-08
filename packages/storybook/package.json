@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/storybook",
-  "version": "0.2.36",
+  "version": "0.2.37",
   "main": "dist/storybook.cjs.js",
   "module": "dist/storybook.esm.js",
   "private": true,
@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.12.9",
-    "@kodiak-ui/a11y": "^0.1.8",
+    "@kodiak-ui/a11y": "^0.1.9",
     "@kodiak-ui/autocomplete": "^0.1.17",
     "@kodiak-ui/combobox": "^0.3.23",
     "@kodiak-ui/data-visualization": "^0.2.23",
@@ -45,7 +45,7 @@
     "theme-ui": "^0.3.4"
   },
   "devDependencies": {
-    "@kodiak-ui/primitives": "^0.21.3-alpha.4+2fc0e31",
+    "@kodiak-ui/primitives": "^0.21.3",
     "@storybook/addon-controls": "^6.1.11",
     "@storybook/addon-essentials": "^6.1.11",
     "@storybook/addon-links": "^6.1.11",

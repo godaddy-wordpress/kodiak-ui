@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/a11y",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Accessibility components and hooks",
   "main": "dist/a11y.cjs.js",
   "module": "dist/a11y.esm.js",
@@ -15,8 +15,8 @@
   },
   "scripts": {},
   "peerDependencies": {
-    "kodiak-ui": "^0.5.9",
     "@kodiak-ui/hooks": "^0.14.26",
+    "kodiak-ui": "^0.5.9",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   }
