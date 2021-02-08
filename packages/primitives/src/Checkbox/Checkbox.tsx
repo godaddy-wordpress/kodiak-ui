@@ -21,7 +21,7 @@ export type CheckboxProps = {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
   renderIcon?: (props) => React.ReactNode
 } & KodiakUIProps &
-  React.HTMLAttributes<HTMLInputElement>
+  React.InputHTMLAttributes<HTMLInputElement>
 
 export const useCheckboxStyles = (styles: CheckboxStyles) => styles
 
@@ -84,6 +84,7 @@ export const Checkbox = React.forwardRef<any, CheckboxProps>(
             }}
           />
         ) : null}
+        <input name="test"></input>
       </Box>
     )
 

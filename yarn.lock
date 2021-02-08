@@ -2138,10 +2138,118 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
+"@kodiak-ui/autocomplete@^0.1.17":
+  version "0.1.17"
+  resolved "https://registry.yarnpkg.com/@kodiak-ui/autocomplete/-/autocomplete-0.1.17.tgz#b5a50dd42bb24460ad86e2ad0af882a9161118e4"
+  integrity sha512-bZrWxAMLw8+K2SqUbsQPwblI1+wOKMOuNJDWBApamC+Pl3r3h+zOGXugZPLfg7F6jINELPSOj304BO9ds//55A==
+  dependencies:
+    "@kodiak-ui/hooks" "^0.10.10"
+    "@kodiak-ui/primitives" "^0.21.2"
+    scroll-into-view-if-needed "^2.2.26"
+
+"@kodiak-ui/combobox@^0.3.23":
+  version "0.3.23"
+  resolved "https://registry.yarnpkg.com/@kodiak-ui/combobox/-/combobox-0.3.23.tgz#ebc1f56ad1ca425041b7d6d45b60e6cf7df3ef11"
+  integrity sha512-cNedfHvi88qIjPT9qKryBxGYNLGAgwE3XBAVamLri9WHa3qSrOqZFENxVptfzK22iFuxbigz6sDE47GAIAFxpg==
+  dependencies:
+    "@kodiak-ui/primitives" "^0.21.2"
+    downshift "^5.4.5"
+
+"@kodiak-ui/data-visualization@^0.2.23":
+  version "0.2.23"
+  resolved "https://registry.yarnpkg.com/@kodiak-ui/data-visualization/-/data-visualization-0.2.23.tgz#75cbf4fd3d1251037a811306c193f1eac41cf561"
+  integrity sha512-o54rqWgVzOY0M0R1XX0MkIAMwJhByqNiM54xR5ydKy97M0zQ8asE5HKFwhHQoaE3FFw9W9Ov/Sa3MQiPDKOCKg==
+  dependencies:
+    "@kodiak-ui/hooks" "^0.14.26"
+    "@kodiak-ui/primitives" "^0.21.2"
+    "@kodiak-ui/progress" "^0.2.23"
+
+"@kodiak-ui/dialog@^1.0.23":
+  version "1.0.23"
+  resolved "https://registry.yarnpkg.com/@kodiak-ui/dialog/-/dialog-1.0.23.tgz#5e6848b1d35bf801d51d7e2d4e5c914fa1f3bae7"
+  integrity sha512-whJm/8muaLPtDy9mFsgLUrt8J+5yOASYGbnJhbfBP9f4DUj0pFljD58GlX2sMjXQ3C1SR/zhFE6wYcuuLe5jkA==
+  dependencies:
+    "@kodiak-ui/a11y" "^0.1.8"
+    "@kodiak-ui/primitives" "^0.21.2"
+
 "@kodiak-ui/hooks@^0.10.10":
   version "0.10.10"
   resolved "https://registry.yarnpkg.com/@kodiak-ui/hooks/-/hooks-0.10.10.tgz#24f22ee4cfdae97f112c8295f6d3df2f8973ac86"
   integrity sha512-rvewevXz3Rr7yeJtCQMOuExpoB2oCs7qBW48Xt/JwKJZ7Q3TD/AuOKxaFjklk70r3gSaT1a36WDIFE7XqITErQ==
+
+"@kodiak-ui/hooks@^0.14.26":
+  version "0.14.26"
+  resolved "https://registry.yarnpkg.com/@kodiak-ui/hooks/-/hooks-0.14.26.tgz#4bf08c1693c95e0b3b41c26333ae86c66e5c7ff2"
+  integrity sha512-i3ftPrjRPLpevnb0SURqIuwKX+0JOTgiyi5peKqt3bRG76mvQ6to9AY6W1Uhq8WEvhFIpiFhNAZGRguC1HaE8w==
+  dependencies:
+    resize-observer-polyfill "^1.5.1"
+    zustand "^3.2.0"
+
+"@kodiak-ui/menu@^0.1.64":
+  version "0.1.64"
+  resolved "https://registry.yarnpkg.com/@kodiak-ui/menu/-/menu-0.1.64.tgz#33035268be592d443d31c658674147d226e17939"
+  integrity sha512-qr77HUFP8Eqe6a1Buh8JAKcea7zRT4RlXfGWKpSzfky4et+IdQew7YpEXa2Ki8FmfP3mEbgkkjpbUscJAXCD2g==
+  dependencies:
+    "@kodiak-ui/hooks" "^0.14.26"
+    "@popperjs/core" "^2.4.0"
+
+"@kodiak-ui/message@^0.3.23":
+  version "0.3.23"
+  resolved "https://registry.yarnpkg.com/@kodiak-ui/message/-/message-0.3.23.tgz#acd3257f1747dbf78414e9068a4d22739b4f47ab"
+  integrity sha512-8827p58Hd8Boj+GW/caayRSYCIGT8hxQXbFJscGQLlwMMMzPzZ0ztKGXsJR9RP9fK02QFYhYXG7PVEiqU2lvUQ==
+  dependencies:
+    "@kodiak-ui/primitives" "^0.21.2"
+
+"@kodiak-ui/pagination@^0.2.23":
+  version "0.2.23"
+  resolved "https://registry.yarnpkg.com/@kodiak-ui/pagination/-/pagination-0.2.23.tgz#7ca084d204723801205cc6477954b4a1ae41731f"
+  integrity sha512-y1lGt4Oa6wKyL3cufTjdAF+s5xZ5ft1dZqUrOw2UXEp7GeRGGP1fV3EG///KvVYwTxKV1G8gGGboWnkPt7uKBg==
+  dependencies:
+    "@kodiak-ui/primitives" "^0.21.2"
+    "@kodiak-ui/utils" "^0.0.9"
+
+"@kodiak-ui/primitives@^0.21.2":
+  version "0.21.2"
+  resolved "https://registry.yarnpkg.com/@kodiak-ui/primitives/-/primitives-0.21.2.tgz#dafbba88d98ced437d18c182bffe2dc3cc32f7dd"
+  integrity sha512-Yg5uWHPfsnv0rr8fo+OiyIyXGpspXC93KpIvD3bat/nnh87NKKntSvirGgDgW7hRQfL5ean1W1bBVCjUqMrzWA==
+  dependencies:
+    "@kodiak-ui/a11y" "^0.1.8"
+    "@kodiak-ui/hooks" "^0.14.26"
+    "@kodiak-ui/utils" "^0.0.27"
+    "@popperjs/core" "^2.5.2"
+
+"@kodiak-ui/progress@^0.2.23":
+  version "0.2.23"
+  resolved "https://registry.yarnpkg.com/@kodiak-ui/progress/-/progress-0.2.23.tgz#cc3a0c2ceecd9aad4b18e53c09cffd79af95aca8"
+  integrity sha512-lsVhKhdb3e/XIUNQfR3jw9A2S87P09GoSRcGKGIt462jLdfnNczi4VPIb0lCci51iHLC+MSfm967quhM+Bd2GQ==
+  dependencies:
+    "@kodiak-ui/hooks" "^0.14.26"
+    "@kodiak-ui/primitives" "^0.21.2"
+
+"@kodiak-ui/select@^0.3.23":
+  version "0.3.23"
+  resolved "https://registry.yarnpkg.com/@kodiak-ui/select/-/select-0.3.23.tgz#b853a06d78bf8f141187e722a048c888b06c8284"
+  integrity sha512-pJUCCGf0eZHQUxvEjvqy0XZTwyxm4EKbU6GzGcWupQ631+BPvOuD6HPMAwlxmIk2NQOhWbxKhsBefotv7t/q/A==
+  dependencies:
+    "@kodiak-ui/primitives" "^0.21.2"
+    downshift "^5.4.5"
+
+"@kodiak-ui/table@^0.3.23":
+  version "0.3.23"
+  resolved "https://registry.yarnpkg.com/@kodiak-ui/table/-/table-0.3.23.tgz#3486789e6214c16d84d7fa48d51ccf24540b70b8"
+  integrity sha512-2bvXJBKng8XX9Z6ayg+ZeHnkfFi4qYnFXkZPfAdMreOQ9RpMTY07fzwoOh0hMMr1pseQyPEGBU2+tX0sB3WI6g==
+  dependencies:
+    "@kodiak-ui/hooks" "^0.14.26"
+    "@kodiak-ui/primitives" "^0.21.2"
+
+"@kodiak-ui/tabs@^0.2.23":
+  version "0.2.23"
+  resolved "https://registry.yarnpkg.com/@kodiak-ui/tabs/-/tabs-0.2.23.tgz#3af3884d7dcc38703936af09c8ad39185a8a99f2"
+  integrity sha512-YYd5bbHfJExTXFPQVrDxTy+dmIiUkOA/he3l6Nwz0tIHCFk3W4xuJpNYdM5v3x76dEHcDCcM3ODsneiHX/vivw==
+  dependencies:
+    "@kodiak-ui/hooks" "^0.14.26"
+    "@kodiak-ui/primitives" "^0.21.2"
+    "@kodiak-ui/utils" "^0.0.9"
 
 "@kodiak-ui/utils@^0.0.9":
   version "0.0.9"
@@ -4416,10 +4524,18 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@^16.9.49":
+"@types/react@*":
   version "16.9.53"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.9.53.tgz#40cd4f8b8d6b9528aedd1fff8fcffe7a112a3d23"
   integrity sha512-4nW60Sd4L7+WMXH1D6jCdVftuW7j4Za6zdp6tJ33Rqv0nk1ZAmQKML9ZLD4H0dehA3FZxXR/GM8gXplf82oNGw==
+  dependencies:
+    "@types/prop-types" "*"
+    csstype "^3.0.2"
+
+"@types/react@^17.0.0":
+  version "17.0.0"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.0.tgz#5af3eb7fad2807092f0046a1302b7823e27919b8"
+  integrity sha512-aj/L7RIMsRlWML3YB6KZiXB3fV2t41+5RBGYF8z+tAKU43Px8C3cYUZsDvf1/+Bm4FK21QWBrDutu8ZJ/70qOw==
   dependencies:
     "@types/prop-types" "*"
     csstype "^3.0.2"

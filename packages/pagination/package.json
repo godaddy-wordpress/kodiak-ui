@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/pagination",
-  "version": "0.2.23",
+  "version": "0.2.24-alpha.4+2fc0e31",
   "description": "Kodiak UI's pagination components for GraphQL cursor based pagination",
   "keywords": [
     "pagination",
@@ -26,12 +26,12 @@
     "react-dom": "^17.0.1"
   },
   "dependencies": {
-    "@kodiak-ui/primitives": "^0.21.2",
+    "@kodiak-ui/primitives": "^0.21.3-alpha.4+2fc0e31",
     "@kodiak-ui/utils": "^0.0.9"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/skyverge/kodiak-ui.git"
   },
-  "gitHead": "8a4c5885aed834555e64441966e8f8b860cda441"
+  "gitHead": "2fc0e31f893421d3f807cf5e024c16d6931e813a"
 }

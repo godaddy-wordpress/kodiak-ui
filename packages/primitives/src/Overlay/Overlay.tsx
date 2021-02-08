@@ -1,6 +1,7 @@
 import ReactDOM from 'react-dom'
 import React, { forwardRef, MutableRefObject } from 'react'
 import { Box } from '../Box'
+import { useSSR } from '@kodiak-ui/hooks'
 
 type OverlayProps = {
   children: React.ReactNode
@@ -12,6 +13,7 @@ export const Overlay = forwardRef(
     { children, container, ...rest }: OverlayProps,
     ref: MutableRefObject<HTMLDivElement>,
   ) => {
+    const { isBrowser } = useSSR()
     const element = (
       <Box
         {...rest}
@@ -25,6 +27,9 @@ export const Overlay = forwardRef(
       </Box>
     )
 
-    return ReactDOM.createPortal(element, container || document.body)
+    return ReactDOM.createPortal(
+      element,
+      container || (isBrowser && document.body),
+    )
   },
 )

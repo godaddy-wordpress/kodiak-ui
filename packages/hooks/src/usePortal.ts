@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { createPortal } from 'react-dom'
+import { useSSR } from './useSSR'
 
 type CustomEvent = {
   event?: React.SyntheticEvent<MouseEvent | KeyboardEvent, Event>
@@ -50,20 +51,22 @@ export function usePortal({
   onOpen,
   onClose,
 }: UsePortalOptions = {}): UsePortalReturn {
+  const { isBrowser } = useSSR()
   const [isOpen, setIsOpen] = React.useState(defaultIsOpen)
 
-  const targetRef = React.useRef() as React.MutableRefObject<HTMLElement>
-  const portalRef = React.useRef(
-    document.createElement('div'),
-  ) as React.MutableRefObject<HTMLElement>
+  const targetRef = React.useRef<HTMLElement>()
+  const portalRef = React.useRef<HTMLElement>()
 
   React.useEffect(() => {
     if (!portalRef.current) portalRef.current = document.createElement('div')
   }, [portalRef])
 
   const elToMountTo = React.useMemo(() => {
-    return document.body
-  }, [])
+    if (!isBrowser) {
+      return null
+    }
+    return document?.body
+  }, [isBrowser])
 
   const createEvent = React.useCallback(
     function createEvent(event: any) {
@@ -123,8 +126,10 @@ export function usePortal({
 
   const Portal = React.useCallback(
     ({ children }: { children: React.ReactNode }) => {
-      if (portalRef.current != null)
+      if (portalRef.current != null) {
         return createPortal(children, portalRef.current)
+      }
+
       return null
     },
     [portalRef],
