@@ -61,6 +61,7 @@ export const theme: Theme = {
       lineHeight: 'normal',
       margin: 0,
       padding: 0,
+      boxSizing: 'border-box',
     },
   },
 }
