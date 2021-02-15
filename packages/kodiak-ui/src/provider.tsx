@@ -11,9 +11,6 @@ const GlobalStyles = ({ global }) =>
       const colorStyles = createColorStyles(theme)
 
       return css({
-        '*': {
-          boxSizing: 'border-box',
-        },
         ...colorStyles,
         ...global,
       })(theme)
