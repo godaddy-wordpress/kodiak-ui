@@ -84,7 +84,6 @@ export const Checkbox = React.forwardRef<any, CheckboxProps>(
             }}
           />
         ) : null}
-        <input name="test"></input>
       </Box>
     )
 
