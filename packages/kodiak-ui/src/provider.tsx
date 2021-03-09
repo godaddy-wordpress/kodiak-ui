@@ -3,8 +3,9 @@ import { Global, ThemeContext as EmotionContext } from '@emotion/core'
 import { css, merge, jsx, useStore, Theme } from '.'
 import { toCustomProperties, createColorStyles } from './custom-properties'
 import { applyMode } from './color-mode'
+import { ThemeUIStyleObject } from './types'
 
-const GlobalStyles = ({ global }) =>
+const GlobalStyles = ({ global }: { global: ThemeUIStyleObject }) =>
   jsx(Global, {
     styles: (emotionTheme: Theme): any => {
       const theme = emotionTheme as Theme
