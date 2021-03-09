@@ -108,7 +108,7 @@ export function useModes(): [string, (mode: string) => void] {
 export const variant = useStore.getState().variant
 export const component = useStore.getState().component
 
-export function useVariant(variant: Variant): ThemeUIStyleObject {
+export function useVariant(variant: Variant): ThemeUIStyleObject | null {
   const variants = useStore(state => state.variants)
   return variants?.[(variant?.key as unknown) as string] || null
 }
