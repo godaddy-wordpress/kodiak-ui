@@ -300,7 +300,13 @@ export const getComponentBase = (base: string | string[]) => (theme: Theme) => {
   )(theme)
 }
 
-export const shared = ({ __shared, theme }) => {
+export const shared = ({
+  __shared,
+  theme,
+}: {
+  __shared: ThemeUIStyleObject
+  theme: Theme
+}) => {
   if (__shared && Object.keys(__shared)?.length > 0) {
     return css(__shared)(theme)
   }
