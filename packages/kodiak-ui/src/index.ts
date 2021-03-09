@@ -24,8 +24,8 @@ export type Component = {
 }
 
 export type KodiakState = {
-  variants?: Variant
-  components?: Component
+  variants?: Variant | null
+  components?: Component | null
   mode?: string
   variant: (
     key: string,
