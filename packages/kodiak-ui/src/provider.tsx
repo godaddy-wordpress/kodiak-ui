@@ -7,7 +7,7 @@ import { ThemeUIStyleObject } from './types'
 
 const GlobalStyles = ({ global }: { global: ThemeUIStyleObject }) =>
   jsx(Global, {
-    styles: (emotionTheme: Theme): any => {
+    styles: (emotionTheme: any): any => {
       const theme = emotionTheme as Theme
       const colorStyles = createColorStyles(theme)
 
