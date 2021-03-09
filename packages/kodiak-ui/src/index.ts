@@ -24,9 +24,9 @@ export type Component = {
 }
 
 export type KodiakState = {
-  variants: Variant
-  components: Component
-  mode: string
+  variants?: Variant
+  components?: Component
+  mode?: string
   variant: (
     key: string,
     styles: ThemeUIStyleObject,
