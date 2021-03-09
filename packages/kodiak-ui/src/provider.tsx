@@ -43,7 +43,7 @@ export function BaseProvider({
       {
         value: context,
       },
-      jsx(GlobalStyles, { global: theme.global }),
+      jsx(GlobalStyles, { global: theme.global as any }),
       children,
     ),
   )
