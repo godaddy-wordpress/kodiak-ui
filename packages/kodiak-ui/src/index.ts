@@ -128,16 +128,16 @@ export function useComponents() {
   return components
 }
 
-const getCSS = props => {
+const getCSS = (props: any) => {
   if (!props.sx && !props.css) return undefined
-  return theme => {
+  return (theme: Theme) => {
     const styles = css(props.sx)(theme)
     const raw = typeof props.css === 'function' ? props.css(theme) : props.css
     return [styles, raw]
   }
 }
 
-const parseProps = props => {
+const parseProps = (props: any) => {
   if (!props) return null
   const next: typeof props & { css?: any } = {}
   for (const key in props) {
