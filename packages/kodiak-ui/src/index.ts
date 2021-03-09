@@ -70,7 +70,7 @@ export type CreateDesignSystemOptions = {
   variants?: { [key: string]: ThemeUIStyleObject }
   modes?: { [key: string]: any }
   options?: ConfigurationOptions
-  globalScope?: string
+  globalScope?: string | string[]
 }
 
 export type GlobalStyleObject = {
@@ -166,6 +166,16 @@ export function createDesignSystem({
   options,
   globalScope = 'body',
 }: CreateDesignSystemOptions = {}): { theme: Theme } {
+  const globalStyles = Array.isArray(globalScope)
+    ? globalScope?.reduce(
+        (acc, curr) => ({
+          ...acc,
+          [curr]: { ...themeDefault?.global?.body, ...global },
+        }),
+        {},
+      )
+    : { [globalScope]: { ...themeDefault?.global?.body, ...global } }
+
   const theme = {
     ...options,
     ...themeDefault,
@@ -174,7 +184,7 @@ export function createDesignSystem({
     ...variants,
     modes,
     global: {
-      [globalScope]: { ...themeDefault?.global?.body, ...global },
+      ...globalStyles,
     },
   }
 
