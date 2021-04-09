@@ -1,5 +1,6 @@
 import * as React from 'react'
-import { useId } from '@kodiak-ui/hooks'
+import { useControlled, useId } from '@kodiak-ui/hooks'
+import update from 'immutability-helper'
 import { hasKey } from './utils'
 import { useRowSelect, createRowState, SelectedRowsState } from './useRowSelect'
 import { SxProps } from 'kodiak-ui'
@@ -64,11 +65,12 @@ export interface UseTableReturnValue {
   selectedCount: number
   getTableProps: () => GetTableProps
   clearSelection: () => void
+  moveRow: (dragIndex: number, hoverIndex: number) => void
 }
 
 export function useTable<T extends Data>({
   columns,
-  data,
+  data: dataProp,
   tableLayout = 'auto',
   selectable = false,
   initialSelectedIds,
@@ -77,6 +79,13 @@ export function useTable<T extends Data>({
 }: UseTableProps<T>): UseTableReturnValue {
   const { id: userId, describedby } = attributes
   const id = useId(userId)
+
+  const [data, setData] = useControlled<T[]>({
+    controlled: dataProp,
+    default: dataProp,
+    name: 'useTable',
+  })
+
   const {
     selectedRows,
     flatSelectedRows,
@@ -203,6 +212,18 @@ export function useTable<T extends Data>({
     }
   }, [id, tableLayout, getDescribedByAriaText])
 
+  const moveRow = React.useCallback((dragIndex, hoverIndex) => {
+    const dragRecord = data[dragIndex]
+    setData(
+      update(data, {
+        $splice: [
+          [dragIndex, 1],
+          [hoverIndex, 0, dragRecord],
+        ],
+      }),
+    )
+  }, [])
+
   return {
     headers,
     rows,
@@ -213,5 +234,6 @@ export function useTable<T extends Data>({
     selectedCount,
     getTableProps,
     clearSelection,
+    moveRow,
   }
 }

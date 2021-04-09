@@ -21,7 +21,10 @@
   },
   "dependencies": {
     "@kodiak-ui/hooks": "^0.14.27",
-    "@kodiak-ui/primitives": "^0.21.4"
+    "@kodiak-ui/primitives": "^0.21.4",
+    "immutability-helper": "^3.1.1",
+    "react-dnd": "^14.0.2",
+    "react-dnd-html5-backend": "^14.0.0"
   },
   "gitHead": "2fc0e31f893421d3f807cf5e024c16d6931e813a"
 }

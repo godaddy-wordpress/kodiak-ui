@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { Box, VisuallyHidden } from '@kodiak-ui/primitives'
 import {
+  useDraggableRow,
   useTable,
   Table,
   TableHead,
@@ -8,6 +9,8 @@ import {
   TableRow,
   TableHeader,
   TableData,
+  Row,
+  TableProvider,
 } from '@kodiak-ui/table'
 import {
   IconButton,
@@ -419,5 +422,117 @@ export function SelectableRows() {
         ))}
       </TableBody>
     </Table>
+  )
+}
+
+function TableRowDraggable({
+  key,
+  cells,
+  index,
+  moveRow,
+}: Row & {
+  index: number
+  moveRow: (dragIndex: number, hoverIndex: number) => void
+}) {
+  const { dragRef, dropRef, isDragging } = useDraggableRow({ index, moveRow })
+
+  return (
+    <TableRow ref={dropRef} key={key} sx={{ opacity: isDragging ? 0 : 1 }}>
+      <TableData ref={dragRef}>Move</TableData>
+      {cells.map(({ key, rowData, ...cell }) => {
+        return <TableData key={key} {...cell} />
+      })}
+    </TableRow>
+  )
+}
+
+export function DraggableRows() {
+  const columns = React.useMemo(
+    () => [
+      {
+        Cell: 'Character',
+        accessor: 'character', // accessor is the "key" in the data
+      },
+      {
+        Cell: 'Portrayed by',
+        accessor: 'portrayedBy',
+      },
+      {
+        Cell: 'Job title',
+        accessor: 'jobTitle',
+      },
+      {
+        Cell: 'Complex',
+        accessor: 'complexSample',
+      },
+    ],
+    [],
+  )
+
+  const data = React.useMemo(
+    () =>
+      [
+        {
+          id: 1,
+          character: 'Michael Scott',
+          portrayedBy: 'Steve Carrel',
+          jobTitle: 'Regional manager',
+        },
+        {
+          id: 2,
+          character: 'Dwight Schrutte',
+          portrayedBy: 'Rainn Wilson',
+          jobTitle: 'Assistant to the Regional Manager',
+        },
+        {
+          id: 3,
+          character: 'Pam Beasley',
+          portrayedBy: 'Jenna Fischer',
+          jobTitle: 'Receptionist',
+        },
+        {
+          id: 4,
+          character: 'Angela Martin',
+          portrayedBy: 'Angela Kinsey',
+          jobTitle: 'Accountant',
+        },
+      ].map(dataRow => ({
+        ...dataRow,
+        complexSample: (props: { rowData: Data }) => {
+          return (
+            <Box>
+              {props.rowData.character} - {props.rowData.portrayedBy}
+            </Box>
+          )
+        },
+      })),
+    [],
+  )
+
+  const { headers, rows, getTableProps, moveRow } = useTable<Data>({
+    columns,
+    data,
+    tableLayout: 'fixed',
+    initialSelectedIds: [2],
+  })
+
+  return (
+    <TableProvider>
+      <Table {...getTableProps()}>
+        <TableHead>
+          <TableRow>
+            <TableHeader>Move</TableHeader>
+            {headers?.map(({ key, column, ...header }) => (
+              <TableHeader key={key} {...header} />
+            ))}
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {rows.map((props, index) => (
+            <TableRowDraggable {...props} index={index} moveRow={moveRow} />
+          ))}
+        </TableBody>
+      </Table>
+    </TableProvider>
   )
 }

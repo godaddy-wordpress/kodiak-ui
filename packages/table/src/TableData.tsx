@@ -44,7 +44,8 @@ export const TableDataStyle = styled('td')<TableDataProps>(
   sx,
 )
 
-// We are memoizing the td element so that if it is just a string the element won't re-render when another td element changes
-export const TableData = React.memo((props: { children: React.ReactNode }) => (
-  <TableDataStyle {...props} />
-))
+export const TableData = React.forwardRef(
+  (props: { children: React.ReactNode }, ref: any) => (
+    <TableDataStyle ref={ref} {...props} />
+  ),
+)

@@ -35,3 +35,8 @@ Disabled.args = {
   disabled: true,
   checked: true,
 }
+
+export const Default = Template.bind({})
+Default.args = {
+  defaultChecked: true,
+}

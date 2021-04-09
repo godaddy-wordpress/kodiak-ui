@@ -1,5 +1,7 @@
 export { useTable } from './useTable'
+export { useDraggableRow } from './useDraggableRow'
 export type { Column, Cell, Header, Row } from './useTable'
+export { TableProvider } from './TableProvider'
 export { Table, TableElement } from './Table'
 export type { TableProps } from './Table'
 export { TableHead } from './TableHead'
