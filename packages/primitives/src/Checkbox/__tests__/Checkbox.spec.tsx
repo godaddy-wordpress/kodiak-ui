@@ -145,9 +145,6 @@ describe('Checkbox', () => {
                 fill="white"
               />
             </svg>
-            <input
-              name="test"
-            />
           </span>
         </label>
         Dark Mode
@@ -266,11 +263,7 @@ describe('Checkbox', () => {
             className="emotion-1"
             data-checkbox-checked={false}
             data-checkbox-error={false}
-          >
-            <input
-              name="test"
-            />
-          </span>
+          />
         </label>
         Light Mode
       </label>
