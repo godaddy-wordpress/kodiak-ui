@@ -1,4 +1,4 @@
-import { KodiakUIProps } from 'kodiak-ui/src'
+import { KodiakUIProps } from 'kodiak-ui'
 import React from 'react'
 import { Box } from '../Box'
 
