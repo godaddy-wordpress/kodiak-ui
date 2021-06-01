@@ -8,7 +8,7 @@ import {
 import { Placement } from '@popperjs/core'
 import { ThemeUIStyleObject } from 'kodiak-ui'
 import { TagProps } from '@kodiak-ui/primitives'
-import { AllHTMLAttributes } from 'kodiak-ui/src/css'
+import { AllHTMLAttributes } from 'kodiak-ui'
 
 export type PropsWithRef<T> = { ref: any } & T
 

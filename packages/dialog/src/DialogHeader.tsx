@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { _variant, VariantProps, styled, sx, Theme, css } from 'kodiak-ui'
 import { VisuallyHidden, SvgIcon } from '@kodiak-ui/primitives'
-import { CloseButton } from '@kodiak-ui/primitives/src'
+import { CloseButton } from '@kodiak-ui/primitives'
 
 type DialogHeaderProps = {
   children: React.ReactNode
