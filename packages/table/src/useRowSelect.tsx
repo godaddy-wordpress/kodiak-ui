@@ -99,7 +99,7 @@ export function useRowSelect<Data>({
               children: (
                 <Checkbox
                   checked={allSelected}
-                  indeterminate={someSelected}
+                  indeterminate={someSelected && !allSelected}
                   onChange={onSelectAll}
                 >
                   <VisuallyHidden>Select all rows</VisuallyHidden>
