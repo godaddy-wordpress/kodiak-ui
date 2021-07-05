@@ -20,7 +20,7 @@ type EventLoggerStore = {
 // [transform1, transform2] => transform2(transform1(event)) : Event
 export const useEventLoggerStore = create<EventLoggerStore>(
   (set, get): EventLoggerStore => ({
-    logEvent: async (event: Event) => {
+    logEvent: (event: Event) => {
       get().eventReducers?.reduce((event, reducer) => reducer(event), event)
     },
     eventReducers: [],
