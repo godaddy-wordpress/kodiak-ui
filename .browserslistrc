@@ -1,0 +1,6 @@
+defaults
+not IE 11
+not kaios 2.5
+not baidu 7
+not op_mini all
+not dead

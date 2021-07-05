@@ -2,7 +2,7 @@ module.exports = function (api) {
   api.cache(true)
 
   const presets = [
-    '@babel/preset-env',
+    ['@babel/preset-env', { exclude: ['@babel/plugin-transform-regenerator'] }],
     '@babel/preset-react',
     '@babel/preset-typescript',
   ]
