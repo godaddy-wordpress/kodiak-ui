@@ -16,6 +16,7 @@
   },
   "gitHead": "2fc0e31f893421d3f807cf5e024c16d6931e813a",
   "dependencies": {
+    "react-i18next": "^11.11.4",
     "resize-observer-polyfill": "^1.5.1",
     "zustand": "^3.2.0"
   },

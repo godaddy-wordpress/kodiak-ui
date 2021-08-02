@@ -2,6 +2,7 @@ import * as React from 'react'
 import { component, SharedSx, variant } from 'kodiak-ui'
 import { Dialog, useDialog } from '@kodiak-ui/dialog'
 import { Button, Content, Header, Footer, Text } from '@kodiak-ui/primitives'
+import { useTranslation } from '@kodiak-ui/hooks'
 
 export default { title: 'Dialog', component: Dialog }
 
@@ -41,6 +42,8 @@ variant('scroll', {
 export function Default() {
   const { getDialogProps, handleOpenDialog, handleCloseDialog } = useDialog()
 
+  const { t } = useTranslation()
+
   return (
     <>
       <Button onClick={handleOpenDialog}>Trigger</Button>
@@ -50,9 +53,9 @@ export function Default() {
           <Header variants="dialog-header">Header</Header>
           <Content>
             <Text as="p">
-              Contrary to popular belief, Lorem Ipsum is not simply random text.
-              It has roots in a piece of classical Latin literature from 45 BC,
-              making it over 2000 years old.
+              Contrary to popular belief, {t('Lorem Ipsum')} is not simply
+              random text. It has roots in a piece of classical Latin literature
+              from 45 BC, making it over 2000 years old.
             </Text>
           </Content>
           <Footer variants="dialog-footer">
