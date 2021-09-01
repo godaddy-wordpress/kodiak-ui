@@ -7,6 +7,10 @@ export function WithLabel() {
   return <Badge count={103}>new</Badge>
 }
 
+export function WithOutCount() {
+  return <Badge>New</Badge>
+}
+
 export function IconBadge() {
   return (
     <Flex

@@ -10,7 +10,7 @@ function getPositionStyles({
   position,
   showZero,
 }: {
-  count: number
+  count?: number
   position: Position
   showZero: boolean
 }): ThemeUIStyleObject {
@@ -55,7 +55,7 @@ function getPositionStyles({
 }
 
 export type BadgeProps = KodiakUIProps & {
-  count: number
+  count?: number
   max?: number
   position?: Position
   showZero?: boolean
@@ -80,12 +80,13 @@ export const Badge = React.forwardRef(function Badge(
 ) {
   const hasLabel = typeof children === 'string'
   const count = userCount > max ? `${max - 1}+` : `${userCount}`
+
   let content = <>{count}</>
 
   if (hasLabel) {
     content = (
       <Text as="span">
-        {count} {children}
+        {userCount ? count : null} {children}
       </Text>
     )
   }
