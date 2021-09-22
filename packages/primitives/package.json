@@ -23,7 +23,7 @@
     "@kodiak-ui/a11y": "^0.1.9",
     "@kodiak-ui/hooks": "^0.14.30",
     "@kodiak-ui/utils": "^0.0.27",
-    "@popperjs/core": "^2.10.1"
+    "@popperjs/core": "^2.5.2"
   },
   "gitHead": "2fc0e31f893421d3f807cf5e024c16d6931e813a",
   "snyk": true,
