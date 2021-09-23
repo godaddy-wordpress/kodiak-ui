@@ -17,8 +17,7 @@
   "peerDependencies": {
     "kodiak-ui": "^1.0.12",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-i18next": "*"
+    "react-dom": "^17.0.1"
   },
   "dependencies": {
     "@kodiak-ui/primitives": "^0.21.9"
