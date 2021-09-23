@@ -3382,7 +3382,6 @@ __metadata:
     "@kodiak-ui/primitives": ^0.21.9
     scroll-into-view-if-needed: ^2.2.26
   peerDependencies:
-    i18next: "*"
     kodiak-ui: ^1.0.12
     react: ^17.0.1
     react-dom: ^17.0.1
@@ -3411,7 +3410,6 @@ __metadata:
     kodiak-ui: ^1.0.12
     react: ^17.0.1
     react-dom: ^17.0.1
-    react-i18next: "*"
   languageName: unknown
   linkType: soft
 
@@ -3423,7 +3421,6 @@ __metadata:
     "@kodiak-ui/primitives": ^0.21.9
     "@kodiak-ui/progress": ^0.2.30
   peerDependencies:
-    i18next: "*"
     kodiak-ui: ^1.0.12
     react: ^17.0.1
     react-dom: ^17.0.1
@@ -3448,8 +3445,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@kodiak-ui/hooks@workspace:packages/hooks"
   dependencies:
-    i18next: ^21.0.1
-    react-i18next: ^11.12.0
+    i18next: "*"
+    react-i18next: "*"
     resize-observer-polyfill: ^1.5.1
     zustand: ^3.2.0
   peerDependencies:
@@ -3465,7 +3462,6 @@ __metadata:
     "@kodiak-ui/hooks": ^0.14.30
     "@popperjs/core": ^2.4.0
   peerDependencies:
-    i18next: "*"
     kodiak-ui: ^1.0.12
     react: ^17.0.1
     react-dom: ^17.0.1
@@ -3650,7 +3646,6 @@ __metadata:
     kodiak-ui: ^1.0.12
     react: ^17.0.1
     react-dom: ^17.0.1
-    react-i18next: "*"
   languageName: unknown
   linkType: soft
 
@@ -13046,7 +13041,7 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"i18next@npm:^21.0.1":
+"i18next@npm:*, i18next@npm:^21.0.1":
   version: 21.0.1
   resolution: "i18next@npm:21.0.1"
   dependencies:
@@ -18294,7 +18289,7 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"react-i18next@npm:^11.12.0":
+"react-i18next@npm:*, react-i18next@npm:^11.12.0":
   version: 11.12.0
   resolution: "react-i18next@npm:11.12.0"
   dependencies:
