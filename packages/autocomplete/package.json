@@ -15,12 +15,14 @@
   },
   "scripts": {},
   "peerDependencies": {
+    "i18next": "*",
     "kodiak-ui": "^1.0.12",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "react-i18next": "*"
   },
   "dependencies": {
-    "@kodiak-ui/hooks": "^0.10.10",
+    "@kodiak-ui/hooks": "^0.14.30",
     "@kodiak-ui/primitives": "^0.21.9",
     "scroll-into-view-if-needed": "^2.2.26"
   },

@@ -15,9 +15,11 @@
   },
   "scripts": {},
   "peerDependencies": {
+    "@kodiak-ui/hooks": "*",
     "kodiak-ui": "^1.0.12",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "react-i18next": "*"
   },
   "dependencies": {
     "@kodiak-ui/a11y": "^0.1.9",
