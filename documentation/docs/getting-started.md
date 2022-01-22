@@ -21,7 +21,7 @@ First thing to do is set up your design system by calling `createDesignSystem`. 
 `createDesignSystem` will return a `theme` to be passed to the `Provider`. This will allow all theme properties to be accessible by any Kodiak UI component or any `sx` prop that is in use with the `jsx` pragma.
 
 ```tsx
-import { createDesignSystem, Provider } from 'kodiak-ui'
+import { createDesignSystem, ThemeProvider } from 'kodiak-ui'
 import { Box } from '@kodiak-ui/primitives'
 
 const { theme } = createDesignSystem({
@@ -32,9 +32,9 @@ const { theme } = createDesignSystem({
 
 function App() {
   return (
-    <Provider theme={theme}>
+    <ThemeProvider theme={theme}>
       <Box sx={{ p: 4 }}>App goes here</Box>
-    </Provider>
+    </ThemeProvider>
   )
 }
 ```
