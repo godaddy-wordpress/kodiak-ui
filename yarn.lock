@@ -3365,7 +3365,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@kodiak-ui/accordion@workspace:packages/accordion"
   dependencies:
-    "@kodiak-ui/primitives": ^0.21.10
+    "@kodiak-ui/primitives": ^0.21.11
     "@kodiak-ui/utils": ^0.0.9
   peerDependencies:
     kodiak-ui: ^1.0.12
@@ -3374,12 +3374,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@kodiak-ui/autocomplete@^0.1.25, @kodiak-ui/autocomplete@workspace:packages/autocomplete":
+"@kodiak-ui/autocomplete@^0.1.26, @kodiak-ui/autocomplete@workspace:packages/autocomplete":
   version: 0.0.0-use.local
   resolution: "@kodiak-ui/autocomplete@workspace:packages/autocomplete"
   dependencies:
     "@kodiak-ui/hooks": ^0.14.31
-    "@kodiak-ui/primitives": ^0.21.10
+    "@kodiak-ui/primitives": ^0.21.11
     scroll-into-view-if-needed: ^2.2.26
   peerDependencies:
     kodiak-ui: ^1.0.12
@@ -3400,11 +3400,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@kodiak-ui/combobox@^0.3.31, @kodiak-ui/combobox@workspace:packages/combobox":
+"@kodiak-ui/combobox@^0.3.32, @kodiak-ui/combobox@workspace:packages/combobox":
   version: 0.0.0-use.local
   resolution: "@kodiak-ui/combobox@workspace:packages/combobox"
   dependencies:
-    "@kodiak-ui/primitives": ^0.21.10
+    "@kodiak-ui/primitives": ^0.21.11
     downshift: ^5.4.5
   peerDependencies:
     kodiak-ui: ^1.0.12
@@ -3413,13 +3413,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@kodiak-ui/data-visualization@^0.2.31, @kodiak-ui/data-visualization@workspace:packages/data-visualization":
+"@kodiak-ui/data-visualization@^0.2.32, @kodiak-ui/data-visualization@workspace:packages/data-visualization":
   version: 0.0.0-use.local
   resolution: "@kodiak-ui/data-visualization@workspace:packages/data-visualization"
   dependencies:
     "@kodiak-ui/hooks": ^0.14.31
-    "@kodiak-ui/primitives": ^0.21.10
-    "@kodiak-ui/progress": ^0.2.31
+    "@kodiak-ui/primitives": ^0.21.11
+    "@kodiak-ui/progress": ^0.2.32
   peerDependencies:
     kodiak-ui: ^1.0.12
     react: ^17.0.1
@@ -3427,12 +3427,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@kodiak-ui/dialog@^1.0.31, @kodiak-ui/dialog@workspace:packages/dialog":
+"@kodiak-ui/dialog@^1.0.32, @kodiak-ui/dialog@workspace:packages/dialog":
   version: 0.0.0-use.local
   resolution: "@kodiak-ui/dialog@workspace:packages/dialog"
   dependencies:
     "@kodiak-ui/a11y": ^0.1.10
-    "@kodiak-ui/primitives": ^0.21.10
+    "@kodiak-ui/primitives": ^0.21.11
   peerDependencies:
     "@kodiak-ui/hooks": "*"
     kodiak-ui: ^1.0.12
@@ -3468,11 +3468,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@kodiak-ui/message@^0.3.31, @kodiak-ui/message@workspace:packages/message":
+"@kodiak-ui/message@^0.3.32, @kodiak-ui/message@workspace:packages/message":
   version: 0.0.0-use.local
   resolution: "@kodiak-ui/message@workspace:packages/message"
   dependencies:
-    "@kodiak-ui/primitives": ^0.21.10
+    "@kodiak-ui/primitives": ^0.21.11
   peerDependencies:
     kodiak-ui: ^1.0.12
     react: ^17.0.1
@@ -3480,11 +3480,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@kodiak-ui/pagination@^0.2.31, @kodiak-ui/pagination@workspace:packages/pagination":
+"@kodiak-ui/pagination@^0.2.32, @kodiak-ui/pagination@workspace:packages/pagination":
   version: 0.0.0-use.local
   resolution: "@kodiak-ui/pagination@workspace:packages/pagination"
   dependencies:
-    "@kodiak-ui/primitives": ^0.21.10
+    "@kodiak-ui/primitives": ^0.21.11
     "@kodiak-ui/utils": ^0.0.9
   peerDependencies:
     kodiak-ui: ^1.0.12
@@ -3493,7 +3493,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@kodiak-ui/primitives@^0.21.10, @kodiak-ui/primitives@workspace:packages/primitives":
+"@kodiak-ui/primitives@^0.21.11, @kodiak-ui/primitives@workspace:packages/primitives":
   version: 0.0.0-use.local
   resolution: "@kodiak-ui/primitives@workspace:packages/primitives"
   dependencies:
@@ -3503,17 +3503,17 @@ __metadata:
     "@popperjs/core": ^2.5.2
   peerDependencies:
     kodiak-ui: ^1.0.12
-    react: ^17.0.2
-    react-dom: ^17.0.2
+    react: ^17.0.1
+    react-dom: ^17.0.1
   languageName: unknown
   linkType: soft
 
-"@kodiak-ui/progress@^0.2.31, @kodiak-ui/progress@workspace:packages/progress":
+"@kodiak-ui/progress@^0.2.32, @kodiak-ui/progress@workspace:packages/progress":
   version: 0.0.0-use.local
   resolution: "@kodiak-ui/progress@workspace:packages/progress"
   dependencies:
     "@kodiak-ui/hooks": ^0.14.31
-    "@kodiak-ui/primitives": ^0.21.10
+    "@kodiak-ui/primitives": ^0.21.11
   peerDependencies:
     kodiak-ui: ^1.0.12
     react: ^17.0.1
@@ -3521,11 +3521,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@kodiak-ui/select@^0.3.31, @kodiak-ui/select@workspace:packages/select":
+"@kodiak-ui/select@^0.3.32, @kodiak-ui/select@workspace:packages/select":
   version: 0.0.0-use.local
   resolution: "@kodiak-ui/select@workspace:packages/select"
   dependencies:
-    "@kodiak-ui/primitives": ^0.21.10
+    "@kodiak-ui/primitives": ^0.21.11
     downshift: ^5.4.5
   peerDependencies:
     kodiak-ui: ^1.0.12
@@ -3538,7 +3538,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@kodiak-ui/skeleton@workspace:packages/skeleton"
   dependencies:
-    "@kodiak-ui/primitives": ^0.21.10
+    "@kodiak-ui/primitives": ^0.21.11
   peerDependencies:
     kodiak-ui: ^1.0.12
     react: ^17.0.1
@@ -3552,19 +3552,19 @@ __metadata:
   dependencies:
     "@babel/core": ^7.12.9
     "@kodiak-ui/a11y": ^0.1.10
-    "@kodiak-ui/autocomplete": ^0.1.25
-    "@kodiak-ui/combobox": ^0.3.31
-    "@kodiak-ui/data-visualization": ^0.2.31
-    "@kodiak-ui/dialog": ^1.0.31
+    "@kodiak-ui/autocomplete": ^0.1.26
+    "@kodiak-ui/combobox": ^0.3.32
+    "@kodiak-ui/data-visualization": ^0.2.32
+    "@kodiak-ui/dialog": ^1.0.32
     "@kodiak-ui/hooks": ^0.14.31
     "@kodiak-ui/menu": ^0.1.69
-    "@kodiak-ui/message": ^0.3.31
-    "@kodiak-ui/pagination": ^0.2.31
-    "@kodiak-ui/primitives": ^0.21.10
-    "@kodiak-ui/progress": ^0.2.31
-    "@kodiak-ui/select": ^0.3.31
-    "@kodiak-ui/table": ^0.3.32
-    "@kodiak-ui/tabs": ^0.2.31
+    "@kodiak-ui/message": ^0.3.32
+    "@kodiak-ui/pagination": ^0.2.32
+    "@kodiak-ui/primitives": ^0.21.11
+    "@kodiak-ui/progress": ^0.2.32
+    "@kodiak-ui/select": ^0.3.32
+    "@kodiak-ui/table": ^0.3.33
+    "@kodiak-ui/tabs": ^0.2.32
     "@material-ui/core": ^4.9.10
     "@material-ui/icons": ^4.9.1
     "@storybook/addon-a11y": ^6.3.8
@@ -3582,8 +3582,8 @@ __metadata:
     i18next: ^21.0.1
     kodiak-ui: ^1.0.12
     polished: ^3.4.4
-    react: ^17.0.2
-    react-dom: ^17.0.2
+    react: ^17.0.1
+    react-dom: ^17.0.1
     react-hook-form: ^5.6.1
     react-i18next: ^11.12.0
     react-is: ^16.12.0
@@ -3601,12 +3601,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@kodiak-ui/table@^0.3.32, @kodiak-ui/table@workspace:packages/table":
+"@kodiak-ui/table@^0.3.33, @kodiak-ui/table@workspace:packages/table":
   version: 0.0.0-use.local
   resolution: "@kodiak-ui/table@workspace:packages/table"
   dependencies:
     "@kodiak-ui/hooks": ^0.14.31
-    "@kodiak-ui/primitives": ^0.21.10
+    "@kodiak-ui/primitives": ^0.21.11
   peerDependencies:
     kodiak-ui: ^1.0.12
     react: ^17.0.1
@@ -3614,12 +3614,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@kodiak-ui/tabs@^0.2.31, @kodiak-ui/tabs@workspace:packages/tabs":
+"@kodiak-ui/tabs@^0.2.32, @kodiak-ui/tabs@workspace:packages/tabs":
   version: 0.0.0-use.local
   resolution: "@kodiak-ui/tabs@workspace:packages/tabs"
   dependencies:
     "@kodiak-ui/hooks": ^0.14.31
-    "@kodiak-ui/primitives": ^0.21.10
+    "@kodiak-ui/primitives": ^0.21.11
     "@kodiak-ui/utils": ^0.0.9
   peerDependencies:
     kodiak-ui: ^1.0.12
@@ -3639,7 +3639,7 @@ __metadata:
   resolution: "@kodiak-ui/tooltip@workspace:packages/tooltip"
   dependencies:
     "@kodiak-ui/hooks": ^0.14.31
-    "@kodiak-ui/primitives": ^0.21.10
+    "@kodiak-ui/primitives": ^0.21.11
     "@kodiak-ui/utils": ^0.0.9
     "@popperjs/core": ^2.4.0
   peerDependencies:
@@ -18211,19 +18211,6 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^17.0.2":
-  version: 17.0.2
-  resolution: "react-dom@npm:17.0.2"
-  dependencies:
-    loose-envify: ^1.1.0
-    object-assign: ^4.1.1
-    scheduler: ^0.20.2
-  peerDependencies:
-    react: 17.0.2
-  checksum: 1c1eaa3bca7c7228d24b70932e3d7c99e70d1d04e13bb0843bbf321582bc25d7961d6b8a6978a58a598af2af496d1cedcfb1bf65f6b0960a0a8161cb8dab743c
-  languageName: node
-  linkType: hard
-
 "react-draggable@npm:^4.4.3":
   version: 4.4.4
   resolution: "react-draggable@npm:4.4.4"
@@ -18503,16 +18490,6 @@ fsevents@~2.3.2:
     loose-envify: ^1.1.0
     object-assign: ^4.1.1
   checksum: 83b9df9529a2b489f00a4eaa608fc7d55518b258e046c100344ae068713e43ae64e477a140f87e38cfe75489bcfd26d27fce5818f89f4ec41bdbda7ead4bb426
-  languageName: node
-  linkType: hard
-
-"react@npm:^17.0.2":
-  version: 17.0.2
-  resolution: "react@npm:17.0.2"
-  dependencies:
-    loose-envify: ^1.1.0
-    object-assign: ^4.1.1
-  checksum: b254cc17ce3011788330f7bbf383ab653c6848902d7936a87b09d835d091e3f295f7e9dd1597c6daac5dc80f90e778c8230218ba8ad599f74adcc11e33b9d61b
   languageName: node
   linkType: hard
 
@@ -19400,16 +19377,6 @@ fsevents@~2.3.2:
     loose-envify: ^1.1.0
     object-assign: ^4.1.1
   checksum: ace896fff8ccc516a4b5a249c712fc88d4e2456587d991acc220b54690362d6a2b9d426a7f030454cb439f6f5ff2706b13ee8c44ccb953884c4756304a2f8ad6
-  languageName: node
-  linkType: hard
-
-"scheduler@npm:^0.20.2":
-  version: 0.20.2
-  resolution: "scheduler@npm:0.20.2"
-  dependencies:
-    loose-envify: ^1.1.0
-    object-assign: ^4.1.1
-  checksum: c4b35cf967c8f0d3e65753252d0f260271f81a81e427241295c5a7b783abf4ea9e905f22f815ab66676f5313be0a25f47be582254db8f9241b259213e999b8fc
   languageName: node
   linkType: hard
 
