@@ -11,19 +11,29 @@ import { KodiakUIProps } from 'kodiak-ui'
 import { Box, Underlay } from '@kodiak-ui/primitives'
 import { FocusScope } from '@kodiak-ui/a11y'
 import { useOverlay, Overlay } from '@kodiak-ui/primitives/overlay'
+import { SxStyleProp } from 'kodiak-ui'
 
 export type DialogProps = {
   children: ReactNode
   isOpen: boolean
   title?: any // @deprecated
   onDismiss: () => void
+  styles?: { overlay: SxStyleProp }
 } & KodiakUIProps &
   HTMLAttributes<HTMLDivElement>
 
 export const Dialog = memo(
   forwardRef(
     (
-      { children, isOpen, title, base, onDismiss, ...rest }: DialogProps,
+      {
+        children,
+        isOpen,
+        title,
+        base,
+        onDismiss,
+        styles,
+        ...rest
+      }: DialogProps,
       ref: RefObject<HTMLElement>,
     ) => {
       const domRef = useRef<HTMLElement>((ref as unknown) as HTMLElement)
@@ -38,7 +48,7 @@ export const Dialog = memo(
       )
 
       return isOpen ? (
-        <Overlay>
+        <Overlay sx={{ ...styles?.overlay }}>
           <Underlay isOpen={isOpen} />
           <FocusScope contain restore>
             <Box
