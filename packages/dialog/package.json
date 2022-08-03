@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/dialog",
-  "version": "1.0.32",
+  "version": "1.0.33",
   "description": "Accessible dialog component that works with Theme UI and Styled System's style props",
   "main": "dist/dialog.cjs.js",
   "module": "dist/dialog.esm.js",
@@ -21,8 +21,8 @@
     "react-dom": "^17.0.1"
   },
   "dependencies": {
-    "@kodiak-ui/a11y": "^0.1.10",
-    "@kodiak-ui/primitives": "^0.21.11"
+    "@kodiak-ui/a11y": "^0.1.11",
+    "@kodiak-ui/primitives": "^0.21.12"
   },
   "gitHead": "2fc0e31f893421d3f807cf5e024c16d6931e813a"
 }
