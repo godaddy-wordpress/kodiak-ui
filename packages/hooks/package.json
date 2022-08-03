@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/hooks",
-  "version": "0.14.32",
+  "version": "0.14.33",
   "main": "dist/hooks.cjs.js",
   "module": "dist/hooks.esm.js",
   "source": "src/index.ts",
@@ -14,7 +14,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },
-  "gitHead": "2fc0e31f893421d3f807cf5e024c16d6931e813a",
+  "gitHead": "476e904d461651482f8c0d969d96cf69e7463f8a",
   "dependencies": {
     "i18next": "*",
     "react-i18next": "*",

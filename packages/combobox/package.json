@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/combobox",
-  "version": "0.3.33",
+  "version": "0.3.34",
   "description": "Component to display custom combobox elements with typeahead capabilities",
   "main": "dist/combobox.cjs.js",
   "module": "dist/combobox.esm.js",
@@ -20,8 +20,8 @@
     "react-dom": "^17.0.1"
   },
   "dependencies": {
-    "@kodiak-ui/primitives": "^0.21.12",
+    "@kodiak-ui/primitives": "^0.21.13",
     "downshift": "^5.4.5"
   },
-  "gitHead": "2fc0e31f893421d3f807cf5e024c16d6931e813a"
+  "gitHead": "476e904d461651482f8c0d969d96cf69e7463f8a"
 }
