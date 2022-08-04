@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/tooltip",
-  "version": "0.4.35",
+  "version": "0.4.36",
   "description": "Tooltip component and hook for displaying small messages on hover",
   "main": "dist/tooltip.cjs.js",
   "module": "dist/tooltip.esm.js",
@@ -20,10 +20,10 @@
     "react-dom": "^17.0.1"
   },
   "dependencies": {
-    "@kodiak-ui/hooks": "^0.14.36",
-    "@kodiak-ui/primitives": "^0.21.16",
+    "@kodiak-ui/hooks": "^0.14.37",
+    "@kodiak-ui/primitives": "^0.21.17",
     "@kodiak-ui/utils": "^0.0.9",
     "@popperjs/core": "^2.4.0"
   },
-  "gitHead": "02862b5b2771142383b5d67dc3eb7f9d0780a23e"
+  "gitHead": "af992de4430b6b6d31887c8ca9a9401dffa8174a"
 }

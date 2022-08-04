@@ -1,7 +1,7 @@
 {
   "name": "@kodiak-ui/theme",
   "description": "Default theme for kodiak-ui",
-  "version": "0.1.27",
+  "version": "0.1.28",
   "files": [
     "dist"
   ],
@@ -9,7 +9,7 @@
   "module": "dist/theme.esm.js",
   "author": "Alex Chan <alex@skyverge.com>",
   "license": "MIT",
-  "gitHead": "02862b5b2771142383b5d67dc3eb7f9d0780a23e",
+  "gitHead": "af992de4430b6b6d31887c8ca9a9401dffa8174a",
   "publishConfig": {
     "access": "public"
   }
