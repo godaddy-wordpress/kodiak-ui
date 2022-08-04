@@ -6,6 +6,8 @@ the dialog is closed or interacted with.
 - Source: https://github.com/skyverge/kodiak-ui/tree/master/packages/dialog
 - NPM: https://www.npmjs.com/package/@kodiak-ui/dialog
 
+Note the `isolation: unset` may need to be passed in via sx prop.
+
 ### Install and usage
 
 ```sh
