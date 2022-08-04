@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/primitives",
-  "version": "0.21.15",
+  "version": "0.21.16",
   "description": "Kodiak's primitive components for building applications and complex components",
   "main": "dist/primitives.cjs.js",
   "module": "dist/primitives.esm.js",
@@ -19,9 +19,9 @@
     "react-dom": "^17.0.1"
   },
   "dependencies": {
-    "@kodiak-ui/a11y": "^0.1.14",
-    "@kodiak-ui/hooks": "^0.14.35",
-    "@kodiak-ui/utils": "^0.0.31",
+    "@kodiak-ui/a11y": "^0.1.15",
+    "@kodiak-ui/hooks": "^0.14.36",
+    "@kodiak-ui/utils": "^0.0.32",
     "@popperjs/core": "^2.5.2"
   },
   "gitHead": "02862b5b2771142383b5d67dc3eb7f9d0780a23e",
