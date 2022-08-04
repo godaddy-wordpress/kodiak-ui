@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/menu",
-  "version": "0.1.71",
+  "version": "0.1.72",
   "description": "Component to display custom, accessible, and performant dropdown menus",
   "main": "dist/menu.cjs.js",
   "module": "dist/menu.esm.js",
@@ -20,8 +20,8 @@
     "react-dom": "^17.0.1"
   },
   "dependencies": {
-    "@kodiak-ui/hooks": "^0.14.33",
+    "@kodiak-ui/hooks": "^0.14.34",
     "@popperjs/core": "^2.4.0"
   },
-  "gitHead": "476e904d461651482f8c0d969d96cf69e7463f8a"
+  "gitHead": "02862b5b2771142383b5d67dc3eb7f9d0780a23e"
 }
