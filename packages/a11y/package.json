@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/a11y",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "description": "Accessibility components and hooks",
   "main": "dist/a11y.cjs.js",
   "module": "dist/a11y.esm.js",
