@@ -1,6 +1,6 @@
 {
   "name": "kodiak-ui",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "description": "Core functionality for creating a design system for building complex and performant applications",
   "main": "dist/kodiak-ui.cjs.js",
   "module": "dist/kodiak-ui.esm.js",
@@ -20,5 +20,5 @@
     "deepmerge": "^4.2.2",
     "zustand": "^3.2.0"
   },
-  "gitHead": "af992de4430b6b6d31887c8ca9a9401dffa8174a"
+  "gitHead": "b39e1a938300422bcfdf337234274c9b49b16ce8"
 }

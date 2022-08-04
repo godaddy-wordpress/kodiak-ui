@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/skeleton",
-  "version": "0.2.40",
+  "version": "0.2.41",
   "description": "Skeleton for loading",
   "keywords": [
     "skeleton",
@@ -25,11 +25,11 @@
     "react-dom": "^17.0.1"
   },
   "dependencies": {
-    "@kodiak-ui/primitives": "^0.21.19"
+    "@kodiak-ui/primitives": "^0.21.20"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/skyverge/kodiak-ui.git"
   },
-  "gitHead": "af992de4430b6b6d31887c8ca9a9401dffa8174a"
+  "gitHead": "b39e1a938300422bcfdf337234274c9b49b16ce8"
 }

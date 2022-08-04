@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/babel-plugin",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "main": "dist/babel-plugin.cjs.js",
   "module": "dist/babel-plugin.esm.js",
   "license": "MIT",
@@ -14,5 +14,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "af992de4430b6b6d31887c8ca9a9401dffa8174a"
+  "gitHead": "b39e1a938300422bcfdf337234274c9b49b16ce8"
 }

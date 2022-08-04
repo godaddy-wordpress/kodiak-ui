@@ -1,6 +1,6 @@
 {
   "name": "@kodiak-ui/autocomplete",
-  "version": "0.1.34",
+  "version": "0.1.35",
   "description": "Autocomplete hook and component for displaying suggested results based on input value",
   "main": "dist/autocomplete.cjs.js",
   "module": "dist/autocomplete.esm.js",
@@ -20,9 +20,9 @@
     "react-dom": "^17.0.1"
   },
   "dependencies": {
-    "@kodiak-ui/hooks": "^0.14.39",
-    "@kodiak-ui/primitives": "^0.21.19",
+    "@kodiak-ui/hooks": "^0.14.40",
+    "@kodiak-ui/primitives": "^0.21.20",
     "scroll-into-view-if-needed": "^2.2.26"
   },
-  "gitHead": "af992de4430b6b6d31887c8ca9a9401dffa8174a"
+  "gitHead": "b39e1a938300422bcfdf337234274c9b49b16ce8"
 }
