@@ -3427,7 +3427,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@kodiak-ui/dialog@^1.0.42, @kodiak-ui/dialog@workspace:packages/dialog":
+"@kodiak-ui/dialog@^1.0.43, @kodiak-ui/dialog@workspace:packages/dialog":
   version: 0.0.0-use.local
   resolution: "@kodiak-ui/dialog@workspace:packages/dialog"
   dependencies:
@@ -3555,7 +3555,7 @@ __metadata:
     "@kodiak-ui/autocomplete": ^0.1.36
     "@kodiak-ui/combobox": ^0.3.42
     "@kodiak-ui/data-visualization": ^0.2.42
-    "@kodiak-ui/dialog": ^1.0.42
+    "@kodiak-ui/dialog": ^1.0.43
     "@kodiak-ui/hooks": ^0.14.41
     "@kodiak-ui/menu": ^0.1.79
     "@kodiak-ui/message": ^0.3.42
