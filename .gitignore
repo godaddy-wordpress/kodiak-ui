@@ -16,4 +16,5 @@ package-lock.json
 
 storybook-static
 
-.env.yarn/install-state.gz
+.env
+.yarn/install-state.gz
