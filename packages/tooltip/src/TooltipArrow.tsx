@@ -1,11 +1,11 @@
 import * as React from 'react'
 import { Box } from '@kodiak-ui/primitives/box'
-import { VariantProps } from 'kodiak-ui'
+import { SxStyleProp, VariantProps } from 'kodiak-ui'
 
-type TooltipArrowProps = VariantProps
+type TooltipArrowProps = VariantProps & { sx?: SxStyleProp }
 
 export const TooltipArrow = React.forwardRef(function TooltipArrow(
-  { variant = 'tooltipArrow', ...props }: TooltipArrowProps,
+  { variant = 'tooltipArrow', sx, ...props }: TooltipArrowProps,
   ref: any,
 ) {
   return (
@@ -25,6 +25,7 @@ export const TooltipArrow = React.forwardRef(function TooltipArrow(
           height: '8px',
           zIndex: -1,
         },
+        ...sx,
       }}
       id="kodiak-ui-tooltip-arrow"
       variantKey="tooltips"
